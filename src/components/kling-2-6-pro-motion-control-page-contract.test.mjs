@@ -199,8 +199,10 @@ test('Toolaze model pages separate weak and better prompt tips visually', () => 
   assert.match(l2PageContent, /splitWeakBetterPrompt/, 'prompt tips should parse weak/better text instead of rendering one dense paragraph')
   assert.match(l2PageContent, /prompt-tip-weak/, 'weak prompt rows should have a stable marker for smoke tests')
   assert.match(l2PageContent, /prompt-tip-better/, 'better prompt rows should have a stable marker for smoke tests')
-  assert.match(l2PageContent, /❌/, 'weak prompt rows should display a clear negative icon')
-  assert.match(l2PageContent, /✅/, 'better prompt rows should display a clear positive icon')
+  assert.match(l2PageContent, /prompt-tip-status-icon-weak/, 'weak prompt rows should have a stable negative icon')
+  assert.match(l2PageContent, /prompt-tip-status-icon-better/, 'better prompt rows should have a stable positive icon')
+  assert.match(l2PageContent, /bg-rose-50 text-rose-500/, 'weak prompt rows should use the red cross treatment')
+  assert.match(l2PageContent, /bg-emerald-50 text-emerald-600/, 'better prompt rows should use the green check treatment')
 })
 
 test('Kling 2.6 Pro Motion Control public entry points include model surfaces and the AI Tools functional card', () => {

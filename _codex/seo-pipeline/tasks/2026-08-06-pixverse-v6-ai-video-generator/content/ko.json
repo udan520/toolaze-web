@@ -1,0 +1,305 @@
+{
+  "sourceData": "src/data/ko/pixverse-v6-ai-video-generator.json",
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-pixverse-v6-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "pixverse-v6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "PixVerse V6"
+  },
+  "metadata": {
+    "title": "PixVerse V6 AI 비디오 생성기 | Toolaze",
+    "description": "텍스트 또는 최대 2장의 참조 이미지로 1~15초, 360p~1080p, multi-shot 프롬프트, Native Audio, 유연한 화면비를 지원하는 PixVerse V6 AI 비디오를 온라인에서 생성합니다.",
+    "published": true
+  },
+  "hero": {
+    "h1": "PixVerse V6 AI 비디오 생성기",
+    "desc": "텍스트 프롬프트 또는 최대 2장의 참조 이미지로 PixVerse V6 비디오를 만들고, 1~15초, 360p, 540p, 720p, 1080p를 다양한 소셜 및 시네마틱 화면비로 선택하세요. 빠른 콘셉트 클립, 2개 참조 이미지-비디오 테스트, multi-shot 제품 스토리, Native Audio 장면, ASMR 질감, 짧은 캠페인 초안에 적합합니다."
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "type": "video",
+    "ariaLabel": "16:9 프레임의 PixVerse V6 AI 비디오 생성기 데모 미리보기",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "PixVerse V6 AI 비디오 생성기란?",
+    "modelName": "PixVerse V6",
+    "modelType": "AI 비디오 모델",
+    "description": [
+      "PixVerse V6는 텍스트-비디오와 이미지-비디오 생성을 위한 유연한 비디오 모델입니다. Toolaze에서는 최대 2장의 참조 이미지, Native Audio, multi-shot 프롬프트, 1~15초 길이, 360p~1080p 해상도를 지원합니다.",
+      "하나의 영화적 스타일에 묶이지 않고 형식, 길이, 사운드를 빠르게 제어하고 싶을 때 사용하세요. 크리에이터 훅, 제품 테스트, 참조 이미지 애니메이션, 소셜 광고, 분위기 클립, ASMR 재질 샷에 유용합니다."
+    ]
+  },
+  "howToUse": {
+    "title": "Toolaze에서 PixVerse V6 사용 방법",
+    "steps": [
+      {
+        "title": "텍스트 또는 참조 기반 생성 선택",
+        "desc": "새 장면은 텍스트 프롬프트로 시작하고, 피사체, 제품, 의상, 스타일을 원본과 가깝게 유지하려면 1~2장의 참조 이미지를 업로드합니다."
+      },
+      {
+        "title": "장면 작성 전에 형식 설정",
+        "desc": "화면비, 1~15초 길이, 360p, 540p, 720p, 1080p를 먼저 선택해 프롬프트가 움직임에 집중하도록 합니다."
+      },
+      {
+        "title": "동작, 카메라, 사운드를 함께 설명",
+        "desc": "PixVerse V6에 짧은 샷 순서, 카메라 움직임, 피사체 동작, 조명, 환경음이나 접촉음 같은 Native Audio 단서를 제공합니다."
+      },
+      {
+        "title": "참조와 결과 비교",
+        "desc": "중요한 참조 디테일이 유지되는지, 사운드가 동작을 뒷받침하는지 확인합니다. 동작이 많으면 프롬프트를 줄이거나 장면을 나눕니다."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "PixVerse V6 프롬프트 예시",
+    "subtitle": "화면비, 길이, 해상도, 선택적 Native Audio 컨트롤과 함께 사용하세요.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "두 참조 제품 클립",
+        "prompt": "업로드한 제품 사진과 브랜드 무드 이미지를 사용해 깔끔한 제품 비디오를 만드세요. 병 모양, 라벨 위치, 색상 팔레트를 안정적으로 유지합니다. 부드러운 오빗 샷으로 시작해 유리의 결로 디테일로 전환하고, 마지막에는 따뜻한 하이라이트 아래 제품을 중앙에 둡니다. 조용한 스튜디오 분위기와 작은 유리 탭 소리를 더합니다.",
+        "description": "두 참조 이미지로 제품 정체성과 시각 분위기를 유지합니다.",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "크리에이터 훅",
+        "prompt": "밝은 아파트 스튜디오에서 에너지 있는 크리에이터 인트로를 만드세요. 인물이 작은 카메라를 들어 렌즈를 향해 웃고, 카메라가 조명이 켜진 데스크 셋업을 보여줍니다. 움직임은 부드럽게, 얼굴은 자연스럽게, 작은 카메라 조작음과 실내음을 더합니다.",
+        "description": "움직임과 사운드가 즉각적으로 느껴져야 하는 소셜 인트로에 적합합니다.",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #2563eb, #f97316)"
+      },
+      {
+        "title": "ASMR 재료 디테일",
+        "prompt": "굵은 바다소금이 다크 초콜릿 디저트 위에 떨어지는 매크로 ASMR 샷을 만드세요. 알갱이가 튀고 작은 조각이 부서지며 표면을 따라 초점이 천천히 이동합니다. 바삭한 입자 소리, 부드러운 접시 접촉음, 낮은 실내음을 더하고 음악은 넣지 않습니다.",
+        "description": "촉각적인 클로즈업 동작과 Native Audio를 연결합니다.",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #451a03, #eab308)"
+      },
+      {
+        "title": "와이드 스토리보드 순간",
+        "prompt": "전기 자전거가 밤의 조용한 지하도를 지나는 영화적인 스토리보드 클립을 만드세요. 와이드 도입, 바퀴 옆 낮은 트래킹, 파란 빛을 지나가는 마지막 샷으로 구성합니다. 타이어 소리, 먼 교통음, 부드러운 반향을 더합니다.",
+        "description": "넓은 프레이밍, 샷 진행, 환경음으로 캠페인 초안을 만듭니다.",
+        "aspectRatio": "21:9",
+        "color": "linear-gradient(135deg, #020617, #38bdf8)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "더 좋은 PixVerse V6 프롬프트 방향",
+    "subtitle": "각 참조 이미지에 역할을 부여하고 액션을 간결하게 유지하면 더 깔끔한 결과를 얻습니다.",
+    "items": [
+      {
+        "title": "각 참조 이미지에 역할 부여",
+        "desc": "약한 프롬프트: 이 두 이미지를 사용해줘. 더 좋은 프롬프트:",
+        "prompt": "약함: 이 두 이미지를 사용해줘. 좋음: 첫 번째 업로드 이미지는 제품 형태와 라벨에 사용하고, 두 번째 이미지는 조명 분위기와 색상 팔레트에 사용하세요. 둘 다 안정적으로 유지하면서 부드러운 오빗, 결로 디테일, 중앙 제품 샷을 만듭니다."
+      },
+      {
+        "title": "짧은 클립을 집중시키기",
+        "desc": "약한 프롬프트: 전체 광고를 만들어줘. 더 좋은 프롬프트:",
+        "prompt": "약함: 전체 광고를 만들어줘. 좋음: 느린 푸시인, 재질 클로즈업, 깔끔한 마지막 홀드로 구성된 간결한 제품 공개를 만드세요. 제품은 중앙에 두고 따뜻한 측면광과 부드러운 기계 클릭음을 추가합니다."
+      },
+      {
+        "title": "Native Audio를 보이는 동작에 연결",
+        "desc": "약한 프롬프트: 영화적인 소리를 넣어줘. 더 좋은 프롬프트:",
+        "prompt": "약함: 영화적인 소리를 넣어줘. 좋음: 소매가 움직일 때의 천 소리, 콘크리트 위의 조용한 발소리, 먼 실내음처럼 화면에 대응하는 소리만 추가하고 음악은 넣지 않습니다."
+      }
+    ]
+  },
+  "scenesTitle": "PixVerse V6로 만들 수 있는 것",
+  "scenes": [
+    {
+      "title": "두 이미지 제품 비디오",
+      "icon": "🧴",
+      "desc": "제품 참조와 무드, 소재, 캠페인 이미지를 결합해 정체성과 스타일 방향을 함께 유지합니다."
+    },
+    {
+      "title": "빠른 소셜 훅",
+      "icon": "📱",
+      "desc": "인트로, 크리에이터 순간, 출시 티저, 짧은 세로 클립을 유연한 길이와 Native Audio로 만듭니다."
+    },
+    {
+      "title": "ASMR 질감 클립",
+      "icon": "🎧",
+      "desc": "소금, 비누, 음식, 천, 종이, 유리, 물체 접촉 장면을 동기화된 Native Audio와 함께 프롬프트로 지정합니다."
+    },
+    {
+      "title": "와이드 캠페인 스토리보드",
+      "icon": "🎥",
+      "desc": "16:9 또는 21:9로 광고, 무드 필름, 영화적인 장면 테스트를 만듭니다."
+    },
+    {
+      "title": "참조 이미지 애니메이션",
+      "icon": "🖼️",
+      "desc": "업로드한 1~2장의 이미지를 움직이며 피사체 형태, 색상 단서, 의도한 스타일을 유지합니다."
+    },
+    {
+      "title": "저비용 초안 변형",
+      "icon": "⚙️",
+      "desc": "낮은 해상도로 방향을 먼저 확인한 뒤 프롬프트가 안정되면 720p 또는 1080p로 이동합니다."
+    }
+  ],
+  "modelComparison": {
+    "title": "PixVerse V6 설정 요약",
+    "subtitle": "유연한 길이, 두 장의 이미지 참조, 넓은 화면비, Native Audio를 한 모델에서 원할 때 PixVerse V6가 강합니다.",
+    "columnHeaders": {
+      "metric": "판단 기준",
+      "baseline": "PixVerse V6",
+      "middle": "Wan 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "생성 모드",
+        "baseline": "최대 2장의 참조 이미지를 사용하는 텍스트-비디오 및 이미지-비디오.",
+        "middle": "참조 이미지 1장을 사용하는 텍스트-비디오 및 이미지-비디오.",
+        "target": "영화적인 Kling 클립용 텍스트-비디오 및 이미지-비디오."
+      },
+      {
+        "label": "길이 제어",
+        "baseline": "1~15초로 짧은 루프와 긴 스토리 비트에 유용합니다.",
+        "middle": "5, 10 또는 15초.",
+        "target": "완성도 높은 모션 초안을 위해 모델별로 다릅니다."
+      },
+      {
+        "label": "해상도",
+        "baseline": "360p, 540p, 720p, 1080p.",
+        "middle": "720p 및 1080p.",
+        "target": "공유 생성기의 720p 및 1080p 옵션."
+      },
+      {
+        "label": "화면비",
+        "baseline": "16:9, 4:3, 1:1, 3:4, 9:16, 2:3, 3:2, 21:9.",
+        "middle": "표준 소셜 및 시네마틱 형식에 적합합니다.",
+        "target": "일반적인 소셜 및 시네마틱 출력에 강합니다."
+      },
+      {
+        "label": "오디오와 샷 제어",
+        "baseline": "동작, 분위기, ASMR을 위한 Native Audio와 multi-shot 프롬프트.",
+        "middle": "Wan 스타일 multi-shot 방향과 Native Audio.",
+        "target": "가능한 경우 모델별 사운드가 있는 영화적 움직임."
+      },
+      {
+        "label": "시작 Credits",
+        "baseline": "Toolaze에서 8 Credits부터.",
+        "middle": "Toolaze에서 140 Credits부터.",
+        "target": "Kling 버전과 설정에 따라 달라집니다."
+      },
+      {
+        "label": "선택할 때",
+        "baseline": "형식 유연성, 낮은 해상도 초안, 두 참조, 정확한 짧은 타이밍이 필요할 때.",
+        "middle": "더 긴 프리셋 타이밍의 Wan 클립을 선호할 때.",
+        "target": "Kling 영화적 룩이나 motion-control 흐름이 필요할 때."
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "PixVerse V6와 다른 Toolaze 비디오 모델",
+    "subtitle": "좁은 모델 스타일보다 형식 유연성이 우선일 때 PixVerse V6를 선택하세요.",
+    "columns": [
+      "모델 선택",
+      "적합한 용도",
+      "생성 전 확인"
+    ],
+    "rows": [
+      [
+        "PixVerse V6",
+        "두 참조, Native Audio, 다양한 화면비, 1~15초를 지원하는 유연한 텍스트/이미지-비디오.",
+        "720p 또는 1080p에 쓰기 전에 낮은 해상도로 방향을 확인하세요."
+      ],
+      [
+        "Wan 2.6",
+        "Native Audio와 5/10/15초 리듬을 가진 더 긴 Wan 클립.",
+        "PixVerse 형식 범위보다 Wan 움직임을 선호할 때 사용합니다."
+      ],
+      [
+        "Kling 3.0",
+        "영화적인 장면, 제품 광고, 완성도 높은 크리에이터 클립.",
+        "PixVerse와 비교하기 전에 Kling 움직임이 샷에 맞는지 확인하세요."
+      ],
+      [
+        "Grok 1.5 Video",
+        "광범위한 창의 테스트를 위한 빠른 Native Audio 아이디어.",
+        "두 참조 제어보다 속도와 탐색이 중요할 때 사용합니다."
+      ]
+    ]
+  },
+  "faqTitle": "PixVerse V6 AI 비디오 FAQ",
+  "faq": [
+    {
+      "q": "PixVerse V6는 무엇에 가장 적합한가요?",
+      "a": "유연한 길이, 넓은 화면비, Native Audio, 최대 2장의 참조 이미지가 필요한 빠른 텍스트/이미지-비디오 초안에 적합합니다."
+    },
+    {
+      "q": "PixVerse V6는 두 장의 참조 이미지를 지원하나요?",
+      "a": "네. Toolaze에서는 최대 2장의 참조 이미지를 사용할 수 있습니다. 하나는 주 피사체, 다른 하나는 스타일, 조명, 분위기, 소재, 환경 지정에 쓸 수 있습니다."
+    },
+    {
+      "q": "PixVerse V6는 Native Audio를 생성할 수 있나요?",
+      "a": "네. 발소리, 유리 탭, 천 움직임, 환경음, 입자 질감, 실내음처럼 보이는 동작에 맞는 소리를 지정할 수 있습니다."
+    },
+    {
+      "q": "PixVerse V6는 ASMR 비디오에 적합한가요?",
+      "a": "네. 특히 짧은 재질이나 음식 디테일에 좋습니다. 카메라 거리, 질감, 접촉 지점, 들려야 할 소리를 구체적으로 쓰세요."
+    },
+    {
+      "q": "Wan 2.6 대신 PixVerse V6를 선택할 때는?",
+      "a": "1~2장의 참조 이미지, 1~15초 길이, 저해상도 초안, 유연한 화면비가 필요하면 PixVerse V6를 선택하세요. Wan 스타일의 긴 프리셋 비디오가 필요하면 Wan 2.6이 더 적합합니다."
+    }
+  ],
+  "moreTools": "더 많은 AI 비디오 모델",
+  "moreToolsLinks": [
+    {
+      "title": "HappyHorse AI 비디오 생성기",
+      "description": "참조 이미지 1장, 버전별 화면비, Native Audio, 영화적인 움직임으로 Alibaba HappyHorse 비디오를 만듭니다.",
+      "href": "/model/happyhorse-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "HappyHorse 비디오 모델 데모 미리보기"
+      }
+    },
+    {
+      "title": "Wan 2.6 AI 비디오 생성기",
+      "description": "텍스트 또는 이미지 1장, multi-shot 프롬프트, Native Audio, 720p 또는 1080p 출력에 Wan 2.6을 사용합니다.",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6 비디오 모델 데모 미리보기"
+      }
+    },
+    {
+      "title": "Kling 3 Motion Control",
+      "description": "참조 이미지와 모션 참조 비디오로 캐릭터나 제품 움직임을 제어합니다.",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Kling 3 Motion Control 데모 미리보기"
+      }
+    }
+  ]
+}

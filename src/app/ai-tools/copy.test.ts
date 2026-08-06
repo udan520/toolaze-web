@@ -6,12 +6,14 @@ const expectedRoutes = [
   '/unrestricted-ai-image-generator',
   '/world-cup-ai-image-generator',
   '/ai-zine-poster-generator',
+  '/ai-photo-abstract-poster-generator',
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
   '/ai-dance-generator',
   '/ai-kissing-video-generator',
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
+  '/buzz-cut-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -33,12 +35,25 @@ const excludedNonToolRoutes = [
   '/model/wan-2-5-ai-video-generator',
 ]
 
+const hairstyleDemoImage = '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding'
+
 test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 12)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 14)
     assert.equal(cards.filter((card) => card.category === 'video').length, 6)
+  }
+})
+
+test('AI Hairstyle Changer hub cards use the current page demo image', () => {
+  for (const locale of AI_TOOLS_LOCALES) {
+    const hairstyleCard = getAiToolsPageCopy(locale).cards.find(
+      (card) => card.href === '/ai-hairstyle-changer',
+    )
+
+    assert.ok(hairstyleCard, `${locale} is missing AI Hairstyle Changer`)
+    assert.equal(hairstyleCard.image, hairstyleDemoImage)
   }
 })
 
@@ -169,6 +184,32 @@ test('AI Zine Poster Generator hub card is localized and uses the page demo imag
     const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/ai-zine-poster-generator')
 
     assert.ok(localizedCard, `${locale} is missing the AI Zine Poster Generator hub card`)
+    assert.equal(localizedCard.category, 'image')
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
+  }
+})
+
+test('Photo Abstract Poster Generator hub card is localized and uses the page demo image', () => {
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/ai-photo-abstract-poster-generator')
+  assert.ok(englishCard)
+  assert.equal(
+    englishCard.image,
+    '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
+  )
+  assert.equal(englishCard.category, 'image')
+  assert.doesNotMatch(englishCard.description, /GPT Image|gpt-image-2|image-to-image/i)
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find(
+      (card) => card.href === '/ai-photo-abstract-poster-generator',
+    )
+
+    assert.ok(localizedCard, `${locale} is missing the Photo Abstract Poster Generator hub card`)
     assert.equal(localizedCard.category, 'image')
     assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
     assert.notEqual(

@@ -54,7 +54,10 @@
     "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Toolaze 依旅行產品概念提示詞生成的文字轉影片 Demo",
     "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
-    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-22T15:22:00.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "文字轉影片設定與輸出檢查",
@@ -210,11 +213,12 @@
         "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "為虛構的輕巧旅行咖啡磨豆機概念製作的寬螢幕 Grok 文字轉影片範例。",
         "aspectRatio": "16:9",
-        "duration": "PT5S",
-        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-22T15:22:00.000Z",
         "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
         "note": "當產品想法在拍攝前需要快速視覺概念時使用。",
-        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)",
+        "type": "video"
       }
     ]
   },

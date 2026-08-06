@@ -54,7 +54,10 @@
     "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Demo da testo a video generata in Toolaze dal prompt del concept prodotto da viaggio",
     "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
-    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-22T15:22:00.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "Impostazioni e controlli output da testo a video",
@@ -210,11 +213,12 @@
         "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "Esempio Grok da testo a video widescreen per il concept fittizio di un macinacaffè compatto da viaggio.",
         "aspectRatio": "16:9",
-        "duration": "PT5S",
-        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-22T15:22:00.000Z",
         "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
         "note": "Usalo quando un’idea prodotto ha bisogno di un concept visivo rapido prima di un set.",
-        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)",
+        "type": "video"
       }
     ]
   },

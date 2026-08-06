@@ -4,7 +4,16 @@
     "title": "Free Seedance 2.0 AI Video Generator (Online, No Sign Up) - Toolaze",
     "description": "How to create AI videos with Seedance 2.0? 1. Upload text, images, video, or audio 2. Generate 1080p video 3. Download free. Create Hollywood-quality 15-second videos with multimodal AI. No registration required. Text-to-video, image-to-video online."
   },
-  "sectionsOrder": ["howToUse", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "modelIntro": {
     "title": "Why Seedance 2.0 Stands Out for AI Video Creation",
     "modelName": "Seedance 2.0",
@@ -38,7 +47,11 @@
     "ariaLabel": "16:9 demo video for the Seedance 2.0 AI video generator",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2"
+    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2",
+    "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T17:20:41.000Z",
+    "type": "video"
   },
   "intro": {
     "title": "Why Choose Seedance 2.0 AI Video Generator?",
@@ -107,12 +120,30 @@
   "performanceMetrics": {
     "title": "Seedance 2.0 Technical Specifications",
     "metrics": [
-      {"label": "Input Types", "value": "Text, Image (up to 9), Video (up to 3), Audio (up to 3)"},
-      {"label": "Output Resolution", "value": "1080p (Hollywood-quality multi-shot)"},
-      {"label": "Video Duration", "value": "15 seconds per generation"},
-      {"label": "Audio Support", "value": "Dual-channel audio generation (video + sound)"},
-      {"label": "Control Level", "value": "Director-level (performance, lighting, shadow, camera)"},
-      {"label": "Use Cases", "value": "Film, advertising, e-commerce, gaming production"}
+      {
+        "label": "Input Types",
+        "value": "Text, Image (up to 9), Video (up to 3), Audio (up to 3)"
+      },
+      {
+        "label": "Output Resolution",
+        "value": "1080p (Hollywood-quality multi-shot)"
+      },
+      {
+        "label": "Video Duration",
+        "value": "15 seconds per generation"
+      },
+      {
+        "label": "Audio Support",
+        "value": "Dual-channel audio generation (video + sound)"
+      },
+      {
+        "label": "Control Level",
+        "value": "Director-level (performance, lighting, shadow, camera)"
+      },
+      {
+        "label": "Use Cases",
+        "value": "Film, advertising, e-commerce, gaming production"
+      }
     ]
   },
   "howToUse": {

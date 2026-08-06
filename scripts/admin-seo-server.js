@@ -96,6 +96,11 @@ const LOCALIZED_PATH_FIRST_SEGMENTS = new Set([
   'image-converter',
   'font-generator',
   'emoji-copy-and-paste',
+  'ai-hair-color-changer',
+  'ai-zine-poster-generator',
+  'ai-photo-abstract-poster-generator',
+  'ai-clothes-changer',
+  'ai-breast-expansion',
   'kling-3',
   'seedance-2',
   'watermark-remover',
@@ -712,7 +717,7 @@ async function listTools() {
 const HOME_PREVIEW_VIDEO_MODEL_L2S = ['wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'grok-imagine-video-1-5']
 const HOME_PREVIEW_IMAGE_MODEL_L2S = ['gpt-image-2', 'wan-2-7-image', 'nano-banana-pro', 'nano-banana-2']
 /** 与 src/lib/homepage-grid-tools.ts 保持一致 */
-const HOME_PREVIEW_ADVANCED_AI_TOOLS = ['unrestricted-ai-image-generator', 'ai-zine-poster-generator', 'ai-couple-photo-maker', 'ai-bikini-generator', 'watermark-remover', 'photo-restoration']
+const HOME_PREVIEW_ADVANCED_AI_TOOLS = ['unrestricted-ai-image-generator', 'ai-hair-color-changer', 'ai-zine-poster-generator', 'ai-photo-abstract-poster-generator', 'ai-clothes-changer', 'ai-bikini-generator', 'ai-breast-expansion', 'photo-restoration']
 const HOME_PREVIEW_UTILITY_TOOLS = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 const HOMEPAGE_TOOL_CARD_KEYS = [
   'toolImageCompressor',
@@ -736,10 +741,12 @@ const HOMEPAGE_TOOL_CARD_KEYS = [
 /** 与 src/lib/home-advanced-ai-card-images.ts 路径一致；缩略图长边≤800px、约≤100KB（最终使用 R2 URL） */
 const HOME_ADVANCED_AI_CARD_IMAGES = {
   'unrestricted-ai-image-generator': 'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
+  'ai-hair-color-changer': '/ai-hair-color-changer/rose-pink-before-after.webp',
   'ai-zine-poster-generator': 'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
-  'ai-couple-photo-maker': 'https://assets.toolaze.com/home-advanced-ai/ai-couple-photo-maker.jpg',
+  'ai-photo-abstract-poster-generator': '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
+  'ai-clothes-changer': 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   'ai-bikini-generator': 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
-  'watermark-remover': 'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp',
+  'ai-breast-expansion': '/ai-breast-expansion/demo-before-after.webp',
   'photo-restoration': 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
 }
 /** 与 src/lib/home-model-card-images.ts 一致（首页 AI Video / AI Image / Trending，最终使用 R2 URL） */
@@ -748,7 +755,7 @@ const HOME_MODEL_CARD_IMAGES = {
   'nano-banana-2': 'https://assets.toolaze.com/home-model-cards/nano-banana-2.jpg',
   'gpt-image-2': 'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg',
   'wan-2-7-image': '/model-assets/wan-2-7-image/gallery-event-poster.webp',
-  'ai-dance-generator': '/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  'ai-dance-generator': 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
   'wan-2-5-ai-video-generator': 'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   'seedance-2': 'https://assets.toolaze.com/home-model-cards/seedance-2.jpg',
   'seedance-2-5': 'https://assets.toolaze.com/home-model-cards/seedance-2-5.jpg',

@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "Foto original de una persona corriendo en el desierto"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Demo Running Toward Haze con foto original del desierto y panel abstracto de memoria"
+      }
+    ],
+    "displayName": "Generador de póster abstracto con foto",
+    "textOverrides": {
+      "uploadTitle": "Sube una foto",
+      "uploadHelper": "Usa una foto con relaciones espaciales claras. JPG, PNG o WebP hasta 30 MB. La foto se mantiene intacta mientras el póster se compone localmente en tu navegador.",
+      "generateLabel": "Generar gratis",
+      "samplePhotoName": "Foto demo",
+      "uploadedPhotoName": "Foto subida",
+      "uploadLabel": "Subir",
+      "replaceLabel": "Reemplazar",
+      "deleteLabel": "Eliminar",
+      "outputRatioLabel": "Proporción de salida",
+      "composingLabel": "Componiendo...",
+      "invalidTypeMessage": "Sube una imagen JPG, PNG o WebP.",
+      "validationErrorMessage": "La imagen debe pesar menos de 30 MB.",
+      "imageReadErrorMessage": "No se pudo leer esta imagen. Prueba con otro archivo JPG, PNG o WebP.",
+      "composeErrorMessage": "No se pudo componer este póster.",
+      "noRemoteNote": "Esta composición no usa llamada a modelo, trabajo de subida, reserva de créditos ni generación remota.",
+      "historyTitle": "Historial local",
+      "historySubtitle": "Los pósteres recientes de esta sesión aparecen aquí.",
+      "savedLabel": "guardados",
+      "latestOutputLabel": "Salida más reciente",
+      "ratioLabel": "Proporción",
+      "downloadLabel": "Descargar PNG",
+      "demoStateLabel": "Estado demo",
+      "demoStateText": "El panel derecho se convierte en tu historial después de la primera composición.",
+      "emptyStateText": "Sube una foto y crea tu primer póster local.",
+      "historyDownloadSuffix": "Descargar",
+      "demoTabLabel": "Demo",
+      "historyTabLabel": "Historial"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Demo Photo Abstract Editorial con una foto de carrera en el desierto arriba y el panel Running Toward Haze abajo",
+    "sourceHistory": "Demo determinista local de la sesión original de Photo Abstract Editorial: foto de carrera en el desierto y panel Running Toward Haze."
+  },
+  "metadata": {
+    "title": "Generador de póster abstracto con foto | Foto a panel de memoria | Toolaze",
+    "description": "Sube una foto y crea un póster abstracto compuesto en el navegador, con la imagen original arriba, un panel de memoria sobrio debajo y un breve título poético en inglés."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generador de <span class=\"text-gradient\">póster abstracto con foto</span>",
+    "desc": "Sube una foto para crear una pieza editorial vertical en tu navegador: la imagen original se mantiene fiel arriba, mientras debajo se compone un panel abstracto de memoria con un título breve en inglés. Úsalo para archivos personales, recuerdos de viaje, ensayos visuales, borradores de galería y portadas sociales tranquilas."
+  },
+  "intro": {
+    "title": "Qué crea este generador de póster abstracto con foto",
+    "content": [
+      {
+        "title": "Una foto fiel más un panel abstracto de memoria",
+        "text": "El generador conserva la foto subida como imagen fuente visible y destila su espaciado, ejes, jerarquía de color, movimiento y espacio negativo en un panel marfil limpio debajo. El resultado se siente como un díptico editorial, no como filtro, collage o ilustración redibujada."
+      },
+      {
+        "title": "Título y composición automáticos",
+        "text": "No necesitas escribir instrucciones de estilo. Sube una imagen y el compositor local aplica automáticamente las reglas Photo Abstract Editorial, incluido el diseño del panel, el sistema de marcas contenido, la paleta apagada y el título corto en inglés."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo crear un Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "Sube una foto",
+        "desc": "Elige una fotografía con relaciones visibles: una persona en el espacio, un horizonte, arquitectura, objetos, ritmo de multitud o una dirección clara de luz."
+      },
+      {
+        "title": "Empieza con proporción Auto",
+        "desc": "Auto permite que el lienzo final siga la foto de origen y el panel inferior. Puedes elegir otra proporción, pero las formas fijas pueden necesitar más espacio en blanco o un recorte más suave."
+      },
+      {
+        "title": "Crea la pieza editorial",
+        "desc": "Toolaze mantiene la foto fiel y compone el panel abstracto, la paleta, las marcas y el título desde la misma imagen en el navegador."
+      },
+      {
+        "title": "Revisa y reutiliza",
+        "desc": "Comprueba el equilibrio del panel, la posición del título y el encaje de la foto. Tus resultados recientes aparecen en el historial local de la derecha para descargar."
+      }
+    ]
+  },
+  "features": {
+    "title": "Estilo de póster abstracto con foto",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "Área fotográfica fiel",
+        "desc": "La imagen superior sigue siendo fotográfica. El estilo no redibuja, retoca, amplía ni aplica filtros a la foto fuente."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "Diseño vertical adaptable",
+        "desc": "La división entre foto y panel cambia según la imagen fuente en lugar de forzar un marco mecánico mitad y mitad."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "Motivo abstracto de memoria",
+        "desc": "El panel inferior traduce relaciones visuales en un motivo pequeño y sobrio, no en una copia miniatura de la foto."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Paleta derivada de la foto",
+        "desc": "Los roles de color apagados vienen de la imagen subida, con pocos acentos solo cuando esos colores existen en la fuente."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Título poético en inglés",
+        "desc": "Un título contenido de dos a cinco palabras se coloca solo en el panel marfil y se basa en hechos visibles de la imagen."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "Superficie marfil limpia",
+        "desc": "El panel permanece plano, silencioso y sin textura para que la composición dependa de espacio, ritmo y marcas."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Mejores fotos para subir",
+    "subtitle": "El estilo funciona mejor cuando la imagen fuente tiene relaciones que pueden destilarse, no solo un objeto aislado.",
+    "items": [
+      {
+        "title": "Busca ritmo espacial",
+        "desc": "Horizontes, caminos, barandas, personas en el espacio, arquitectura, luces, sombras u objetos repetidos dan más estructura al panel inferior.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "Mantén legible el sujeto",
+        "desc": "Evita mucho desenfoque, rostros tapados, recortes extremos o fotos donde el sujeto importante ya sea demasiado pequeño.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "Usa pistas de color naturales",
+        "desc": "Las fotos con un tono oscuro claro, un tono luminoso y un acento sutil suelen crear el panel abstracto más coherente.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Elige proporciones fijas con cuidado",
+        "desc": "Auto es mejor para preservar la foto con fidelidad. Usa 9:16, 4:5, 1:1 o 16:9 solo cuando el lienzo exterior importe más que la forma natural de la foto.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "Qué puedes crear",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "Paneles de memoria de viaje",
+      "desc": "Convierte paisajes, carreteras, costas, museos y paseos urbanos en imágenes de archivo tranquilas con una foto fuente fiel."
+    },
+    {
+      "icon": "▥",
+      "title": "Estudios editoriales de retrato",
+      "desc": "Usa retratos o fotos de personas en un lugar cuando quieres conservar el sujeto y reflejarlo con espaciado abstracto debajo."
+    },
+    {
+      "icon": "✶",
+      "title": "Portadas para ensayos visuales",
+      "desc": "Crea portadas refinadas para ensayos, diarios, moodboards, playlists, presentaciones y publicaciones sociales con sensación literaria."
+    }
+  ],
+  "faqTitle": "FAQ del generador de póster abstracto con foto",
+  "faq": [
+    {
+      "q": "¿Necesito escribir un prompt?",
+      "a": "No. Sube una foto y Toolaze aplica automáticamente las reglas de composición Photo Abstract Editorial en tu navegador."
+    },
+    {
+      "q": "¿El generador redibuja mi foto?",
+      "a": "No. El área fotográfica debe preservar fielmente la imagen subida. La parte generada es el panel abstracto y el título debajo."
+    },
+    {
+      "q": "¿Puedo cambiar la proporción?",
+      "a": "Sí. Auto es la opción recomendada porque la composición debe seguir la foto subida y el equilibrio del panel. Proporciones fijas como 9:16, 4:5, 1:1 o 16:9 cambian el lienzo exterior mientras la foto se ajusta sin recorte agresivo."
+    },
+    {
+      "q": "¿Por qué no hay caja de prompt?",
+      "a": "El estilo es intencionalmente automático. La imagen subida es la fuente y las reglas locales controlan el área fotográfica fiel, el panel abstracto, la paleta, el título y la superficie marfil limpia."
+    },
+    {
+      "q": "¿Qué tipo de foto funciona mejor?",
+      "a": "Usa una foto con relaciones visuales claras, como una persona en el espacio, un horizonte, un camino, una fachada, ritmo de multitud, una sombra fuerte o un grupo simple de objetos."
+    },
+    {
+      "q": "¿Esto se envía a un modelo de imagen?",
+      "a": "No. El póster se crea con código Canvas del navegador a partir de la foto subida, colores muestreados, equilibrio geométrico y lógica local de título. Este tool no tiene trabajo remoto de generación de imágenes."
+    }
+  ],
+  "moreTools": "Herramientas creativas relacionadas",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "Generador de póster zine IA",
+      "description": "Sube una foto y convierte su sujeto principal en una composición tranquila de póster de papel.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "Vista previa del generador de póster zine IA"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "Convertidor de imágenes",
+      "description": "Convierte JPG, PNG, WebP, AVIF, HEIC y otros formatos antes de crear un póster.",
+      "href": "/image-converter"
+    }
+  ]
+}

@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Bewegung",
     "aiMotionControlGenerator": "KI Motion-Control-Generator",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Foto-Abstrakt-Poster-Generator",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Glatzenfilter",
+    "bangsFilter": "Pony-Filter",
+    "permFilter": "Dauerwellen-Filter"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "KI-Brustvergrößerung",
         "summary": "Laden Sie ein bekleidetes Erwachsenenfoto hoch und prüfen Sie natürliche Büstengrößen-Edits, während Person, Kleidung, Pose und Szene stabil bleiben."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "Foto-Abstrakt-Poster-Generator",
+        "summary": "Laden Sie ein Foto hoch und erstellen Sie im Browser ein abstraktes Poster mit bewahrtem Originalbild oben und sparsamem Erinnerungspanel darunter."
       }
     },
     "aiToolsHubTitle": "Kostenlose KI-Tools für Bilder, Videos & alltägliche Medien-Workflows",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "KI-Brustvergrößerung",
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Bewegung",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Foto-Abstrakt-Poster-Generator",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Glatzenfilter",
+    "bangsFilter": "Pony-Filter",
+    "permFilter": "Dauerwellen-Filter"
   },
   "breadcrumb": {
     "home": "Startseite",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "Text-zu-Video-Generator",
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiClothesChanger": "KI-Kleiderwechsler",
-    "aiBikiniGenerator": "KI-Bikini-Generator"
+    "aiBikiniGenerator": "KI-Bikini-Generator",
+    "photoAbstractPosterGenerator": "Foto-Abstrakt-Poster-Generator"
   },
   "about": {
     "metadata": {

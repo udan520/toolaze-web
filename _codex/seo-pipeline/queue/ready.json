@@ -109,6 +109,12 @@
       "status": "ready_for_publish"
     },
     {
+      "taskId": "2026-08-05-ai-photo-abstract-poster-generator",
+      "slug": "ai-photo-abstract-poster-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-08-06-buzz-cut-filter",
       "slug": "buzz-cut-filter",
       "pageType": "l2",
@@ -117,6 +123,36 @@
     {
       "taskId": "2026-08-06-veo-3-1-ai-video-generator",
       "slug": "veo-3-1-ai-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-06-happyhorse-ai-video-generator",
+      "slug": "happyhorse-ai-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-06-pixverse-v6-ai-video-generator",
+      "slug": "pixverse-v6-ai-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-07-bald-filter",
+      "slug": "bald-filter",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-07-bangs-filter",
+      "slug": "bangs-filter",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-07-perm-filter",
+      "slug": "perm-filter",
       "pageType": "l2",
       "status": "ready_for_publish"
     }

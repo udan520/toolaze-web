@@ -45,7 +45,11 @@
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "Bild-zu-Video-Demo mit Grok 1.5 Video aus einem Referenzbild, automatischem Seitenverhältnis, 5 Sekunden Dauer und 480p-Auflösung",
-    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T16:03:14.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "Einstellungen für Bild-zu-Video-Modelle",

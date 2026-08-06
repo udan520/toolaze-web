@@ -3,12 +3,15 @@ import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
+const homePageSource = readFileSync(new URL('./home/HomePageMain.tsx', import.meta.url), 'utf8')
 const toolL2PageSource = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.meta.url), 'utf8')
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+const hairstyleDemoImage = '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding'
 
 const imageToolHrefs = [
   '/unrestricted-ai-image-generator',
   '/ai-hairstyle-changer',
+  '/buzz-cut-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -16,6 +19,7 @@ const imageToolHrefs = [
   '/ai-baby-generator',
   '/ai-couple-photo-maker',
   '/ai-zine-poster-generator',
+  '/ai-photo-abstract-poster-generator',
   '/world-cup-ai-image-generator',
   '/watermark-remover',
   '/photo-restoration',
@@ -66,6 +70,33 @@ test('AI Tools desktop and mobile menus expose categorized controls', () => {
   assert.match(navigationSource, /aria-expanded=\{isExpanded\}/)
 })
 
+test('AI Hairstyle Changer entry covers use the current page demo image', () => {
+  assert.ok(
+    navigationSource.includes(`aiHairstyleChanger: '${hairstyleDemoImage}'`),
+    'AI Tools menu should use the current AI Hairstyle Changer demo image',
+  )
+  assert.ok(
+    homePageSource.includes(`src: '${hairstyleDemoImage}'`),
+    'Homepage AI Tools card should use the current AI Hairstyle Changer demo image',
+  )
+
+  for (const locale of locales) {
+    const buzzCut = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/buzz-cut-filter.json`, import.meta.url), 'utf8'),
+    )
+    const relatedCard = buzzCut.moreToolsLinks.find(
+      (item) => item.href === '/ai-hairstyle-changer',
+    )
+
+    assert.ok(relatedCard, `${locale} Buzz Cut related tools should include AI Hairstyle Changer`)
+    assert.equal(
+      relatedCard.media.src,
+      hairstyleDemoImage,
+      `${locale} Buzz Cut related AI Hairstyle Changer card should use the current demo image`,
+    )
+  }
+})
+
 test('AI Tools category headings are translated in every locale', () => {
   for (const locale of locales) {
     const common = JSON.parse(
@@ -89,9 +120,19 @@ test('AI Tools category headings are translated in every locale', () => {
       `${locale} aiBikiniGenerator should exist`,
     )
     assert.equal(
+      typeof common.nav.buzzCutFilter,
+      'string',
+      `${locale} buzzCutFilter should exist`,
+    )
+    assert.equal(
       typeof common.nav.aiZinePosterGenerator,
       'string',
       `${locale} aiZinePosterGenerator should exist`,
+    )
+    assert.equal(
+      typeof common.nav.photoAbstractPosterGenerator,
+      'string',
+      `${locale} photoAbstractPosterGenerator should exist`,
     )
     assert.equal(
       typeof common.nav.unrestrictedAiImageGenerator,
@@ -123,7 +164,9 @@ test('scene pages preserve AI Tools group translations in the navigation payload
   assert.match(sceneNavKeys, /'videoTools'/)
   assert.match(sceneNavKeys, /'aiAsmrVideoGenerator'/)
   assert.match(sceneNavKeys, /'aiBikiniGenerator'/)
+  assert.match(sceneNavKeys, /'buzzCutFilter'/)
   assert.match(sceneNavKeys, /'aiZinePosterGenerator'/)
+  assert.match(sceneNavKeys, /'photoAbstractPosterGenerator'/)
   assert.match(sceneNavKeys, /'unrestrictedAiImageGenerator'/)
   assert.match(sceneNavKeys, /'talkingAvatarCreator'/)
 })

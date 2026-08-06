@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "沙漠奔跑原始參考照片"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Running Toward Haze 示範，包含沙漠奔跑原圖與抽象記憶面板"
+      }
+    ],
+    "displayName": "照片抽象海報生成器",
+    "textOverrides": {
+      "uploadTitle": "上傳一張照片",
+      "uploadHelper": "請使用空間關係清楚的照片。支援 30MB 以內的 JPG、PNG 或 WebP。照片會保持原樣，海報在你的瀏覽器中本地組成。",
+      "generateLabel": "免費生成",
+      "samplePhotoName": "示範照片",
+      "uploadedPhotoName": "已上傳照片",
+      "uploadLabel": "上傳",
+      "replaceLabel": "替換",
+      "deleteLabel": "移除",
+      "outputRatioLabel": "輸出比例",
+      "composingLabel": "組成中...",
+      "invalidTypeMessage": "請上傳 JPG、PNG 或 WebP 圖像。",
+      "validationErrorMessage": "圖像大小需低於 30MB。",
+      "imageReadErrorMessage": "無法讀取這張圖像，請改用其他 JPG、PNG 或 WebP 檔案。",
+      "composeErrorMessage": "無法組成這張海報。",
+      "noRemoteNote": "這個組成流程不使用模型呼叫、上傳任務、credits 預扣或遠端生成。",
+      "historyTitle": "本地歷史記錄",
+      "historySubtitle": "此頁面工作階段最近產生的海報會顯示在這裡。",
+      "savedLabel": "已儲存",
+      "latestOutputLabel": "最新輸出",
+      "ratioLabel": "比例",
+      "downloadLabel": "下載 PNG",
+      "demoStateLabel": "示範狀態",
+      "demoStateText": "第一次組成後，右側面板會變成你的歷史記錄。",
+      "emptyStateText": "上傳照片並建立你的第一張本地海報。",
+      "historyDownloadSuffix": "下載",
+      "demoTabLabel": "示範",
+      "historyTabLabel": "歷史記錄"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Photo Abstract Editorial 示範，上方是沙漠奔跑照片，下方是 Running Toward Haze 記憶面板",
+    "sourceHistory": "來自最初 Photo Abstract Editorial 會話的本地確定性示範：沙漠奔跑原圖加 Running Toward Haze 記憶面板。"
+  },
+  "metadata": {
+    "title": "照片抽象海報生成器 | 照片轉記憶面板 | Toolaze",
+    "description": "上傳一張照片，在瀏覽器中生成抽象海報：上方保留原圖，下方加入稀疏記憶面板與短英文詩意標題。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">照片抽象海報</span>生成器",
+    "desc": "上傳一張照片，在瀏覽器中建立直式 editorial 作品：上方忠實保留原始圖像，下方組成稀疏抽象記憶面板與短英文標題。適合個人檔案、旅行記憶、視覺散文、展覽草稿與安靜的社群封面。"
+  },
+  "intro": {
+    "title": "這個照片抽象海報生成器會建立什麼",
+    "content": [
+      {
+        "title": "忠實照片加上抽象記憶面板",
+        "text": "生成器會將上傳照片保留為可見來源圖像，並把間距、軸線、色彩層級、動勢與留白提煉成下方乾淨的象牙色面板。結果像 editorial 雙聯畫，而不是濾鏡、拼貼或重畫插圖。"
+      },
+      {
+        "title": "自動標題與組版",
+        "text": "你不需要寫風格指令。上傳一張圖像後，本地 composer 會自動套用 Photo Abstract Editorial 規則，包含面板配置、克制的標記系統、低飽和調色與短英文標題。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何建立 Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "上傳一張照片",
+        "desc": "選擇有可見關係的照片：空間中的人物、地平線、建築、物件、群眾節奏或清楚的光線方向。"
+      },
+      {
+        "title": "先使用 Auto 比例",
+        "desc": "Auto 會讓最終畫布跟隨來源照片與下方面板。你也可以選擇其他比例，但固定形狀可能需要更多留白或較柔和的裁切。"
+      },
+      {
+        "title": "建立 editorial 作品",
+        "desc": "Toolaze 會忠實保留照片，並在瀏覽器中從同一張圖組成抽象記憶面板、色彩、標記與標題。"
+      },
+      {
+        "title": "檢查並重複使用",
+        "desc": "檢查面板平衡、標題位置與來源照片適配。最近結果會出現在右側本地歷史記錄中，可直接下載。"
+      }
+    ]
+  },
+  "features": {
+    "title": "照片抽象海報風格",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "忠實照片區",
+        "desc": "上方圖像保持照片特性。這個風格不會重畫、修圖、延展或套用濾鏡到來源照片。"
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "自適應直式版面",
+        "desc": "照片與面板的分割會依來源圖像變化，而不是強迫機械式上下各半。"
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "抽象記憶圖形",
+        "desc": "下方面板會把視覺關係轉成小而稀疏的圖形，不是照片縮小版。"
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "源自照片的色彩",
+        "desc": "低飽和色彩角色來自上傳圖像，只有在來源中存在時才使用少量點綴色。"
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "詩意英文標題",
+        "desc": "克制的 2 到 5 個英文單字標題只放在象牙色面板上，並根據圖像中的可見事實生成。"
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "乾淨象牙色表面",
+        "desc": "面板保持平面、安靜、無紋理，讓構圖依靠空間、節奏與標記成立。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "適合上傳的照片",
+    "subtitle": "當來源圖像有可提煉的關係，而不只是單一孤立物件時，這種風格效果最好。",
+    "items": [
+      {
+        "title": "尋找空間節奏",
+        "desc": "地平線、道路、欄杆、空間中的人物、建築、燈光、陰影或重複物件，都能讓下方面板更有結構。",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "保持主體可讀",
+        "desc": "避免嚴重模糊、遮擋臉部、極端近裁，或重要主體已經太小的照片。",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "使用自然色彩線索",
+        "desc": "具有清楚暗色、亮色與一個細微點綴色的照片，通常會生成最協調的抽象面板。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "謹慎選擇固定比例",
+        "desc": "若要忠實保留照片，Auto 最適合。只有在外部畫布比照片自然形狀更重要時，再使用 9:16、4:5、1:1 或 16:9。",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "你可以製作什麼",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "旅行記憶面板",
+      "desc": "把風景、道路、海岸、博物館與城市散步轉成安靜的檔案式圖像，同時保留忠實來源照片。"
+    },
+    {
+      "icon": "▥",
+      "title": "Editorial 人像研究",
+      "desc": "當你想保留肖像或人物所在場景，又希望下方以抽象間距呼應時可以使用。"
+    },
+    {
+      "icon": "✶",
+      "title": "視覺散文封面",
+      "desc": "為散文、日誌、moodboard、播放清單、簡報與社群貼文建立帶有文學感的精緻封面。"
+    }
+  ],
+  "faqTitle": "照片抽象海報生成器 FAQ",
+  "faq": [
+    {
+      "q": "我需要寫提示詞嗎？",
+      "a": "不需要。上傳一張照片後，Toolaze 會在瀏覽器中自動套用 Photo Abstract Editorial 組成規則。"
+    },
+    {
+      "q": "生成器會重畫我的照片嗎？",
+      "a": "不會。照片區會忠實保留上傳圖像。生成的部分是下方抽象面板與標題。"
+    },
+    {
+      "q": "可以調整比例嗎？",
+      "a": "可以。Auto 是建議預設，因為構圖應跟隨上傳照片與面板平衡。9:16、4:5、1:1 或 16:9 等固定比例會改變外部畫布，同時讓照片適配而不是粗暴裁切。"
+    },
+    {
+      "q": "為什麼沒有提示詞輸入框？",
+      "a": "這個風格刻意設計為自動。上傳圖像就是來源，本地組成規則會控制忠實照片區、抽象記憶面板、色彩、標題與乾淨象牙色表面。"
+    },
+    {
+      "q": "什麼照片最適合？",
+      "a": "請使用視覺關係清楚的照片，例如空間中的人物、地平線、路徑、立面、群眾節奏、強烈陰影或簡單物件群。"
+    },
+    {
+      "q": "這會送到圖像模型嗎？",
+      "a": "不會。海報是由瀏覽器 Canvas 程式碼根據上傳照片、取樣色彩、幾何平衡與本地標題邏輯建立。這個工具沒有遠端圖像生成任務。"
+    }
+  ],
+  "moreTools": "相關創意工具",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "AI Zine 海報生成器",
+      "description": "上傳一張照片，把主要主體轉成安靜的紙張海報構圖。",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "AI Zine 海報生成器預覽"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "圖像轉換器",
+      "description": "在建立海報前轉換 JPG、PNG、WebP、AVIF、HEIC 與其他圖像格式。",
+      "href": "/image-converter"
+    }
+  ]
+}

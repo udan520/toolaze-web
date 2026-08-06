@@ -60,22 +60,22 @@ const cardAssets = {
     'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
   zine:
     'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
+  photoAbstract: '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
   watermark:
     'https://assets.toolaze.com/home-advanced-ai/watermark-remover-demo-before-after.webp',
   restoration:
     'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',
   couple: '/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
   baby: '/ai-baby-generator/hero-baby-portrait.webp',
-  dance:
-    'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp',
+  dance: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp',
   kissing:
     'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   asmr:
     'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp',
   talkingAvatar:
     'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
-  hairstyle: '/ai-hairstyle-changer/hero-before-after.webp',
-  buzzCut: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
+  hairstyle: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
+  buzzCut: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
     'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
@@ -143,6 +143,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-zine-poster-generator',
       image: cardAssets.zine,
       description: 'Upload one image and turn the main subject into a quiet paper zine poster with texture, sparse type, and one vivid color accent.',
+      category: 'image',
+    },
+    {
+      title: 'Photo Abstract Poster Generator',
+      href: '/ai-photo-abstract-poster-generator',
+      image: cardAssets.photoAbstract,
+      description: 'Upload one photo and compose a local abstract poster with the original image above and a quiet memory panel below.',
       category: 'image',
     },
     {
@@ -445,6 +452,7 @@ type SupplementalCopy = {
   imageToImage: Pick<AiToolsCard, 'title' | 'description'>
   unrestricted: Pick<AiToolsCard, 'title' | 'description'>
   zine: Pick<AiToolsCard, 'title' | 'description'>
+  photoAbstract: Pick<AiToolsCard, 'title' | 'description'>
   video: Pick<AiToolsCard, 'title' | 'description'>
   asmr: Pick<AiToolsCard, 'title' | 'description'>
   wan27Video: Pick<AiToolsCard, 'title' | 'description'>
@@ -469,6 +477,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'AI Image to Image Generator', description: 'Upload a reference image and use a prompt to restyle, edit, or transform it with AI.' },
     unrestricted: { title: 'Unrestricted / Unlimited AI Image Generator', description: 'Create broader unlimited-style image concepts with text-to-image, image-to-image, direct prompt control, and clear creative boundaries.' },
     zine: { title: 'AI Zine Poster Generator', description: 'Upload one image and turn the main subject into a quiet paper zine poster with texture, sparse type, and one vivid color accent.' },
+    photoAbstract: { title: 'Photo Abstract Poster Generator', description: 'Upload one photo and compose a local abstract poster with the original image above and a quiet memory panel below.' },
     video: { title: 'AI Video Generator', description: 'Create short AI videos online from text, images, video clips, or audio references.' },
     asmr: { title: 'AI ASMR Video Generator', description: 'Create tactile AI ASMR videos with synchronized sound from a text prompt or reference image.' },
     wan27Video: { title: 'Wan 2.7 AI Video Generator', description: 'Create Wan 2.7 text-to-video or image-to-video clips with 2-10 seconds, up to two reference images, and 720p/1080p output.' },
@@ -491,6 +500,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'KI-Bild-zu-Bild-Generator', description: 'Laden Sie ein Referenzbild hoch und gestalten, bearbeiten oder verwandeln Sie es per Prompt mit KI.' },
     unrestricted: { title: 'Unrestricted / Unlimited KI-Bildgenerator', description: 'Erstellen Sie breitere unlimited-style Bildkonzepte mit Text-zu-Bild, Bild-zu-Bild, direkter Prompt-Kontrolle und klaren kreativen Grenzen.' },
     zine: { title: 'KI-Zine-Poster-Generator', description: 'Laden Sie ein Bild hoch und verwandeln Sie das Hauptmotiv in ein ruhiges Papier-Zine-Poster mit Textur, sparsamer Typografie und einem kräftigen Farbakzent.' },
+    photoAbstract: { title: 'Foto-Abstrakt-Poster-Generator', description: 'Laden Sie ein Foto hoch und komponieren Sie lokal ein abstraktes Poster mit Originalbild oben und ruhigem Erinnerungspanel darunter.' },
     video: { title: 'KI-Videogenerator', description: 'Erstellen Sie kurze KI-Videos aus Text, Bildern, Videoclips oder Audioreferenzen.' },
     asmr: { title: 'KI-ASMR-Videogenerator', description: 'Erstellen Sie taktile KI-ASMR-Videos mit synchronisiertem Sound aus Text oder Referenzbild.' },
     wan27Video: { title: 'Wan 2.7 KI-Videogenerator', description: 'Erstellen Sie Wan 2.7 Text-zu-Video- oder Bild-zu-Video-Clips mit 2-10 Sekunden, bis zu zwei Referenzbildern und 720p/1080p.' },
@@ -513,6 +523,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'AI画像から画像生成', description: '参照画像をアップロードし、プロンプトでスタイル変更、編集、変換を行えます。' },
     unrestricted: { title: 'Unrestricted / Unlimited AI画像生成', description: 'テキスト画像生成、画像編集、直接的なプロンプト操作、明確な創作境界でunlimited-styleの幅広い画像案を作成できます。' },
     zine: { title: 'AIジンポスタージェネレーター', description: '画像を1枚アップロードし、主題を紙質感、控えめな文字、鮮やかな色アクセントの静かなジンポスターに変換できます。' },
+    photoAbstract: { title: 'フォト抽象ポスタージェネレーター', description: '写真を1枚アップロードし、元画像を上に保ち、下に静かなメモリーパネルを置いたローカル抽象ポスターを作成できます。' },
     video: { title: 'AI動画生成', description: 'テキスト、画像、動画クリップ、音声参照から短いAI動画をオンライン作成できます。' },
     asmr: { title: 'AI ASMR動画ジェネレーター', description: 'テキストや参照画像から、同期した音付きの触感的なAI ASMR動画を作成できます。' },
     wan27Video: { title: 'Wan 2.7 AI動画生成', description: 'Wan 2.7でテキスト動画または画像動画を作成し、2〜10秒、最大2枚の参照画像、720p/1080pを使えます。' },
@@ -535,6 +546,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'Generador IA de imagen a imagen', description: 'Sube una imagen de referencia y usa un prompt para cambiar su estilo, editarla o transformarla.' },
     unrestricted: { title: 'Generador IA Unrestricted / Unlimited', description: 'Crea conceptos visuales unlimited-style más amplios con texto a imagen, imagen a imagen, control directo del prompt y límites creativos claros.' },
     zine: { title: 'Generador de póster zine IA', description: 'Sube una imagen y convierte el sujeto principal en un póster zine de papel con textura, tipografía mínima y un acento de color vivo.' },
+    photoAbstract: { title: 'Generador de póster abstracto con foto', description: 'Sube una foto y compón localmente un póster abstracto con la imagen original arriba y un panel de memoria debajo.' },
     video: { title: 'Generador de video IA', description: 'Crea videos cortos con IA desde texto, imágenes, clips de video o referencias de audio.' },
     asmr: { title: 'Generador de video ASMR IA', description: 'Crea videos ASMR táctiles con sonido sincronizado desde un prompt de texto o una imagen de referencia.' },
     wan27Video: { title: 'Generador de video IA Wan 2.7', description: 'Crea clips Wan 2.7 de texto a video o imagen a video con 2 a 10 segundos, hasta dos imágenes de referencia y 720p/1080p.' },
@@ -557,6 +569,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'AI 圖像轉圖像生成器', description: '上傳參考圖像並透過提示詞重新設計、編輯或轉換圖像。' },
     unrestricted: { title: 'Unrestricted / Unlimited AI 圖像生成器', description: '使用文字生成、圖像轉圖像、直接提示詞控制與清楚創作邊界，建立更廣的 unlimited-style AI 圖像概念。' },
     zine: { title: 'AI Zine 海報生成器', description: '上傳一張圖片，將主要主體轉換成有紙張質感、稀疏字體與鮮明色彩點綴的安靜 Zine 海報。' },
+    photoAbstract: { title: '照片抽象海報生成器', description: '上傳一張照片，在本地組成上方保留原圖、下方帶有安靜記憶面板的抽象海報。' },
     video: { title: 'AI 影片生成器', description: '使用文字、圖像、影片片段或音訊參考在線建立 AI 短片。' },
     asmr: { title: 'AI ASMR 影片生成器', description: '使用文字提示詞或參考圖像建立具備同步聲音的觸感式 AI ASMR 影片。' },
     wan27Video: { title: 'Wan 2.7 AI 影片生成器', description: '使用 Wan 2.7 建立文字轉影片或圖片轉影片短片，支援 2 到 10 秒、最多兩張參考圖與 720p/1080p。' },
@@ -579,6 +592,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'Gerador IA de imagem para imagem', description: 'Envie uma imagem de referência e use um prompt para editar, transformar ou mudar seu estilo.' },
     unrestricted: { title: 'Gerador IA Unrestricted / Unlimited', description: 'Crie conceitos visuais unlimited-style mais amplos com texto para imagem, imagem para imagem, controle direto do prompt e limites criativos claros.' },
     zine: { title: 'Gerador de pôster zine com IA', description: 'Envie uma imagem e transforme o assunto principal em um pôster zine de papel com textura, tipografia mínima e um acento de cor vivo.' },
+    photoAbstract: { title: 'Gerador de pôster abstrato com foto', description: 'Envie uma foto e componha localmente um pôster abstrato com a imagem original acima e um painel de memória abaixo.' },
     video: { title: 'Gerador de vídeo IA', description: 'Crie vídeos curtos com IA a partir de texto, imagens, clipes ou referências de áudio.' },
     asmr: { title: 'Gerador de vídeo ASMR com IA', description: 'Crie vídeos ASMR táteis com som sincronizado a partir de texto ou imagem de referência.' },
     wan27Video: { title: 'Gerador de vídeo IA Wan 2.7', description: 'Crie clipes Wan 2.7 de texto para vídeo ou imagem para vídeo com 2 a 10 segundos, até duas referências e 720p/1080p.' },
@@ -601,6 +615,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'Générateur image-à-image IA', description: 'Importez une image de référence et utilisez un prompt pour la modifier, la restyler ou la transformer.' },
     unrestricted: { title: 'Générateur IA Unrestricted / Unlimited', description: 'Créez des concepts visuels unlimited-style plus larges avec texte vers image, image vers image, contrôle direct du prompt et limites créatives claires.' },
     zine: { title: 'Générateur d’affiches zine IA', description: 'Importez une image et transformez le sujet principal en affiche zine papier avec texture, typographie discrète et un accent de couleur vif.' },
+    photoAbstract: { title: 'Générateur d’affiche photo abstraite', description: 'Importez une photo et composez localement une affiche abstraite avec l’image originale en haut et un panneau mémoire en bas.' },
     video: { title: 'Générateur de vidéo IA', description: 'Créez de courtes vidéos IA à partir de texte, d’images, de clips ou de références audio.' },
     asmr: { title: 'Générateur de vidéo ASMR IA', description: 'Créez des vidéos ASMR tactiles avec son synchronisé depuis un prompt texte ou une image de référence.' },
     wan27Video: { title: 'Générateur vidéo IA Wan 2.7', description: 'Créez des clips Wan 2.7 texte vers vidéo ou image vers vidéo avec 2 à 10 secondes, jusqu’à deux références et 720p/1080p.' },
@@ -623,6 +638,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'AI 이미지-이미지 생성기', description: '참조 이미지를 업로드하고 프롬프트로 스타일 변경, 편집 또는 변환하세요.' },
     unrestricted: { title: 'Unrestricted / Unlimited AI 이미지 생성기', description: '텍스트 이미지, 이미지 편집, 직접 프롬프트 제어, 명확한 창작 경계로 더 넓은 unlimited-style 이미지 콘셉트를 만드세요.' },
     zine: { title: 'AI 진 포스터 생성기', description: '이미지 한 장을 업로드해 주요 주제를 종이 질감, 절제된 글자, 선명한 색상 포인트가 있는 조용한 진 포스터로 바꾸세요.' },
+    photoAbstract: { title: '사진 추상 포스터 생성기', description: '사진 한 장을 업로드해 원본 이미지는 위에, 조용한 메모리 패널은 아래에 놓은 로컬 추상 포스터를 만드세요.' },
     video: { title: 'AI 동영상 생성기', description: '텍스트, 이미지, 동영상 클립 또는 오디오 참조로 짧은 AI 동영상을 만드세요.' },
     asmr: { title: 'AI ASMR 동영상 생성기', description: '텍스트 프롬프트나 참조 이미지로 동기화된 사운드가 있는 촉각적인 AI ASMR 영상을 만드세요.' },
     wan27Video: { title: 'Wan 2.7 AI 동영상 생성기', description: 'Wan 2.7로 2~10초, 최대 2장 참조 이미지, 720p/1080p의 텍스트 동영상 또는 이미지 동영상을 만드세요.' },
@@ -645,6 +661,7 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToImage: { title: 'Generatore IA da immagine a immagine', description: 'Carica un’immagine di riferimento e usa un prompt per modificarla, trasformarla o cambiarne lo stile.' },
     unrestricted: { title: 'Generatore IA Unrestricted / Unlimited', description: 'Crea concept visivi unlimited-style più ampi con testo-immagine, immagine-immagine, controllo diretto del prompt e confini creativi chiari.' },
     zine: { title: 'Generatore di poster zine IA', description: 'Carica un’immagine e trasforma il soggetto principale in un poster zine cartaceo con texture, tipografia rada e un accento cromatico vivo.' },
+    photoAbstract: { title: 'Generatore di poster astratti da foto', description: 'Carica una foto e componi localmente un poster astratto con immagine originale sopra e pannello memoria sotto.' },
     video: { title: 'Generatore video IA', description: 'Crea brevi video IA da testo, immagini, clip video o riferimenti audio.' },
     asmr: { title: 'Generatore video ASMR IA', description: 'Crea video ASMR tattili con audio sincronizzato da un prompt testuale o da un’immagine di riferimento.' },
     wan27Video: { title: 'Generatore video IA Wan 2.7', description: 'Crea clip Wan 2.7 da testo o immagine con 2-10 secondi, fino a due immagini di riferimento e 720p/1080p.' },
@@ -677,6 +694,7 @@ const aiToolsCardOrder = [
   '/unrestricted-ai-image-generator',
   '/world-cup-ai-image-generator',
   '/ai-zine-poster-generator',
+  '/ai-photo-abstract-poster-generator',
   '/ai-couple-photo-maker',
   '/ai-baby-generator',
   '/ai-dance-generator',
@@ -714,6 +732,7 @@ function getSupplementalCardByHref(
     '/ai-image-to-image-generator': supplemental.imageToImage,
     '/unrestricted-ai-image-generator': supplemental.unrestricted,
     '/ai-zine-poster-generator': supplemental.zine,
+    '/ai-photo-abstract-poster-generator': supplemental.photoAbstract,
     '/ai-video-generator': supplemental.video,
     '/text-to-video-generator': supplemental.textToVideo,
     '/image-to-video-generator': supplemental.imageToVideo,

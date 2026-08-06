@@ -1,0 +1,304 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-pixverse-v6-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "pixverse-v6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "PixVerse V6"
+  },
+  "metadata": {
+    "title": "PixVerse V6 AI動画生成ツール | Toolaze",
+    "description": "テキストまたは最大2枚の参考画像から、1〜15秒、360p〜1080p、マルチショットプロンプト、Native Audio、柔軟な比率でPixVerse V6 AI動画をオンライン作成します。",
+    "published": true
+  },
+  "hero": {
+    "h1": "PixVerse V6 AI動画生成ツール",
+    "desc": "テキストプロンプトまたは最大2枚の参考画像からPixVerse V6動画を作成し、1〜15秒、360p、540p、720p、1080pを幅広いSNS/シネマ比率で選べます。高速なコンセプト動画、2参照の画像から動画、マルチショット商品ストーリー、Native Audioシーン、ASMR素材、短いキャンペーン下書きに使えます。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "type": "video",
+    "ariaLabel": "16:9フレームのPixVerse V6 AI動画生成デモプレビュー",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "PixVerse V6 AI動画生成ツールとは？",
+    "modelName": "PixVerse V6",
+    "modelType": "AI動画モデル",
+    "description": [
+      "PixVerse V6は、テキストから動画、画像から動画を作る柔軟な動画モデルです。Toolazeでは最大2枚の参考画像、Native Audio、マルチショットプロンプト、1〜15秒、360pから1080pまでの解像度に対応します。",
+      "単一のシネマ調に固定せず、形式、長さ、音をすばやく調整したいときに使えます。クリエイターフック、商品テスト、参考画像アニメーション、SNS広告、雰囲気クリップ、ASMR素材ショットに向いています。"
+    ]
+  },
+  "howToUse": {
+    "title": "ToolazeでPixVerse V6を使う方法",
+    "steps": [
+      {
+        "title": "テキストまたは参考画像で作成",
+        "desc": "新しい場面はテキストプロンプトから始め、被写体、商品、衣装、スタイルを元素材に近づけたい場合は1〜2枚の参考画像をアップロードします。"
+      },
+      {
+        "title": "場面を書く前に形式を設定",
+        "desc": "アスペクト比、1〜15秒の長さ、360p、540p、720p、1080pを先に選ぶことで、プロンプトは動きに集中できます。"
+      },
+      {
+        "title": "動き、カメラ、音を一緒に書く",
+        "desc": "PixVerse V6に短いショット順、カメラ移動、被写体の動き、照明、環境音や接触音などのNative Audio手がかりを与えます。"
+      },
+      {
+        "title": "参考画像と照合して確認",
+        "desc": "重要な参考ディテールが保たれているか、音が動作を支えているかを確認します。動作が多すぎる場合はプロンプトを短くするか場面を分けます。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "PixVerse V6プロンプト例",
+    "subtitle": "比率、長さ、解像度、任意のNative Audio設定と一緒に使ってください。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "2参照の商品クリップ",
+        "prompt": "アップロードした商品写真とブランドムード画像を使い、清潔感のある商品動画を作成してください。ボトル形状、ラベル位置、色調を安定させ、柔らかな回り込みショットから始め、ガラスの結露に切り替え、最後は暖かなハイライト下で商品を中央に置きます。静かなスタジオ音と控えめなガラス音を加えます。",
+        "description": "2枚の参考画像で商品らしさと視覚ムードを保ちます。",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "クリエイターフック",
+        "prompt": "明るいアパートスタジオでエネルギーのあるクリエイターイントロを作成してください。人物が小型カメラを持ち上げ、レンズに笑い、カメラがライトの点いたデスク環境を見せます。動きは滑らかに、顔は自然に、カメラ操作音と室内音を少し加えます。",
+        "description": "動きと音に即時感が必要なSNSイントロに向いています。",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #2563eb, #f97316)"
+      },
+      {
+        "title": "ASMR食材ディテール",
+        "prompt": "粗い海塩がダークチョコレートのデザートに落ちるマクロASMRショットを作成してください。粒が跳ねる様子、細かな欠片、表面をゆっくり移るフォーカスを見せます。粒の軽い音、皿との接触音、低い室内音を入れ、音楽は入れません。",
+        "description": "触感のある近接動作とNative Audioを組み合わせます。",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #451a03, #eab308)"
+      },
+      {
+        "title": "ワイドなストーリーボード",
+        "prompt": "夜の静かな地下道を電動自転車が走るシネマティックなストーリーボードクリップを作成してください。ワイドな導入、車輪横の低いトラッキング、青い光を通過するラストで構成します。タイヤ音、遠い交通音、柔らかな反響を加えます。",
+        "description": "広い構図、ショット展開、環境音でキャンペーン下書きを作れます。",
+        "aspectRatio": "21:9",
+        "color": "linear-gradient(135deg, #020617, #38bdf8)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "PixVerse V6のプロンプトを整えるコツ",
+    "subtitle": "各参考画像に役割を与え、動作をコンパクトにすると結果が安定します。",
+    "items": [
+      {
+        "title": "各参考画像に役割を与える",
+        "desc": "弱いプロンプト: この2枚を使って。より良いプロンプト:",
+        "prompt": "弱い例: この2枚を使って。良い例: 1枚目は商品の形とラベル、2枚目は照明ムードと色調に使います。両方を保ちながら、柔らかな回り込み、結露の詳細、中央に置いた最終商品ショットを作成してください。"
+      },
+      {
+        "title": "短いクリップを集中させる",
+        "desc": "弱いプロンプト: 完全なCMを作って。より良いプロンプト:",
+        "prompt": "弱い例: 完全なCMを作って。良い例: ゆっくりしたプッシュイン、素材の近接ディテール、きれいな最終ホールドだけで構成する短い商品リビールを作成してください。商品を中央に保ち、暖かいサイドライトと柔らかな機械クリックを加えます。"
+      },
+      {
+        "title": "Native Audioを見える動作に結びつける",
+        "desc": "弱いプロンプト: 映画的な音を追加。より良いプロンプト:",
+        "prompt": "弱い例: 映画的な音を追加。良い例: 袖が回る時の布音、コンクリート上の静かな足音、遠い室内音など、画面に対応する音だけを入れ、音楽は入れません。"
+      }
+    ]
+  },
+  "scenesTitle": "PixVerse V6で作成できるもの",
+  "scenes": [
+    {
+      "title": "2画像の商品動画",
+      "icon": "🧴",
+      "desc": "商品参考とムード、素材、キャンペーン画像を組み合わせ、 identity とスタイル方向を保ちます。"
+    },
+    {
+      "title": "高速SNSフック",
+      "icon": "📱",
+      "desc": "イントロ、クリエイター瞬間、ローンチ予告、縦型短尺を柔軟な長さとNative Audioで作成します。"
+    },
+    {
+      "title": "ASMRテクスチャクリップ",
+      "icon": "🎧",
+      "desc": "塩、石けん、食品、布、紙、ガラス、接触音を同期したNative Audioで描写します。"
+    },
+    {
+      "title": "ワイドなキャンペーン絵コンテ",
+      "icon": "🎥",
+      "desc": "16:9や21:9で広告、ムードフィルム、シネマティックな場面テストを作成します。"
+    },
+    {
+      "title": "参考画像アニメーション",
+      "icon": "🖼️",
+      "desc": "1〜2枚の画像を動かし、被写体形状、色の手がかり、意図したスタイルを保ちます。"
+    },
+    {
+      "title": "低コストの下書きバリエーション",
+      "icon": "⚙️",
+      "desc": "低解像度で方向を確認してから、720pまたは1080pへ進みます。"
+    }
+  ],
+  "modelComparison": {
+    "title": "PixVerse V6設定早見表",
+    "subtitle": "柔軟な長さ、2枚の画像参照、広い比率、Native Audioを1つのモデルで使いたいときにPixVerse V6は強みがあります。",
+    "columnHeaders": {
+      "metric": "判断ポイント",
+      "baseline": "PixVerse V6",
+      "middle": "Wan 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "作成モード",
+        "baseline": "最大2枚の参考画像を使うテキストから動画、画像から動画。",
+        "middle": "1枚の参考画像を使うテキストから動画、画像から動画。",
+        "target": "シネマティックなKlingクリップ向けのテキストから動画、画像から動画。"
+      },
+      {
+        "label": "長さ制御",
+        "baseline": "1〜15秒。短いループや長めのストーリービートに便利です。",
+        "middle": "5、10、15秒。",
+        "target": "洗練された動きの下書き向けにモデルごとに異なります。"
+      },
+      {
+        "label": "解像度",
+        "baseline": "360p、540p、720p、1080p。",
+        "middle": "720p、1080p。",
+        "target": "共有生成ツール内の720pと1080p。"
+      },
+      {
+        "label": "アスペクト比",
+        "baseline": "16:9、4:3、1:1、3:4、9:16、2:3、3:2、21:9。",
+        "middle": "標準的なSNS/シネマ形式に適しています。",
+        "target": "一般的なSNS/シネマ出力に強いです。"
+      },
+      {
+        "label": "音声とショット制御",
+        "baseline": "Native Audioとmulti-shotプロンプトで動作、環境、ASMRを指定。",
+        "middle": "Wanらしいmulti-shot方向づけとNative Audio。",
+        "target": "利用可能な場合はモデル固有の音付きシネマ動作。"
+      },
+      {
+        "label": "開始Credits",
+        "baseline": "Toolazeで8 Creditsから。",
+        "middle": "Toolazeで140 Creditsから。",
+        "target": "Klingのバージョンと設定で変わります。"
+      },
+      {
+        "label": "選ぶ場面",
+        "baseline": "形式の柔軟性、低解像度下書き、2参照、正確な短尺タイミングが必要なとき。",
+        "middle": "長めのプリセットを持つWan系クリップがよいとき。",
+        "target": "Klingらしい映画感やmotion-controlフローが必要なとき。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "PixVerse V6と他のToolaze動画モデル",
+    "subtitle": "狭いモデルスタイルよりも形式の柔軟性を先に決めたい場合にPixVerse V6を選びます。",
+    "columns": [
+      "モデル選択",
+      "適した用途",
+      "生成前に確認"
+    ],
+    "rows": [
+      [
+        "PixVerse V6",
+        "2枚の参考画像、Native Audio、多くの比率、1〜15秒に対応する柔軟なテキスト/画像から動画。",
+        "720pや1080pに進む前に低解像度で方向を確認します。"
+      ],
+      [
+        "Wan 2.6",
+        "Native Audioと5/10/15秒のリズムを持つ長めのWanクリップ。",
+        "PixVerseの形式範囲よりWanらしい動きを優先する場合に使います。"
+      ],
+      [
+        "Kling 3.0",
+        "映画的なシーン、商品広告、洗練されたクリエイタークリップ。",
+        "PixVerseと比べる前にKlingの動きがショットに合うか確認します。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "幅広いクリエイティブテスト向けのNative Audio高速アイデア出し。",
+        "2参照制御より速度と探索が重要な場合に使います。"
+      ]
+    ]
+  },
+  "faqTitle": "PixVerse V6 AI動画FAQ",
+  "faq": [
+    {
+      "q": "PixVerse V6は何に向いていますか？",
+      "a": "柔軟な長さ、広い比率、Native Audio、最大2枚の参考画像が必要なテキスト/画像から動画の高速下書きに向いています。"
+    },
+    {
+      "q": "PixVerse V6は2枚の参考画像に対応しますか？",
+      "a": "はい。Toolazeでは最大2枚の参考画像を使えます。1枚を主被写体、もう1枚をスタイル、光、雰囲気、素材、環境の指定に使えます。"
+    },
+    {
+      "q": "PixVerse V6はNative Audioを生成できますか？",
+      "a": "はい。足音、ガラス音、布の動き、環境音、粒状の質感、室内音など、見える動作に対応する音を指定できます。"
+    },
+    {
+      "q": "PixVerse V6はASMR動画に向いていますか？",
+      "a": "はい。特に短い素材や食品のディテールに向いています。カメラ距離、質感、接触点、聞かせたい音を具体的に書いてください。"
+    },
+    {
+      "q": "Wan 2.6ではなくPixVerse V6を選ぶのはいつですか？",
+      "a": "1〜2枚の参考画像、1〜15秒、低解像度下書き、柔軟な比率が必要ならPixVerse V6を選びます。Wanらしい長めのプリセット動画が欲しい場合はWan 2.6を選びます。"
+    }
+  ],
+  "moreTools": "その他のAI動画モデル",
+  "moreToolsLinks": [
+    {
+      "title": "HappyHorse AI動画生成ツール",
+      "description": "1枚の参考画像、バージョン別比率、Native Audio、映画的な動きでAlibaba HappyHorse動画を作成します。",
+      "href": "/model/happyhorse-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "HappyHorse動画モデルのデモプレビュー"
+      }
+    },
+    {
+      "title": "Wan 2.6 AI動画生成ツール",
+      "description": "テキストまたは1枚の画像、マルチショットプロンプト、Native Audio、720pまたは1080p出力に使えます。",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6動画モデルのデモプレビュー"
+      }
+    },
+    {
+      "title": "Kling 3 Motion Control",
+      "description": "参考画像とモーション参考動画でキャラクターや商品の動きを制御します。",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Kling 3 Motion Controlデモプレビュー"
+      }
+    }
+  ]
+}

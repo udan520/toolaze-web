@@ -14,7 +14,10 @@
       "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-reference-video.mp4"
     ],
     "initialMotionVideoDurationSeconds": 7.934,
-    "initialCharacterOrientation": "video"
+    "initialCharacterOrientation": "video",
+    "initialMotionVideoPosters": [
+      "https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-reference-video-poster.webp"
+    ]
   },
   "metadata": {
     "title": "Kling 2.6 Pro Motion Control AI 影片生成器 | 低成本動作轉移",
@@ -166,7 +169,9 @@
         "type": "video",
         "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
         "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
-        "alt": "Kling 3 Motion Control preview"
+        "alt": "Kling 3 Motion Control preview",
+        "duration": "PT7.067S",
+        "uploadDate": "2026-08-04T02:57:26.000Z"
       }
     },
     {
@@ -178,7 +183,9 @@
         "type": "video",
         "src": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
-        "alt": "Kling 3.0 Video Generator preview"
+        "alt": "Kling 3.0 Video Generator preview",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T13:32:23.000Z"
       }
     },
     {
@@ -187,9 +194,12 @@
       "description": "需要其他 Kling 模型或更廣泛生成設定時，開啟完整 Kling 工具。",
       "href": "/kling-ai-video-generator",
       "media": {
-        "type": "image",
+        "type": "video",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
-        "alt": "Kling AI Video Generator preview"
+        "alt": "Kling AI Video Generator preview",
+        "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:21:01.000Z"
       }
     },
     {
@@ -198,9 +208,12 @@
       "description": "用更新的 Wan 影片模型製作短篇電影感片段。",
       "href": "/model/wan-2-7-ai-video-generator",
       "media": {
-        "type": "image",
+        "type": "video",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
-        "alt": "Wan 2.7 Video Generator preview"
+        "alt": "Wan 2.7 Video Generator preview",
+        "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T17:21:01.000Z"
       }
     }
   ]

@@ -1,0 +1,297 @@
+{
+  "sourceData": "src/data/zh-TW/happyhorse-ai-video-generator.json",
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-happyhorse-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "happyhorse-1-1",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "HappyHorse 1.1"
+  },
+  "metadata": {
+    "title": "HappyHorse AI 影片生成器 | Toolaze",
+    "description": "使用文字提示詞或一張參考圖在線建立 HappyHorse AI 影片，支援 3 至 15 秒、720p 或 1080p、multi-shot 提示詞與 Native Audio。",
+    "published": true
+  },
+  "hero": {
+    "h1": "HappyHorse AI 影片生成器",
+    "desc": "使用文字提示詞或一張參考圖建立 HappyHorse AI 影片，並在 720p 或 1080p 中塑造 3 至 15 秒的電影感動態。HappyHorse 1.1 適合更多比例與更大的參考圖；基礎 HappyHorse 適合較簡潔的 Alibaba 影片草稿，可用於產品展示、短廣告、ASMR 素材與社群分鏡。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "type": "video",
+    "ariaLabel": "HappyHorse AI 影片生成器 16:9 示範預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English HappyHorse model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "什麼是 HappyHorse AI 影片生成器？",
+    "modelName": "HappyHorse",
+    "modelType": "AI 影片模型",
+    "description": [
+      "HappyHorse 是 Alibaba 的影片模型家族，支援文字轉影片與圖片轉影片。Toolaze 在同一個生成器中提供 HappyHorse 1.1 與基礎 HappyHorse，方便依參考檔、比例與品質目標選擇。",
+      "當你需要順暢主體動態、清楚鏡頭方向與一致的視覺敘事，又不想先建立完整剪輯時間線時可以使用。它特別適合產品動態、生活風短片、角色片段、觸感 ASMR 與分鏡草稿。"
+    ]
+  },
+  "howToUse": {
+    "title": "在 Toolaze 使用 HappyHorse",
+    "steps": [
+      {
+        "title": "選擇 HappyHorse 版本",
+        "desc": "HappyHorse 1.1 適合最完整的比例集合與 20MB 圖片上限；基礎 HappyHorse 適合 10MB 參考圖已足夠的簡化流程。"
+      },
+      {
+        "title": "選擇文字或圖片輸入",
+        "desc": "新概念使用文字轉影片；需要保留人物、產品形狀、服裝或場景布局時，上傳一張參考圖。"
+      },
+      {
+        "title": "設定動態、品質與聲音方向",
+        "desc": "選擇 720p 或 1080p 與支援片長，並描述鏡頭移動、分鏡順序、主體動作、光線與 Native Audio 聲音線索。"
+      },
+      {
+        "title": "生成、比較並收緊提示詞",
+        "desc": "檢查動態漂移、參考保真度與聲音節奏。若結果太鬆散，縮短分鏡或加強保留條件再生成。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "HappyHorse 提示詞範例",
+    "subtitle": "可作為起點使用，片長、解析度與比例請在 Toolaze 控制項中設定。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "產品亮相",
+        "prompt": "為一台霧面黑色便攜喇叭建立高級產品影片。先以緩慢側向推鏡開始，接著靠近布面網罩細節，最後顯示 logo 下方柔和藍光脈動。保持產品形狀穩定，加入低頻震動、室內環境聲與清楚按鍵聲。",
+        "description": "適合需要穩定產品外觀與聲音線索的產品展示。",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #111827, #38bdf8)"
+      },
+      {
+        "title": "參考角色片段",
+        "prompt": "將上傳的角色圖片製作成短暫戲劇化瞬間。角色轉向明亮窗邊，外套布料隨動作變化，頭髮受微風影響，鏡頭從肩部細節推到平靜臉部近景。保留五官、服裝顏色、姿態語言與背景氛圍。",
+        "description": "使用一張參考圖，同時要求保留身份與服裝。",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #312e81, #f97316)"
+      },
+      {
+        "title": "ASMR 材質場景",
+        "prompt": "建立透明果凍塊被小金屬湯匙按壓在陶瓷盤上的微距 ASMR 短片。呈現緩慢壓縮、表面細小波紋、液滴反光與湯匙抬起。加入柔軟擠壓聲、盤面接觸聲、細小敲擊聲，不要音樂。",
+        "description": "適合觸感材質動態與 Native Audio 指令。",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #0f766e, #facc15)"
+      },
+      {
+        "title": "Multi-shot 生活風廣告",
+        "prompt": "為日出時的輕量跑步外套建立生活風廣告。第一鏡展示布料被風吹動，第二鏡從側面跟拍跑者，第三鏡停在拉鍊細節，陽光照到反光條。保持外套顏色與 logo 位置一致，加入腳步聲、風聲與城市環境聲。",
+        "description": "給 HappyHorse 一段精簡 multi-shot，並保留產品細節。",
+        "aspectRatio": "4:5",
+        "color": "linear-gradient(135deg, #be123c, #fbbf24)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "更好的 HappyHorse 提示方向",
+    "subtitle": "將版本選擇、需要保留的主體、動態路徑與聲音層分開寫，HappyHorse 更容易穩定。",
+    "items": [
+      {
+        "title": "明確寫出鏡頭順序",
+        "desc": "弱提示詞：做一支時尚短片。更好的提示詞：",
+        "prompt": "弱：做一支時尚短片。更好：為銀色外套建立三鏡頭時尚短片。先拍肩部細節，再切到行走側面，最後用袖子材質近景收尾。保持外套形狀與顏色一致，使用柔和日出光，加入布料摩擦與輕微腳步聲。"
+      },
+      {
+        "title": "保護參考圖",
+        "desc": "弱提示詞：讓這張圖動起來。更好的提示詞：",
+        "prompt": "弱：讓這張圖動起來。更好：為上傳的人像加入緩慢推鏡與細微轉頭。保留臉型、髮型、外套顏色、背景布局與光線方向，同時加入自然呼吸與輕微風動。"
+      },
+      {
+        "title": "具體命名觸感音效",
+        "desc": "弱提示詞：加入 ASMR 聲音。更好的提示詞：",
+        "prompt": "弱：加入 ASMR 聲音。更好：建立肥皂被薄刀片刮削的近距離微距場景。加入清脆切削聲、小碎屑落在陶瓷上的聲音、柔和手部動作，不要背景音樂。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 HappyHorse 建立什麼",
+  "scenes": [
+    {
+      "title": "產品動態測試",
+      "icon": "🛍️",
+      "desc": "將包裝、設備、美妝與服裝想法轉成短動態草稿，保留穩定形狀與清楚光線。"
+    },
+    {
+      "title": "參考圖動畫",
+      "icon": "🖼️",
+      "desc": "上傳一張圖片並讓主體動起來，同時保留人物、物件、服裝或場景布局。"
+    },
+    {
+      "title": "ASMR 素材短片",
+      "icon": "🎧",
+      "desc": "用 Native Audio 描述切割、按壓、倒入、敲擊與布料接觸等觸感場景。"
+    },
+    {
+      "title": "Multi-shot 社群廣告",
+      "icon": "📱",
+      "desc": "為 TikTok、Reels、Shorts 和活動測試建立精簡分鏡，不必先做完整剪輯。"
+    },
+    {
+      "title": "角色故事片段",
+      "icon": "🎬",
+      "desc": "用鏡頭、情緒、服裝連續性與受控肢體動作建立有表情的角色瞬間。"
+    },
+    {
+      "title": "分鏡草稿",
+      "icon": "🧭",
+      "desc": "在正式製作前測試場景順序、光線方向、動態節奏與聲音想法。"
+    }
+  ],
+  "modelComparison": {
+    "title": "HappyHorse 1.1 與 HappyHorse 比較",
+    "subtitle": "Elige la versión de HappyHorse por tamaño de entrada, necesidad de proporción y nivel de control de salida.",
+    "columnHeaders": {
+      "metric": "判斷重點",
+      "baseline": "HappyHorse 1.1",
+      "target": "HappyHorse"
+    },
+    "rows": [
+      {
+        "label": "生成模式",
+        "baseline": "文字轉影片與圖片轉影片，使用一張參考圖。",
+        "target": "文字轉影片與圖片轉影片，使用一張參考圖。"
+      },
+      {
+        "label": "參考圖限制",
+        "baseline": "一張上傳圖片，最高 20MB。",
+        "target": "一張上傳圖片，最高 10MB。"
+      },
+      {
+        "label": "比例",
+        "baseline": "包含 16:9、9:16、1:1、4:3、3:4，以及 4:5、5:4、9:21、21:9。",
+        "target": "支援核心比例 16:9、9:16、1:1、4:3、3:4。"
+      },
+      {
+        "label": "片長與輸出",
+        "baseline": "3 至 15 秒，720p 或 1080p。",
+        "target": "3 至 15 秒，720p 或 1080p。"
+      },
+      {
+        "label": "音訊與鏡頭控制",
+        "baseline": "Native Audio 與 multi-shot 提示詞，適合產品、故事與 ASMR 指令。",
+        "target": "Native Audio 與 multi-shot 提示詞，適合較簡單草稿。"
+      },
+      {
+        "label": "起始 Credits",
+        "baseline": "Toolaze 上 135 Credits 起。",
+        "target": "Toolaze 上 168 Credits 起。"
+      },
+      {
+        "label": "適合情境",
+        "baseline": "需要最完整 HappyHorse 比例支援或較大參考圖。",
+        "target": "想使用基礎 HappyHorse，且較小參考圖限制已足夠。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "HappyHorse 與其他 Toolaze 影片模型",
+    "subtitle": "Usa HappyHorse cuando importan más la continuidad de escena y el control de proporción por versión que el máximo número de referencias.",
+    "columns": [
+      "模型選擇",
+      "適合用途",
+      "生成前檢查"
+    ],
+    "rows": [
+      [
+        "HappyHorse",
+        "Alibaba 文字轉影片或圖片轉影片，支援一張參考圖、Native Audio 與版本比例選擇。",
+        "確認 HappyHorse 1.1 或基礎 HappyHorse 是否符合檔案大小與比例需求。"
+      ],
+      [
+        "Wan 2.6",
+        "重視聲音的 Wan 短片、Native Audio 與熟悉的 5/10/15 秒節奏。",
+        "不需要 HappyHorse 1.1 額外寬比例或高比例時使用。"
+      ],
+      [
+        "Kling 3.0",
+        "精緻電影感動態、產品短片與創作者短片。",
+        "在消耗較高品質生成前，確認 Kling 動態風格是否符合品牌。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "快速 Native Audio 草稿與廣泛創意探索。",
+        "當快速發想比精準 HappyHorse 版本控制更重要時使用。"
+      ]
+    ]
+  },
+  "faqTitle": "HappyHorse AI 影片常見問題",
+  "faq": [
+    {
+      "q": "HappyHorse 1.1 和 HappyHorse 有什麼不同？",
+      "a": "HappyHorse 1.1 支援較大的 20MB 參考圖限制，並增加 4:5、5:4、9:21、21:9 等比例。基礎 HappyHorse 保留核心比例與 10MB 圖片限制，適合較簡單的參考圖草稿。"
+    },
+    {
+      "q": "HappyHorse 支援 multi-shot 提示詞嗎？",
+      "a": "支援。把提示詞寫成短分鏡序列，每個段落只安排一個主要動作，並說明剪接之間要保持一致的元素，例如產品形狀、服裝顏色、logo 位置或角色身份。"
+    },
+    {
+      "q": "HappyHorse 可以生成 Native Audio 嗎？",
+      "a": "可以。加入具體聲音線索，例如布料摩擦、腳步節奏、室內環境聲、刀片接觸或柔和產品聲。需要聲音配合動作時，避免只寫好聽的音效。"
+    },
+    {
+      "q": "HappyHorse 適合 ASMR 影片嗎？",
+      "a": "適合短篇 ASMR 風格材質片段，前提是提示詞清楚寫出材質、近距離鏡頭、接觸聲與不需要音樂。它更適合短觸感場景，而不是長時間連續 ASMR。"
+    },
+    {
+      "q": "HappyHorse 可以使用參考圖嗎？",
+      "a": "可以。當人物、產品、服裝或布局需要保持可識別時，使用圖片轉影片。HappyHorse 接受一張參考圖，檔案大小限制取決於選擇的版本。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.6 AI 影片生成器",
+      "description": "使用 Wan 2.6 進行文字或單張圖片輸入，支援 5/10/15 秒節奏、Native Audio 與平衡的 Wan 風格動態。",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6 影片模型示範預覽"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "想要熟悉的動作模型與精緻社群短片時，可建立電影感 Kling 影片草稿。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3 影片模型示範預覽",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"
+      }
+    },
+    {
+      "title": "Grok 1.5 Video",
+      "description": "探索快速 Native Audio 概念影片，用於廣泛發想與社群草稿。",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "alt": "Grok 1.5 影片模型示範預覽"
+      }
+    }
+  ]
+}

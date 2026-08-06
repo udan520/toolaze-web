@@ -66,10 +66,12 @@ function VideoPlaceholder({
 function DemoVideoAsset({
   slot,
   src,
+  poster,
   label,
 }: {
   slot: string
   src: string
+  poster: string
   label: string
 }) {
   return (
@@ -80,6 +82,7 @@ function DemoVideoAsset({
       <video
         data-grok-demo-video
         src={src}
+        poster={poster}
         aria-label={label}
         className="aspect-video h-full w-full object-cover"
         autoPlay
@@ -98,6 +101,24 @@ export async function GrokImagineVideo15LandingPage({ locale = 'en' }: { locale?
   const heroTitleHtml = `<span class="text-gradient">${copy.hero.modelName}</span> ${copy.hero.suffix}`
   const faqs = copy.faq.items
   const howToSteps = copy.howTo.steps
+  const videoObjects = [
+    {
+      name: copy.hero.demoVideo.label,
+      description: copy.hero.description,
+      contentUrl: copy.hero.demoVideo.src,
+      thumbnailUrl: copy.hero.demoVideo.poster,
+      uploadDate: copy.hero.demoVideo.uploadDate,
+      duration: copy.hero.demoVideo.duration,
+    },
+    ...copy.prompts.examples.map((item) => ({
+      name: item.title,
+      description: item.prompt,
+      contentUrl: item.videoSrc,
+      thumbnailUrl: item.videoPoster,
+      uploadDate: item.uploadDate,
+      duration: item.duration,
+    })),
+  ]
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -150,6 +171,15 @@ export async function GrokImagineVideo15LandingPage({ locale = 'en' }: { locale?
           { '@type': 'ListItem', position: 3, name: copy.breadcrumbs.current, item: pageUrl },
         ],
       },
+      ...videoObjects.map((item) => ({
+        '@type': 'VideoObject',
+        name: item.name,
+        description: item.description,
+        thumbnailUrl: item.thumbnailUrl,
+        uploadDate: item.uploadDate,
+        duration: item.duration,
+        contentUrl: item.contentUrl,
+      })),
     ],
   }
 
@@ -348,7 +378,7 @@ export async function GrokImagineVideo15LandingPage({ locale = 'en' }: { locale?
                       {item.prompt}
                     </p>
                   </div>
-                  <DemoVideoAsset slot={item.slot} src={item.videoSrc} label={item.videoLabel} />
+                  <DemoVideoAsset slot={item.slot} src={item.videoSrc} poster={item.videoPoster} label={item.videoLabel} />
                 </article>
               ))}
             </div>

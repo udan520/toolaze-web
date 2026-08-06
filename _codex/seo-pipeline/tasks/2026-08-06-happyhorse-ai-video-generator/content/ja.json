@@ -1,0 +1,297 @@
+{
+  "sourceData": "src/data/ja/happyhorse-ai-video-generator.json",
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-happyhorse-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "happyhorse-1-1",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "HappyHorse 1.1"
+  },
+  "metadata": {
+    "title": "HappyHorse AI動画生成ツール | Toolaze",
+    "description": "テキストプロンプトまたは1枚の参考画像から、3〜15秒、720pまたは1080p、マルチショットプロンプト、Native Audio対応のHappyHorse AI動画をオンラインで作成します。",
+    "published": true
+  },
+  "hero": {
+    "h1": "HappyHorse AI動画生成ツール",
+    "desc": "テキストプロンプトまたは1枚の参考画像からHappyHorse AI動画を作成し、720pまたは1080pで3〜15秒のシネマティックな動きを整えます。HappyHorse 1.1はより広いアスペクト比と大きな参考画像に、ベースのHappyHorseはAlibaba系のシンプルな動画下書きに向いており、商品デモ、短い広告、ASMR素材、SNS向けストーリーボードでマルチショット構成とNative Audioを使えます。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "type": "video",
+    "ariaLabel": "16:9フレームのHappyHorse AI動画生成デモプレビュー",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English HappyHorse model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "HappyHorse AI動画生成ツールとは？",
+    "modelName": "HappyHorse",
+    "modelType": "AI動画モデル",
+    "description": [
+      "HappyHorseは、テキストから動画、画像から動画を作成するAlibabaの動画モデルファミリーです。ToolazeではHappyHorse 1.1とベースのHappyHorseを同じ生成ツールで選べるため、参考ファイル、アスペクト比、品質目標に合わせて使い分けできます。",
+      "フル編集タイムラインを組む前に、滑らかな被写体の動き、明確なショット指示、一貫した映像ストーリーを試したいときに使えます。商品モーションテスト、ライフスタイルクリップ、キャラクターの一場面、触感のあるASMRシーン、ストーリーボード下書きに適しています。"
+    ]
+  },
+  "howToUse": {
+    "title": "ToolazeでHappyHorseを使う方法",
+    "steps": [
+      {
+        "title": "HappyHorseのバージョンを選ぶ",
+        "desc": "最も広い比率セットと20MBの画像上限が必要ならHappyHorse 1.1から始めます。10MBのシンプルな参考画像フローで十分ならベースのHappyHorseを選びます。"
+      },
+      {
+        "title": "テキスト入力か画像入力を選ぶ",
+        "desc": "新しい構想はテキストから、人物、商品形状、衣装、シーン配置を保ちたい場合は1枚の参考画像をアップロードします。"
+      },
+      {
+        "title": "動き、品質、音の方向を設定する",
+        "desc": "720pまたは1080p、対応する長さを選び、カメラ移動、ショット順、被写体の動き、照明、Native Audioの手がかりを書きます。"
+      },
+      {
+        "title": "生成して比較し、プロンプトを締める",
+        "desc": "動きのズレ、参考画像の再現、音のタイミングを確認します。結果が広がりすぎる場合は、ショットリストを短くするか保持条件を強めて再生成します。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "HappyHorseプロンプト例",
+    "subtitle": "実用的な出発点として使い、長さ、解像度、アスペクト比はToolazeの設定で選んでください。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "商品リビール",
+        "prompt": "石のテーブル上にあるマットブラックのポータブルスピーカーの高級感ある商品動画を作成してください。ゆっくり横へ押すカメラから始め、布グリルの近接ディテールに移り、最後にロゴ下の柔らかな青い光を見せます。商品の形を安定させ、穏やかな低音の振動、室内音、明瞭なボタンクリックを加えます。",
+        "description": "オブジェクトの一貫性と音の指示が必要な商品デモに適しています。",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #111827, #38bdf8)"
+      },
+      {
+        "title": "参考キャラクターの一場面",
+        "prompt": "アップロードしたキャラクター画像を短いドラマチックな瞬間にアニメーション化してください。キャラクターが明るい窓の方を向き、コートの布が動き、髪が軽い風に反応し、カメラは肩のディテールから落ち着いた顔のクローズアップへ移動します。顔立ち、服の色、ポーズの雰囲気、背景のムードを保ってください。",
+        "description": "1枚の参考画像を使い、人物らしさと衣装の保持を指示します。",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #312e81, #f97316)"
+      },
+      {
+        "title": "ASMRテクスチャシーン",
+        "prompt": "陶器皿の上で透明なゼリーキューブを小さな金属スプーンで押すマクロASMRクリップを作成してください。ゆっくりした圧縮、表面の細かな波、光を受ける水滴、スプーンが持ち上がる動きを見せます。柔らかな押し音、皿との接触、小さなタップ音を加え、音楽は入れません。",
+        "description": "触感のある素材の動きとNative Audioの方向づけに向いています。",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #0f766e, #facc15)"
+      },
+      {
+        "title": "マルチショットのライフスタイル広告",
+        "prompt": "日の出の軽量ランニングジャケットのライフスタイル広告を作成してください。ショット1は風で揺れる生地、ショット2は横からランナーを追い、ショット3は日光が反射ストリップに当たるジッパーのディテールで止めます。ジャケットの色とロゴ位置を保ち、足音、風、街の環境音を加えます。",
+        "description": "商品保持を含むコンパクトなマルチショット構成をHappyHorseに伝えます。",
+        "aspectRatio": "4:5",
+        "color": "linear-gradient(135deg, #be123c, #fbbf24)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "HappyHorseのプロンプトを整えるコツ",
+    "subtitle": "HappyHorseは、バージョン選択、保持する被写体、動きの流れ、音の層を分けて書くと安定します。",
+    "items": [
+      {
+        "title": "ショット順を明確にする",
+        "desc": "弱いプロンプト: ファッション動画を作って。より良いプロンプト:",
+        "prompt": "弱い例: ファッション動画を作って。良い例: シルバーのジャケットの3ショットファッション動画を作成してください。肩のディテールから始め、歩く横姿に切り替え、袖の質感のクローズアップで終えます。ジャケットの形と色を保ち、柔らかな朝日を使い、布の擦れる音と静かな足音を加えます。"
+      },
+      {
+        "title": "参考画像を守る",
+        "desc": "弱いプロンプト: この画像を動かして。より良いプロンプト:",
+        "prompt": "弱い例: この画像を動かして。良い例: アップロードしたポートレートにゆっくりしたカメラプッシュと控えめな首の動きを加えてください。顔の形、髪型、ジャケットの色、背景配置、光の方向を保ち、自然な呼吸と軽い風を加えます。"
+      },
+      {
+        "title": "触感のある音を指定する",
+        "desc": "弱いプロンプト: ASMR音を入れて。より良いプロンプト:",
+        "prompt": "弱い例: ASMR音を入れて。良い例: 薄い刃で石けんを削る接写マクロシーンを作成してください。はっきりした切削音、小さな削り片が陶器に落ちる音、柔らかな手の動き、背景音楽なし。"
+      }
+    ]
+  },
+  "scenesTitle": "HappyHorseで作成できるもの",
+  "scenes": [
+    {
+      "title": "商品モーションテスト",
+      "icon": "🛍️",
+      "desc": "パッケージ、デバイス、美容商品、アパレル案を、安定した形と明確な照明を持つ短い動画下書きにできます。"
+    },
+    {
+      "title": "参考画像アニメーション",
+      "icon": "🖼️",
+      "desc": "1枚の画像をアップロードし、人物、物体、服装、シーン構成を保ちながら被写体を動かします。"
+    },
+    {
+      "title": "ASMR素材クリップ",
+      "icon": "🎧",
+      "desc": "切る、押す、注ぐ、叩く、布に触れる場面を、対応するNative Audioと一緒に描写できます。"
+    },
+    {
+      "title": "マルチショットSNS広告",
+      "icon": "📱",
+      "desc": "TikTok、Reels、Shorts、キャンペーン検証向けのショット順を、編集タイムラインなしで試せます。"
+    },
+    {
+      "title": "キャラクターの物語ビート",
+      "icon": "🎬",
+      "desc": "カメラ移動、ムード、衣装の連続性、制御された身体の動きで表情ある瞬間を作成します。"
+    },
+    {
+      "title": "ストーリーボード下書き",
+      "icon": "🧭",
+      "desc": "最終制作前に、シーン順、光の向き、動きのリズム、音のアイデアを検証できます。"
+    }
+  ],
+  "modelComparison": {
+    "title": "HappyHorse 1.1とHappyHorseの違い",
+    "subtitle": "入力サイズ、必要な比率、どれだけ出力を制御したいかでHappyHorseのバージョンを選びます。",
+    "columnHeaders": {
+      "metric": "判断ポイント",
+      "baseline": "HappyHorse 1.1",
+      "target": "HappyHorse"
+    },
+    "rows": [
+      {
+        "label": "作成モード",
+        "baseline": "1枚の参考画像を使うテキストから動画、画像から動画。",
+        "target": "1枚の参考画像を使うテキストから動画、画像から動画。"
+      },
+      {
+        "label": "参考画像上限",
+        "baseline": "最大20MBの画像を1枚アップロード。",
+        "target": "最大10MBの画像を1枚アップロード。"
+      },
+      {
+        "label": "アスペクト比",
+        "baseline": "16:9、9:16、1:1、4:3、3:4に加え、4:5、5:4、9:21、21:9を含みます。",
+        "target": "16:9、9:16、1:1、4:3、3:4の基本セットに対応します。"
+      },
+      {
+        "label": "長さと出力",
+        "baseline": "720pまたは1080pで3〜15秒。",
+        "target": "720pまたは1080pで3〜15秒。"
+      },
+      {
+        "label": "音声とショット制御",
+        "baseline": "商品、物語、ASMRの方向づけに使えるNative Audioとマルチショットプロンプト。",
+        "target": "シンプルな下書き向けのNative Audioとマルチショットプロンプト。"
+      },
+      {
+        "label": "開始Credits",
+        "baseline": "Toolazeでは135 Creditsから。",
+        "target": "Toolazeでは168 Creditsから。"
+      },
+      {
+        "label": "選ぶ場面",
+        "baseline": "HappyHorseで最も広い比率対応または大きい参考画像アップロードが必要なとき。",
+        "target": "ベースのHappyHorseモデルを使い、小さい参考画像上限で十分なとき。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "HappyHorseと他のToolaze動画モデル",
+    "subtitle": "最大参考数よりもシーンの連続性とバージョンごとの比率制御が重要な場合にHappyHorseを選びます。",
+    "columns": [
+      "モデル選択",
+      "適した用途",
+      "生成前に確認"
+    ],
+    "rows": [
+      [
+        "HappyHorse",
+        "1枚の参考画像、Native Audio、バージョン別の比率選択を使うAlibaba系のテキスト/画像から動画。",
+        "必要なファイルサイズとアスペクト比にHappyHorse 1.1またはベースモデルが合うか確認します。"
+      ],
+      [
+        "Wan 2.6",
+        "音を意識したWanクリップ、Native Audio、5/10/15秒の扱いやすい長さ。",
+        "HappyHorse 1.1の追加ワイド/縦長比率が不要な場合に使います。"
+      ],
+      [
+        "Kling 3.0",
+        "洗練されたシネマティックな動き、商品クリップ、クリエイター向け短尺動画。",
+        "高品質な生成に進む前に、Klingの動きの質感がブランドに合うか確認します。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "高速なNative Audio下書きと幅広い発想検証。",
+        "HappyHorseの細かいバージョン制御よりスピード重視の発想出しに使います。"
+      ]
+    ]
+  },
+  "faqTitle": "HappyHorse AI動画FAQ",
+  "faq": [
+    {
+      "q": "HappyHorse 1.1とHappyHorseの違いは何ですか？",
+      "a": "HappyHorse 1.1は20MBの大きい参考画像上限と、4:5、5:4、9:21、21:9を含む広い比率に対応します。ベースのHappyHorseは基本比率と10MBの画像上限で、よりシンプルな参考画像ベースの下書きに十分です。"
+    },
+    {
+      "q": "HappyHorseはマルチショットプロンプトに対応していますか？",
+      "a": "はい。プロンプトを短いショット列として書き、各ビートに1つの動作を置きます。商品形状、服の色、ロゴ位置、キャラクターの同一性など、カットをまたいで保つ要素も指定してください。"
+    },
+    {
+      "q": "HappyHorseはNative Audioを生成できますか？",
+      "a": "はい。布の擦れ、足音のリズム、室内の環境音、刃の接触、柔らかな商品音など具体的な音を追加します。動きに合わせたい場合は「良い音」などの曖昧な表現を避けます。"
+    },
+    {
+      "q": "HappyHorseはASMR動画に向いていますか？",
+      "a": "素材、近接カメラ、接触音、音楽なしの希望を具体的に書けば、ASMR風の短い素材クリップに向いています。長時間の連続ASMRより短い触感シーンに適しています。"
+    },
+    {
+      "q": "HappyHorseで参考画像を使えますか？",
+      "a": "はい。人物、商品、衣装、レイアウトを認識しやすく保ちたい場合は画像から動画を使います。HappyHorseは1枚の参考画像を受け取り、ファイルサイズ上限は選択したバージョンによって変わります。"
+    }
+  ],
+  "moreTools": "その他のAI動画モデル",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.6 AI動画生成ツール",
+      "description": "テキストまたは1枚の画像、5/10/15秒、Native Audio、バランスの取れたWanらしい動きに使えます。",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6動画モデルのデモプレビュー"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "なじみのあるモーションモデルと洗練されたSNSクリップが必要なときに、シネマティックなKling動画下書きを作成します。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3動画モデルのデモプレビュー",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"
+      }
+    },
+    {
+      "title": "Grok 1.5 Video",
+      "description": "幅広い発想とSNS向け下書きに使える高速なNative Audioコンセプト動画を試せます。",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "alt": "Grok 1.5動画モデルのデモプレビュー"
+      }
+    }
+  ]
+}

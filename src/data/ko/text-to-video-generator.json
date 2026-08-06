@@ -54,7 +54,10 @@
     "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Toolaze 여행 제품 콘셉트 프롬프트에서 생성한 텍스트-동영상 데모",
     "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
-    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-22T15:22:00.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "텍스트-동영상 설정 및 출력 확인",
@@ -210,11 +213,12 @@
         "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "가상의 휴대용 여행 커피 그라인더 콘셉트를 위한 와이드 Grok 텍스트-동영상 예시입니다.",
         "aspectRatio": "16:9",
-        "duration": "PT5S",
-        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-22T15:22:00.000Z",
         "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
         "note": "촬영 전에 제품 아이디어의 빠른 시각 콘셉트가 필요할 때 사용하세요.",
-        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)",
+        "type": "video"
       }
     ]
   },

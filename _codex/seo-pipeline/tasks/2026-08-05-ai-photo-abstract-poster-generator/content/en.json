@@ -1,0 +1,16 @@
+{
+  "sourceData": "src/data/en/ai-photo-abstract-poster-generator.json",
+  "taskId": "2026-08-05-ai-photo-abstract-poster-generator",
+  "slug": "ai-photo-abstract-poster-generator",
+  "pageType": "l2",
+  "generatorType": "local-code-composition",
+  "status": "ready_for_publish",
+  "locale": "en",
+  "topTool": {
+    "textOverrides": {
+      "demoTabLabel": "Demo",
+      "historyTabLabel": "History",
+      "generateLabel": "Generate for Free"
+    }
+  }
+}

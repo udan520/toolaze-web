@@ -756,9 +756,10 @@ test('AI Clothes Changer renders clothing presets as four compact import shortcu
   assert.match(aiImageToolSource, /shouldRenderWorkflowTabsAboveUpload\s*\? 'grid grid-cols-4 gap-2'/)
   assert.match(presetShortcutBlock, /aspect-\[3\/4\]/)
   assert.match(presetShortcutBlock, /object-contain/)
+  assert.notEqual(aiClothesChangerContent.topTool?.functionalAcceptance?.showPresetSelectedState, true)
   assert.match(presetShortcutBlock, /aria-pressed=\{showPromptPresetSelectedState \? isPromptPresetSelected : undefined\}/)
-  assert.doesNotMatch(presetShortcutBlock, /aria-pressed=\{isPromptPresetSelected\}/)
-  assert.match(presetShortcutBlock, /isPromptPresetSelected\s*\?\s*'border-\[#4F46E5\] ring-2 ring-\[#4F46E5\]\/25'/)
+  assert.match(presetShortcutBlock, /isPromptPresetSelected = showPromptPresetSelectedState && selectedPromptPreset === preset\.label/)
+  assert.match(presetShortcutBlock, /isPromptPresetSelected[\s\S]*ring-2 ring-\[#4F46E5\]\/25/)
   assert.match(
     aiImageToolSource,
     /if \(promptPresetTabs\.length > 0\) \{[\s\S]*setSelectedPromptPreset\(''\)[\s\S]*applyPromptPresetReferenceImage\(undefined\)[\s\S]*return/,

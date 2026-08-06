@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "사막을 달리는 원본 참고 사진"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "사막 원본 사진과 Running Toward Haze 추상 메모리 패널 데모"
+      }
+    ],
+    "displayName": "사진 추상 포스터 생성기",
+    "textOverrides": {
+      "uploadTitle": "사진 한 장 업로드",
+      "uploadHelper": "공간 관계가 분명한 사진을 사용하세요. JPG, PNG, WebP는 30MB까지 지원합니다. 사진은 그대로 유지되고 포스터는 브라우저에서 로컬로 합성됩니다.",
+      "generateLabel": "무료로 생성",
+      "samplePhotoName": "샘플 사진",
+      "uploadedPhotoName": "업로드한 사진",
+      "uploadLabel": "업로드",
+      "replaceLabel": "교체",
+      "deleteLabel": "삭제",
+      "outputRatioLabel": "출력 비율",
+      "composingLabel": "합성 중...",
+      "invalidTypeMessage": "JPG, PNG 또는 WebP 이미지를 업로드하세요.",
+      "validationErrorMessage": "이미지 크기는 30MB 미만이어야 합니다.",
+      "imageReadErrorMessage": "이 이미지를 읽을 수 없습니다. 다른 JPG, PNG 또는 WebP 파일을 사용해 보세요.",
+      "composeErrorMessage": "이 포스터를 합성할 수 없습니다.",
+      "noRemoteNote": "이 합성은 모델 호출, 업로드 작업, 크레딧 보류, 원격 생성을 사용하지 않습니다.",
+      "historyTitle": "로컬 기록",
+      "historySubtitle": "이 페이지 세션에서 만든 최근 포스터가 여기에 표시됩니다.",
+      "savedLabel": "개 저장됨",
+      "latestOutputLabel": "최신 출력",
+      "ratioLabel": "비율",
+      "downloadLabel": "PNG 다운로드",
+      "demoStateLabel": "데모 상태",
+      "demoStateText": "첫 합성 후 오른쪽 패널이 기록 피드가 됩니다.",
+      "emptyStateText": "사진을 업로드하고 첫 로컬 포스터를 만들어 보세요.",
+      "historyDownloadSuffix": "다운로드",
+      "demoTabLabel": "데모",
+      "historyTabLabel": "기록"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "상단에는 사막을 달리는 사진, 하단에는 Running Toward Haze 메모리 패널이 있는 Photo Abstract Editorial 데모",
+    "sourceHistory": "원래 Photo Abstract Editorial 세션의 로컬 결정형 데모: 사막 원본 사진과 Running Toward Haze 메모리 패널."
+  },
+  "metadata": {
+    "title": "사진 추상 포스터 생성기 | 사진을 메모리 패널로 | Toolaze",
+    "description": "사진 한 장을 업로드해 브라우저에서 원본 이미지는 위에 보존하고, 아래에는 절제된 메모리 패널과 짧은 영어 제목을 배치한 추상 포스터를 만드세요."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">사진 추상 포스터</span> 생성기",
+    "desc": "사진 한 장을 업로드해 브라우저에서 세로형 에디토리얼 작품을 만드세요. 원본 이미지는 위쪽에 충실하게 남고, 아래에는 절제된 추상 메모리 패널과 짧은 영어 제목이 구성됩니다. 개인 아카이브, 여행 기억, 비주얼 에세이, 갤러리 초안, 차분한 소셜 커버에 적합합니다."
+  },
+  "intro": {
+    "title": "이 사진 추상 포스터 생성기가 만드는 것",
+    "content": [
+      {
+        "title": "충실한 사진과 추상 메모리 패널",
+        "text": "생성기는 업로드한 사진을 보이는 원본 이미지로 유지하고, 간격, 축, 색상 위계, 움직임, 여백을 아래의 깨끗한 아이보리 패널로 압축합니다. 결과는 필터, 콜라주, 다시 그린 일러스트가 아니라 에디토리얼 딥틱처럼 느껴집니다."
+      },
+      {
+        "title": "자동 제목과 구성",
+        "text": "스타일 지시를 쓸 필요가 없습니다. 이미지 한 장을 업로드하면 로컬 컴포저가 Photo Abstract Editorial 규칙을 자동 적용해 패널 레이아웃, 절제된 마크 시스템, muted 팔레트, 짧은 영어 제목을 만듭니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Photo Abstract Editorial 만드는 방법",
+    "steps": [
+      {
+        "title": "사진 한 장 업로드",
+        "desc": "공간 속 인물, 수평선, 건축, 오브젝트, 군중의 리듬, 뚜렷한 빛 방향처럼 관계가 보이는 사진을 고르세요."
+      },
+      {
+        "title": "먼저 Auto 비율 사용",
+        "desc": "Auto는 최종 캔버스가 원본 사진과 하단 패널을 따르게 합니다. 다른 비율도 선택할 수 있지만 고정형은 더 많은 여백이나 부드러운 크롭이 필요할 수 있습니다."
+      },
+      {
+        "title": "에디토리얼 만들기",
+        "desc": "Toolaze는 사진을 충실히 유지하고 같은 이미지에서 추상 메모리 패널, 팔레트, 마크, 제목을 브라우저 안에서 구성합니다."
+      },
+      {
+        "title": "검토하고 재사용",
+        "desc": "패널 균형, 제목 위치, 원본 사진 맞춤을 확인하세요. 최근 결과는 오른쪽 로컬 기록 패널에 표시되어 다운로드할 수 있습니다."
+      }
+    ]
+  },
+  "features": {
+    "title": "사진 추상 포스터 스타일",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "충실한 사진 영역",
+        "desc": "위쪽 이미지는 사진 그대로 유지됩니다. 이 스타일은 원본 사진을 다시 그리거나 보정, 확장, 필터 처리하지 않습니다."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "적응형 세로 레이아웃",
+        "desc": "사진과 패널의 분할은 원본 이미지에 따라 바뀌며 기계적인 반반 프레임을 강제하지 않습니다."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "추상 메모리 모티프",
+        "desc": "아래 패널은 사진의 축소 복사본이 아니라 시각 관계를 작고 절제된 모티프로 번역합니다."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "사진에서 온 팔레트",
+        "desc": "muted 색 역할은 업로드 이미지에서 오며, 원본에 보이는 경우에만 몇 가지 포인트 색을 사용합니다."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "시적인 영어 제목",
+        "desc": "2~5단어의 절제된 제목이 아이보리 패널에만 놓이고 이미지의 보이는 사실에 기반합니다."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "깨끗한 아이보리 표면",
+        "desc": "패널은 평평하고 조용하며 질감 없이 유지되어 공간, 리듬, 마크가 구성을 이룹니다."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "업로드하기 좋은 사진",
+    "subtitle": "하나의 고립된 물체보다 압축할 수 있는 관계가 있는 원본 이미지에서 이 스타일이 가장 잘 작동합니다.",
+    "items": [
+      {
+        "title": "공간 리듬 찾기",
+        "desc": "수평선, 길, 난간, 공간 속 사람, 건축, 빛, 그림자, 반복 오브젝트가 아래 패널에 더 많은 구조를 줍니다.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "주제를 읽기 쉽게 유지",
+        "desc": "강한 흔들림, 가려진 얼굴, 극단적인 근접 크롭, 중요한 주제가 너무 작은 사진은 피하세요.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "자연스러운 색 단서 사용",
+        "desc": "뚜렷한 어두운 톤, 밝은 톤, 은은한 포인트 색이 있는 사진은 가장 조화로운 추상 패널을 만듭니다.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "고정 비율은 신중히 선택",
+        "desc": "사진을 충실히 보존하려면 Auto가 가장 좋습니다. 9:16, 4:5, 1:1, 16:9는 바깥 캔버스가 사진의 자연스러운 형태보다 더 중요할 때 사용하세요.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "만들 수 있는 것",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "여행 메모리 패널",
+      "desc": "풍경, 도로, 해안, 박물관, 도시 산책 사진을 충실한 원본 사진이 있는 조용한 아카이브 이미지로 바꾸세요."
+    },
+    {
+      "icon": "▥",
+      "title": "에디토리얼 인물 연구",
+      "desc": "인물이나 장소 속 사람 사진을 보존하면서 아래쪽에서 추상 간격으로 울림을 만들고 싶을 때 사용하세요."
+    },
+    {
+      "icon": "✶",
+      "title": "비주얼 에세이 커버",
+      "desc": "에세이, 저널, 무드보드, 플레이리스트, 프레젠테이션, 소셜 게시물용 정제된 커버를 문학적인 느낌으로 만드세요."
+    }
+  ],
+  "faqTitle": "사진 추상 포스터 생성기 FAQ",
+  "faq": [
+    {
+      "q": "프롬프트를 써야 하나요?",
+      "a": "아니요. 사진 한 장을 업로드하면 Toolaze가 브라우저에서 Photo Abstract Editorial 구성 규칙을 자동 적용합니다."
+    },
+    {
+      "q": "생성기가 제 사진을 다시 그리나요?",
+      "a": "아니요. 사진 영역은 업로드한 이미지를 충실히 보존해야 합니다. 생성되는 부분은 아래의 추상 패널과 제목입니다."
+    },
+    {
+      "q": "종횡비를 바꿀 수 있나요?",
+      "a": "예. 구성은 업로드 사진과 패널 균형을 따라야 하므로 Auto가 권장 기본값입니다. 9:16, 4:5, 1:1, 16:9 같은 고정 비율은 바깥 캔버스를 바꾸며 사진은 과격하게 자르지 않고 맞춥니다."
+    },
+    {
+      "q": "왜 프롬프트 상자가 없나요?",
+      "a": "이 스타일은 의도적으로 자동입니다. 업로드 이미지가 소스이며, 로컬 구성 규칙이 충실한 사진 영역, 추상 메모리 패널, 팔레트, 제목, 깨끗한 아이보리 표면을 제어합니다."
+    },
+    {
+      "q": "어떤 사진이 가장 잘 맞나요?",
+      "a": "공간 속 인물, 수평선, 길, 파사드, 군중 리듬, 강한 그림자, 단순한 오브젝트 그룹처럼 시각 관계가 분명한 사진을 사용하세요."
+    },
+    {
+      "q": "이미지 모델로 전송되나요?",
+      "a": "아니요. 포스터는 업로드 사진, 샘플링 색상, 기하학적 균형, 로컬 제목 로직을 바탕으로 브라우저 Canvas 코드에서 만들어집니다. 이 도구에는 원격 이미지 생성 작업이 없습니다."
+    }
+  ],
+  "moreTools": "관련 크리에이티브 도구",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "AI 진 포스터 생성기",
+      "description": "사진 한 장을 업로드해 주요 주제를 조용한 종이 포스터 구성으로 바꾸세요.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "AI 진 포스터 생성기 미리보기"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "이미지 변환기",
+      "description": "포스터를 만들기 전에 JPG, PNG, WebP, AVIF, HEIC 및 기타 이미지 형식을 변환하세요.",
+      "href": "/image-converter"
+    }
+  ]
+}

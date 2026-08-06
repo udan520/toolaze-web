@@ -1503,6 +1503,13 @@ export default function AiImageGenerationTool({
     : MAX_IMAGES
   const personUploadMaxImages = shouldRenderWorkflowTabsAboveUpload ? Math.min(1, MAX_IMAGES) : currentMaxUploadImages
   const clothingReferenceMaxImages = Math.min(1, MAX_IMAGES)
+  const currentEffectivePrompt = shouldUseCustomReferenceUploader ? customReferencePrompt.trim() : prompt.trim()
+  const hasCurrentPersonReferenceImages = imageFiles.length > 0 || remoteImageUrls.length > 0
+  const hasCurrentSecondaryReferenceImages = clothingReferenceFiles.length > 0 || clothingReferenceRemoteUrls.length > 0
+  const hasCurrentReferenceImages = shouldUseSecondaryReferenceUploader
+    ? hasCurrentPersonReferenceImages && hasCurrentSecondaryReferenceImages
+    : hasCurrentPersonReferenceImages
+  const canGenerate = Boolean(currentEffectivePrompt) && (activeTab !== 'image-to-image' || hasCurrentReferenceImages)
 
   useEffect(() => {
     const nextValue =
@@ -1797,6 +1804,7 @@ export default function AiImageGenerationTool({
       resolution?: string
       outputFormat?: string
       mediaType?: 'image' | 'video'
+      taskId?: string
     },
   ) => {
     const historyTool = getHistoryToolMetadata(pathname, item.modelName, item.modelId)
@@ -1808,6 +1816,7 @@ export default function AiImageGenerationTool({
         credentials: 'include',
         body: JSON.stringify({
           mediaType: item.mediaType || 'image',
+          taskId: item.taskId,
           model: item.modelId,
           prompt: item.prompt,
           outputUrl: item.outputUrl,
@@ -1910,6 +1919,7 @@ export default function AiImageGenerationTool({
         resolution: item.resolution,
         outputFormat: item.outputFormat,
         mediaType,
+        taskId: item.taskId,
       })
       addHistoryItemToFeed({
         id: savedItem?.id || item.id,
@@ -2495,6 +2505,7 @@ export default function AiImageGenerationTool({
             resolution: requestResolution,
             outputFormat: requestOutputFormat,
             mediaType: syncMediaType,
+            taskId,
           })
           const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
             ? savedItem.inputUrls
@@ -2618,6 +2629,7 @@ export default function AiImageGenerationTool({
           resolution: requestResolution,
           outputFormat: requestOutputFormat,
           mediaType,
+          taskId,
         })
         const savedInputUrls = Array.isArray(savedItem?.inputUrls) && savedItem.inputUrls.length > 0
           ? savedItem.inputUrls
@@ -4523,10 +4535,10 @@ export default function AiImageGenerationTool({
                 type="button"
                 data-generate-button
                 onClick={handleGenerate}
-                disabled={!prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)}
+                disabled={!canGenerate}
                 className="flex-1 py-3.5 rounded-xl font-bold text-sm text-center flex items-center justify-center disabled:cursor-not-allowed transition-all duration-200 text-white shadow-md hover:shadow-lg disabled:shadow-none"
                 style={{
-                  background: !prompt.trim() || (activeTab === 'image-to-image' && imageFiles.length === 0 && remoteImageUrls.length === 0)
+                  background: !canGenerate
                     ? 'linear-gradient(135deg, #C7D2FE 0%, #E0E7FF 100%)'
                     : 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)',
                 }}

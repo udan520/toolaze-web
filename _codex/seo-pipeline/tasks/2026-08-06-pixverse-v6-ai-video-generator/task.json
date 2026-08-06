@@ -1,0 +1,34 @@
+{
+  "taskId": "2026-08-06-pixverse-v6-ai-video-generator",
+  "slug": "pixverse-v6-ai-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "locale": "all",
+  "title": "PixVerse V6 AI Video Generator",
+  "files": [
+    "src/app/model/pixverse-v6-ai-video-generator/page.tsx",
+    "src/data/en/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/en.json",
+    "src/data/de/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/de.json",
+    "src/data/ja/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/ja.json",
+    "src/data/es/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/es.json",
+    "src/data/zh-TW/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/zh-TW.json",
+    "src/data/pt/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/pt.json",
+    "src/data/fr/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/fr.json",
+    "src/data/ko/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/ko.json",
+    "src/data/it/pixverse-v6-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-pixverse-v6-ai-video-generator/content/it.json"
+  ],
+  "notes": [
+    "English model page for PixVerse V6.",
+    "Public route is /model/pixverse-v6-ai-video-generator.",
+    "Localized content is available for de, ja, es, zh-TW, pt, fr, ko, and it."
+  ]
+}

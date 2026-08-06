@@ -2,6 +2,7 @@ import { getL2SeoContent, getAllSlugs, loadCommonTranslations, getSeoContent, VI
 import { AI_VIDEO_GENERATOR_MODEL_OPTIONS, type AiVideoGeneratorModelId } from '@/lib/ai-video-generator-config'
 import { filterPaymentReviewSections, shouldRenderPaymentReviewSocialProofSection } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
+import { applyPublishedPageDemoAssignments } from '@/lib/page-demo-content-overrides'
 import { isSiteLocaleCode } from '@/lib/site-language-switch'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -16,6 +17,7 @@ import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
 import TalkingAvatarCreatorTool from '@/components/TalkingAvatarCreatorTool'
+import PhotoAbstractPosterGeneratorTool from '@/components/PhotoAbstractPosterGeneratorTool'
 import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
@@ -52,13 +54,6 @@ type RecommendedTool = {
   description: string
   href: string
   media?: RecommendedToolMedia
-}
-
-type PromptRewrite = {
-  weakLabel: string
-  weakText: string
-  betterLabel: string
-  betterText: string
 }
 
 function normalizeRecommendedToolMedia(media: unknown): RecommendedToolMedia | undefined {
@@ -152,49 +147,6 @@ function getTopToolVideoModelId(modelId: unknown): AiVideoGeneratorModelId | und
   return typeof modelId === 'string' && VIDEO_GENERATOR_MODEL_IDS.has(modelId)
     ? modelId as AiVideoGeneratorModelId
     : undefined
-}
-
-function parsePromptRewrite(prompt: string): PromptRewrite | null {
-  const match = prompt.match(/^\s*(Weak prompt|Weak|较差)\s*[:：]\s*([\s\S]+?)\s+(Better prompt|Better|较好)\s*[:：]\s*([\s\S]+?)\s*$/i)
-  if (!match) return null
-
-  return {
-    weakLabel: match[1],
-    weakText: match[2].trim(),
-    betterLabel: match[3],
-    betterText: match[4].trim(),
-  }
-}
-
-function PromptRewriteBlock({ prompt }: { prompt: string }) {
-  const rewrite = parsePromptRewrite(prompt)
-
-  if (!rewrite) {
-    return (
-      <p className="mt-4 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
-        {prompt}
-      </p>
-    )
-  }
-
-  return (
-    <div className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-700">
-      <div className="flex gap-3">
-        <span aria-hidden="true" className="mt-0.5 shrink-0 text-base">❌</span>
-        <div>
-          <span className="font-bold text-rose-700">{rewrite.weakLabel}:</span>{' '}
-          <span>{rewrite.weakText}</span>
-        </div>
-      </div>
-      <div className="flex gap-3 border-t border-slate-200 pt-3">
-        <span aria-hidden="true" className="mt-0.5 shrink-0 text-base">✅</span>
-        <div>
-          <span className="font-bold text-emerald-700">{rewrite.betterLabel}:</span>{' '}
-          <span>{rewrite.betterText}</span>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 function getLocalizedContentHref(href: string | undefined, locale: string): string {
@@ -300,9 +252,11 @@ interface PromptVideoSchemaItem {
   title?: string
   description?: string
   video?: string
+  src?: string
   poster?: string
   uploadDate?: string
   duration?: string
+  ariaLabel?: string
 }
 
 function toAbsoluteToolazeUrl(value: string): string {
@@ -355,7 +309,8 @@ function generatePageSchema({
   }
 
   for (const item of videoItems) {
-    if (!item.title || !item.description || !item.video || !item.poster || !item.uploadDate || !item.duration) continue
+    const videoUrl = item.video || item.src
+    if (!item.title || !item.description || !videoUrl || !item.poster || !item.uploadDate || !item.duration) continue
     graph.push({
       '@type': 'VideoObject',
       name: item.title,
@@ -363,13 +318,30 @@ function generatePageSchema({
       thumbnailUrl: toAbsoluteToolazeUrl(item.poster),
       uploadDate: item.uploadDate,
       duration: item.duration,
-      contentUrl: toAbsoluteToolazeUrl(item.video),
+      contentUrl: toAbsoluteToolazeUrl(videoUrl),
     })
   }
 
   return {
     '@context': 'https://schema.org',
     '@graph': graph,
+  }
+}
+
+function getHeroDemoVideoSchemaItem(
+  heroDemoVideo: PromptVideoSchemaItem | undefined,
+  fallbackTitle: string,
+  fallbackDescription?: string,
+): PromptVideoSchemaItem | undefined {
+  if (!heroDemoVideo?.src) return undefined
+  const title = heroDemoVideo.ariaLabel || fallbackTitle
+  return {
+    title,
+    description: fallbackDescription || title,
+    video: heroDemoVideo.src,
+    poster: heroDemoVideo.poster,
+    uploadDate: heroDemoVideo.uploadDate,
+    duration: heroDemoVideo.duration,
   }
 }
 
@@ -918,6 +890,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       content = localizeLinksInObject(content, locale) as typeof content
     }
 
+    content = await applyPublishedPageDemoAssignments(content, {
+      pageSlug: tool,
+      locale,
+      includeDrafts: process.env.NODE_ENV !== 'production',
+    }) as typeof content
+
     // 顶部功能：优先使用 JSON 中的 topComponent，否则用 tool
     const topComp = (content.topComponent || tool) as string
     const videoGeneratorDefaultModel = getTopToolVideoModelId(content.topTool?.modelId) || VIDEO_GENERATOR_DEFAULT_MODELS[topComp]
@@ -948,6 +926,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
       'aiZinePosterGenerator',
+      'photoAbstractPosterGenerator',
       'aiAsmrVideoGenerator',
       'aiKissingVideoGenerator',
       'talkingAvatarCreator',
@@ -1018,6 +997,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiCouplePhotoMaker',
       'aiBabyGenerator',
       'aiZinePosterGenerator',
+      'photoAbstractPosterGenerator',
       'aiKissingVideoGenerator',
       'aiDanceGenerator',
       'aiHairstyleChanger',
@@ -1151,6 +1131,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.model || 'Model', href: '/model' },
           { label: 'Wan 2.7 AI Video Generator' },
         ]
+      : tool === 'veo-3-1-ai-video-generator'
+      ? [
+          { label: breadcrumbT.home, href: '/' },
+          { label: breadcrumbT.model || 'Model', href: '/model' },
+          { label: 'Veo 3.1 AI Video Generator' },
+        ]
       : tool === 'wan-2-6-ai-video-generator'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -1200,12 +1186,14 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const toolHeroOwnsBreadcrumb = [
       'watermark-remover',
       'photo-restoration',
+      'photo-abstract-poster',
       'ai-couple-photo-maker',
       'ai-baby-generator',
       'nano-banana-pro',
       'gpt-image-2',
       'nano-banana-2',
       'ai-video-generator',
+      'veo-3-1-ai-video-generator',
       'wan-2-7-ai-video-generator',
       'wan-2-6-ai-video-generator',
       'wan-2-5-ai-video-generator',
@@ -1222,6 +1210,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       if (modelTool === 'nano-banana-pro') return locale === 'en' ? '/model/nano-banana-pro' : `/${locale}/model/nano-banana-pro`
       if (modelTool === 'nano-banana-2') return locale === 'en' ? '/model/nano-banana-2' : `/${locale}/model/nano-banana-2`
       if (modelTool === 'gpt-image-2') return locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`
+      if (modelTool === 'veo-3-1-ai-video-generator') return locale === 'en' ? '/model/veo-3-1-ai-video-generator' : `/${locale}/model/veo-3-1-ai-video-generator`
       if (modelTool === 'wan-2-7-ai-video-generator') return locale === 'en' ? '/model/wan-2-7-ai-video-generator' : `/${locale}/model/wan-2-7-ai-video-generator`
       if (modelTool === 'wan-2-6-ai-video-generator') return locale === 'en' ? '/model/wan-2-6-ai-video-generator' : `/${locale}/model/wan-2-6-ai-video-generator`
       if (modelTool === 'wan-2-5-ai-video-generator') return locale === 'en' ? '/model/wan-2-5-ai-video-generator' : `/${locale}/model/wan-2-5-ai-video-generator`
@@ -1342,15 +1331,26 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       ? filteredSectionsOrder
       : sectionsOrder.filter((sectionKey: string) => sectionKey !== 'testimonials' && sectionKey !== 'rating')
 
+    const visibleSectionSet = new Set(sectionsOrder)
+
     // 生成页面 JSON-LD Schema
     const howToTitle = content.howToUse?.title || fallbackPageTitle
-    const howToSteps = content.howToUse?.steps || howToUseSteps
-    const promptVideoItems = (content.promptExamples?.items || []) as PromptVideoSchemaItem[]
+    const schemaHowToSteps = visibleSectionSet.has('howToUse')
+      ? (content.howToUse?.steps || howToUseSteps)
+      : []
+    const promptVideoItems = visibleSectionSet.has('promptExamples')
+      ? (content.promptExamples?.items || []) as PromptVideoSchemaItem[]
+      : []
+    const heroVideoItem = getHeroDemoVideoSchemaItem(
+      content.heroDemoVideo as PromptVideoSchemaItem | undefined,
+      fallbackPageTitle,
+      content.hero?.desc || content.metadata?.description,
+    )
     const jsonLdSchema = generatePageSchema({
       howToTitle,
-      steps: howToSteps,
+      steps: schemaHowToSteps,
       faqItems: content.faq || [],
-      videoItems: promptVideoItems,
+      videoItems: heroVideoItem ? [heroVideoItem, ...promptVideoItems] : promptVideoItems,
     })
 
     const getPromptPresetColor = (title: string) => {
@@ -1504,6 +1504,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
+          ) : topComp === 'photo-abstract-poster' ? (
+            <PhotoAbstractPosterGeneratorTool
+              heroBreadcrumbItems={breadcrumbItems}
+              heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Photo Abstract Poster Generator</>}
+              heroDescription={content.hero?.desc}
+              defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+              sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
+              defaultAspectRatio={typeof content.topTool?.defaultAspectRatio === 'string' ? content.topTool.defaultAspectRatio : undefined}
+              textOverrides={content.topTool?.textOverrides}
+            />
           ) : topComp === 'photo-restoration' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
@@ -1610,12 +1620,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     defaultMode={content.topTool?.mode === 'image-to-image' ? 'image-to-image' : undefined}
                     defaultPrompt={content.topTool?.defaultPrompt || ''}
                     defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
-                    defaultAspectRatio={typeof content.topTool?.defaultAspectRatio === 'string' ? content.topTool.defaultAspectRatio : undefined}
                     defaultVideoDurationSeconds={typeof content.topTool?.defaultVideoDurationSeconds === 'number' ? content.topTool.defaultVideoDurationSeconds : undefined}
                     videoDurationOptions={Array.isArray(content.topTool?.videoDurationOptions) ? content.topTool.videoDurationOptions : undefined}
                     maxUploadImages={typeof content.topTool?.maxUploadImages === 'number' ? content.topTool.maxUploadImages : undefined}
                     hideModelBranding={content.topTool?.hideModelBranding === true}
                     hidePromptInput={content.topTool?.hidePromptInput === true}
+                    defaultAspectRatio={typeof content.topTool?.defaultAspectRatio === 'string' ? content.topTool.defaultAspectRatio : undefined}
                     sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
                     sampleImageVariant="sharp"
                     promptPresets={promptPresets}
@@ -1671,6 +1681,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     heroDescription={content.hero?.desc}
                     initialImageUrls={Array.isArray(content.topTool?.initialImageUrls) ? content.topTool.initialImageUrls : undefined}
                     initialMotionVideoUrls={Array.isArray(content.topTool?.initialMotionVideoUrls) ? content.topTool.initialMotionVideoUrls : undefined}
+                    initialMotionVideoPosters={Array.isArray(content.topTool?.initialMotionVideoPosters) ? content.topTool.initialMotionVideoPosters : undefined}
                     initialMotionVideoDurationSeconds={
                       typeof content.topTool?.initialMotionVideoDurationSeconds === 'number'
                         ? content.topTool.initialMotionVideoDurationSeconds

@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "Original desert running source photo"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Running Toward Haze demo with the original desert running photo and abstract memory panel"
+      }
+    ],
+    "displayName": "Photo Abstract Poster Generator",
+    "textOverrides": {
+      "uploadTitle": "Upload one photo",
+      "uploadHelper": "Use a photo with clear spatial relationships. JPG, PNG, or WebP up to 30MB. The photo stays intact while the poster is composed locally in your browser.",
+      "generateLabel": "Generate for Free",
+      "samplePhotoName": "Sample photo",
+      "uploadedPhotoName": "Uploaded photo",
+      "uploadLabel": "Upload",
+      "replaceLabel": "Replace",
+      "deleteLabel": "Remove",
+      "outputRatioLabel": "Output ratio",
+      "composingLabel": "Composing...",
+      "invalidTypeMessage": "Please upload a JPG, PNG, or WebP image.",
+      "validationErrorMessage": "Image size must be under 30MB.",
+      "imageReadErrorMessage": "Could not read this image. Try another JPG, PNG, or WebP file.",
+      "composeErrorMessage": "Could not compose this poster.",
+      "noRemoteNote": "No model call, upload job, credits hold, or remote generation task is used for this composition.",
+      "historyTitle": "Local History",
+      "historySubtitle": "Recent posters from this page session appear here.",
+      "savedLabel": "saved",
+      "latestOutputLabel": "Latest output",
+      "ratioLabel": "Ratio",
+      "downloadLabel": "Download PNG",
+      "demoStateLabel": "Demo state",
+      "demoStateText": "The right panel becomes your history feed after the first composition.",
+      "emptyStateText": "Upload a photo and create your first local poster.",
+      "historyDownloadSuffix": "Download",
+      "demoTabLabel": "Demo",
+      "historyTabLabel": "History"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Photo Abstract Editorial demo with a desert running photo above and Running Toward Haze memory panel below",
+    "sourceHistory": "Local deterministic demo from the original photo-abstract-editorial session: desert running source photo plus Running Toward Haze memory panel."
+  },
+  "metadata": {
+    "title": "Photo Abstract Poster Generator | Photo to Memory Panel | Toolaze",
+    "description": "Upload one photo and create a browser-composed abstract poster with the original image preserved above, a sparse memory panel below, and a short poetic English title."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Photo Abstract Poster</span> Generator",
+    "desc": "Upload one photo to create a vertical editorial artwork in your browser: the original image stays faithful above, while a sparse abstract memory panel and short English title are composed below. Use it for personal archives, travel memories, visual essays, gallery drafts, and quiet social covers."
+  },
+  "intro": {
+    "title": "What This Photo Abstract Poster Generator Creates",
+    "content": [
+      {
+        "title": "A faithful photo plus an abstract memory panel",
+        "text": "The generator keeps the uploaded photo as the visible source image, then distills its spacing, axes, color hierarchy, movement, and negative space into a clean ivory panel below. The result feels like an editorial diptych rather than a filter, collage, or redrawn illustration."
+      },
+      {
+        "title": "Automatic title and composition",
+        "text": "You do not need to write style directions. Upload one image and the local composer applies the Photo Abstract Editorial rules automatically, including the panel layout, restrained mark system, muted palette, and short English title."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Create a Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "Upload one photo",
+        "desc": "Choose a photograph with visible relationships: a person in space, a horizon, architecture, objects, a crowd rhythm, or a clear light direction."
+      },
+      {
+        "title": "Use Auto ratio first",
+        "desc": "Auto lets the final canvas follow the source photo and the lower panel. You can choose another aspect ratio, but fixed shapes may require more whitespace or a softer crop."
+      },
+      {
+        "title": "Create the editorial",
+        "desc": "Toolaze keeps the photo faithful and composes the abstract memory panel, palette, marks, and title from the same image in the browser."
+      },
+      {
+        "title": "Review and reuse",
+        "desc": "Check the panel balance, title placement, and source-photo fit. Your recent results appear in the right-side local history panel for download."
+      }
+    ]
+  },
+  "features": {
+    "title": "Photo Abstract Poster Style",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "Faithful Photo Area",
+        "desc": "The upper image stays photographic. The style does not redraw, retouch, extend, or apply a filter to the source photo."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "Adaptive Vertical Layout",
+        "desc": "The split between photo and panel changes with the source image instead of forcing a mechanical half-and-half frame."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "Abstract Memory Motif",
+        "desc": "The lower panel translates visual relationships into a small sparse motif, not a miniature copy of the photo."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Photo-Derived Palette",
+        "desc": "Muted color roles come from the uploaded image, with only a few accents when those colors are visible in the source."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Poetic English Title",
+        "desc": "A restrained two-to-five-word title is placed only on the ivory panel and grounded in the image's visible facts."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "Clean Ivory Surface",
+        "desc": "The panel stays flat, quiet, and untextured so the composition depends on space, rhythm, and marks."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Best Photos to Upload",
+    "subtitle": "The style works best when the source image has relationships that can be distilled, not only a single isolated object.",
+    "items": [
+      {
+        "title": "Look for spatial rhythm",
+        "desc": "Horizon lines, paths, railings, people in space, architecture, lights, shadows, or repeated objects give the lower panel more structure.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "Keep the subject readable",
+        "desc": "Avoid heavy blur, blocked faces, extreme close crops, or photos where the important subject is already too small.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "Use natural color cues",
+        "desc": "Photos with a clear dark tone, light tone, and one subtle accent usually create the most coherent abstract panel.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Choose fixed ratios carefully",
+        "desc": "Auto is best for faithful photo preservation. Use 9:16, 4:5, 1:1, or 16:9 only when the outer canvas matters more than the photo's natural shape.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "What You Can Make",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "Travel Memory Panels",
+      "desc": "Turn landscapes, roads, shorelines, museums, and city walks into quiet archival images with a faithful source photo."
+    },
+    {
+      "icon": "▥",
+      "title": "Editorial Portrait Studies",
+      "desc": "Use portraits or people-in-place photos when you want the subject preserved but echoed with abstract spacing below."
+    },
+    {
+      "icon": "✶",
+      "title": "Visual Essay Covers",
+      "desc": "Create refined covers for essays, journals, moodboards, playlists, presentations, and social posts with a literary feel."
+    }
+  ],
+  "faqTitle": "Photo Abstract Poster Generator FAQ",
+  "faq": [
+    {
+      "q": "Do I need to write a prompt?",
+      "a": "No. Upload one photo and Toolaze applies the Photo Abstract Editorial composition rules automatically in your browser."
+    },
+    {
+      "q": "Does the generator redraw my photo?",
+      "a": "No. The photo area should preserve the uploaded image faithfully. The generated part is the abstract panel and title below it."
+    },
+    {
+      "q": "Can I change the aspect ratio?",
+      "a": "Yes. Auto is the recommended default because the composition should follow the uploaded photo and the panel balance. Fixed ratios such as 9:16, 4:5, 1:1, or 16:9 change the outer canvas while keeping the photo fitted rather than aggressively cropped."
+    },
+    {
+      "q": "Why is there no prompt box?",
+      "a": "The style is intentionally automatic. The uploaded image is the source, and the local composition rules control the faithful photo area, abstract memory panel, palette, title, and clean ivory surface."
+    },
+    {
+      "q": "What kind of photo works best?",
+      "a": "Use a photo with clear visual relationships, such as a person in space, a horizon, a path, a facade, a crowd rhythm, a strong shadow, or a simple object group."
+    },
+    {
+      "q": "Is this sent to an image model?",
+      "a": "No. The poster is built with browser Canvas code from the uploaded photo, sampled colors, geometric balance, and local title logic. There is no remote image-generation job for this tool."
+    }
+  ],
+  "moreTools": "Related Creative Tools",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "AI Zine Poster Generator",
+      "description": "Upload one photo and turn its main subject into a quiet paper-poster composition.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "AI Zine Poster Generator preview"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "Image Converter",
+      "description": "Convert JPG, PNG, WebP, AVIF, HEIC, and other image formats before building a poster.",
+      "href": "/image-converter"
+    }
+  ]
+}

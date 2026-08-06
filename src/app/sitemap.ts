@@ -18,6 +18,7 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/ai-baby-generator', priority: 0.88 },
   { path: '/ai-bikini-generator', priority: 0.88 },
   { path: '/ai-zine-poster-generator', priority: 0.88 },
+  { path: '/ai-photo-abstract-poster-generator', priority: 0.88 },
   { path: '/ai-breast-expansion', priority: 0.84 },
   { path: '/ai-hairstyle-changer', priority: 0.88 },
   { path: '/buzz-cut-filter', priority: 0.86 },
@@ -28,17 +29,6 @@ const AI_IMAGE_L2_PAGES = [
 // substantial update; old pages fall back to a stable legacy date.
 const LEGACY_LAST_MODIFIED_DATE = '2026-07-01'
 const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
-  '/world-cup-ai-image-generator': '2026-07-14',
-  '/watermark-remover': '2026-07-16',
-  '/photo-restoration': '2026-07-16',
-  '/ai-couple-photo-maker': '2026-05-10',
-  '/ai-baby-generator': '2026-07-14',
-  '/ai-hair-color-changer': '2026-07-16',
-  '/ai-clothes-changer': '2026-08-04',
-  '/ai-image-to-image-generator': '2026-08-04',
-  '/ai-image-generator': '2026-08-04',
-  '/model': '2026-08-02',
-  '/ai-tools': '2026-08-05',
   '/ai-dance-generator': '2026-07-20',
   '/ai-video-generator': '2026-07-21',
   '/text-to-video-generator': '2026-07-22',
@@ -57,6 +47,7 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/model/kling-2-6-pro-motion-control': '2026-08-02',
   '/model/kling-3-motion-control': '2026-08-02',
   '/model/wan-2-6-ai-video-generator': '2026-08-03',
+  '/ai-photo-abstract-poster-generator': '2026-08-05',
   '/ai-zine-poster-generator': '2026-08-05',
   '/buzz-cut-filter': '2026-08-06',
 }
@@ -141,7 +132,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 3b. 单语言功能页面（仅英文）
+  // 3b. AI hub 与核心功能页面
   SUPPORTED_LOCALES.forEach((locale) => {
     const path = locale === 'en' ? '/ai-tools' : `/${locale}/ai-tools`
     entries.push({
@@ -347,7 +338,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
   // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
+  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'happyhorse-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'pixverse-v6-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   MODEL_PAGES.forEach((model) => {
     const path = `/model/${model}`
     entries.push({
@@ -370,7 +361,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
-  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
+  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'happyhorse-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'pixverse-v6-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   LOCALIZED_MODEL_SLUGS.forEach((model) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       if (locale === 'en') return

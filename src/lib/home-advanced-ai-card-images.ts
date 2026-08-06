@@ -30,6 +30,12 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     height: 675,
     alt: 'AI Zine Poster Generator minimal paper poster preview',
   },
+  'ai-photo-abstract-poster-generator': {
+    src: '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
+    width: 1024,
+    height: 1536,
+    alt: 'Photo Abstract Poster Generator original photo and abstract memory panel preview',
+  },
   'ai-clothes-changer': {
     src: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
     width: 1600,

@@ -86,6 +86,77 @@ type HomeVideoDemoMedia = {
   ariaLabel: string
 }
 
+type HomeVideoSchemaCandidate = {
+  title: string
+  description?: string
+  src?: string
+  poster?: string
+}
+
+const HOME_VIDEO_SCHEMA_META: Record<string, { duration: string; uploadDate: string }> = {
+  'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo.mp4': {
+    duration: 'PT7.9S',
+    uploadDate: '2026-08-03T04:44:32.000Z',
+  },
+  'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4': {
+    duration: 'PT8.042S',
+    uploadDate: '2026-07-21T07:36:34.000Z',
+  },
+  'https://assets.toolaze.com/uploads/83a8c5b91a4945beb66275c38a731dbf.png': {
+    duration: 'PT3.042S',
+    uploadDate: '2026-07-24T00:27:57.000Z',
+  },
+  'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4': {
+    duration: 'PT8.021S',
+    uploadDate: '2026-07-29T04:40:40.000Z',
+  },
+  'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo.mp4': {
+    duration: 'PT14.48S',
+    uploadDate: '2026-07-31T07:08:59.000Z',
+  },
+  'https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4': {
+    duration: 'PT7.067S',
+    uploadDate: '2026-08-04T02:57:26.000Z',
+  },
+  '/model-assets/grok-imagine-video-1-5/grok-hero-demo-16x9.mp4': {
+    duration: 'PT5.042S',
+    uploadDate: '2026-08-04T20:01:05.000Z',
+  },
+  'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.mp4': {
+    duration: 'PT5S',
+    uploadDate: '2026-07-21T00:00:00.000Z',
+  },
+  'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.mp4': {
+    duration: 'PT5S',
+    uploadDate: '2026-07-21T00:00:00.000Z',
+  },
+}
+
+function toAbsoluteToolazeUrl(value: string): string {
+  return value.startsWith('http://') || value.startsWith('https://')
+    ? value
+    : `https://toolaze.com${value.startsWith('/') ? value : `/${value}`}`
+}
+
+function buildHomeVideoObjects(candidates: HomeVideoSchemaCandidate[]) {
+  const seen = new Set<string>()
+  return candidates.flatMap((item) => {
+    if (!item.src || !item.poster || seen.has(item.src)) return []
+    const meta = HOME_VIDEO_SCHEMA_META[item.src]
+    if (!meta) return []
+    seen.add(item.src)
+    return [{
+      '@type': 'VideoObject',
+      name: item.title,
+      description: item.description || item.title,
+      thumbnailUrl: toAbsoluteToolazeUrl(item.poster),
+      uploadDate: meta.uploadDate,
+      duration: meta.duration,
+      contentUrl: toAbsoluteToolazeUrl(item.src),
+    }]
+  })
+}
+
 type HomeDashboardModelLogo = {
   src: string
   alt: string
@@ -407,7 +478,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         type: 'video',
         src: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4',
         poster:
-          'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+          'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp',
         alt: 'AI Dance Generator demo video',
       },
     },
@@ -449,7 +520,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/ai-hairstyle-changer'),
       media: {
         type: 'image',
-        src: '/ai-hairstyle-changer/hero-before-after.webp',
+        src: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
         alt: 'AI Hairstyle Changer demo image',
       },
     },
@@ -458,7 +529,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/buzz-cut-filter'),
       media: {
         type: 'image',
-        src: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
+        src: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
         alt: 'Buzz Cut Filter demo image',
       },
     },
@@ -505,6 +576,15 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         type: 'image',
         src: 'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
         alt: 'AI Zine Poster Generator demo image',
+      },
+    },
+    {
+      title: navCopy.photoAbstractPosterGenerator || 'Photo Abstract Poster Generator',
+      href: localizeHomeHref('/ai-photo-abstract-poster-generator'),
+      media: {
+        type: 'image',
+        src: '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
+        alt: 'Photo Abstract Poster Generator demo image',
       },
     },
     {
@@ -852,10 +932,23 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       ],
     },
   ]
+  const homepageVideoObjects = buildHomeVideoObjects([
+    ...homeVideoToolCards.map((card) => ({
+      title: card.title,
+      description: card.media.alt,
+      src: card.media.type === 'video' ? card.media.src : undefined,
+      poster: card.media.type === 'video' ? card.media.poster : undefined,
+    })),
+    ...videoModelCards.map((card) => ({
+      title: card.title,
+      description: card.description,
+      src: card.media.type === 'video' ? card.media.src : undefined,
+      poster: card.media.type === 'video' ? card.media.poster : undefined,
+    })),
+  ])
 
   // Organization Schema for Google Search Logo
   const organizationSchema = {
-    '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Toolaze',
     url: 'https://toolaze.com',
@@ -865,6 +958,13 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     description:
       'AI Image & Video Creation Tools - Create images and videos with supported AI models, selected free trials, and credit-based generation.',
   }
+  const homepageSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      organizationSchema,
+      ...homepageVideoObjects,
+    ],
+  }
 
   return (
     <>
@@ -872,7 +972,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
         id="organization-schema-homepage"
         type="application/ld+json"
         strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
       />
       <Navigation initialTranslations={common} />
 

@@ -348,6 +348,8 @@ test('AI video generator model configs define practical video output defaults', 
     assert.deepEqual(veo.durations, [4, 6, 8])
     assert.equal(veo.defaultDuration, 8)
     assert.deepEqual(veo.resolutions, ['720p', '1080p'])
+    assert.equal(veo.supportsFirstLastFrame, true)
+    assert.equal(veo.supportsNativeAudioOutput, true)
   }
   assert.equal(veoLite.minCredits, 30)
   assert.equal(veoFast.minCredits, 60)

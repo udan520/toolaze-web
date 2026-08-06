@@ -1,0 +1,34 @@
+{
+  "taskId": "2026-08-06-happyhorse-ai-video-generator",
+  "slug": "happyhorse-ai-video-generator",
+  "pageType": "l2",
+  "status": "ready_for_publish",
+  "locale": "all",
+  "title": "HappyHorse AI Video Generator",
+  "files": [
+    "src/app/model/happyhorse-ai-video-generator/page.tsx",
+    "src/data/en/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/en.json",
+    "src/data/de/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/de.json",
+    "src/data/ja/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/ja.json",
+    "src/data/es/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/es.json",
+    "src/data/zh-TW/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/zh-TW.json",
+    "src/data/pt/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/pt.json",
+    "src/data/fr/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/fr.json",
+    "src/data/ko/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/ko.json",
+    "src/data/it/happyhorse-ai-video-generator.json",
+    "_codex/seo-pipeline/tasks/2026-08-06-happyhorse-ai-video-generator/content/it.json"
+  ],
+  "notes": [
+    "English model page for HappyHorse 1.1 and the base HappyHorse model.",
+    "Public route is /model/happyhorse-ai-video-generator.",
+    "Localized content is available for de, ja, es, zh-TW, pt, fr, ko, and it."
+  ]
+}

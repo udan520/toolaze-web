@@ -49,10 +49,10 @@ export const HOME_MODEL_CARD_IMAGES = {
     alt: 'Seedream 4.5 commercial image generation preview',
   },
   'ai-dance-generator': {
-    src: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
-    width: 1672,
-    height: 941,
-    alt: 'AI Dance Generator source image preview',
+    src: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp',
+    width: 736,
+    height: 400,
+    alt: 'AI Dance Generator demo video poster',
   },
   'ai-kissing-video-generator': {
     src: 'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',

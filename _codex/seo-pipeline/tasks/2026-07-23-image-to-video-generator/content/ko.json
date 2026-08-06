@@ -45,7 +45,11 @@
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "참조 이미지, 자동 화면비, 5초 길이, 480p 해상도로 생성한 Grok 1.5 Video 이미지 동영상 변환 데모",
-    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T16:03:14.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "이미지 동영상 모델 설정",

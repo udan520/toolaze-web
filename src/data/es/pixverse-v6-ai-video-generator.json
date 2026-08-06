@@ -1,0 +1,304 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-pixverse-v6-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "pixverse-v6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "PixVerse V6"
+  },
+  "metadata": {
+    "title": "Generador de video IA PixVerse V6 | Toolaze",
+    "description": "Crea videos IA PixVerse V6 online desde texto o hasta dos imágenes de referencia con 1 a 15 segundos, salida de 360p a 1080p, prompts multi-shot, Native Audio y proporciones flexibles.",
+    "published": true
+  },
+  "hero": {
+    "h1": "Generador de video IA PixVerse V6",
+    "desc": "Crea videos PixVerse V6 desde prompts de texto o hasta dos imágenes de referencia y elige de 1 a 15 segundos, 360p, 540p, 720p o 1080p en una amplia variedad de formatos sociales y cinematográficos. Úsalo para clips conceptuales rápidos, pruebas de imagen a video con dos referencias, historias de producto multi-shot, escenas con Native Audio, texturas ASMR y borradores cortos de campaña."
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "type": "video",
+    "ariaLabel": "Vista previa demo del generador de video IA PixVerse V6 en formato 16:9",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "¿Qué es el generador de video IA PixVerse V6?",
+    "modelName": "PixVerse V6",
+    "modelType": "modelo de video IA",
+    "description": [
+      "PixVerse V6 es un modelo de video flexible para texto a video e imagen a video. En Toolaze admite hasta dos imágenes de referencia, Native Audio, prompts multi-shot, duración de 1 a 15 segundos y resoluciones de 360p a 1080p.",
+      "Úsalo cuando necesites controlar formato, duración y sonido sin limitarte a un único estilo cinematográfico. Funciona para hooks de creadores, pruebas de producto, imágenes de referencia animadas, anuncios sociales, clips de ambiente y tomas ASMR de materiales."
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar PixVerse V6 en Toolaze",
+    "steps": [
+      {
+        "title": "Elige texto o referencias",
+        "desc": "Empieza con texto para una escena nueva o sube una o dos referencias si sujeto, producto, vestuario o estilo deben seguir cerca del material fuente."
+      },
+      {
+        "title": "Define el formato primero",
+        "desc": "Selecciona proporción, duración de 1 a 15 segundos y resolución 360p, 540p, 720p o 1080p antes de escribir la acción."
+      },
+      {
+        "title": "Describe movimiento, cámara y sonido",
+        "desc": "Da a PixVerse V6 una secuencia corta, movimiento de cámara, acción, luz y pistas de Native Audio como ambiente, pasos o contacto."
+      },
+      {
+        "title": "Revisa contra las referencias",
+        "desc": "Comprueba si el clip conserva detalles clave y si el sonido acompaña la acción; reduce o divide la escena si compiten demasiadas acciones."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Ejemplos de prompts para PixVerse V6",
+    "subtitle": "Usa estos prompts con los controles de proporción, duración, resolución y Native Audio opcional.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Clip de producto con dos referencias",
+        "prompt": "Crea un video limpio usando la foto de producto y la imagen de ambiente de marca. Mantén forma, etiqueta y paleta; empieza con órbita suave, corta a condensación y termina con el producto centrado bajo luz cálida.",
+        "description": "Mantiene identidad de producto y dirección visual con dos referencias.",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "Hook de creador",
+        "prompt": "Crea una intro energética en un apartamento luminoso. La persona levanta una cámara compacta, sonríe al lente y la cámara revela un escritorio con luces encendiéndose.",
+        "description": "Sirve para intros sociales con movimiento y sonido inmediatos.",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #2563eb, #f97316)"
+      },
+      {
+        "title": "Detalle ASMR de ingrediente",
+        "prompt": "Crea un macro de sal gruesa cayendo sobre chocolate oscuro. Muestra granos rebotando, pequeñas fracturas y enfoque lento. Añade taps granulares, contacto de plato y sin música.",
+        "description": "Une movimiento táctil cercano con Native Audio.",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #451a03, #eab308)"
+      },
+      {
+        "title": "Momento storyboard amplio",
+        "prompt": "Crea un clip cinematográfico de una bicicleta eléctrica en un paso subterráneo nocturno. Empieza amplio, sigue la rueda en ángulo bajo y termina bajo luz azul con eco suave.",
+        "description": "Usa encuadre ancho, progresión de tomas y sonido ambiental.",
+        "aspectRatio": "21:9",
+        "color": "linear-gradient(135deg, #020617, #38bdf8)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Mejor dirección de prompts para PixVerse V6",
+    "subtitle": "PixVerse V6 da resultados más limpios cuando cada referencia tiene una función y la acción se mantiene compacta.",
+    "items": [
+      {
+        "title": "Asigna una tarea a cada referencia",
+        "desc": "Prompt débil: Usa estas dos imágenes. Mejor prompt:",
+        "prompt": "Prompt débil: Usa estas dos imágenes. Mejor prompt: Crea un video limpio usando la foto de producto y la imagen de ambiente de marca. Mantén forma, etiqueta y paleta; empieza con órbita suave, corta a condensación y termina con el producto centrado bajo luz cálida."
+      },
+      {
+        "title": "Mantén enfocados los clips cortos",
+        "desc": "Prompt débil: Haz un anuncio completo. Mejor prompt:",
+        "prompt": "Prompt débil: Haz un anuncio completo. Mejor prompt: Crea una intro energética en un apartamento luminoso. La persona levanta una cámara compacta, sonríe al lente y la cámara revela un escritorio con luces encendiéndose."
+      },
+      {
+        "title": "Une Native Audio a la acción visible",
+        "desc": "Prompt débil: Añade sonido cinematográfico. Mejor prompt:",
+        "prompt": "Prompt débil: Añade sonido cinematográfico. Mejor prompt: Crea un macro de sal gruesa cayendo sobre chocolate oscuro. Muestra granos rebotando, pequeñas fracturas y enfoque lento. Añade taps granulares, contacto de plato y sin música."
+      }
+    ]
+  },
+  "scenesTitle": "Qué puedes crear con PixVerse V6",
+  "scenes": [
+    {
+      "title": "Videos de producto con dos imágenes",
+      "icon": "🧴",
+      "desc": "Mantiene identidad de producto y dirección visual con dos referencias."
+    },
+    {
+      "title": "Hooks sociales rápidos",
+      "icon": "📱",
+      "desc": "Sirve para intros sociales con movimiento y sonido inmediatos."
+    },
+    {
+      "title": "Clips de textura ASMR",
+      "icon": "🎧",
+      "desc": "Une movimiento táctil cercano con Native Audio."
+    },
+    {
+      "title": "Storyboards de campaña amplios",
+      "icon": "🎥",
+      "desc": "Usa encuadre ancho, progresión de tomas y sonido ambiental."
+    },
+    {
+      "title": "Animación de imagen de referencia",
+      "icon": "🖼️",
+      "desc": "Mantiene identidad de producto y dirección visual con dos referencias."
+    },
+    {
+      "title": "Variaciones de borrador de bajo costo",
+      "icon": "⚙️",
+      "desc": "Sirve para intros sociales con movimiento y sonido inmediatos."
+    }
+  ],
+  "modelComparison": {
+    "title": "Ajustes de PixVerse V6 de un vistazo",
+    "subtitle": "PixVerse V6 destaca cuando necesitas duración flexible, dos imágenes de referencia, proporciones amplias y Native Audio en un solo modelo.",
+    "columnHeaders": {
+      "metric": "Punto de decisión",
+      "baseline": "PixVerse V6",
+      "middle": "Wan 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "Modos de creación",
+        "baseline": "Texto a video e imagen a video con hasta dos referencias.",
+        "middle": "Texto a video e imagen a video con una referencia.",
+        "target": "Texto a video e imagen a video para clips Kling cinematográficos."
+      },
+      {
+        "label": "Control de duración",
+        "baseline": "1 a 15 segundos, útil para loops cortos y escenas más largas.",
+        "middle": "5, 10 o 15 segundos.",
+        "target": "Tiempo según modelo para borradores pulidos."
+      },
+      {
+        "label": "Resolución",
+        "baseline": "360p, 540p, 720p y 1080p.",
+        "middle": "720p y 1080p.",
+        "target": "Opciones 720p y 1080p en el generador compartido."
+      },
+      {
+        "label": "Proporciones",
+        "baseline": "16:9, 4:3, 1:1, 3:4, 9:16, 2:3, 3:2 y 21:9.",
+        "middle": "Buen ajuste para formatos sociales y cinematográficos estándar.",
+        "target": "Fuerte para salidas sociales y cinematográficas comunes."
+      },
+      {
+        "label": "Audio y tomas",
+        "baseline": "Native Audio y prompts multi-shot para acción, ambiente y ASMR.",
+        "middle": "Native Audio con dirección multi-shot estilo Wan.",
+        "target": "Movimiento cinematográfico con sonido específico cuando está disponible."
+      },
+      {
+        "label": "Credits iniciales",
+        "baseline": "Desde 8 Credits en Toolaze.",
+        "middle": "Desde 140 Credits en Toolaze.",
+        "target": "Varían por versión y ajustes de Kling."
+      },
+      {
+        "label": "Elige cuando",
+        "baseline": "Necesites flexibilidad de formato, baja resolución de borrador, dos referencias o tiempos cortos precisos.",
+        "middle": "Prefieras un clip Wan con tiempos preset más largos.",
+        "target": "Quieras look Kling cinematográfico o flujo motion-control."
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "PixVerse V6 frente a otros modelos de video de Toolaze",
+    "subtitle": "Elige PixVerse V6 cuando la primera decisión sea la flexibilidad de formato y no un estilo de modelo estrecho.",
+    "columns": [
+      "Modelo",
+      "Buen encaje",
+      "Qué revisar antes"
+    ],
+    "rows": [
+      [
+        "PixVerse V6",
+        "Texto a video e imagen a video flexible con dos referencias, Native Audio, muchas proporciones y 1 a 15 segundos.",
+        "Usa resoluciones bajas para revisar dirección antes de gastar en 720p o 1080p."
+      ],
+      [
+        "Wan 2.6",
+        "Clips Wan más largos con Native Audio y ritmo 5/10/15 segundos.",
+        "Úsalo cuando prefieras comportamiento Wan sobre el rango de formatos PixVerse."
+      ],
+      [
+        "Kling 3.0",
+        "Escenas cinematográficas, anuncios de producto y clips de creador pulidos.",
+        "Comprueba si el estilo Kling encaja con la toma antes de compararlo con PixVerse."
+      ],
+      [
+        "Grok 1.5 Video",
+        "Ideación rápida con Native Audio para pruebas creativas amplias.",
+        "Úsalo cuando velocidad y exploración importen más que dos referencias."
+      ]
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes sobre video IA PixVerse V6",
+  "faq": [
+    {
+      "q": "¿Para qué sirve mejor PixVerse V6?",
+      "a": "PixVerse V6 es ideal para borradores rápidos de texto a video o imagen a video cuando necesitas duración flexible, proporciones amplias, Native Audio y hasta dos imágenes de referencia."
+    },
+    {
+      "q": "¿PixVerse V6 admite dos imágenes de referencia?",
+      "a": "Sí. Toolaze permite usar PixVerse V6 con hasta dos imágenes de referencia. Usa una para el sujeto principal y otra para estilo, luz, ambiente, material o entorno."
+    },
+    {
+      "q": "¿PixVerse V6 puede generar Native Audio?",
+      "a": "Sí. Añade señales sonoras directas como pasos, toques de vidrio, movimiento de tela, ambiente, textura granular o tono de sala para que el audio siga la acción visible."
+    },
+    {
+      "q": "¿PixVerse V6 sirve para videos ASMR?",
+      "a": "Sí, sobre todo para detalles cortos de materiales o comida. Describe distancia de cámara, textura, punto de contacto y sonidos deseados."
+    },
+    {
+      "q": "¿Cuándo elegir PixVerse V6 en vez de Wan 2.6?",
+      "a": "Elige PixVerse V6 cuando necesites una o dos referencias, duración de 1 a 15 segundos, borradores de baja resolución o formatos muy flexibles. Elige Wan 2.6 si prefieres un video Wan con tiempos preset más largos."
+    }
+  ],
+  "moreTools": "Más modelos de video IA",
+  "moreToolsLinks": [
+    {
+      "title": "Generador de video IA HappyHorse",
+      "description": "Crea videos Alibaba HappyHorse con una imagen de referencia, proporciones por versión, Native Audio y movimiento cinematográfico.",
+      "href": "/model/happyhorse-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Vista previa demo del modelo de video HappyHorse"
+      }
+    },
+    {
+      "title": "Generador de video IA Wan 2.6",
+      "description": "Usa Wan 2.6 para texto o una imagen, prompts multi-shot, Native Audio y salida 720p o 1080p.",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Vista previa demo del modelo de video Wan 2.6"
+      }
+    },
+    {
+      "title": "Kling 3 Motion Control",
+      "description": "Controla movimiento de personajes o productos con una imagen de referencia y un video de movimiento de referencia.",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Vista previa demo de Kling 3 Motion Control"
+      }
+    }
+  ]
+}

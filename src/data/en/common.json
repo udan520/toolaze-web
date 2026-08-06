@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Motion",
     "aiMotionControlGenerator": "AI Motion Control Generator",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Photo Abstract Poster Generator",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Bald Filter",
+    "bangsFilter": "Bangs Filter",
+    "permFilter": "Perm Filter"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "AI Breast Expansion",
         "summary": "Upload a clothed adult photo and preview natural bust-size edits while keeping the person, clothing, pose, and scene stable."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "Photo Abstract Poster Generator",
+        "summary": "Upload one photo and create a browser-composed abstract poster with the original image preserved above and a sparse memory panel below."
       }
     },
     "aiToolsHubTitle": "AI Tools for Images, Video & Everyday Media Workflows",
@@ -297,7 +305,11 @@
     "aiBreastExpansion": "AI Breast Expansion",
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Motion",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Photo Abstract Poster Generator",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Bald Filter",
+    "bangsFilter": "Bangs Filter",
+    "permFilter": "Perm Filter"
   },
   "breadcrumb": {
     "home": "Home",
@@ -326,7 +338,8 @@
     "textToVideoGenerator": "Text to Video Generator",
     "imageToVideoGenerator": "Image to Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
-    "aiBikiniGenerator": "AI Bikini Generator"
+    "aiBikiniGenerator": "AI Bikini Generator",
+    "photoAbstractPosterGenerator": "Photo Abstract Poster Generator"
   },
   "about": {
     "metadata": {

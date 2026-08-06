@@ -45,7 +45,11 @@
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "Grok 1.5 Video image-to-video demo generated from a reference image with auto aspect ratio, 5 second duration, and 480p resolution",
-    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T16:03:14.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "AI Video Model Settings and Credit Estimates",
@@ -182,7 +186,7 @@
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
         "description": "AI image-to-video example with a stable product shape, turntable motion, reflections, and studio lighting.",
         "duration": "PT5.042S",
-        "uploadDate": "2026-07-21T11:54:53.259Z"
+        "uploadDate": "2026-07-21T13:32:23.000Z"
       },
       {
         "title": "Storyboard Scene Prompt",

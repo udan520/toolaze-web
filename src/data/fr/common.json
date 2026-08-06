@@ -77,7 +77,11 @@
     "wan27Video": "Vidéo Wan 2.7",
     "kling26MotionControl": "Kling 2.6 Mouvement",
     "aiMotionControlGenerator": "Générateur Motion Control IA",
-    "veo31Video": "Vidéo Veo 3.1"
+    "photoAbstractPosterGenerator": "Générateur d’affiche photo abstraite",
+    "veo31Video": "Vidéo Veo 3.1",
+    "baldFilter": "Filtre crâne rasé",
+    "bangsFilter": "Filtre frange",
+    "permFilter": "Filtre permanente"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "Augmentation de poitrine IA",
         "summary": "Importez une photo d’adulte habillé et prévisualisez des retouches naturelles de poitrine en gardant personne, vêtements, pose et scène."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "Générateur d’affiche photo abstraite",
+        "summary": "Importez une photo et créez dans le navigateur une affiche abstraite avec l’image originale en haut et un panneau mémoire sobre en bas."
       }
     },
     "aiToolsHubTitle": "Outils IA Gratuits pour les Images, la Vidéo et les Flux de Travail Média Quotidiens",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "Augmentation de poitrine IA",
     "wan27Video": "Vidéo Wan 2.7",
     "kling26MotionControl": "Kling 2.6 Mouvement",
-    "veo31Video": "Vidéo Veo 3.1"
+    "photoAbstractPosterGenerator": "Générateur d’affiche photo abstraite",
+    "veo31Video": "Vidéo Veo 3.1",
+    "baldFilter": "Filtre crâne rasé",
+    "bangsFilter": "Filtre frange",
+    "permFilter": "Filtre permanente"
   },
   "breadcrumb": {
     "home": "Accueil",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "Générateur texte-vidéo",
     "imageToVideoGenerator": "Générateur image-vidéo",
     "aiClothesChanger": "Changeur de vêtements IA",
-    "aiBikiniGenerator": "Générateur de bikini IA"
+    "aiBikiniGenerator": "Générateur de bikini IA",
+    "photoAbstractPosterGenerator": "Générateur d’affiche photo abstraite"
   },
   "about": {
     "metadata": {

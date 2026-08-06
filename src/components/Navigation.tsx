@@ -66,6 +66,7 @@ const defaultNavTranslations = {
   aiBreastExpansion: 'AI Breast Expansion',
   unrestrictedAiImageGenerator: 'Unlimited AI Image',
   aiZinePosterGenerator: 'AI Zine Poster Generator',
+  photoAbstractPosterGenerator: 'Photo Abstract Poster Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   fontGenerator: 'Font Generator',
   emojiCopyAndPaste: 'Emoji Copy & Paste',
@@ -84,6 +85,8 @@ const defaultNavTranslations = {
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
+  pixverseV6: 'PixVerse V6',
+  happyHorse: 'HappyHorse',
   kling3MotionControl: 'Kling 3 Motion Control',
   pricing: 'Pricing',
   nanoBananaPro: 'Nano Banana Pro',
@@ -168,8 +171,8 @@ const AI_TOOLS_DEMO_IMAGES = {
   unrestrictedAiImageGenerator:
     'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
-  aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp',
-  buzzCutFilter: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
+  aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
+  buzzCutFilter: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiClothesChanger: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   aiBikiniGenerator: 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
@@ -187,7 +190,7 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp',
   aiAsmrVideoGenerator:
     'https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp',
-  aiDanceGenerator: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-source.png',
+  aiDanceGenerator: 'https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp',
   motionControlGenerator:
     'https://assets.toolaze.com/model-assets/kling-2-6-pro-motion-control/motion-control-demo-poster.webp',
   talkingAvatarCreator:
@@ -196,6 +199,8 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://assets.toolaze.com/model-assets/gpt-image-2/feature-image-editing.webp',
   aiZinePosterGenerator:
     'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
+  photoAbstractPosterGenerator:
+    '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
   worldCupAiImageGenerator:
     'https://assets.toolaze.com/uploads/d67aebd7cde5431abd3a7bb74a89bac1.webp',
 }
@@ -203,14 +208,15 @@ const AI_TOOLS_DEMO_IMAGES = {
 type AiToolNavLabelKey =
   | 'unrestrictedAiImageGenerator'
   | 'aiHairstyleChanger'
-  | 'buzzCutFilter'
   | 'aiHairColorChanger'
   | 'aiClothesChanger'
   | 'aiBikiniGenerator'
   | 'aiBreastExpansion'
   | 'aiBabyGenerator'
   | 'aiCouplePhotoMaker'
+  | 'buzzCutFilter'
   | 'aiZinePosterGenerator'
+  | 'photoAbstractPosterGenerator'
   | 'worldCupAiImageGenerator'
   | 'watermarkRemover'
   | 'photoRestoration'
@@ -238,6 +244,7 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
   { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
   { href: '/ai-zine-poster-generator', labelKey: 'aiZinePosterGenerator', imageKey: 'aiZinePosterGenerator', hot: true },
+  { href: '/ai-photo-abstract-poster-generator', labelKey: 'photoAbstractPosterGenerator', imageKey: 'photoAbstractPosterGenerator' },
   { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },
   { href: '/watermark-remover', labelKey: 'watermarkRemover', imageKey: 'watermarkRemover' },
   { href: '/photo-restoration', labelKey: 'photoRestoration', imageKey: 'photoRestoration' },
@@ -300,6 +307,8 @@ type AiVideoNavLabelKey =
   | 'wan27Video'
   | 'wan26Video'
   | 'wan25Video'
+  | 'pixverseV6'
+  | 'happyHorse'
   | 'seedance25'
   | 'seedance2'
   | 'seedance2Mini'
@@ -338,6 +347,8 @@ const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/wan-2-7-ai-video-generator', labelKey: 'wan27Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-6-ai-video-generator', labelKey: 'wan26Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
+  { href: '/model/pixverse-v6-ai-video-generator', labelKey: 'pixverseV6', logoSrc: '/model-logos/pixverse.svg', badgeKey: 'new' },
+  { href: '/model/happyhorse-ai-video-generator', labelKey: 'happyHorse', logoSrc: '/model-logos/happyhorse.svg', badgeKey: 'new' },
   { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
 ]
 

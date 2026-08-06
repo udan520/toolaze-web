@@ -45,7 +45,11 @@
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
     "ariaLabel": "참조 이미지, 자동 화면비, 5초 길이, 480p 해상도로 생성한 Grok 1.5 Video 이미지 동영상 변환 데모",
-    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57"
+    "sourceHistory": "Grok 1.5 Video · Image to Video · auto · 5s · 480p · 2026-07-21 12:31:57",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T16:03:14.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "AI 동영상 모델 설정 및 예상 크레딧",
@@ -182,7 +186,7 @@
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
         "description": "안정적인 제품 형태, 턴테이블 움직임, 반사와 스튜디오 조명을 보여주는 AI 이미지 동영상 변환 예시입니다.",
         "duration": "PT5.042S",
-        "uploadDate": "2026-07-21T11:54:53.259Z"
+        "uploadDate": "2026-07-21T13:32:23.000Z"
       },
       {
         "title": "스토리보드 장면 프롬프트",

@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7動画",
     "kling26MotionControl": "Kling 2.6 モーション",
     "aiMotionControlGenerator": "AIモーションコントロール生成",
-    "veo31Video": "Veo 3.1動画"
+    "photoAbstractPosterGenerator": "フォト抽象ポスタージェネレーター",
+    "veo31Video": "Veo 3.1動画",
+    "baldFilter": "光頭フィルター",
+    "bangsFilter": "前髪フィルター",
+    "permFilter": "パーマフィルター"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "AIバストボリュームアップ",
         "summary": "服を着た成人写真をアップロードし、人物、服、ポーズ、シーンを保ちながら自然なバストサイズ編集を確認できます。"
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "フォト抽象ポスタージェネレーター",
+        "summary": "写真を1枚アップロードし、元画像を上に保ち、下に余白のあるメモリーパネルを置いたブラウザー合成ポスターを作成できます。"
       }
     },
     "aiToolsHubTitle": "画像、動画、日常のメディアワークフローのための無料AIツール",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "AIバストボリュームアップ",
     "wan27Video": "Wan 2.7動画",
     "kling26MotionControl": "Kling 2.6 モーション",
-    "veo31Video": "Veo 3.1動画"
+    "photoAbstractPosterGenerator": "フォト抽象ポスタージェネレーター",
+    "veo31Video": "Veo 3.1動画",
+    "baldFilter": "光頭フィルター",
+    "bangsFilter": "前髪フィルター",
+    "permFilter": "パーマフィルター"
   },
   "breadcrumb": {
     "home": "ホーム",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "テキストから動画生成",
     "imageToVideoGenerator": "画像から動画生成",
     "aiClothesChanger": "AI服装チェンジャー",
-    "aiBikiniGenerator": "AIビキニジェネレーター"
+    "aiBikiniGenerator": "AIビキニジェネレーター",
+    "photoAbstractPosterGenerator": "フォト抽象ポスタージェネレーター"
   },
   "about": {
     "metadata": {

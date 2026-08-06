@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 影片",
     "kling26MotionControl": "Kling 2.6 動作控制",
     "aiMotionControlGenerator": "AI 動作控制生成器",
-    "veo31Video": "Veo 3.1 影片"
+    "photoAbstractPosterGenerator": "照片抽象海報生成器",
+    "veo31Video": "Veo 3.1 影片",
+    "baldFilter": "光頭濾鏡",
+    "bangsFilter": "瀏海濾鏡",
+    "permFilter": "燙髮濾鏡"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "AI 豐胸預覽",
         "summary": "上傳穿著衣服的成人照片，在保留人物、衣服、姿勢和場景的同時預覽自然胸型調整。"
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "照片抽象海報生成器",
+        "summary": "上傳一張照片，在瀏覽器中建立抽象海報：上方保留原始圖像，下方加入稀疏記憶面板。"
       }
     },
     "aiToolsHubTitle": "適用於圖片、影片和日常媒體工作流程的免費AI工具",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "AI 豐胸預覽",
     "wan27Video": "Wan 2.7 影片",
     "kling26MotionControl": "Kling 2.6 動作控制",
-    "veo31Video": "Veo 3.1 影片"
+    "photoAbstractPosterGenerator": "照片抽象海報生成器",
+    "veo31Video": "Veo 3.1 影片",
+    "baldFilter": "光頭濾鏡",
+    "bangsFilter": "瀏海濾鏡",
+    "permFilter": "燙髮濾鏡"
   },
   "breadcrumb": {
     "home": "首頁",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "文字轉影片生成器",
     "imageToVideoGenerator": "圖像轉影片生成器",
     "aiClothesChanger": "AI 換衣工具",
-    "aiBikiniGenerator": "AI 比基尼生成器"
+    "aiBikiniGenerator": "AI 比基尼生成器",
+    "photoAbstractPosterGenerator": "照片抽象海報生成器"
   },
   "about": {
     "metadata": {

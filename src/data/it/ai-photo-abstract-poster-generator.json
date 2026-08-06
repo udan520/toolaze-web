@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "Foto originale di corsa nel deserto"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Demo Running Toward Haze con foto originale nel deserto e pannello astratto della memoria"
+      }
+    ],
+    "displayName": "Generatore di poster astratti da foto",
+    "textOverrides": {
+      "uploadTitle": "Carica una foto",
+      "uploadHelper": "Usa una foto con relazioni spaziali chiare. JPG, PNG o WebP fino a 30 MB. La foto resta intatta mentre il poster viene composto localmente nel browser.",
+      "generateLabel": "Genera gratis",
+      "samplePhotoName": "Foto demo",
+      "uploadedPhotoName": "Foto caricata",
+      "uploadLabel": "Carica",
+      "replaceLabel": "Sostituisci",
+      "deleteLabel": "Rimuovi",
+      "outputRatioLabel": "Rapporto di uscita",
+      "composingLabel": "Composizione...",
+      "invalidTypeMessage": "Carica un’immagine JPG, PNG o WebP.",
+      "validationErrorMessage": "L’immagine deve essere sotto 30 MB.",
+      "imageReadErrorMessage": "Impossibile leggere questa immagine. Prova un altro file JPG, PNG o WebP.",
+      "composeErrorMessage": "Impossibile comporre questo poster.",
+      "noRemoteNote": "Questa composizione non usa chiamate a modelli, lavori di upload, trattenute di crediti o generazione remota.",
+      "historyTitle": "Cronologia locale",
+      "historySubtitle": "I poster recenti di questa sessione appaiono qui.",
+      "savedLabel": "salvati",
+      "latestOutputLabel": "Ultima uscita",
+      "ratioLabel": "Rapporto",
+      "downloadLabel": "Scarica PNG",
+      "demoStateLabel": "Stato demo",
+      "demoStateText": "Dopo la prima composizione, il pannello destro diventa la tua cronologia.",
+      "emptyStateText": "Carica una foto e crea il tuo primo poster locale.",
+      "historyDownloadSuffix": "Scarica",
+      "demoTabLabel": "Demo",
+      "historyTabLabel": "Cronologia"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Demo Photo Abstract Editorial con foto di corsa nel deserto sopra e pannello Running Toward Haze sotto",
+    "sourceHistory": "Demo deterministica locale dalla sessione originale di Photo Abstract Editorial: foto di corsa nel deserto e pannello Running Toward Haze."
+  },
+  "metadata": {
+    "title": "Generatore di poster astratti da foto | Foto in pannello memoria | Toolaze",
+    "description": "Carica una foto e crea nel browser un poster astratto con immagine originale preservata sopra, pannello memoria essenziale sotto e breve titolo poetico in inglese."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Generatore di <span class=\"text-gradient\">poster astratti da foto</span>",
+    "desc": "Carica una foto per creare un artwork editoriale verticale nel browser: l’immagine originale resta fedele sopra, mentre sotto vengono composti un pannello memoria astratto e un breve titolo inglese. Usalo per archivi personali, ricordi di viaggio, saggi visivi, bozze di galleria e copertine social silenziose."
+  },
+  "intro": {
+    "title": "Cosa crea questo generatore di poster astratti da foto",
+    "content": [
+      {
+        "title": "Una foto fedele più un pannello memoria astratto",
+        "text": "Il generatore mantiene la foto caricata come immagine sorgente visibile, poi distilla spaziatura, assi, gerarchia cromatica, movimento e spazio negativo in un pannello avorio pulito sotto. Il risultato sembra un dittico editoriale, non un filtro, collage o illustrazione ridisegnata."
+      },
+      {
+        "title": "Titolo e composizione automatici",
+        "text": "Non devi scrivere indicazioni di stile. Carica un’immagine e il compositore locale applica automaticamente le regole Photo Abstract Editorial, compresi layout del pannello, sistema di segni trattenuto, palette smorzata e breve titolo inglese."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come creare un Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "Carica una foto",
+        "desc": "Scegli una fotografia con relazioni visibili: persona nello spazio, orizzonte, architettura, oggetti, ritmo di folla o direzione chiara della luce."
+      },
+      {
+        "title": "Usa prima il rapporto Auto",
+        "desc": "Auto lascia che la tela finale segua foto sorgente e pannello inferiore. Puoi scegliere un altro rapporto, ma le forme fisse possono richiedere più bianco o un taglio più morbido."
+      },
+      {
+        "title": "Crea l’editorial",
+        "desc": "Toolaze preserva la foto e compone nel browser pannello astratto, palette, segni e titolo dalla stessa immagine."
+      },
+      {
+        "title": "Rivedi e riusa",
+        "desc": "Controlla equilibrio del pannello, posizione del titolo e adattamento della foto. I risultati recenti appaiono nella cronologia locale a destra per il download."
+      }
+    ]
+  },
+  "features": {
+    "title": "Stile del poster astratto da foto",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "Area fotografica fedele",
+        "desc": "L’immagine superiore resta fotografica. Lo stile non ridisegna, ritocca, estende o filtra la foto sorgente."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "Layout verticale adattivo",
+        "desc": "La divisione tra foto e pannello cambia con l’immagine sorgente invece di forzare una cornice meccanica a metà."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "Motivo memoria astratto",
+        "desc": "Il pannello inferiore traduce relazioni visive in un piccolo motivo essenziale, non in una miniatura della foto."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Palette derivata dalla foto",
+        "desc": "I ruoli cromatici smorzati vengono dall’immagine caricata, con pochi accenti solo quando quei colori sono visibili nella sorgente."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Titolo poetico inglese",
+        "desc": "Un titolo sobrio di due-cinque parole viene posto solo sul pannello avorio e basato su fatti visibili dell’immagine."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "Superficie avorio pulita",
+        "desc": "Il pannello resta piatto, quieto e senza texture, così la composizione dipende da spazio, ritmo e segni."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Foto migliori da caricare",
+    "subtitle": "Lo stile funziona meglio quando l’immagine sorgente ha relazioni distillabili, non solo un oggetto isolato.",
+    "items": [
+      {
+        "title": "Cerca ritmo spaziale",
+        "desc": "Linee d’orizzonte, percorsi, ringhiere, persone nello spazio, architettura, luci, ombre o oggetti ripetuti danno più struttura al pannello inferiore.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "Mantieni leggibile il soggetto",
+        "desc": "Evita forte sfocatura, volti coperti, crop estremi o foto in cui il soggetto importante è già troppo piccolo.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "Usa indizi cromatici naturali",
+        "desc": "Foto con un tono scuro, un tono chiaro e un accento sottile creano spesso il pannello astratto più coerente.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Scegli con cura i rapporti fissi",
+        "desc": "Auto è ideale per preservare fedelmente la foto. Usa 9:16, 4:5, 1:1 o 16:9 solo quando la tela esterna conta più della forma naturale della foto.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "Cosa puoi creare",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "Pannelli di memoria di viaggio",
+      "desc": "Trasforma paesaggi, strade, coste, musei e passeggiate urbane in immagini d’archivio calme con foto sorgente fedele."
+    },
+    {
+      "icon": "▥",
+      "title": "Studi editoriali di ritratto",
+      "desc": "Usa ritratti o foto di persone in un luogo quando vuoi preservare il soggetto e farlo riecheggiare sotto in modo astratto."
+    },
+    {
+      "icon": "✶",
+      "title": "Copertine per saggi visivi",
+      "desc": "Crea copertine raffinate per saggi, journal, moodboard, playlist, presentazioni e post social con un tono letterario."
+    }
+  ],
+  "faqTitle": "FAQ del generatore di poster astratti da foto",
+  "faq": [
+    {
+      "q": "Devo scrivere un prompt?",
+      "a": "No. Carica una foto e Toolaze applica automaticamente nel browser le regole di composizione Photo Abstract Editorial."
+    },
+    {
+      "q": "Il generatore ridisegna la mia foto?",
+      "a": "No. L’area fotografica deve preservare fedelmente l’immagine caricata. La parte generata è il pannello astratto e il titolo sotto."
+    },
+    {
+      "q": "Posso cambiare il rapporto?",
+      "a": "Sì. Auto è il default consigliato perché la composizione dovrebbe seguire la foto caricata e l’equilibrio del pannello. Rapporti fissi come 9:16, 4:5, 1:1 o 16:9 cambiano la tela esterna mantenendo la foto adattata senza taglio aggressivo."
+    },
+    {
+      "q": "Perché non c’è una casella prompt?",
+      "a": "Lo stile è volutamente automatico. L’immagine caricata è la fonte e le regole locali controllano area fotografica fedele, pannello memoria astratto, palette, titolo e superficie avorio pulita."
+    },
+    {
+      "q": "Che tipo di foto funziona meglio?",
+      "a": "Usa una foto con relazioni visive chiare, come persona nello spazio, orizzonte, percorso, facciata, ritmo di folla, ombra forte o semplice gruppo di oggetti."
+    },
+    {
+      "q": "Viene inviato a un modello immagine?",
+      "a": "No. Il poster viene costruito con codice Canvas del browser dalla foto caricata, colori campionati, equilibrio geometrico e logica locale del titolo. Questo tool non usa lavori remoti di generazione immagini."
+    }
+  ],
+  "moreTools": "Strumenti creativi correlati",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "Generatore di poster zine IA",
+      "description": "Carica una foto e trasforma il soggetto principale in una composizione calma da poster cartaceo.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "Anteprima del generatore di poster zine IA"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "Convertitore immagini",
+      "description": "Converti JPG, PNG, WebP, AVIF, HEIC e altri formati prima di creare un poster.",
+      "href": "/image-converter"
+    }
+  ]
+}

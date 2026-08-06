@@ -4,7 +4,16 @@
     "title": "Free Kling 3.0 AI Video Generator (4K, Online, No Sign Up) - Toolaze",
     "description": "Create 4K AI videos with Kling 3.0 for free. Text, image, video, and audio inputs. Native 4K output, 6-shot multi-shot, multilingual audio. Free online AI video generation—coming soon."
   },
-  "sectionsOrder": ["howToUse", "modelIntro", "features", "intro", "performanceMetrics", "scenes", "rating", "faq"],
+  "sectionsOrder": [
+    "howToUse",
+    "modelIntro",
+    "features",
+    "intro",
+    "performanceMetrics",
+    "scenes",
+    "rating",
+    "faq"
+  ],
   "modelIntro": {
     "title": "Why Kling 3.0 Stands Out for AI Video Creation",
     "modelName": "Kling 3.0",
@@ -38,7 +47,11 @@
     "ariaLabel": "16:9 demo video for the Kling 3.0 AI video generator",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2"
+    "sourceHistory": "Grok Imagine Video 1.5 · Storyboard Shot Prompt · 16:9 · R2",
+    "poster": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-21T17:21:01.000Z",
+    "type": "video"
   },
   "intro": {
     "title": "Why Choose Kling 3.0 AI Video Generator?",
@@ -107,12 +120,30 @@
   "performanceMetrics": {
     "title": "Kling 3.0 Technical Specifications",
     "metrics": [
-      { "label": "Input Types", "value": "Text, Image, Video, Audio" },
-      { "label": "Output Resolution", "value": "Native 4K and 2K" },
-      { "label": "Video Duration", "value": "15 seconds (custom duration)" },
-      { "label": "Camera Cuts", "value": "Up to 6 shots per generation" },
-      { "label": "Audio Support", "value": "EN, CN, JP, KR, ES with dialects, multi-character" },
-      { "label": "Use Cases", "value": "Ads, e-commerce, social, short-form video" }
+      {
+        "label": "Input Types",
+        "value": "Text, Image, Video, Audio"
+      },
+      {
+        "label": "Output Resolution",
+        "value": "Native 4K and 2K"
+      },
+      {
+        "label": "Video Duration",
+        "value": "15 seconds (custom duration)"
+      },
+      {
+        "label": "Camera Cuts",
+        "value": "Up to 6 shots per generation"
+      },
+      {
+        "label": "Audio Support",
+        "value": "EN, CN, JP, KR, ES with dialects, multi-character"
+      },
+      {
+        "label": "Use Cases",
+        "value": "Ads, e-commerce, social, short-form video"
+      }
     ]
   },
   "howToUse": {

@@ -1,0 +1,305 @@
+{
+  "sourceData": "src/data/zh-TW/pixverse-v6-ai-video-generator.json",
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-pixverse-v6-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "pixverse-v6",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "PixVerse V6"
+  },
+  "metadata": {
+    "title": "PixVerse V6 AI 影片生成器 | Toolaze",
+    "description": "使用文字或最多兩張參考圖在線建立 PixVerse V6 AI 影片，支援 1 至 15 秒、360p 至 1080p、multi-shot 提示詞、Native Audio 與彈性比例。",
+    "published": true
+  },
+  "hero": {
+    "h1": "PixVerse V6 AI 影片生成器",
+    "desc": "使用文字提示詞或最多兩張參考圖建立 PixVerse V6 影片，並選擇 1 至 15 秒、360p、540p、720p 或 1080p，以及多種社群與電影比例。適合快速概念短片、雙參考圖轉影片、multi-shot 產品故事、Native Audio 場景、ASMR 素材與短活動草稿。"
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "type": "video",
+    "ariaLabel": "PixVerse V6 AI 影片生成器 16:9 示範預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "什麼是 PixVerse V6 AI 影片生成器？",
+    "modelName": "PixVerse V6",
+    "modelType": "AI 影片模型",
+    "description": [
+      "PixVerse V6 是彈性的文字轉影片與圖片轉影片模型。Toolaze 支援最多兩張參考圖、Native Audio、multi-shot 提示詞、1 至 15 秒片長，以及 360p 到 1080p 解析度。",
+      "當你需要快速控制格式、片長與聲音，又不想被單一電影風格限制時可以使用。它適合創作者開場、產品測試、參考圖動畫、社群廣告、氛圍短片與 ASMR 材質鏡頭。"
+    ]
+  },
+  "howToUse": {
+    "title": "在 Toolaze 使用 PixVerse V6",
+    "steps": [
+      {
+        "title": "選擇文字或參考圖生成",
+        "desc": "新場景可從文字提示詞開始；若需要主體、產品、服裝或視覺風格貼近來源，可上傳一到兩張參考圖。"
+      },
+      {
+        "title": "先設定格式再寫場景",
+        "desc": "先選比例、1 至 15 秒片長，以及 360p、540p、720p 或 1080p，讓提示詞專注描述動態。"
+      },
+      {
+        "title": "同時描述動態、鏡頭與聲音",
+        "desc": "給 PixVerse V6 精簡分鏡、鏡頭移動、主體動作、光線與 Native Audio 線索，例如環境聲、接觸聲、腳步或 ASMR 細節。"
+      },
+      {
+        "title": "對照參考圖檢查結果",
+        "desc": "檢查影片是否保留重要參考細節，以及聲音是否支撐動作。若動作太多，縮短提示詞或拆分場景。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "PixVerse V6 提示詞範例",
+    "subtitle": "搭配比例、片長、解析度與可選 Native Audio 控制使用。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "雙參考產品短片",
+        "prompt": "使用上傳的產品照與品牌氛圍圖建立乾淨產品影片。保持瓶身形狀、標籤位置與色彩穩定。從柔和環繞鏡頭開始，切到玻璃凝結水珠，最後讓產品置中並被暖光打亮。加入安靜棚內氛圍與細微玻璃敲擊。",
+        "description": "用兩張參考圖維持產品身份與視覺氛圍。",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #0f172a, #22c55e)"
+      },
+      {
+        "title": "創作者開場",
+        "prompt": "在明亮公寓工作室建立有能量的創作者開場。人物拿起小型相機，對鏡頭微笑，接著鏡頭擺到燈光亮起的桌面配置。保持動作順暢、臉部自然，加入小型相機操作聲與室內氛圍。",
+        "description": "適合需要即時感動態與聲音的社群開場。",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #2563eb, #f97316)"
+      },
+      {
+        "title": "ASMR 食材細節",
+        "prompt": "建立粗海鹽落在黑巧克力甜點上的微距 ASMR 鏡頭。呈現鹽粒彈跳、細碎片破裂，以及慢慢掠過表面的焦點轉移。加入清脆顆粒聲、柔和盤面接觸、低室內聲，不要音樂。",
+        "description": "將觸感近景動態與 Native Audio 指令結合。",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #451a03, #eab308)"
+      },
+      {
+        "title": "寬幅分鏡瞬間",
+        "prompt": "建立一段電動自行車夜晚穿過安靜地下道的電影感分鏡。先用寬幅建立鏡頭，再切到車輪旁低角度跟拍，最後讓騎士穿過藍色光池。加入輪胎低鳴、遠處車流與柔和回聲。",
+        "description": "用寬幅構圖、鏡頭推進與環境聲製作活動草稿。",
+        "aspectRatio": "21:9",
+        "color": "linear-gradient(135deg, #020617, #38bdf8)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "更好的 PixVerse V6 提示方向",
+    "subtitle": "為每張參考圖指定任務，並讓動作保持精簡，PixVerse V6 的結果會更乾淨。",
+    "items": [
+      {
+        "title": "為每張參考圖指定任務",
+        "desc": "弱提示詞：使用這兩張圖。更好的提示詞：",
+        "prompt": "弱：使用這兩張圖。更好：第一張上傳圖負責產品形狀與標籤，第二張負責光線氛圍與色彩。保持兩者穩定，同時建立柔和環繞、凝結細節與最後置中的產品鏡頭。"
+      },
+      {
+        "title": "讓短片保持聚焦",
+        "desc": "弱提示詞：做完整廣告。更好的提示詞：",
+        "prompt": "弱：做完整廣告。更好：建立一段精簡產品亮相，包含緩慢推近、材質近景與乾淨收尾。保持產品置中，使用暖側光，加入柔和機械按鍵聲。"
+      },
+      {
+        "title": "讓 Native Audio 對應可見動作",
+        "desc": "弱提示詞：加入電影感聲音。更好的提示詞：",
+        "prompt": "弱：加入電影感聲音。更好：只加入畫面中可對應的聲音：袖子轉動時的布料聲、鞋子踏在混凝土上的輕聲、遠處室內聲，不要音樂。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 PixVerse V6 建立什麼",
+  "scenes": [
+    {
+      "title": "雙圖產品影片",
+      "icon": "🧴",
+      "desc": "把產品參考圖與氛圍、材質或活動圖片結合，讓短片同時保留身份與風格方向。"
+    },
+    {
+      "title": "快速社群開場",
+      "icon": "📱",
+      "desc": "建立開場、創作者瞬間、上市預告與短直式影片，支援彈性片長與 Native Audio。"
+    },
+    {
+      "title": "ASMR 材質短片",
+      "icon": "🎧",
+      "desc": "用提示詞描述鹽、肥皂、食物、布料、紙張、玻璃與物件接觸，並同步 Native Audio。"
+    },
+    {
+      "title": "寬幅活動分鏡",
+      "icon": "🎥",
+      "desc": "使用 16:9 或 21:9 製作廣告、情緒片與電影感場景測試。"
+    },
+    {
+      "title": "參考圖動畫",
+      "icon": "🖼️",
+      "desc": "將一到兩張上傳圖動起來，同時保留主體形狀、顏色線索與預期風格。"
+    },
+    {
+      "title": "低成本草稿變體",
+      "icon": "⚙️",
+      "desc": "先用較低解析度檢查方向，提示詞穩定後再升到 720p 或 1080p。"
+    }
+  ],
+  "modelComparison": {
+    "title": "PixVerse V6 設定一覽",
+    "subtitle": "當你需要彈性片長、兩張參考圖、多種比例與 Native Audio 時，PixVerse V6 的優勢最明顯。",
+    "columnHeaders": {
+      "metric": "判斷重點",
+      "baseline": "PixVerse V6",
+      "middle": "Wan 2.6",
+      "target": "Kling 3.0"
+    },
+    "rows": [
+      {
+        "label": "生成模式",
+        "baseline": "文字轉影片與圖片轉影片，最多兩張參考圖。",
+        "middle": "文字轉影片與圖片轉影片，一張參考圖。",
+        "target": "文字轉影片與圖片轉影片，適合電影感 Kling 短片。"
+      },
+      {
+        "label": "片長控制",
+        "baseline": "1 至 15 秒，適合短循環與較長故事片段。",
+        "middle": "5、10 或 15 秒。",
+        "target": "依模型設定，適合精緻動態草稿。"
+      },
+      {
+        "label": "解析度選項",
+        "baseline": "360p、540p、720p、1080p。",
+        "middle": "720p 與 1080p。",
+        "target": "共享生成器中的 720p 與 1080p 選項。"
+      },
+      {
+        "label": "比例",
+        "baseline": "包含 16:9、4:3、1:1、3:4、9:16、2:3、3:2、21:9。",
+        "middle": "適合標準社群與電影比例。",
+        "target": "適合常見社群與電影輸出。"
+      },
+      {
+        "label": "音訊與鏡頭控制",
+        "baseline": "Native Audio 與 multi-shot 提示詞，適合動作、氛圍與 ASMR。",
+        "middle": "Native Audio 搭配 Wan 風格 multi-shot 指令。",
+        "target": "在可用模型中提供電影感動態與模型專屬聲音支援。"
+      },
+      {
+        "label": "起始 Credits",
+        "baseline": "Toolaze 上 8 Credits 起。",
+        "middle": "Toolaze 上 140 Credits 起。",
+        "target": "Credits 依 Kling 版本與設定變動。"
+      },
+      {
+        "label": "適合情境",
+        "baseline": "需要格式彈性、低解析草稿、兩張參考圖或精準短片長。",
+        "middle": "偏好 Wan 家族影片與較長預設片長。",
+        "target": "想要 Kling 電影感或 motion-control 工作流。"
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "PixVerse V6 與其他 Toolaze 影片模型",
+    "subtitle": "若第一個決策是格式彈性，而不是固定模型風格，選 PixVerse V6。",
+    "columns": [
+      "模型選擇",
+      "適合用途",
+      "生成前檢查"
+    ],
+    "rows": [
+      [
+        "PixVerse V6",
+        "彈性文字轉影片與圖片轉影片，支援兩張參考圖、Native Audio、多比例與 1 至 15 秒片長。",
+        "先用較低解析度檢查方向，再消耗 720p 或 1080p。"
+      ],
+      [
+        "Wan 2.6",
+        "較長 Wan 影片，Native Audio 與聚焦的 5/10/15 秒節奏。",
+        "當你更重視 Wan 動態而不是 PixVerse 格式範圍時使用。"
+      ],
+      [
+        "Kling 3.0",
+        "電影感場景、產品廣告與精緻創作者短片。",
+        "先確認 Kling 動態風格是否符合鏡頭，再與 PixVerse 草稿比較。"
+      ],
+      [
+        "Grok 1.5 Video",
+        "快速 Native Audio 發想，適合廣泛創意測試。",
+        "當速度與探索比雙參考圖控制更重要時使用。"
+      ]
+    ]
+  },
+  "faqTitle": "PixVerse V6 AI 影片常見問題",
+  "faq": [
+    {
+      "q": "PixVerse V6 最適合什麼？",
+      "a": "PixVerse V6 適合快速文字轉影片或圖片轉影片草稿，特別是需要彈性片長、多種比例、Native Audio，以及最多兩張參考圖時。"
+    },
+    {
+      "q": "PixVerse V6 支援兩張參考圖嗎？",
+      "a": "支援。Toolaze 可讓 PixVerse V6 使用最多兩張參考圖，一張用於主要主體，另一張用於風格、光線、氛圍、材質或環境。"
+    },
+    {
+      "q": "PixVerse V6 可以生成 Native Audio 嗎？",
+      "a": "可以。加入腳步、玻璃敲擊、布料移動、環境聲、顆粒質感或室內聲等直接聲音線索，讓音訊跟隨可見動作。"
+    },
+    {
+      "q": "PixVerse V6 適合 ASMR 影片嗎？",
+      "a": "適合，尤其是短篇材質或食物細節。請描述鏡頭距離、材質、接觸點與希望聽見的聲音。"
+    },
+    {
+      "q": "什麼時候選 PixVerse V6 而不是 Wan 2.6？",
+      "a": "需要一到兩張參考圖、1 至 15 秒片長、低解析草稿或更彈性比例時選 PixVerse V6；偏好 Wan 家族與較長預設片長時選 Wan 2.6。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "HappyHorse AI 影片生成器",
+      "description": "使用一張參考圖、版本專屬比例、Native Audio 與電影感動態建立 Alibaba HappyHorse 影片。",
+      "href": "/model/happyhorse-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "HappyHorse 影片模型示範預覽"
+      }
+    },
+    {
+      "title": "Wan 2.6 AI 影片生成器",
+      "description": "使用 Wan 2.6 進行文字或圖片輸入、multi-shot 提示詞、Native Audio，以及 720p 或 1080p 輸出。",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6 影片模型示範預覽"
+      }
+    },
+    {
+      "title": "Kling 3 Motion Control",
+      "description": "用參考圖與動作參考影片控制角色或產品動態。",
+      "href": "/model/kling-3-motion-control",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-control-demo-poster.webp",
+        "alt": "Kling 3 Motion Control 示範預覽"
+      }
+    }
+  ]
+}

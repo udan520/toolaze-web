@@ -154,6 +154,7 @@ interface AiVideoGeneratorToolProps {
   heroDescription?: string
   initialImageUrls?: string[]
   initialMotionVideoUrls?: string[]
+  initialMotionVideoPosters?: string[]
   initialMotionVideoDurationSeconds?: number
   initialPrompt?: string
   initialCharacterOrientation?: 'image' | 'video'
@@ -177,6 +178,7 @@ interface PromptInsertEventDetail {
   aspectRatio?: string
   resolution?: string
   outputFormat?: string
+  durationSeconds?: number
   mode?: string
   characterOrientation?: 'image' | 'video'
 }
@@ -603,6 +605,7 @@ export default function AiVideoGeneratorTool({
   heroDescription,
   initialImageUrls,
   initialMotionVideoUrls,
+  initialMotionVideoPosters,
   initialMotionVideoDurationSeconds,
   initialPrompt,
   initialCharacterOrientation,
@@ -665,6 +668,11 @@ export default function AiVideoGeneratorTool({
   const [remoteMotionVideoUrls, setRemoteMotionVideoUrls] = useState<string[]>(() => (
     Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls.filter(Boolean).slice(0, modelConfig.maxVideos || 1) : []
   ))
+  const initialMotionVideoPosterMap = useMemo(() => {
+    const urls = Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls : []
+    const posters = Array.isArray(initialMotionVideoPosters) ? initialMotionVideoPosters : []
+    return new Map(urls.map((url, index) => [url, posters[index]]).filter((entry): entry is [string, string] => Boolean(entry[0] && entry[1])))
+  }, [initialMotionVideoPosters, initialMotionVideoUrls])
   const [characterOrientation, setCharacterOrientation] = useState<'image' | 'video'>(initialCharacterOrientation || 'video')
   const [prompt, setPrompt] = useState(initialPrompt || '')
   const [aspectRatio, setAspectRatio] = useState(modelConfig.aspectRatios[0]?.value || '16:9')
@@ -684,7 +692,7 @@ export default function AiVideoGeneratorTool({
   const [history, setHistory] = useState<VideoHistoryItem[]>([])
   const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
-  const [motionVideoPreview, setMotionVideoPreview] = useState<{ src: string; label: string } | null>(null)
+  const [motionVideoPreview, setMotionVideoPreview] = useState<{ src: string; label: string; poster?: string } | null>(null)
   const shouldAllowLeftOverlay = isModelMenuOpen
   const supportsNativeAudio = Boolean(modelConfig.supportsNativeAudio)
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
@@ -897,7 +905,10 @@ export default function AiVideoGeneratorTool({
     const nextMode = nextModel.supportedModes.includes(requestedMode)
       ? requestedMode
       : getInitialVideoMode(nextModel, undefined)
-    const nextDuration = getHistoryDuration(detail?.outputFormat, nextModel.defaultDuration || nextModel.durations[0] || 5)
+    const explicitDuration = Number(detail?.durationSeconds)
+    const nextDuration = Number.isFinite(explicitDuration) && explicitDuration > 0
+      ? explicitDuration
+      : getHistoryDuration(detail?.outputFormat, nextModel.defaultDuration || nextModel.durations[0] || 5)
     const shouldUseFirstLastFrame = nextMode === 'image-to-video'
       && Boolean(nextModel.supportsFirstLastFrame)
       && getHistoryUsesFirstLastFrame(detail?.outputFormat)
@@ -1041,6 +1052,7 @@ export default function AiVideoGeneratorTool({
       index: 0,
       src: remoteMotionVideoUrls[0],
       label: text.motionReferenceVideo,
+      poster: initialMotionVideoPosterMap.get(remoteMotionVideoUrls[0]),
     }
     : motionVideoFiles[0]
       ? {
@@ -1712,6 +1724,7 @@ export default function AiVideoGeneratorTool({
         credentials: 'include',
         body: JSON.stringify({
           mediaType: 'video',
+          taskId: request.taskId,
           model: getVideoHistoryModelSlug(request.modelId),
           prompt: request.prompt,
           outputUrl: videoUrl,
@@ -2809,7 +2822,7 @@ export default function AiVideoGeneratorTool({
                       onReplace={(item, files) => {
                         if (files?.[0]) void replaceMotionVideoWithFile(item.index, files[0], item.source)
                       }}
-                      onPreview={(item) => setMotionVideoPreview({ src: item.src, label: item.label })}
+                      onPreview={(item) => setMotionVideoPreview({ src: item.src, label: item.label, poster: item.poster })}
                       onDelete={removeSelectedMotionVideo}
                     />
                   ) : null}
@@ -3054,6 +3067,7 @@ export default function AiVideoGeneratorTool({
             </div>
             <video
               src={motionVideoPreview.src}
+              poster={motionVideoPreview.poster}
               className="block max-h-[78vh] w-full bg-black object-contain"
               controls
               autoPlay

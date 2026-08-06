@@ -23,7 +23,10 @@
         "title": "Demo de video de baile con IA",
         "width": 16,
         "height": 9,
-        "mediaType": "video"
+        "mediaType": "video",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+        "duration": "PT8.042S",
+        "uploadDate": "2026-07-21T07:36:34.000Z"
       }
     ],
     "defaultVideoDurationSeconds": 5,
@@ -73,35 +76,50 @@
         "prompt": "Haz que la persona de la imagen haga un baile hip-hop sencillo.",
         "note": "Útil para promos de clases, clips musicales e ideas de actuación urbana.",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:46.000Z"
       },
       {
         "title": "Movimiento elegante",
         "prompt": "Haz que la persona de la imagen baile con gracia.",
         "note": "Úsalo cuando el video necesite elegancia, equilibrio y líneas corporales claras.",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:39.000Z"
       },
       {
         "title": "Actuación K-Pop",
         "prompt": "Haz que la persona de la imagen haga un baile K-Pop.",
         "note": "Ideal para ediciones de fans con energía, covers y clips de campañas sociales.",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:51.000Z"
       },
       {
         "title": "Baile animado",
         "prompt": "Haz que la persona de la imagen baile con energía.",
         "note": "Útil para salsa, bachata, baile de salón e ideas de escenario.",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:58.000Z"
       },
       {
         "title": "Baile callejero",
         "prompt": "Haz que la persona de la imagen baile en una calle de ciudad.",
         "note": "Bueno para crews de baile, eventos locales y clips casuales de creadores.",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:37:03.000Z"
       }
     ]
   },
@@ -204,5 +222,16 @@
       "a": "Sube una sola imagen clara y pide encuadre de cuerpo completo, líneas corporales claras, anatomía realista, movimiento equilibrado, pies y manos visibles y un fondo limpio. Si el movimiento queda demasiado cargado, simplifica el paso y vuelve a generar."
     }
   ],
-  "moreTools": "Más herramientas de video con IA"
+  "moreTools": "Más herramientas de video con IA",
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+    "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+    "ariaLabel": "Demo de video de baile con IA",
+    "width": 16,
+    "height": 9,
+    "duration": "PT8.042S",
+    "uploadDate": "2026-07-21T07:36:34.000Z",
+    "sourceHistory": "AI Dance Generator demo video · generated output frame poster · R2"
+  }
 }

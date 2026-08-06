@@ -42,7 +42,10 @@ type PromptExample = {
   title: string
   prompt: string
   videoSrc: string
+  videoPoster: string
   videoLabel: string
+  duration: string
+  uploadDate: string
 }
 
 type RelatedLink = TextItem & {
@@ -77,7 +80,10 @@ export type GrokImagineVideo15LandingCopy = {
     description: string
     demoVideo: {
       src: string
+      poster: string
       label: string
+      duration: string
+      uploadDate: string
     }
   }
   whatIs: {
@@ -176,7 +182,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
       "Animate a starting image with controlled camera movement, more believable motion and physics, and synchronized sound. Use Grok Imagine Video 1.5 on Toolaze to create 1-15 second clips at 480p or 720p for product visuals, social content, and cinematic scene tests.",
     demoVideo: {
       src: 'https://assets.toolaze.com/uploads/7b12e05c8c564a18b1ce7b02887051ac.png',
+      poster: 'https://assets.toolaze.com/uploads/7b12e05c8c564a18b1ce7b02887051ac-poster.webp',
       label: 'Grok Imagine Video 1.5 16:9 product motion demo',
+      duration: 'PT5.042S',
+      uploadDate: '2026-07-21T17:18:22.000Z',
     },
   },
   whatIs: {
@@ -374,7 +383,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'Animate the uploaded product image into a 5-second premium product reveal. Slow push-in camera, subtle rotation, glossy reflections, clean studio lighting, realistic shadow movement, no extra text, commercial style.',
         videoSrc: 'https://assets.toolaze.com/uploads/8de0b3095d15419a8a71f762d6235166.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/8de0b3095d15419a8a71f762d6235166-poster.webp',
         videoLabel: '16:9 product reveal prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:19:56.000Z',
       },
       {
         id: 'social-vertical',
@@ -383,7 +395,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'Create a 16:9 short-form video of a futuristic city street at night. A courier walks through neon rain, camera follows from behind, reflections on pavement, cinematic lighting, smooth motion, atmospheric but clear.',
         videoSrc: 'https://assets.toolaze.com/uploads/96060cfc87204bdba24d208dbc9e1f15.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/96060cfc87204bdba24d208dbc9e1f15-poster.webp',
         videoLabel: '16:9 neon city social prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:21:38.000Z',
       },
       {
         id: 'interior-camera',
@@ -392,7 +407,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'Use the uploaded room image as the reference. Preserve the layout and furniture. Add a gentle left-to-right camera drift, soft daylight through the window, moving curtain fabric, warm interior mood, realistic motion.',
         videoSrc: 'https://assets.toolaze.com/uploads/dbed78470f784d01a3cb413be3614ccf.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/dbed78470f784d01a3cb413be3614ccf-poster.webp',
         videoLabel: '16:9 interior camera move prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:18:57.000Z',
       },
       {
         id: 'character-motion',
@@ -401,7 +419,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'Animate the reference character with subtle breathing, blinking, wind in hair, and a small camera push-in. Keep identity, outfit, color palette, and background style consistent. Cinematic portrait lighting.',
         videoSrc: 'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp',
         videoLabel: '16:9 character motion prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:20:41.000Z',
       },
       {
         id: 'food-commercial',
@@ -410,7 +431,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'A close-up food commercial shot of a dessert plate on a marble table. Steam, syrup movement, shallow depth of field, slow macro camera glide, elegant restaurant lighting, appetizing and realistic.',
         videoSrc: 'https://assets.toolaze.com/uploads/536bedba1104401ab11ff573fcce3587.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/536bedba1104401ab11ff573fcce3587-poster.webp',
         videoLabel: '16:9 food commercial prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:18:53.000Z',
       },
       {
         id: 'storyboard-shot',
@@ -419,7 +443,10 @@ const englishCopy: GrokImagineVideo15LandingCopy = {
         prompt:
           'Create an establishing shot for a science-fiction short film. A small research vehicle crosses a frozen plain under green aurora, wide-angle camera, slow forward motion, wind-blown snow, quiet cinematic tension.',
         videoSrc: 'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
+        videoPoster: 'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7-poster.webp',
         videoLabel: '16:9 storyboard prompt example video',
+        duration: 'PT5.042S',
+        uploadDate: '2026-07-21T17:21:01.000Z',
       },
     ],
   },

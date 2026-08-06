@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "Originales Wüstenlauf-Quellfoto"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Running Toward Haze Demo mit Wüstenlauf-Foto oben und abstraktem Erinnerungspanel unten"
+      }
+    ],
+    "displayName": "Foto-Abstrakt-Poster-Generator",
+    "textOverrides": {
+      "uploadTitle": "Ein Foto hochladen",
+      "uploadHelper": "Nutzen Sie ein Foto mit klaren räumlichen Beziehungen. JPG, PNG oder WebP bis 30 MB. Das Foto bleibt unverändert, während das Poster lokal im Browser komponiert wird.",
+      "generateLabel": "Kostenlos generieren",
+      "samplePhotoName": "Beispielfoto",
+      "uploadedPhotoName": "Hochgeladenes Foto",
+      "uploadLabel": "Hochladen",
+      "replaceLabel": "Ersetzen",
+      "deleteLabel": "Entfernen",
+      "outputRatioLabel": "Ausgabeformat",
+      "composingLabel": "Wird komponiert...",
+      "invalidTypeMessage": "Bitte laden Sie ein JPG-, PNG- oder WebP-Bild hoch.",
+      "validationErrorMessage": "Das Bild muss unter 30 MB bleiben.",
+      "imageReadErrorMessage": "Dieses Bild konnte nicht gelesen werden. Versuchen Sie eine andere JPG-, PNG- oder WebP-Datei.",
+      "composeErrorMessage": "Dieses Poster konnte nicht komponiert werden.",
+      "noRemoteNote": "Für diese Komposition gibt es keinen Modellaufruf, keinen Upload-Auftrag, keine reservierten Credits und keine entfernte Generierung.",
+      "historyTitle": "Lokaler Verlauf",
+      "historySubtitle": "Aktuelle Poster aus dieser Sitzung erscheinen hier.",
+      "savedLabel": "gespeichert",
+      "latestOutputLabel": "Neueste Ausgabe",
+      "ratioLabel": "Format",
+      "downloadLabel": "PNG herunterladen",
+      "demoStateLabel": "Demo-Status",
+      "demoStateText": "Nach der ersten Komposition wird der rechte Bereich zu Ihrem Verlauf.",
+      "emptyStateText": "Laden Sie ein Foto hoch und erstellen Sie Ihr erstes lokales Poster.",
+      "historyDownloadSuffix": "Herunterladen",
+      "demoTabLabel": "Demo",
+      "historyTabLabel": "Verlauf"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Photo Abstract Editorial Demo mit Wüstenlauf-Foto oben und Running Toward Haze Erinnerungspanel unten",
+    "sourceHistory": "Lokale deterministische Demo aus der ursprünglichen Photo Abstract Editorial Sitzung: Wüstenlauf-Quellfoto plus Running Toward Haze Erinnerungspanel."
+  },
+  "metadata": {
+    "title": "Photo Abstract Poster Generator | Foto zu Memory Panel | Toolaze",
+    "description": "Laden Sie ein Foto hoch und erstellen Sie ein im Browser komponiertes abstraktes Poster mit bewahrtem Originalbild, sparsamem Erinnerungspanel und kurzem englischem Titel."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Photo Abstract Poster</span> Generator",
+    "desc": "Laden Sie ein Foto hoch und erstellen Sie im Browser ein vertikales Editorial-Artwork: Das Originalbild bleibt oben treu erhalten, darunter entstehen ein sparsames abstraktes Erinnerungspanel und ein kurzer englischer Titel. Ideal für persönliche Archive, Reiseerinnerungen, visuelle Essays, Galerieentwürfe und ruhige Social-Cover."
+  },
+  "intro": {
+    "title": "Was dieser Photo Abstract Poster Generator erstellt",
+    "content": [
+      {
+        "title": "Ein treues Foto plus abstraktes Erinnerungspanel",
+        "text": "Der Generator hält das hochgeladene Foto als sichtbare Quelle fest und verdichtet Abstände, Achsen, Farbhierarchie, Bewegung und Negativraum zu einem klaren elfenbeinfarbenen Panel darunter. Das Ergebnis wirkt wie ein Editorial-Diptychon, nicht wie Filter, Collage oder nachgezeichnete Illustration."
+      },
+      {
+        "title": "Automatischer Titel und Aufbau",
+        "text": "Sie müssen keine Stilbeschreibung schreiben. Laden Sie ein Bild hoch; der lokale Composer wendet die Photo Abstract Editorial Regeln automatisch an, einschließlich Panel-Layout, reduziertem Markensystem, gedämpfter Palette und kurzem englischem Titel."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So erstellen Sie ein Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "Ein Foto hochladen",
+        "desc": "Wählen Sie ein Foto mit sichtbaren Beziehungen: eine Person im Raum, Horizont, Architektur, Objekte, Rhythmus einer Menge oder klare Lichtrichtung."
+      },
+      {
+        "title": "Zuerst Auto-Format nutzen",
+        "desc": "Auto lässt die finale Leinwand dem Quellfoto und dem unteren Panel folgen. Andere Formate sind möglich, können aber mehr Weißraum oder einen weicheren Ausschnitt erfordern."
+      },
+      {
+        "title": "Editorial erstellen",
+        "desc": "Toolaze bewahrt das Foto und komponiert Erinnerungspanel, Palette, Zeichen und Titel im Browser aus demselben Bild."
+      },
+      {
+        "title": "Prüfen und weiterverwenden",
+        "desc": "Kontrollieren Sie Panel-Balance, Titelposition und Fotoeinpassung. Neue Ergebnisse erscheinen rechts im lokalen Verlauf zum Download."
+      }
+    ]
+  },
+  "features": {
+    "title": "Photo Abstract Poster Stil",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "Treuer Fotobereich",
+        "desc": "Das obere Bild bleibt fotografisch. Der Stil zeichnet, retuschiert, erweitert oder filtert das Quellfoto nicht."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "Adaptives vertikales Layout",
+        "desc": "Die Teilung zwischen Foto und Panel folgt dem Quellbild, statt eine starre Hälfte-Hälfte-Fläche zu erzwingen."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "Abstraktes Erinnerungsmotiv",
+        "desc": "Das untere Panel übersetzt visuelle Beziehungen in ein kleines sparsames Motiv, nicht in eine Miniaturkopie."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Palette aus dem Foto",
+        "desc": "Gedämpfte Farbrollen stammen aus dem hochgeladenen Bild, mit wenigen Akzenten nur wenn diese Farben sichtbar sind."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Poetischer englischer Titel",
+        "desc": "Ein ruhiger Titel aus zwei bis fünf Wörtern steht nur auf dem elfenbeinfarbenen Panel und basiert auf sichtbaren Bildfakten."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "Saubere Elfenbeinfläche",
+        "desc": "Das Panel bleibt flach, ruhig und ohne Textur, damit Raum, Rhythmus und Zeichen die Komposition tragen."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Die besten Fotos zum Hochladen",
+    "subtitle": "Der Stil funktioniert am besten, wenn das Bild Beziehungen bietet, die sich verdichten lassen, nicht nur ein einzelnes isoliertes Objekt.",
+    "items": [
+      {
+        "title": "Suchen Sie räumlichen Rhythmus",
+        "desc": "Horizonte, Wege, Geländer, Menschen im Raum, Architektur, Licht, Schatten oder wiederholte Objekte geben dem unteren Panel Struktur.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "Motiv lesbar halten",
+        "desc": "Vermeiden Sie starke Unschärfe, verdeckte Gesichter, extreme Nahschnitte oder Fotos, in denen das Hauptmotiv zu klein ist.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "Natürliche Farbhinweise nutzen",
+        "desc": "Fotos mit klarem Dunkelton, hellem Ton und einem subtilen Akzent erzeugen meist das stimmigste Panel.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Feste Formate bewusst wählen",
+        "desc": "Auto eignet sich am besten, wenn das Foto treu erhalten bleiben soll. Nutzen Sie 9:16, 4:5, 1:1 oder 16:9 nur, wenn die äußere Leinwand wichtiger ist als die natürliche Fotoform.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "Was Sie erstellen können",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "Reiseerinnerungs-Panels",
+      "desc": "Verwandeln Sie Landschaften, Straßen, Ufer, Museen und Stadtgänge in ruhige Archivbilder mit treuem Quellfoto."
+    },
+    {
+      "icon": "▥",
+      "title": "Editoriale Porträtstudien",
+      "desc": "Nutzen Sie Porträts oder Menschen-im-Raum-Fotos, wenn das Motiv erhalten bleiben und unten abstrakt widerhallen soll."
+    },
+    {
+      "icon": "✶",
+      "title": "Cover für visuelle Essays",
+      "desc": "Erstellen Sie feine Cover für Essays, Journals, Moodboards, Playlists, Präsentationen und Social Posts mit literarischer Ruhe."
+    }
+  ],
+  "faqTitle": "Photo Abstract Poster Generator FAQ",
+  "faq": [
+    {
+      "q": "Brauche ich einen Prompt?",
+      "a": "Nein. Laden Sie ein Foto hoch; Toolaze wendet die Photo Abstract Editorial Kompositionsregeln automatisch im Browser an."
+    },
+    {
+      "q": "Wird mein Foto neu gezeichnet?",
+      "a": "Nein. Der Fotobereich soll das hochgeladene Bild treu bewahren. Neu erzeugt werden das abstrakte Panel und der Titel darunter."
+    },
+    {
+      "q": "Kann ich das Seitenverhältnis ändern?",
+      "a": "Ja. Auto ist empfohlen, weil die Komposition dem Foto und der Panel-Balance folgen soll. Feste Formate wie 9:16, 4:5, 1:1 oder 16:9 ändern die Außenfläche, während das Foto eingepasst statt hart beschnitten wird."
+    },
+    {
+      "q": "Warum gibt es kein Prompt-Feld?",
+      "a": "Der Stil ist bewusst automatisch. Das hochgeladene Bild ist die Quelle; lokale Kompositionsregeln steuern Fotobereich, Erinnerungspanel, Palette, Titel und saubere Elfenbeinfläche."
+    },
+    {
+      "q": "Welche Fotos funktionieren am besten?",
+      "a": "Nutzen Sie Fotos mit klaren visuellen Beziehungen, etwa Person im Raum, Horizont, Weg, Fassade, Menschenrhythmus, starkem Schatten oder einfacher Objektgruppe."
+    },
+    {
+      "q": "Wird das an ein Bildmodell gesendet?",
+      "a": "Nein. Das Poster entsteht mit Browser-Canvas-Code aus Foto, Farbproben, geometrischer Balance und lokaler Titellogik. Für dieses Tool gibt es keinen entfernten Bildgenerierungsauftrag."
+    }
+  ],
+  "moreTools": "Verwandte Kreativtools",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "KI-Zine-Poster-Generator",
+      "description": "Laden Sie ein Foto hoch und verwandeln Sie das Hauptmotiv in eine ruhige Papierposter-Komposition.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "Vorschau des KI-Zine-Poster-Generators"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "Bildkonverter",
+      "description": "Konvertieren Sie JPG, PNG, WebP, AVIF, HEIC und andere Bildformate, bevor Sie ein Poster erstellen.",
+      "href": "/image-converter"
+    }
+  ]
+}

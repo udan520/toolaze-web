@@ -92,6 +92,7 @@ test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', (
 
 test('AI Video model links render as tag-style entries after the function cards', () => {
   const expectedModelLinks = [
+    '/model/veo-3-1-ai-video-generator',
     '/ai-video-generator?model=seedance-2-mini',
     '/model/seedance-2',
     '/model/kling-3-motion-control',
@@ -134,6 +135,7 @@ test('Prompts model menu only keeps prompt-library model collections', () => {
     '/prompts/models/nano-banana',
   ]
   const removedPromptModelLinks = [
+    '/model/veo-3-1-ai-video-generator',
     '/model/wan-2-7-ai-video-generator',
     '/model/wan-2-6-ai-video-generator',
     '/model/wan-2-5-ai-video-generator',

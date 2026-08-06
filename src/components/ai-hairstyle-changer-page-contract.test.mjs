@@ -58,3 +58,19 @@ test('AI Hairstyle Changer Custom tab supports prompt or hairstyle-reference inp
   assert.match(aiImageToolSource, /shouldUseCustomReferenceUploader = shouldShowCustomInputModeSwitch && customInputMode === 'reference'/)
   assert.match(aiImageToolSource, /!\(\(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId\) \|\| shouldUseCustomReferenceUploader\)/)
 })
+
+test('AI Hairstyle Changer Custom reference mode enables generate from uploaded references', () => {
+  assert.match(
+    aiImageToolSource,
+    /const currentEffectivePrompt = shouldUseCustomReferenceUploader \? customReferencePrompt\.trim\(\) : prompt\.trim\(\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /const canGenerate = Boolean\(currentEffectivePrompt\) && \(activeTab !== 'image-to-image' \|\| hasCurrentReferenceImages\)/,
+  )
+  assert.match(aiImageToolSource, /disabled=\{!canGenerate\}/)
+  assert.doesNotMatch(
+    aiImageToolSource,
+    /disabled=\{!prompt\.trim\(\) \|\| \(activeTab === 'image-to-image' && imageFiles\.length === 0 && remoteImageUrls\.length === 0\)\}/,
+  )
+})

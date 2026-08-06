@@ -23,7 +23,10 @@
         "title": "AI 舞蹈影片示範",
         "width": 16,
         "height": 9,
-        "mediaType": "video"
+        "mediaType": "video",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+        "duration": "PT8.042S",
+        "uploadDate": "2026-07-21T07:36:34.000Z"
       }
     ],
     "defaultVideoDurationSeconds": 5,
@@ -73,35 +76,50 @@
         "prompt": "讓圖片中的人物做一段簡單嘻哈舞。",
         "note": "適合課程宣傳、音樂短片與都會表演概念。",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:46.000Z"
       },
       {
         "title": "優雅動作",
         "prompt": "讓圖片中的人物優雅地跳舞。",
         "note": "當影片需要優雅感、平衡與清楚身體線條時使用。",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:39.000Z"
       },
       {
         "title": "K-Pop 表演",
         "prompt": "讓圖片中的人物做一段 K-Pop 舞蹈。",
         "note": "適合有活力的粉絲剪輯、翻跳和社群活動短片。",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:51.000Z"
       },
       {
         "title": "活力舞蹈",
         "prompt": "讓圖片中的人物活力跳舞。",
         "note": "可用於 salsa、bachata、ballroom 和舞台展示概念。",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:58.000Z"
       },
       {
         "title": "街頭舞蹈",
         "prompt": "讓圖片中的人物在城市街道上跳舞。",
         "note": "適合舞團、在地活動與輕鬆的創作者短片。",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:37:03.000Z"
       }
     ]
   },
@@ -204,5 +222,16 @@
       "a": "上傳清晰單張圖片，並要求全身取景、清楚身體線條、自然身體結構、平衡動作、可見手腳和乾淨背景。如果動作太複雜，請簡化舞步並重新生成。"
     }
   ],
-  "moreTools": "更多 AI 影片工具"
+  "moreTools": "更多 AI 影片工具",
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+    "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+    "ariaLabel": "AI 舞蹈影片示範",
+    "width": 16,
+    "height": 9,
+    "duration": "PT8.042S",
+    "uploadDate": "2026-07-21T07:36:34.000Z",
+    "sourceHistory": "AI Dance Generator demo video · generated output frame poster · R2"
+  }
 }

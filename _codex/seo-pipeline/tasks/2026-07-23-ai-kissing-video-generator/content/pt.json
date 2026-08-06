@@ -31,7 +31,9 @@
         "width": 16,
         "height": 9,
         "mediaType": "video",
-        "poster": "https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp"
+        "poster": "https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp",
+        "duration": "PT3.042S",
+        "uploadDate": "2026-07-24T00:27:57.000Z"
       }
     ]
   },
@@ -234,5 +236,16 @@
       "href": "/ai-couple-photo-maker",
       "description": "Gere retratos românticos de casal quando precisar de resultados em imagem estática."
     }
-  ]
+  ],
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/uploads/83a8c5b91a4945beb66275c38a731dbf.png",
+    "poster": "https://assets.toolaze.com/uploads/15ccbe71d8eb4921930b8b7638bcebab.webp",
+    "ariaLabel": "Vídeo de demonstração de beijo com IA em 16:9",
+    "width": 16,
+    "height": 9,
+    "duration": "PT3.042S",
+    "uploadDate": "2026-07-24T00:27:57.000Z",
+    "sourceHistory": "AI Kissing Video Generator demo video · generated output frame poster · R2"
+  }
 }

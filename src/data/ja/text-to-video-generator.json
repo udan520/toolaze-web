@@ -54,7 +54,10 @@
     "src": "https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png",
     "ariaLabel": "Toolazeの旅行商品コンセプトプロンプトから生成したテキスト動画デモ",
     "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
-    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9"
+    "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-07-22T15:22:00.000Z",
+    "type": "video"
   },
   "performanceMetrics": {
     "title": "テキスト動画の設定と出力チェック",
@@ -210,11 +213,12 @@
         "poster": "https://assets.toolaze.com/uploads/c601d39d801e44938e5e33711e19df32.webp",
         "description": "架空の小型旅行用コーヒーグラインダーを想定したワイド画面Grokテキスト動画例。",
         "aspectRatio": "16:9",
-        "duration": "PT5S",
-        "uploadDate": "2026-07-22T15:09:27.742Z",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-22T15:22:00.000Z",
         "sourceHistory": "Grok text-to-video · 40622216026309ff8f4410d965143e74 · 5s · 16:9",
         "note": "撮影前に商品アイデアの簡単なビジュアルコンセプトが必要なときに使います。",
-        "color": "linear-gradient(135deg, #92400e, #f59e0b)"
+        "color": "linear-gradient(135deg, #92400e, #f59e0b)",
+        "type": "video"
       }
     ]
   },

@@ -74,7 +74,7 @@ function isWhitelistedPath(path) {
     || /^(promptExamples)\.items\[\d+\]\.prompt$/.test(path)
     || /^moreToolsLinks\[\d+\]\.slug$/.test(path)
     || /^moreToolsLinks\[\d+\]\.href$/.test(path)
-    || /^moreToolsLinks\[\d+\]\.media\.(type|src|poster)$/.test(path)
+    || /^moreToolsLinks\[\d+\]\.media\.(type|src|poster|duration|uploadDate)$/.test(path)
     || /\.color$/.test(path)
     || /\.icon$/.test(path)
 }
@@ -195,10 +195,11 @@ test('Talking Avatar public entry points are wired across Toolaze surfaces', () 
   assert.match(navigationSource, /talkingAvatarCreator/, 'navigation should reference the localized label key')
   assert.match(navigationSource, new RegExp(demoPosterUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), 'navigation should use the shared Talking Avatar poster')
   assert.match(navigationSource, /AI_VIDEO_TOOL_MENU_ITEMS[\s\S]*\/talking-avatar-creator/, 'AI Tools video group should include Talking Avatar')
+  assert.match(navigationSource, /href=\{getLocalizedHref\(item\.href\)\}/, 'shared AI tool menu renderer should localize item hrefs')
   assert.equal(
-    (navigationSource.match(/getLocalizedHref\('\/talking-avatar-creator'\)/g) ?? []).length,
-    2,
-    'AI Video desktop and mobile menus should include localized Talking Avatar links',
+    (navigationSource.match(/\{ href: '\/talking-avatar-creator', labelKey: 'talkingAvatarCreator'/g) ?? []).length,
+    1,
+    'AI Video menu config should include one reusable Talking Avatar item for desktop and mobile renderers',
   )
   assert.match(footerSource, /\/talking-avatar-creator/, 'footer should include Talking Avatar')
   assert.match(homeSource, /localizeHomeHref\('\/talking-avatar-creator'\)/, 'homepage AI Tools hub should include Talking Avatar')

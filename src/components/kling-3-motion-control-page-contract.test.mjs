@@ -43,6 +43,7 @@ function collectVisibleStrings(value, path = []) {
     'initialCharacterOrientation',
     'initialImageUrls',
     'initialMotionVideoDurationSeconds',
+    'initialMotionVideoPosters',
     'initialMotionVideoUrls',
     'layout',
     'logoAlt',
@@ -87,6 +88,7 @@ function collectVisibleEntries(value, path = []) {
     'initialCharacterOrientation',
     'initialImageUrls',
     'initialMotionVideoDurationSeconds',
+    'initialMotionVideoPosters',
     'initialMotionVideoUrls',
     'layout',
     'logoAlt',
@@ -175,6 +177,9 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
     assert.match(publicContent.topTool.displayName, /Kling 3/)
     assert.deepEqual(publicContent.topTool.initialImageUrls, [klingReferenceImage])
     assert.deepEqual(publicContent.topTool.initialMotionVideoUrls, [klingReferenceVideo])
+    assert.deepEqual(publicContent.topTool.initialMotionVideoPosters, [
+      'https://assets.toolaze.com/model-assets/kling-3-motion-control/motion-reference-video-poster.webp',
+    ])
     assert.equal(publicContent.topTool.initialMotionVideoDurationSeconds, 10)
     assert.equal(publicContent.topTool.initialCharacterOrientation, 'video')
     assert.equal(publicContent.heroDemoVideo?.src, klingDemoVideo)
@@ -267,12 +272,17 @@ test('Kling 3 Motion Control localized content is traceable to SEO Factory', () 
 test('Kling 3 Motion Control prompt tips render weak and better rewrites as separated rows', () => {
   const l2PageContent = readFileSync(join(root, 'src', 'components', 'blocks', 'ToolL2PageContent.tsx'), 'utf8')
 
-  assert.match(l2PageContent, /function parsePromptRewrite/, 'prompt rewrite parser should exist')
-  assert.match(l2PageContent, /Weak prompt\|Weak\|较差/, 'parser should support English and Chinese weak labels')
-  assert.match(l2PageContent, /Better prompt\|Better\|较好/, 'parser should support English and Chinese better labels')
-  assert.match(l2PageContent, /❌/, 'weak prompts should render with a clear negative icon')
-  assert.match(l2PageContent, /✅/, 'better prompts should render with a clear positive icon')
-  assert.match(l2PageContent, /border-t border-slate-200 pt-3/, 'better prompt should be visually separated from weak prompt')
+  assert.match(l2PageContent, /function splitWeakBetterPrompt/, 'prompt rewrite parser should exist')
+  assert.match(l2PageContent, /function PromptTipDescription/, 'card descriptions should parse weak prompt intros')
+  assert.match(l2PageContent, /'Weak prompt'/, 'parser should support English weak prompt labels')
+  assert.match(l2PageContent, /'较差'/, 'parser should support Chinese weak prompt labels')
+  assert.match(l2PageContent, /'Better prompt'/, 'parser should support English better prompt labels')
+  assert.match(l2PageContent, /'较好'/, 'parser should support Chinese better prompt labels')
+  assert.match(l2PageContent, /prompt-tip-status-icon-weak/, 'weak prompts should render with a stable negative icon')
+  assert.match(l2PageContent, /prompt-tip-status-icon-better/, 'better prompts should render with a stable positive icon')
+  assert.match(l2PageContent, /bg-rose-50 text-rose-500/, 'weak prompt icon should use the red cross treatment')
+  assert.match(l2PageContent, /bg-emerald-50 text-emerald-600/, 'better prompt icon should use the green check treatment')
+  assert.match(l2PageContent, /<svg className="h-3\.5 w-3\.5"/, 'prompt tip icons should be SVG, not emoji text')
 })
 
 test('Kling 3 Motion Control uses stable R2 video demo media instead of png placeholders', () => {

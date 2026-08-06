@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Movimiento",
     "aiMotionControlGenerator": "Generador Motion Control IA",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Generador de póster abstracto con foto",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Filtro de calva",
+    "bangsFilter": "Filtro de flequillo",
+    "permFilter": "Filtro de permanente"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "Aumento de busto con IA",
         "summary": "Sube una foto de un adulto con ropa y previsualiza cambios naturales de busto manteniendo persona, ropa, pose y escena."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "Generador de póster abstracto con foto",
+        "summary": "Sube una foto y crea en el navegador un póster abstracto con la imagen original arriba y un panel de memoria sobrio debajo."
       }
     },
     "aiToolsHubTitle": "Herramientas de IA Gratis para Imágenes, Video y Flujos de Trabajo Multimedia Diarios",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "Aumento de busto con IA",
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Movimiento",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Generador de póster abstracto con foto",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Filtro de calva",
+    "bangsFilter": "Filtro de flequillo",
+    "permFilter": "Filtro de permanente"
   },
   "breadcrumb": {
     "home": "Inicio",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "Generador de texto a video",
     "imageToVideoGenerator": "Generador de imagen a video",
     "aiClothesChanger": "Cambiador de ropa con IA",
-    "aiBikiniGenerator": "Generador de bikini con IA"
+    "aiBikiniGenerator": "Generador de bikini con IA",
+    "photoAbstractPosterGenerator": "Generador de póster abstracto con foto"
   },
   "about": {
     "metadata": {

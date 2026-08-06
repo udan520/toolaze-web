@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 동영상",
     "kling26MotionControl": "Kling 2.6 모션",
     "aiMotionControlGenerator": "AI 모션 컨트롤 생성기",
-    "veo31Video": "Veo 3.1 동영상"
+    "photoAbstractPosterGenerator": "사진 추상 포스터 생성기",
+    "veo31Video": "Veo 3.1 동영상",
+    "baldFilter": "대머리 필터",
+    "bangsFilter": "앞머리 필터",
+    "permFilter": "펌 필터"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "AI 가슴 확대 미리보기",
         "summary": "옷을 입은 성인 사진을 업로드하고 인물, 옷, 포즈, 장면을 유지한 자연스러운 가슴 크기 편집을 미리보세요."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "사진 추상 포스터 생성기",
+        "summary": "사진 한 장을 업로드해 원본 이미지는 위에 보존하고 아래에는 절제된 메모리 패널을 배치한 브라우저 합성 포스터를 만드세요."
       }
     },
     "aiToolsHubTitle": "이미지, 비디오 및 일상 미디어 워크플로우를 위한 무료 AI 도구",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "AI 가슴 확대 미리보기",
     "wan27Video": "Wan 2.7 동영상",
     "kling26MotionControl": "Kling 2.6 모션",
-    "veo31Video": "Veo 3.1 동영상"
+    "photoAbstractPosterGenerator": "사진 추상 포스터 생성기",
+    "veo31Video": "Veo 3.1 동영상",
+    "baldFilter": "대머리 필터",
+    "bangsFilter": "앞머리 필터",
+    "permFilter": "펌 필터"
   },
   "breadcrumb": {
     "home": "홈",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "텍스트-동영상 생성기",
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiClothesChanger": "AI 의상 체인저",
-    "aiBikiniGenerator": "AI 비키니 생성기"
+    "aiBikiniGenerator": "AI 비키니 생성기",
+    "photoAbstractPosterGenerator": "사진 추상 포스터 생성기"
   },
   "about": {
     "metadata": {

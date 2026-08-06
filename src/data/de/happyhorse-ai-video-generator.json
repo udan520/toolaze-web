@@ -1,0 +1,296 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-happyhorse-ai-video-generator",
+  "topComponent": "ai-video-generator",
+  "topTool": {
+    "modelId": "happyhorse-1-1",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "HappyHorse 1.1"
+  },
+  "metadata": {
+    "title": "HappyHorse KI-Videogenerator | Toolaze",
+    "description": "Erstelle HappyHorse KI-Videos online aus Textprompts oder einem Referenzbild mit 3 bis 15 Sekunden, 720p oder 1080p, Multi-Shot-Prompts und Native Audio.",
+    "published": true
+  },
+  "hero": {
+    "h1": "HappyHorse KI-Videogenerator",
+    "desc": "Erstelle HappyHorse KI-Videos aus einem Textprompt oder einem Referenzbild und forme daraus 3 bis 15 Sekunden filmische Bewegung in 720p oder 1080p. Nutze HappyHorse 1.1 für mehr Seitenverhältnisse und größere Referenzen oder das Basis-HappyHorse-Modell für einen einfacheren Alibaba-Videodraft mit Multi-Shot-Struktur und Native Audio für Produktdemos, kurze Anzeigen, ASMR-Texturen und Social Storyboards."
+  },
+  "heroDemoVideo": {
+    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "type": "video",
+    "ariaLabel": "HappyHorse KI-Videogenerator Demo in einem 16:9-Rahmen",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Selected from the Toolaze video model demo library for the first English HappyHorse model page draft.",
+    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+    "duration": "PT5S"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "Was ist der HappyHorse KI-Videogenerator?",
+    "modelName": "HappyHorse",
+    "modelType": "KI-Videomodell",
+    "description": [
+      "HappyHorse ist eine Alibaba-Videomodellfamilie für Text-zu-Video und Bild-zu-Video. Toolaze stellt HappyHorse 1.1 und das Basis-HappyHorse-Modell im selben Generator bereit, damit du die Version nach Referenzdatei, Seitenverhältnis und Qualitätsziel wählen kannst.",
+      "Nutze es, wenn du flüssige Motivbewegung, klare Shot-Anweisungen und konsistente visuelle Erzählung brauchst, ohne zuerst eine komplette Schnitt-Timeline aufzubauen. Besonders praktisch ist es für Produktbewegungstests, Lifestyle-Clips, Charakterbeats, taktile ASMR-Szenen und Storyboard-Entwürfe."
+    ]
+  },
+  "howToUse": {
+    "title": "So verwendest du HappyHorse auf Toolaze",
+    "steps": [
+      {
+        "title": "HappyHorse-Version wählen",
+        "desc": "Starte mit HappyHorse 1.1 für die größte Ratio-Auswahl und ein 20MB-Bildlimit. Wähle das Basis-HappyHorse-Modell, wenn ein einfacherer 10MB-Referenzablauf reicht."
+      },
+      {
+        "title": "Text oder Bild als Eingabe wählen",
+        "desc": "Nutze Text-zu-Video für ein neues Konzept oder lade ein Referenzbild hoch, wenn Identität, Produktform, Outfit oder Szenenlayout erkennbar bleiben sollen."
+      },
+      {
+        "title": "Bewegung, Qualität und Ton festlegen",
+        "desc": "Wähle 720p oder 1080p, setze eine unterstützte Dauer und beschreibe Kamerabewegung, Shot-Reihenfolge, Handlung, Licht und Native-Audio-Hinweise."
+      },
+      {
+        "title": "Generieren, vergleichen und Prompt schärfen",
+        "desc": "Prüfe den Clip auf Bewegungsdrift, Referenztreue und Timing des Tons. Starte neu mit kürzerer Shot-Liste oder stärkeren Erhaltungsdetails, wenn das Ergebnis zu breit wirkt."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "HappyHorse Prompt-Beispiele",
+    "subtitle": "Nutze diese Prompts als praktische Startpunkte und stelle Dauer, Auflösung und Seitenverhältnis in den Toolaze-Reglern ein.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Produktenthüllung",
+        "prompt": "Erstelle ein hochwertiges Produktvideo für einen mattschwarzen tragbaren Lautsprecher auf einem Steintisch. Beginne mit einem langsamen seitlichen Push, gehe in ein Nahdetail des Stoffgitters und enthülle dann ein weiches blaues Licht unter dem Logo. Halte die Produktform stabil und füge sanfte Bassvibration, Raumton und klare Tastenklicks hinzu.",
+        "description": "Gut für Produktdemos mit kontrollierter Objektkonsistenz und Tonhinweisen.",
+        "aspectRatio": "16:9",
+        "color": "linear-gradient(135deg, #111827, #38bdf8)"
+      },
+      {
+        "title": "Charakterbeat mit Referenz",
+        "prompt": "Animiere das hochgeladene Charakterbild zu einem kurzen dramatischen Moment. Die Figur dreht sich zu einem hellen Fenster, der Mantelstoff bewegt sich mit, Haare reagieren auf leichte Brise und die Kamera fährt vom Schulterdetail zu einer ruhigen Nahaufnahme des Gesichts. Bewahre Gesichtszüge, Kleidungsfarben, Körpersprache und Hintergrundstimmung.",
+        "description": "Nutzt ein Referenzbild und fordert Identität und Kleidungserhalt an.",
+        "aspectRatio": "9:16",
+        "color": "linear-gradient(135deg, #312e81, #f97316)"
+      },
+      {
+        "title": "ASMR-Texturszene",
+        "prompt": "Erstelle einen Makro-ASMR-Clip mit transparenten Geleewürfeln, die mit einem kleinen Metalllöffel auf einem Keramikteller gedrückt werden. Zeige langsame Kompression, kleine Oberflächenwellen, Lichtreflexe in Tropfen und den Löffel beim Anheben. Füge weiche Quetschgeräusche, Tellerkontakt, kleine Taps und keine Musik hinzu.",
+        "description": "Ausgelegt auf taktile Materialbewegung mit Native-Audio-Richtung.",
+        "aspectRatio": "1:1",
+        "color": "linear-gradient(135deg, #0f766e, #facc15)"
+      },
+      {
+        "title": "Multi-Shot-Lifestyle-Anzeige",
+        "prompt": "Erstelle eine Lifestyle-Anzeige für eine leichte Laufjacke bei Sonnenaufgang. Shot eins zeigt Stoff im Wind, Shot zwei folgt dem Läufer von der Seite, Shot drei bleibt auf dem Reißverschlussdetail, während Sonnenlicht den reflektierenden Streifen trifft. Halte Jackenfarbe und Logo-Platzierung konsistent und füge Schritte, Wind und Stadtambiente hinzu.",
+        "description": "Gibt HappyHorse eine kompakte Multi-Shot-Sequenz mit Produkterhalt.",
+        "aspectRatio": "4:5",
+        "color": "linear-gradient(135deg, #be123c, #fbbf24)"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Bessere HappyHorse Prompt-Richtung",
+    "subtitle": "HappyHorse reagiert am besten, wenn der Prompt Versionswahl, erhaltenes Motiv, Bewegungspfad und Tonebene trennt.",
+    "items": [
+      {
+        "title": "Shot-Reihenfolge klar machen",
+        "desc": "Schwacher Prompt: Mach einen Fashion-Clip. Besserer Prompt:",
+        "prompt": "Schwach: Mach einen Fashion-Clip. Besser: Erstelle einen Drei-Shot-Fashion-Clip für eine silberne Jacke. Beginne mit einem Schulterdetail, schneide zu einer laufenden Seitenansicht und ende mit einer Nahaufnahme der Ärmeltextur. Halte Form und Farbe der Jacke konsistent, nutze weiches Sonnenaufgangslicht und füge Stoffrascheln sowie leise Schritte hinzu."
+      },
+      {
+        "title": "Referenzbild schützen",
+        "desc": "Schwacher Prompt: Animier dieses Bild. Besserer Prompt:",
+        "prompt": "Schwach: Animier dieses Bild. Besser: Animier das hochgeladene Porträt mit langsamem Kamerapush und dezenter Kopfdrehung. Bewahre Gesichtsform, Frisur, Jackenfarbe, Hintergrundlayout und Lichtrichtung und füge natürliches Atmen sowie leichten Wind hinzu."
+      },
+      {
+        "title": "Taktile Audiospuren benennen",
+        "desc": "Schwacher Prompt: Füge ASMR-Sounds hinzu. Besserer Prompt:",
+        "prompt": "Schwach: Füge ASMR-Sounds hinzu. Besser: Erstelle eine Makroszene, in der ein Seifenstück mit einer dünnen Klinge gehobelt wird. Füge klares Schneiden, kleine Flocken auf Keramik, weiche Handbewegung und keine Hintergrundmusik hinzu."
+      }
+    ]
+  },
+  "scenesTitle": "Was du mit HappyHorse erstellen kannst",
+  "scenes": [
+    {
+      "title": "Produktbewegungstests",
+      "icon": "🛍️",
+      "desc": "Verwandle Verpackungen, Geräte, Beauty-Produkte und Apparel-Ideen in kurze Bewegungsentwürfe mit stabilen Formen und klarem Licht."
+    },
+    {
+      "title": "Animation von Referenzbildern",
+      "icon": "🖼️",
+      "desc": "Lade ein Bild hoch und animiere das Motiv, während Person, Objekt, Outfit oder Szenenlayout erhalten bleiben."
+    },
+    {
+      "title": "ASMR-Materialclips",
+      "icon": "🎧",
+      "desc": "Beschreibe Schneiden, Drücken, Gießen, Tippen und Stoffkontakt mit passendem Native Audio."
+    },
+    {
+      "title": "Multi-Shot Social Ads",
+      "icon": "📱",
+      "desc": "Baue eine kompakte Shot-Reihenfolge für TikTok, Reels, Shorts und Kampagnentests ohne komplette Schnitt-Timeline."
+    },
+    {
+      "title": "Charakter-Storybeats",
+      "icon": "🎬",
+      "desc": "Erstelle ausdrucksstarke Momente mit Kamerabewegung, Stimmung, Kostümkontinuität und kontrollierter Körperbewegung."
+    },
+    {
+      "title": "Storyboard-Entwürfe",
+      "icon": "🧭",
+      "desc": "Teste Szenenfolge, Lichtrichtung, Bewegungsrhythmus und Soundideen vor der finalen Videoproduktion."
+    }
+  ],
+  "modelComparison": {
+    "title": "HappyHorse 1.1 vs. HappyHorse",
+    "subtitle": "Wähle die HappyHorse-Version nach Eingabegröße, Ratio-Bedarf und gewünschter Ausgabekontrolle.",
+    "columnHeaders": {
+      "metric": "Entscheidungspunkt",
+      "baseline": "HappyHorse 1.1",
+      "target": "HappyHorse"
+    },
+    "rows": [
+      {
+        "label": "Erstellungsmodi",
+        "baseline": "Text-zu-Video und Bild-zu-Video mit einem Bild als Referenz.",
+        "target": "Text-zu-Video und Bild-zu-Video mit einem Bild als Referenz."
+      },
+      {
+        "label": "Referenzlimit",
+        "baseline": "Ein hochgeladenes Bild bis 20MB.",
+        "target": "Ein hochgeladenes Bild bis 10MB."
+      },
+      {
+        "label": "Seitenverhältnisse",
+        "baseline": "Umfasst 16:9, 9:16, 1:1, 4:3, 3:4 sowie 4:5, 5:4, 9:21 und 21:9.",
+        "target": "Unterstützt die Kernformate 16:9, 9:16, 1:1, 4:3 und 3:4."
+      },
+      {
+        "label": "Dauer und Ausgabe",
+        "baseline": "3 bis 15 Sekunden in 720p oder 1080p.",
+        "target": "3 bis 15 Sekunden in 720p oder 1080p."
+      },
+      {
+        "label": "Audio und Shot-Kontrolle",
+        "baseline": "Native Audio und Multi-Shot-Prompts für Produkt-, Story- und ASMR-Richtung.",
+        "target": "Native Audio und Multi-Shot-Prompts für einfachere Entwürfe."
+      },
+      {
+        "label": "Start-Credits",
+        "baseline": "Startet auf Toolaze bei 135 Credits.",
+        "target": "Startet auf Toolaze bei 168 Credits."
+      },
+      {
+        "label": "Wähle es, wenn",
+        "baseline": "du die breiteste HappyHorse-Ratio-Unterstützung oder einen größeren Referenz-Upload brauchst.",
+        "target": "du das Basis-HappyHorse-Modell willst und mit dem kleineren Referenzlimit auskommst."
+      }
+    ],
+    "featuredColumn": "baseline"
+  },
+  "workflowComparison": {
+    "title": "HappyHorse im Vergleich zu anderen Toolaze Videomodellen",
+    "subtitle": "Nutze HappyHorse, wenn Szenenkontinuität und Versions-Ratio-Kontrolle wichtiger sind als maximale Referenzanzahl.",
+    "columns": [
+      "Modellwahl",
+      "Geeignet für",
+      "Vor dem Generieren prüfen"
+    ],
+    "rows": [
+      [
+        "HappyHorse",
+        "Alibaba Text-zu-Video oder Bild-zu-Video mit einer Referenz, Native Audio und Ratios je Version.",
+        "Prüfe, ob HappyHorse 1.1 oder das Basis-HappyHorse-Modell zu Dateigröße und Seitenverhältnis passt."
+      ],
+      [
+        "Wan 2.6",
+        "Wan-Clips mit Sound-Fokus, Native Audio und vertrautem Timing von 5/10/15 Sekunden.",
+        "Nutze es, wenn du die zusätzlichen breiten oder hohen HappyHorse-1.1-Ratios nicht brauchst."
+      ],
+      [
+        "Kling 3.0",
+        "Polierte filmische Bewegung, Produktclips und Creator Shorts mit bekannter Kling-Bewegungsästhetik.",
+        "Prüfe, ob der Kling-Bewegungsstil zur Marke passt, bevor du hochwertige Runs ausgibst."
+      ],
+      [
+        "Grok 1.5 Video",
+        "Schnelle Native-Audio-Entwürfe und breite kreative Exploration.",
+        "Nutze es für schnelle Ideenfindung, wenn genaue HappyHorse-Versionsregler weniger wichtig sind."
+      ]
+    ]
+  },
+  "faqTitle": "HappyHorse KI-Video FAQ",
+  "faq": [
+    {
+      "q": "Was ist der Unterschied zwischen HappyHorse 1.1 und HappyHorse?",
+      "a": "HappyHorse 1.1 unterstützt ein größeres 20MB-Bildreferenzlimit und zusätzliche Formate wie 4:5, 5:4, 9:21 und 21:9. Das Basis-HappyHorse-Modell behält die Kernformate und ein 10MB-Bildlimit, was für einfachere referenzgeführte Entwürfe reicht."
+    },
+    {
+      "q": "Unterstützt HappyHorse Multi-Shot-Prompts?",
+      "a": "Ja. Schreibe den Prompt als kurze Shot-Sequenz mit einer Aktion pro Beat und ergänze, was über Schnitte hinweg gleich bleiben soll, etwa Produktform, Outfitfarbe, Logo-Platzierung oder Charakteridentität."
+    },
+    {
+      "q": "Kann HappyHorse Native Audio erzeugen?",
+      "a": "Ja. Füge konkrete Audiohinweise wie Stoffrascheln, Schrittrhythmus, Raumambiente, Klingenkontakt oder leise Produktgeräusche hinzu. Vermeide allgemeine Formulierungen, wenn der Ton zur Bewegung passen muss."
+    },
+    {
+      "q": "Eignet sich HappyHorse für ASMR-Videos?",
+      "a": "Für ASMR-artige Materialclips kann es gut funktionieren, wenn der Prompt Textur, Nahkamera, Kontaktgeräusche und den Wunsch ohne Musik nennt. Am besten passt es zu kurzen taktilen Szenen statt langen durchgehenden ASMR-Sessions."
+    },
+    {
+      "q": "Kann ich mit HappyHorse ein Referenzbild verwenden?",
+      "a": "Ja. Nutze Bild-zu-Video, wenn Person, Produkt, Kostüm oder Layout erkennbar bleiben sollen. HappyHorse akzeptiert ein Referenzbild; das Dateigrößenlimit hängt von der gewählten Version ab."
+    }
+  ],
+  "moreTools": "Weitere KI-Videomodelle",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.6 KI-Videogenerator",
+      "description": "Nutze Wan 2.6 für Text oder ein Bild, 5/10/15 Sekunden Timing, Native Audio und ausgewogene Wan-Bewegung.",
+      "href": "/model/wan-2-6-ai-video-generator",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+        "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.6 Videomodell-Demo"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Erstelle filmische Kling-Videoentwürfe, wenn du ein vertrautes Bewegungsmodell und polierte Social Clips brauchst.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3 Videomodell-Demo",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"
+      }
+    },
+    {
+      "title": "Grok 1.5 Video",
+      "description": "Entdecke schnelle Native-Audio-Konzeptvideos für breite Ideenfindung und social-taugliche Entwürfe.",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
+        "alt": "Grok 1.5 Videomodell-Demo"
+      }
+    }
+  ]
+}

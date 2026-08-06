@@ -39,10 +39,11 @@ const defaultTranslations = {
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   grok15Video: 'Grok 1.5 Video',
-  veo31Video: 'Veo 3.1 Video',
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
+  pixverseV6: 'PixVerse V6',
+  happyHorse: 'HappyHorse',
   kling3MotionControl: 'Kling 3 Motion Control',
   aiImage: 'AI Image',
   aiVideo: 'AI Video',
@@ -57,13 +58,13 @@ const defaultTranslations = {
   talkingAvatarCreator: 'AI Talking Avatar',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
-  buzzCutFilter: 'Buzz Cut Filter',
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
   aiBikiniGenerator: 'AI Bikini Generator',
   aiBreastExpansion: 'AI Breast Expansion',
   unrestrictedAiImageGenerator: 'Unrestricted / Unlimited AI Image Generator',
   aiZinePosterGenerator: 'AI Zine Poster Generator',
+  photoAbstractPosterGenerator: 'Photo Abstract Poster Generator',
   worldCupAiImageGenerator: 'World Cup AI Image Generator',
   seedance2: 'Seedance 2.0',
   seedance25: 'Seedance 2.5',
@@ -250,6 +251,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiZinePosterGenerator || 'AI Zine Poster Generator'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/ai-photo-abstract-poster-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.photoAbstractPosterGenerator || 'Photo Abstract Poster Generator'}
                 </Link>
               </li>
               <li>
@@ -470,6 +479,22 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.grok15Video || 'Grok 1.5 Video'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/pixverse-v6-ai-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.pixverseV6 || 'PixVerse V6'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/model/happyhorse-ai-video-generator')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.happyHorse || 'HappyHorse'}
                 </Link>
               </li>
               <li>

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, statSync } from 'node:fs'
 import test from 'node:test'
 
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
@@ -53,6 +53,19 @@ function collectVisibleStrings(value, path = '') {
     )
   }
   return []
+}
+
+function assertPublicOrR2Asset(url) {
+  if (url.startsWith('/')) {
+    const assetPath = `public${url}`
+    assert.ok(existsSync(assetPath), `${assetPath} should exist for local preview`)
+    assert.ok(statSync(assetPath).size < 102400, `${assetPath} should stay under 100 KB before R2 upload`)
+    return
+  }
+
+  const parsed = new URL(url)
+  assert.equal(parsed.hostname, 'assets.toolaze.com')
+  assert.match(parsed.pathname, /^\/model-assets\/buzz-cut-filter\/.+\.webp$/)
 }
 
 test('Buzz Cut Filter page data and routes are wired', () => {
@@ -150,6 +163,13 @@ test('Buzz Cut Filter reuses the male hairstyle preset library with Buzz Cut sel
   assert.match(aiImageToolSource, /!\(\(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId\) \|\| shouldUseCustomReferenceUploader\)/)
   assert.match(aiImageToolSource, /shouldUsePresetReferenceUploader = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab !== customPromptTabId && !hidePresetReferenceUploader/)
   assert.match(aiImageToolSource, /effectiveRequestPrompt = shouldUseCustomReferenceUploader \? customReferencePrompt\.trim\(\) : requestPrompt/)
+  assert.match(aiImageToolSource, /const currentEffectivePrompt = shouldUseCustomReferenceUploader \? customReferencePrompt\.trim\(\) : prompt\.trim\(\)/)
+  assert.match(aiImageToolSource, /const canGenerate = Boolean\(currentEffectivePrompt\) && \(activeTab !== 'image-to-image' \|\| hasCurrentReferenceImages\)/)
+  assert.match(aiImageToolSource, /disabled=\{!canGenerate\}/)
+  assert.doesNotMatch(
+    aiImageToolSource,
+    /disabled=\{!prompt\.trim\(\) \|\| \(activeTab === 'image-to-image' && imageFiles\.length === 0 && remoteImageUrls\.length === 0\)\}/,
+  )
   assert.match(aiImageToolSource, /showPromptPresetSelectedState && selectedPromptPreset === preset\.label/)
   assert.match(aiImageToolSource, /setSelectedPromptPreset\(firstPreset\.label\)/)
 })
@@ -202,7 +222,7 @@ test('Buzz Cut Filter uses page-owned visual samples and public entry points', (
   assert.equal(page.topTool.sampleImages?.[0]?.height, 900)
   assert.match(page.topTool.sampleImages?.[0]?.title || '', /before.*after|demo/i)
   for (const assetUrl of [referenceImage, demoImage]) {
-    assert.match(assetUrl, /^https:\/\/assets\.toolaze\.com\/model-assets\/buzz-cut-filter\/.+\.webp$/)
+    assertPublicOrR2Asset(assetUrl)
   }
   assert.ok(page.topTool.sampleImages.every((sample) => /buzz-cut/i.test(`${sample.url} ${sample.title}`)))
   assert.match(sitemap, /path: '\/buzz-cut-filter'/)

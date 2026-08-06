@@ -222,7 +222,10 @@
       "media": {
         "type": "video",
         "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
-        "alt": "AI 동영상 생성기 데모 동영상"
+        "alt": "AI 동영상 생성기 데모 동영상",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z"
       }
     },
     {
@@ -233,7 +236,10 @@
       "media": {
         "type": "video",
         "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
-        "alt": "이미지-동영상 생성기 데모 동영상"
+        "alt": "이미지-동영상 생성기 데모 동영상",
+        "poster": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T16:03:14.000Z"
       }
     },
     {
@@ -257,6 +263,7 @@
     "ariaLabel": "립싱크와 발표자 스타일 얼굴 움직임을 보여주는 짧은 AI 말하는 아바타 데모 영상",
     "duration": "PT14.48S",
     "uploadDate": "2026-07-31T07:08:59.000Z",
-    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31"
+    "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
+    "type": "video"
   }
 }

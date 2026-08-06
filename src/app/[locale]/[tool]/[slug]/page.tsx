@@ -7,6 +7,12 @@ import type { Metadata } from 'next'
 // 不支持多语言的工具列表
 const NON_MULTILINGUAL_TOOLS: string[] = []
 
+const MODEL_ALIAS_REDIRECTS: Record<string, string> = {
+  'pixverse-v6': 'pixverse-v6-ai-video-generator',
+  'happyhorse': 'happyhorse-ai-video-generator',
+  'happyhorse-1-1': 'happyhorse-ai-video-generator',
+}
+
 interface PageProps {
   params: Promise<{
     locale: string
@@ -20,6 +26,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   try {
     const resolvedParams = await params
     const locale = resolvedParams.locale || 'en'
+    const modelAliasTarget = resolvedParams.tool === 'model'
+      ? MODEL_ALIAS_REDIRECTS[resolvedParams.slug]
+      : undefined
+
+    if (modelAliasTarget) {
+      const canonicalPath = locale === 'en' ? `/model/${modelAliasTarget}` : `/${locale}/model/${modelAliasTarget}`
+      return {
+        title: 'Redirecting to model page | Toolaze',
+        robots: { index: false, follow: true },
+        alternates: {
+          canonical: `https://toolaze.com${canonicalPath}`,
+        },
+      }
+    }
 
     if (resolvedParams.tool === 'seedance-2') {
       const canonicalPath = locale === 'en' ? '/model/seedance-2' : `/${locale}/model/seedance-2`
@@ -212,6 +232,11 @@ export default async function LandingPage({ params }: PageProps) {
   if (!resolvedParams.slug) {
     notFound()
     return null
+  }
+
+  if (resolvedParams.tool === 'model' && MODEL_ALIAS_REDIRECTS[resolvedParams.slug]) {
+    const canonicalModel = MODEL_ALIAS_REDIRECTS[resolvedParams.slug]
+    permanentRedirect(locale === 'en' ? `/model/${canonicalModel}` : `/${locale}/model/${canonicalModel}`)
   }
   
   // Seedance 2.0 只保留模型 L2；工作流 L3 旧路径统一回模型页。

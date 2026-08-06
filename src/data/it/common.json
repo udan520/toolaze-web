@@ -77,7 +77,11 @@
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Movimento",
     "aiMotionControlGenerator": "Generatore Motion Control IA",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Generatore di poster astratti da foto",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Filtro calvo",
+    "bangsFilter": "Filtro frangia",
+    "permFilter": "Filtro permanente"
   },
   "home": {
     "metadata": {
@@ -159,6 +163,10 @@
       "ai-breast-expansion": {
         "cardTitle": "Aumento seno con IA",
         "summary": "Carica una foto di un adulto vestito e visualizza modifiche naturali del seno mantenendo persona, vestiti, posa e scena."
+      },
+      "ai-photo-abstract-poster-generator": {
+        "cardTitle": "Generatore di poster astratti da foto",
+        "summary": "Carica una foto e crea nel browser un poster astratto con l’immagine originale sopra e un pannello memoria essenziale sotto."
       }
     },
     "aiToolsHubTitle": "Strumenti AI Gratuiti per Immagini, Video e Flussi di Lavoro Multimediali Quotidiani",
@@ -309,7 +317,11 @@
     "aiBreastExpansion": "Aumento seno con IA",
     "wan27Video": "Wan 2.7 Video",
     "kling26MotionControl": "Kling 2.6 Movimento",
-    "veo31Video": "Veo 3.1 Video"
+    "photoAbstractPosterGenerator": "Generatore di poster astratti da foto",
+    "veo31Video": "Veo 3.1 Video",
+    "baldFilter": "Filtro calvo",
+    "bangsFilter": "Filtro frangia",
+    "permFilter": "Filtro permanente"
   },
   "breadcrumb": {
     "home": "Casa",
@@ -338,7 +350,8 @@
     "textToVideoGenerator": "Generatore da testo a video",
     "imageToVideoGenerator": "Generatore da immagine a video",
     "aiClothesChanger": "Cambia abiti con IA",
-    "aiBikiniGenerator": "Generatore di bikini IA"
+    "aiBikiniGenerator": "Generatore di bikini IA",
+    "photoAbstractPosterGenerator": "Generatore di poster astratti da foto"
   },
   "about": {
     "metadata": {

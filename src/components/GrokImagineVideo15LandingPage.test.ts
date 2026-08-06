@@ -12,6 +12,7 @@ const componentPath = join(projectRoot, 'src', 'components', 'GrokImagineVideo15
 const routePath = join(projectRoot, 'src', 'app', 'model', 'grok-imagine-video-1-5', 'page.tsx')
 const seoJsonPath = join(projectRoot, 'src', 'data', 'en', 'grok-imagine-video-1-5.json')
 const copyPath = join(projectRoot, 'src', 'lib', 'grok-imagine-video-1-5-landing-copy.ts')
+const stableUploadsAssetPattern = /^https:\/\/assets\.toolaze\.com\/uploads\/.+/i
 
 test('Grok Imagine Video 1.5 page mirrors GPT Image 2 landing page section structure', () => {
   const source = readFileSync(componentPath, 'utf8')
@@ -159,10 +160,14 @@ test('Grok page uses real 16:9 video assets for the hero demo and prompt example
 
   assert.match(source, /demoVideo=\{copy\.hero\.demoVideo\}/, 'hero generator should receive the real demo video asset')
   assert.match(source, /data-grok-demo-video/, 'prompt examples should render real video media')
-  assert.match(copy.hero.demoVideo.src, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\//)
+  assert.match(copy.hero.demoVideo.src, stableUploadsAssetPattern)
+  assert.match(copy.hero.demoVideo.poster, /^https:\/\/assets\.toolaze\.com\/uploads\/.+-poster\.webp$/)
 
   for (const item of copy.prompts.examples) {
-    assert.match(item.videoSrc, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\//, `${item.id} should use an R2 video asset`)
+    assert.match(item.videoSrc, stableUploadsAssetPattern, `${item.id} should use a stable video asset`)
+    assert.match(item.videoPoster, /^https:\/\/assets\.toolaze\.com\/uploads\/.+-poster\.webp$/, `${item.id} should use a stable WebP poster`)
+    assert.match(item.duration, /^PT[\d.]+S$/, `${item.id} should expose VideoObject duration metadata`)
+    assert.match(item.uploadDate, /^\d{4}-\d{2}-\d{2}T/, `${item.id} should expose VideoObject uploadDate metadata`)
     assert.match(item.videoLabel, /16:9/, `${item.id} label should document the video ratio`)
   }
   assert.equal(new Set(videoPaths).size, videoPaths.length)
@@ -175,7 +180,7 @@ test('Grok feature items define unique 16:9 image assets with accessible labels'
   assert.equal(new Set(imagePaths).size, copy.features.items.length)
 
   for (const item of copy.features.items) {
-    assert.match(item.imageSrc, /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.match(item.imageSrc, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
     assert.ok(item.imageAlt.trim().length > 0, `${item.slot} should have descriptive alt text`)
   }
 })
@@ -198,7 +203,7 @@ test('Grok use cases define eight unique 16:9 image assets with accessible label
   assert.equal(new Set(imagePaths).size, copy.gallery.examples.length)
 
   for (const item of copy.gallery.examples) {
-    assert.match(item.imageSrc || '', /^https:\/\/pub-[a-z0-9]+\.r2\.dev\/uploads\/[a-z0-9]+\.webp$/)
+    assert.match(item.imageSrc || '', /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
     assert.ok(item.imageAlt?.trim(), `${item.slot} should have descriptive alt text`)
   }
 })

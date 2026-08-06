@@ -28,15 +28,27 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedream-5-0-pro': 'seedream-5-0-pro',
   'wan-2-7-image': 'wan-2-7-image',
   'veo-3-1-ai-video-generator': 'veo-3-1-ai-video-generator',
+  'happyhorse-ai-video-generator': 'happyhorse-ai-video-generator',
   'wan-2-7-ai-video-generator': 'wan-2-7-ai-video-generator',
   'wan-2-6-ai-video-generator': 'wan-2-6-ai-video-generator',
   'wan-2-5-ai-video-generator': 'wan-2-5-ai-video-generator',
+  'pixverse-v6': 'pixverse-v6-ai-video-generator',
+  'pixverse-v6-ai-video-generator': 'pixverse-v6-ai-video-generator',
+  'happyhorse': 'happyhorse-ai-video-generator',
+  'happyhorse-1-1': 'happyhorse-ai-video-generator',
   'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'kling-3': 'kling-3',
   'kling-3-motion-control': 'kling-3-motion-control',
   'kling-2-6-pro-motion-control': 'kling-2-6-pro-motion-control',
   'grok-imagine-video-1-5': 'grok-imagine-video-1-5',
+}
+
+const MODEL_REDIRECT_MAP: Record<string, string> = {
+  'gpt-image-2-0': 'gpt-image-2',
+  'pixverse-v6': 'pixverse-v6-ai-video-generator',
+  'happyhorse': 'happyhorse-ai-video-generator',
+  'happyhorse-1-1': 'happyhorse-ai-video-generator',
 }
 
 interface PageProps {
@@ -52,7 +64,7 @@ export const dynamicParams = false
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, model } = await params
   const tool = MODEL_TOOL_MAP[model]
-  const canonicalModel = model === 'gpt-image-2-0' ? 'gpt-image-2' : model
+  const canonicalModel = MODEL_REDIRECT_MAP[model] || model
 
   if (!tool || !SUPPORTED_LOCALES.includes(locale as (typeof SUPPORTED_LOCALES)[number])) {
     return {}
@@ -120,13 +132,14 @@ export default async function LocalizedModelPage({ params }: PageProps) {
   }
 
   const tool = MODEL_TOOL_MAP[model]
+  const canonicalModel = MODEL_REDIRECT_MAP[model] || model
   if (!tool) {
     notFound()
     return null
   }
 
-  if (model === 'gpt-image-2-0') {
-    permanentRedirect(locale === 'en' ? '/model/gpt-image-2' : `/${locale}/model/gpt-image-2`)
+  if (MODEL_REDIRECT_MAP[model]) {
+    permanentRedirect(locale === 'en' ? `/model/${canonicalModel}` : `/${locale}/model/${canonicalModel}`)
   }
 
   if (locale === 'en') {

@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "砂漠を走る人物の元写真"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "砂漠の元写真と Running Toward Haze 抽象メモリーパネルのデモ"
+      }
+    ],
+    "displayName": "フォト抽象ポスタージェネレーター",
+    "textOverrides": {
+      "uploadTitle": "写真を1枚アップロード",
+      "uploadHelper": "空間関係がはっきりした写真を使ってください。JPG、PNG、WebPは30MBまで対応します。写真は保ったまま、ブラウザー内でローカル合成します。",
+      "generateLabel": "無料で生成",
+      "samplePhotoName": "サンプル写真",
+      "uploadedPhotoName": "アップロード写真",
+      "uploadLabel": "アップロード",
+      "replaceLabel": "置き換え",
+      "deleteLabel": "削除",
+      "outputRatioLabel": "出力比率",
+      "composingLabel": "合成中...",
+      "invalidTypeMessage": "JPG、PNG、WebP画像をアップロードしてください。",
+      "validationErrorMessage": "画像サイズは30MB未満にしてください。",
+      "imageReadErrorMessage": "この画像を読み込めませんでした。別のJPG、PNG、WebPファイルをお試しください。",
+      "composeErrorMessage": "このポスターを合成できませんでした。",
+      "noRemoteNote": "この合成ではモデル呼び出し、アップロードジョブ、クレジット予約、リモート生成を使いません。",
+      "historyTitle": "ローカル履歴",
+      "historySubtitle": "このページセッションで作成した最近のポスターがここに表示されます。",
+      "savedLabel": "件保存",
+      "latestOutputLabel": "最新の出力",
+      "ratioLabel": "比率",
+      "downloadLabel": "PNGをダウンロード",
+      "demoStateLabel": "デモ状態",
+      "demoStateText": "最初の合成後、右側パネルが履歴フィードになります。",
+      "emptyStateText": "写真をアップロードして、最初のローカルポスターを作成してください。",
+      "historyDownloadSuffix": "ダウンロード",
+      "demoTabLabel": "デモ",
+      "historyTabLabel": "履歴"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "砂漠を走る写真を上部に、Running Toward Haze の記憶パネルを下部に置いた Photo Abstract Editorial デモ",
+    "sourceHistory": "最初の Photo Abstract Editorial セッションからのローカル決定的デモ: 砂漠の元写真と Running Toward Haze メモリーパネル。"
+  },
+  "metadata": {
+    "title": "フォト抽象ポスタージェネレーター | 写真からメモリーパネルへ | Toolaze",
+    "description": "写真を1枚アップロードし、元画像を上に保ち、下に抽象メモリーパネルと短い英語タイトルを置いたブラウザー合成ポスターを作成できます。"
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">フォト抽象ポスター</span>ジェネレーター",
+    "desc": "写真を1枚アップロードして、ブラウザー内で縦長のエディトリアル作品を作成します。元画像は上部に忠実に残り、下部には余白のある抽象メモリーパネルと短い英語タイトルが構成されます。個人アーカイブ、旅の記憶、ビジュアルエッセイ、展示案、静かなSNSカバーに使えます。"
+  },
+  "intro": {
+    "title": "このフォト抽象ポスタージェネレーターで作れるもの",
+    "content": [
+      {
+        "title": "忠実な写真と抽象メモリーパネル",
+        "text": "アップロードした写真を見えるソース画像として保持し、間隔、軸、色の階層、動き、余白を下のアイボリーパネルに抽出します。結果はフィルター、コラージュ、描き直しではなく、エディトリアルな二連作品のように見えます。"
+      },
+      {
+        "title": "自動タイトルと構図",
+        "text": "スタイル指示を書く必要はありません。画像を1枚アップロードすると、ローカルコンポーザーがPhoto Abstract Editorialのルールを自動で適用し、パネル配置、控えめなマーク、落ち着いたパレット、短い英語タイトルを作ります。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Photo Abstract Editorialの作り方",
+    "steps": [
+      {
+        "title": "写真を1枚アップロード",
+        "desc": "空間内の人物、水平線、建築、物、群衆のリズム、明確な光の方向など、関係性が見える写真を選びます。"
+      },
+      {
+        "title": "まずAuto比率を使う",
+        "desc": "Autoは元写真と下部パネルのバランスに合わせて最終キャンバスを決めます。他の比率も選べますが、余白や穏やかなトリミングが増える場合があります。"
+      },
+      {
+        "title": "エディトリアルを作成",
+        "desc": "Toolazeは写真を忠実に残し、同じ画像から抽象メモリーパネル、パレット、マーク、タイトルをブラウザー内で構成します。"
+      },
+      {
+        "title": "確認して再利用",
+        "desc": "パネルのバランス、タイトル位置、元写真の収まりを確認します。最近の結果は右側のローカル履歴に表示され、ダウンロードできます。"
+      }
+    ]
+  },
+  "features": {
+    "title": "フォト抽象ポスターのスタイル",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "忠実な写真エリア",
+        "desc": "上部画像は写真のまま残ります。元写真を描き直し、補正、拡張、フィルター加工しません。"
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "適応型の縦レイアウト",
+        "desc": "写真とパネルの分割は元画像に合わせて変わり、機械的な半分割りにはしません。"
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "抽象メモリーモチーフ",
+        "desc": "下部パネルは写真の小さなコピーではなく、視覚関係を小さく sparse なモチーフへ変換します。"
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "写真由来のパレット",
+        "desc": "落ち着いた色の役割はアップロード画像から取り、元写真に見える場合だけ少数のアクセントを使います。"
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "詩的な英語タイトル",
+        "desc": "2〜5語の控えめな英語タイトルをアイボリーパネルだけに置き、画像の見える事実に基づけます。"
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "きれいなアイボリー面",
+        "desc": "パネルは平面で静か、無地に保ち、空間、リズム、マークで構成を支えます。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "アップロードに向いた写真",
+    "subtitle": "単一の孤立した物体だけでなく、抽出できる関係性がある写真ほどこのスタイルに向きます。",
+    "items": [
+      {
+        "title": "空間のリズムを探す",
+        "desc": "水平線、道、手すり、空間内の人物、建築、光、影、反復する物体は下部パネルに構造を与えます。",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "主題を読みやすく保つ",
+        "desc": "強いブレ、隠れた顔、極端な近接トリミング、重要な主題が小さすぎる写真は避けてください。",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "自然な色の手がかりを使う",
+        "desc": "明確な暗色、明色、控えめなアクセントがある写真は、まとまりのある抽象パネルになりやすいです。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "固定比率は慎重に選ぶ",
+        "desc": "写真を忠実に保つにはAutoが最適です。9:16、4:5、1:1、16:9は外側のキャンバス形状を優先したいときに使ってください。",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "作成できるもの",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "旅のメモリーパネル",
+      "desc": "風景、道、海岸、博物館、街歩きの写真を、元写真を保った静かなアーカイブ画像にできます。"
+    },
+    {
+      "icon": "▥",
+      "title": "エディトリアルな肖像研究",
+      "desc": "人物や人のいる空間写真を、主題は保ちながら下部で抽象的に響かせたいときに使えます。"
+    },
+    {
+      "icon": "✶",
+      "title": "ビジュアルエッセイの表紙",
+      "desc": "エッセイ、ジャーナル、ムードボード、プレイリスト、プレゼン、SNS投稿向けに、文学的な雰囲気の洗練されたカバーを作れます。"
+    }
+  ],
+  "faqTitle": "フォト抽象ポスタージェネレーター FAQ",
+  "faq": [
+    {
+      "q": "プロンプトを書く必要はありますか？",
+      "a": "いいえ。写真を1枚アップロードすると、ToolazeがPhoto Abstract Editorialの構成ルールをブラウザー内で自動適用します。"
+    },
+    {
+      "q": "写真は描き直されますか？",
+      "a": "いいえ。写真エリアはアップロード画像を忠実に保ちます。生成されるのは下の抽象パネルとタイトルです。"
+    },
+    {
+      "q": "アスペクト比を変えられますか？",
+      "a": "はい。構図は写真とパネルのバランスに合わせるため、Autoがおすすめです。9:16、4:5、1:1、16:9などの固定比率は外側のキャンバスを変え、写真は強く切り抜かずに収めます。"
+    },
+    {
+      "q": "なぜプロンプト欄がないのですか？",
+      "a": "このスタイルは意図的に自動です。アップロード画像がソースになり、ローカルの構成ルールが写真エリア、抽象メモリーパネル、パレット、タイトル、無地のアイボリー面を制御します。"
+    },
+    {
+      "q": "どんな写真が向いていますか？",
+      "a": "空間内の人物、水平線、道、ファサード、群衆のリズム、強い影、単純な物のグループなど、視覚関係がはっきりした写真が向いています。"
+    },
+    {
+      "q": "画像モデルに送信されますか？",
+      "a": "いいえ。ポスターはアップロード写真、色サンプル、幾何学的バランス、ローカルタイトルロジックからブラウザーCanvasコードで作られます。このツールにはリモート画像生成ジョブはありません。"
+    }
+  ],
+  "moreTools": "関連クリエイティブツール",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "AIジンポスタージェネレーター",
+      "description": "写真を1枚アップロードし、主題を静かな紙ポスター構成に変換します。",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "AIジンポスタージェネレーターのプレビュー"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "画像コンバーター",
+      "description": "ポスター作成前にJPG、PNG、WebP、AVIF、HEICなどの画像形式を変換できます。",
+      "href": "/image-converter"
+    }
+  ]
+}

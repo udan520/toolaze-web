@@ -1,0 +1,248 @@
+{
+  "in_menu": false,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "photo-abstract-poster",
+  "topTool": {
+    "mode": "local-code-composition",
+    "maxUploadImages": 1,
+    "defaultAspectRatio": "auto",
+    "defaultImageUrls": [
+      "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp"
+    ],
+    "referenceImage": {
+      "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-reference.webp",
+      "width": 1200,
+      "height": 800,
+      "title": "Photo source originale de course dans le désert"
+    },
+    "sampleImages": [
+      {
+        "url": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+        "width": 1024,
+        "height": 1516,
+        "title": "Démo Running Toward Haze avec photo originale du désert et panneau mémoire abstrait"
+      }
+    ],
+    "displayName": "Générateur d’affiche photo abstraite",
+    "textOverrides": {
+      "uploadTitle": "Importer une photo",
+      "uploadHelper": "Utilisez une photo aux relations spatiales nettes. JPG, PNG ou WebP jusqu’à 30 Mo. La photo reste intacte pendant que l’affiche est composée localement dans votre navigateur.",
+      "generateLabel": "Générer gratuitement",
+      "samplePhotoName": "Photo démo",
+      "uploadedPhotoName": "Photo importée",
+      "uploadLabel": "Importer",
+      "replaceLabel": "Remplacer",
+      "deleteLabel": "Retirer",
+      "outputRatioLabel": "Ratio de sortie",
+      "composingLabel": "Composition...",
+      "invalidTypeMessage": "Importez une image JPG, PNG ou WebP.",
+      "validationErrorMessage": "L’image doit faire moins de 30 Mo.",
+      "imageReadErrorMessage": "Impossible de lire cette image. Essayez un autre fichier JPG, PNG ou WebP.",
+      "composeErrorMessage": "Impossible de composer cette affiche.",
+      "noRemoteNote": "Cette composition n’utilise ni appel de modèle, ni tâche d’import, ni retenue de crédits, ni génération distante.",
+      "historyTitle": "Historique local",
+      "historySubtitle": "Les affiches récentes de cette session apparaissent ici.",
+      "savedLabel": "enregistrées",
+      "latestOutputLabel": "Dernière sortie",
+      "ratioLabel": "Ratio",
+      "downloadLabel": "Télécharger le PNG",
+      "demoStateLabel": "État démo",
+      "demoStateText": "Le panneau de droite devient votre historique après la première composition.",
+      "emptyStateText": "Importez une photo et créez votre première affiche locale.",
+      "historyDownloadSuffix": "Télécharger",
+      "demoTabLabel": "Démo",
+      "historyTabLabel": "Historique"
+    }
+  },
+  "heroDemoVideo": {
+    "type": "image",
+    "src": "/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp",
+    "width": 1024,
+    "height": 1516,
+    "ariaLabel": "Démo Photo Abstract Editorial avec une photo de course dans le désert en haut et le panneau Running Toward Haze en bas",
+    "sourceHistory": "Démo déterministe locale issue de la session Photo Abstract Editorial originale: photo de course dans le désert et panneau Running Toward Haze."
+  },
+  "metadata": {
+    "title": "Générateur d’affiche photo abstraite | Photo vers panneau mémoire | Toolaze",
+    "description": "Importez une photo et créez dans le navigateur une affiche abstraite avec l’image originale préservée en haut, un panneau mémoire sobre en bas et un court titre poétique en anglais."
+  },
+  "sectionsOrder": [
+    "intro",
+    "howToUse",
+    "features",
+    "photoTips",
+    "scenes",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Générateur d’<span class=\"text-gradient\">affiche photo abstraite</span>",
+    "desc": "Importez une photo pour créer une œuvre éditoriale verticale dans votre navigateur : l’image originale reste fidèle en haut, tandis qu’un panneau mémoire abstrait et un court titre anglais sont composés en dessous. Idéal pour archives personnelles, souvenirs de voyage, essais visuels, maquettes de galerie et couvertures sociales discrètes."
+  },
+  "intro": {
+    "title": "Ce que crée ce générateur d’affiche photo abstraite",
+    "content": [
+      {
+        "title": "Une photo fidèle plus un panneau mémoire abstrait",
+        "text": "Le générateur conserve la photo importée comme image source visible, puis distille ses espacements, axes, hiérarchie colorée, mouvements et espaces négatifs dans un panneau ivoire propre en dessous. Le résultat évoque un diptyque éditorial plutôt qu’un filtre, un collage ou une illustration redessinée."
+      },
+      {
+        "title": "Titre et composition automatiques",
+        "text": "Vous n’avez pas besoin d’écrire d’indications de style. Importez une image et le compositeur local applique automatiquement les règles Photo Abstract Editorial, avec disposition du panneau, système de marques retenu, palette assourdie et court titre anglais."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Comment créer un Photo Abstract Editorial",
+    "steps": [
+      {
+        "title": "Importer une photo",
+        "desc": "Choisissez une photo avec des relations visibles : personne dans l’espace, horizon, architecture, objets, rythme de foule ou direction lumineuse nette."
+      },
+      {
+        "title": "Commencer par le ratio Auto",
+        "desc": "Auto laisse la toile finale suivre la photo source et le panneau inférieur. Vous pouvez choisir un autre ratio, mais les formats fixes peuvent demander plus de blanc ou un recadrage plus doux."
+      },
+      {
+        "title": "Créer l’éditorial",
+        "desc": "Toolaze préserve la photo et compose dans le navigateur le panneau abstrait, la palette, les marques et le titre à partir de la même image."
+      },
+      {
+        "title": "Vérifier et réutiliser",
+        "desc": "Contrôlez l’équilibre du panneau, la position du titre et l’ajustement de la photo. Vos résultats récents apparaissent dans l’historique local à droite pour téléchargement."
+      }
+    ]
+  },
+  "features": {
+    "title": "Style d’affiche photo abstraite",
+    "items": [
+      {
+        "icon": "▣",
+        "iconType": "anchor",
+        "title": "Zone photo fidèle",
+        "desc": "L’image supérieure reste photographique. Le style ne redessine pas, ne retouche pas, n’étend pas et ne filtre pas la photo source."
+      },
+      {
+        "icon": "⌁",
+        "iconType": "layout",
+        "title": "Mise en page verticale adaptative",
+        "desc": "La séparation entre photo et panneau varie selon l’image source au lieu d’imposer une coupe mécanique moitié-moitié."
+      },
+      {
+        "icon": "◌",
+        "iconType": "mood",
+        "title": "Motif mémoire abstrait",
+        "desc": "Le panneau inférieur traduit les relations visuelles en petit motif épars, pas en copie miniature de la photo."
+      },
+      {
+        "icon": "●",
+        "iconType": "accent",
+        "title": "Palette issue de la photo",
+        "desc": "Les rôles de couleur assourdis viennent de l’image importée, avec seulement quelques accents lorsque ces couleurs existent dans la source."
+      },
+      {
+        "icon": "Aa",
+        "iconType": "typography",
+        "title": "Titre poétique anglais",
+        "desc": "Un titre retenu de deux à cinq mots est placé uniquement sur le panneau ivoire et ancré dans les faits visibles de l’image."
+      },
+      {
+        "icon": "□",
+        "iconType": "texture",
+        "title": "Surface ivoire nette",
+        "desc": "Le panneau reste plat, calme et sans texture afin que la composition dépende de l’espace, du rythme et des marques."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Meilleures photos à importer",
+    "subtitle": "Le style fonctionne mieux quand l’image source contient des relations à distiller, pas seulement un objet isolé.",
+    "items": [
+      {
+        "title": "Chercher un rythme spatial",
+        "desc": "Horizons, chemins, garde-corps, personnes dans l’espace, architecture, lumières, ombres ou objets répétés structurent mieux le panneau inférieur.",
+        "color": "linear-gradient(135deg, #e0f2fe, #2563eb)"
+      },
+      {
+        "title": "Garder le sujet lisible",
+        "desc": "Évitez les flous forts, visages masqués, recadrages extrêmes ou photos où le sujet important est déjà trop petit.",
+        "color": "linear-gradient(135deg, #fef3c7, #a16207)"
+      },
+      {
+        "title": "Utiliser des indices de couleur naturels",
+        "desc": "Les photos avec un ton sombre, un ton clair et un accent subtil créent souvent le panneau abstrait le plus cohérent.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Choisir les ratios fixes avec soin",
+        "desc": "Auto est idéal pour préserver fidèlement la photo. Utilisez 9:16, 4:5, 1:1 ou 16:9 seulement si la forme extérieure compte plus que la forme naturelle de la photo.",
+        "color": "linear-gradient(135deg, #fce7f3, #be185d)"
+      }
+    ]
+  },
+  "scenesTitle": "Ce que vous pouvez créer",
+  "scenes": [
+    {
+      "icon": "◐",
+      "title": "Panneaux de souvenir de voyage",
+      "desc": "Transformez paysages, routes, rivages, musées et promenades urbaines en images d’archive calmes avec une photo source fidèle."
+    },
+    {
+      "icon": "▥",
+      "title": "Études éditoriales de portrait",
+      "desc": "Utilisez portraits ou personnes dans un lieu lorsque le sujet doit rester préservé tout en résonnant par abstraction dessous."
+    },
+    {
+      "icon": "✶",
+      "title": "Couvertures d’essais visuels",
+      "desc": "Créez des couvertures raffinées pour essais, journaux, moodboards, playlists, présentations et posts sociaux avec une sensation littéraire."
+    }
+  ],
+  "faqTitle": "FAQ du générateur d’affiche photo abstraite",
+  "faq": [
+    {
+      "q": "Dois-je écrire un prompt ?",
+      "a": "Non. Importez une photo et Toolaze applique automatiquement les règles de composition Photo Abstract Editorial dans votre navigateur."
+    },
+    {
+      "q": "Le générateur redessine-t-il ma photo ?",
+      "a": "Non. La zone photo doit préserver fidèlement l’image importée. La partie générée est le panneau abstrait et le titre en dessous."
+    },
+    {
+      "q": "Puis-je changer le ratio ?",
+      "a": "Oui. Auto est le réglage recommandé, car la composition doit suivre la photo importée et l’équilibre du panneau. Les ratios fixes comme 9:16, 4:5, 1:1 ou 16:9 changent la toile extérieure tout en ajustant la photo sans recadrage agressif."
+    },
+    {
+      "q": "Pourquoi n’y a-t-il pas de champ prompt ?",
+      "a": "Le style est volontairement automatique. L’image importée est la source, et les règles locales contrôlent la zone photo fidèle, le panneau mémoire abstrait, la palette, le titre et la surface ivoire propre."
+    },
+    {
+      "q": "Quel type de photo fonctionne le mieux ?",
+      "a": "Utilisez une photo aux relations visuelles nettes : personne dans l’espace, horizon, chemin, façade, rythme de foule, ombre forte ou groupe d’objets simple."
+    },
+    {
+      "q": "Est-ce envoyé à un modèle d’image ?",
+      "a": "Non. L’affiche est construite avec du code Canvas dans le navigateur à partir de la photo importée, des couleurs échantillonnées, de l’équilibre géométrique et d’une logique locale de titre. Cet outil n’utilise pas de tâche distante de génération d’image."
+    }
+  ],
+  "moreTools": "Outils créatifs associés",
+  "moreToolsLinks": [
+    {
+      "slug": "ai-zine-poster-generator",
+      "title": "Générateur d’affiches zine IA",
+      "description": "Importez une photo et transformez son sujet principal en composition calme d’affiche papier.",
+      "href": "/ai-zine-poster-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp",
+        "alt": "Aperçu du générateur d’affiches zine IA"
+      }
+    },
+    {
+      "slug": "image-converter",
+      "title": "Convertisseur d’images",
+      "description": "Convertissez JPG, PNG, WebP, AVIF, HEIC et d’autres formats avant de créer une affiche.",
+      "href": "/image-converter"
+    }
+  ]
+}

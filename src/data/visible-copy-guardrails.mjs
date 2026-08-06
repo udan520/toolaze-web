@@ -1,4 +1,5 @@
 const ignoredVisibleCopyKeys = new Set([
+  'avatar',
   'canonical',
   'canonicalPath',
   'defaultMode',

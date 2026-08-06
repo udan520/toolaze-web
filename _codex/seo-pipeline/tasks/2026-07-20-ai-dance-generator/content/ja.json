@@ -23,7 +23,10 @@
         "title": "AIダンス動画デモ",
         "width": 16,
         "height": 9,
-        "mediaType": "video"
+        "mediaType": "video",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+        "duration": "PT8.042S",
+        "uploadDate": "2026-07-21T07:36:34.000Z"
       }
     ],
     "defaultVideoDurationSeconds": 5,
@@ -73,35 +76,50 @@
         "prompt": "画像の人物にシンプルなヒップホップダンスをさせてください。",
         "note": "レッスン告知、音楽クリップ、都会的なパフォーマンス案に向いています。",
         "color": "linear-gradient(135deg, #111827, #6366f1)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-hip-hop-stage-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:46.000Z"
       },
       {
         "title": "優雅な動き",
         "prompt": "画像の人物に優雅なダンスをさせてください。",
         "note": "上品さ、バランス、きれいな身体のラインを見せたい動画に使えます。",
         "color": "linear-gradient(135deg, #f5d0fe, #7c3aed)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-ballet-motion-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:39.000Z"
       },
       {
         "title": "K-Popパフォーマンス",
         "prompt": "画像の人物にK-Popダンスをさせてください。",
         "note": "エネルギーのあるファン編集、カバー、SNSキャンペーンクリップに向いています。",
         "color": "linear-gradient(135deg, #f9a8d4, #2563eb)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-k-pop-performance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:51.000Z"
       },
       {
         "title": "明るいダンス",
         "prompt": "画像の人物に元気なダンスをさせてください。",
         "note": "サルサ、バチャータ、社交ダンス、ステージ案に使えます。",
         "color": "linear-gradient(135deg, #fecaca, #dc2626)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-latin-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:36:58.000Z"
       },
       {
         "title": "ストリートダンス",
         "prompt": "画像の人物に街中でダンスをさせてください。",
         "note": "ダンスクルー、地域イベント、カジュアルなクリエイター動画に向いています。",
         "color": "linear-gradient(135deg, #bfdbfe, #0f766e)",
-        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4"
+        "video": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance.mp4",
+        "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/prompt-street-dance-poster.webp",
+        "duration": "PT5.042S",
+        "uploadDate": "2026-07-21T07:37:03.000Z"
       }
     ]
   },
@@ -204,5 +222,16 @@
       "a": "鮮明な画像を1枚アップロードし、全身フレーミング、明確な身体ライン、自然な身体構造、バランスの良い動き、見える手足、きれいな背景を指定します。動きが複雑すぎる場合は、動作を簡単にして再生成します。"
     }
   ],
-  "moreTools": "その他のAI動画ツール"
+  "moreTools": "その他のAI動画ツール",
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo.mp4",
+    "poster": "https://assets.toolaze.com/model-assets/ai-dance-generator/ai-dance-demo-poster.webp",
+    "ariaLabel": "AIダンス動画デモ",
+    "width": 16,
+    "height": 9,
+    "duration": "PT8.042S",
+    "uploadDate": "2026-07-21T07:36:34.000Z",
+    "sourceHistory": "AI Dance Generator demo video · generated output frame poster · R2"
+  }
 }

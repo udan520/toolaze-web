@@ -52,6 +52,9 @@ function isWhitelistedPath(path) {
     'topTool.defaultMode',
     'heroDemoVideo.src',
     'heroDemoVideo.poster',
+    'heroDemoVideo.duration',
+    'heroDemoVideo.uploadDate',
+    'heroDemoVideo.type',
     'sectionsOrder',
   ].some((prefix) => path === prefix || path.startsWith(prefix + '['))
     || /^(promptExamples|troubleshooting)\.items\[\d+\]\.prompt$/.test(path)

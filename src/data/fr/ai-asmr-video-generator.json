@@ -18,7 +18,10 @@
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo.mp4",
     "poster": "https://assets.toolaze.com/landing-pages/ai-asmr-video-generator/demo-poster.webp",
-    "ariaLabel": "Vidéo de démonstration ASMR générée par IA"
+    "ariaLabel": "Vidéo de démonstration ASMR générée par IA",
+    "duration": "PT8.021S",
+    "uploadDate": "2026-07-29T04:40:40.000Z",
+    "type": "video"
   },
   "sectionsOrder": [
     "modelIntro",
