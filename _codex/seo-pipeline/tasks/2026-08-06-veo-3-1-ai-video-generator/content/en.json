@@ -1,0 +1,338 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-veo-3-1-ai-video-generator",
+  "topComponent": "veo-3-1-ai-video-generator",
+  "topTool": {
+    "modelId": "veo-3-1-fast",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Veo 3.1"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/a669b2ab0b54498c9ca9c0cc9b52bccd.mp4",
+    "ariaLabel": "Toolaze Veo 3.1 first and last frame demo video preview",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Toolaze Veo 3.1 hero demo candidate from media library · 2026-07-29",
+    "duration": "PT8S",
+    "uploadDate": "2026-07-29T03:02:21.390Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "metadata": {
+    "title": "Veo 3.1 AI Video Generator | First/Last Frames & Native Audio",
+    "description": "Create Veo 3.1 videos on Toolaze with text prompts, first/last-frame image control, native audio, 4/6/8 second clips, 720p/1080p output, and Lite/Fast/Quality model choices.",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Veo 3.1</span> AI Video Generator",
+    "desc": "Generate Veo 3.1 videos from text prompts or image anchors with native audio, first/last-frame steering, 4/6/8 second timing, and 720p or 1080p output. Choose Lite, Fast, or Quality for product demos, social ads, cinematic transitions, storyboard beats, and sound-led short clips."
+  },
+  "modelIntro": {
+    "title": "What Is Veo 3.1 AI Video Generator?",
+    "modelName": "Veo 3.1",
+    "modelType": "Google AI Video Model",
+    "description": [
+      "Veo 3.1 is Google's video generation model family for creating short, realistic clips from text and image inputs. Its strongest creation controls are native audio, first-and-last-frame image guidance, reference-image direction, and cinematic prompt following.",
+      "On Toolaze, Veo 3.1 is available as Lite, Fast, and Quality model choices inside the browser video generator. Use it when the ending frame, sound cue, product reveal, camera move, or storyboard transition matters more than a generic one-shot draft."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Veo 3.1 Capability Snapshot",
+    "metrics": [
+      {
+        "label": "Creation modes",
+        "value": "Text-to-video and image-to-video with first/last-frame steering for image-based generation."
+      },
+      {
+        "label": "Image guidance",
+        "value": "Toolaze supports up to two image anchors for first-frame and optional last-frame control."
+      },
+      {
+        "label": "Reference images",
+        "value": "The live Toolaze generator uses first/last-frame anchors; broader Veo 3.1 reference-image modes can use up to three images where that option is available."
+      },
+      {
+        "label": "Native audio",
+        "value": "Veo 3.1 can generate synchronized ambience, effects, speech-style cues, and sound-led scene detail from the prompt."
+      },
+      {
+        "label": "Duration",
+        "value": "Toolaze exposes 4, 6, or 8 second outputs for Veo 3.1."
+      },
+      {
+        "label": "Resolution",
+        "value": "720p or 1080p output on Toolaze. Google lists 4K for some Veo 3.1 options, but the visible Toolaze generator uses 720p and 1080p."
+      },
+      {
+        "label": "Aspect ratio",
+        "value": "16:9, 9:16, or Auto."
+      },
+      {
+        "label": "Credits",
+        "value": "Lite starts at 30 Credits, Fast at 60 Credits, and Quality at 450 Credits for 720p output."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use Veo 3.1 on Toolaze",
+    "steps": [
+      {
+        "title": "Choose a Veo 3.1 model",
+        "desc": "Select Veo 3.1 Lite for low-cost tests, Fast for balanced iteration, or Quality when fidelity is worth the higher Credit cost."
+      },
+      {
+        "title": "Pick text or image input",
+        "desc": "Start from a prompt for text-to-video, or switch to image-to-video when a first frame or first-and-last-frame transition should anchor the clip."
+      },
+      {
+        "title": "Write motion and sound together",
+        "desc": "Describe subject action, camera movement, lighting, textures, dialogue or sound effects, and the final beat in one clear prompt."
+      },
+      {
+        "title": "Set output and generate",
+        "desc": "Choose 16:9, 9:16, or Auto, select 4, 6, or 8 seconds, pick 720p or 1080p, then review the Credit requirement before generation."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Veo 3.1 Prompt Examples",
+    "subtitle": "Copy these prompts when you need first/last-frame control, product motion, native audio, or cinematic social clips.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Product Reveal with Native Audio",
+        "prompt": "A cinematic product reveal for a matte black espresso machine on a marble counter. Slow push-in, steam curls from the cup, chrome edges catch soft morning light, the final frame holds on the logo plate. Add synchronized espresso hiss, cup contact, and quiet room ambience.",
+        "description": "Combines product detail, camera direction, final hold, and native sound cues.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "First and Last Frame Transition",
+        "prompt": "Animate from the uploaded first frame of a closed perfume box to the uploaded last frame of the bottle standing beside unfolded packaging. Keep the camera locked, preserve the brand colors, let the lid open naturally, add soft paper movement and a subtle whoosh into the final pose.",
+        "description": "Uses first and last frame control to prevent the reveal from drifting.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Storyboard Beat for Social Ads",
+        "prompt": "Shot 1: a runner ties bright shoes at sunrise. Shot 2: close-up of the sole hitting wet pavement. Shot 3: side tracking shot through city reflections. Shot 4: final hero frame with the shoes stopped beside a glowing storefront. Add footsteps, fabric movement, and distant traffic.",
+        "description": "Structures a short ad as timed shots with sound and a final brand moment.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Cinematic Interior Mood Clip",
+        "prompt": "A quiet boutique hotel lobby at blue hour, camera glides past brass lamps and textured walls toward a rain-streaked window. Warm light reflects on polished stone, curtains move slightly, and the scene ends on a calm seating area with soft rain and low piano ambience.",
+        "description": "Shows Veo 3.1 as a mood and ambience generator, not only a product tool.",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Veo 3.1 Prompt Tips",
+    "tips": [
+      {
+        "title": "Control the landing frame",
+        "text": "Weak prompt: Make this product box open dramatically.\nBetter prompt: Start from the uploaded closed box frame, open the lid in one smooth motion, keep the box shape and label stable, and land exactly on the uploaded final frame with the bottle upright beside the packaging."
+      },
+      {
+        "title": "Write sound as action",
+        "text": "Weak prompt: Add good audio.\nBetter prompt: Add synchronized espresso steam hiss, ceramic cup contact, soft counter taps, and a quiet room tone that follows the product reveal without overpowering it."
+      },
+      {
+        "title": "Keep the sequence short",
+        "text": "Weak prompt: Show many scenes of a full commercial.\nBetter prompt: Use four concise beats: establishing shot, tactile close-up, main motion, final hold. Keep the camera movement smooth and the subject consistent."
+      }
+    ]
+  },
+  "scenesTitle": "What You Can Create with Veo 3.1",
+  "scenes": [
+    {
+      "icon": "🎬",
+      "title": "Product demos",
+      "desc": "Use first and last frames to control product openings, packaging reveals, app hero videos, and ecommerce motion."
+    },
+    {
+      "icon": "🎬",
+      "title": "Social ads",
+      "desc": "Generate short vertical clips for Reels, TikTok, Shorts, launch hooks, and paid creative tests."
+    },
+    {
+      "icon": "🎬",
+      "title": "Cinematic transitions",
+      "desc": "Move between planned start and end visuals while keeping camera direction, lighting, and sound intentional."
+    },
+    {
+      "icon": "🎬",
+      "title": "Sound-led scenes",
+      "desc": "Create ASMR-style material clips, ambience shots, dialogue moments, and object interaction sounds."
+    },
+    {
+      "icon": "🎬",
+      "title": "Storyboard tests",
+      "desc": "Preview a camera move, shot order, or product reveal before spending time on a longer edit."
+    },
+    {
+      "icon": "🎬",
+      "title": "Brand mood clips",
+      "desc": "Build atmospheric loops for landing pages, presentations, pitch decks, and campaign concepts."
+    }
+  ],
+  "modelComparison": {
+    "title": "Veo 3.1 Lite vs Fast vs Quality",
+    "subtitle": "Use this table to choose the right Veo 3.1 option before spending Credits.",
+    "columnHeaders": {
+      "metric": "Feature",
+      "baseline": "Veo 3.1 Lite",
+      "middle": "Veo 3.1 Fast",
+      "target": "Veo 3.1 Quality"
+    },
+    "rows": [
+      {
+        "label": "Best role",
+        "baseline": "Low-cost idea tests.",
+        "middle": "Balanced speed and quality.",
+        "target": "Highest-fidelity review pass."
+      },
+      {
+        "label": "Starting Credits",
+        "baseline": "30+ Credits.",
+        "middle": "60+ Credits.",
+        "target": "450+ Credits."
+      },
+      {
+        "label": "Output choices",
+        "baseline": "4/6/8 seconds, 720p or 1080p.",
+        "middle": "4/6/8 seconds, 720p or 1080p.",
+        "target": "4/6/8 seconds, 720p or 1080p."
+      },
+      {
+        "label": "Image control",
+        "baseline": "First frame or first/last frames.",
+        "middle": "First frame or first/last frames.",
+        "target": "First frame or first/last frames."
+      },
+      {
+        "label": "Choose it when",
+        "baseline": "You need many quick prompt tests.",
+        "middle": "You want practical iteration without Quality cost.",
+        "target": "The final visual quality matters more than cost."
+      }
+    ],
+    "featuredColumn": "middle"
+  },
+  "workflowComparison": {
+    "title": "Veo 3.1 vs Other Toolaze Video Models",
+    "subtitle": "Compare Veo 3.1 with nearby video models by control style, cost, and production role.",
+    "columns": [
+      "Decision",
+      "Veo 3.1",
+      "Wan 2.7",
+      "Kling 3.0"
+    ],
+    "rows": [
+      [
+        "Best fit",
+        "Native-audio clips and first/last-frame transitions.",
+        "First/last-frame Wan transitions and longer Wan controls.",
+        "Dynamic motion and cinematic action."
+      ],
+      [
+        "Cost position",
+        "30+ Credits for Lite, 60+ for Fast, 450+ for Quality.",
+        "64+ Credits starting point.",
+        "84+ Credits starting point."
+      ],
+      [
+        "Choose another model when",
+        "Use another model if you need longer than 8 seconds on Toolaze today.",
+        "Choose Wan 2.7 when Wan-specific controls fit the project.",
+        "Choose Kling for stronger action or motion-control projects."
+      ]
+    ]
+  },
+  "faqTitle": "Veo 3.1 AI Video Generator FAQ",
+  "faq": [
+    {
+      "q": "What is Veo 3.1 AI Video Generator?",
+      "a": "Veo 3.1 is Google's AI video model family for generating short clips from text prompts or image anchors with native audio and stronger frame control."
+    },
+    {
+      "q": "Does Veo 3.1 support first and last frames?",
+      "a": "Yes. Veo 3.1 supports first-and-last-frame generation. On Toolaze, use image-to-video and the First/Last Frames option when the start and ending composition should be controlled."
+    },
+    {
+      "q": "How many reference images can I use?",
+      "a": "Toolaze supports up to two image anchors for Veo 3.1 first/last-frame generation. Veo 3.1 reference-image modes can use up to three images where that option is available."
+    },
+    {
+      "q": "Does Veo 3.1 generate audio?",
+      "a": "Yes. Veo 3.1 can create native synchronized audio such as ambience, object sounds, speech-style cues, and sound effects from the prompt."
+    },
+    {
+      "q": "What duration does Toolaze support for Veo 3.1?",
+      "a": "Toolaze exposes 4, 6, and 8 second Veo 3.1 outputs."
+    },
+    {
+      "q": "Does Toolaze support 4K for Veo 3.1?",
+      "a": "Toolaze exposes 720p and 1080p for Veo 3.1. Some Google surfaces mention 4K, but use the visible Toolaze controls as the source of truth for this generator."
+    },
+    {
+      "q": "What is the difference between Veo 3.1 Lite, Fast, and Quality?",
+      "a": "Lite is the cheapest option for quick tests, Fast is the balanced iteration option, and Quality is the highest-cost option for stronger fidelity review."
+    },
+    {
+      "q": "How many Credits does Veo 3.1 cost?",
+      "a": "Veo 3.1 Lite starts at 30 Credits, Fast starts at 60 Credits, and Quality starts at 450 Credits for 720p output. The generator updates the requirement before generation."
+    },
+    {
+      "q": "Is Veo 3.1 free on Toolaze?",
+      "a": "Veo 3.1 video generation depends on available Credits, account state, selected model tier, resolution, and duration. Check the visible Credit requirement before generation."
+    },
+    {
+      "q": "When should I choose Veo 3.1 instead of Kling, Wan, or Seedance?",
+      "a": "Choose Veo 3.1 when native audio and first/last-frame control are the priority. Choose Kling for stronger action, Wan for Wan-family transitions, and Seedance for reference-heavy scene planning."
+    }
+  ],
+  "moreTools": "More AI Video Models",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7 Video",
+      "description": "Use Wan 2.7 when first/last-frame transitions and Wan-family timing fit the project.",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.7 video preview"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Try Kling 3.0 for dynamic motion, cinematic camera movement, and high-resolution action scenes.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 video preview"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Use Seedance 2.0 for director-style scene planning and reference-heavy commercial clips.",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 video preview"
+      }
+    }
+  ]
+}

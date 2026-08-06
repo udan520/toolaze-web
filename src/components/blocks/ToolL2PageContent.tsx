@@ -105,6 +105,7 @@ const AI_IMAGE_TOOL_TOP_COMPONENTS = new Set(['gpt-image-2'])
 const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = {
   'ai-video-generator': 'grok-1-5-video',
   'ai-asmr-video-generator': 'grok-1-5-video',
+  'veo-3-1-ai-video-generator': 'veo-3-1-fast',
   'wan-2-7-ai-video-generator': 'wan-2-7',
   'wan-2-6-ai-video-generator': 'wan-2-6',
   'wan-2-5-ai-video-generator': 'wan-2-5',

@@ -467,6 +467,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     minCredits,
     defaultMode: 'text-to-video' as const,
     maxImages: 2,
+    supportsFirstLastFrame: true,
     maxFileSizeMb: 30,
     aspectRatios: [
       { value: '16:9', label: '16:9' },

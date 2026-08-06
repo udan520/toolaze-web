@@ -469,6 +469,9 @@ test('video capability labels match the audited KIE model matrix', () => {
     'kling-3-turbo',
     'kling-3',
     'kling-2-5',
+    'veo-3-1-lite',
+    'veo-3-1-fast',
+    'veo-3-1-quality',
   ])
 })
 

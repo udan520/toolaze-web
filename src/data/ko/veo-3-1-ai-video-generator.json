@@ -1,0 +1,338 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-veo-3-1-ai-video-generator",
+  "topComponent": "veo-3-1-ai-video-generator",
+  "topTool": {
+    "modelId": "veo-3-1-fast",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Veo 3.1"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/a669b2ab0b54498c9ca9c0cc9b52bccd.mp4",
+    "ariaLabel": "Toolaze Veo 3.1 시작 및 끝 프레임 데모 동영상 미리보기",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Toolaze Veo 3.1 hero demo candidate from media library · 2026-07-29",
+    "duration": "PT8S",
+    "uploadDate": "2026-07-29T03:02:21.390Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "metadata": {
+    "title": "Veo 3.1 AI 동영상 생성기 | 시작/끝 프레임과 네이티브 오디오",
+    "description": "Toolaze에서 텍스트 프롬프트, 시작/끝 프레임 제어, 네이티브 오디오, 4/6/8초, 720p/1080p, Lite/Fast/Quality 옵션으로 Veo 3.1 동영상을 만드세요.",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Veo 3.1</span> AI 동영상 생성기",
+    "desc": "텍스트 프롬프트나 이미지 앵커로 Veo 3.1 동영상을 생성하고 네이티브 오디오, 시작/끝 프레임 제어, 4/6/8초 길이, 720p 또는 1080p 출력을 사용할 수 있습니다. Lite, Fast, Quality 중 선택해 제품 데모, 소셜 광고, 영화적 전환, 스토리보드 비트, 사운드 중심 숏폼 클립을 만드세요."
+  },
+  "modelIntro": {
+    "title": "Veo 3.1 AI 동영상 생성기란?",
+    "modelName": "Veo 3.1",
+    "modelType": "Google AI 동영상 모델",
+    "description": [
+      "Veo 3.1은 텍스트와 이미지 입력으로 짧고 사실적인 클립을 만드는 Google 동영상 생성 모델 제품군입니다. 핵심 제작 제어는 네이티브 오디오, 시작/끝 프레임 이미지 가이드, 참조 이미지 방향, 영화적인 프롬프트 추종입니다.",
+      "Toolaze에서는 브라우저 동영상 생성기 안에서 Veo 3.1을 Lite, Fast, Quality 옵션으로 사용할 수 있습니다. 끝 프레임, 사운드 큐, 제품 리빌, 카메라 이동, 스토리보드 전환이 일반 초안보다 중요할 때 적합합니다."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Veo 3.1 기능 요약",
+    "metrics": [
+      {
+        "label": "생성 모드",
+        "value": "텍스트-동영상과 이미지-동영상, 이미지 기반 생성에서 시작/끝 프레임 제어 지원."
+      },
+      {
+        "label": "이미지 가이드",
+        "value": "Toolaze는 시작 프레임과 선택적 끝 프레임 제어를 위해 최대 두 개의 이미지 앵커를 지원합니다."
+      },
+      {
+        "label": "참조 이미지",
+        "value": "Toolaze 생성기는 시작/끝 프레임 앵커를 사용합니다. Veo 3.1 참조 이미지 모드는 해당 옵션이 제공될 때 최대 세 장의 이미지를 사용할 수 있습니다."
+      },
+      {
+        "label": "네이티브 오디오",
+        "value": "Veo 3.1은 프롬프트에서 동기화된 분위기음, 효과음, 음성 스타일 큐, 사운드 중심 장면 디테일을 생성할 수 있습니다."
+      },
+      {
+        "label": "길이",
+        "value": "Toolaze는 Veo 3.1 출력을 4초, 6초, 8초로 제공합니다."
+      },
+      {
+        "label": "해상도",
+        "value": "Toolaze에서는 720p 또는 1080p 출력입니다. Google은 일부 Veo 3.1 옵션에 4K를 표시하지만, 이 Toolaze 생성기의 표시 설정은 720p와 1080p입니다."
+      },
+      {
+        "label": "화면비",
+        "value": "16:9, 9:16 또는 Auto."
+      },
+      {
+        "label": "크레딧",
+        "value": "720p 출력 기준 Lite는 30 크레딧, Fast는 60 크레딧, Quality는 450 크레딧부터 시작합니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Toolaze에서 Veo 3.1 사용하는 방법",
+    "steps": [
+      {
+        "title": "Veo 3.1 모델 선택",
+        "desc": "저비용 테스트는 Veo 3.1 Lite, 균형 잡힌 반복은 Fast, 높은 충실도가 더 높은 크레딧을 정당화할 때는 Quality를 선택합니다."
+      },
+      {
+        "title": "텍스트 또는 이미지 입력 선택",
+        "desc": "텍스트-동영상은 프롬프트로 시작합니다. 시작 프레임 또는 시작/끝 프레임 전환으로 클립을 고정해야 한다면 이미지-동영상으로 전환합니다."
+      },
+      {
+        "title": "움직임과 사운드를 함께 작성",
+        "desc": "피사체 동작, 카메라 움직임, 조명, 질감, 대사 또는 효과음, 마지막 비트를 한 프롬프트에 명확히 적습니다."
+      },
+      {
+        "title": "출력 설정 후 생성",
+        "desc": "16:9, 9:16 또는 Auto, 4/6/8초, 720p 또는 1080p를 선택하고 생성 전 필요한 크레딧을 확인합니다."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Veo 3.1 프롬프트 예시",
+    "subtitle": "시작/끝 프레임 제어, 제품 모션, 네이티브 오디오, 영화적 소셜 클립이 필요할 때 복사해 쓰세요.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "네이티브 오디오 제품 리빌",
+        "prompt": "A cinematic product reveal for a matte black espresso machine on a marble counter. Slow push-in, steam curls from the cup, chrome edges catch soft morning light, the final frame holds on the logo plate. Add synchronized espresso hiss, cup contact, and quiet room ambience.",
+        "description": "제품 디테일, 카메라 방향, 마지막 홀드, 네이티브 사운드 큐를 결합합니다.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "시작 및 끝 프레임 전환",
+        "prompt": "Animate from the uploaded first frame of a closed perfume box to the uploaded last frame of the bottle standing beside unfolded packaging. Keep the camera locked, preserve the brand colors, let the lid open naturally, add soft paper movement and a subtle whoosh into the final pose.",
+        "description": "시작과 끝 프레임 제어로 리빌이 흔들리지 않게 합니다.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "소셜 광고용 스토리보드 비트",
+        "prompt": "Shot 1: a runner ties bright shoes at sunrise. Shot 2: close-up of the sole hitting wet pavement. Shot 3: side tracking shot through city reflections. Shot 4: final hero frame with the shoes stopped beside a glowing storefront. Add footsteps, fabric movement, and distant traffic.",
+        "description": "짧은 광고를 사운드와 브랜드 마지막 장면이 있는 타이밍 샷으로 구성합니다.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "시네마틱 인테리어 무드 클립",
+        "prompt": "A quiet boutique hotel lobby at blue hour, camera glides past brass lamps and textured walls toward a rain-streaked window. Warm light reflects on polished stone, curtains move slightly, and the scene ends on a calm seating area with soft rain and low piano ambience.",
+        "description": "Veo 3.1이 제품뿐 아니라 분위기와 앰비언스 생성에도 적합함을 보여줍니다.",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Veo 3.1 프롬프트 팁",
+    "tips": [
+      {
+        "title": "도착 프레임 제어",
+        "text": "약한 프롬프트: 이 제품 상자를 극적으로 열어줘.\n더 나은 프롬프트: 업로드한 닫힌 상자 프레임에서 시작해 뚜껑을 부드럽게 열고, 상자 형태와 라벨을 안정적으로 유지하며, 병이 포장 옆에 서 있는 업로드한 최종 프레임에 정확히 도착하게 해줘."
+      },
+      {
+        "title": "사운드를 동작으로 쓰기",
+        "text": "약한 프롬프트: 좋은 오디오를 추가해줘.\n더 나은 프롬프트: 에스프레소 스팀 소리, 세라믹 컵 접촉음, 카운터의 부드러운 탭 소리, 제품 리빌을 따라가되 압도하지 않는 조용한 실내음을 동기화해줘."
+      },
+      {
+        "title": "시퀀스를 짧게 유지",
+        "text": "약한 프롬프트: 전체 광고의 많은 장면을 보여줘.\n더 나은 프롬프트: 네 개의 간결한 비트를 사용해줘. 도입 샷, 촉감 클로즈업, 주요 동작, 마지막 홀드. 카메라 움직임은 부드럽게, 피사체는 일관되게 유지해줘."
+      }
+    ]
+  },
+  "scenesTitle": "Veo 3.1로 만들 수 있는 것",
+  "scenes": [
+    {
+      "icon": "🎬",
+      "title": "제품 데모",
+      "desc": "시작/끝 프레임으로 제품 오픈, 패키징 리빌, 앱 히어로 영상, 이커머스 모션을 제어합니다."
+    },
+    {
+      "icon": "🎬",
+      "title": "소셜 광고",
+      "desc": "Reels, TikTok, Shorts, 출시 훅, 유료 크리에이티브 테스트용 짧은 세로 클립을 만듭니다."
+    },
+    {
+      "icon": "🎬",
+      "title": "영화적 전환",
+      "desc": "계획한 시작과 끝 비주얼 사이를 이동하면서 카메라, 조명, 사운드 의도를 유지합니다."
+    },
+    {
+      "icon": "🎬",
+      "title": "사운드 중심 장면",
+      "desc": "ASMR 스타일 소재 클립, 분위기 장면, 대사 순간, 오브젝트 상호작용 소리를 만듭니다."
+    },
+    {
+      "icon": "🎬",
+      "title": "스토리보드 테스트",
+      "desc": "더 긴 편집 전에 카메라 이동, 샷 순서, 제품 리빌을 미리 확인합니다."
+    },
+    {
+      "icon": "🎬",
+      "title": "브랜드 무드 클립",
+      "desc": "랜딩 페이지, 프레젠테이션, 피치덱, 캠페인 콘셉트용 분위기 루프를 만듭니다."
+    }
+  ],
+  "modelComparison": {
+    "title": "Veo 3.1 Lite vs Fast vs Quality",
+    "subtitle": "크레딧을 쓰기 전에 알맞은 Veo 3.1 옵션을 선택하세요.",
+    "columnHeaders": {
+      "metric": "기능",
+      "baseline": "Veo 3.1 Lite",
+      "middle": "Veo 3.1 Fast",
+      "target": "Veo 3.1 Quality"
+    },
+    "rows": [
+      {
+        "label": "주요 역할",
+        "baseline": "저비용 아이디어 테스트.",
+        "middle": "속도와 품질의 균형.",
+        "target": "가장 높은 충실도의 리뷰 패스."
+      },
+      {
+        "label": "시작 크레딧",
+        "baseline": "30+ 크레딧.",
+        "middle": "60+ 크레딧.",
+        "target": "450+ 크레딧."
+      },
+      {
+        "label": "출력 선택",
+        "baseline": "4/6/8초, 720p 또는 1080p.",
+        "middle": "4/6/8초, 720p 또는 1080p.",
+        "target": "4/6/8초, 720p 또는 1080p."
+      },
+      {
+        "label": "이미지 제어",
+        "baseline": "시작 프레임 또는 시작/끝 프레임.",
+        "middle": "시작 프레임 또는 시작/끝 프레임.",
+        "target": "시작 프레임 또는 시작/끝 프레임."
+      },
+      {
+        "label": "선택할 때",
+        "baseline": "많은 빠른 프롬프트 테스트가 필요할 때.",
+        "middle": "Quality 비용 없이 실용적으로 반복하고 싶을 때.",
+        "target": "최종 시각 품질이 비용보다 중요할 때."
+      }
+    ],
+    "featuredColumn": "middle"
+  },
+  "workflowComparison": {
+    "title": "Veo 3.1과 다른 Toolaze 동영상 모델 비교",
+    "subtitle": "제어 방식, 비용, 제작 역할 기준으로 Veo 3.1과 가까운 동영상 모델을 비교하세요.",
+    "columns": [
+      "판단 기준",
+      "Veo 3.1",
+      "Wan 2.7",
+      "Kling 3.0"
+    ],
+    "rows": [
+      [
+        "적합한 용도",
+        "네이티브 오디오 클립과 시작/끝 프레임 전환.",
+        "Wan 시작/끝 프레임 전환과 더 긴 Wan 제어.",
+        "역동적 움직임과 영화적 액션."
+      ],
+      [
+        "비용 위치",
+        "Lite 30+ 크레딧, Fast 60+, Quality 450+.",
+        "64+ 크레딧부터.",
+        "84+ 크레딧부터."
+      ],
+      [
+        "다른 모델을 선택할 때",
+        "오늘 Toolaze에서 8초보다 긴 출력이 필요하면 다른 모델을 사용하세요.",
+        "Wan 고유 제어가 프로젝트에 맞으면 Wan 2.7을 선택하세요.",
+        "강한 액션이나 모션 제어 흐름은 Kling을 선택하세요."
+      ]
+    ]
+  },
+  "faqTitle": "Veo 3.1 AI 동영상 생성기 FAQ",
+  "faq": [
+    {
+      "q": "Veo 3.1 AI 동영상 생성기란?",
+      "a": "Veo 3.1은 텍스트 프롬프트나 이미지 앵커에서 네이티브 오디오와 더 강한 프레임 제어를 갖춘 짧은 클립을 생성하는 Google AI 동영상 모델 제품군입니다."
+    },
+    {
+      "q": "Veo 3.1은 시작 및 끝 프레임을 지원하나요?",
+      "a": "예. Veo 3.1은 시작/끝 프레임 생성을 지원합니다. Toolaze에서는 시작과 끝 구도를 제어해야 할 때 이미지-동영상과 First/Last Frames 옵션을 사용합니다."
+    },
+    {
+      "q": "참조 이미지는 몇 장까지 사용할 수 있나요?",
+      "a": "Toolaze는 Veo 3.1 시작/끝 프레임 생성에 최대 두 개의 이미지 앵커를 지원합니다. Veo 3.1 참조 이미지 모드는 해당 옵션이 제공될 때 최대 세 장의 이미지를 사용할 수 있습니다."
+    },
+    {
+      "q": "Veo 3.1은 오디오를 생성하나요?",
+      "a": "예. Veo 3.1은 분위기음, 오브젝트 소리, 음성 스타일 큐, 효과음 같은 네이티브 동기화 오디오를 프롬프트에서 생성할 수 있습니다."
+    },
+    {
+      "q": "Toolaze는 Veo 3.1 길이를 얼마까지 지원하나요?",
+      "a": "Toolaze는 Veo 3.1 출력을 4초, 6초, 8초로 제공합니다."
+    },
+    {
+      "q": "Toolaze는 Veo 3.1 4K를 지원하나요?",
+      "a": "Toolaze는 Veo 3.1에 720p와 1080p를 제공합니다. 일부 Google 화면은 4K를 언급하지만, 이 생성기는 표시된 Toolaze 설정을 기준으로 합니다."
+    },
+    {
+      "q": "Veo 3.1 Lite, Fast, Quality의 차이는 무엇인가요?",
+      "a": "Lite는 빠른 테스트용 최저 비용 옵션, Fast는 균형 잡힌 반복 옵션, Quality는 더 높은 충실도 리뷰를 위한 고비용 옵션입니다."
+    },
+    {
+      "q": "Veo 3.1은 크레딧이 얼마나 필요한가요?",
+      "a": "720p 출력 기준 Veo 3.1 Lite는 30 크레딧, Fast는 60, Quality는 450 크레딧부터 시작합니다. 생성기는 생성 전에 필요량을 업데이트합니다."
+    },
+    {
+      "q": "Veo 3.1은 Toolaze에서 무료인가요?",
+      "a": "Veo 3.1 동영상 생성은 사용 가능한 크레딧, 계정 상태, 선택한 모델 티어, 해상도, 길이에 따라 달라집니다. 생성 전 표시되는 크레딧 요구량을 확인하세요."
+    },
+    {
+      "q": "Kling, Wan, Seedance 대신 Veo 3.1을 언제 선택하나요?",
+      "a": "네이티브 오디오와 시작/끝 프레임 제어가 우선이면 Veo 3.1을 선택하세요. 강한 액션은 Kling, Wan 계열 전환은 Wan, 참조가 많은 장면 계획은 Seedance가 적합합니다."
+    }
+  ],
+  "moreTools": "더 많은 AI 동영상 모델",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7 Video",
+      "description": "시작/끝 프레임 전환과 Wan 계열 타이밍이 프로젝트에 맞을 때 Wan 2.7을 사용하세요.",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.7 동영상 미리보기"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "역동적 움직임, 영화적 카메라, 고해상도 액션 장면에는 Kling 3.0을 사용해 보세요.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 동영상 미리보기"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "감독식 장면 계획과 참조가 많은 상업 클립에는 Seedance 2.0을 사용하세요.",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 동영상 미리보기"
+      }
+    }
+  ]
+}

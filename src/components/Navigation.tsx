@@ -78,6 +78,7 @@ const defaultNavTranslations = {
   textToVideoGenerator: 'Text to Video Generator',
   imageToVideoGenerator: 'Image to Video Generator',
   supportedAiModels: 'Supported AI Models',
+  veo31Video: 'Veo 3.1 Video',
   grok15Video: 'Grok 1.5 Video',
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
@@ -291,6 +292,7 @@ type AiVideoNavLabelKey =
   | 'aiVideoGenerator'
   | 'textToVideoGenerator'
   | 'imageToVideoGenerator'
+  | 'veo31Video'
   | 'wan27Video'
   | 'wan26Video'
   | 'wan25Video'
@@ -323,6 +325,7 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 ]
 
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
+  { href: '/model/veo-3-1-ai-video-generator', labelKey: 'veo31Video', logoSrc: '/model-logos/google-gemini.png', badgeKey: 'new' },
   { href: '/ai-video-generator?model=seedance-2-mini', labelKey: 'seedance2Mini', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
   { href: '/model/kling-3-motion-control', labelKey: 'kling3MotionControl', logoSrc: '/model-logos/kling.svg' },

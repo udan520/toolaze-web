@@ -27,6 +27,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'seedream-5-0-lite': 'seedream-5-0-lite',
   'seedream-5-0-pro': 'seedream-5-0-pro',
   'wan-2-7-image': 'wan-2-7-image',
+  'veo-3-1-ai-video-generator': 'veo-3-1-ai-video-generator',
   'wan-2-7-ai-video-generator': 'wan-2-7-ai-video-generator',
   'wan-2-6-ai-video-generator': 'wan-2-6-ai-video-generator',
   'wan-2-5-ai-video-generator': 'wan-2-5-ai-video-generator',

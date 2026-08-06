@@ -1,0 +1,338 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-veo-3-1-ai-video-generator",
+  "topComponent": "veo-3-1-ai-video-generator",
+  "topTool": {
+    "modelId": "veo-3-1-fast",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Veo 3.1"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/a669b2ab0b54498c9ca9c0cc9b52bccd.mp4",
+    "ariaLabel": "Toolaze Veo 3.1 首幀與尾幀示範影片預覽",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Toolaze Veo 3.1 hero demo candidate from media library · 2026-07-29",
+    "duration": "PT8S",
+    "uploadDate": "2026-07-29T03:02:21.390Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "metadata": {
+    "title": "Veo 3.1 AI 影片生成器 | 首尾幀控制與原生音訊",
+    "description": "在 Toolaze 用 Veo 3.1 生成影片，支援文字提示、首尾幀控制、原生音訊、4/6/8 秒、720p/1080p，以及 Lite/Fast/Quality 選項。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Veo 3.1</span> AI 影片生成器",
+    "desc": "用文字提示或圖片錨點生成 Veo 3.1 影片，支援原生音訊、首尾幀導向、4/6/8 秒時長，以及 720p 或 1080p 輸出。可選 Lite、Fast 或 Quality，用於產品展示、社群廣告、電影感轉場、分鏡節奏與音訊驅動短片。"
+  },
+  "modelIntro": {
+    "title": "什麼是 Veo 3.1 AI 影片生成器？",
+    "modelName": "Veo 3.1",
+    "modelType": "Google AI 影片模型",
+    "description": [
+      "Veo 3.1 是 Google 的影片生成模型系列，可從文字與圖片輸入生成短而逼真的影片。它最重要的創作控制包括原生音訊、首尾幀圖片導向、參考圖片方向，以及電影感提示詞跟隨。",
+      "在 Toolaze，Veo 3.1 以 Lite、Fast、Quality 三種模型選項出現在瀏覽器影片生成器中。當尾幀、聲音提示、產品揭示、鏡頭移動或分鏡轉場比一般短片草稿更重要時，適合選它。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Veo 3.1 能力速覽",
+    "metrics": [
+      {
+        "label": "生成模式",
+        "value": "文字轉影片與圖片轉影片；圖片生成可用首尾幀導向控制。"
+      },
+      {
+        "label": "圖片導向",
+        "value": "Toolaze 支援最多兩張圖片錨點，用於首幀與可選尾幀控制。"
+      },
+      {
+        "label": "參考圖片",
+        "value": "Toolaze 生成器使用首尾幀錨點；Veo 3.1 的參考圖片模式在可用時可使用最多三張圖片。"
+      },
+      {
+        "label": "原生音訊",
+        "value": "Veo 3.1 可依提示詞生成同步環境聲、音效、類語音提示與音訊驅動的場景細節。"
+      },
+      {
+        "label": "時長",
+        "value": "Toolaze 提供 4、6 或 8 秒的 Veo 3.1 輸出。"
+      },
+      {
+        "label": "解析度",
+        "value": "Toolaze 提供 720p 或 1080p。Google 在部分 Veo 3.1 選項中列出 4K，但此 Toolaze 生成器的可見設定為 720p 與 1080p。"
+      },
+      {
+        "label": "畫面比例",
+        "value": "16:9、9:16 或 Auto。"
+      },
+      {
+        "label": "點數",
+        "value": "720p 輸出時，Lite 從 30 點開始，Fast 從 60 點開始，Quality 從 450 點開始。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何在 Toolaze 使用 Veo 3.1",
+    "steps": [
+      {
+        "title": "選擇 Veo 3.1 模型",
+        "desc": "低成本測試選 Veo 3.1 Lite，平衡迭代選 Fast，若更高保真值得更高點數成本則選 Quality。"
+      },
+      {
+        "title": "選擇文字或圖片輸入",
+        "desc": "文字轉影片可直接從提示詞開始；若需要首幀或首尾幀轉場固定畫面，就切換到圖片轉影片。"
+      },
+      {
+        "title": "把動作和聲音一起寫清楚",
+        "desc": "在同一段提示詞中描述主體動作、鏡頭、燈光、質感、對話或音效，以及最後的關鍵畫面。"
+      },
+      {
+        "title": "設定輸出並生成",
+        "desc": "選擇 16:9、9:16 或 Auto，設定 4、6 或 8 秒，選 720p 或 1080p，並在生成前確認所需點數。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Veo 3.1 提示詞範例",
+    "subtitle": "需要首尾幀控制、產品動態、原生音訊或電影感社群短片時，可複製這些提示詞。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "帶原生音訊的產品揭示",
+        "prompt": "A cinematic product reveal for a matte black espresso machine on a marble counter. Slow push-in, steam curls from the cup, chrome edges catch soft morning light, the final frame holds on the logo plate. Add synchronized espresso hiss, cup contact, and quiet room ambience.",
+        "description": "結合產品細節、鏡頭方向、尾幀停留與原生聲音提示。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "首尾幀轉場",
+        "prompt": "Animate from the uploaded first frame of a closed perfume box to the uploaded last frame of the bottle standing beside unfolded packaging. Keep the camera locked, preserve the brand colors, let the lid open naturally, add soft paper movement and a subtle whoosh into the final pose.",
+        "description": "利用首幀與尾幀控制，避免揭示過程偏離。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "社群廣告分鏡節奏",
+        "prompt": "Shot 1: a runner ties bright shoes at sunrise. Shot 2: close-up of the sole hitting wet pavement. Shot 3: side tracking shot through city reflections. Shot 4: final hero frame with the shoes stopped beside a glowing storefront. Add footsteps, fabric movement, and distant traffic.",
+        "description": "把短廣告拆成有聲音和品牌尾畫面的節奏化鏡頭。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "電影感室內氛圍短片",
+        "prompt": "A quiet boutique hotel lobby at blue hour, camera glides past brass lamps and textured walls toward a rain-streaked window. Warm light reflects on polished stone, curtains move slightly, and the scene ends on a calm seating area with soft rain and low piano ambience.",
+        "description": "展示 Veo 3.1 不只適合產品，也能生成 mood 與環境氛圍。",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Veo 3.1 提示詞技巧",
+    "tips": [
+      {
+        "title": "控制落點畫面",
+        "text": "較弱提示詞：讓這個產品盒戲劇性打開。\n較好提示詞：從上傳的關閉盒子首幀開始，讓盒蓋以平順動作打開，保持盒型與標籤穩定，並精準落在上傳的尾幀，瓶身直立在包裝旁。"
+      },
+      {
+        "title": "把聲音寫成動作",
+        "text": "較弱提示詞：加入好聽的音訊。\n較好提示詞：加入同步的濃縮咖啡蒸氣聲、陶瓷杯接觸聲、檯面輕敲聲，以及跟隨產品揭示但不壓過主體的安靜室內聲。"
+      },
+      {
+        "title": "保持短序列",
+        "text": "較弱提示詞：展示完整廣告中的很多場景。\n較好提示詞：使用四個簡潔節奏：建立鏡頭、觸感特寫、主要動作、尾幀停留。保持鏡頭平順與主體一致。"
+      }
+    ]
+  },
+  "scenesTitle": "你可以用 Veo 3.1 建立什麼",
+  "scenes": [
+    {
+      "icon": "🎬",
+      "title": "產品展示",
+      "desc": "用首尾幀控制產品開盒、包裝揭示、App hero 影片與電商動態。"
+    },
+    {
+      "icon": "🎬",
+      "title": "社群廣告",
+      "desc": "生成 Reels、TikTok、Shorts、上市 hook 與付費素材測試用的短直式影片。"
+    },
+    {
+      "icon": "🎬",
+      "title": "電影感轉場",
+      "desc": "在規劃好的起始與結尾畫面之間移動，同時保持鏡頭、光線與聲音意圖。"
+    },
+    {
+      "icon": "🎬",
+      "title": "音訊驅動場景",
+      "desc": "建立 ASMR 風格材質片段、環境音鏡頭、對話瞬間與物件互動聲。"
+    },
+    {
+      "icon": "🎬",
+      "title": "分鏡測試",
+      "desc": "在投入較長剪輯前，預覽鏡頭移動、鏡頭順序或產品揭示。"
+    },
+    {
+      "icon": "🎬",
+      "title": "品牌氛圍短片",
+      "desc": "為 landing page、簡報、pitch deck 與 campaign concept 建立氛圍 loop。"
+    }
+  ],
+  "modelComparison": {
+    "title": "Veo 3.1 Lite、Fast、Quality 比較",
+    "subtitle": "花費點數前，先選擇合適的 Veo 3.1 選項。",
+    "columnHeaders": {
+      "metric": "功能",
+      "baseline": "Veo 3.1 Lite",
+      "middle": "Veo 3.1 Fast",
+      "target": "Veo 3.1 Quality"
+    },
+    "rows": [
+      {
+        "label": "適合角色",
+        "baseline": "低成本想法測試。",
+        "middle": "速度與品質平衡。",
+        "target": "最高保真 review。"
+      },
+      {
+        "label": "起始點數",
+        "baseline": "30+ 點。",
+        "middle": "60+ 點。",
+        "target": "450+ 點。"
+      },
+      {
+        "label": "輸出選項",
+        "baseline": "4/6/8 秒，720p 或 1080p。",
+        "middle": "4/6/8 秒，720p 或 1080p。",
+        "target": "4/6/8 秒，720p 或 1080p。"
+      },
+      {
+        "label": "圖片控制",
+        "baseline": "首幀或首尾幀。",
+        "middle": "首幀或首尾幀。",
+        "target": "首幀或首尾幀。"
+      },
+      {
+        "label": "選擇時機",
+        "baseline": "需要大量快速提示詞測試。",
+        "middle": "想在不使用 Quality 成本下實用迭代。",
+        "target": "最終視覺品質比成本更重要。"
+      }
+    ],
+    "featuredColumn": "middle"
+  },
+  "workflowComparison": {
+    "title": "Veo 3.1 與其他 Toolaze 影片模型比較",
+    "subtitle": "依控制方式、成本與製作角色比較 Veo 3.1 和相近影片模型。",
+    "columns": [
+      "決策",
+      "Veo 3.1",
+      "Wan 2.7",
+      "Kling 3.0"
+    ],
+    "rows": [
+      [
+        "最適合",
+        "原生音訊短片與首尾幀轉場。",
+        "Wan 首尾幀轉場與較長 Wan 控制。",
+        "動態運動與電影感動作。"
+      ],
+      [
+        "成本位置",
+        "Lite 30+ 點、Fast 60+ 點、Quality 450+ 點。",
+        "64+ 點起。",
+        "84+ 點起。"
+      ],
+      [
+        "何時選別的模型",
+        "如果今天在 Toolaze 需要超過 8 秒，請使用其他模型。",
+        "當 Wan 專屬控制更符合專案時選 Wan 2.7。",
+        "需要更強動作或 motion-control 流程時選 Kling。"
+      ]
+    ]
+  },
+  "faqTitle": "Veo 3.1 AI 影片生成器 FAQ",
+  "faq": [
+    {
+      "q": "什麼是 Veo 3.1 AI 影片生成器？",
+      "a": "Veo 3.1 是 Google 的 AI 影片模型系列，可從文字提示或圖片錨點生成短片，並具備原生音訊與更強的幀控制。"
+    },
+    {
+      "q": "Veo 3.1 支援首幀和尾幀嗎？",
+      "a": "支援。Veo 3.1 支援首尾幀生成。在 Toolaze，若需要控制開始與結尾構圖，請使用圖片轉影片和 First/Last Frames 選項。"
+    },
+    {
+      "q": "可以使用幾張參考圖片？",
+      "a": "Toolaze 支援最多兩個圖片錨點，用於 Veo 3.1 首尾幀生成。Veo 3.1 參考圖片模式在可用時可使用最多三張圖片。"
+    },
+    {
+      "q": "Veo 3.1 會生成音訊嗎？",
+      "a": "會。Veo 3.1 可依提示詞生成原生同步音訊，例如環境聲、物件聲、類語音提示與音效。"
+    },
+    {
+      "q": "Toolaze 的 Veo 3.1 支援多長影片？",
+      "a": "Toolaze 提供 4、6、8 秒的 Veo 3.1 輸出。"
+    },
+    {
+      "q": "Toolaze 的 Veo 3.1 支援 4K 嗎？",
+      "a": "Toolaze 目前為 Veo 3.1 提供 720p 與 1080p。部分 Google 介面提到 4K，但此生成器請以 Toolaze 可見控制為準。"
+    },
+    {
+      "q": "Veo 3.1 Lite、Fast、Quality 有什麼不同？",
+      "a": "Lite 是快速測試的最低成本選項，Fast 適合平衡迭代，Quality 成本最高但保真度更強。"
+    },
+    {
+      "q": "Veo 3.1 需要多少點數？",
+      "a": "720p 輸出時，Veo 3.1 Lite 從 30 點開始，Fast 從 60 點開始，Quality 從 450 點開始。生成器會在生成前更新需求。"
+    },
+    {
+      "q": "Veo 3.1 在 Toolaze 免費嗎？",
+      "a": "Veo 3.1 影片生成取決於可用點數、帳號狀態、選擇的模型層級、解析度與時長。生成前請查看可見點數需求。"
+    },
+    {
+      "q": "何時該選 Veo 3.1 而不是 Kling、Wan 或 Seedance？",
+      "a": "當原生音訊與首尾幀控制是優先事項時選 Veo 3.1。強動作用 Kling，Wan 轉場用 Wan，多參考場景規劃用 Seedance。"
+    }
+  ],
+  "moreTools": "更多 AI 影片模型",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7 Video",
+      "description": "當首尾幀轉場與 Wan 系列時序符合專案時，使用 Wan 2.7。",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.7 影片預覽"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "試用 Kling 3.0 生成動態運動、電影感鏡頭與高解析動作場景。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 影片預覽"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "使用 Seedance 2.0 進行導演式場景規劃與多參考商業短片。",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 影片預覽"
+      }
+    }
+  ]
+}

@@ -51,6 +51,7 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/talking-avatar-creator': '2026-07-31',
   '/unrestricted-ai-image-generator': '2026-07-31',
   '/ai-hairstyle-changer': '2026-08-01',
+  '/model/veo-3-1-ai-video-generator': '2026-08-06',
   '/model/wan-2-7-ai-video-generator': '2026-08-01',
   '/model/kling-2-6-pro-motion-control': '2026-08-02',
   '/model/kling-3-motion-control': '2026-08-02',
@@ -344,7 +345,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
   // 4. Model 页面（AI 图像模型，仅英文）
-  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
+  const MODEL_PAGES = ['nano-banana', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   MODEL_PAGES.forEach((model) => {
     const path = `/model/${model}`
     entries.push({
@@ -367,12 +368,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   })
 
   // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
-  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
+  const LOCALIZED_MODEL_SLUGS = ['nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   LOCALIZED_MODEL_SLUGS.forEach((model) => {
     SUPPORTED_LOCALES.forEach((locale) => {
       if (locale === 'en') return
       const tool = model
-      if (tool !== 'wan-2-7-image' && tool !== 'wan-2-7-ai-video-generator' && tool !== 'wan-2-6-ai-video-generator' && tool !== 'wan-2-5-ai-video-generator' && tool !== 'seedream-4-5' && tool !== 'seedream-5-0-lite' && tool !== 'seedream-5-0-pro' && tool !== 'grok-imagine-video-1-5' && !hasLocaleL2JsonFile(tool, locale)) return
+      if (tool !== 'wan-2-7-image' && tool !== 'veo-3-1-ai-video-generator' && tool !== 'wan-2-7-ai-video-generator' && tool !== 'wan-2-6-ai-video-generator' && tool !== 'wan-2-5-ai-video-generator' && tool !== 'seedream-4-5' && tool !== 'seedream-5-0-lite' && tool !== 'seedream-5-0-pro' && tool !== 'grok-imagine-video-1-5' && !hasLocaleL2JsonFile(tool, locale)) return
       const path = `/${locale}/model/${model}`
       entries.push({
         url: `${baseUrl}${path}`,

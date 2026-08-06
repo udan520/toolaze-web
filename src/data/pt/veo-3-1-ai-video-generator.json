@@ -1,0 +1,338 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-veo-3-1-ai-video-generator",
+  "topComponent": "veo-3-1-ai-video-generator",
+  "topTool": {
+    "modelId": "veo-3-1-fast",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Veo 3.1"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/a669b2ab0b54498c9ca9c0cc9b52bccd.mp4",
+    "ariaLabel": "Prévia do vídeo demo Toolaze Veo 3.1 com primeiro e último quadro",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Toolaze Veo 3.1 hero demo candidate from media library · 2026-07-29",
+    "duration": "PT8S",
+    "uploadDate": "2026-07-29T03:02:21.390Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "metadata": {
+    "title": "Gerador de vídeo IA Veo 3.1 | quadros inicial/final e áudio nativo",
+    "description": "Crie vídeos Veo 3.1 no Toolaze com prompts, controle de quadro inicial/final, áudio nativo, clipes de 4/6/8 segundos, 720p/1080p e opções Lite/Fast/Quality.",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Veo 3.1</span> Gerador de vídeo IA",
+    "desc": "Gere vídeos Veo 3.1 a partir de prompts de texto ou imagens âncora com áudio nativo, controle de primeiro/último quadro, duração de 4/6/8 segundos e saída 720p ou 1080p. Escolha Lite, Fast ou Quality para demos de produto, anúncios sociais, transições cinematográficas, beats de storyboard e clipes curtos guiados por som."
+  },
+  "modelIntro": {
+    "title": "O que é o gerador de vídeo IA Veo 3.1?",
+    "modelName": "Veo 3.1",
+    "modelType": "Modelo de vídeo IA do Google",
+    "description": [
+      "Veo 3.1 é a família de modelos de vídeo do Google para criar clipes curtos e realistas a partir de texto e imagens. Seus controles criativos principais são áudio nativo, orientação por primeiro e último quadro, direção com imagens de referência e seguimento cinematográfico do prompt.",
+      "No Toolaze, Veo 3.1 está disponível como Lite, Fast e Quality dentro do gerador de vídeo no navegador. Use quando o quadro final, o som, o reveal de produto, o movimento de câmera ou a transição de storyboard importam mais que um rascunho genérico."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Resumo de capacidades do Veo 3.1",
+    "metrics": [
+      {
+        "label": "Modos de criação",
+        "value": "Texto para vídeo e imagem para vídeo com controle de primeiro/último quadro para geração baseada em imagens."
+      },
+      {
+        "label": "Orientação por imagem",
+        "value": "Toolaze aceita até duas imagens âncora para controlar o primeiro quadro e um último quadro opcional."
+      },
+      {
+        "label": "Imagens de referência",
+        "value": "O gerador Toolaze usa âncoras de primeiro/último quadro; modos de referência do Veo 3.1 podem usar até três imagens quando essa opção está disponível."
+      },
+      {
+        "label": "Áudio nativo",
+        "value": "Veo 3.1 pode gerar ambiente sincronizado, efeitos, sinais semelhantes a fala e detalhes de cena guiados por som a partir do prompt."
+      },
+      {
+        "label": "Duração",
+        "value": "Toolaze oferece saídas Veo 3.1 de 4, 6 ou 8 segundos."
+      },
+      {
+        "label": "Resolução",
+        "value": "Saída 720p ou 1080p no Toolaze. Google lista 4K para algumas opções Veo 3.1, mas o gerador visível do Toolaze usa 720p e 1080p."
+      },
+      {
+        "label": "Proporção",
+        "value": "16:9, 9:16 ou Auto."
+      },
+      {
+        "label": "Créditos",
+        "value": "Lite começa em 30 créditos, Fast em 60 e Quality em 450 para saída 720p."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar Veo 3.1 no Toolaze",
+    "steps": [
+      {
+        "title": "Escolha um modelo Veo 3.1",
+        "desc": "Selecione Veo 3.1 Lite para testes de baixo custo, Fast para iteração equilibrada ou Quality quando a fidelidade justificar mais créditos."
+      },
+      {
+        "title": "Escolha texto ou imagem",
+        "desc": "Comece com prompt para texto para vídeo ou mude para imagem para vídeo quando o primeiro quadro ou uma transição com primeiro/último quadro deve ancorar o clipe."
+      },
+      {
+        "title": "Escreva movimento e som juntos",
+        "desc": "Descreva ação, câmera, luz, texturas, diálogo ou efeitos sonoros e o beat final em um prompt claro."
+      },
+      {
+        "title": "Configure e gere",
+        "desc": "Escolha 16:9, 9:16 ou Auto, selecione 4, 6 ou 8 segundos, 720p ou 1080p, e revise os créditos antes de gerar."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Exemplos de prompt para Veo 3.1",
+    "subtitle": "Copie estes prompts quando precisar de controle de primeiro/último quadro, movimento de produto, áudio nativo ou clipes sociais cinematográficos.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Reveal de produto com áudio nativo",
+        "prompt": "A cinematic product reveal for a matte black espresso machine on a marble counter. Slow push-in, steam curls from the cup, chrome edges catch soft morning light, the final frame holds on the logo plate. Add synchronized espresso hiss, cup contact, and quiet room ambience.",
+        "description": "Combina detalhe de produto, direção de câmera, pausa final e sinais sonoros nativos.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Transição de primeiro e último quadro",
+        "prompt": "Animate from the uploaded first frame of a closed perfume box to the uploaded last frame of the bottle standing beside unfolded packaging. Keep the camera locked, preserve the brand colors, let the lid open naturally, add soft paper movement and a subtle whoosh into the final pose.",
+        "description": "Usa controle de primeiro e último quadro para evitar desvio no reveal.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Beat de storyboard para anúncios sociais",
+        "prompt": "Shot 1: a runner ties bright shoes at sunrise. Shot 2: close-up of the sole hitting wet pavement. Shot 3: side tracking shot through city reflections. Shot 4: final hero frame with the shoes stopped beside a glowing storefront. Add footsteps, fabric movement, and distant traffic.",
+        "description": "Estrutura um anúncio curto como tomadas ritmadas com som e momento final de marca.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Clipe cinematográfico de interior",
+        "prompt": "A quiet boutique hotel lobby at blue hour, camera glides past brass lamps and textured walls toward a rain-streaked window. Warm light reflects on polished stone, curtains move slightly, and the scene ends on a calm seating area with soft rain and low piano ambience.",
+        "description": "Mostra Veo 3.1 como gerador de mood e ambiente, não apenas de produto.",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Dicas de prompt para Veo 3.1",
+    "tips": [
+      {
+        "title": "Controle o quadro de chegada",
+        "text": "Prompt fraco: Faça esta caixa de produto abrir de forma dramática.\nPrompt melhor: Comece no quadro enviado da caixa fechada, abra a tampa em um movimento suave, mantenha forma e rótulo estáveis e chegue exatamente ao quadro final enviado com o frasco em pé ao lado da embalagem."
+      },
+      {
+        "title": "Escreva som como ação",
+        "text": "Prompt fraco: Adicione bom áudio.\nPrompt melhor: Adicione chiado sincronizado de vapor de espresso, contato da xícara de cerâmica, toques leves no balcão e tom de sala calmo que acompanhe o reveal sem dominar a cena."
+      },
+      {
+        "title": "Mantenha a sequência curta",
+        "text": "Prompt fraco: Mostre muitas cenas de um comercial completo.\nPrompt melhor: Use quatro beats concisos: plano de abertura, close tátil, movimento principal e pausa final. Mantenha a câmera suave e o sujeito consistente."
+      }
+    ]
+  },
+  "scenesTitle": "O que você pode criar com Veo 3.1",
+  "scenes": [
+    {
+      "icon": "🎬",
+      "title": "Demos de produto",
+      "desc": "Use primeiro e último quadro para controlar aberturas, reveals de embalagem, vídeos hero de app e movimento ecommerce."
+    },
+    {
+      "icon": "🎬",
+      "title": "Anúncios sociais",
+      "desc": "Gere clipes verticais curtos para Reels, TikTok, Shorts, hooks de lançamento e testes pagos de criativos."
+    },
+    {
+      "icon": "🎬",
+      "title": "Transições cinematográficas",
+      "desc": "Mova entre visuais planejados de início e fim mantendo intenção de câmera, luz e som."
+    },
+    {
+      "icon": "🎬",
+      "title": "Cenas guiadas por som",
+      "desc": "Crie clipes de materiais estilo ASMR, ambientes, momentos de fala e sons de interação com objetos."
+    },
+    {
+      "icon": "🎬",
+      "title": "Testes de storyboard",
+      "desc": "Pré-visualize movimento de câmera, ordem de tomadas ou reveal antes de uma edição mais longa."
+    },
+    {
+      "icon": "🎬",
+      "title": "Clipes de mood de marca",
+      "desc": "Crie loops atmosféricos para landing pages, apresentações, pitch decks e conceitos de campanha."
+    }
+  ],
+  "modelComparison": {
+    "title": "Veo 3.1 Lite vs Fast vs Quality",
+    "subtitle": "Escolha a opção Veo 3.1 certa antes de gastar créditos.",
+    "columnHeaders": {
+      "metric": "Recurso",
+      "baseline": "Veo 3.1 Lite",
+      "middle": "Veo 3.1 Fast",
+      "target": "Veo 3.1 Quality"
+    },
+    "rows": [
+      {
+        "label": "Papel principal",
+        "baseline": "Testes de ideia de baixo custo.",
+        "middle": "Equilíbrio entre velocidade e qualidade.",
+        "target": "Revisão com maior fidelidade."
+      },
+      {
+        "label": "Créditos iniciais",
+        "baseline": "30+ créditos.",
+        "middle": "60+ créditos.",
+        "target": "450+ créditos."
+      },
+      {
+        "label": "Opções de saída",
+        "baseline": "4/6/8 segundos, 720p ou 1080p.",
+        "middle": "4/6/8 segundos, 720p ou 1080p.",
+        "target": "4/6/8 segundos, 720p ou 1080p."
+      },
+      {
+        "label": "Controle de imagem",
+        "baseline": "Primeiro quadro ou primeiro/último quadro.",
+        "middle": "Primeiro quadro ou primeiro/último quadro.",
+        "target": "Primeiro quadro ou primeiro/último quadro."
+      },
+      {
+        "label": "Escolha quando",
+        "baseline": "Você precisa de muitos testes rápidos de prompt.",
+        "middle": "Você quer iteração prática sem o custo de Quality.",
+        "target": "A qualidade visual final importa mais que o custo."
+      }
+    ],
+    "featuredColumn": "middle"
+  },
+  "workflowComparison": {
+    "title": "Veo 3.1 vs outros modelos de vídeo Toolaze",
+    "subtitle": "Compare Veo 3.1 com modelos próximos por estilo de controle, custo e função de produção.",
+    "columns": [
+      "Decisão",
+      "Veo 3.1",
+      "Wan 2.7",
+      "Kling 3.0"
+    ],
+    "rows": [
+      [
+        "Melhor uso",
+        "Clipes com áudio nativo e transições de primeiro/último quadro.",
+        "Transições Wan com primeiro/último quadro e controles Wan mais longos.",
+        "Movimento dinâmico e ação cinematográfica."
+      ],
+      [
+        "Posição de custo",
+        "30+ créditos para Lite, 60+ para Fast, 450+ para Quality.",
+        "A partir de 64+ créditos.",
+        "A partir de 84+ créditos."
+      ],
+      [
+        "Quando escolher outro modelo",
+        "Use outro modelo se precisar de mais de 8 segundos no Toolaze hoje.",
+        "Escolha Wan 2.7 quando controles específicos Wan combinam com o projeto.",
+        "Escolha Kling para ação mais forte ou processos de controle de movimento."
+      ]
+    ]
+  },
+  "faqTitle": "FAQ do gerador de vídeo IA Veo 3.1",
+  "faq": [
+    {
+      "q": "O que é o gerador de vídeo IA Veo 3.1?",
+      "a": "Veo 3.1 é a família de modelos de vídeo IA do Google para gerar clipes curtos a partir de prompts ou imagens âncora com áudio nativo e maior controle de quadros."
+    },
+    {
+      "q": "Veo 3.1 aceita primeiro e último quadro?",
+      "a": "Sim. Veo 3.1 aceita geração com primeiro e último quadro. No Toolaze, use imagem para vídeo e a opção First/Last Frames quando a composição inicial e final precisa ser controlada."
+    },
+    {
+      "q": "Quantas imagens de referência posso usar?",
+      "a": "Toolaze aceita até duas imagens âncora para geração Veo 3.1 com primeiro/último quadro. Modos de referência do Veo 3.1 podem usar até três imagens quando essa opção está disponível."
+    },
+    {
+      "q": "Veo 3.1 gera áudio?",
+      "a": "Sim. Veo 3.1 pode criar áudio nativo sincronizado como ambiente, sons de objetos, sinais semelhantes a fala e efeitos a partir do prompt."
+    },
+    {
+      "q": "Que duração Toolaze aceita para Veo 3.1?",
+      "a": "Toolaze oferece saídas Veo 3.1 de 4, 6 e 8 segundos."
+    },
+    {
+      "q": "Toolaze aceita 4K para Veo 3.1?",
+      "a": "Toolaze oferece 720p e 1080p para Veo 3.1. Algumas superfícies do Google mencionam 4K, mas para este gerador vale a configuração visível do Toolaze."
+    },
+    {
+      "q": "Qual é a diferença entre Veo 3.1 Lite, Fast e Quality?",
+      "a": "Lite é a opção mais barata para testes rápidos, Fast equilibra iteração, e Quality custa mais para revisão com maior fidelidade."
+    },
+    {
+      "q": "Quantos créditos Veo 3.1 custa?",
+      "a": "Veo 3.1 Lite começa em 30 créditos, Fast em 60 e Quality em 450 para saída 720p. O gerador atualiza o requisito antes de gerar."
+    },
+    {
+      "q": "Veo 3.1 é grátis no Toolaze?",
+      "a": "A geração de vídeo Veo 3.1 depende dos créditos disponíveis, estado da conta, modelo escolhido, resolução e duração. Confira o requisito visível antes de gerar."
+    },
+    {
+      "q": "Quando escolher Veo 3.1 em vez de Kling, Wan ou Seedance?",
+      "a": "Escolha Veo 3.1 quando áudio nativo e controle de primeiro/último quadro forem prioridade. Escolha Kling para ação mais forte, Wan para transições Wan e Seedance para planejamento com muitas referências."
+    }
+  ],
+  "moreTools": "Mais modelos de vídeo IA",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7 Video",
+      "description": "Use Wan 2.7 quando transições de primeiro/último quadro e timing Wan combinam com o projeto.",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Prévia de vídeo Wan 2.7"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Experimente Kling 3.0 para movimento dinâmico, câmera cinematográfica e cenas de ação em alta resolução.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Prévia de vídeo Kling 3.0"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "Use Seedance 2.0 para planejamento de cena estilo diretor e clipes comerciais com muitas referências.",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Prévia de vídeo Seedance 2.0"
+      }
+    }
+  ]
+}

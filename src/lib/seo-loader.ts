@@ -58,7 +58,7 @@ export const FONT_GENERATOR_SLUGS = [
 ]
 
 // 视频模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
-export const VIDEO_MODEL_L2S = ['kling-3-motion-control', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
+export const VIDEO_MODEL_L2S = ['veo-3-1-ai-video-generator', 'kling-3-motion-control', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'seedance-2-5', 'seedance-2', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
 
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
 export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2', 'seedream-5-0-pro']
@@ -837,6 +837,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
         data = await importL2FlatJson('image-to-video-generator', normalizedLocale)
       } else if (tool === 'text-to-video-generator') {
         data = await importL2FlatJson('text-to-video-generator', normalizedLocale)
+      } else if (tool === 'veo-3-1-ai-video-generator') {
+        data = await importL2FlatJson('veo-3-1-ai-video-generator', normalizedLocale)
       } else if (tool === 'wan-2-7-ai-video-generator') {
         data = await importL2FlatJson('wan-2-7-ai-video-generator', normalizedLocale)
       } else if (tool === 'wan-2-6-ai-video-generator') {
@@ -916,6 +918,8 @@ export async function getL2SeoContent(tool: string, locale: string = 'en') {
             data = await import('@/data/en/kling-ai-video-generator.json')
           } else if (tool === 'text-to-video-generator') {
             data = await import('@/data/en/text-to-video-generator.json')
+          } else if (tool === 'veo-3-1-ai-video-generator') {
+            data = await import('@/data/en/veo-3-1-ai-video-generator.json')
           } else if (tool === 'wan-2-7-ai-video-generator') {
             data = await import('@/data/en/wan-2-7-ai-video-generator.json')
           } else if (tool === 'wan-2-6-ai-video-generator') {

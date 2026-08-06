@@ -1,0 +1,338 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-06-veo-3-1-ai-video-generator",
+  "topComponent": "veo-3-1-ai-video-generator",
+  "topTool": {
+    "modelId": "veo-3-1-fast",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Veo 3.1"
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/a669b2ab0b54498c9ca9c0cc9b52bccd.mp4",
+    "ariaLabel": "Toolaze Veo 3.1 開始フレームと終了フレームのデモ動画プレビュー",
+    "width": 16,
+    "height": 9,
+    "sourceHistory": "Toolaze Veo 3.1 hero demo candidate from media library · 2026-07-29",
+    "duration": "PT8S",
+    "uploadDate": "2026-07-29T03:02:21.390Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "howToUse",
+    "promptExamples",
+    "troubleshooting",
+    "scenes",
+    "modelComparison",
+    "workflowComparison",
+    "faq"
+  ],
+  "metadata": {
+    "title": "Veo 3.1 AI動画ジェネレーター | 開始/終了フレームとネイティブ音声",
+    "description": "ToolazeでVeo 3.1動画を作成。テキストプロンプト、開始/終了フレーム制御、ネイティブ音声、4/6/8秒、720p/1080p、Lite/Fast/Qualityを選べます。",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Veo 3.1</span> AI動画ジェネレーター",
+    "desc": "テキストプロンプトや画像アンカーから、ネイティブ音声、開始/終了フレーム制御、4/6/8秒、720pまたは1080pのVeo 3.1動画を生成できます。Lite、Fast、Qualityを選び、商品デモ、SNS広告、映画的な遷移、ストーリーボードの動き、音を活かした短尺クリップに使えます。"
+  },
+  "modelIntro": {
+    "title": "Veo 3.1 AI動画ジェネレーターとは？",
+    "modelName": "Veo 3.1",
+    "modelType": "Google の AI 動画モデル",
+    "description": [
+      "Veo 3.1は、テキストと画像入力から短くリアルな動画を作るGoogleの動画生成モデルファミリーです。重要な制作コントロールは、ネイティブ音声、開始/終了フレームの画像ガイド、参照画像による方向付け、映画的なプロンプト追従です。",
+      "Toolazeでは、Veo 3.1をブラウザー動画ジェネレーター内のLite、Fast、Qualityとして利用できます。終了フレーム、音の合図、商品リビール、カメラ移動、ストーリーボード遷移を汎用的な短尺ドラフトより重視する場面に向いています。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Veo 3.1 機能スナップショット",
+    "metrics": [
+      {
+        "label": "作成モード",
+        "value": "テキストから動画、画像から動画。画像ベース生成では開始/終了フレームで制御できます。"
+      },
+      {
+        "label": "画像ガイド",
+        "value": "Toolazeでは開始フレームと任意の終了フレーム用に最大2つの画像アンカーを使えます。"
+      },
+      {
+        "label": "参照画像",
+        "value": "Toolazeのジェネレーターは開始/終了フレームのアンカーを使います。Veo 3.1の参照画像モードでは、利用可能な場合に最大3枚の画像を使えます。"
+      },
+      {
+        "label": "ネイティブ音声",
+        "value": "Veo 3.1は、雰囲気音、効果音、話し声風の指示、音で進むシーンの細部をプロンプトから同期生成できます。"
+      },
+      {
+        "label": "長さ",
+        "value": "ToolazeではVeo 3.1の出力を4秒、6秒、8秒から選べます。"
+      },
+      {
+        "label": "解像度",
+        "value": "Toolazeでは720pまたは1080p。Googleは一部のVeo 3.1オプションで4Kを示していますが、このToolazeジェネレーターの表示設定は720pと1080pです。"
+      },
+      {
+        "label": "アスペクト比",
+        "value": "16:9、9:16、Auto。"
+      },
+      {
+        "label": "クレジット",
+        "value": "720p出力でLiteは30クレジット、Fastは60クレジット、Qualityは450クレジットから。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "ToolazeでVeo 3.1を使う方法",
+    "steps": [
+      {
+        "title": "Veo 3.1モデルを選ぶ",
+        "desc": "低コストの検証にはVeo 3.1 Lite、バランスよく反復するならFast、より高い忠実度が必要ならQualityを選びます。"
+      },
+      {
+        "title": "テキストまたは画像入力を選ぶ",
+        "desc": "テキストから動画ならプロンプトから始めます。開始フレームや開始/終了フレーム遷移で固定したい場合は画像から動画に切り替えます。"
+      },
+      {
+        "title": "動きと音を一緒に書く",
+        "desc": "被写体の動き、カメラ、光、質感、セリフや効果音、最後の見せ場を1つの明確なプロンプトにまとめます。"
+      },
+      {
+        "title": "出力を設定して生成",
+        "desc": "16:9、9:16、Auto、4/6/8秒、720pまたは1080pを選び、生成前に必要クレジットを確認します。"
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Veo 3.1 プロンプト例",
+    "subtitle": "開始/終了フレーム制御、商品モーション、ネイティブ音声、映画的なSNSクリップに使えるプロンプトです。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "ネイティブ音声付き商品リビール",
+        "prompt": "A cinematic product reveal for a matte black espresso machine on a marble counter. Slow push-in, steam curls from the cup, chrome edges catch soft morning light, the final frame holds on the logo plate. Add synchronized espresso hiss, cup contact, and quiet room ambience.",
+        "description": "商品ディテール、カメラ指示、最後の保持、ネイティブな音の合図をまとめています。",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "開始/終了フレーム遷移",
+        "prompt": "Animate from the uploaded first frame of a closed perfume box to the uploaded last frame of the bottle standing beside unfolded packaging. Keep the camera locked, preserve the brand colors, let the lid open naturally, add soft paper movement and a subtle whoosh into the final pose.",
+        "description": "開始と終了フレームでリビールのズレを抑えます。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "SNS広告用ストーリーボード",
+        "prompt": "Shot 1: a runner ties bright shoes at sunrise. Shot 2: close-up of the sole hitting wet pavement. Shot 3: side tracking shot through city reflections. Shot 4: final hero frame with the shoes stopped beside a glowing storefront. Add footsteps, fabric movement, and distant traffic.",
+        "description": "短い広告を音とブランドの最終カット付きのショット構成にします。",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "映画的なインテリアの雰囲気クリップ",
+        "prompt": "A quiet boutique hotel lobby at blue hour, camera glides past brass lamps and textured walls toward a rain-streaked window. Warm light reflects on polished stone, curtains move slightly, and the scene ends on a calm seating area with soft rain and low piano ambience.",
+        "description": "Veo 3.1が商品だけでなく、空気感やムードにも使えることを示します。",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Veo 3.1 プロンプトのコツ",
+    "tips": [
+      {
+        "title": "到達フレームを制御する",
+        "text": "弱いプロンプト: この商品箱をドラマチックに開けて。\nより良いプロンプト: アップロードした閉じた箱のフレームから始め、ふたをなめらかに開き、箱の形とラベルを安定させ、ボトルが包装の横に立つアップロード済みの最終フレームに正確に着地させる。"
+      },
+      {
+        "title": "音を動作として書く",
+        "text": "弱いプロンプト: 良い音を追加して。\nより良いプロンプト: エスプレッソの蒸気音、陶器カップの接触音、カウンターの小さなタップ音、商品リビールに沿う静かな室内音を同期させ、主役を邪魔しないようにする。"
+      },
+      {
+        "title": "短い構成に絞る",
+        "text": "弱いプロンプト: フルCMの多くのシーンを見せて。\nより良いプロンプト: 4つの短いビートを使う。導入ショット、触感のあるクローズアップ、主動作、最後の保持。カメラを滑らかにし、被写体を一貫させる。"
+      }
+    ]
+  },
+  "scenesTitle": "Veo 3.1で作れるもの",
+  "scenes": [
+    {
+      "icon": "🎬",
+      "title": "商品デモ",
+      "desc": "開始/終了フレームで、商品開封、パッケージリビール、アプリのヒーロー動画、EC向けモーションを制御できます。"
+    },
+    {
+      "icon": "🎬",
+      "title": "SNS広告",
+      "desc": "Reels、TikTok、Shorts、ローンチフック、有料クリエイティブ検証向けの短い縦型クリップを作れます。"
+    },
+    {
+      "icon": "🎬",
+      "title": "映画的な遷移",
+      "desc": "計画した開始画と終了画の間を、カメラ、光、音を意図的に保ちながら動かせます。"
+    },
+    {
+      "icon": "🎬",
+      "title": "音主導のシーン",
+      "desc": "ASMR風の素材クリップ、環境音、会話の瞬間、物体の接触音を作れます。"
+    },
+    {
+      "icon": "🎬",
+      "title": "ストーリーボード検証",
+      "desc": "長い編集に入る前に、カメラ移動、ショット順、商品リビールを試せます。"
+    },
+    {
+      "icon": "🎬",
+      "title": "ブランドムードクリップ",
+      "desc": "ランディングページ、プレゼン、ピッチ資料、キャンペーン案向けの雰囲気ループを作れます。"
+    }
+  ],
+  "modelComparison": {
+    "title": "Veo 3.1 Lite / Fast / Quality 比較",
+    "subtitle": "クレジットを使う前に、適したVeo 3.1オプションを選べます。",
+    "columnHeaders": {
+      "metric": "機能",
+      "baseline": "Veo 3.1 Lite",
+      "middle": "Veo 3.1 Fast",
+      "target": "Veo 3.1 Quality"
+    },
+    "rows": [
+      {
+        "label": "役割",
+        "baseline": "低コストのアイデア検証。",
+        "middle": "速度と品質のバランス。",
+        "target": "最高忠実度のレビューパス。"
+      },
+      {
+        "label": "開始クレジット",
+        "baseline": "30クレジットから。",
+        "middle": "60クレジットから。",
+        "target": "450クレジットから。"
+      },
+      {
+        "label": "出力選択",
+        "baseline": "4/6/8秒、720pまたは1080p。",
+        "middle": "4/6/8秒、720pまたは1080p。",
+        "target": "4/6/8秒、720pまたは1080p。"
+      },
+      {
+        "label": "画像制御",
+        "baseline": "開始フレーム、または開始/終了フレーム。",
+        "middle": "開始フレーム、または開始/終了フレーム。",
+        "target": "開始フレーム、または開始/終了フレーム。"
+      },
+      {
+        "label": "選ぶ場面",
+        "baseline": "多くのプロンプトを素早く試したい。",
+        "middle": "Qualityのコストなしで実用的に反復したい。",
+        "target": "最終的な見た目の品質がコストより重要。"
+      }
+    ],
+    "featuredColumn": "middle"
+  },
+  "workflowComparison": {
+    "title": "Veo 3.1と他のToolaze動画モデル",
+    "subtitle": "制御方法、コスト、制作上の役割で近い動画モデルと比較します。",
+    "columns": [
+      "判断軸",
+      "Veo 3.1",
+      "Wan 2.7",
+      "Kling 3.0"
+    ],
+    "rows": [
+      [
+        "向いている用途",
+        "ネイティブ音声付きクリップと開始/終了フレーム遷移。",
+        "Wan系の開始/終了フレーム遷移と長めのWan制御。",
+        "ダイナミックな動きと映画的なアクション。"
+      ],
+      [
+        "コスト感",
+        "Liteは30+、Fastは60+、Qualityは450+クレジット。",
+        "64+クレジットから。",
+        "84+クレジットから。"
+      ],
+      [
+        "別モデルを選ぶ場面",
+        "Toolazeで8秒を超える動画が必要なら別モデルを使います。",
+        "Wan固有の制御が合うならWan 2.7を選びます。",
+        "強いアクションやモーション制御が必要ならKlingを選びます。"
+      ]
+    ]
+  },
+  "faqTitle": "Veo 3.1 AI動画ジェネレーター FAQ",
+  "faq": [
+    {
+      "q": "Veo 3.1 AI動画ジェネレーターとは？",
+      "a": "Veo 3.1は、テキストプロンプトや画像アンカーから、ネイティブ音声と強いフレーム制御を備えた短尺動画を生成するGoogleのAI動画モデルファミリーです。"
+    },
+    {
+      "q": "Veo 3.1は開始フレームと終了フレームに対応していますか？",
+      "a": "はい。Veo 3.1は開始/終了フレーム生成に対応しています。Toolazeでは、開始と終了構図を制御したいときに画像から動画とFirst/Last Framesオプションを使います。"
+    },
+    {
+      "q": "参照画像は何枚使えますか？",
+      "a": "ToolazeではVeo 3.1の開始/終了フレーム生成に最大2つの画像アンカーを使えます。Veo 3.1の参照画像モードでは、利用可能な場合に最大3枚の画像を使えます。"
+    },
+    {
+      "q": "Veo 3.1は音声を生成しますか？",
+      "a": "はい。Veo 3.1は、雰囲気音、物音、話し声風の合図、効果音などのネイティブ同期音声をプロンプトから生成できます。"
+    },
+    {
+      "q": "ToolazeのVeo 3.1は何秒に対応していますか？",
+      "a": "ToolazeではVeo 3.1の出力を4秒、6秒、8秒から選べます。"
+    },
+    {
+      "q": "ToolazeのVeo 3.1は4Kに対応していますか？",
+      "a": "ToolazeではVeo 3.1の出力は720pと1080pです。一部のGoogle画面では4Kが示されますが、このジェネレーターでは表示されているToolaze設定を基準にしてください。"
+    },
+    {
+      "q": "Veo 3.1 Lite、Fast、Qualityの違いは？",
+      "a": "Liteは素早い検証向けの最安オプション、Fastは反復向けのバランス型、Qualityは忠実度を重視する高コストオプションです。"
+    },
+    {
+      "q": "Veo 3.1は何クレジット必要ですか？",
+      "a": "720p出力ではVeo 3.1 Liteが30クレジット、Fastが60クレジット、Qualityが450クレジットから始まります。生成前に必要量が更新されます。"
+    },
+    {
+      "q": "Veo 3.1はToolazeで無料ですか？",
+      "a": "Veo 3.1の動画生成は、利用可能なクレジット、アカウント状態、選択モデル、解像度、長さによって変わります。生成前に表示される必要クレジットを確認してください。"
+    },
+    {
+      "q": "Kling、Wan、SeedanceではなくVeo 3.1を選ぶのはいつ？",
+      "a": "ネイティブ音声と開始/終了フレーム制御を優先するならVeo 3.1です。強いアクションならKling、Wan系遷移ならWan、参照が多いシーン計画ならSeedanceが向きます。"
+    }
+  ],
+  "moreTools": "その他のAI動画モデル",
+  "moreToolsLinks": [
+    {
+      "title": "Wan 2.7 Video",
+      "description": "開始/終了フレーム遷移とWan系のタイミングが合う場合はWan 2.7を使います。",
+      "href": "/model/wan-2-7-ai-video-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
+        "alt": "Wan 2.7 動画プレビュー"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "ダイナミックな動き、映画的なカメラ、高解像度アクションにはKling 3.0を試せます。",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 動画プレビュー"
+      }
+    },
+    {
+      "title": "Seedance 2.0",
+      "description": "監督的なシーン設計、参照の多い構成、商用クリップにはSeedance 2.0を使えます。",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 動画プレビュー"
+      }
+    }
+  ]
+}
