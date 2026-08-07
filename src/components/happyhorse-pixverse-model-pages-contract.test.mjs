@@ -5,14 +5,6 @@ import test from 'node:test'
 
 const root = process.cwd()
 const localizedLocales = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const r2VideoUploadKeys = [
-  'c07d1db481dd4e9b8e190ebb39611f08.png',
-  '56bb211041b34c5f8f27d3c0208322e7.png',
-  'd0d55df5eef346809067197fddb1b251.png',
-  'd38c8d15f5e64bb4a0e563c257b5429f.mp4',
-  'd6c7c4472b1f4a6b9148fca922d1a107.mp4',
-]
-
 const pages = [
   {
     slug: 'happyhorse-ai-video-generator',
@@ -132,8 +124,19 @@ test('HappyHorse and PixVerse model pages have routes, data, and SEO Factory rec
 })
 
 test('HappyHorse and PixVerse content keeps model-specific sections concise', () => {
-  const expectedOrder = [
+  const compactExpectedOrder = [
     'modelIntro',
+    'howToUse',
+    'promptExamples',
+    'troubleshooting',
+    'scenes',
+    'modelComparison',
+    'workflowComparison',
+    'faq',
+  ]
+  const happyHorseExpectedOrder = [
+    'modelIntro',
+    'performanceMetrics',
     'howToUse',
     'promptExamples',
     'troubleshooting',
@@ -146,13 +149,14 @@ test('HappyHorse and PixVerse content keeps model-specific sections concise', ()
   for (const page of pages) {
     const content = readJson(join(root, 'src', 'data', 'en', `${page.slug}.json`))
     const text = visibleTextBlob(content)
+    const isHappyHorse = page.slug === 'happyhorse-ai-video-generator'
 
-    assert.deepEqual(content.sectionsOrder, expectedOrder)
+    assert.deepEqual(content.sectionsOrder, isHappyHorse ? happyHorseExpectedOrder : compactExpectedOrder)
     assert.equal(content.promptExamples.items.length, 4)
     assert.equal(content.troubleshooting.items.length, 3)
     assert.equal(content.scenes.length, 6)
-    assert.equal(content.faq.length <= 5, true, `${page.slug} FAQ should stay under five questions`)
-    assert.equal(content.sectionsOrder.includes('performanceMetrics'), false)
+    assert.equal(content.faq.length <= (isHappyHorse ? 10 : 5), true, `${page.slug} FAQ should stay concise`)
+    assert.equal(content.sectionsOrder.includes('performanceMetrics'), isHappyHorse)
     assert.equal(content.sectionsOrder.includes('capabilitySnapshot'), false)
     assert.equal(content.sectionsOrder.includes('competitorComparison'), false)
     assert.equal(content.sectionsOrder.includes('testimonials'), false)
@@ -174,6 +178,40 @@ test('HappyHorse and PixVerse content keeps model-specific sections concise', ()
     for (const phrase of negativeVisiblePhrases) {
       assert.doesNotMatch(text, phrase, `${page.slug} visible copy should avoid internal wording: ${phrase}`)
     }
+  }
+})
+
+test('HappyHorse exposes verified capability and dated Arena context without unsupported claims', () => {
+  const content = readJson(join(root, 'src', 'data', 'en', 'happyhorse-ai-video-generator.json'))
+  const text = visibleTextBlob(content)
+  const metricsText = visibleTextBlob(content.performanceMetrics)
+
+  assert.equal(content.sectionsOrder[1], 'performanceMetrics')
+  assert.ok(content.performanceMetrics?.title)
+  assert.ok(content.performanceMetrics?.metrics?.length >= 8)
+  assert.match(text, /Artificial Analysis Video Arena/i)
+  assert.match(text, /April 2026/i)
+  assert.match(text, /first.*no-audio.*text-to-video.*image-to-video/i)
+  assert.match(text, /second.*audio-enabled/i)
+  assert.match(metricsText, /text-to-video/i)
+  assert.match(metricsText, /one.*(?:first-frame|reference) image/i)
+  assert.match(metricsText, /3(?:-|–| to )15 seconds/i)
+  assert.match(metricsText, /720p.*1080p|1080p.*720p/i)
+  assert.match(metricsText, /24 fps/i)
+  assert.match(metricsText, /MP4/i)
+  assert.match(metricsText, /any language/i)
+  assert.match(metricsText, /audio/i)
+  assert.match(metricsText, /multi-shot/i)
+
+  for (const unsupportedClaim of [
+    /currently (?:ranks?|placed) first/i,
+    /current #1/i,
+    /38 seconds/i,
+    /7 (?:lip-sync )?languages/i,
+    /90%/i,
+    /perfect lip-sync/i,
+  ]) {
+    assert.doesNotMatch(text, unsupportedClaim, `HappyHorse should not publish unsupported claim: ${unsupportedClaim}`)
   }
 })
 
@@ -239,6 +277,10 @@ test('HappyHorse and PixVerse localized content exists for every supported local
       assert.equal(publicData.metadata.published, true)
       assert.ok(publicData.hero?.h1, `${page.slug} ${locale} should translate hero H1`)
       assert.ok(publicData.moreToolsLinks?.length >= 3, `${page.slug} ${locale} should translate related model cards`)
+      if (page.slug === 'happyhorse-ai-video-generator') {
+        assert.equal(publicData.sectionsOrder[1], 'performanceMetrics', `${page.slug} ${locale} should place capabilities after the intro`)
+        assert.ok(publicData.performanceMetrics?.metrics?.length >= 8, `${page.slug} ${locale} should include the full capability snapshot`)
+      }
     }
   }
 })
@@ -280,6 +322,13 @@ test('HappyHorse and PixVerse localized pages do not reuse English body copy', (
       assert.notEqual(localized.faq?.[0]?.q, english.faq?.[0]?.q, `${page.slug} ${locale} FAQ questions should be localized`)
       assert.notEqual(localized.scenes?.[0]?.desc, english.scenes?.[0]?.desc, `${page.slug} ${locale} scene copy should be localized`)
       assert.notEqual(localized.moreToolsLinks?.[0]?.description, english.moreToolsLinks?.[0]?.description, `${page.slug} ${locale} related card copy should be localized`)
+      if (page.slug === 'happyhorse-ai-video-generator') {
+        assert.notEqual(
+          localized.performanceMetrics?.title,
+          english.performanceMetrics?.title,
+          `${page.slug} ${locale} capability title should be localized`,
+        )
+      }
     }
   }
 })
@@ -343,7 +392,7 @@ test('HappyHorse and PixVerse localized content stays in sync and avoids wrong-l
   }
 })
 
-test('HappyHorse and PixVerse video-backed R2 media renders as video in reusable cards', () => {
+test('HappyHorse and PixVerse real video URLs render as video in reusable cards', () => {
   for (const page of pages) {
     const content = readJson(join(root, 'src', 'data', 'en', `${page.slug}.json`))
     const mediaItems = [
@@ -352,9 +401,25 @@ test('HappyHorse and PixVerse video-backed R2 media renders as video in reusable
     ]
 
     for (const media of mediaItems) {
-      if (!r2VideoUploadKeys.some((key) => String(media?.src || '').includes(key))) continue
+      if (!String(media?.src || '').match(/\.(?:mp4|webm|mov)(?:[?#].*)?$/i)) continue
       assert.equal(media.type, 'video', `${page.slug} must mark ${media.src} as video media`)
       assert.ok(media.poster, `${page.slug} video media ${media.src} should provide a poster`)
     }
+  }
+})
+
+test('HappyHorse publishes a real MP4 hero with a matching WebP poster', () => {
+  const content = readJson(join(root, 'src', 'data', 'en', 'happyhorse-ai-video-generator.json'))
+
+  assert.equal(content.heroDemoVideo.type, 'video')
+  assert.match(content.heroDemoVideo.src, /^https:\/\/assets\.toolaze\.com\/.*\.mp4$/)
+  assert.match(content.heroDemoVideo.poster, /^https:\/\/assets\.toolaze\.com\/.*\.webp$/)
+  assert.match(content.heroDemoVideo.uploadDate, /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z)?$/)
+  assert.match(content.heroDemoVideo.duration, /^PT\d+(?:\.\d+)?S$/)
+
+  for (const item of content.moreToolsLinks || []) {
+    const media = item.media
+    if (!media?.src?.match(/\.(?:png|jpe?g|webp)(?:[?#].*)?$/i)) continue
+    assert.equal(media.type, 'image', `${item.title} must render image URLs as image media`)
   }
 })

@@ -43,6 +43,7 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/unrestricted-ai-image-generator': '2026-07-31',
   '/ai-hairstyle-changer': '2026-08-01',
   '/model/veo-3-1-ai-video-generator': '2026-08-06',
+  '/model/happyhorse-ai-video-generator': '2026-08-07',
   '/model/wan-2-7-ai-video-generator': '2026-08-01',
   '/model/kling-2-6-pro-motion-control': '2026-08-02',
   '/model/kling-3-motion-control': '2026-08-02',

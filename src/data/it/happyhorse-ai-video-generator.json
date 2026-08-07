@@ -30,6 +30,7 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
@@ -43,8 +44,22 @@
     "modelName": "HappyHorse",
     "modelType": "modello video IA",
     "description": [
-      "HappyHorse è una famiglia di modelli video Alibaba per creazione testo-video e immagine-video. Toolaze offre HappyHorse 1.1 e il modello HappyHorse base nello stesso generatore, così puoi scegliere in base a riferimento, formato e obiettivo di qualità.",
-      "Usalo quando ti servono movimento fluido, direzione chiara delle scene e narrazione visiva coerente senza costruire una timeline completa. È utile per test di movimento prodotto, clip lifestyle, beat personaggio, scene ASMR tattili e storyboard."
+      "HappyHorse è una famiglia di modelli video Alibaba-ATH per testo-video e immagine-video. Quando HappyHorse 1.0 è entrato nell’Artificial Analysis Video Arena ad aprile 2026, si è classificato primo nel testo-video e immagine-video senza audio e secondo nei test equivalenti con audio.",
+      "Su Toolaze puoi scegliere HappyHorse 1.0 o 1.1 per creare da testo o un’immagine clip di 3-15 secondi in 720p o 1080p. Entrambi sono adatti a demo prodotto, annunci brevi, scene personaggio, ASMR tattile e storyboard multi-shot."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Panoramica delle capacità di HappyHorse",
+    "metrics": [
+      { "label": "Sviluppatore", "value": "Famiglia di modelli video HappyHorse di Alibaba-ATH" },
+      { "label": "Benchmark di lancio di aprile 2026", "value": "Primo nel testo-video e immagine-video senza audio e secondo nei test equivalenti con audio dell’Artificial Analysis Video Arena" },
+      { "label": "Input su Toolaze", "value": "Testo-video o immagine-video con un’immagine come primo fotogramma" },
+      { "label": "Output", "value": "3-15 secondi, 720p o 1080p, MP4 a 24 fps" },
+      { "label": "Audio", "value": "Output audio con prompt per dialogo, ambiente, direzione musicale ed effetti tattili" },
+      { "label": "Lingua del prompt", "value": "La documentazione Alibaba Cloud accetta prompt in qualsiasi lingua; non pubblica un numero fisso di lingue per il lip-sync né una garanzia di precisione" },
+      { "label": "Regia multi-shot", "value": "Definisci l’ordine delle scene e ripeti i dettagli di soggetto, prodotto, abito o ambiente che devono restare coerenti" },
+      { "label": "Formati", "value": "HappyHorse 1.1 aggiunge 4:5, 5:4, 9:21 e 21:9 a 16:9, 9:16, 1:1, 4:3 e 3:4" },
+      { "label": "Credits iniziali", "value": "HappyHorse 1.1 parte da 135 Credits su Toolaze e HappyHorse 1.0 da 168 Credits" }
     ]
   },
   "howToUse": {
@@ -241,6 +256,9 @@
       "q": "Qual è la differenza tra HappyHorse 1.1 e HappyHorse?",
       "a": "HappyHorse 1.1 accetta riferimenti fino a 20MB e aggiunge 4:5, 5:4, 9:21 e 21:9. Il modello base mantiene i formati principali e limite 10MB."
     },
+    { "q": "Come si è classificato HappyHorse 1.0 nell’Artificial Analysis Video Arena?", "a": "Al debutto nell’aprile 2026, si è classificato primo nel testo-video e immagine-video senza audio e secondo nei test equivalenti con audio. È un benchmark di lancio datato, non una posizione attuale permanente." },
+    { "q": "Quali specifiche video supporta HappyHorse?", "a": "Su Toolaze crea MP4 di 3-15 secondi in 720p o 1080p. Alibaba Cloud documenta un output a 24 fps per la famiglia HappyHorse." },
+    { "q": "Quali lingue posso usare con HappyHorse?", "a": "Alibaba Cloud indica che i prompt accettano qualsiasi lingua. Non pubblica un elenco fisso di lingue per il lip-sync né una garanzia di precisione; prova lingua e dialogo prima del rendering finale." },
     {
       "q": "HappyHorse supporta prompt multi-shot?",
       "a": "Sì. Scrivi una breve sequenza di scene con una azione per beat e indica cosa deve restare coerente tra i tagli."
@@ -265,7 +283,7 @@
       "description": "Usa Wan 2.6 con testo o una immagine, durata 5/10/15 secondi, Native Audio e movimento Wan equilibrato.",
       "href": "/model/wan-2-6-ai-video-generator",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
         "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Anteprima demo del modello Wan 2.6"
@@ -276,7 +294,7 @@
       "description": "Crea bozze video Kling cinematografiche quando vuoi movimento familiare e clip social rifinite.",
       "href": "/model/kling-3",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Anteprima demo del modello Kling 3",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"

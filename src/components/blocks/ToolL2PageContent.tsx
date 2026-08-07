@@ -1065,6 +1065,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
 
     // 构建面包屑导航
     const pageTitle = fallbackPageTitle
+    const isModelL2Page = (VIDEO_MODEL_L2S.includes(tool) || IMAGE_MODEL_L2S.includes(tool)) && !isAiImageToolPage
     const breadcrumbItems = tool === 'watermark-remover'
       ? [
           { label: breadcrumbT.home, href: '/' },
@@ -1101,77 +1102,11 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.aiTools || 'AI Tools', href: locale === 'en' ? '/ai-tools' : `/${locale}/ai-tools` },
           { label: breadcrumbT.textToVideoGenerator || 'Text to Video Generator' },
         ]
-      : tool === 'nano-banana-pro'
+      : isModelL2Page
       ? [
           { label: breadcrumbT.home, href: '/' },
           { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Nano Banana Pro' },
-        ]
-      : tool === 'nano-banana-2'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Nano Banana 2' },
-        ]
-      : tool === 'gpt-image-2' && !isAiImageToolPage
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'GPT Image 2' },
-        ]
-      : tool === 'seedance-2-5'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Seedance 2.5' },
-        ]
-      : tool === 'wan-2-7-ai-video-generator'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Wan 2.7 AI Video Generator' },
-        ]
-      : tool === 'veo-3-1-ai-video-generator'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Veo 3.1 AI Video Generator' },
-        ]
-      : tool === 'wan-2-6-ai-video-generator'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Wan 2.6 AI Video Generator' },
-        ]
-      : tool === 'wan-2-5-ai-video-generator'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Wan 2.5 AI Video Generator' },
-        ]
-      : tool === 'seedance-2'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Seedance 2.0' },
-        ]
-      : tool === 'kling-3'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Kling 3.0' },
-        ]
-      : tool === 'kling-3-motion-control'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Kling 3 Motion Control' },
-        ]
-      : tool === 'kling-2-6-pro-motion-control'
-      ? [
-          { label: breadcrumbT.home, href: '/' },
-          { label: breadcrumbT.model || 'Model', href: '/model' },
-          { label: 'Kling 2.6 Pro Motion Control' },
+          { label: pageTitle },
         ]
       : isAiImageToolPage
       ? [

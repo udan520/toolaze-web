@@ -31,6 +31,7 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
@@ -44,8 +45,22 @@
     "modelName": "HappyHorse",
     "modelType": "AI 비디오 모델",
     "description": [
-      "HappyHorse는 텍스트-비디오와 이미지-비디오 생성을 위한 Alibaba 비디오 모델 계열입니다. Toolaze는 HappyHorse 1.1과 기본 HappyHorse를 같은 생성기에서 제공해 참조 파일, 화면비, 품질 목표에 맞게 선택할 수 있습니다.",
-      "전체 편집 타임라인을 만들기 전에 부드러운 피사체 움직임, 명확한 샷 방향, 일관된 시각 흐름을 확인하고 싶을 때 적합합니다. 제품 모션 테스트, 라이프스타일 클립, 캐릭터 장면, 촉각 ASMR, 스토리보드 초안에 특히 유용합니다."
+      "HappyHorse는 텍스트-비디오와 이미지-비디오 생성을 위한 Alibaba-ATH 비디오 모델 계열입니다. HappyHorse 1.0이 2026년 4월 Artificial Analysis Video Arena에 공개됐을 때 무음 텍스트-비디오와 이미지-비디오에서 1위, 해당 오디오 포함 테스트에서 2위를 기록했습니다.",
+      "Toolaze에서는 HappyHorse 1.0 또는 1.1을 선택해 텍스트나 이미지 1장으로 3~15초, 720p 또는 1080p 클립을 만들 수 있습니다. 제품 데모, 짧은 광고, 캐릭터 장면, 촉각 ASMR, multi-shot 스토리보드에 적합합니다."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "HappyHorse 핵심 기능 요약",
+    "metrics": [
+      { "label": "개발팀", "value": "Alibaba-ATH HappyHorse 비디오 모델 계열" },
+      { "label": "2026년 4월 공개 벤치마크", "value": "Artificial Analysis Video Arena 무음 텍스트-비디오와 이미지-비디오 1위, 해당 오디오 포함 테스트 2위" },
+      { "label": "Toolaze 입력", "value": "텍스트-비디오 또는 첫 프레임 이미지 1장을 쓰는 이미지-비디오" },
+      { "label": "출력", "value": "3~15초, 720p 또는 1080p, 24fps MP4" },
+      { "label": "오디오", "value": "대사, 환경음, 음악 방향, 촉각 효과음을 프롬프트로 지정하는 오디오 출력" },
+      { "label": "프롬프트 언어", "value": "Alibaba Cloud 문서는 모든 언어 입력을 허용하며, 고정된 립싱크 언어 수나 정확도 보장은 공개하지 않습니다" },
+      { "label": "Multi-shot 연출", "value": "샷 순서를 명확히 쓰고 일관성을 유지할 인물, 제품, 의상, 장면 세부 정보를 반복해 지정" },
+      { "label": "화면비", "value": "HappyHorse 1.1은 16:9, 9:16, 1:1, 4:3, 3:4에 4:5, 5:4, 9:21, 21:9를 추가" },
+      { "label": "시작 Credits", "value": "Toolaze에서 HappyHorse 1.1은 135 Credits부터, HappyHorse 1.0은 168 Credits부터" }
     ]
   },
   "howToUse": {
@@ -242,6 +257,9 @@
       "q": "HappyHorse 1.1과 HappyHorse의 차이는 무엇인가요?",
       "a": "HappyHorse 1.1은 20MB 참조 이미지와 4:5, 5:4, 9:21, 21:9 화면비를 추가로 지원합니다. 기본 모델은 핵심 화면비와 10MB 제한을 유지합니다."
     },
+    { "q": "HappyHorse 1.0은 Artificial Analysis Video Arena에서 어떤 성과를 냈나요?", "a": "2026년 4월 공개 당시 무음 텍스트-비디오와 이미지-비디오에서 1위, 해당 오디오 포함 테스트에서 2위를 기록했습니다. 이는 날짜가 명시된 공개 시점 벤치마크이며 현재 순위를 영구적으로 뜻하지 않습니다." },
+    { "q": "HappyHorse는 어떤 비디오 사양을 지원하나요?", "a": "Toolaze에서 3~15초 MP4를 720p 또는 1080p로 생성합니다. Alibaba Cloud는 HappyHorse 계열 출력을 24fps로 안내합니다." },
+    { "q": "HappyHorse에서 어떤 언어를 사용할 수 있나요?", "a": "Alibaba Cloud 문서에 따르면 프롬프트는 모든 언어를 사용할 수 있습니다. 고정된 립싱크 언어 목록이나 정확도 보장은 공개되지 않았으므로 최종 생성 전에 실제 언어와 대사 스타일을 시험하세요." },
     {
       "q": "HappyHorse는 multi-shot 프롬프트를 지원하나요?",
       "a": "네. 각 비트에 하나의 동작을 둔 짧은 샷 순서로 작성하고 컷 사이에 유지할 요소를 적으세요."
@@ -266,7 +284,7 @@
       "description": "텍스트 또는 이미지 1장, 5/10/15초 타이밍, Native Audio, 균형 잡힌 Wan 스타일 움직임에 사용합니다.",
       "href": "/model/wan-2-6-ai-video-generator",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
         "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Wan 2.6 비디오 모델 데모 미리보기"
@@ -277,7 +295,7 @@
       "description": "친숙한 모션 모델과 완성도 높은 소셜 클립이 필요할 때 영화적인 Kling 비디오 초안을 만듭니다.",
       "href": "/model/kling-3",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3 비디오 모델 데모 미리보기",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"

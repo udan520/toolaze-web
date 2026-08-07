@@ -10,13 +10,13 @@
     "displayName": "HappyHorse 1.1"
   },
   "metadata": {
-    "title": "HappyHorse KI-Videogenerator | Toolaze",
-    "description": "Erstelle HappyHorse KI-Videos online aus Textprompts oder einem Referenzbild mit 3 bis 15 Sekunden, 720p oder 1080p, Multi-Shot-Prompts und Native Audio.",
+    "title": "HappyHorse KI-Videogenerator (1.0 & 1.1) | Toolaze",
+    "description": "Erstelle mit HappyHorse 1.0 oder 1.1 aus Text oder einem Bild 3 bis 15 Sekunden lange Videos in 720p oder 1080p, mit Multi-Shot-Prompts und Audioausgabe.",
     "published": true
   },
   "hero": {
-    "h1": "HappyHorse KI-Videogenerator",
-    "desc": "Erstelle HappyHorse KI-Videos aus einem Textprompt oder einem Referenzbild und forme daraus 3 bis 15 Sekunden filmische Bewegung in 720p oder 1080p. Nutze HappyHorse 1.1 für mehr Seitenverhältnisse und größere Referenzen oder das Basis-HappyHorse-Modell für einen einfacheren Alibaba-Videodraft mit Multi-Shot-Struktur und Native Audio für Produktdemos, kurze Anzeigen, ASMR-Texturen und Social Storyboards."
+    "h1": "HappyHorse 1.0 & 1.1 KI-Videogenerator",
+    "desc": "Erstelle aus Text oder einem Bild 3 bis 15 Sekunden lange HappyHorse-Videos in 720p oder 1080p. Multi-Shot-Prompts und Audioausgabe eignen sich für Produktdemos, kurze Anzeigen, ASMR-Szenen und Storyboards; wähle HappyHorse 1.1 für mehr Seitenverhältnisse oder größere Referenzbilder."
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/generated/d6c7c4472b1f4a6b9148fca922d1a107.mp4",
@@ -31,6 +31,7 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
@@ -44,8 +45,22 @@
     "modelName": "HappyHorse",
     "modelType": "KI-Videomodell",
     "description": [
-      "HappyHorse ist eine Alibaba-Videomodellfamilie für Text-zu-Video und Bild-zu-Video. Toolaze stellt HappyHorse 1.1 und das Basis-HappyHorse-Modell im selben Generator bereit, damit du die Version nach Referenzdatei, Seitenverhältnis und Qualitätsziel wählen kannst.",
-      "Nutze es, wenn du flüssige Motivbewegung, klare Shot-Anweisungen und konsistente visuelle Erzählung brauchst, ohne zuerst eine komplette Schnitt-Timeline aufzubauen. Besonders praktisch ist es für Produktbewegungstests, Lifestyle-Clips, Charakterbeats, taktile ASMR-Szenen und Storyboard-Entwürfe."
+      "HappyHorse ist eine Alibaba-ATH-Videomodellfamilie für Text-zu-Video und Bild-zu-Video. Als HappyHorse 1.0 im April 2026 in die Artificial Analysis Video Arena aufgenommen wurde, belegte es bei Text-zu-Video und Bild-zu-Video ohne Audio den ersten und in den entsprechenden Tests mit Audio den zweiten Platz.",
+      "Auf Toolaze kannst du mit HappyHorse 1.0 oder 1.1 aus Text oder einem Bild 3 bis 15 Sekunden lange Clips in 720p oder 1080p erstellen. Beide Versionen eignen sich für Produktbewegungstests, kurze Anzeigen, Charakterszenen, taktile ASMR-Szenen und Multi-Shot-Storyboards."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "HappyHorse im Leistungsüberblick",
+    "metrics": [
+      { "label": "Entwickler", "value": "Alibaba-ATH HappyHorse-Videomodellfamilie" },
+      { "label": "Start-Benchmark im April 2026", "value": "Erster Platz bei Text-zu-Video und Bild-zu-Video ohne Audio sowie zweiter Platz in den entsprechenden Tests mit Audio der Artificial Analysis Video Arena" },
+      { "label": "Eingaben auf Toolaze", "value": "Text-zu-Video oder Bild-zu-Video mit einem Bild als erstem Frame" },
+      { "label": "Ausgabe", "value": "3 bis 15 Sekunden, 720p oder 1080p, 24 fps, MP4" },
+      { "label": "Audio", "value": "Audioausgabe mit Prompts für Dialog, Atmosphäre, Musikrichtung und taktile Soundeffekte" },
+      { "label": "Prompt-Sprache", "value": "Laut Alibaba Cloud können Prompts in jeder Sprache geschrieben werden; eine feste Zahl unterstützter Lip-Sync-Sprachen oder eine Genauigkeitsgarantie wird nicht veröffentlicht" },
+      { "label": "Multi-Shot-Regie", "value": "Gib eine klare Reihenfolge der Shots an und wiederhole Motiv-, Produkt-, Kleidungs- oder Szenendetails, die konsistent bleiben müssen" },
+      { "label": "Seitenverhältnisse", "value": "HappyHorse 1.1 ergänzt 4:5, 5:4, 9:21 und 21:9 zu 16:9, 9:16, 1:1, 4:3 und 3:4" },
+      { "label": "Credits ab", "value": "HappyHorse 1.1 beginnt auf Toolaze bei 135 Credits; HappyHorse 1.0 bei 168 Credits" }
     ]
   },
   "howToUse": {
@@ -242,6 +257,9 @@
       "q": "Was ist der Unterschied zwischen HappyHorse 1.1 und HappyHorse?",
       "a": "HappyHorse 1.1 unterstützt ein größeres 20MB-Bildreferenzlimit und zusätzliche Formate wie 4:5, 5:4, 9:21 und 21:9. Das Basis-HappyHorse-Modell behält die Kernformate und ein 10MB-Bildlimit, was für einfachere referenzgeführte Entwürfe reicht."
     },
+    { "q": "Wie schnitt HappyHorse 1.0 in der Artificial Analysis Video Arena ab?", "a": "Beim Einstieg im April 2026 belegte HappyHorse 1.0 bei Text-zu-Video und Bild-zu-Video ohne Audio den ersten und in den entsprechenden Tests mit Audio den zweiten Platz. Das ist ein datierter Start-Benchmark und keine dauerhafte aktuelle Position." },
+    { "q": "Welche Videospezifikationen unterstützt HappyHorse?", "a": "Auf Toolaze erstellt HappyHorse 3 bis 15 Sekunden lange MP4-Clips in 720p oder 1080p. Alibaba Cloud dokumentiert für die HappyHorse-Familie eine Ausgabe mit 24 fps." },
+    { "q": "Welche Sprachen kann ich mit HappyHorse verwenden?", "a": "Laut Alibaba Cloud können HappyHorse-Prompts in jeder Sprache geschrieben werden. Eine feste Liste von Lip-Sync-Sprachen oder eine Genauigkeitsgarantie wird nicht veröffentlicht; teste daher die konkrete Sprache und den Dialogstil vor dem finalen Rendern." },
     {
       "q": "Unterstützt HappyHorse Multi-Shot-Prompts?",
       "a": "Ja. Schreibe den Prompt als kurze Shot-Sequenz mit einer Aktion pro Beat und ergänze, was über Schnitte hinweg gleich bleiben soll, etwa Produktform, Outfitfarbe, Logo-Platzierung oder Charakteridentität."
@@ -257,6 +275,10 @@
     {
       "q": "Kann ich mit HappyHorse ein Referenzbild verwenden?",
       "a": "Ja. Nutze Bild-zu-Video, wenn Person, Produkt, Kostüm oder Layout erkennbar bleiben sollen. HappyHorse akzeptiert ein Referenzbild; das Dateigrößenlimit hängt von der gewählten Version ab."
+    },
+    {
+      "q": "Wie viele Credits verbraucht HappyHorse auf Toolaze?",
+      "a": "HappyHorse 1.1 beginnt bei 135 Credits, das Basis-Modell HappyHorse 1.0 bei 168 Credits. Der endgültige Betrag hängt von Dauer und Auflösung ab und wird vor der Generierung angezeigt."
     }
   ],
   "moreTools": "Weitere KI-Videomodelle",
@@ -266,7 +288,7 @@
       "description": "Nutze Wan 2.6 für Text oder ein Bild, 5/10/15 Sekunden Timing, Native Audio und ausgewogene Wan-Bewegung.",
       "href": "/model/wan-2-6-ai-video-generator",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
         "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Wan 2.6 Videomodell-Demo"
@@ -277,7 +299,7 @@
       "description": "Erstelle filmische Kling-Videoentwürfe, wenn du ein vertrautes Bewegungsmodell und polierte Social Clips brauchst.",
       "href": "/model/kling-3",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3 Videomodell-Demo",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"

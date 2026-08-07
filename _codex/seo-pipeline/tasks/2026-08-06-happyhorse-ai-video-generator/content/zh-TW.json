@@ -31,6 +31,7 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
@@ -44,8 +45,22 @@
     "modelName": "HappyHorse",
     "modelType": "AI 影片模型",
     "description": [
-      "HappyHorse 是 Alibaba 的影片模型家族，支援文字轉影片與圖片轉影片。Toolaze 在同一個生成器中提供 HappyHorse 1.1 與基礎 HappyHorse，方便依參考檔、比例與品質目標選擇。",
-      "當你需要順暢主體動態、清楚鏡頭方向與一致的視覺敘事，又不想先建立完整剪輯時間線時可以使用。它特別適合產品動態、生活風短片、角色片段、觸感 ASMR 與分鏡草稿。"
+      "HappyHorse 是 Alibaba-ATH 的影片模型家族，支援文字轉影片與圖片轉影片。HappyHorse 1.0 在 2026 年 4 月進入 Artificial Analysis Video Arena 時，於無音訊文字轉影片與圖片轉影片項目取得第一，對應的音訊項目取得第二。",
+      "在 Toolaze 可選擇 HappyHorse 1.0 或 1.1，從文字或一張圖片生成 3 至 15 秒、720p 或 1080p 的影片。兩個版本皆適合產品動態、短廣告、角色片段、觸感 ASMR 與 multi-shot 分鏡草稿。"
+    ]
+  },
+  "performanceMetrics": {
+    "title": "HappyHorse 能力摘要",
+    "metrics": [
+      { "label": "開發團隊", "value": "Alibaba-ATH HappyHorse 影片模型家族" },
+      { "label": "2026 年 4 月上線基準", "value": "在 Artificial Analysis Video Arena 的無音訊文字轉影片與圖片轉影片項目取得第一，對應音訊項目取得第二" },
+      { "label": "Toolaze 輸入", "value": "文字轉影片，或使用一張首幀圖片的圖片轉影片" },
+      { "label": "輸出", "value": "3 至 15 秒、720p 或 1080p、24 fps MP4" },
+      { "label": "音訊", "value": "可用提示詞描述對白、環境聲、音樂方向與觸感音效的音訊輸出" },
+      { "label": "提示詞語言", "value": "Alibaba Cloud 文件說明可使用任何語言；未公布固定的唇形同步語言數量或準確率保證" },
+      { "label": "Multi-shot 指導", "value": "寫明鏡頭順序，並重複必須保持一致的主體、產品、服裝或場景細節" },
+      { "label": "畫面比例", "value": "HappyHorse 1.1 在 16:9、9:16、1:1、4:3、3:4 之外增加 4:5、5:4、9:21、21:9" },
+      { "label": "起始 Credits", "value": "Toolaze 上 HappyHorse 1.1 從 135 Credits 起；HappyHorse 1.0 從 168 Credits 起" }
     ]
   },
   "howToUse": {
@@ -242,6 +257,9 @@
       "q": "HappyHorse 1.1 和 HappyHorse 有什麼不同？",
       "a": "HappyHorse 1.1 支援較大的 20MB 參考圖限制，並增加 4:5、5:4、9:21、21:9 等比例。基礎 HappyHorse 保留核心比例與 10MB 圖片限制，適合較簡單的參考圖草稿。"
     },
+    { "q": "HappyHorse 1.0 在 Artificial Analysis Video Arena 的表現如何？", "a": "它在 2026 年 4 月進入 Arena 時，於無音訊文字轉影片與圖片轉影片項目取得第一，對應的音訊項目取得第二。這是有日期的上線基準，不代表永久的目前名次。" },
+    { "q": "HappyHorse 支援哪些影片規格？", "a": "在 Toolaze，HappyHorse 可生成 3 至 15 秒的 720p 或 1080p MP4。Alibaba Cloud 文件標示 HappyHorse 家族以 24 fps 輸出。" },
+    { "q": "HappyHorse 可以使用哪些語言？", "a": "Alibaba Cloud 文件說明 HappyHorse 提示詞可使用任何語言。官方未公布固定的唇形同步語言清單或準確率保證，建議在最終生成前測試實際語言與對白風格。" },
     {
       "q": "HappyHorse 支援 multi-shot 提示詞嗎？",
       "a": "支援。把提示詞寫成短分鏡序列，每個段落只安排一個主要動作，並說明剪接之間要保持一致的元素，例如產品形狀、服裝顏色、logo 位置或角色身份。"
@@ -257,7 +275,8 @@
     {
       "q": "HappyHorse 可以使用參考圖嗎？",
       "a": "可以。當人物、產品、服裝或布局需要保持可識別時，使用圖片轉影片。HappyHorse 接受一張參考圖，檔案大小限制取決於選擇的版本。"
-    }
+    },
+    { "q": "在 Toolaze 使用 HappyHorse 需要多少 Credits？", "a": "HappyHorse 1.1 從 135 Credits 起，基礎 HappyHorse 1.0 從 168 Credits 起。實際數量取決於時長與解析度，並會在生成前顯示。" }
   ],
   "moreTools": "更多 AI 影片模型",
   "moreToolsLinks": [
@@ -266,7 +285,7 @@
       "description": "使用 Wan 2.6 進行文字或單張圖片輸入，支援 5/10/15 秒節奏、Native Audio 與平衡的 Wan 風格動態。",
       "href": "/model/wan-2-6-ai-video-generator",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
         "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Wan 2.6 影片模型示範預覽"
@@ -277,7 +296,7 @@
       "description": "想要熟悉的動作模型與精緻社群短片時，可建立電影感 Kling 影片草稿。",
       "href": "/model/kling-3",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Kling 3 影片模型示範預覽",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"

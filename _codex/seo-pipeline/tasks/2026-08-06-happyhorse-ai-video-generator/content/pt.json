@@ -31,6 +31,7 @@
   },
   "sectionsOrder": [
     "modelIntro",
+    "performanceMetrics",
     "howToUse",
     "promptExamples",
     "troubleshooting",
@@ -44,8 +45,22 @@
     "modelName": "HappyHorse",
     "modelType": "modelo de vídeo IA",
     "description": [
-      "HappyHorse é uma família de modelos de vídeo Alibaba para criação de texto para vídeo e imagem para vídeo. O Toolaze oferece HappyHorse 1.1 e o modelo HappyHorse base no mesmo gerador para você escolher por referência, proporção e meta de qualidade.",
-      "Use quando precisar de movimento suave, direção clara de tomadas e narrativa visual consistente sem montar uma timeline completa. Ele é útil para testes de movimento de produto, clipes lifestyle, beats de personagem, cenas ASMR táteis e storyboards."
+      "HappyHorse é uma família de modelos de vídeo Alibaba-ATH para texto para vídeo e imagem para vídeo. Quando o HappyHorse 1.0 entrou no Artificial Analysis Video Arena em abril de 2026, ficou em primeiro em texto para vídeo e imagem para vídeo sem áudio e em segundo nos testes equivalentes com áudio.",
+      "No Toolaze, escolha HappyHorse 1.0 ou 1.1 para criar clipes de 3 a 15 segundos em 720p ou 1080p a partir de texto ou uma imagem. Ambos servem para demos de produto, anúncios curtos, cenas de personagem, ASMR tátil e storyboards multi-shot."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Resumo de capacidades do HappyHorse",
+    "metrics": [
+      { "label": "Desenvolvedor", "value": "Família de modelos de vídeo HappyHorse da Alibaba-ATH" },
+      { "label": "Referência de lançamento de abril de 2026", "value": "Primeiro em texto para vídeo e imagem para vídeo sem áudio e segundo nos testes equivalentes com áudio do Artificial Analysis Video Arena" },
+      { "label": "Entradas no Toolaze", "value": "Texto para vídeo ou imagem para vídeo com uma imagem como primeiro quadro" },
+      { "label": "Saída", "value": "3 a 15 segundos, 720p ou 1080p, MP4 a 24 fps" },
+      { "label": "Áudio", "value": "Saída de áudio com prompts para diálogo, ambiente, direção musical e efeitos táteis" },
+      { "label": "Idioma do prompt", "value": "A documentação da Alibaba Cloud aceita prompts em qualquer idioma; não publica quantidade fixa de idiomas de sincronização labial nem garantia de precisão" },
+      { "label": "Direção multi-shot", "value": "Defina a ordem das tomadas e repita detalhes de sujeito, produto, roupa ou cena que precisam permanecer consistentes" },
+      { "label": "Proporções", "value": "HappyHorse 1.1 adiciona 4:5, 5:4, 9:21 e 21:9 a 16:9, 9:16, 1:1, 4:3 e 3:4" },
+      { "label": "Credits iniciais", "value": "HappyHorse 1.1 começa em 135 Credits no Toolaze e HappyHorse 1.0 em 168 Credits" }
     ]
   },
   "howToUse": {
@@ -242,6 +257,9 @@
       "q": "Qual é a diferença entre HappyHorse 1.1 e HappyHorse?",
       "a": "HappyHorse 1.1 aceita imagem de referência maior, até 20MB, e amplia proporções como 4:5, 5:4, 9:21 e 21:9. O modelo base mantém proporções principais e limite de 10MB, suficiente para rascunhos simples com referência."
     },
+    { "q": "Como o HappyHorse 1.0 se saiu no Artificial Analysis Video Arena?", "a": "Ao entrar em abril de 2026, ficou em primeiro em texto para vídeo e imagem para vídeo sem áudio e em segundo nos testes equivalentes com áudio. É uma referência de lançamento datada, não uma posição atual permanente." },
+    { "q": "Quais especificações de vídeo o HappyHorse aceita?", "a": "No Toolaze, cria clipes MP4 de 3 a 15 segundos em 720p ou 1080p. A Alibaba Cloud documenta saída a 24 fps para a família HappyHorse." },
+    { "q": "Quais idiomas posso usar com o HappyHorse?", "a": "A Alibaba Cloud informa que os prompts aceitam qualquer idioma. Não publica lista fixa de idiomas de sincronização labial nem garantia de precisão; teste o idioma e o diálogo antes do render final." },
     {
       "q": "HappyHorse aceita prompts multi-shot?",
       "a": "Sim. Escreva o prompt como uma sequência curta de tomadas, com uma ação por etapa, e diga o que deve permanecer consistente entre cortes."
@@ -266,7 +284,7 @@
       "description": "Use Wan 2.6 com texto ou uma imagem, tempos de 5/10/15 segundos, Native Audio e movimento Wan equilibrado.",
       "href": "/model/wan-2-6-ai-video-generator",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
         "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
         "alt": "Prévia demo do modelo Wan 2.6"
@@ -277,7 +295,7 @@
       "description": "Crie rascunhos Kling cinematográficos quando quiser um modelo de movimento familiar e clipes sociais polidos.",
       "href": "/model/kling-3",
       "media": {
-        "type": "video",
+        "type": "image",
         "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
         "alt": "Prévia demo do modelo Kling 3",
         "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp"
