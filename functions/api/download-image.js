@@ -9,6 +9,41 @@ const CORS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
+const IMAGE_FORMAT_BY_MIME = {
+  'image/png': { extension: 'png', mimeType: 'image/png' },
+  'image/jpeg': { extension: 'jpg', mimeType: 'image/jpeg' },
+  'image/webp': { extension: 'webp', mimeType: 'image/webp' },
+  'image/gif': { extension: 'gif', mimeType: 'image/gif' },
+  'image/avif': { extension: 'avif', mimeType: 'image/avif' },
+};
+
+function startsWithBytes(bytes, signature, offset = 0) {
+  return signature.every((value, index) => bytes[offset + index] === value);
+}
+
+function detectImageFormat(bytes, mimeType) {
+  if (startsWithBytes(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) {
+    return IMAGE_FORMAT_BY_MIME['image/png'];
+  }
+  if (startsWithBytes(bytes, [0xff, 0xd8, 0xff])) return IMAGE_FORMAT_BY_MIME['image/jpeg'];
+  if (startsWithBytes(bytes, [0x52, 0x49, 0x46, 0x46]) && startsWithBytes(bytes, [0x57, 0x45, 0x42, 0x50], 8)) {
+    return IMAGE_FORMAT_BY_MIME['image/webp'];
+  }
+  if (startsWithBytes(bytes, [0x47, 0x49, 0x46, 0x38, 0x37, 0x61]) || startsWithBytes(bytes, [0x47, 0x49, 0x46, 0x38, 0x39, 0x61])) {
+    return IMAGE_FORMAT_BY_MIME['image/gif'];
+  }
+  if (startsWithBytes(bytes, [0x66, 0x74, 0x79, 0x70], 4)) {
+    const brand = String.fromCharCode(...bytes.slice(8, 12)).toLowerCase();
+    if (brand === 'avif' || brand === 'avis') return IMAGE_FORMAT_BY_MIME['image/avif'];
+  }
+  return IMAGE_FORMAT_BY_MIME[mimeType.split(';', 1)[0].trim().toLowerCase()] || null;
+}
+
+function replaceFilenameExtension(filename, extension) {
+  const baseName = filename.replace(/\.[^./\\]+$/, '') || 'image';
+  return `${baseName}.${extension}`;
+}
+
 function getAllowedBaseUrl(env) {
   const base = env.R2_PUBLIC_BASE_URL;
   if (typeof base === 'string' && base.trim()) {
@@ -78,14 +113,18 @@ export async function onRequest(context) {
       );
     }
 
-    const contentType = resp.headers.get('content-type') || 'image/octet-stream';
     const blob = await resp.blob();
+    const upstreamContentType = resp.headers.get('content-type') || 'image/octet-stream';
+    const bytes = new Uint8Array(await blob.slice(0, 12).arrayBuffer());
+    const format = detectImageFormat(bytes, upstreamContentType);
+    const contentType = format?.mimeType || upstreamContentType;
+    const downloadFilename = format ? replaceFilenameExtension(filename, format.extension) : filename;
 
     return new Response(blob, {
       status: 200,
       headers: {
         'Content-Type': contentType,
-        'Content-Disposition': `attachment; filename="${filename.replace(/"/g, '\\"')}"`,
+        'Content-Disposition': `attachment; filename="${downloadFilename.replace(/"/g, '\\"')}"`,
         'Cache-Control': 'no-cache',
         ...CORS,
       },

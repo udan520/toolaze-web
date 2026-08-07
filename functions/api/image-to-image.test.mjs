@@ -96,6 +96,7 @@ for (const scenario of [
     providerModel: 'grok-imagine/image-to-image',
     isImageToImage: true,
     setting: { resolution: '1K' },
+    forwardsAspectRatio: false,
   },
   {
     name: 'Nano Banana 2 Lite image-to-image',
@@ -132,7 +133,7 @@ for (const scenario of [
       assert.equal(response.status, 200)
       assert.equal(requestBody.model, scenario.providerModel)
       assert.equal(requestBody.input.prompt, 'Change the hair color to rose pink.')
-      assert.equal(requestBody.input.aspect_ratio, '1:1')
+      assert.equal(requestBody.input.aspect_ratio, scenario.forwardsAspectRatio === false ? undefined : '1:1')
       if (scenario.model === 'gpt-image-1-5') {
         assert.equal(requestBody.input.quality, scenario.setting.quality)
         assert.equal(requestBody.input.resolution, undefined)
@@ -547,6 +548,62 @@ test('Grok 1.5 image requests use the official text-to-image provider model id',
     assert.equal(response.status, 200)
     assert.equal(requestBody.model, 'grok-imagine/text-to-image')
     assert.equal(requestBody.input.image_urls, undefined)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('Grok 1.5 image-to-image follows the reference shape instead of forwarding a fake ratio', async () => {
+  const originalFetch = globalThis.fetch
+  let requestBody = null
+
+  globalThis.fetch = async (_url, init) => {
+    requestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_grok_reference_shape' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'grok-1-5-image',
+        isImageToImage: true,
+        aspectRatio: '16:9',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(requestBody.model, 'grok-imagine/image-to-image')
+    assert.equal(requestBody.input.aspect_ratio, undefined)
+    assert.deepEqual(requestBody.input.image_urls, ['https://example.com/reference.png'])
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('Grok 1.5 text-to-image keeps forwarding supported custom ratios', async () => {
+  const originalFetch = globalThis.fetch
+  let requestBody = null
+
+  globalThis.fetch = async (_url, init) => {
+    requestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_grok_custom_ratio' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        model: 'grok-1-5-image',
+        isImageToImage: false,
+        imageUrls: false,
+        aspectRatio: '16:9',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(requestBody.model, 'grok-imagine/text-to-image')
+    assert.equal(requestBody.input.aspect_ratio, '16:9')
   } finally {
     globalThis.fetch = originalFetch
   }

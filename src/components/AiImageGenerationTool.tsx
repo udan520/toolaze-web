@@ -1510,6 +1510,9 @@ export default function AiImageGenerationTool({
     ? hasCurrentPersonReferenceImages && hasCurrentSecondaryReferenceImages
     : hasCurrentPersonReferenceImages
   const canGenerate = Boolean(currentEffectivePrompt) && (activeTab !== 'image-to-image' || hasCurrentReferenceImages)
+  const followsReferenceImageAspectRatio = activeTab === 'image-to-image'
+    && modelConfig.imageToImageAspectRatioMode === 'reference-image'
+  const effectiveAspectRatio = followsReferenceImageAspectRatio ? 'Match Reference' : aspectRatio
 
   useEffect(() => {
     const nextValue =
@@ -2280,7 +2283,7 @@ export default function AiImageGenerationTool({
     const requestClothingReferenceRemoteUrls = shouldUseSecondaryReferenceUploader
       ? [...clothingReferenceRemoteUrls]
       : []
-    const requestAspectRatio = aspectRatio
+    const requestAspectRatio = effectiveAspectRatio
     const requestResolution = resolution
     const requestOutputFormat = outputFormat
     const requestModelId = selectedModelId
@@ -2356,7 +2359,9 @@ export default function AiImageGenerationTool({
     try {
       const formData = new FormData()
       formData.append('prompt', effectivePrompt)
-      formData.append('aspectRatio', requestAspectRatio)
+      if (!followsReferenceImageAspectRatio) {
+        formData.append('aspectRatio', requestAspectRatio)
+      }
       if (MODEL_CONFIG[requestModelId].setting.kind === 'quality') {
         formData.append('quality', requestResolution)
       } else {
@@ -4394,7 +4399,7 @@ export default function AiImageGenerationTool({
                           }
                         }}
                         placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
-                        className="h-[7.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 pr-11 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                        className="h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 pr-11 text-base leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm"
                         rows={4}
                       />
                       {prompt && (
@@ -4422,26 +4427,38 @@ export default function AiImageGenerationTool({
             {!isCouplePhotoMakerMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.outputAspectRatios}</label>
-                <div className="grid grid-cols-4 gap-2">
-                  {modelConfig.aspectRatios.map((ar) => {
-                    const isSelected = aspectRatio === ar.value
-                    return (
-                      <button
-                        key={ar.value}
-                        type="button"
-                        aria-pressed={isSelected}
-                        onClick={() => setAspectRatio(ar.value)}
-                        className={`min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
-                          isSelected
-                            ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
-                            : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
-                        }`}
-                      >
-                        {ar.label}
-                      </button>
-                    )
-                  })}
-                </div>
+                {followsReferenceImageAspectRatio ? (
+                  <button
+                    type="button"
+                    data-image-match-reference-aspect-ratio
+                    aria-pressed="true"
+                    disabled
+                    className="inline-flex min-h-10 items-center justify-center rounded-xl border border-[#4F46E5] bg-[#EEF2FF] px-3 py-2 text-center text-xs font-bold text-[#4F46E5] shadow-sm"
+                  >
+                    Match Reference
+                  </button>
+                ) : (
+                  <div className="grid grid-cols-4 gap-2">
+                    {modelConfig.aspectRatios.map((ar) => {
+                      const isSelected = aspectRatio === ar.value
+                      return (
+                        <button
+                          key={ar.value}
+                          type="button"
+                          aria-pressed={isSelected}
+                          onClick={() => setAspectRatio(ar.value)}
+                          className={`min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
+                            isSelected
+                              ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
+                              : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
+                          }`}
+                        >
+                          {ar.label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             )}
 

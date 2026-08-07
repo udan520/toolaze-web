@@ -313,20 +313,23 @@ export async function onRequest(context) {
     const normalizedResolution = model === 'gpt-image-1-5'
       ? (quality || 'medium')
       : normalizeResolution(model, isImageToImage, resolution);
-    const aspectRatio = requestedAspectRatio || (
-      isVideoGenerationModel(model)
-        ? '16:9'
-        : (
-          model === 'gpt-image-1-5' ||
-          isFlux2Model(model) ||
-          model === 'seedream-4-5' ||
-          model === 'seedream-5-0-lite' ||
-          model === 'seedream-5-0-pro' ||
-          model === 'wan-2-7-image'
-            ? '1:1'
-            : undefined
-        )
-    );
+    const followsReferenceImageAspectRatio = model === 'grok-1-5-image' && isImageToImage;
+    const aspectRatio = followsReferenceImageAspectRatio
+      ? 'Match Reference'
+      : requestedAspectRatio || (
+        isVideoGenerationModel(model)
+          ? '16:9'
+          : (
+            model === 'gpt-image-1-5' ||
+            isFlux2Model(model) ||
+            model === 'seedream-4-5' ||
+            model === 'seedream-5-0-lite' ||
+            model === 'seedream-5-0-pro' ||
+            model === 'wan-2-7-image'
+              ? '1:1'
+              : undefined
+          )
+      );
     const providerModelId = resolveProviderModelId(model, env, isImageToImage, normalizedResolution);
     const maxImages = getMaxImagesForModel(model);
     const creditMetadata = getImageGenerationCreditMetadata(model, isImageToImage, {
@@ -476,7 +479,7 @@ export async function onRequest(context) {
     if (isFlux2Model(model)) {
       input.nsfw_checker = true;
     }
-    if (aspectRatio) input.aspect_ratio = aspectRatio;
+    if (aspectRatio && !followsReferenceImageAspectRatio) input.aspect_ratio = aspectRatio;
     const mappedFormat = isVideoGenerationModel(model) ? undefined : mapOutputFormat(outputFormat);
     if (mappedFormat) {
       input.output_format = mappedFormat;

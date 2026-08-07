@@ -2834,7 +2834,7 @@ export default function AiVideoGeneratorTool({
                       onChange={(event) => setPrompt(event.target.value)}
                       placeholder={text.promptPlaceholder}
                       rows={4}
-                      className="h-[7.5rem] w-full resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-sm leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40"
+                      className="h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm"
                     />
                   </div>
 
@@ -2868,12 +2868,12 @@ export default function AiVideoGeneratorTool({
                       <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.aspectRatio}</span>
                       {followsReferenceImageAspectRatio ? (
                         <div data-video-reference-aspect-ratio-note>
-                          <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-1 gap-2">
+                          <div role="group" aria-label={text.aspectRatio} className="inline-flex">
                             <button
                               type="button"
                               aria-pressed="true"
                               disabled
-                              className={`${getOptionButtonClassName(true)} cursor-default opacity-100`}
+                              className={`${getOptionButtonClassName(true)} cursor-default whitespace-nowrap opacity-100`}
                             >
                               {text.referenceImageAspectRatioLabel}
                             </button>

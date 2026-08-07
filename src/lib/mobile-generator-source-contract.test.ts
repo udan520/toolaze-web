@@ -5,6 +5,7 @@ import test from 'node:test'
 
 const projectRoot = process.cwd()
 const aiImageGenerationSource = readFileSync(join(projectRoot, 'src/components/AiImageGenerationTool.tsx'), 'utf8')
+const aiVideoGenerationSource = readFileSync(join(projectRoot, 'src/components/AiVideoGeneratorTool.tsx'), 'utf8')
 const navigationSource = readFileSync(join(projectRoot, 'src/components/Navigation.tsx'), 'utf8')
 const rootLayoutSource = readFileSync(join(projectRoot, 'src/app/layout.tsx'), 'utf8')
 const historyPageSource = readFileSync(join(projectRoot, 'src/components/HistoryPageClient.tsx'), 'utf8')
@@ -28,6 +29,17 @@ test('mobile generation moves to the rendered History panel after Generate', () 
   assert.match(aiImageGenerationSource, /shouldScrollToMobileHistoryRef\.current = true/)
   assert.match(aiImageGenerationSource, /window\.matchMedia\('\(max-width: 767px\)'\)/)
   assert.match(aiImageGenerationSource, /mobileGenerationPanelRef\.current\?\.scrollIntoView/)
+})
+
+test('mobile generator prompts avoid Safari input zoom and keep keyboard scroll margin', () => {
+  const imagePrompt = aiImageGenerationSource.match(/data-left-prompt-input[\s\S]*?className="([^"]+)"/)?.[1] || ''
+  const videoPrompt = aiVideoGenerationSource.match(/<textarea[\s\S]*?placeholder=\{text\.promptPlaceholder\}[\s\S]*?className="([^"]+)"/)?.[1] || ''
+
+  for (const [label, className] of [['image', imagePrompt], ['video', videoPrompt]]) {
+    assert.match(className, /text-base/, `${label} prompt should use a 16px mobile font`)
+    assert.match(className, /md:text-sm/, `${label} prompt should retain the compact desktop font`)
+    assert.match(className, /scroll-mb-/, `${label} prompt should keep mobile keyboard scroll margin`)
+  }
 })
 
 test('mobile history detail exposes result actions after selecting a history item', () => {

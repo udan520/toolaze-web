@@ -26,6 +26,30 @@ test('downloads through the same-origin proxy when it succeeds', async () => {
   assert.equal(urls.length, 0)
 })
 
+test('uses encoded WebP bytes to correct a misleading PNG filename and MIME type', async () => {
+  const webpHeader = new Uint8Array([
+    0x52, 0x49, 0x46, 0x46, 0x04, 0x00, 0x00, 0x00, 0x57, 0x45, 0x42, 0x50,
+  ])
+  const blobs: Array<{ blob: Blob; filename: string }> = []
+
+  const result = await downloadImageInCurrentPage({
+    imageUrl: 'https://tempfile.aiquickdraw.com/generated/output',
+    filename: 'generated.png',
+    fetcher: async () => new Response(webpHeader, {
+      status: 200,
+      headers: { 'content-type': 'application/octet-stream' },
+    }),
+    triggerBlobDownload: (blob, filename) => blobs.push({ blob, filename }),
+    triggerUrlDownload: () => {
+      throw new Error('URL download should not be used')
+    },
+  })
+
+  assert.equal(result, 'proxy')
+  assert.equal(blobs[0].filename, 'generated.webp')
+  assert.equal(blobs[0].blob.type, 'image/webp')
+})
+
 test('falls back to direct fetch without opening a new page', async () => {
   const calls: string[] = []
   const blobs: string[] = []

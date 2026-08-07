@@ -74,6 +74,21 @@ test('Grok Image exposes separate official KIE text and image provider models', 
   assert.equal(model.providerModels.imageToImage, 'grok-imagine/image-to-image')
 })
 
+test('every image model explicitly declares its image-to-image aspect-ratio behavior', () => {
+  const referenceShapedModelIds = Object.entries(AI_IMAGE_GENERATOR_MODELS)
+    .filter(([, model]) => model.imageToImageAspectRatioMode === 'reference-image')
+    .map(([modelId]) => modelId)
+
+  for (const [modelId, model] of Object.entries(AI_IMAGE_GENERATOR_MODELS)) {
+    assert.ok(
+      model.imageToImageAspectRatioMode === 'custom' || model.imageToImageAspectRatioMode === 'reference-image',
+      `${modelId} must declare whether image-to-image supports custom aspect ratios`,
+    )
+  }
+
+  assert.deepEqual(referenceShapedModelIds, ['grok-1-5-image'])
+})
+
 test('image generator page capabilities match the audited KIE model matrix', () => {
   const values = (id: keyof typeof AI_IMAGE_GENERATOR_MODELS) =>
     AI_IMAGE_GENERATOR_MODELS[id].aspectRatios.map(({ value }) => value)

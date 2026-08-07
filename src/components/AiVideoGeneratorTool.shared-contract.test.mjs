@@ -453,6 +453,12 @@ test('Wan image-to-video follows the reference image aspect ratio instead of exp
     /data-video-reference-aspect-ratio-note/,
     'the generator should render a read-only note instead of manual ratio buttons for this mode',
   )
+  const referenceRatioBlock = toolSource.slice(
+    toolSource.indexOf('data-video-reference-aspect-ratio-note'),
+    toolSource.indexOf(') : (', toolSource.indexOf('data-video-reference-aspect-ratio-note')),
+  )
+  assert.match(referenceRatioBlock, /inline-flex/, 'Match Reference should use a content-width inline group')
+  assert.doesNotMatch(referenceRatioBlock, /grid-cols-1|w-full/, 'Match Reference should not span the full settings row')
   assert.match(toolSource, /Match Reference/)
   assert.match(toolSource, /disabled[\s\S]*\{text\.referenceImageAspectRatioLabel\}/)
 })

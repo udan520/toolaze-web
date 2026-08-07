@@ -23,6 +23,30 @@ test('local download route returns an attachment response without navigating the
   }
 })
 
+test('download route aligns filename and MIME with encoded WebP bytes', async () => {
+  const originalFetch = globalThis.fetch
+  const webpHeader = new Uint8Array([
+    0x52, 0x49, 0x46, 0x46, 0x04, 0x00, 0x00, 0x00, 0x57, 0x45, 0x42, 0x50,
+  ])
+  globalThis.fetch = async () => new Response(webpHeader, {
+    status: 200,
+    headers: { 'content-type': 'application/octet-stream' },
+  })
+
+  try {
+    const response = await GET(new Request(
+      'http://localhost:3006/api/download-image?url=https%3A%2F%2Ftempfile.aiquickdraw.com%2Fgenerated%2Foutput&filename=generated.png',
+    ))
+
+    assert.equal(response.status, 200)
+    assert.equal(response.headers.get('content-type'), 'image/webp')
+    assert.match(response.headers.get('content-disposition') || '', /attachment; filename="generated\.webp"/)
+    assert.deepEqual(new Uint8Array(await response.arrayBuffer()), webpHeader)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('download route allows KIE generated image result URLs', async () => {
   const originalFetch = globalThis.fetch
   globalThis.fetch = async () => new Response('kie-image-bytes', {

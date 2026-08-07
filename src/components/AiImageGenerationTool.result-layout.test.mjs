@@ -31,6 +31,20 @@ test('switching image models limits visible references without deleting hidden u
   )
 })
 
+test('reference-shaped image generation uses a compact Match Reference control and effective metadata', () => {
+  assert.match(
+    source,
+    /const followsReferenceImageAspectRatio = activeTab === 'image-to-image'\s*&& modelConfig\.imageToImageAspectRatioMode === 'reference-image'/,
+  )
+  assert.match(source, /const effectiveAspectRatio = followsReferenceImageAspectRatio \? 'Match Reference' : aspectRatio/)
+  assert.match(source, /data-image-match-reference-aspect-ratio/)
+  assert.match(source, /data-image-match-reference-aspect-ratio[\s\S]*inline-flex[\s\S]*Match Reference/)
+  assert.doesNotMatch(source, /data-image-match-reference-aspect-ratio[\s\S]{0,180}w-full/)
+  assert.match(source, /const requestAspectRatio = effectiveAspectRatio/)
+  assert.match(source, /aspectRatio: requestAspectRatio/)
+  assert.match(source, /if \(!followsReferenceImageAspectRatio\) \{\s*formData\.append\('aspectRatio', requestAspectRatio\)/)
+})
+
 test('desktop result combines image preview and controls in one card', () => {
   assert.match(source, /data-desktop-result-card/)
   assert.match(source, /data-desktop-result-feed/)

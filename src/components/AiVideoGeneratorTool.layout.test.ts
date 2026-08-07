@@ -119,7 +119,7 @@ test('AI video generator exposes compact settings with duration as a discrete no
 
 test('AI video generator keeps prompt sizing aligned with the image tool', () => {
   assert.notEqual(source.indexOf('rows={4}'), -1, 'prompt textarea should use four visible rows like the image tool')
-  assert.notEqual(source.indexOf('h-[7.5rem] w-full resize-none overflow-y-auto rounded-xl'), -1, 'prompt textarea should match image-tool height and scrolling style')
+  assert.notEqual(source.indexOf('h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl'), -1, 'prompt textarea should match image-tool height and Safari-safe scrolling style')
   assert.equal(source.includes('rows={6}'), false, 'prompt textarea should not use the previous taller six-row sizing')
   assert.equal(source.includes('rounded-2xl border border-slate-200 bg-slate-50/70'), false, 'prompt textarea should not keep the older video-only styling')
 })
