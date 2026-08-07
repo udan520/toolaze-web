@@ -51,7 +51,7 @@ const cardAssets = {
   aiVideo:
     'https://assets.toolaze.com/home-model-cards/seedance-2.jpg',
   wan27Video:
-    'https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp',
+    'https://assets.toolaze.com/model-assets/wan-2-7-ai-video-generator/hero-demo-poster.webp',
   textToVideo:
     'https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/storyboard-scene.webp',
   imageToVideo:
@@ -90,7 +90,7 @@ const cardVideos = {
   aiVideo:
     'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4',
   wan27Video:
-    'https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png',
+    'https://assets.toolaze.com/generated/0648742ae72f41c1a047421beb1c93b9.mp4',
   textToVideo:
     'https://assets.toolaze.com/uploads/1b0129b9d2504494825f8fd28b00f4af.png',
   imageToVideo:

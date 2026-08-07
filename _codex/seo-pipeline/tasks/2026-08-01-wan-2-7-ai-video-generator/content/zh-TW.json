@@ -18,13 +18,15 @@
     "desc": "使用文字、圖片、影片參考或音訊指令建立 Wan 2.7 影片。透過多鏡頭提示詞、首尾幀轉場、延續場景與同步聲音，生成 720p 或 1080p 的短篇電影感片段。"
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/generated/0648742ae72f41c1a047421beb1c93b9.mp4",
     "ariaLabel": "Toolaze Wan 2.7 示範影片預覽",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
-    "duration": "PT5.01S"
+    "width": 864,
+    "height": 496,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 864x496 · 2026-08-04",
+    "poster": "https://assets.toolaze.com/model-assets/wan-2-7-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "type": "video",
+    "uploadDate": "2026-08-04T07:32:43.927Z"
   },
   "sectionsOrder": [
     "modelIntro",

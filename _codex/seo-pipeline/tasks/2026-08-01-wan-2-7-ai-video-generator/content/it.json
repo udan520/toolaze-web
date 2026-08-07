@@ -18,13 +18,15 @@
     "desc": "Crea video Wan 2.7 da testo, immagini, riferimenti video o indicazioni audio. Usa prompt multi-shot, transizioni primo/ultimo frame, scene di continuazione e suono sincronizzato per brevi clip cinematografiche in 720p o 1080p."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/generated/0648742ae72f41c1a047421beb1c93b9.mp4",
     "ariaLabel": "Anteprima video demo Wan 2.7 su Toolaze",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "User-provided Wan 2.7 demo video · 16:9 · 5.01s · 1920x1080 · 2026-08-02",
-    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
-    "duration": "PT5.01S"
+    "width": 864,
+    "height": 496,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 864x496 · 2026-08-04",
+    "poster": "https://assets.toolaze.com/model-assets/wan-2-7-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "type": "video",
+    "uploadDate": "2026-08-04T07:32:43.927Z"
   },
   "sectionsOrder": [
     "modelIntro",

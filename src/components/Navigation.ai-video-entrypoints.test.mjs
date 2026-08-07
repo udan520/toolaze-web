@@ -92,9 +92,9 @@ test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', (
 
 test('AI Video model links render as tag-style entries after the function cards', () => {
   const expectedModelLinks = [
-    '/model/veo-3-1-ai-video-generator',
     '/ai-video-generator?model=seedance-2-mini',
     '/model/seedance-2',
+    '/model/veo-3-1-ai-video-generator',
     '/model/kling-3-motion-control',
     '/model/kling-3',
     '/model/kling-2-6-pro-motion-control',
@@ -125,6 +125,13 @@ test('AI Video model links render as tag-style entries after the function cards'
   }
 
   assert.match(navigationSource, /rounded-full[\s\S]*data-ai-video-model-tag/)
+})
+
+test('AI Video model badges omit Veo and HappyHorse while Grok uses light purple', () => {
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/veo-3-1-ai-video-generator'[^\n]*badgeKey/)
+  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/happyhorse-ai-video-generator'[^\n]*badgeKey/)
+  assert.match(aiVideoModelMenuSource, /href: '\/model\/grok-imagine-video-1-5'[^\n]*badgeKey: 'bestValue'/)
+  assert.match(navigationSource, /item\.badgeKey === 'bestValue'[\s\S]*bg-violet-100 text-violet-700/)
 })
 
 test('Prompts model menu only keeps prompt-library model collections', () => {

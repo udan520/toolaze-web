@@ -19,14 +19,15 @@
     "desc": "テキストプロンプトまたは最大2枚の参考画像からPixVerse V6動画を作成し、1〜15秒、360p、540p、720p、1080pを幅広いSNS/シネマ比率で選べます。高速なコンセプト動画、2参照の画像から動画、マルチショット商品ストーリー、Native Audioシーン、ASMR素材、短いキャンペーン下書きに使えます。"
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/d38c8d15f5e64bb4a0e563c257b5429f.mp4",
     "type": "video",
     "ariaLabel": "16:9フレームのPixVerse V6 AI動画生成デモプレビュー",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/pixverse-v6-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-06T15:23:13.315Z"
   },
   "sectionsOrder": [
     "modelIntro",

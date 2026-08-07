@@ -7,13 +7,13 @@ const root = process.cwd()
 const slug = 'wan-2-7-ai-video-generator'
 const taskId = '2026-08-01-wan-2-7-ai-video-generator'
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-const wan27DemoVideo = 'https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png'
-const wan27DemoPoster = 'https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp'
+const wan27DemoVideo = 'https://assets.toolaze.com/generated/0648742ae72f41c1a047421beb1c93b9.mp4'
+const wan27DemoPoster = 'https://assets.toolaze.com/model-assets/wan-2-7-ai-video-generator/hero-demo-poster.webp'
 const relatedVideoR2Assets = new Set([
   'https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png',
   'https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png',
 ])
-const stableLandingAssetUrlPattern = /^https:\/\/(?:pub-[a-z0-9]+\.r2\.dev|assets\.toolaze\.com\/uploads)\/.+/i
+const stableLandingAssetUrlPattern = /^https:\/\/(?:pub-[a-z0-9]+\.r2\.dev|assets\.toolaze\.com\/(?:generated|model-assets|uploads))\/.+/i
 const onlineBaselineFaqQuestions = [
   'What is Wan 2.7 AI Video Generator?',
   'What creation modes does Wan 2.7 support?',
@@ -112,10 +112,11 @@ test('Wan 2.7 content is published for every supported locale and traceable to S
     assert.equal(publicContent.topTool.modelId, 'wan-2-7')
     assert.equal(publicContent.heroDemoVideo?.src, wan27DemoVideo)
     assert.equal(publicContent.heroDemoVideo?.poster, wan27DemoPoster)
-    assert.equal(publicContent.heroDemoVideo?.width, 16)
-    assert.equal(publicContent.heroDemoVideo?.height, 9)
-    assert.equal(publicContent.heroDemoVideo?.duration, 'PT5.01S')
-    assert.match(publicContent.heroDemoVideo?.sourceHistory || '', /User-provided Wan 2\.7 demo video · 16:9 · 5\.01s · 1920x1080/)
+    assert.equal(publicContent.heroDemoVideo?.width, 864)
+    assert.equal(publicContent.heroDemoVideo?.height, 496)
+    assert.equal(publicContent.heroDemoVideo?.duration, 'PT5.042S')
+    assert.equal(publicContent.heroDemoVideo?.uploadDate, '2026-08-04T07:32:43.927Z')
+    assert.match(publicContent.heroDemoVideo?.sourceHistory || '', /Published Toolaze page demo · 5\.042s · 864x496/)
     assert.equal(publicContent.promptExamples.items.length, 4)
     assert.equal(publicContent.howToUse.steps.length, 4)
     assert.ok(publicContent.modelIntro.title)
@@ -292,7 +293,7 @@ test('Wan 2.7 production release media can be gated to R2 URLs', { skip: process
   for (const item of content.moreToolsLinks) {
     assert.match(item.media.src, stableLandingAssetUrlPattern, `${item.title} related model media should use a stable landing asset URL before production release`)
   }
-  assert.doesNotMatch(aiToolsCopy, /\/model-assets\/wan-2-7-ai-video-generator\//, 'AI Tools Wan 2.7 card should not ship local Wan 2.7 demo assets')
+  assert.doesNotMatch(aiToolsCopy, /['"]\/model-assets\/wan-2-7-ai-video-generator\//, 'AI Tools Wan 2.7 card should not ship local Wan 2.7 demo assets')
 })
 
 test('Wan 2.7 same-family comparison uses concrete Toolaze differences', () => {

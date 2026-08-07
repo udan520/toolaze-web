@@ -19,14 +19,15 @@
     "desc": "텍스트 프롬프트 또는 최대 2장의 참조 이미지로 PixVerse V6 비디오를 만들고, 1~15초, 360p, 540p, 720p, 1080p를 다양한 소셜 및 시네마틱 화면비로 선택하세요. 빠른 콘셉트 클립, 2개 참조 이미지-비디오 테스트, multi-shot 제품 스토리, Native Audio 장면, ASMR 질감, 짧은 캠페인 초안에 적합합니다."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/d38c8d15f5e64bb4a0e563c257b5429f.mp4",
     "type": "video",
     "ariaLabel": "16:9 프레임의 PixVerse V6 AI 비디오 생성기 데모 미리보기",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/pixverse-v6-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-06T15:23:13.315Z"
   },
   "sectionsOrder": [
     "modelIntro",

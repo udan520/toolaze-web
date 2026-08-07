@@ -338,9 +338,9 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 ]
 
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
-  { href: '/model/veo-3-1-ai-video-generator', labelKey: 'veo31Video', logoSrc: '/model-logos/google-gemini.png', badgeKey: 'new' },
   { href: '/ai-video-generator?model=seedance-2-mini', labelKey: 'seedance2Mini', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
+  { href: '/model/veo-3-1-ai-video-generator', labelKey: 'veo31Video', logoSrc: '/model-logos/google-gemini.png' },
   { href: '/model/kling-3-motion-control', labelKey: 'kling3MotionControl', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg', badgeKey: 'hot' },
@@ -348,7 +348,7 @@ const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/wan-2-6-ai-video-generator', labelKey: 'wan26Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/pixverse-v6-ai-video-generator', labelKey: 'pixverseV6', logoSrc: '/model-logos/pixverse.svg', badgeKey: 'new' },
-  { href: '/model/happyhorse-ai-video-generator', labelKey: 'happyHorse', logoSrc: '/model-logos/happyhorse.svg', badgeKey: 'new' },
+  { href: '/model/happyhorse-ai-video-generator', labelKey: 'happyHorse', logoSrc: '/model-logos/happyhorse.svg' },
   { href: '/model/grok-imagine-video-1-5', labelKey: 'grok15Video', logoSrc: '/model-logos/grok.svg', badgeKey: 'bestValue' },
 ]
 
@@ -1103,6 +1103,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     const badgeClass =
       item.badgeKey === 'hot'
         ? 'bg-red-500 text-white'
+        : item.badgeKey === 'bestValue'
+          ? 'bg-violet-100 text-violet-700'
         : 'bg-emerald-500 text-white'
 
     return (

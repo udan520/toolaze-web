@@ -19,14 +19,15 @@
     "desc": "テキストプロンプトまたは1枚の参考画像からHappyHorse AI動画を作成し、720pまたは1080pで3〜15秒のシネマティックな動きを整えます。HappyHorse 1.1はより広いアスペクト比と大きな参考画像に、ベースのHappyHorseはAlibaba系のシンプルな動画下書きに向いており、商品デモ、短い広告、ASMR素材、SNS向けストーリーボードでマルチショット構成とNative Audioを使えます。"
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/generated/d6c7c4472b1f4a6b9148fca922d1a107.mp4",
     "type": "video",
     "ariaLabel": "16:9フレームのHappyHorse AI動画生成デモプレビュー",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English HappyHorse model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.163s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/happyhorse-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.163S",
+    "uploadDate": "2026-08-06T13:53:15.198Z"
   },
   "sectionsOrder": [
     "modelIntro",

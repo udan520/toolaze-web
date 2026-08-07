@@ -19,14 +19,15 @@
     "desc": "Crie vídeos IA HappyHorse a partir de um prompt de texto ou uma imagem de referência e modele 3 a 15 segundos de movimento cinematográfico em 720p ou 1080p. Use HappyHorse 1.1 para mais proporções e referências maiores, ou o modelo HappyHorse base para um rascunho Alibaba mais simples com estrutura multi-shot e Native Audio para demos de produto, anúncios curtos, texturas ASMR e storyboards sociais."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/c07d1db481dd4e9b8e190ebb39611f08.png",
+    "src": "https://assets.toolaze.com/generated/d6c7c4472b1f4a6b9148fca922d1a107.mp4",
     "type": "video",
     "ariaLabel": "Gerador de vídeo IA HappyHorse demo 16:9",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English HappyHorse model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/6e2548965fc5487ca41221f9d663dfcb.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.163s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/happyhorse-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.163S",
+    "uploadDate": "2026-08-06T13:53:15.198Z"
   },
   "sectionsOrder": [
     "modelIntro",

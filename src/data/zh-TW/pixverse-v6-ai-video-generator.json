@@ -18,14 +18,15 @@
     "desc": "使用文字提示詞或最多兩張參考圖建立 PixVerse V6 影片，並選擇 1 至 15 秒、360p、540p、720p 或 1080p，以及多種社群與電影比例。適合快速概念短片、雙參考圖轉影片、multi-shot 產品故事、Native Audio 場景、ASMR 素材與短活動草稿。"
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/d38c8d15f5e64bb4a0e563c257b5429f.mp4",
     "type": "video",
     "ariaLabel": "PixVerse V6 AI 影片生成器 16:9 示範預覽",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/pixverse-v6-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-06T15:23:13.315Z"
   },
   "sectionsOrder": [
     "modelIntro",

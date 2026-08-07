@@ -18,14 +18,15 @@
     "desc": "Créez des vidéos PixVerse V6 depuis des prompts texte ou jusqu’à deux images de référence, puis choisissez 1 à 15 secondes, 360p, 540p, 720p ou 1080p dans de nombreux formats sociaux et cinématographiques. Utilisez-le pour concepts rapides, tests image-vers-vidéo à deux références, histoires produit multi-shot, scènes Native Audio, textures ASMR et brouillons de campagne courts."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/d38c8d15f5e64bb4a0e563c257b5429f.mp4",
     "type": "video",
     "ariaLabel": "Aperçu démo du générateur vidéo IA PixVerse V6 en 16:9",
-    "width": 16,
-    "height": 9,
-    "sourceHistory": "Selected from the Toolaze video model demo library for the first English PixVerse V6 model page draft.",
-    "poster": "https://assets.toolaze.com/uploads/ai-video-generator/prompt-templates/image-guided-motion.webp",
-    "duration": "PT5S"
+    "width": 1280,
+    "height": 720,
+    "sourceHistory": "Published Toolaze page demo · 5.042s · 1280x720 · 2026-08-06",
+    "poster": "https://assets.toolaze.com/model-assets/pixverse-v6-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-06T15:23:13.315Z"
   },
   "sectionsOrder": [
     "modelIntro",

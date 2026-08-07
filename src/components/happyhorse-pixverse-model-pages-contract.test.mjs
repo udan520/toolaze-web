@@ -9,6 +9,8 @@ const r2VideoUploadKeys = [
   'c07d1db481dd4e9b8e190ebb39611f08.png',
   '56bb211041b34c5f8f27d3c0208322e7.png',
   'd0d55df5eef346809067197fddb1b251.png',
+  'd38c8d15f5e64bb4a0e563c257b5429f.mp4',
+  'd6c7c4472b1f4a6b9148fca922d1a107.mp4',
 ]
 
 const pages = [
