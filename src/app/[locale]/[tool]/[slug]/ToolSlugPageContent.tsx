@@ -1,6 +1,11 @@
 import { getSeoContent, getAllSlugs, loadCommonTranslations, getL2SeoContent, VIDEO_MODEL_L2S, IMAGE_MODEL_L2S } from '@/lib/seo-loader'
 import { filterPaymentReviewSections } from '@/lib/payment-review-visibility'
 import { localizeLinksInObject } from '@/lib/localize-links'
+import {
+  getUtilityParentPath,
+  isRetainedUtilityL3,
+  isUtilityTool,
+} from '@/lib/utility-seo-routes'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/Navigation'
@@ -292,6 +297,9 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
           description: l.description || '',
           href: l.href,
         }))
+        .filter((item: { slug: string }) => !isUtilityTool(tool) || (
+          locale === 'en' && isRetainedUtilityL3(tool, item.slug) && item.slug !== slug
+        ))
     } else if (isSeedance) {
       const otherVideoModels = VIDEO_MODEL_L2S.filter((t) => t !== tool)
       filteredRecommendedTools = await Promise.all(
@@ -320,7 +328,12 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
       ).then((arr) => arr.filter((t) => t.title && t.href))
     } else {
       const allSlugs = await getAllSlugs(tool, locale)
-      const otherSlugs = allSlugs.filter((s) => s !== slug).slice(0, 3)
+      const otherSlugs = allSlugs
+        .filter((s) => s !== slug)
+        .filter((s) => !isUtilityTool(tool) || (
+          locale === 'en' && isRetainedUtilityL3(tool, s)
+        ))
+        .slice(0, 3)
       const getToolHref = (toolSlug: string, s: string): string =>
         locale === 'en' ? `/${toolSlug}/${s}` : `/${locale}/${toolSlug}/${s}`
       const recommendedTools = await Promise.all(
@@ -624,7 +637,13 @@ export default async function ToolSlugPageContent({ locale, tool, slug }: ToolSl
                   })}
                 </div>
                 <ViewAllToolsButton
-                  href={isWatermarkRemover ? `/${tool}` : (tool === 'seedance-2' || tool === 'kling-3') ? `/model/${tool}/all-tools` : (locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`)}
+                  href={isWatermarkRemover
+                    ? `/${tool}`
+                    : (tool === 'seedance-2' || tool === 'kling-3')
+                      ? `/model/${tool}/all-tools`
+                      : isUtilityTool(tool)
+                        ? getUtilityParentPath(locale, tool)
+                        : (locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`)}
                   text={t?.common?.viewAllTools?.related || 'View All Related Tools'}
                   variant="related"
                 />

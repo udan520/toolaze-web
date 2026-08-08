@@ -712,7 +712,7 @@ test('generic GPT Image 2 top component can use a JSON-configured model id', () 
   assert.doesNotMatch(gptTopBranch, /modelId="gpt-image-2"/)
 })
 
-test('AI Clothes Changer exposes Women, Men, and combined Custom workflows', () => {
+test('AI Clothes Changer exposes preset-only gender workflows and exclusive Custom input modes', () => {
   assert.equal(aiClothesChangerContent.topTool?.mode, 'image-to-image')
   assert.equal(aiClothesChangerContent.topTool?.maxUploadImages, 2)
   const acceptance = aiClothesChangerContent.topTool?.functionalAcceptance
@@ -723,8 +723,10 @@ test('AI Clothes Changer exposes Women, Men, and combined Custom workflows', () 
   )
   assert.equal(acceptance?.defaultPromptPresetTabId, 'women')
   assert.equal(acceptance?.enableCustomReferenceImageUpload, true)
-  assert.equal(acceptance?.combineCustomReferenceAndPrompt, true)
+  assert.equal(acceptance?.hidePresetReferenceUploader, true)
+  assert.equal(acceptance?.combineCustomReferenceAndPrompt, false)
   assert.equal(acceptance?.inlinePresetReferenceUpload, false)
+  assert.equal(acceptance?.clothingReferencePresetGrid, true)
   assert.equal(acceptance?.showPresetSelectedState, true)
   assert.match(
     acceptance?.customReferencePrompt || '',
@@ -764,9 +766,25 @@ test('AI Clothes Changer exposes Women, Men, and combined Custom workflows', () 
     l2Source,
     /combineCustomReferenceAndPrompt=\{content\.topTool\?\.functionalAcceptance\?\.combineCustomReferenceAndPrompt === true\}/,
   )
-  assert.match(aiImageToolSource, /shouldUseCombinedCustomReference/)
-  assert.match(aiImageToolSource, /composePromptParts\(customReferencePrompt\.trim\(\), prompt\.trim\(\)\)/)
-  assert.match(aiImageToolSource, /composePromptParts\(customReferencePrompt\.trim\(\), requestPrompt\)/)
+  assert.match(
+    l2Source,
+    /clothingReferencePresetGrid=\{content\.topTool\?\.functionalAcceptance\?\.clothingReferencePresetGrid === true\}/,
+  )
+  assert.match(aiImageToolSource, /data-custom-input-mode-switch/)
+  assert.match(aiImageToolSource, /shouldUseReferenceOnlyCustomMode/)
+  assert.match(
+    aiImageToolSource,
+    /shouldUseSelectedPresetReference = shouldRenderWorkflowTabsAboveUpload[\s\S]*activePromptPresetTab !== customPromptTabId[\s\S]*selectedPromptPresetReferenceImage/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /shouldIncludeSecondaryReference = shouldUseSelectedPresetReference \|\| shouldUseSecondaryReferenceUploader/,
+  )
+  assert.match(aiImageToolSource, /requestClothingReferenceRemoteUrls = shouldIncludeSecondaryReference/)
+  assert.match(
+    aiImageToolSource,
+    /hasReferenceImages = shouldIncludeSecondaryReference[\s\S]*hasPersonReferenceImages && hasClothingReferenceImages/,
+  )
 })
 
 test('AI Clothes Changer keeps the selected clothing reference visually active', () => {

@@ -1,11 +1,12 @@
 import { getSeoContent, getAllSlugs } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import {
+  getUtilityLocaleAliasTarget,
+  isUtilityTool,
+} from '@/lib/utility-seo-routes'
 import { notFound, permanentRedirect, redirect } from 'next/navigation'
 import ToolSlugPageContent from './ToolSlugPageContent'
 import type { Metadata } from 'next'
-
-// 不支持多语言的工具列表
-const NON_MULTILINGUAL_TOOLS: string[] = []
 
 const MODEL_ALIAS_REDIRECTS: Record<string, string> = {
   'pixverse-v6': 'pixverse-v6-ai-video-generator',
@@ -51,14 +52,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
       }
     }
-    
-    // 如果工具不支持多语言且不是英语，返回重定向元数据（目前没有不支持多语言的工具）
-    // if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
-    //   return {
-    //     title: 'Redirecting... | Toolaze',
-    //     robots: 'noindex, nofollow',
-    //   }
-    // }
+
+    if (isUtilityTool(resolvedParams.tool)) {
+      const canonicalPath = getUtilityLocaleAliasTarget(
+        locale,
+        resolvedParams.tool,
+        resolvedParams.slug
+      )
+
+      return {
+        title: 'Redirecting to tool page | Toolaze',
+        robots: { index: false, follow: true },
+        alternates: {
+          canonical: `https://toolaze.com${canonicalPath}`,
+        },
+      }
+    }
     
     const content = await getSeoContent(resolvedParams.tool, resolvedParams.slug, locale)
     
@@ -97,12 +106,9 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 export const revalidate = 86400
 
+const UTILITY_REDIRECT_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 const PREGENERATED_LOCALES = ['en'] as const
 const PREGENERATED_TOOL_SLUG_LIMITS: Record<string, number> = {
-  'image-compressor': 6,
-  'image-converter': 6,
-  'font-generator': 8,
-  'emoji-copy-and-paste': 4,
   'seedance-2': 3,
   'watermark-remover': 2,
 }
@@ -125,51 +131,24 @@ export async function generateStaticParams() {
     const seedance2Slugs = await getAllSlugs('seedance-2', 'en') || []
     const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', 'en') || []
 
-    for (const locale of PREGENERATED_LOCALES) {
-      // 添加图片压缩工具的页面
-      for (const slug of getPregeneratedSlugs('image-compressor', compressorSlugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'image-compressor',
-            slug: slug,
-          })
-        }
-      }
-      
-      // 添加图片转换工具的页面
-      for (const slug of getPregeneratedSlugs('image-converter', converterSlugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'image-converter',
-            slug: slug,
-          })
-        }
-      }
-      
-      // 添加字体生成工具的页面（为所有语言生成参数，未支持的语言会在运行时重定向到英语版本）
-      for (const slug of getPregeneratedSlugs('font-generator', fontGeneratorSlugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'font-generator',
-            slug: slug,
-          })
-        }
-      }
+    const utilityRedirects = [
+      { tool: 'image-compressor', slugs: compressorSlugs },
+      { tool: 'image-converter', slugs: converterSlugs },
+      { tool: 'font-generator', slugs: fontGeneratorSlugs },
+      { tool: 'emoji-copy-and-paste', slugs: [...emojiCopyPasteSlugs, 'all-tools'] },
+    ]
 
-      // Emoji Copy & Paste L3：只预生成优先页，其他 locale / slug 由 ISR 按需生成。
-      for (const slug of getPregeneratedSlugs('emoji-copy-and-paste', emojiCopyPasteSlugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'emoji-copy-and-paste',
-            slug: slug,
-          })
+    // 父级 locale layout 禁止未声明参数，因此历史工具 URL 必须全部静态声明为 308。
+    for (const locale of UTILITY_REDIRECT_LOCALES) {
+      for (const { tool, slugs } of utilityRedirects) {
+        for (const slug of slugs) {
+          if (!slug || typeof slug !== 'string') continue
+          params.push({ locale, tool, slug })
         }
       }
-      
+    }
+
+    for (const locale of PREGENERATED_LOCALES) {
       // 添加 Seedance 2.0 L3 页面（/en/seedance-2/* 会重定向到 /seedance-2/*）
       for (const slug of getPregeneratedSlugs('seedance-2', seedance2Slugs)) {
         if (slug && typeof slug === 'string') {
@@ -218,20 +197,13 @@ export default async function LandingPage({ params }: PageProps) {
     return null
   }
 
-  // 如果工具不支持多语言，且当前不是英语，重定向到英语版本（目前没有不支持多语言的工具）
-  // if (NON_MULTILINGUAL_TOOLS.includes(resolvedParams.tool) && locale !== 'en') {
-  //   if (resolvedParams.slug) {
-  //     // L3 页面：重定向到 /tool/slug
-  //     redirect(`/${resolvedParams.tool}/${resolvedParams.slug}`)
-  //   } else {
-  //     // L2 页面：重定向到 /tool
-  //     redirect(`/${resolvedParams.tool}`)
-  //   }
-  // }
-  
   if (!resolvedParams.slug) {
     notFound()
     return null
+  }
+
+  if (isUtilityTool(resolvedParams.tool)) {
+    permanentRedirect(getUtilityLocaleAliasTarget(locale, resolvedParams.tool, resolvedParams.slug))
   }
 
   if (resolvedParams.tool === 'model' && MODEL_ALIAS_REDIRECTS[resolvedParams.slug]) {

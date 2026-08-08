@@ -2,13 +2,24 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { getHistoryToolMetadata } from './generation-history-tool-metadata'
 
-test('uses the selected model route and label for model generation history', () => {
+test('uses the selected model label while preserving the current model page source path', () => {
   assert.deepEqual(
     getHistoryToolMetadata('/model/nano-banana-pro', 'Seedream 5.0 Pro', 'seedream-5-0-pro'),
     {
       toolSlug: 'model/seedream-5-0-pro',
       toolLabel: 'Seedream 5.0 Pro',
-      sourcePath: '/model/seedream-5-0-pro',
+      sourcePath: '/model/nano-banana-pro',
+    },
+  )
+})
+
+test('keeps the actual model page URL as the history source path', () => {
+  assert.deepEqual(
+    getHistoryToolMetadata('/model/pixverse-v6-ai-video-generator', 'PixVerse V6', 'pixverse-v6'),
+    {
+      toolSlug: 'model/pixverse-v6',
+      toolLabel: 'PixVerse V6',
+      sourcePath: '/model/pixverse-v6-ai-video-generator',
     },
   )
 })

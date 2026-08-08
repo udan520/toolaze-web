@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import type { ReactNode } from 'react'
 
 type WorkspaceMenuIcon = 'home' | 'create' | 'edit' | 'video' | 'tools' | 'models' | 'library'
-type WorkspaceMenuLabelKey = 'home' | 'createImage' | 'editImage' | 'createVideo' | 'imageTools' | 'models' | 'library'
+type WorkspaceMenuLabelKey = 'home' | 'createImage' | 'editImage' | 'createVideo' | 'imageTools' | 'models' | 'history'
 
 interface WorkspaceMenuItem {
   labelKey: WorkspaceMenuLabelKey
@@ -22,7 +22,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Create Video',
     imageTools: 'AI Tools',
     models: 'AI Models',
-    library: 'Library',
+    history: 'History',
   },
   de: {
     home: 'Startseite',
@@ -31,7 +31,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Video erstellen',
     imageTools: 'KI-Tools',
     models: 'KI-Modelle',
-    library: 'Bibliothek',
+    history: 'Verlauf',
   },
   ja: {
     home: 'ホーム',
@@ -40,7 +40,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: '動画作成',
     imageTools: 'AIツール',
     models: 'AIモデル',
-    library: 'ライブラリ',
+    history: '履歴',
   },
   es: {
     home: 'Inicio',
@@ -49,7 +49,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Crear video',
     imageTools: 'Herramientas IA',
     models: 'Modelos IA',
-    library: 'Biblioteca',
+    history: 'Historial',
   },
   'zh-TW': {
     home: '首頁',
@@ -58,7 +58,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: '建立影片',
     imageTools: 'AI 工具',
     models: 'AI 模型',
-    library: '作品庫',
+    history: '歷史記錄',
   },
   pt: {
     home: 'Início',
@@ -67,7 +67,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Criar vídeo',
     imageTools: 'Ferramentas IA',
     models: 'Modelos de IA',
-    library: 'Biblioteca',
+    history: 'Histórico',
   },
   fr: {
     home: 'Accueil',
@@ -76,7 +76,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Créer une vidéo',
     imageTools: 'Outils IA',
     models: 'Modèles IA',
-    library: 'Bibliothèque',
+    history: 'Historique',
   },
   ko: {
     home: '홈',
@@ -85,7 +85,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: '동영상 만들기',
     imageTools: 'AI 도구',
     models: 'AI 모델',
-    library: '라이브러리',
+    history: '기록',
   },
   it: {
     home: 'Pagina iniziale',
@@ -94,7 +94,7 @@ const WORKSPACE_MENU_TRANSLATIONS: Record<string, Record<WorkspaceMenuLabelKey, 
     createVideo: 'Crea video',
     imageTools: 'Strumenti IA',
     models: 'Modelli IA',
-    library: 'Libreria',
+    history: 'Cronologia',
   },
 }
 
@@ -105,7 +105,7 @@ const WORKSPACE_MENU_ITEMS: WorkspaceMenuItem[] = [
   { labelKey: 'createVideo', href: '/ai-video-generator', icon: 'video' },
   { labelKey: 'imageTools', href: '/ai-tools', icon: 'tools' },
   { labelKey: 'models', href: '/model', icon: 'models' },
-  { labelKey: 'library', href: '/history', icon: 'library' },
+  { labelKey: 'history', href: '/history', icon: 'library' },
 ]
 
 function getSegments(pathname: string | null): string[] {

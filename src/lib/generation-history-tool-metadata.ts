@@ -13,9 +13,9 @@ const HISTORY_TOOL_LABELS: Record<string, string> = {
   'ai-clothes-changer': 'Clothes Changer',
   'ai-bikini-generator': 'AI Bikini Generator',
   'ai-breast-expansion': 'AI Breast Expansion',
-  'unrestricted-ai-image-generator': 'Unrestricted AI Image Generator',
   'ai-zine-poster-generator': 'AI Zine Poster Generator',
   'ai-photo-abstract-poster-generator': 'AI Photo Abstract Poster Generator',
+  'unrestricted-ai-image-generator': 'Unrestricted AI Image Generator',
   'ai-dance-generator': 'AI Dance Generator',
   'ai-kissing-video-generator': 'AI Kissing Video Generator',
   'ai-asmr-video-generator': 'AI ASMR Video Generator',
@@ -48,7 +48,7 @@ export function getHistoryToolMetadata(pathname: string, selectedModelName: stri
     return {
       toolSlug: `model/${modelSlug}`,
       toolLabel: selectedModelName || modelSlug,
-      sourcePath: getLocalizedInternalPath(pathname, `/model/${modelSlug}`),
+      sourcePath: pathname,
     }
   }
 

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -24,29 +25,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pathWithoutLocale = '/ai-clothes-changer'
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-clothes-changer', locale)
-  const title =
-    content?.metadata?.title ||
-    'Free AI Clothes Changer Online | Toolaze'
-  const description =
-    content?.metadata?.description ||
-    'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.'
 
-  return {
-    title,
-    description,
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-    openGraph: {
-      title,
-      description,
-      url: hreflang.canonical,
-      siteName: 'Toolaze',
-      type: 'website',
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free AI Clothes Changer Online | Toolaze',
+    fallbackDescription: 'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.',
+  })
 }
 
 export default async function AiClothesChangerLocalePage({ params }: PageProps) {

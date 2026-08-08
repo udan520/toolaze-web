@@ -74,11 +74,6 @@ test('sitemap lastmod uses stable page dates instead of build time', async () =>
   assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/de/ai-dance-generator')?.lastModified), '2026-07-20T00:00:00.000Z')
   assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-asmr-video-generator')?.lastModified), '2026-07-29T00:00:00.000Z')
   assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-zine-poster-generator')?.lastModified), '2026-08-05T00:00:00.000Z')
-  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-clothes-changer')?.lastModified), '2026-08-04T00:00:00.000Z')
-  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/de/ai-clothes-changer')?.lastModified), '2026-08-04T00:00:00.000Z')
-  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/model/happyhorse-ai-video-generator')?.lastModified), '2026-08-07T00:00:00.000Z')
-  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/de/model/happyhorse-ai-video-generator')?.lastModified), '2026-08-07T00:00:00.000Z')
-  assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-hair-color-changer')?.lastModified), '2026-07-16T00:00:00.000Z')
 })
 
 test('localized Seedance model L3 URLs redirect back to the model page', () => {

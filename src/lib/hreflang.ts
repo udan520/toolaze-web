@@ -4,14 +4,13 @@
  */
 export function generateHreflangAlternates(
   currentLocale: string,
-  pathWithoutLocale: string = ''
+  pathWithoutLocale: string = '',
+  availableLocales: readonly string[] = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 ): { languages: Record<string, string>; canonical: string } {
   const baseUrl = 'https://toolaze.com'
-  const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  
   const languages: Record<string, string> = {}
   
-  locales.forEach(locale => {
+  availableLocales.forEach(locale => {
     // English doesn't have /en prefix
     if (locale === 'en') {
       languages[locale] = `${baseUrl}${pathWithoutLocale}`

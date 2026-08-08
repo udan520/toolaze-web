@@ -319,11 +319,11 @@ test('keeps remote R2 display URLs direct to avoid optimizer failures', () => {
   assert.equal(baseHistoryItem.outputUrl.includes('/_next/image'), false)
 })
 
-test('creates a small display URL for same-origin images', () => {
+test('keeps same-origin display URLs direct because image optimization is disabled', () => {
   const previewUrl = getDisplayImagePreviewUrl('/ai-hair-color-changer/default-reference-preview.webp', 384)
 
-  assert.match(previewUrl, /^\/_next\/image\?/)
-  assert.match(previewUrl, /w=384/)
+  assert.equal(previewUrl, '/ai-hair-color-changer/default-reference-preview.webp')
+  assert.equal(previewUrl.includes('/_next/image'), false)
 })
 
 test('keeps blob and data URLs unchanged for local browser previews', () => {
@@ -331,16 +331,22 @@ test('keeps blob and data URLs unchanged for local browser previews', () => {
   assert.equal(getDisplayImagePreviewUrl('data:image/png;base64,abc', 128), 'data:image/png;base64,abc')
 })
 
-test('uses retina-friendly reference thumbnails for upload previews', () => {
+test('keeps default reference thumbnails direct for upload previews', () => {
   const previewUrl = getReferencePreviewUrl('/ai-hairstyle-changer/default-reference.png')
 
-  assert.match(previewUrl, /^\/_next\/image\?/)
-  assert.match(previewUrl, /w=384/)
+  assert.equal(previewUrl, '/ai-hairstyle-changer/default-reference.png')
+  assert.equal(previewUrl.includes('/_next/image'), false)
 })
 
-test('uses the optimized hair color thumbnail asset at retina-friendly size', () => {
+test('keeps zine poster built-in reference images direct for stable upload previews', () => {
+  const referenceUrl = '/model-assets/ai-zine-poster-generator/zine-poster-reference.webp'
+
+  assert.equal(getReferencePreviewUrl(referenceUrl), referenceUrl)
+})
+
+test('uses the optimized hair color thumbnail asset directly', () => {
   const previewUrl = getReferencePreviewUrl('/ai-hair-color-changer/default-reference.png')
 
-  assert.match(previewUrl, /default-reference-preview\.webp/)
-  assert.match(previewUrl, /w=384/)
+  assert.equal(previewUrl, '/ai-hair-color-changer/default-reference-preview.webp')
+  assert.equal(previewUrl.includes('/_next/image'), false)
 })

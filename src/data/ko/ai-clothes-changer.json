@@ -165,7 +165,9 @@
       "defaultPromptPresetTabId": "women",
       "enableCustomReferenceImageUpload": true,
       "inlinePresetReferenceUpload": false,
-      "combineCustomReferenceAndPrompt": true,
+      "hidePresetReferenceUploader": true,
+      "combineCustomReferenceAndPrompt": false,
+      "clothingReferencePresetGrid": true,
       "showPresetSelectedState": true,
       "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
@@ -181,11 +183,11 @@
       "uploadTitle": "인물 사진 + 의상 참조 업로드",
       "uploadHelper": "먼저 인물 사진을 업로드한 뒤, 아래에서 전신 의상 참조를 업로드하거나 선택하세요.",
       "promptLabel": "의상 설명",
-      "promptPlaceholder": "커스텀: 의상 참조를 업로드하고 필요에 따라 소재, 색상, 핏, 노출 범위 또는 상황을 설명하세요.",
+      "promptPlaceholder": "원하는 의상을 설명하세요: 의상 종류, 소재, 색상 팔레트, 핏, 노출 정도, 레이어, 액세서리, 착용 상황 등.",
       "personUploadTitle": "인물 사진 업로드",
       "personUploadHelper": "이미지 1: 옷을 바꿀 인물 사진을 업로드하세요.",
       "presetReferenceUploadHelper": "이미지 2: 원하는 의상 이미지를 업로드하거나 아래 템플릿을 선택하세요.",
-      "presetChoiceTitle": "또는 기본 의상 레퍼런스 선택",
+      "presetChoiceTitle": "의상 스타일 선택",
       "customReferenceUploadTitle": "의상 레퍼런스 업로드",
       "customReferenceUploadHelper": "이미지 2: 인물에게 적용할 의상 레퍼런스를 업로드하세요."
     }

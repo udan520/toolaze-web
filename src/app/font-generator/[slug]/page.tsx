@@ -1,5 +1,7 @@
 import ToolSlugPageContent from '@/app/[locale]/[tool]/[slug]/ToolSlugPageContent'
 import { getAllSlugs, getSeoContent } from '@/lib/seo-loader'
+import { isRetainedUtilityL3 } from '@/lib/utility-seo-routes'
+import { permanentRedirect } from 'next/navigation'
 import type { Metadata } from 'next'
 
 interface PageProps {
@@ -19,6 +21,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const resolvedParams = await params
+
+  if (!isRetainedUtilityL3('font-generator', resolvedParams.slug)) {
+    return {
+      title: 'Redirecting to Font Generator | Toolaze',
+      robots: { index: false, follow: true },
+      alternates: { canonical: 'https://toolaze.com/font-generator' },
+    }
+  }
+
   const content = await getSeoContent('font-generator', resolvedParams.slug, 'en')
   
   if (!content) {
@@ -44,6 +55,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function Page({ params }: PageProps) {
   const resolvedParams = await params
+
+  if (!isRetainedUtilityL3('font-generator', resolvedParams.slug)) {
+    permanentRedirect('/font-generator')
+  }
+
   return (
     <ToolSlugPageContent 
       locale="en"

@@ -638,6 +638,7 @@ interface AiImageGenerationToolProps {
   enableCustomReferenceImageUpload?: boolean
   inlinePresetReferenceUpload?: boolean
   combineCustomReferenceAndPrompt?: boolean
+  clothingReferencePresetGrid?: boolean
   customReferencePrompt?: string
   hidePromptInput?: boolean
   defaultAspectRatio?: string
@@ -1151,6 +1152,7 @@ export default function AiImageGenerationTool({
   enableCustomReferenceImageUpload = false,
   inlinePresetReferenceUpload = false,
   combineCustomReferenceAndPrompt = false,
+  clothingReferencePresetGrid = false,
   customReferencePrompt = '',
   hidePromptInput = false,
   defaultAspectRatio,
@@ -1352,6 +1354,7 @@ export default function AiImageGenerationTool({
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
   const skipNextWorkflowReferenceSyncRef = useRef(false)
+  const hasInitializedPromptPresetTabRef = useRef(false)
   const presetReferenceImages = useMemo(
     () => new Set(
       promptPresets
@@ -1457,6 +1460,9 @@ export default function AiImageGenerationTool({
   }, [configuredVideoDurationOptions, defaultVideoDurationSeconds])
 
   useEffect(() => {
+    if (hasInitializedPromptPresetTabRef.current) return
+    hasInitializedPromptPresetTabRef.current = true
+
     const nextTabId = getInitialPromptPresetTabId(promptPresetTabs, defaultPromptPresetTabId)
     setActivePromptPresetTab(nextTabId)
     if (promptPresetTabs.length > 0) {
@@ -1516,13 +1522,18 @@ export default function AiImageGenerationTool({
   const shouldUseReferenceOnlyCustomMode = shouldShowCustomInputModeSwitch && customInputMode === 'reference'
   const shouldUseCustomReferenceUploader = shouldUseCombinedCustomReference || shouldUseReferenceOnlyCustomMode
   const shouldUseSecondaryReferenceUploader = shouldUsePresetReferenceUploader || shouldUseCustomReferenceUploader
+  const shouldUseSelectedPresetReference = shouldRenderWorkflowTabsAboveUpload
+    && activePromptPresetTab !== customPromptTabId
+    && Boolean(selectedPromptPresetReferenceImage)
+  const shouldIncludeSecondaryReference = shouldUseSelectedPresetReference || shouldUseSecondaryReferenceUploader
   const shouldRenderStandaloneReferenceUploader = shouldUseSecondaryReferenceUploader
     && !(inlinePresetReferenceUpload && shouldUsePresetReferenceUploader)
-  const isClothingReferencePresetGrid = shouldRenderWorkflowTabsAboveUpload
+  const isClothingReferencePresetGrid = clothingReferencePresetGrid
+    && shouldRenderWorkflowTabsAboveUpload
     && ['women', 'men'].includes(activePromptPresetTab)
     && visiblePromptPresets.some((preset) => ['women', 'men'].includes(preset.group || ''))
   const presetGridClassName = isClothingReferencePresetGrid
-    ? 'grid grid-cols-2 gap-2 md:grid-cols-4'
+    ? 'grid grid-cols-4 gap-2'
     : shouldRenderWorkflowTabsAboveUpload
       ? 'grid grid-cols-4 gap-2'
       : hasImagePromptPresets
@@ -1546,7 +1557,7 @@ export default function AiImageGenerationTool({
     ? ''
     : clothingReferenceFiles[0]?.preview
       || (clothingReferenceRemoteUrls[0] ? getReferencePreviewUrl(clothingReferenceRemoteUrls[0]) : '')
-  const hasCurrentReferenceImages = shouldUseSecondaryReferenceUploader
+  const hasCurrentReferenceImages = shouldIncludeSecondaryReference
     ? hasCurrentPersonReferenceImages && hasCurrentSecondaryReferenceImages
     : hasCurrentPersonReferenceImages
   const canGenerate = Boolean(currentEffectivePrompt)
@@ -2327,10 +2338,10 @@ export default function AiImageGenerationTool({
     const requestActiveTab = activeTab
     const requestImageFiles = [...imageFiles]
     const requestRemoteImageUrls = [...remoteImageUrls]
-    const requestClothingReferenceFiles = shouldUseSecondaryReferenceUploader
+    const requestClothingReferenceFiles = shouldIncludeSecondaryReference
       ? [...clothingReferenceFiles]
       : []
-    const requestClothingReferenceRemoteUrls = shouldUseSecondaryReferenceUploader
+    const requestClothingReferenceRemoteUrls = shouldIncludeSecondaryReference
       ? [...clothingReferenceRemoteUrls]
       : []
     const requestAspectRatio = effectiveAspectRatio
@@ -2352,7 +2363,7 @@ export default function AiImageGenerationTool({
       : shouldUseReferenceOnlyCustomMode
         ? customReferencePrompt.trim()
         : requestPrompt
-    const hasReferenceImages = shouldUsePresetReferenceUploader || shouldUseCustomReferenceUploader
+    const hasReferenceImages = shouldIncludeSecondaryReference
       ? hasPersonReferenceImages && hasClothingReferenceImages
       : hasPersonReferenceImages
 

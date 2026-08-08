@@ -529,7 +529,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/buzz-cut-filter'),
       media: {
         type: 'image',
-        src: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
+        src: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
         alt: 'Buzz Cut Filter demo image',
       },
     },
@@ -547,7 +547,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       href: localizeHomeHref('/bangs-filter'),
       media: {
         type: 'image',
-        src: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+        src: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
         alt: 'Bangs Filter demo image',
       },
     },

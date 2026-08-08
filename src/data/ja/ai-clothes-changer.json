@@ -165,7 +165,9 @@
       "defaultPromptPresetTabId": "women",
       "enableCustomReferenceImageUpload": true,
       "inlinePresetReferenceUpload": false,
-      "combineCustomReferenceAndPrompt": true,
+      "hidePresetReferenceUploader": true,
+      "combineCustomReferenceAndPrompt": false,
+      "clothingReferencePresetGrid": true,
       "showPresetSelectedState": true,
       "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
@@ -181,11 +183,11 @@
       "uploadTitle": "人物写真 + 服装リファレンスをアップロード",
       "uploadHelper": "まず人物写真をアップロードし、次に全身の服装リファレンスをアップロードするか下から選択します。",
       "promptLabel": "衣装を説明",
-      "promptPlaceholder": "カスタム：服装リファレンスをアップロードし、必要に応じて素材、配色、フィット、露出範囲、用途を説明してください。",
+      "promptPlaceholder": "作りたい服装を説明してください：服の種類、素材、色合い、フィット感、露出度、レイヤー、アクセサリー、用途など。",
       "personUploadTitle": "人物写真をアップロード",
       "personUploadHelper": "画像1：着せ替えたい人物写真をアップロードします。",
       "presetReferenceUploadHelper": "画像2：希望の服装画像をアップロードするか、下のテンプレートから選びます。",
-      "presetChoiceTitle": "または内蔵の服装リファレンスを選択",
+      "presetChoiceTitle": "服装スタイルを選択",
       "customReferenceUploadTitle": "服装リファレンスをアップロード",
       "customReferenceUploadHelper": "画像2：人物に着せたい服装リファレンスをアップロードします。"
     }

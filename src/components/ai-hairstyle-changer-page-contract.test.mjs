@@ -91,6 +91,7 @@ test('AI Hairstyle Changer Custom tab supports prompt or hairstyle-reference inp
   assert.match(aiImageToolSource, /workflowPresetTabCount = Math\.max\(promptPresetTabs\.length, 1\)/)
   assert.match(aiImageToolSource, /gridTemplateColumns: `repeat\(\$\{workflowPresetTabCount\}, minmax\(0, 1fr\)\)`/)
   assert.doesNotMatch(aiImageToolSource, /data-workflow-preset-tabs[\s\S]{0,200}grid-cols-2/)
+  assert.match(aiImageToolSource, /shouldRenderWorkflowTabsAboveUpload[\s\S]*'grid grid-cols-4 gap-2'/)
   assert.match(aiImageToolSource, /shouldShowCustomInputModeSwitch = combineCustomReferenceAndPrompt \? false : \([\s\S]*activePromptPresetTab === customPromptTabId[\s\S]*enableCustomReferenceImageUpload/)
   assert.match(aiImageToolSource, /shouldUseReferenceOnlyCustomMode = shouldShowCustomInputModeSwitch && customInputMode === 'reference'/)
   assert.match(aiImageToolSource, /!\(\(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId\) \|\| shouldUseCustomReferenceUploader\)/)

@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs, getAllTools, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { getPromptItems } from '@/lib/prompts'
+import {
+  isUtilityTool,
+  shouldIncludeUtilityL3InSitemap,
+} from '@/lib/utility-seo-routes'
 
 // 静态导出模式需要此配置
 export const dynamic = 'force-static'
@@ -387,20 +391,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 5. All Tools 页面（所有语言版本）
-  TOOL_PAGES.forEach((tool) => {
-    SUPPORTED_LOCALES.forEach((locale) => {
-      const path = locale === 'en' ? `/${tool}/all-tools` : `/${locale}/${tool}/all-tools`
-      entries.push({
-        url: `${baseUrl}${path}`,
-        lastModified: getLastModified(path),
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      })
-    })
-  })
-
-  // 6. 所有工具页面（所有语言版本和所有 slug）
+  // 5. 工具三级页：低价值工具只保留批准的英文 canonical 页面。
   for (const locale of SUPPORTED_LOCALES) {
     try {
       const tools = await getAllTools(locale)
@@ -411,6 +402,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           if (tool === 'seedance-2') return
           // kling-3 仅英文
           if (tool === 'kling-3' && locale !== 'en') return
+          if (isUtilityTool(tool) && !shouldIncludeUtilityL3InSitemap(locale, tool, slug)) return
           const path = locale === 'en'
             ? `/${tool}/${slug}`
             : `/${locale}/${tool}/${slug}`

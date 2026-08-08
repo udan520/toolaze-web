@@ -165,7 +165,9 @@
       "defaultPromptPresetTabId": "women",
       "enableCustomReferenceImageUpload": true,
       "inlinePresetReferenceUpload": false,
-      "combineCustomReferenceAndPrompt": true,
+      "hidePresetReferenceUploader": true,
+      "combineCustomReferenceAndPrompt": false,
+      "clothingReferencePresetGrid": true,
       "showPresetSelectedState": true,
       "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
@@ -181,11 +183,11 @@
       "uploadTitle": "Importer photo de personne + référence vêtement",
       "uploadHelper": "Importez d’abord la photo de la personne, puis importez ou choisissez ci-dessous une référence de vêtement en pied.",
       "promptLabel": "Décrivez votre tenue",
-      "promptPlaceholder": "Personnalisé : importez une référence de vêtement, puis décrivez si nécessaire le tissu, la palette, la coupe, la couvrance ou l’occasion.",
+      "promptPlaceholder": "Décrivez la tenue souhaitée : type de vêtement, tissu, palette de couleurs, coupe, couvrance, superpositions, accessoires et occasion.",
       "personUploadTitle": "Importer la photo de la personne",
       "personUploadHelper": "Image 1 : importez la photo de la personne à modifier.",
       "presetReferenceUploadHelper": "Image 2 : importez la tenue cible ou choisissez un modèle ci-dessous.",
-      "presetChoiceTitle": "Ou choisir une référence de tenue intégrée",
+      "presetChoiceTitle": "Choisissez un style de tenue",
       "customReferenceUploadTitle": "Importer une référence de tenue",
       "customReferenceUploadHelper": "Image 2 : importez la tenue de référence à transférer."
     }

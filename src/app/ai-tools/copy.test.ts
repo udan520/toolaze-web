@@ -63,7 +63,7 @@ test('AI Hairstyle Changer hub cards use the current page demo image', () => {
 test('P0 hairstyle filter hub cards are localized and use page demo images', () => {
   const expectedImages = {
     '/bald-filter': 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
-    '/bangs-filter': 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+    '/bangs-filter': 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
     '/perm-filter': 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   }
 

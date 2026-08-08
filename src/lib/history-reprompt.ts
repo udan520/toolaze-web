@@ -21,8 +21,6 @@ type HistoryRecreateSource = {
   sourcePath?: string | null
 }
 
-const NEXT_IMAGE_WIDTHS = [64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200] as const
-const REFERENCE_PREVIEW_WIDTH = 384
 const GENERIC_IMAGE_EDIT_TOOL_SLUGS = new Set(['ai-image-generator', 'ai-image-to-image-generator'])
 const LOCALE_PATTERN = /^[a-z]{2}(?:-[A-Z]{2})?$/
 
@@ -56,14 +54,6 @@ export function normalizeReusableReferenceImageUrl(url: unknown): string {
   } catch {
     return ''
   }
-}
-
-function isBrowserOnlyPreviewUrl(url: string): boolean {
-  return url.startsWith('blob:') || url.startsWith('data:')
-}
-
-function isNextImageUrl(url: string): boolean {
-  return url.startsWith('/_next/image?')
 }
 
 function getHistoryToolSlug(item: HistoryRepromptSource): string {
@@ -131,13 +121,6 @@ export function getWrappedHistoryDefaultInputImageUrls(item: HistoryRepromptSour
   if (toolSlug === 'ai-hairstyle-changer') return ['/ai-hairstyle-changer/default-reference.png']
   if (toolSlug === 'ai-hair-color-changer') return ['/ai-hair-color-changer/default-reference.png']
   return []
-}
-
-function normalizePreviewWidth(width: number): number {
-  const safeWidth = Number.isFinite(width) ? Math.max(64, Math.round(width)) : 384
-  return NEXT_IMAGE_WIDTHS.reduce((best, current) => (
-    Math.abs(current - safeWidth) < Math.abs(best - safeWidth) ? current : best
-  ), NEXT_IMAGE_WIDTHS[0])
 }
 
 export function getHistoryReferenceImageUrls(item: HistoryRepromptSource): string[] {
@@ -219,17 +202,8 @@ export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
   }
 }
 
-export function getDisplayImagePreviewUrl(url: string, width = 384, quality = 75): string {
-  const imageUrl = normalizeImageUrl(url)
-  if (!imageUrl || isBrowserOnlyPreviewUrl(imageUrl) || isNextImageUrl(imageUrl)) return imageUrl
-
-  const canUseNextImage = imageUrl.startsWith('/') && !imageUrl.startsWith('//')
-  if (!canUseNextImage) return imageUrl
-
-  const previewWidth = normalizePreviewWidth(width)
-  const previewQuality = Math.min(100, Math.max(1, Math.round(Number.isFinite(quality) ? quality : 75)))
-
-  return `/_next/image?url=${encodeURIComponent(imageUrl)}&w=${previewWidth}&q=${previewQuality}`
+export function getDisplayImagePreviewUrl(url: string, _width = 384, _quality = 75): string {
+  return normalizeImageUrl(url)
 }
 
 export function getReferencePreviewUrl(url: string): string {
@@ -238,8 +212,8 @@ export function getReferencePreviewUrl(url: string): string {
   const imageUrl = normalizeImageUrl(url)
 
   if (imageUrl === hairColorReferencePath || imageUrl.endsWith(hairColorReferencePath)) {
-    return getDisplayImagePreviewUrl(hairColorReferencePreviewPath, REFERENCE_PREVIEW_WIDTH)
+    return getDisplayImagePreviewUrl(hairColorReferencePreviewPath)
   }
 
-  return getDisplayImagePreviewUrl(imageUrl, REFERENCE_PREVIEW_WIDTH)
+  return getDisplayImagePreviewUrl(imageUrl)
 }

@@ -1,3 +1,6 @@
+const fs = require('node:fs')
+const path = require('node:path')
+
 const isProdBuild = process.env.NODE_ENV === 'production'
 const isStaticExport =
   process.env.NEXT_OUTPUT_EXPORT === 'true' ||
@@ -9,9 +12,86 @@ const devAllowedOrigins = (process.env.NEXT_DEV_ALLOWED_ORIGINS || '127.0.0.1,lo
   .split(',')
   .map((s) => s.trim())
   .filter(Boolean)
+const distDir = process.env.NEXT_DIST_DIR || '.next'
+
+const UTILITY_SEO_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
+const RETAINED_UTILITY_L3 = {
+  'image-compressor': new Set(['batch-compress']),
+  'image-converter': new Set(),
+  'font-generator': new Set(['cool', 'fancy', 'tattoo']),
+  'emoji-copy-and-paste': new Set(),
+}
+
+function listJsonSlugs(directory) {
+  return fs.readdirSync(path.join(__dirname, directory))
+    .filter((filename) => filename.endsWith('.json'))
+    .map((filename) => filename.slice(0, -5))
+    .sort()
+}
+
+function getUtilitySeoSlugs() {
+  const compressionData = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'src/data/en/image-compression.json'), 'utf8')
+  )
+
+  return {
+    'image-compressor': Object.keys(compressionData).sort(),
+    'image-converter': listJsonSlugs('src/data/en/image-converter'),
+    'font-generator': listJsonSlugs('src/data/en/font-generator'),
+    'emoji-copy-and-paste': listJsonSlugs('src/data/en/emoji-copy-and-paste'),
+  }
+}
+
+function getUtilitySeoRedirects() {
+  const redirects = []
+
+  for (const [tool, slugs] of Object.entries(getUtilitySeoSlugs())) {
+    const retained = RETAINED_UTILITY_L3[tool]
+    const englishParent = `/${tool}`
+
+    for (const slug of slugs) {
+      if (!retained.has(slug)) {
+        redirects.push({
+          source: `/${tool}/${slug}`,
+          destination: englishParent,
+          permanent: true,
+        })
+      }
+    }
+
+    redirects.push({
+      source: `/${tool}/all-tools`,
+      destination: englishParent,
+      permanent: true,
+    })
+
+    for (const locale of UTILITY_SEO_LOCALES) {
+      const localizedParent = locale === 'en' ? englishParent : `/${locale}/${tool}`
+
+      for (const slug of slugs) {
+        redirects.push({
+          source: `/${locale}/${tool}/${slug}`,
+          destination: locale === 'en' && retained.has(slug)
+            ? `/${tool}/${slug}`
+            : localizedParent,
+          permanent: true,
+        })
+      }
+
+      redirects.push({
+        source: `/${locale}/${tool}/all-tools`,
+        destination: localizedParent,
+        permanent: true,
+      })
+    }
+  }
+
+  return redirects
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir,
   ...(!isProdBuild ? { allowedDevOrigins: devAllowedOrigins } : {}),
   // 默认使用标准 Next.js runtime，适配 Vercel 的 ISR / API Routes。
   // 如需继续构建 Cloudflare Pages 静态导出，显式设置 NEXT_OUTPUT_EXPORT=true。
@@ -37,6 +117,9 @@ const nextConfig = {
         hostname: '**.r2.cloudflarestorage.com', // R2 自定义域名（如果使用）
       },
     ],
+  },
+  async redirects() {
+    return isStaticExport ? [] : getUtilitySeoRedirects()
   },
   // 注意：静态导出模式下无法使用 rewrites，所以无法代理 Hugging Face 请求
   // Transformers.js 需要直接从 Hugging Face 加载模型文件

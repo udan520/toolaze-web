@@ -11,7 +11,8 @@ import Comparison from '@/components/blocks/Comparison'
 import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
-import { getAllSlugs, getSeoContent, loadCommonTranslations } from '@/lib/seo-loader'
+import { getSeoContent, loadCommonTranslations } from '@/lib/seo-loader'
+import { RETAINED_UTILITY_L3 } from '@/lib/utility-seo-routes'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -30,23 +31,18 @@ export default async function ImageCompressorPage() {
   const t = await loadCommonTranslations('en')
   const moreToolsTitle = t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools'
 
-  // 加载所有 in_menu: false 的工具（长尾页面），并选择3个最相关的显示
-  let allSlugs: string[] = []
+  // 只展示继续保留索引的三级页。
   let featuredTools: Array<{ slug: string; title: string; description: string; href: string }> = []
-  let totalToolsCount = 0
   
   try {
-    const slugsResult = await getAllSlugs('image-compressor', 'en')
-    allSlugs = Array.isArray(slugsResult) ? slugsResult : []
-    
-    if (allSlugs.length > 0) {
-      const allLongTailTools = await Promise.all(
-        allSlugs.map(async (slug) => {
+    const retainedSlugs = RETAINED_UTILITY_L3['image-compressor']
+
+    if (retainedSlugs.length > 0) {
+      const retainedTools = await Promise.all(
+        retainedSlugs.map(async (slug) => {
           try {
-            if (!slug || typeof slug !== 'string') return null
             const toolData = await getSeoContent('image-compressor', slug, 'en')
-            // 只包含 in_menu: false 的工具
-            if (toolData && toolData.in_menu === false) {
+            if (toolData) {
               const title = toolData?.hero?.h1 ? toolData.hero.h1.replace(/<[^>]*>/g, '').trim() : slug
               const description = toolData?.hero?.desc || toolData?.metadata?.description || ''
               const shortDesc = description.length > 100 ? description.substring(0, 100) + '...' : description
@@ -64,19 +60,13 @@ export default async function ImageCompressorPage() {
           }
         })
       )
-      const filteredLongTailTools = allLongTailTools.filter((tool): tool is { slug: string; title: string; description: string; href: string } => 
+      featuredTools = retainedTools.filter((tool): tool is { slug: string; title: string; description: string; href: string } =>
         tool !== null && tool.title !== undefined && tool.href !== undefined
       )
-      // 选择前3个最相关的工具显示
-      featuredTools = filteredLongTailTools.slice(0, 3)
     }
-    totalToolsCount = allSlugs.length || 0
   } catch (error) {
-    // 如果加载失败，使用空数组，但板块仍然显示
     console.error('Failed to load tools:', error)
     featuredTools = []
-    totalToolsCount = 0
-    allSlugs = []
   }
   
   return (
@@ -301,18 +291,6 @@ export default async function ImageCompressorPage() {
               </div>
             )}
             
-            {/* 所有工具入口 - 始终显示 */}
-            <div className="text-center mt-8">
-              <Link
-                href="/en/image-compressor/all-tools"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg hover:shadow-indigo-500/50 transition-all text-base"
-              >
-                View All Tools
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
           </div>
         </section>
       </main>

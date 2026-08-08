@@ -176,9 +176,9 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
-  buzzCutFilter: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
+  buzzCutFilter: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
   baldFilter: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
-  bangsFilter: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+  bangsFilter: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
   permFilter: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiClothesChanger: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
@@ -1120,7 +1120,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         ? 'bg-red-500 text-white'
         : item.badgeKey === 'bestValue'
           ? 'bg-violet-100 text-violet-700'
-        : 'bg-emerald-500 text-white'
+          : 'bg-emerald-500 text-white'
 
     return (
       <Link

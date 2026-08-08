@@ -165,7 +165,9 @@
       "defaultPromptPresetTabId": "women",
       "enableCustomReferenceImageUpload": true,
       "inlinePresetReferenceUpload": false,
-      "combineCustomReferenceAndPrompt": true,
+      "hidePresetReferenceUploader": true,
+      "combineCustomReferenceAndPrompt": false,
+      "clothingReferencePresetGrid": true,
       "showPresetSelectedState": true,
       "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
@@ -181,11 +183,11 @@
       "uploadTitle": "Carica foto persona + riferimento abito",
       "uploadHelper": "Carica prima la foto della persona, poi carica o scegli sotto un riferimento abito a figura intera.",
       "promptLabel": "Descrivi il tuo outfit",
-      "promptPlaceholder": "Personalizzato: carica un riferimento abito e descrivi facoltativamente tessuto, palette, vestibilità, copertura o occasione.",
+      "promptPlaceholder": "Descrivi l'outfit desiderato: tipo di capo, tessuto, palette colori, vestibilità, copertura, strati, accessori e occasione.",
       "personUploadTitle": "Carica la foto della persona",
       "personUploadHelper": "Immagine 1: carica la foto della persona da modificare.",
       "presetReferenceUploadHelper": "Immagine 2: carica l’outfit di riferimento o scegli un modello qui sotto.",
-      "presetChoiceTitle": "Oppure scegli un riferimento incluso",
+      "presetChoiceTitle": "Scegli uno stile di abbigliamento",
       "customReferenceUploadTitle": "Carica il riferimento dell’outfit",
       "customReferenceUploadHelper": "Immagine 2: carica l’outfit di riferimento da trasferire."
     }

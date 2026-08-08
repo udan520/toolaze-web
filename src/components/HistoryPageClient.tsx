@@ -364,14 +364,16 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
         },
         body: JSON.stringify({ historyId: item.id }),
       })
+      const payload = await response.json().catch(() => ({}))
       if (!response.ok) {
-        const body = await response.json().catch(() => ({}))
-        throw new Error(body.error || copy.importMediaLibraryFailed)
+        throw new Error(payload.error || copy.importMediaLibraryFailed)
       }
+      const importedCount = Number(payload.importedCount || 0)
+      const skippedCount = Number(payload.skippedCount || 0)
       dispatchToolazeTopNotice({
         type: 'success',
         title: copy.importedToMediaLibrary,
-        message: '',
+        message: `Added ${importedCount.toLocaleString()} asset${importedCount === 1 ? '' : 's'}; skipped ${skippedCount.toLocaleString()}.`,
       })
     } catch (err) {
       dispatchToolazeTopNotice({

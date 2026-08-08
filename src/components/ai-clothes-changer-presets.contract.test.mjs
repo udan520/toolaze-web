@@ -23,12 +23,24 @@ const expectedMen = [
   'Performance Athleisure',
   'Riviera Linen',
 ]
+const expectedPresetChoiceTitles = {
+  en: 'Choose a Clothing Style',
+  de: 'Kleidungsstil wählen',
+  ja: '服装スタイルを選択',
+  es: 'Elige un estilo de ropa',
+  'zh-TW': '選擇服裝風格',
+  pt: 'Escolha um estilo de roupa',
+  fr: 'Choisissez un style de tenue',
+  ko: '의상 스타일 선택',
+  it: 'Scegli uno stile di abbigliamento',
+}
 
 const readContent = (locale) => JSON.parse(
   readFileSync(new URL(`../data/${locale}/ai-clothes-changer.json`, import.meta.url), 'utf8'),
 )
 const rootRouteSource = readFileSync(new URL('../app/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 const localeRouteSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
+const l2SeoMetadataSource = readFileSync(new URL('../lib/l2-seo-metadata.ts', import.meta.url), 'utf8')
 
 test('English catalog publishes the approved two rows per gender', () => {
   const presets = readContent('en').topTool.functionalAcceptance.presets
@@ -47,6 +59,16 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
     assert.equal(presets.filter((item) => item.group === 'men').length, 8, locale)
     assert.deepEqual(presets.map((item) => item.image), englishAssets, locale)
     assert.equal(acceptance.inlinePresetReferenceUpload, false, locale)
+    assert.equal(acceptance.hidePresetReferenceUploader, true, locale)
+    assert.equal(acceptance.enableCustomReferenceImageUpload, true, locale)
+    assert.equal(acceptance.combineCustomReferenceAndPrompt, false, locale)
+    assert.equal(acceptance.clothingReferencePresetGrid, true, locale)
+    assert.equal(readContent(locale).topTool.textOverrides.presetChoiceTitle, expectedPresetChoiceTitles[locale], locale)
+    assert.doesNotMatch(
+      readContent(locale).topTool.textOverrides.promptPlaceholder,
+      /upload|上传|上傳|hochladen|sube|envie|carica|téléverse|アップロード|업로드/i,
+      locale + ' custom prompt placeholder should describe clothing text, not request an upload',
+    )
     for (const preset of presets) {
       assert.match(
         preset.image,
@@ -69,7 +91,7 @@ test('localized labels do not reuse the English catalog wholesale', () => {
 
 test('clothes presets use a responsive four-column 9:16 grid without an inline upload tile', () => {
   const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
-  assert.match(source, /isClothingReferencePresetGrid[\s\S]*grid-cols-2[\s\S]*md:grid-cols-4/)
+  assert.match(source, /isClothingReferencePresetGrid[\s\S]*grid-cols-4/)
   assert.match(source, /isClothingReferencePresetGrid \? 'aspect-\[9\/16\]' : 'aspect-\[3\/4\]'/)
   assert.match(source, /isClothingReferencePresetGrid[\s\S]*line-clamp-2/)
   assert.match(source, /shouldRenderStandaloneReferenceUploader/)
@@ -90,10 +112,23 @@ test('English visible copy explains the combined Custom clothing-reference workf
   assert.doesNotMatch(visibleCopy, /The page is written/i)
 })
 
+test('workflow tab initialization does not reset user-selected Custom back to the default tab', () => {
+  const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+  assert.match(source, /hasInitializedPromptPresetTabRef = useRef\(false\)/)
+  assert.match(source, /if \(hasInitializedPromptPresetTabRef\.current\) return/)
+  assert.match(source, /hasInitializedPromptPresetTabRef\.current = true/)
+})
+
 test('AI Clothes Changer metadata keeps OpenGraph URL aligned with canonical URL', () => {
   for (const source of [rootRouteSource, localeRouteSource]) {
-    assert.match(source, /alternates:\s*\{[\s\S]*canonical:\s*hreflang\.canonical/)
-    assert.match(source, /openGraph:\s*\{[\s\S]*url:\s*hreflang\.canonical/)
+    assert.match(source, /buildL2SeoMetadata\(\{[\s\S]*hreflang/)
     assert.doesNotMatch(source, /openGraph:\s*\{[\s\S]*url:\s*['"]https:\/\/toolaze\.com['"]/)
   }
+
+  assert.match(l2SeoMetadataSource, /alternates:\s*\{[\s\S]*canonical:\s*hreflang\.canonical/)
+  assert.match(l2SeoMetadataSource, /openGraph:\s*\{[\s\S]*url:\s*hreflang\.canonical/)
+  assert.doesNotMatch(
+    l2SeoMetadataSource,
+    /openGraph:\s*\{[\s\S]*url:\s*['"]https:\/\/toolaze\.com['"]/,
+  )
 })

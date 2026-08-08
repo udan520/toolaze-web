@@ -5,6 +5,7 @@ import {
   listGenerationHistory,
 } from '../_shared/generation-history.mjs';
 import { handleOptions, jsonResponse } from '../_shared/http.mjs';
+import { updateGenerationAttemptStatus } from '../_shared/generation-attempts.mjs';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -27,6 +28,7 @@ export async function onRequest(context) {
     const outputUrl = String(body.outputUrl || '').trim();
     const prompt = String(body.prompt || '').trim();
     const model = String(body.model || '').trim();
+    const taskId = String(body.taskId || '').trim();
 
     if (!outputUrl.startsWith('http')) {
       return jsonResponse({ error: 'Output URL is required.' }, 400);
@@ -52,6 +54,15 @@ export async function onRequest(context) {
       toolLabel: body.toolLabel,
       sourcePath: body.sourcePath,
     });
+
+    if (taskId) {
+      await updateGenerationAttemptStatus(env, {
+        userId: user.id,
+        taskId,
+        status: 'succeeded',
+        outputUrl: item.outputUrl,
+      });
+    }
 
     return jsonResponse({ item }, 201);
   }

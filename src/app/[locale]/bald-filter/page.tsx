@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('bald-filter', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'Free Bald Filter Online | No Signup | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Use the free Bald Filter with no signup. Upload one portrait and preview a realistic shaved-head look while preserving your face and the rest of the photo.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free Bald Filter Online | No Signup | Toolaze',
+    fallbackDescription: 'Use the free Bald Filter with no signup. Upload one portrait and preview a realistic shaved-head look while preserving your face and the rest of the photo.',
+  })
 }
 
 export default async function BaldFilterLocalePage({ params }: PageProps) {

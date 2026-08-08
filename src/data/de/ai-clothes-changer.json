@@ -165,7 +165,9 @@
       "defaultPromptPresetTabId": "women",
       "enableCustomReferenceImageUpload": true,
       "inlinePresetReferenceUpload": false,
-      "combineCustomReferenceAndPrompt": true,
+      "hidePresetReferenceUploader": true,
+      "combineCustomReferenceAndPrompt": false,
+      "clothingReferencePresetGrid": true,
       "showPresetSelectedState": true,
       "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
@@ -181,11 +183,11 @@
       "uploadTitle": "Personenfoto + Kleidungsreferenz hochladen",
       "uploadHelper": "Laden Sie zuerst Ihr Personenfoto hoch und laden Sie dann unten eine Ganzkörper-Kleidungsreferenz hoch oder wählen Sie eine aus.",
       "promptLabel": "Beschreiben Sie Ihr Outfit",
-      "promptPlaceholder": "Benutzerdefiniert: Kleidungsreferenz hochladen und optional Stoff, Farbpalette, Passform, Bedeckung oder Anlass beschreiben.",
+      "promptPlaceholder": "Beschreibe das gewünschte Outfit: Kleidungsart, Stoff, Farbpalette, Passform, Bedeckung, Schichten, Accessoires und Anlass.",
       "personUploadTitle": "Personenfoto hochladen",
       "personUploadHelper": "Bild 1: Lade das Foto der Person hoch, die du bearbeiten möchtest.",
       "presetReferenceUploadHelper": "Bild 2: Lade dein Ziel-Outfit hoch oder wähle unten eine Vorlage.",
-      "presetChoiceTitle": "Oder integrierte Kleidungsreferenz wählen",
+      "presetChoiceTitle": "Kleidungsstil wählen",
       "customReferenceUploadTitle": "Kleidungsreferenz hochladen",
       "customReferenceUploadHelper": "Bild 2: Lade die Kleidungsreferenz hoch, die du übertragen möchtest."
     }

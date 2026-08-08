@@ -137,6 +137,19 @@ test('returns Talking Avatar label with Infinitalk as the model supplement', () 
   })
 })
 
+test('returns AI Photo Abstract Poster Generator label before model for abstract poster history', () => {
+  assert.deepEqual(getWrappedHairToolHistoryDisplay({
+    model: 'gpt-image-2',
+    toolSlug: 'ai-photo-abstract-poster-generator',
+    toolLabel: 'Photo Abstract Editorial',
+    sourcePath: '/ai-photo-abstract-poster-generator',
+  }), {
+    showToolLabel: true,
+    toolLabel: 'AI Photo Abstract Poster Generator',
+    modelLabel: 'GPT Image 2',
+  })
+})
+
 test('formats known model ids for user-facing history labels', () => {
   assert.equal(getGenerationModelLabel('gpt-image-2'), 'GPT Image 2')
   assert.equal(getGenerationModelLabel('seedream-5-0-pro'), 'Seedream 5.0 Pro')
