@@ -82,6 +82,7 @@ const defaultNavTranslations = {
   supportedAiModels: 'Supported AI Models',
   veo31Video: 'Veo 3.1 Video',
   grok15Video: 'Grok 1.5 Video',
+  wan30Video: 'Wan 3.0 Video',
   wan27Video: 'Wan 2.7 Video',
   wan26Video: 'Wan 2.6 Video',
   wan25Video: 'Wan 2.5 Video',
@@ -304,6 +305,7 @@ type AiVideoNavLabelKey =
   | 'textToVideoGenerator'
   | 'imageToVideoGenerator'
   | 'veo31Video'
+  | 'wan30Video'
   | 'wan27Video'
   | 'wan26Video'
   | 'wan25Video'
@@ -344,6 +346,7 @@ const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
   { href: '/model/kling-3-motion-control', labelKey: 'kling3MotionControl', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-3', labelKey: 'kling3', logoSrc: '/model-logos/kling.svg' },
   { href: '/model/kling-2-6-pro-motion-control', labelKey: 'kling26MotionControl', logoSrc: '/model-logos/kling.svg', badgeKey: 'hot' },
+  { href: '/model/wan-3-0-ai-video-generator', labelKey: 'wan30Video', logoSrc: '/model-logos/wan.ico', badgeKey: 'new' },
   { href: '/model/wan-2-7-ai-video-generator', labelKey: 'wan27Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-6-ai-video-generator', labelKey: 'wan26Video', logoSrc: '/model-logos/wan.ico' },
   { href: '/model/wan-2-5-ai-video-generator', labelKey: 'wan25Video', logoSrc: '/model-logos/wan.ico' },

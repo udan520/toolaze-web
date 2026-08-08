@@ -24,6 +24,7 @@ const VIDEO_MODEL_PAGE_HREFS: Partial<Record<AiVideoGeneratorModelId, string>> =
   'veo-3-1-lite': '/model/veo-3-1-ai-video-generator',
   'veo-3-1-quality': '/model/veo-3-1-ai-video-generator',
   'wan-2-7': '/model/wan-2-7-ai-video-generator',
+  'wan-3-0': '/model/wan-3-0-ai-video-generator',
   'wan-2-6': '/model/wan-2-6-ai-video-generator',
   'wan-2-5': '/model/wan-2-5-ai-video-generator',
   'grok-1-5-video': '/model/grok-imagine-video-1-5',

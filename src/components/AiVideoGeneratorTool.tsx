@@ -270,6 +270,7 @@ const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'seedance-1-pro': 'seedance-1-pro',
   'seedance-1-lite': 'seedance-1-lite',
   'wan-2-7': 'wan-2-7',
+  'wan-3-0': 'wan-3-0',
   'wan-2-6': 'wan-2-6',
   'wan-2-5': 'wan-2-5',
   'wan-2-2': 'wan-2-2',

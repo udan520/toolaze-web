@@ -1,6 +1,12 @@
 {
   "tasks": [
     {
+      "taskId": "2026-08-08-wan-3-0-ai-video-generator",
+      "slug": "wan-3-0-ai-video-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-07-23-image-to-video-generator",
       "slug": "image-to-video-generator",
       "pageType": "l2",

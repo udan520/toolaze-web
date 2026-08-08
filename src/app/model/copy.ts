@@ -428,6 +428,18 @@ const wan27VideoModelCards: Record<ModelPageLocale, ModelCard> = {
   it: { title: 'Wan 2.7 Video', href: '/model/wan-2-7-ai-video-generator', description: 'Crea clip Wan 2.7 da testo in video e immagine in video con 2-10 secondi, fino a due riferimenti e 720p/1080p.', tags: ['Testo in video', 'Immagine in video', '2–10s'], cta: 'Prova Wan 2.7 Video', icon: 'plainText' },
 }
 
+const wan30VideoModelCards: Record<ModelPageLocale, ModelCard> = {
+  en: { title: 'Wan 3.0 Video', href: '/model/wan-3-0-ai-video-generator', description: 'Explore Wan 3.0 native 4K video, 30-second sequences, six connected shots, up to 12 image references, and synchronized audio.', tags: ['Native 4K', 'Up to 30s', 'Coming Soon'], cta: 'Explore Wan 3.0 Video', icon: 'plainText' },
+  de: { title: 'Wan 3.0 Video', href: '/model/wan-3-0-ai-video-generator', description: 'Entdecken Sie natives 4K-Video, 30-Sekunden-Sequenzen, sechs verbundene Aufnahmen, bis zu 12 Bildreferenzen und synchronisierten Ton.', tags: ['Natives 4K', 'Bis zu 30 s', 'Demnächst'], cta: 'Wan 3.0 Video entdecken', icon: 'plainText' },
+  ja: { title: 'Wan 3.0動画', href: '/model/wan-3-0-ai-video-generator', description: 'ネイティブ4K、最大30秒、6つの連続ショット、最大12枚の画像参照、同期オーディオを備えたWan 3.0を確認できます。', tags: ['ネイティブ4K', '最大30秒', '近日公開'], cta: 'Wan 3.0動画を見る', icon: 'plainText' },
+  es: { title: 'Wan 3.0 Video', href: '/model/wan-3-0-ai-video-generator', description: 'Descubre vídeo 4K nativo, secuencias de 30 segundos, seis tomas conectadas, hasta 12 referencias de imagen y audio sincronizado.', tags: ['4K nativo', 'Hasta 30 s', 'Próximamente'], cta: 'Explorar Wan 3.0 Video', icon: 'plainText' },
+  'zh-TW': { title: 'Wan 3.0 影片', href: '/model/wan-3-0-ai-video-generator', description: '探索 Wan 3.0 原生 4K 影片、最長 30 秒、六個連續鏡頭、最多 12 張參考圖與同步音訊。', tags: ['原生 4K', '最長 30 秒', '即將推出'], cta: '探索 Wan 3.0 影片', icon: 'plainText' },
+  pt: { title: 'Wan 3.0 Vídeo', href: '/model/wan-3-0-ai-video-generator', description: 'Explore vídeo 4K nativo, sequências de 30 segundos, seis tomadas conectadas, até 12 referências de imagem e áudio sincronizado.', tags: ['4K nativo', 'Até 30 s', 'Em breve'], cta: 'Explorar Wan 3.0 Vídeo', icon: 'plainText' },
+  fr: { title: 'Vidéo Wan 3.0', href: '/model/wan-3-0-ai-video-generator', description: 'Découvrez la 4K native, des séquences de 30 secondes, six plans reliés, jusqu’à 12 références d’image et un son synchronisé.', tags: ['4K native', 'Jusqu’à 30 s', 'Bientôt'], cta: 'Découvrir Wan 3.0 Vidéo', icon: 'plainText' },
+  ko: { title: 'Wan 3.0 동영상', href: '/model/wan-3-0-ai-video-generator', description: '네이티브 4K, 최대 30초, 6개의 연결된 샷, 최대 12장의 이미지 참조, 동기화 오디오를 갖춘 Wan 3.0을 살펴보세요.', tags: ['네이티브 4K', '최대 30초', '출시 예정'], cta: 'Wan 3.0 동영상 보기', icon: 'plainText' },
+  it: { title: 'Wan 3.0 Video', href: '/model/wan-3-0-ai-video-generator', description: 'Scopri video 4K nativo, sequenze di 30 secondi, sei inquadrature collegate, fino a 12 riferimenti immagine e audio sincronizzato.', tags: ['4K nativo', 'Fino a 30 s', 'In arrivo'], cta: 'Scopri Wan 3.0 Video', icon: 'plainText' },
+}
+
 export function isModelPageLocale(locale: string): locale is ModelPageLocale {
   return MODEL_PAGE_LOCALES.includes(locale as ModelPageLocale)
 }
@@ -447,7 +459,7 @@ export function getModelPageCopy(locale = 'en'): ModelPageCopy {
       ...copy.hero,
       description: summary.heroDescription,
     },
-    cards: [...copy.cards, wan27VideoModelCards[resolvedLocale], wan25VideoModelCards[resolvedLocale]],
+    cards: [...copy.cards, wan30VideoModelCards[resolvedLocale], wan27VideoModelCards[resolvedLocale], wan25VideoModelCards[resolvedLocale]],
     about: {
       ...copy.about,
       paragraphs: summary.aboutParagraphs,

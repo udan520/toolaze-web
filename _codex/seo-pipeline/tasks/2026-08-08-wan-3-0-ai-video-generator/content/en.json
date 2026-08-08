@@ -1,0 +1,375 @@
+{
+  "in_menu": true,
+  "seoFactoryTaskId": "2026-08-08-wan-3-0-ai-video-generator",
+  "topComponent": "wan-3-0-ai-video-generator",
+  "topTool": {
+    "modelId": "wan-2-7",
+    "defaultMode": "text-to-video",
+    "mode": "text-to-video",
+    "displayName": "Wan 2.7",
+    "textOverrides": {
+      "wan30Description": "Wan 3.0 video generation will be available here soon."
+    }
+  },
+  "metadata": {
+    "title": "Wan 3.0 AI Video Generator: Native 4K, 30-Second Video",
+    "description": "Create cinematic Wan 3.0 videos with native 4K output, 30-second generation, six connected shots, consistent characters, up to 12 reference images, and synchronized audio.",
+    "published": true
+  },
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Wan 3.0</span> AI Video Generator Coming Soon",
+    "desc": "Create native 4K videos up to 30 seconds from text or images. Wan 3.0 combines six connected shots, stronger character and product consistency, up to 12 reference images, cinematic camera control, and synchronized audio in one generation."
+  },
+  "heroDemoVideo": {
+    "type": "video",
+    "src": "https://assets.toolaze.com/generated/0648742ae72f41c1a047421beb1c93b9.mp4",
+    "ariaLabel": "Toolaze Wan 3.0 demo video preview",
+    "width": 864,
+    "height": 496,
+    "sourceHistory": "Temporary Wan family preview asset; replace with a verified Wan 3.0 render before publication",
+    "poster": "https://assets.toolaze.com/model-assets/wan-2-7-ai-video-generator/hero-demo-poster.webp",
+    "duration": "PT5.042S",
+    "uploadDate": "2026-08-08T07:32:43.927Z"
+  },
+  "sectionsOrder": [
+    "modelIntro",
+    "performanceMetrics",
+    "modelComparison",
+    "workflowComparison",
+    "howToUse",
+    "scenes",
+    "promptExamples",
+    "troubleshooting",
+    "faq"
+  ],
+  "modelIntro": {
+    "title": "What Makes Wan 3.0 a Major Video Generation Upgrade?",
+    "modelName": "Wan 3.0",
+    "modelType": "Next-Generation AI Video Model",
+    "description": [
+      "Wan 3.0 moves the Wan family beyond isolated short clips toward complete, production-ready sequences. Native 4K output preserves product labels, faces, fabric, architecture, and fine lighting detail, while a 30-second generation window gives a scene enough time for an opening, development, and closing image without stitching several unrelated clips together.",
+      "The larger change is continuity. Wan 3.0 can organize up to six connected shots while keeping the same character, product, location, lighting direction, and visual language across cuts. Add up to 12 reference images for identity, wardrobe, product design, environment, and style, then generate picture and synchronized sound together. The result is better suited to advertising, character-led storytelling, cinematic previsualization, and branded content than a single impressive but disconnected shot."
+    ]
+  },
+  "performanceMetrics": {
+    "title": "Key Features of Wan 3.0",
+    "metrics": [
+      {
+        "label": "Native 4K output",
+        "value": "Generate at up to 3840 × 2160 for sharper faces, packaging, textures, typography, wide establishing shots, and commercial masters that need room for reframing."
+      },
+      {
+        "label": "Up to 30 seconds",
+        "value": "Fit an opening hook, product or character development, and a closing beat inside one generation instead of matching several short clips in post-production."
+      },
+      {
+        "label": "Six connected shots",
+        "value": "Plan wide shots, close-ups, tracking moves, reaction shots, inserts, and a final composition while preserving one coherent scene."
+      },
+      {
+        "label": "Character consistency",
+        "value": "Maintain facial identity, wardrobe, body details, and signature styling across camera angles and separate videos for recurring characters and campaign series."
+      },
+      {
+        "label": "Up to 12 reference images",
+        "value": "Assign references to the character, product, location, costume, color palette, lighting, and visual style without forcing one image to communicate every constraint."
+      },
+      {
+        "label": "Synchronized audio",
+        "value": "Generate ambience, material sounds, action cues, dialogue timing, and music direction with the picture so sound follows what happens on screen."
+      },
+      {
+        "label": "Cinematic camera control",
+        "value": "Describe push-ins, pull-backs, pans, orbit moves, crane shots, follow shots, lens distance, and shot scale as part of a structured sequence."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Create a Wan 3.0 Video",
+    "steps": [
+      {
+        "title": "Choose text or image as the starting point",
+        "desc": "Start with text-to-video when the full scene can be described from scratch. Use image-to-video when a character, product, location, or opening composition must match a visual reference."
+      },
+      {
+        "title": "Build a focused reference set",
+        "desc": "Use separate images for identity, wardrobe, product design, environment, lighting, and style. Remove references that introduce conflicting faces, colors, camera angles, or art direction."
+      },
+      {
+        "title": "Write the sequence shot by shot",
+        "desc": "Give every shot a subject, action, framing, camera move, and transition. Then list the details that must remain unchanged across all six shots."
+      },
+      {
+        "title": "Set output and generate",
+        "desc": "Choose aspect ratio, duration, resolution, and audio settings for the destination. Review continuity first, then refine individual motion, timing, or sound cues in the next generation."
+      }
+    ]
+  },
+  "promptExamples": {
+    "title": "Wan 3.0 Prompt Examples",
+    "subtitle": "Each prompt demonstrates a different Wan 3.0 strength: connected shots, identity continuity, multi-reference control, or synchronized sound.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Six-Shot Luxury Watch Commercial",
+        "prompt": "Create a connected luxury watch commercial. Shot 1: wide symmetrical view of a dark museum display. Shot 2: slow push-in as a narrow light moves across the steel case. Shot 3: macro view of the engraved crown turning. Shot 4: the same watch appears on a tailored wrist beside a city window. Shot 5: orbit around the dial as reflections shift from blue to gold. Shot 6: centered product close-up with the logo fully readable. Keep the watch proportions, dial layout, metal finish, and brand typography identical. Match each cut with restrained mechanical clicks and quiet gallery ambience.",
+        "description": "Uses six connected shots to test product accuracy, lighting continuity, camera coverage, readable branding, and synchronized material sound.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Recurring Character Night Story",
+        "prompt": "Use the character references for the same woman, yellow raincoat, short dark hair, and silver earrings. Shot 1: she waits inside a glass bus shelter in heavy rain. Shot 2: close-up as reflected headlights move across her face. Shot 3: side tracking shot when she leaves the shelter. Shot 4: wide view as she crosses the empty road. Shot 5: follow shot toward a warm apartment entrance. Shot 6: close-up as she looks back before the door closes. Preserve her face, wardrobe, height, and color palette in every shot. Add rain on glass, distant buses, footsteps, and a final door latch.",
+        "description": "Tests a recurring character across changing shot scales, reflections, locations, motion, and environmental audio.",
+        "aspectRatio": "9:16"
+      },
+      {
+        "title": "Twelve-Reference Design Hotel Film",
+        "prompt": "Use the supplied references for the hotel exterior, lobby geometry, guest character, uniform, brass signage, furniture, suite, rooftop pool, food styling, sunset palette, lens treatment, and brand typography. Build a connected arrival story from the exterior to check-in, elevator, suite reveal, rooftop dinner, and final skyline logo frame. Keep architecture, guest identity, materials, signage, and warm editorial color consistent. Use slow crane, tracking, and orbit movements with lobby ambience, elevator chime, water, cutlery, and distant city sound.",
+        "description": "Assigns a distinct role to a large reference set while preserving architecture, guest identity, brand details, and one visual language.",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Sound-Synchronized Ceramic Process",
+        "prompt": "Follow one ceramic artist making a cup in a quiet studio. Begin with clay landing on the wheel, move to hands centering it, show the walls rising in close side view, cut to the rim being trimmed, reveal the finished glaze, and end with tea pouring into the same cup. Keep the artist hands, clay color, tools, wheel, table, and studio light unchanged. Synchronize the clay impact, wheel vibration, wet hand contact, trimming scrape, kiln door, ceramic tap, and final pour with the exact actions.",
+        "description": "Builds the edit around physical sound cues and tests hand-object interaction, material continuity, and precise timing.",
+        "aspectRatio": "1:1"
+      }
+    ]
+  },
+  "troubleshooting": {
+    "title": "Prompt Tips for Better Wan 3.0 Results",
+    "subtitle": "Treat the prompt as a compact production brief. Define the sequence, continuity rules, camera language, and audio timing before adding style words.",
+    "items": [
+      {
+        "title": "Write one clear line for every shot",
+        "desc": "Weak prompt: Make a cinematic product video with different angles. Better prompt:",
+        "prompt": "Shot 1: wide tabletop reveal. Shot 2: macro view of the material. Shot 3: side tracking shot during use. Shot 4: close-up of the logo. Keep product shape, color, label placement, light direction, and background consistent across every cut."
+      },
+      {
+        "title": "Separate fixed details from changing action",
+        "desc": "Weak prompt: Keep the character consistent while she moves through the city. Better prompt:",
+        "prompt": "Keep the same face, hairstyle, red coat, black boots, and gold necklace in all shots. Only the camera angle, walking direction, background location, and weather reflections may change."
+      },
+      {
+        "title": "Give each reference one responsibility",
+        "desc": "Weak prompt: Use all references to make the video look right. Better prompt:",
+        "prompt": "Use image 1 for facial identity, image 2 for wardrobe, images 3 and 4 for product geometry, image 5 for the room layout, image 6 for color palette, and image 7 for lens and lighting style. Do not blend clothing or architecture between references."
+      },
+      {
+        "title": "Attach sound to visible events",
+        "desc": "Weak prompt: Add realistic synchronized audio. Better prompt:",
+        "prompt": "Match a soft metal click when the clasp closes, two footsteps as the subject crosses frame, a short elevator chime when the doors open, and lower city ambience during the final close-up."
+      }
+    ]
+  },
+  "scenesTitle": "Best Uses for Wan 3.0",
+  "scenes": [
+    {
+      "title": "30-Second Product Commercials",
+      "icon": "package",
+      "desc": "Move from an establishing shot to material details, a real-use moment, and a branded closing frame without rebuilding the product in separate generations."
+    },
+    {
+      "title": "Recurring Character Series",
+      "icon": "user",
+      "desc": "Keep the same face, wardrobe, proportions, and visual identity across episodes, camera angles, and locations for creator or fictional-character content."
+    },
+    {
+      "title": "Cinematic Story Scenes",
+      "icon": "film",
+      "desc": "Generate coverage for a short dramatic beat with wide shots, close-ups, reactions, inserts, and synchronized atmosphere inside one sequence."
+    },
+    {
+      "title": "E-Commerce Product Films",
+      "icon": "shopping-bag",
+      "desc": "Use dedicated references for packaging, color, label placement, materials, and lifestyle setting while preserving commercial 4K detail."
+    },
+    {
+      "title": "Film and Ad Previsualization",
+      "icon": "layout",
+      "desc": "Test blocking, camera paths, shot order, lighting transitions, and scene rhythm before committing to a physical production or VFX plan."
+    },
+    {
+      "title": "Music and Sound-Led Visuals",
+      "icon": "music",
+      "desc": "Coordinate edits, movement, material sounds, ambience, dialogue beats, and musical changes so the picture feels designed around audio."
+    }
+  ],
+  "workflowComparison": {
+    "title": "Wan 3.0 vs Leading AI Video Models",
+    "subtitle": "Each first-tier model has a different production advantage. Choose by the hardest part of the shot, not by a single quality score.",
+    "columns": [
+      "Model",
+      "Where it stands out",
+      "Choose it when"
+    ],
+    "rows": [
+      [
+        "Wan 3.0",
+        "Native 4K, 30-second generation, six connected shots, up to 12 image references, character continuity, and synchronized audio.",
+        "You need a longer branded or narrative sequence where cast, product, location, and sound must stay coherent."
+      ],
+      [
+        "Seedance 2.0",
+        "Director-style multi-shot planning, strong multimodal references, broad framing control, and polished commercial motion.",
+        "Reference video, audio, and complex scene planning are central to the creative direction."
+      ],
+      [
+        "Kling 3.0",
+        "Expressive motion, dynamic action, aggressive camera movement, multi-image input, and strong high-resolution output.",
+        "The scene depends on athletic action, spectacle, fast camera travel, or difficult physical movement."
+      ],
+      [
+        "Veo 3.1",
+        "Photorealistic single-shot composition, cinematic lighting, natural dialogue, environmental sound, and strong prompt interpretation.",
+        "Realism, spoken moments, atmosphere, and the finish of an individual hero shot matter most."
+      ]
+    ]
+  },
+  "faqTitle": "Wan 3.0 AI Video Generator FAQ",
+  "faq": [
+    {
+      "q": "What is Wan 3.0?",
+      "a": "Wan 3.0 is Alibaba’s next-generation AI video model for native 4K text-to-video and image-to-video creation. It expands the Wan family with longer 30-second clips, connected multi-shot generation, stronger consistency, more references, cinematic camera direction, and synchronized audio."
+    },
+    {
+      "q": "What makes Wan 3.0 different from Wan 2.7?",
+      "a": "Wan 3.0 increases output from 1080p to native 4K, extends the generation window from 15 to 30 seconds, supports up to six connected shots and 12 reference images, and places more emphasis on character continuity across shots and videos."
+    },
+    {
+      "q": "Does Wan 3.0 generate native 4K video?",
+      "a": "Yes. Wan 3.0 targets native 4K output up to 3840 × 2160, preserving more detail for faces, products, materials, typography, cropping, and commercial delivery."
+    },
+    {
+      "q": "Can Wan 3.0 create a 30-second video?",
+      "a": "Yes. Wan 3.0 can generate clips up to 30 seconds, enough for an opening, several connected story or product beats, and a closing composition in one sequence."
+    },
+    {
+      "q": "How many shots can Wan 3.0 generate?",
+      "a": "Wan 3.0 can organize up to six connected shots in one generation. Write each shot separately and state which character, product, location, lighting, and style details must remain consistent."
+    },
+    {
+      "q": "How many reference images can I use?",
+      "a": "Wan 3.0 supports up to 12 reference images. Use them for separate responsibilities such as character identity, wardrobe, product design, environment, props, color palette, and visual style."
+    },
+    {
+      "q": "Does Wan 3.0 support synchronized audio?",
+      "a": "Yes. Wan 3.0 generates audio with the video, including ambience, action sounds, dialogue timing, music direction, and transitions that follow visible events."
+    },
+    {
+      "q": "Can Wan 3.0 keep the same character across videos?",
+      "a": "Character consistency is a central Wan 3.0 strength. A focused identity and wardrobe reference set helps preserve the same face, styling, and proportions across shots, locations, and related videos."
+    },
+    {
+      "q": "Is Wan 3.0 good for product advertising?",
+      "a": "Wan 3.0 is well suited to product films because native 4K preserves labels and material details, multi-reference input controls product and brand assets, and connected shots can cover reveal, detail, use, and closing frames."
+    },
+    {
+      "q": "Wan 3.0 or Seedance 2.0: which should I choose?",
+      "a": "Choose Wan 3.0 for long native-4K sequences, character or product continuity, and large image-reference sets. Choose Seedance 2.0 when multimodal reference video, reference audio, and director-style scene planning are more important."
+    },
+    {
+      "q": "Wan 3.0 or Kling 3.0: which is better for motion?",
+      "a": "Choose Kling 3.0 for high-energy action and aggressive camera movement. Choose Wan 3.0 when the larger challenge is keeping a cast, product, location, and sound coherent across a longer multi-shot sequence."
+    },
+    {
+      "q": "Wan 3.0 or Veo 3.1: which should I use?",
+      "a": "Choose Veo 3.1 for photorealistic individual shots, dialogue, and cinematic atmosphere. Choose Wan 3.0 for connected shot coverage, larger image-reference sets, recurring characters, and a full 30-second sequence."
+    }
+  ],
+  "moreTools": "More AI Video Models",
+  "moreToolsLinks": [
+    {
+      "title": "Seedance 2.0",
+      "description": "Use Seedance 2.0 for director-style multi-shot video generation and reference-heavy commercial scenes.",
+      "href": "/model/seedance-2",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+        "alt": "Seedance 2.0 video preview"
+      }
+    },
+    {
+      "title": "Kling 3.0",
+      "description": "Try Kling 3.0 for dynamic motion, cinematic camera movement, and high-resolution video output.",
+      "href": "/model/kling-3",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/56bb211041b34c5f8f27d3c0208322e7.png",
+        "alt": "Kling 3.0 video preview"
+      }
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "description": "Use Grok Imagine Video 1.5 for quick image-to-video drafts, product motion, and creator clips.",
+      "href": "/model/grok-imagine-video-1-5",
+      "media": {
+        "type": "video",
+        "src": "https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4",
+        "alt": "Grok Imagine Video 1.5 demo video preview"
+      }
+    }
+  ],
+  "comingSoon": true,
+  "modelComparison": {
+    "title": "Wan 3.0 vs Wan 2.7: What Changed?",
+    "subtitle": "Wan 3.0 expands the Wan workflow from polished short clips into longer, higher-resolution sequences with more references and stronger continuity.",
+    "columnHeaders": {
+      "metric": "Upgrade area",
+      "baseline": "Wan 3.0",
+      "middle": "Wan 2.7",
+      "target": "Why it matters"
+    },
+    "rows": [
+      {
+        "label": "Maximum resolution",
+        "baseline": "Native 4K",
+        "middle": "Up to 1080p",
+        "target": "More usable detail for product work, large displays, cropping, stabilization, and commercial delivery."
+      },
+      {
+        "label": "Maximum duration",
+        "baseline": "Up to 30 seconds",
+        "middle": "Up to 15 seconds",
+        "target": "A complete ad or narrative beat can fit inside one generation."
+      },
+      {
+        "label": "Shot structure",
+        "baseline": "Up to six connected shots",
+        "middle": "Shorter single or multi-shot clips",
+        "target": "Cuts share the same location, cast, lighting, and visual direction."
+      },
+      {
+        "label": "Reference capacity",
+        "baseline": "Up to 12 reference images",
+        "middle": "Smaller reference setup",
+        "target": "Character, product, location, costume, and style can each receive a dedicated reference."
+      },
+      {
+        "label": "Character continuity",
+        "baseline": "Designed for recurring identity across shots and videos",
+        "middle": "Strong consistency within shorter generations",
+        "target": "Series content needs fewer repairs and identity resets."
+      },
+      {
+        "label": "Camera direction",
+        "baseline": "Shot-by-shot camera planning across a sequence",
+        "middle": "Camera and motion control for shorter clips",
+        "target": "Directors can describe coverage rather than request one generic cinematic move."
+      },
+      {
+        "label": "Audio",
+        "baseline": "Synchronized audio generated with the sequence",
+        "middle": "Audio-aware generation",
+        "target": "Action, ambience, dialogue, and transitions arrive closer to a finished cut."
+      },
+      {
+        "label": "Best use",
+        "baseline": "Commercials, narrative scenes, character series, product films",
+        "middle": "Fast Wan drafts and polished short clips",
+        "target": "Choose based on whether you need a complete sequence or a quick iteration."
+      }
+    ],
+    "featuredColumn": "baseline"
+  }
+}

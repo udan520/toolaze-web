@@ -30,6 +30,7 @@ const MODEL_TOOL_MAP: Record<string, string> = {
   'veo-3-1-ai-video-generator': 'veo-3-1-ai-video-generator',
   'happyhorse-ai-video-generator': 'happyhorse-ai-video-generator',
   'wan-2-7-ai-video-generator': 'wan-2-7-ai-video-generator',
+  'wan-3-0-ai-video-generator': 'wan-3-0-ai-video-generator',
   'wan-2-6-ai-video-generator': 'wan-2-6-ai-video-generator',
   'wan-2-5-ai-video-generator': 'wan-2-5-ai-video-generator',
   'pixverse-v6': 'pixverse-v6-ai-video-generator',
@@ -150,6 +151,7 @@ export default async function LocalizedModelPage({ params }: PageProps) {
     tool !== 'gpt-image-2' &&
     tool !== 'seedream-4-5' &&
     tool !== 'wan-2-7-image' &&
+    tool !== 'wan-3-0-ai-video-generator' &&
     tool !== 'seedream-5-0-lite' &&
     tool !== 'seedream-5-0-pro' &&
     tool !== 'grok-imagine-video-1-5' &&

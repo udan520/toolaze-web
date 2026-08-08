@@ -11,6 +11,7 @@ export type AiVideoGeneratorModelId =
   | 'seedance-1-pro'
   | 'seedance-1-lite'
   | 'wan-2-7'
+  | 'wan-3-0'
   | 'wan-2-6'
   | 'wan-2-5'
   | 'wan-2-2'
@@ -263,6 +264,27 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     promptPlaceholder: 'Describe the visuals, motion, camera, and synchronized ASMR sound.',
     samplePrompt: 'Macro ASMR glass fruit cutting, slow precise blade motion, crisp synchronized sound, soft studio light.',
     previewTone: 'Native-audio cinematic preview',
+  },
+  {
+    id: 'wan-3-0',
+    name: 'Wan 3.0',
+    vendor: 'Alibaba',
+    description: 'Wan 3.0 video generation preview for text-to-video and image-to-video workflows.',
+    logoSrc: '/model-logos/wan.ico',
+    logoAlt: 'Wan logo',
+    qualityRating: 5,
+    badge: 'New',
+    minCredits: 64,
+    defaultMode: 'text-to-video',
+    maxImages: 1,
+    maxFileSizeMb: 10,
+    aspectRatios: ['16:9', '9:16', '1:1'].map((value) => ({ value, label: value })),
+    durations: [5, 10],
+    defaultDuration: 5,
+    resolutions: ['720p', '1080p'],
+    promptPlaceholder: 'Describe the subject, motion, camera direction, lighting, and sound you want to test.',
+    samplePrompt: 'A cinematic product reveal with controlled camera motion, natural movement, and detailed studio lighting.',
+    previewTone: 'Wan 3.0 preview',
   },
   ...([
     ['wan-2-6', 'Wan 2.6', 140, [5, 10, 15], ['720p', '1080p']],
