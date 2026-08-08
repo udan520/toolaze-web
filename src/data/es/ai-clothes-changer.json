@@ -184,6 +184,8 @@
       "uploadHelper": "Sube primero la foto de la persona y luego sube o elige abajo una referencia de ropa de cuerpo completo.",
       "promptLabel": "Describe tu outfit",
       "promptPlaceholder": "Describe la ropa que quieres: tipo de prenda, tela, paleta de colores, ajuste, cobertura, capas, accesorios y ocasión.",
+      "customTextModeLabel": "Describe el atuendo",
+      "customReferenceModeLabel": "Referencia de atuendo",
       "personUploadTitle": "Sube la foto de la persona",
       "personUploadHelper": "Imagen 1: sube la foto de la persona que quieres editar.",
       "presetReferenceUploadHelper": "Imagen 2: sube la ropa de referencia o elige una plantilla de abajo.",

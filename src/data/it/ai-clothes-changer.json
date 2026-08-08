@@ -184,6 +184,8 @@
       "uploadHelper": "Carica prima la foto della persona, poi carica o scegli sotto un riferimento abito a figura intera.",
       "promptLabel": "Descrivi il tuo outfit",
       "promptPlaceholder": "Descrivi l'outfit desiderato: tipo di capo, tessuto, palette colori, vestibilità, copertura, strati, accessori e occasione.",
+      "customTextModeLabel": "Descrivi l’outfit",
+      "customReferenceModeLabel": "Riferimento outfit",
       "personUploadTitle": "Carica la foto della persona",
       "personUploadHelper": "Immagine 1: carica la foto della persona da modificare.",
       "presetReferenceUploadHelper": "Immagine 2: carica l’outfit di riferimento o scegli un modello qui sotto.",

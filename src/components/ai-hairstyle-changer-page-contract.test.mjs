@@ -112,3 +112,14 @@ test('AI Hairstyle Changer Custom reference mode enables generate from uploaded 
     /disabled=\{!prompt\.trim\(\) \|\| \(activeTab === 'image-to-image' && imageFiles\.length === 0 && remoteImageUrls\.length === 0\)\}/,
   )
 })
+
+test('AI Hairstyle Changer preset tabs do not require a second reference image', () => {
+  assert.match(
+    aiImageToolSource,
+    /const shouldUseSelectedPresetReference = isClothingReferencePresetGrid[\s\S]*Boolean\(selectedPromptPresetReferenceImage\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /const hasCurrentReferenceImages = shouldIncludeSecondaryReference[\s\S]*: hasCurrentPersonReferenceImages/,
+  )
+})

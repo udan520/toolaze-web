@@ -184,6 +184,8 @@
       "uploadHelper": "Laden Sie zuerst Ihr Personenfoto hoch und laden Sie dann unten eine Ganzkörper-Kleidungsreferenz hoch oder wählen Sie eine aus.",
       "promptLabel": "Beschreiben Sie Ihr Outfit",
       "promptPlaceholder": "Beschreibe das gewünschte Outfit: Kleidungsart, Stoff, Farbpalette, Passform, Bedeckung, Schichten, Accessoires und Anlass.",
+      "customTextModeLabel": "Outfit beschreiben",
+      "customReferenceModeLabel": "Outfit-Referenz",
       "personUploadTitle": "Personenfoto hochladen",
       "personUploadHelper": "Bild 1: Lade das Foto der Person hoch, die du bearbeiten möchtest.",
       "presetReferenceUploadHelper": "Bild 2: Lade dein Ziel-Outfit hoch oder wähle unten eine Vorlage.",

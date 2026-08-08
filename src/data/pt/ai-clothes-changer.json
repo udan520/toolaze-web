@@ -184,6 +184,8 @@
       "uploadHelper": "Envie primeiro a foto da pessoa e depois envie ou escolha abaixo uma referência de roupa de corpo inteiro.",
       "promptLabel": "Descreva seu look",
       "promptPlaceholder": "Descreva o visual desejado: tipo de peça, tecido, paleta de cores, caimento, cobertura, camadas, acessórios e ocasião.",
+      "customTextModeLabel": "Descrever look",
+      "customReferenceModeLabel": "Referência de look",
       "personUploadTitle": "Envie a foto da pessoa",
       "personUploadHelper": "Imagem 1: envie a foto da pessoa que você quer editar.",
       "presetReferenceUploadHelper": "Imagem 2: envie a roupa de referência ou escolha um modelo abaixo.",

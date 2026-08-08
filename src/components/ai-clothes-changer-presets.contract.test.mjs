@@ -34,6 +34,17 @@ const expectedPresetChoiceTitles = {
   ko: '의상 스타일 선택',
   it: 'Scegli uno stile di abbigliamento',
 }
+const expectedCustomModeLabels = {
+  en: ['Describe outfit', 'Reference outfit'],
+  de: ['Outfit beschreiben', 'Outfit-Referenz'],
+  ja: ['服装を説明', '服装リファレンス'],
+  es: ['Describe el atuendo', 'Referencia de atuendo'],
+  'zh-TW': ['描述服裝', '服裝參考'],
+  pt: ['Descrever look', 'Referência de look'],
+  fr: ['Décrire la tenue', 'Référence de tenue'],
+  ko: ['의상 설명', '의상 참고 이미지'],
+  it: ['Descrivi l’outfit', 'Riferimento outfit'],
+}
 
 const readContent = (locale) => JSON.parse(
   readFileSync(new URL(`../data/${locale}/ai-clothes-changer.json`, import.meta.url), 'utf8'),
@@ -64,6 +75,22 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
     assert.equal(acceptance.combineCustomReferenceAndPrompt, false, locale)
     assert.equal(acceptance.clothingReferencePresetGrid, true, locale)
     assert.equal(readContent(locale).topTool.textOverrides.presetChoiceTitle, expectedPresetChoiceTitles[locale], locale)
+    assert.deepEqual(
+      [
+        readContent(locale).topTool.textOverrides.customTextModeLabel,
+        readContent(locale).topTool.textOverrides.customReferenceModeLabel,
+      ],
+      expectedCustomModeLabels[locale],
+      locale,
+    )
+    assert.doesNotMatch(
+      [
+        readContent(locale).topTool.textOverrides.customTextModeLabel,
+        readContent(locale).topTool.textOverrides.customReferenceModeLabel,
+      ].join(' '),
+      /hair|hairstyle|发型|髮型|ヘア|머리/i,
+      locale + ' clothes custom tabs should not reuse hairstyle copy',
+    )
     assert.doesNotMatch(
       readContent(locale).topTool.textOverrides.promptPlaceholder,
       /upload|上传|上傳|hochladen|sube|envie|carica|téléverse|アップロード|업로드/i,
@@ -95,6 +122,15 @@ test('clothes presets use a responsive four-column 9:16 grid without an inline u
   assert.match(source, /isClothingReferencePresetGrid \? 'aspect-\[9\/16\]' : 'aspect-\[3\/4\]'/)
   assert.match(source, /isClothingReferencePresetGrid[\s\S]*line-clamp-2/)
   assert.match(source, /shouldRenderStandaloneReferenceUploader/)
+})
+
+test('preset-only clothes tabs can generate with one person photo plus selected built-in reference', () => {
+  const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+  assert.match(source, /hasSelectedPresetReferenceImage/)
+  assert.match(source, /hasCurrentSecondaryReferenceImages = hasSelectedPresetReferenceImage/)
+  assert.match(source, /const shouldUseSelectedPresetReference = isClothingReferencePresetGrid[\s\S]*Boolean\(selectedPromptPresetReferenceImage\)/)
+  assert.match(source, /requestSelectedPresetReferenceImage = shouldUseSelectedPresetReference/)
+  assert.match(source, /requestSelectedPresetReferenceImage[\s\S]*requestClothingReferenceRemoteUrls/)
 })
 
 test('English visible copy explains the combined Custom clothing-reference workflow', () => {

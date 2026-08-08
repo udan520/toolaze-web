@@ -184,6 +184,8 @@
       "uploadHelper": "Importez d’abord la photo de la personne, puis importez ou choisissez ci-dessous une référence de vêtement en pied.",
       "promptLabel": "Décrivez votre tenue",
       "promptPlaceholder": "Décrivez la tenue souhaitée : type de vêtement, tissu, palette de couleurs, coupe, couvrance, superpositions, accessoires et occasion.",
+      "customTextModeLabel": "Décrire la tenue",
+      "customReferenceModeLabel": "Référence de tenue",
       "personUploadTitle": "Importer la photo de la personne",
       "personUploadHelper": "Image 1 : importez la photo de la personne à modifier.",
       "presetReferenceUploadHelper": "Image 2 : importez la tenue cible ou choisissez un modèle ci-dessous.",

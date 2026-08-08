@@ -184,6 +184,8 @@
       "uploadHelper": "まず人物写真をアップロードし、次に全身の服装リファレンスをアップロードするか下から選択します。",
       "promptLabel": "衣装を説明",
       "promptPlaceholder": "作りたい服装を説明してください：服の種類、素材、色合い、フィット感、露出度、レイヤー、アクセサリー、用途など。",
+      "customTextModeLabel": "服装を説明",
+      "customReferenceModeLabel": "服装リファレンス",
       "personUploadTitle": "人物写真をアップロード",
       "personUploadHelper": "画像1：着せ替えたい人物写真をアップロードします。",
       "presetReferenceUploadHelper": "画像2：希望の服装画像をアップロードするか、下のテンプレートから選びます。",

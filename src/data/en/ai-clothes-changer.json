@@ -184,6 +184,8 @@
       "uploadHelper": "Upload your person photo first, then upload or select a full-body clothing reference below.",
       "promptLabel": "Describe Your Outfit",
       "promptPlaceholder": "Describe the outfit you want: garment type, fabric, color palette, fit, coverage, layers, accessories, and occasion.",
+      "customTextModeLabel": "Describe outfit",
+      "customReferenceModeLabel": "Reference outfit",
       "personUploadTitle": "Upload Person Photo",
       "personUploadHelper": "Image 1: upload the person photo you want to edit.",
       "presetReferenceUploadHelper": "Image 2: upload your target clothing image, or choose one preset below.",

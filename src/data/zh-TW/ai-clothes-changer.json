@@ -184,6 +184,8 @@
       "uploadHelper": "先上傳人物照片，再在下方上傳或選擇一張全身服裝參考。",
       "promptLabel": "描述你的服裝",
       "promptPlaceholder": "描述你想要的服裝：款式、布料、色彩、版型、覆蓋程度、層次、配件與穿著場合。",
+      "customTextModeLabel": "描述服裝",
+      "customReferenceModeLabel": "服裝參考",
       "personUploadTitle": "上傳人物照片",
       "personUploadHelper": "圖片 1：上傳你想換裝的人物照片。",
       "presetReferenceUploadHelper": "圖片 2：上傳目標服裝圖片，或從下方選擇一個範本。",

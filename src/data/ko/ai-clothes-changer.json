@@ -184,6 +184,8 @@
       "uploadHelper": "먼저 인물 사진을 업로드한 뒤, 아래에서 전신 의상 참조를 업로드하거나 선택하세요.",
       "promptLabel": "의상 설명",
       "promptPlaceholder": "원하는 의상을 설명하세요: 의상 종류, 소재, 색상 팔레트, 핏, 노출 정도, 레이어, 액세서리, 착용 상황 등.",
+      "customTextModeLabel": "의상 설명",
+      "customReferenceModeLabel": "의상 참고 이미지",
       "personUploadTitle": "인물 사진 업로드",
       "personUploadHelper": "이미지 1: 옷을 바꿀 인물 사진을 업로드하세요.",
       "presetReferenceUploadHelper": "이미지 2: 원하는 의상 이미지를 업로드하거나 아래 템플릿을 선택하세요.",

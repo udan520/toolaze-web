@@ -774,7 +774,7 @@ test('AI Clothes Changer exposes preset-only gender workflows and exclusive Cust
   assert.match(aiImageToolSource, /shouldUseReferenceOnlyCustomMode/)
   assert.match(
     aiImageToolSource,
-    /shouldUseSelectedPresetReference = shouldRenderWorkflowTabsAboveUpload[\s\S]*activePromptPresetTab !== customPromptTabId[\s\S]*selectedPromptPresetReferenceImage/,
+    /shouldUseSelectedPresetReference = isClothingReferencePresetGrid[\s\S]*selectedPromptPresetReferenceImage/,
   )
   assert.match(
     aiImageToolSource,
