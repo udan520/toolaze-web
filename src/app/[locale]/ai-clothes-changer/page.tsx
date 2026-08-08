@@ -24,18 +24,27 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pathWithoutLocale = '/ai-clothes-changer'
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-clothes-changer', locale)
+  const title =
+    content?.metadata?.title ||
+    'Free AI Clothes Changer Online | Toolaze'
+  const description =
+    content?.metadata?.description ||
+    'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.'
 
   return {
-    title:
-      content?.metadata?.title ||
-      'Free AI Clothes Changer Online | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.',
+    title,
+    description,
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
       languages: hreflang.languages,
+    },
+    openGraph: {
+      title,
+      description,
+      url: hreflang.canonical,
+      siteName: 'Toolaze',
+      type: 'website',
     },
   }
 }

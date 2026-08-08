@@ -8,18 +8,27 @@ export const dynamic = 'force-static'
 export async function generateMetadata(): Promise<Metadata> {
   const content = await getL2SeoContent('ai-clothes-changer', 'en')
   const hreflang = generateHreflangAlternates('en', '/ai-clothes-changer')
+  const title =
+    content?.metadata?.title ||
+    'Free AI Clothes Changer Online | Toolaze'
+  const description =
+    content?.metadata?.description ||
+    'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.'
 
   return {
-    title:
-      content?.metadata?.title ||
-      'Free AI Clothes Changer Online | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Upload one photo and preview AI outfit changes online with virtual try-on style prompts.',
+    title,
+    description,
     robots: 'index, follow',
     alternates: {
       canonical: hreflang.canonical,
       languages: hreflang.languages,
+    },
+    openGraph: {
+      title,
+      description,
+      url: hreflang.canonical,
+      siteName: 'Toolaze',
+      type: 'website',
     },
   }
 }

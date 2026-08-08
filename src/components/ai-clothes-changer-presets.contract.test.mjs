@@ -27,6 +27,8 @@ const expectedMen = [
 const readContent = (locale) => JSON.parse(
   readFileSync(new URL(`../data/${locale}/ai-clothes-changer.json`, import.meta.url), 'utf8'),
 )
+const rootRouteSource = readFileSync(new URL('../app/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
+const localeRouteSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 
 test('English catalog publishes the approved two rows per gender', () => {
   const presets = readContent('en').topTool.functionalAcceptance.presets
@@ -86,4 +88,12 @@ test('English visible copy explains the combined Custom clothing-reference workf
   assert.match(visibleCopy, /Custom[\s\S]*clothing reference[\s\S]*(directions|prompt)/i)
   assert.doesNotMatch(visibleCopy, /Custom mode with one photo|only have a person photo|upload only the person photo/i)
   assert.doesNotMatch(visibleCopy, /The page is written/i)
+})
+
+test('AI Clothes Changer metadata keeps OpenGraph URL aligned with canonical URL', () => {
+  for (const source of [rootRouteSource, localeRouteSource]) {
+    assert.match(source, /alternates:\s*\{[\s\S]*canonical:\s*hreflang\.canonical/)
+    assert.match(source, /openGraph:\s*\{[\s\S]*url:\s*hreflang\.canonical/)
+    assert.doesNotMatch(source, /openGraph:\s*\{[\s\S]*url:\s*['"]https:\/\/toolaze\.com['"]/)
+  }
 })
