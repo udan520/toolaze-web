@@ -1,0 +1,286 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bald-filter/bald-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Bald Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Choose a Men's Hairstyle",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "Men"
+        },
+        {
+          "id": "custom",
+          "label": "Custom"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "men",
+      "presets": [
+        {
+          "label": "Bald",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Buzz Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Crew Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Textured Crop",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Taper Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Messy Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Short Curly",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Slick Back",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Soft Bowl",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Textured Flow",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Short Box Braids",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp",
+        "title": "Bald Filter before-after demo",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Custom Hairstyle Instruction",
+      "promptPlaceholder": "Describe the shaved-head finish, hairline softness, buzz length, or short hairstyle you want.",
+      "personUploadTitle": "Upload person photo",
+      "personUploadHelper": "Image 1: upload the portrait you want to edit.",
+      "presetChoiceTitle": "Choose one of the built-in men's hairstyles",
+      "customReferenceUploadTitle": "Upload hairstyle reference",
+      "customTextModeLabel": "Describe hair style",
+      "customReferenceModeLabel": "Reference hair style"
+    }
+  },
+  "metadata": {
+    "title": "Free Bald Filter Online | No Signup | Toolaze",
+    "description": "Try Toolaze's free Bald Filter online with no signup. Upload one portrait, keep your face intact, and preview a clean shaved head before you cut your hair."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Bald Filter</span> Online",
+    "desc": "Upload one clear portrait and preview a fully shaved-head version of yourself. Bald is selected by default, preset text stays hidden, and the page focuses on scalp shading, head shape, hairline realism, eyebrows, and facial-hair preservation rather than general short-hair browsing."
+  },
+  "safetyNotice": "The result is a visual shaved-head concept, not a guarantee of how a real bald look will match your hairline, scalp tone, or head shape.",
+  "intro": {
+    "title": "What Is an AI Bald Filter?",
+    "content": [
+      {
+        "title": "Check the shaved-head decision before the razor",
+        "text": "An AI bald filter removes visible head hair in a portrait and rebuilds the scalp area so you can judge head shape, forehead balance, beard contrast, and eyebrow framing before making a real change. It is meant for shaved-head and bald-look decisions, while Buzz Cut Filter is better when you still want visible clipper-length hair."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use the Bald Filter",
+    "steps": [
+      {
+        "title": "Upload a clear head-and-face portrait",
+        "desc": "Use a sharp photo where the crown, temples, hairline, eyebrows, ears, beard, and face are visible. Avoid hats or cropped foreheads."
+      },
+      {
+        "title": "Start from the Bald preset",
+        "desc": "Bald is already selected, so the first result uses a shaved-head instruction that removes head hair while preserving eyebrows and facial hair."
+      },
+      {
+        "title": "Review scalp and head-shape realism",
+        "desc": "Look closely at forehead height, scalp shading, temples, ear area, beard contrast, and whether the head outline still feels natural."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for a Better Bald Preview",
+    "subtitle": "A bald preview depends on scalp reconstruction and head shape, so the photo should reveal the full outline of the head.",
+    "items": [
+      {
+        "title": "Show the full crown",
+        "desc": "Do not crop the top of the head or cover it with hats, hoods, hands, or heavy shadows.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Keep temples visible",
+        "desc": "Side hair, ears, and temple areas help the edit rebuild a believable shaved-head outline.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Preserve beard and eyebrows",
+        "desc": "Use a photo where eyebrows, beard, mustache, or clean-shaven jawline are sharp, because those details change how bald looks on the face.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Avoid harsh overhead light",
+        "desc": "Very strong top light can make scalp shading look too shiny or uneven after editing.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Bald Filter FAQ",
+  "faq": [
+    {
+      "q": "Is the Bald Filter free with no signup?",
+      "a": "Yes. You can open the image tool, upload a portrait, and preview a shaved-head look without signing up. This is not an unlimited-use promise; generation limits or model availability may still apply."
+    },
+    {
+      "q": "What makes this different from Buzz Cut Filter?",
+      "a": "Bald Filter is for a fully shaved or hairless head preview. Buzz Cut Filter is for very short visible hair, clipper length, and barber-cut comparisons."
+    },
+    {
+      "q": "Is Bald selected by default?",
+      "a": "Yes. The Men tab opens first and Bald is the selected preset, so the first generation uses the built-in shaved-head instruction."
+    },
+    {
+      "q": "Does the preset card image get sent to the model?",
+      "a": "No. For built-in presets, Toolaze sends your uploaded portrait plus the hidden hairstyle prompt. The preset card image is only a visual choice card."
+    },
+    {
+      "q": "Can the edit keep my beard or eyebrows?",
+      "a": "The built-in bald prompt asks the edit to remove visible head hair while preserving eyebrows, beard, mustache, and face details. Results can vary, so use a clear portrait."
+    },
+    {
+      "q": "Is the result an exact prediction?",
+      "a": "No. It is a visual concept. Real results depend on scalp tone, hairline, head shape, shaving method, lighting, and how facial hair frames the face."
+    },
+    {
+      "q": "Can I use the result as a barber reference?",
+      "a": "Yes. Use it to explain that you are considering a shaved-head look, then ask a barber whether your head shape and hairline suit the change."
+    }
+  ],
+  "moreTools": "Related AI Tools",
+  "moreToolsLinks": [
+    {
+      "title": "Buzz Cut Filter",
+      "description": "Try visible clipper-length hair if you want a shorter cut without going fully bald.",
+      "href": "/buzz-cut-filter",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "alt": "Buzz Cut Filter"
+      }
+    },
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "Explore longer, textured, curly, and other haircut directions from one portrait.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "Keep your haircut and preview a different natural or creative hair color.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze Bald Filter?",
+    "items": [
+      {
+        "icon": "🪒",
+        "iconType": "guidance",
+        "title": "Built for bald-look decisions",
+        "desc": "The default preset focuses on a fully shaved head, realistic scalp tone, hairline cleanup, and natural head shape instead of a generic haircut swap."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Face details stay important",
+        "desc": "The hidden instruction asks the edit to keep eyebrows, facial hair, age, expression, clothing, lighting, and background stable while removing head hair."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Free, no-signup start",
+        "desc": "Open the tool, upload one portrait, and test whether a shaved-head look suits you before committing to clippers or a razor."
+      }
+    ]
+  }
+}

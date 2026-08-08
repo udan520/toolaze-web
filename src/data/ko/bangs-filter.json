@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "뱅스 필터",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "뱅스 스타일 선택",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "여성"
+        },
+        {
+          "id": "custom",
+          "label": "커스텀"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "일자 앞머리",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "숏 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A라인 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "롱 레이어드",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "커튼뱅",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "사이드뱅",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "굵은 웨이브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "픽시 컷",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "울프 컷",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "하이 번",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "양갈래 브레이드",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "컬리 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "스트레이트 헤어",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "커스텀",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "뱅스 필터 비포-애프터 데모",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "커스텀 헤어스타일 안내",
+      "promptPlaceholder": "원하시는 뱅의 기장, 숱, 가르마, 질감 또는 앞머리 형태를 설명해 주세요.",
+      "personUploadTitle": "인물 사진 업로드",
+      "personUploadHelper": "이미지 1: 편집할 인물 사진을 업로드하세요.",
+      "presetChoiceTitle": "기본 제공 뱅스 스타일 중 하나를 선택하세요",
+      "customReferenceUploadTitle": "헤어스타일 참고 이미지 업로드",
+      "customTextModeLabel": "헤어스타일 설명",
+      "customReferenceModeLabel": "참고 헤어스타일"
+    }
+  },
+  "metadata": {
+    "title": "무료 뱅스 필터 온라인 | 회원가입 없음 | Toolaze",
+    "description": "가입 없이 무료로 Toolaze의 뱅 필터(Bangs Filter)를 온라인에서 체험해 보세요. 인물 사진 한 장을 업로드하고 시스루 뱅, 시스루 풀뱅, 일자 앞머리, 옆머리 앞머리 등을 미리 확인해 보세요."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 AI <span class=\\\"text-gradient\\\">뱅 필터</span> 온라인",
+    "desc": "선명한 인물 사진 한 장을 업로드하고 여성 탭에서 일자 앞머리가 선택된 상태로 시작하세요. Toolaze는 다양한 앞머리 스타일을 제공하고, 프리셋에 숨겨진 프롬프트를 감추며, 텍스트 설명이나 헤어스타일 참고 자료를 위해 사용자 지정 기능을 항상 사용할 수 있도록 유지합니다."
+  },
+  "safetyNotice": "결과는 시각적인 앞머리 컨셉이며, 실제 미용실 시술 결과를 보장하지 않습니다. 실제 앞머리는 모발 밀도, 가마, 이마 모양, 스타일링에 따라 달라집니다.",
+  "intro": {
+    "title": "AI 뱅 필터란 무엇인가요?",
+    "content": [
+      {
+        "title": "앞머리를 자르기 전에 미리 확인하세요",
+        "text": "AI 뱅 필터는 인물 사진의 앞머리 헤어스타일을 수정하여, 얼굴과 사진의 나머지 부분을 그대로 유지한 채 시스루 뱅, 잔머리 앞머리, 일자 앞머리, 옆머리, 시스루 앞머리, 곱슬 앞머리 등을 테스트해 볼 수 있게 해줍니다. 미용실 방문 전, 프로필 사진 갱신, 코스프레 계획, 혹은 간단한 스타일 점검 시 유용하게 사용하세요."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "뱅 필터 사용 방법",
+    "steps": [
+      {
+        "title": "인물 사진 한 장 업로드하기",
+        "desc": "이마, 헤어라인, 현재 헤어스타일이 잘 보이는 정면 사진을 선택하세요."
+      },
+      {
+        "title": "앞머리 스타일 선택하기",
+        "desc": "여성 탭이 열리며 일자 앞머리가 기본으로 선택됩니다. 이후 커튼 뱅, 옆머리, 단발, 레이어드, 웨이브, 곱슬 헤어스타일로 전환할 수 있습니다."
+      },
+      {
+        "title": "생성하거나 커스텀으로 전환하기",
+        "desc": "프리셋 스타일은 숨겨진 프롬프트를 사용합니다. 앞머리 스타일을 직접 묘사하거나 헤어스타일 참고 이미지를 업로드하고 싶다면 커스텀을 여세요."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "더 나은 앞머리 미리보기를 위한 사진 팁",
+    "subtitle": "앞머리는 이마, 헤어라인, 얼굴형에 따라 달라지므로 선명한 인물 사진이 중요합니다.",
+    "items": [
+      {
+        "title": "이마 부위가 잘 보이게 하세요",
+        "desc": "모자, 강한 그림자, 손, 또는 앞머리 전체를 가리는 머리카락은 피하세요.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "정면 사진을 사용하세요",
+        "desc": "정면을 바라보는 인물 사진일수록 앞머리 길이, 가르마, 대칭을 더 쉽게 미리 확인할 수 있습니다.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "머리카락 질감이 잘 보이게 하세요",
+        "desc": "자연광은 모델이 직모, 반곱슬, 곱슬머리에 앞머리를 자연스럽게 섞어주는 데 도움을 줍니다.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "강한 뷰티 필터는 피하세요",
+        "desc": "필터는 헤어라인을 흐리게 만들어 새로운 앞머리가 덜 자연스러워 보이게 할 수 있습니다.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "뱅 필터 자주 묻는 질문(FAQ)",
+  "faq": [
+    {
+      "q": "뱅 필터는 가입 없이 무료로 사용할 수 있나요?",
+      "a": "네. 이미지 툴을 열고 인물 사진 한 장을 업로드하여 회원가입 없이 앞머리를 미리 볼 수 있습니다. 이는 무제한 사용을 보장하는 것은 아니며, 생성 횟수 제한이나 모델 가용성에 따라 달라질 수 있습니다."
+    },
+    {
+      "q": "기본값으로 선택되는 앞머리 스타일은 무엇인가요?",
+      "a": "기본적으로 블런트 뱅이 선택되어 있어 선명한 풀프린지 변신을 즉시 미리 볼 수 있습니다."
+    },
+    {
+      "q": "어떤 앞머리 스타일을 시도해 볼 수 있나요?",
+      "a": "커튼 뱅, 위스피 뱅, 블런트 뱅, 사이드 뱅, 보틀넥 뱅, 시스루 뱅, 마이크로 뱅, 컬리 뱅을 시도해 볼 수 있습니다."
+    },
+    {
+      "q": "프리셋 카드 이미지가 모델로 전송되나요?",
+      "a": "아니요. 프리셋 카드 이미지는 시각적인 선택 항목입니다. 내장 프리셋의 경우, Toolaze는 사용자의 인물 사진과 선택한 앞머리 스타일에 대한 숨겨진 프롬프트를 전송합니다."
+    },
+    {
+      "q": "앞머리 참고용 이미지를 업로드할 수 있나요?",
+      "a": "네. 커스텀을 열고 헤어스타일 참고용을 선택하여 헤어스타일 참고 이미지를 업로드하세요. 헤어스타일 설명을 선택하고 텍스트로 프릴 스타일을 작성할 수도 있습니다."
+    },
+    {
+      "q": "결과가 실제 이발과 정확히 똑같이 나오나요?",
+      "a": "아니요. 시각적인 컨셉입니다. 실제 앞머리는 모발 두께, 가마, 이마 모양, 커트 기법, 일상적인 스타일에 따라 달라집니다."
+    },
+    {
+      "q": "살롱에서 이 미리보기를 사용할 수 있나요?",
+      "a": "네. 원하는 방향을 소통하는 데 도움이 될 수 있지만, 스타일리스트가 모발 질감과 얼굴형에 맞게 앞머리를 조절해야 합니다."
+    }
+  ],
+  "moreTools": "관련 AI 도구",
+  "moreToolsLinks": [
+    {
+      "title": "AI 헤어스타일 체인저",
+      "description": "여성, 남성 및 커스텀 스타일을 위한 전체 헤어스타일 변경 기능을 탐색해 보세요.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI 헤어스타일 체인저"
+      }
+    },
+    {
+      "title": "펌 필터",
+      "description": "하나의 인물 사진으로 부드러운 웨이브, 컬, 살롱 펌 방향을 미리 볼 수 있습니다.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "펌 필터"
+      }
+    },
+    {
+      "title": "AI 헤어 컬러 체인저",
+      "description": "기존 헤어스타일을 유지하면서 다른 헤어 컬러를 미리 볼 수 있습니다.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI 헤어 컬러 체인저"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolaze Bangs Filter를 사용하는 이유는 무엇인가요?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "다양한 앞머리가 내장되어 있습니다",
+        "desc": "하나의 인물 사진으로 커튼, 위스피, 블런트, 사이드, 보틀넥, 시스루, 마이크로, 컬리 뱅을 체험해 보세요."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "무료, 회원가입 없는 시작",
+        "desc": "이미지 도구를 열고, 인물 사진을 업로드하고, 계정 생성 없이 앞머리 아이디어를 비교해 보세요."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "커스텀 기능 상시 지원",
+        "desc": "내장 스타일을 사용하여 빠르게 작업하거나, 커스텀으로 전환하여 다른 앞머리를 설명하거나 헤어스타일 참고 이미지를 업로드하세요."
+      }
+    ]
+  }
+}

@@ -22,12 +22,14 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/ai-breast-expansion', priority: 0.84 },
   { path: '/ai-hairstyle-changer', priority: 0.88 },
   { path: '/buzz-cut-filter', priority: 0.86 },
+  { path: '/bald-filter', priority: 0.86 },
+  { path: '/bangs-filter', priority: 0.86 },
+  { path: '/perm-filter', priority: 0.85 },
 ] as const
 
 // Sitemap lastmod should reflect real page launch or meaningful content updates,
 // not the deployment/build time. Add explicit paths here when a page receives a
-// substantial update; old pages fall back to a stable legacy date.
-const LEGACY_LAST_MODIFIED_DATE = '2026-07-01'
+// substantial update. Omit lastmod when no reliable date is available.
 const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/ai-dance-generator': '2026-07-20',
   '/ai-video-generator': '2026-07-21',
@@ -42,16 +44,21 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/talking-avatar-creator': '2026-07-31',
   '/unrestricted-ai-image-generator': '2026-07-31',
   '/ai-hairstyle-changer': '2026-08-01',
+  '/ai-clothes-changer': '2026-08-08',
   '/model/veo-3-1-ai-video-generator': '2026-08-06',
   '/model/happyhorse-ai-video-generator': '2026-08-07',
-  '/model/wan-2-7-ai-video-generator': '2026-08-01',
+  '/model/pixverse-v6-ai-video-generator': '2026-08-07',
   '/model/wan-3-0-ai-video-generator': '2026-08-08',
+  '/model/wan-2-7-ai-video-generator': '2026-08-01',
   '/model/kling-2-6-pro-motion-control': '2026-08-02',
   '/model/kling-3-motion-control': '2026-08-02',
   '/model/wan-2-6-ai-video-generator': '2026-08-03',
   '/ai-photo-abstract-poster-generator': '2026-08-05',
   '/ai-zine-poster-generator': '2026-08-05',
   '/buzz-cut-filter': '2026-08-06',
+  '/bald-filter': '2026-08-07',
+  '/bangs-filter': '2026-08-07',
+  '/perm-filter': '2026-08-07',
 }
 
 function toLastModifiedDate(date: string): Date {
@@ -70,14 +77,15 @@ function toCanonicalPath(path: string): string {
   return normalized === '' ? '/' : normalized
 }
 
-function getLastModified(path: string): Date {
+function getLastModified(path: string): Date | undefined {
   const canonicalPath = toCanonicalPath(path)
-  return toLastModifiedDate(LAST_MODIFIED_BY_CANONICAL_PATH[canonicalPath] || LEGACY_LAST_MODIFIED_DATE)
+  const mappedDate = LAST_MODIFIED_BY_CANONICAL_PATH[canonicalPath]
+  return mappedDate ? toLastModifiedDate(mappedDate) : undefined
 }
 
 interface SitemapEntry {
   url: string
-  lastModified: Date
+  lastModified?: Date
   changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
   priority: number
 }

@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro de Flequillos",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Elige un Estilo de Flequillo",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Mujeres"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Flequillo recto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Bob corto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "Bob en A",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Capas largas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Flequillo cortina",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Flequillo lateral",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Ondas grandes",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Corte pixie",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Corte wolf",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Moño alto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Dos trenzas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Bob rizado",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Pelo liso",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "Demostración de antes y después del Filtro de Flequillos",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Instrucción de Peinado Personalizado",
+      "promptPlaceholder": "Describe la longitud, densidad, raya, textura o forma de flequillo que deseas.",
+      "personUploadTitle": "Subir foto de persona",
+      "personUploadHelper": "Imagen 1: sube el retrato que deseas editar.",
+      "presetChoiceTitle": "Elige uno de los estilos de flequillo integrados",
+      "customReferenceUploadTitle": "Subir referencia de peinado",
+      "customTextModeLabel": "Describe el estilo de cabello",
+      "customReferenceModeLabel": "Estilo de cabello de referencia"
+    }
+  },
+  "metadata": {
+    "title": "Filtro de Flequillos Gratis en Línea | Sin Registro | Toolaze",
+    "description": "Prueba el filtro de flequillo gratuito en línea de Toolaze sin registrarte. Sube un retrato y previsualiza flequillo abierto, flequillo desmechado, flequillo recto, flequillo de lado y más."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Filtro de <span class=\\\"text-gradient\\\">flequillo</span> de IA gratuito en línea",
+    "desc": "Sube un retrato claro y empieza en la pestaña de Mujeres con Flequillo Recto seleccionado. Toolaze te ofrece múltiples estilos de flequillo, oculta el comando integrado de los ajustes preestablecidos y mantiene la opción Personalizado disponible para una descripción de texto o referencia de peinado."
+  },
+  "safetyNotice": "El resultado es un concepto visual de flequillo, no un resultado de salón garantizado. El flequillo real depende de la densidad del cabello, los remolinos, la forma de la frente y el peinado.",
+  "intro": {
+    "title": "¿Qué es un filtro de flequillo de IA?",
+    "content": [
+      {
+        "title": "Previsualiza el flequillo antes de cortar la franja",
+        "text": "Un filtro de flequillo de IA edita el peinado frontal en un retrato para que puedas probar el flequillo abierto, el flequillo desmechado, el flequillo recto, el flequillo de lado, el flequillo escaso o el flequillo rizado mientras conservas el rostro y el resto de la foto. Úsalo antes de una visita a la peluquería, una renovación de perfil, la planificación de cosplay o una revisión rápida de estilo."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el filtro de flequillo",
+    "steps": [
+      {
+        "title": "Sube un retrato",
+        "desc": "Elige una foto clara de frente donde sean visibles tu frente, la línea del cabello y tu peinado actual."
+      },
+      {
+        "title": "Elige un estilo de flequillo",
+        "desc": "La pestaña de Mujeres se abre con Flequillo Recto seleccionado, y puedes cambiar a peinados abiertos, de lado, cortos, en capas, ondulados o rizados."
+      },
+      {
+        "title": "Genera o cambia a Personalizado",
+        "desc": "Los estilos preestablecidos usan comandos ocultos. Abre la opción Personalizado si deseas describir un estilo de flequillo o subir una imagen de referencia de peinado."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos fotográficos para una mejor previsualización del flequillo",
+    "subtitle": "El flequillo depende de la frente, la línea del cabello y el enmarcado del rostro, por lo que un retrato limpio es importante.",
+    "items": [
+      {
+        "title": "Muestra el área de tu frente",
+        "desc": "Evita sombreros, sombras intensas, manos o cabello que cubran toda la zona del flequillo.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Usa una foto de frente",
+        "desc": "Los retratos directos hacen que la longitud, la raya y la simetría del flequillo sean más fáciles de previsualizar.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Mantén la textura del cabello visible",
+        "desc": "La iluminación natural ayuda a que el modelo integre el flequillo en cabello liso, ondulado o rizado.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Evita filtros de belleza fuertes",
+        "desc": "Los filtros pueden difuminar la línea del cabello y hacer que el nuevo flequillo luzca menos verosímil.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes sobre el filtro de flequillo",
+  "faq": [
+    {
+      "q": "¿El filtro de flequillo es gratuito y sin registro?",
+      "a": "Sí. Puedes abrir la herramienta de imagen, subir un retrato y empezar a previsualizar flequillos sin registrarte. Esto no es una promesa de uso ilimitado; aún pueden aplicarse límites de generación o disponibilidad del modelo."
+    },
+    {
+      "q": "¿Qué estilo de flequillo está seleccionado por defecto?",
+      "a": "El flequillo recto está seleccionado por defecto para que puedas prever inmediatamente una transformación clara con flequillo completo."
+    },
+    {
+      "q": "¿Qué estilos de flequillo puedo probar?",
+      "a": "Puedes probar flequillo abierto, flequillo desfilado, flequillo recto, flequillo lateral, flequillo de botella, flequillo transparente, flequillo mini y flequillo rizado."
+    },
+    {
+      "q": "¿Se envía la imagen de la tarjeta preestablecida al modelo?",
+      "a": "No. Las imágenes de las tarjetas preestablecidas son opciones visuales. Para los preajustes integrados, Toolaze envía tu retrato junto con el comando oculto del estilo de flequillo seleccionado."
+    },
+    {
+      "q": "¿Puedo subir una imagen de referencia de flequillo?",
+      "a": "Sí. Abre la sección Personalizado y elige Referencia de peinado para subir una imagen de referencia. También puedes elegir Describir peinado y escribir el estilo de flequillo en texto."
+    },
+    {
+      "q": "¿El resultado mostrará exactamente cómo quedará un corte de pelo real?",
+      "a": "No. Es un concepto visual. El flequillo real depende del grosor del cabello, los remolinos, la forma de la frente, la técnica de corte y el peinado diario."
+    },
+    {
+      "q": "¿Puedo usar la vista previa en una peluquería?",
+      "a": "Sí. Puede ayudar a comunicar la dirección que te gusta, pero un estilista debe adaptar el flequillo a la textura de tu cabello y a la forma de tu rostro."
+    }
+  ],
+  "moreTools": "Herramientas de IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "Cambiador de peinados con IA",
+      "description": "Explora cambios de peinado completos para mujeres, hombres y estilos personalizados.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "Cambiador de peinados con IA"
+      }
+    },
+    {
+      "title": "Filtro de permanentes",
+      "description": "Previsualiza ondas suaves, rizos y direcciones de permanentes de salón a partir de un solo retrato.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "Filtro de permanentes"
+      }
+    },
+    {
+      "title": "Cambiador de color de pelo con IA",
+      "description": "Conserva tu peinado y previsualiza un color de pelo diferente.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "Cambiador de color de pelo con IA"
+      }
+    }
+  ],
+  "features": {
+    "title": "¿Por qué usar el filtro de flequillo de Toolaze?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "Múltiples flequillos integrados",
+        "desc": "Prueba flequillo abierto, desfilado, recto, lateral, de botella, transparente, mini y rizado a partir de un solo retrato."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Gratis y sin necesidad de registrarte",
+        "desc": "Abre la herramienta de imagen, sube un retrato y empieza a comparar ideas de flequillo sin crear una cuenta."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Lo personalizado sigue disponible",
+        "desc": "Usa los estilos integrados para mayor rapidez o cambia a Personalizado para describir otro flequillo o subir una referencia de peinado."
+      }
+    ]
+  }
+}

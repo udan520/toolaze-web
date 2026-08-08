@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro de Franja",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Escolher um Estilo de Franja",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Mulheres"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Franja reta",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Bob curto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "Bob em A",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Camadas longas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Franja cortina",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Franja lateral",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Ondas largas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Corte pixie",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Wolf cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Coque alto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Duas tranças",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Bob cacheado",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Cabelo liso",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "Demonstração antes e depois do Filtro de Franja",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Instrução de Penteado Personalizado",
+      "promptPlaceholder": "Descreva o comprimento, a densidade, a divisão, a textura ou o formato da franja que você deseja.",
+      "personUploadTitle": "Enviar foto da pessoa",
+      "personUploadHelper": "Imagem 1: envie o retrato que você deseja editar.",
+      "presetChoiceTitle": "Escolha um dos estilos de franja integrados",
+      "customReferenceUploadTitle": "Enviar referência de penteado",
+      "customTextModeLabel": "Descrever estilo de cabelo",
+      "customReferenceModeLabel": "Estilo de cabelo de referência"
+    }
+  },
+  "metadata": {
+    "title": "Filtro de Franja Grátis Online | Sem Cadastro | Toolaze",
+    "description": "Experimente o Filtro de Franjas gratuito da Toolaze online, sem cadastro. Envie um retrato e visualize franjas cortina, franjas desfiadas, franjas retas, franjas laterais e muito mais."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Filtro de <span class=\\\"text-gradient\\\">Franjas</span> Online com IA Gratuita",
+    "desc": "Envie um retrato claro e comece pela aba Mulheres com Franja Reta selecionada. A Toolaze oferece vários estilos de franja, oculta o prompt integrado para predefinições e mantém a opção Personalizado disponível para uma descrição em texto ou referência de penteado."
+  },
+  "safetyNotice": "O resultado é um conceito visual de franja, não um resultado garantido de salão. O caimento real depende da densidade do cabelo, redemoinhos, formato da testa e finalização.",
+  "intro": {
+    "title": "O que é um Filtro de Franja com IA?",
+    "content": [
+      {
+        "title": "Visualize franjas antes de cortar o cabelo",
+        "text": "Um filtro de franja com IA edita o penteado frontal em um retrato para que você possa testar franjas cortina, franjas desfiadas, franjas retas, franjas laterais, franjas transparentes ou franjas cacheadas, preservando o rosto e o resto da foto. Use-o antes de ir ao salão, atualizar o perfil, planejar um cosplay ou fazer uma verificação rápida de estilo."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como Usar o Filtro de Franjas",
+    "steps": [
+      {
+        "title": "Envie um retrato",
+        "desc": "Escolha uma foto de frente e nítida, onde sua testa, linha do cabelo e penteado atual estejam visíveis."
+      },
+      {
+        "title": "Escolha um estilo de franja",
+        "desc": "A aba Mulheres abre com Franja Reta selecionada, e você pode alternar para penteados cortina, caídos para a lateral, curtos, em camadas, ondulados ou cacheados."
+      },
+      {
+        "title": "Gere ou mude para Personalizado",
+        "desc": "Os estilos predefinidos usam prompts ocultos. Abra a opção Personalizado se quiser descrever um estilo de franja ou enviar uma imagem de referência de penteado."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Dicas de Fotos para uma Prévia Melhor da Franja",
+    "subtitle": "As franjas dependem da testa, da linha do cabelo e do emolduramento do rosto, por isso um retrato limpo é importante.",
+    "items": [
+      {
+        "title": "Mostre a área da sua testa",
+        "desc": "Evite chapéus, sombras pesadas, mãos ou cabelo cobrindo toda a área da franja.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Use uma foto virada para a frente",
+        "desc": "Retratos de frente facilitam a visualização do comprimento, divisão e simetria da franja.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Mantenha a textura do cabelo visível",
+        "desc": "A iluminação natural ajuda o modelo a mesclar a franja em cabelos lisos, ondulados ou cacheados.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Evite filtros de beleza fortes",
+        "desc": "Os filtros podem borrar a linha do cabelo e fazer com que a nova franja pareça menos verossímil.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Perguntas Frequentes sobre o Filtro de Franjas",
+  "faq": [
+    {
+      "q": "O Filtro de Franjas é gratuito e sem cadastro?",
+      "a": "Sim. Você pode abrir a ferramenta de imagem, enviar um retrato e começar a visualizar franjas sem se cadastrar. Isso não é uma promessa de uso ilimitado; limites de geração ou disponibilidade do modelo ainda podem se aplicar."
+    },
+    {
+      "q": "Qual estilo de franja é selecionado por padrão?",
+      "a": "A franja reta é selecionada por padrão para que você possa pré-visualizar imediatamente uma transformação clara com franja cheia."
+    },
+    {
+      "q": "Quais estilos de franja posso experimentar?",
+      "a": "Você pode experimentar Franja Cortina, Franja Desfiada, Franja Reta, Franja Lateral, Franja Gargantilha (Bottleneck), Franja Transparente, Microfranja e Franja Cacheada."
+    },
+    {
+      "q": "A imagem do cartão predefinido é enviada para o modelo?",
+      "a": "Não. As imagens dos cartões predefinidos são escolhas visuais. Para predefinições integradas, o Toolaze envia seu retrato mais o prompt oculto para o estilo de franja selecionado."
+    },
+    {
+      "q": "Posso enviar uma imagem de referência de franja?",
+      "a": "Sim. Abra Personalizado e escolha Estilo de cabelo de referência para enviar uma imagem de referência de penteado. Você também pode escolher Descrever estilo de cabelo e escrever o estilo da franja em texto."
+    },
+    {
+      "q": "O resultado mostrará exatamente como um corte de cabelo real ficará?",
+      "a": "Não. É um conceito visual. Franjas reais dependem da espessura do cabelo, redemoinhos, formato da testa, técnica de corte e estilo diário."
+    },
+    {
+      "q": "Posso usar a pré-visualização em um salão?",
+      "a": "Sim. Pode ajudar a comunicar a direção que você gosta, mas um cabeleireiro deve adaptar a franja à textura do seu cabelo e ao formato do seu rosto."
+    }
+  ],
+  "moreTools": "Ferramentas de IA Relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "Alterador de Penteado com IA",
+      "description": "Explore mudanças completas de penteado para mulheres, homens e visuais personalizados.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "Alterador de Penteado com IA"
+      }
+    },
+    {
+      "title": "Filtro de Permanente",
+      "description": "Pré-visualize ondas suaves, cachos e direções de permanente de salão a partir de um único retrato.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "Filtro de Permanente"
+      }
+    },
+    {
+      "title": "Alterador de Cor de Cabelo com IA",
+      "description": "Mantenha seu penteado e pré-visualize uma cor de cabelo diferente.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "Alterador de Cor de Cabelo com IA"
+      }
+    }
+  ],
+  "features": {
+    "title": "Por que Usar o Filtro de Franja do Toolaze?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "Várias franjas estão integradas",
+        "desc": "Experimente franjas cortina, desfiadas, retas, laterais, gargantilha, transparentes, micro e cacheadas a partir de um único retrato."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Início gratuito e sem cadastro",
+        "desc": "Abra a ferramenta de imagem, envie um retrato e comece a comparar ideias de franja sem criar uma conta."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "O modo personalizado permanece disponível",
+        "desc": "Use os estilos integrados para maior velocidade ou mude para Personalizado para descrever uma franja diferente ou enviar uma imagem de referência de penteado."
+      }
+    ]
+  }
+}

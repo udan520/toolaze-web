@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Pony-Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Pony-Stil auswählen",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Damen"
+        },
+        {
+          "id": "custom",
+          "label": "Benutzerdefiniert"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Gerader Pony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Kurzer Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A-Linien-Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Lange Stufen",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Vorhangpony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Seitlicher Pony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Große Wellen",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Pixie-Schnitt",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Wolf Cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Hoher Dutt",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Zwei Zöpfe",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Lockiger Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Glattes Haar",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Benutzerdefiniert",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "Vorher-Nachher-Demo des Pony-Filters",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Benutzerdefinierte Frisuren-Anweisung",
+      "promptPlaceholder": "Beschreibe die gewünschte Pony-Länge, Dichte, Scheitelung, Textur oder Fransenform.",
+      "personUploadTitle": "Personen-Foto hochladen",
+      "personUploadHelper": "Bild 1: Lade das Portrait hoch, das du bearbeiten möchtest.",
+      "presetChoiceTitle": "Wähle einen der integrierten Pony-Stile",
+      "customReferenceUploadTitle": "Frisuren-Referenz hochladen",
+      "customTextModeLabel": "Frisur beschreiben",
+      "customReferenceModeLabel": "Referenz-Frisur"
+    }
+  },
+  "metadata": {
+    "title": "Kostenloser Pony-Filter online | Keine Registrierung | Toolaze",
+    "description": "Probiere den kostenlosen Pony-Filter von Toolaze online ohne Registrierung aus. Lade ein Portrait hoch und teste Vorhangpony, fransigen Pony, geraden Pony, Seitenpony und mehr."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser KI <span class=\\\"text-gradient\\\">Pony-Filter</span> Online",
+    "desc": "Lade ein klares Portrait hoch und beginne im Bereich Damen mit ausgewähltem geraden Pony. Toolaze bietet dir verschiedene Ponystile, blendet den integrierten Prompt für Voreinstellungen aus und hält die benutzerdefinierte Option für eine Textbeschreibung oder Frisurenreferenz bereit."
+  },
+  "safetyNotice": "Das Ergebnis ist ein visueller Pony-Konzeptvorschlag, kein garantiertes Salonergebnis. Ein echter Pony hängt von Haardichte, Wirbeln, Stirnform und Styling ab.",
+  "intro": {
+    "title": "Was ist ein KI-Pony-Filter?",
+    "content": [
+      {
+        "title": "Pony vor dem Friseurbesuch ausprobieren",
+        "text": "Ein KI-Pony-Filter bearbeitet die vordere Frisur in einem Portrait, sodass du Vorhangpony, fransigen Pony, geraden Pony, Seitenpony, transparente Fransen oder lockigen Pony testen kannst, während Gesicht und Rest des Fotos erhalten bleiben. Verwende ihn vor einem Friseurbesuch, einer Profilauffrischung, der Planung von Cosplay oder einem schnellen Style-Check."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So verwendest du den Pony-Filter",
+    "steps": [
+      {
+        "title": "Lade ein Portrait hoch",
+        "desc": "Wähle ein klares, direktes Foto, auf dem deine Stirn, dein Haaransatz und deine aktuelle Frisur gut sichtbar sind."
+      },
+      {
+        "title": "Wähle einen Pony-Stil",
+        "desc": "Der Damen-Bereich öffnet sich mit ausgewähltem geraden Pony, und du kannst zu Vorhangpony, Seitenpony, kurzen, gestuften, gewellten oder lockigen Frisuren wechseln."
+      },
+      {
+        "title": "Generieren oder zu Benutzerdefiniert wechseln",
+        "desc": "Voreingestellte Stile verwenden versteckte Prompts. Öffne den benutzerdefinierten Modus, wenn du einen Fransenstil beschreiben oder ein Frisuren-Referenzbild hochladen möchtest."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Fototipps für eine bessere Pony-Vorschau",
+    "subtitle": "Ein Pony hängt von Stirn, Haaransatz und Gesichtsrahmung ab, daher ist ein sauberes Portrait wichtig.",
+    "items": [
+      {
+        "title": "Zeige deinen Stirnbereich",
+        "desc": "Vermeide Hüte, starke Schatten, Hände oder Haare, die den gesamten Fransenbereich verdecken.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Verwende ein Frontal-Foto",
+        "desc": "Direkte Portraits erleichtern die Vorschau von Pony-Länge, Scheitelung und Symmetrie.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Lass die Haartextur sichtbar",
+        "desc": "Natürliches Licht hilft dem Modell, den Pony nahtlos in glattes, gewelltes oder lockiges Haar einzufügen.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Vermeide starke Beauty-Filter",
+        "desc": "Filter können den Haaransatz verwischen und den neuen Pony weniger realistisch wirken lassen.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Pony-Filter FAQ",
+  "faq": [
+    {
+      "q": "Ist der Pony-Filter kostenlos und ohne Registrierung?",
+      "a": "Ja. Du kannst das Bildtool öffnen, ein Portrait hochladen und sofort ohne Anmeldung einen Pony ausprobieren. Dies ist kein Versprechen auf unbegrenzte Nutzung; Generierungslimits oder Modellverfügbarkeit können dennoch gelten."
+    },
+    {
+      "q": "Welcher Pony-Stil ist standardmäßig ausgewählt?",
+      "a": "Gerader Pony ist standardmäßig ausgewählt, damit du sofort eine deutliche Komplettfransen-Veränderung Vorschau anzeigen lassen kannst."
+    },
+    {
+      "q": "Welche Ponystile kann ich ausprobieren?",
+      "a": "Du kannst Vorhangpony, fransigen Pony, geraden Pony, Seitenpony, Flaschenhals-Pony, transparente Fransen, Mikropony und lockigen Pony ausprobieren."
+    },
+    {
+      "q": "Wird das Vorschaubild der Karte an das Modell gesendet?",
+      "a": "Nein. Vorschaubilder sind visuelle Auswahlhilfen. Für integrierte Voreinstellungen sendet Toolaze dein Portrait plus den versteckten Prompt für den ausgewählten Ponystil."
+    },
+    {
+      "q": "Kann ich ein Pony-Referenzbild hochladen?",
+      "a": "Ja. Öffne Benutzerdefiniert und wähle Referenz-Frisur, um ein Frisuren-Referenzbild hochladen zu können. Du kannst auch Frisur beschreiben wählen und den Fransenstil als Text eingeben."
+    },
+    {
+      "q": "Zeigt das Ergebnis genau, wie ein echter Haarschnitt aussehen wird?",
+      "a": "Nein. Es handelt sich um ein visuelles Konzept. Ein echter Pony hängt von Haardicke, Wirbeln, Stirnform, Schnitttechnik und täglichem Styling ab."
+    },
+    {
+      "q": "Kann ich die Vorschau beim Friseur verwenden?",
+      "a": "Ja. Sie kann helfen, die gewünschte Richtung zu vermitteln, aber ein Stylist sollte die Fransen an deine Haartextur und Gesichtsform anpassen."
+    }
+  ],
+  "moreTools": "Verwandte KI-Tools",
+  "moreToolsLinks": [
+    {
+      "title": "KI-Frisurenwechsler",
+      "description": "Entdecke komplette Frisurenänderungen für Frauen, Männer und individuelle Looks.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "KI-Frisurenwechsler"
+      }
+    },
+    {
+      "title": "Dauerwellen-Filter",
+      "description": "Teste weiche Wellen, Locken und Salon-Dauerwellen-Richtungen anhand eines Portraits.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "Dauerwellen-Filter"
+      }
+    },
+    {
+      "title": "KI-Haarfarbenwechsler",
+      "description": "Behalte deine Frisur und probiere eine andere Haarfarbe aus.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "KI-Haarfarbenwechsler"
+      }
+    }
+  ],
+  "features": {
+    "title": "Warum den Toolaze Pony-Filter nutzen?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "Mehrere Ponystile integriert",
+        "desc": "Teste Vorhangpony, fransigen Pony, geraden Pony, Seitenpony, Flaschenhals-Pony, transparente Fransen, Mikropony und lockigen Pony anhand eines Portraits."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Kostenloser Start ohne Anmeldung",
+        "desc": "Öffne das Bildtool, lade ein Portrait hoch und vergleiche Fransen-Ideen ohne ein Konto zu erstellen."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Benutzerdefinierter Modus bleibt verfügbar",
+        "desc": "Nutze die integrierten Stile für Schnelligkeit oder wechsle zu Benutzerdefiniert, um einen anderen Pony zu beschreiben oder eine Frisurenreferenz hochzuladen."
+      }
+    ]
+  }
+}

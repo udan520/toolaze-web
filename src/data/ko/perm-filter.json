@@ -1,0 +1,308 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/perm-filter/perm-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "펌 필터",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "펌 스타일 선택",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "여성"
+        },
+        {
+          "id": "men",
+          "label": "남성"
+        },
+        {
+          "id": "custom",
+          "label": "사용자 지정"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "소프트 웨이브 펌",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "숏 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A라인 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "롱 레이어드",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "커튼뱅",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "일자 앞머리",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "사이드뱅",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "굵은 웨이브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "픽시 컷",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "울프 컷",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "하이 번",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "양갈래 브레이드",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "컬리 보브",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "스트레이트 헤어",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "사용자 지정",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "title": "펌 필터 전후 비교 데모",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "맞춤 헤어스타일 가이드",
+      "promptPlaceholder": "원하는 컬 크기, 뿌리 볼륨, 웨이브 부드러움, 기장 또는 펌 스타일을 입력하세요.",
+      "personUploadTitle": "인물 사진 업로드",
+      "personUploadHelper": "이미지 1: 편집할 인물 사진을 업로드하세요.",
+      "presetChoiceTitle": "기본 제공 펌 스타일 중 하나를 선택하세요.",
+      "customReferenceUploadTitle": "헤어스타일 참고 사진 업로드",
+      "customTextModeLabel": "헤어스타일 설명",
+      "customReferenceModeLabel": "참조 헤어스타일"
+    }
+  },
+  "metadata": {
+    "title": "무료 펌 필터 온라인 | AI 펌 필터 | Toolaze",
+    "description": "Toolaze의 무료 온라인 AI 펌 필터로 소프트 웨이브, 루즈 디지털, 컬리 밥, 스파이럴, 한국식 볼륨, 남성 펌 스타일을 미리 체험해 보세요."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 AI <span class=\\\"text-gradient\\\">펌 필터</span> 온라인",
+    "desc": "선명한 인물 사진을 한 장 업로드하고 펌을 했을 때의 모습을 미리 확인해 보세요. Toolaze는 소프트 웨이브 펌을 기본으로 시작하며, 여성 및 남성 펌 스타일을 포함하고, 사전 설정 프롬프트를 숨기며, 텍스트 설명이나 참조 이미지에 사용할 수 있는 커스텀 기능을 제공합니다."
+  },
+  "safetyNotice": "결과물은 시각적인 펌 컨셉일 뿐, 보장된 미용실 시술 결과를 의미하지 않습니다. 실제 컬은 모발 길이, 밀도, 질감, 화학적 처리, 스타일링에 따라 달라집니다.",
+  "intro": {
+    "title": "AI 펌 필터란 무엇인가요?",
+    "content": [
+      {
+        "title": "펌을 예약하기 전에 컬이나 웨이브가 들어간 머리 모습을 미리 확인해 보세요",
+        "text": "AI 펌 필터는 얼굴, 표정, 의상, 조명, 배경을 유지하면서 인물 사진의 헤어스타일을 컬이나 웨이브 펌 컨셉으로 편집해 줍니다. 미용실을 방문하기 전에 소프트 웨이브, 디지털 펌 형태, 컬리 밥 스타일, 스파이럴 컬, 한국식 볼륨 펌, 남성 웨이브 펌을 비교하는 데 사용해 보세요."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "펌 필터 사용 방법",
+    "steps": [
+      {
+        "title": "인물 사진 한 장 업로드",
+        "desc": "모발 길이, 얼굴, 현재 헤어라인이 잘 보이는 선명한 인물 사진을 사용하세요."
+      },
+      {
+        "title": "펌 스타일 선택",
+        "desc": "소프트 웨이브 펌으로 시작한 다음, 루즈 디지털, 컬리 밥, 스파이럴, 한국식 볼륨, 비치 웨이브 또는 남성 웨이브 펌 스타일을 비교해 보세요."
+      },
+      {
+        "title": "컬 방향 생성 또는 커스텀",
+        "desc": "사전 설정 스타일은 숨겨진 프롬프트를 사용합니다. 더 타이트한 컬, 더 루즈한 웨이브, 더 풍성한 뿌리 볼륨 또는 참조 헤어스타일 원하시는 경우 커스텀으로 전환하세요."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "더 나은 펌 미리보기를 위한 사진 팁",
+    "subtitle": "펌 미리보기는 모델이 현재 모발 길이와 얼굴을 감싸는 형태를 인식할 수 있을 때 가장 잘 작동합니다.",
+    "items": [
+      {
+        "title": "충분한 모발 길이 노출",
+        "desc": "측면, 정수리, 끝 부분이 프레임 밖으로 벗어난 잘린 사진은 피하세요.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "자연광 사용",
+        "desc": "고른 조명은 컬이 원래의 모발 및 얼굴 형태와 자연스럽게 어우러지도록 도와줍니다.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "얼굴을 가리지 않기",
+        "desc": "머리카락으로 얼굴을 감싸는 것은 좋으나, 선글라스, 손, 짙은 그림자는 편집의 안정성을 떨어뜨립니다.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "길이에 맞는 스타일 선택",
+        "desc": "매우 짧은 모발은 긴 스파이럴 컬을 미리보기 어려울 수 있으므로, 더 깔끔한 결과를 위해 현재 모발 길이에 가까운 펌 스타일을 선택하세요.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "펌 필터 FAQ",
+  "faq": [
+    {
+      "q": "펌 필터는 무료로 체험할 수 있나요?",
+      "a": "예. 이미지 도구를 열고 인물 사진을 하나 업로드한 후 펌 스타일 미리보기를 시작할 수 있습니다. 이는 무제한 사용을 보장하는 것은 아니며 생성 횟수나 모델 가용성에 따라 제한이 적용될 수 있습니다."
+    },
+    {
+      "q": "기본적으로 선택되는 펌 스타일은 무엇인가요?",
+      "a": "소프트 웨이브 펌은 더 타이트한 컬이나 볼륨감 있는 스타일을 비교하기 전에 자연스러운 시작점이 되므로 기본적으로 선택됩니다."
+    },
+    {
+      "q": "남성도 펌 필터를 사용할 수 있나요?",
+      "a": "네. 페이지에는 남성 웨이브 펌, 숏 컬리 펌, 텍스처드 펌, 루즈 플로우 펌 등의 남성용 펌 프리셋이 포함되어 있습니다."
+    },
+    {
+      "q": "펌 필터와 AI 헤어스타일 체인저의 차이점은 무엇인가요?",
+      "a": "AI 헤어스타일 체인저는 다양한 헤어컷 방향을 다룹니다. 펌 필터는 그보다 범위가 좁아 컬, 웨이브, 살롱 펌 스타일링에 중점을 둡니다."
+    },
+    {
+      "q": "프리셋 카드 이미지가 모델로 전송되나요?",
+      "a": "아니요. 기본 제공 프리셋의 경우 Toolaze는 사용자가 업로드한 인물 사진과 숨겨진 펌 프롬프트를 전송합니다. 카드 이미지는 스타일 선택을 돕는 용도로만 사용됩니다."
+    },
+    {
+      "q": "커스텀 펌을 직접 묘사할 수 있나요?",
+      "a": "네. 커스텀을 열고 '헤어스타일 묘사하기'를 선택하여 컬 크기, 볼륨, 가르마, 길이를 직접 작성할 수 있습니다. 또한 '참조 헤어스타일'을 사용하여 헤어스타일 참고 이미지를 업로드할 수도 있습니다."
+    },
+    {
+      "q": "결과가 실제 미용실 시술 결과와 정확히 일치하나요?",
+      "a": "아니요. 시각적인 컨셉일 뿐입니다. 실제 펌 결과는 모발 상태, 길이, 숱, 이전 시술 이력, 화학 처리 및 스타일링에 따라 달라질 수 있습니다."
+    }
+  ],
+  "moreTools": "관련 AI 도구",
+  "moreToolsLinks": [
+    {
+      "title": "뱅스 필터",
+      "description": "인물 사진 한 장으로 커튼, 시스루, 블런트, 사이드, 컬리 뱅을 미리 만나보세요.",
+      "href": "/bangs-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "alt": "뱅스 필터"
+      }
+    },
+    {
+      "title": "AI 헤어스타일 체인저",
+      "description": "숏, 롱, 텍스처드 및 커스텀 헤어스타일 방향을 탐색해 보세요.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI 헤어스타일 체인저"
+      }
+    },
+    {
+      "title": "AI 헤어 컬러 체인저",
+      "description": "현재 헤어스타일에 자연스러운 컬러와 개성 있는 헤어 컬러를 미리 적용해 보세요.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI 헤어 컬러 체인저"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolaze 펌 필터를 사용해야 하는 이유는 무엇인가요?",
+    "items": [
+      {
+        "icon": "🌀",
+        "iconType": "guidance",
+        "title": "여성 및 남성 펌 스타일",
+        "desc": "인물 사진 한 장으로 소프트 웨이브, 디지털 펌, 컬리 보브, 한국식 볼륨 펌, 남성 웨이브 펌을 비교해 보세요."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "무료 온라인 체험",
+        "desc": "미용실을 방문하기 전에 인물 사진을 업로드하고 펌 방향을 미리 테스트해 보세요."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "사용자 지정 curl 제어",
+        "desc": "속도를 위해 내장 스타일을 사용하거나, 사용자 지정을 선택하여 더 타이트한 컬, 뿌리 볼륨, 컬 크기 또는 헤어스타일 레퍼런스를 설명하세요."
+      }
+    ]
+  }
+}

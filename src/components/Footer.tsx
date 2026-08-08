@@ -59,6 +59,10 @@ const defaultTranslations = {
   talkingAvatarCreator: 'AI Talking Avatar',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
+  buzzCutFilter: 'Buzz Cut Filter',
+  baldFilter: 'Bald Filter',
+  bangsFilter: 'Bangs Filter',
+  permFilter: 'Perm Filter',
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
   aiBikiniGenerator: 'AI Bikini Generator',
@@ -196,6 +200,30 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.buzzCutFilter || 'Buzz Cut Filter'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/bald-filter')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.baldFilter || 'Bald Filter'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/bangs-filter')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.bangsFilter || 'Bangs Filter'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/perm-filter')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.permFilter || 'Perm Filter'}
                 </Link>
               </li>
               <li>

@@ -14,12 +14,16 @@
     "displayName": "KI-Kleiderwechsler",
     "functionalAcceptance": {
       "recommendedMode": "clothing-reference-first-with-custom-prompt",
-      "reason": "The primary flow uses two images: a person photo plus a clothing reference. Users without a clothing photo can click a built-in full-body clothing reference. Custom mode keeps the one-person-photo plus prompt workflow.",
+      "reason": "Jeder Ablauf verwendet zwei Bilder: ein Personenfoto und eine Kleidungsreferenz. Damen und Herren bieten kuratierte Referenzen; Benutzerdefiniert akzeptiert eine eigene Kleidungsreferenz und optionale Vorgaben.",
       "presetTitle": "Kleidungsreferenz auswählen",
       "presetTabs": [
         {
-          "id": "clothing-reference",
-          "label": "Kleidungsreferenz"
+          "id": "women",
+          "label": "Frauen"
+        },
+        {
+          "id": "men",
+          "label": "Männer"
         },
         {
           "id": "custom",
@@ -30,42 +34,140 @@
       "customPromptTabId": "custom",
       "presets": [
         {
-          "label": "Business-Anzug",
-          "group": "clothing-reference",
-          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the formal business suit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the suit structure, shirt, trousers, fabric, color, and fit from image 2 as closely as possible. Keep the result realistic and professionally styled.",
-          "image": "https://assets.toolaze.com/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
-          "referenceImage": "https://assets.toolaze.com/uploads/ab409a2a358c44fb8e4178b8062ca365.webp",
-          "swatch": "linear-gradient(135deg, #e5e7eb, #334155)"
+          "label": "Elfenbein Quiet Luxury",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete ivory quiet luxury layered outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/ivory-quiet-luxury.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/ivory-quiet-luxury.webp",
+          "swatch": "linear-gradient(135deg, #f1eadf, #bca78c)"
         },
         {
-          "label": "Luxuskleid",
-          "group": "clothing-reference",
-          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the luxurious formal gown from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the gown silhouette, fabric shine, color, length, neckline, and elegant styling from image 2 as closely as possible. Keep the result realistic and tasteful.",
-          "image": "https://assets.toolaze.com/uploads/d18eb177f182452c9a619f36c4007df4.webp",
-          "referenceImage": "https://assets.toolaze.com/uploads/d18eb177f182452c9a619f36c4007df4.webp",
-          "swatch": "linear-gradient(135deg, #312e81, #c084fc)"
+          "label": "Pariser Tweed",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete Parisian tweed jacket and midi-skirt outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/parisian-tweed.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/parisian-tweed.webp",
+          "swatch": "linear-gradient(135deg, #f1ede5, #232323)"
         },
         {
-          "label": "Schwarzer Bikini",
-          "group": "clothing-reference",
-          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful black bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
-          "image": "https://assets.toolaze.com/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
-          "referenceImage": "https://assets.toolaze.com/uploads/d9c58f4a47544904909fc28a0e9cd584.webp",
+          "label": "Moderner Power-Anzug",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete charcoal modern power suit outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/modern-power-suit.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/modern-power-suit.webp",
+          "swatch": "linear-gradient(135deg, #374151, #f6f1e7)"
+        },
+        {
+          "label": "Seiden-Abendkleid",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the deep burgundy silk evening gown from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/silk-evening-gown.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/silk-evening-gown.webp",
+          "swatch": "linear-gradient(135deg, #4c0519, #be123c)"
+        },
+        {
+          "label": "Elegantes Smart Casual",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete elevated smart-casual knit and trouser outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/elevated-smart-casual.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/elevated-smart-casual.webp",
+          "swatch": "linear-gradient(135deg, #e7ded0, #9c8976)"
+        },
+        {
+          "label": "Luxuriöse Streetwear",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete women’s black luxe streetwear outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/luxe-streetwear.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/luxe-streetwear.webp",
+          "swatch": "linear-gradient(135deg, #111827, #e5e7eb)"
+        },
+        {
+          "label": "Klassischer schwarzer Bade-Look",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful classic black adult swimwear set from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/classic-black-swim.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/classic-black-swim.webp",
           "swatch": "linear-gradient(135deg, #111827, #020617)"
         },
         {
-          "label": "Resort-Bikini",
-          "group": "clothing-reference",
-          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the colorful resort bikini from image 2 onto the adult person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the swimwear shape, coverage, straps, color palette, pattern, and fabric from image 2 as closely as possible. Keep the result realistic, non-explicit, and suitable for a swimwear preview.",
-          "image": "https://assets.toolaze.com/uploads/3f39d75486cc4e20994d4780c322336a.webp",
-          "referenceImage": "https://assets.toolaze.com/uploads/3f39d75486cc4e20994d4780c322336a.webp",
-          "swatch": "linear-gradient(135deg, #f97316, #ec4899)"
+          "label": "Resort-Bademode mit Print",
+          "group": "women",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the tasteful coral-and-teal botanical adult resort swimwear set from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/resort-print-swim.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/resort-print-swim.webp",
+          "swatch": "linear-gradient(135deg, #fb7185, #14b8a6)"
         },
         {
-          "label": "Benutzerdefiniert",
-          "group": "custom"
+          "label": "Executive-Businessanzug",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete charcoal executive business suit outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/executive-business-suit.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/executive-business-suit.webp",
+          "swatch": "linear-gradient(135deg, #1f2937, #1e3a8a)"
+        },
+        {
+          "label": "Black-Tie-Smoking",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete black-tie tuxedo outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/black-tie-tuxedo.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/black-tie-tuxedo.webp",
+          "swatch": "linear-gradient(135deg, #020617, #e5e7eb)"
+        },
+        {
+          "label": "Quiet-Luxury-Strick",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete camel quiet-luxury knit outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/quiet-luxury-knit.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/quiet-luxury-knit.webp",
+          "swatch": "linear-gradient(135deg, #c19a6b, #f5f0e6)"
+        },
+        {
+          "label": "Modernes Smart Casual",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete navy modern smart-casual outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/modern-smart-casual.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/modern-smart-casual.webp",
+          "swatch": "linear-gradient(135deg, #1e3a5f, #d6c8b4)"
+        },
+        {
+          "label": "Luxuriöse Streetwear für Herren",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete men’s graphite luxe streetwear outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/luxe-streetwear.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/luxe-streetwear.webp",
+          "swatch": "linear-gradient(135deg, #111827, #4b5563)"
+        },
+        {
+          "label": "Denim-Wochenende",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete dark-indigo denim weekend outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/denim-weekend.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/denim-weekend.webp",
+          "swatch": "linear-gradient(135deg, #172554, #334155)"
+        },
+        {
+          "label": "Performance-Athleisure",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete slate performance athleisure outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/performance-athleisure.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/performance-athleisure.webp",
+          "swatch": "linear-gradient(135deg, #334155, #64748b)"
+        },
+        {
+          "label": "Riviera-Leinen",
+          "group": "men",
+          "prompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the complete white-and-sand Riviera linen outfit from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, background, lighting, camera angle, and framing from image 1. Match the garment layers, coverage, fabric, color, fit, footwear, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, fully dressed in the target outfit, and free of invented brand logos.",
+          "image": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/riviera-linen.webp",
+          "referenceImage": "https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/riviera-linen.webp",
+          "swatch": "linear-gradient(135deg, #f8fafc, #d6b98c)"
         }
-      ]
+      ],
+      "defaultPromptPresetTabId": "women",
+      "enableCustomReferenceImageUpload": true,
+      "inlinePresetReferenceUpload": false,
+      "combineCustomReferenceAndPrompt": true,
+      "showPresetSelectedState": true,
+      "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target clothing reference. Put the clothing from image 2 onto the person in image 1. Preserve the same face, identity, age, skin tone, hair, body proportions, pose, hands, background, lighting, and camera angle from image 1. Match the garment style, coverage, fabric, color, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, and fully dressed in the target outfit."
     },
     "sampleImages": [
       {
@@ -79,7 +181,13 @@
       "uploadTitle": "Personenfoto + Kleidungsreferenz hochladen",
       "uploadHelper": "Laden Sie zuerst Ihr Personenfoto hoch und laden Sie dann unten eine Ganzkörper-Kleidungsreferenz hoch oder wählen Sie eine aus.",
       "promptLabel": "Beschreiben Sie Ihr Outfit",
-      "promptPlaceholder": "Benutzerdefiniert: Laden Sie ein Personenfoto hoch und beschreiben Sie Kleidung, Stoff, Farbpalette, Passform, Bedeckung und Anlass."
+      "promptPlaceholder": "Benutzerdefiniert: Kleidungsreferenz hochladen und optional Stoff, Farbpalette, Passform, Bedeckung oder Anlass beschreiben.",
+      "personUploadTitle": "Personenfoto hochladen",
+      "personUploadHelper": "Bild 1: Lade das Foto der Person hoch, die du bearbeiten möchtest.",
+      "presetReferenceUploadHelper": "Bild 2: Lade dein Ziel-Outfit hoch oder wähle unten eine Vorlage.",
+      "presetChoiceTitle": "Oder integrierte Kleidungsreferenz wählen",
+      "customReferenceUploadTitle": "Kleidungsreferenz hochladen",
+      "customReferenceUploadHelper": "Bild 2: Lade die Kleidungsreferenz hoch, die du übertragen möchtest."
     }
   },
   "metadata": {
@@ -98,7 +206,7 @@
   ],
   "hero": {
     "h1": "Kostenloser <span class=\"text-gradient\">KI-Kleiderwechsler</span> online",
-    "desc": "Laden Sie ein Personenfoto plus Kleidungsreferenz hoch oder nutzen Sie den benutzerdefinierten Modus mit einem Foto und Prompt. Erstellen Sie realistische KI-Outfitwechsel für Business, formelle Looks, Bademode, Creator-Content und Produktstyling."
+    "desc": "Laden Sie ein Personenfoto hoch und wählen Sie eine integrierte Kleidungsreferenz, oder laden Sie im benutzerdefinierten Modus Ihre eigene Referenz hoch und ergänzen Sie optionale Anweisungen. Erstellen Sie realistische KI-Outfitwechsel für Business, formelle Looks, Bademode, Creator-Content und Produktstyling."
   },
   "safetyNotice": "Dieses Tool ist nur für geschmackvolle Outfit-Bearbeitungen und erwachsene Bademoden-Vorschauen gedacht. Verwenden Sie Fotos, die Ihnen gehören oder die Sie bearbeiten dürfen, und vermeiden Sie Anfragen, die Kleidung entfernen, Personen sexualisieren, jemanden imitieren oder geschützte Uniformen und Logos missbrauchen.",
   "intro": {
@@ -106,11 +214,11 @@
     "content": [
       {
         "title": "Outfit-Ideen ohne neues Shooting testen",
-        "text": "Ein KI-Kleiderwechsler bearbeitet sichtbare Kleidung in einem Personenfoto und hält Person, Pose, Licht und Szene möglichst stabil. Toolaze unterstützt einen Zwei-Bild-Workflow: Person als Bild 1 hochladen, Kleidungsreferenz als Bild 2 hochladen oder auswählen und eine Anprobevorschau erzeugen, die das Outfit auf die Person überträgt. Der Custom-Modus ist verfügbar, wenn Sie nur ein Personenfoto haben und das Outfit in Worten beschreiben möchten."
+        "text": "Ein KI-Kleiderwechsler bearbeitet sichtbare Kleidung in einem Personenfoto und hält Person, Pose, Licht und Szene möglichst stabil. Laden Sie die Person als Bild 1 hoch und wählen Sie danach ein integriertes Outfit oder laden Sie eine Kleidungsreferenz als Bild 2 hoch. Der benutzerdefinierte Modus nutzt denselben Zwei-Bild-Workflow und erlaubt genaue Vorgaben zu Stoff, Farbe, Passform, Bedeckung oder Anlass."
       },
       {
         "title": "Für Kleidungsreferenzen und eigene Prompts gebaut",
-        "text": "Der Referenz-Workflow ist ideal, wenn Sie ein Zielkleidungsbild haben. Der Custom-Workflow eignet sich, wenn Sie einen Anzug, ein Kleid, Bikini, Mantel oder anderen Stil beschreiben möchten, ohne ein Kleidungsfoto hochzuladen. Behandeln Sie das Ergebnis als visuelle Vorschau; feine Stofflabels, exakte Logos, verdeckte Nähte und unmögliche Layering-Logik können weiter manuelle Prüfung brauchen."
+        "text": "Wählen Sie Damen oder Herren für einen schnellen Start mit einer kuratierten Ganzkörper-Kleidungsreferenz. Nutzen Sie Benutzerdefiniert für Ihre eigene Kleidungsreferenz und optionale Styling-Vorgaben. Behandeln Sie das Ergebnis als visuelle Vorschau; feine Stofflabels, exakte Logos, verdeckte Nähte und physikalisch unmögliche Schichten können weiter manuelle Prüfung brauchen."
       }
     ]
   },
@@ -122,8 +230,8 @@
         "desc": "Nutzen Sie Bild 1 für die Person. Wählen Sie ein klares Ganzkörper- oder Halb Körperfoto, auf dem aktuelles Outfit, Arme, Oberkörper und Körperkontur sichtbar sind."
       },
       {
-        "title": "Kleidungsreferenz hinzufügen oder Custom wählen",
-        "desc": "Für den Referenz-Workflow laden Sie Bild 2 als Zielkleidung hoch oder klicken Sie eine integrierte Referenz. Im Custom-Modus laden Sie nur das Personenfoto hoch und beschreiben das Outfit."
+        "title": "Kleidungsreferenz wählen oder hochladen",
+        "desc": "Wählen Sie unter Damen oder Herren ein integriertes Outfit, oder öffnen Sie Benutzerdefiniert und laden Sie Ihre eigene Kleidungsreferenz als Bild 2 hoch. Ergänzen Sie dort bei Bedarf Vorgaben zu Stoff, Farbe, Passform, Bedeckung oder Anlass."
       },
       {
         "title": "Generieren und verfeinern",
@@ -242,7 +350,7 @@
         "icon": "👕",
         "iconType": "ai",
         "title": "Referenzgeführte Kleidungsbearbeitung",
-        "desc": "Laden Sie ein Personenfoto hoch und steuern Sie die Bearbeitung mit einer direkten Outfit-Vorgabe, statt das gesamte Bild neu aufzubauen."
+        "desc": "Laden Sie ein Personenfoto und eine Kleidungsreferenz hoch und ergänzen Sie optionale Vorgaben zu Stoff, Farbe, Passform, Bedeckung oder Anlass, ohne das ganze Bild neu aufzubauen."
       },
       {
         "icon": "🧍",
@@ -254,7 +362,7 @@
         "icon": "🛡️",
         "iconType": "ai",
         "title": "Klare Grenze: vollständig bekleidet",
-        "desc": "Die Seite ist für geschmackvolle, vollständig bekleidete Bearbeitungen und praktische Outfitplanung geschrieben, nicht für Entkleidung oder Imitation."
+        "desc": "Nutzen Sie das Tool für geschmackvolle, vollständig bekleidete Bearbeitungen und praktische Outfitplanung, nicht für Entkleidung oder Identitätsmissbrauch."
       }
     ]
   },

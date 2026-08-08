@@ -14,6 +14,9 @@ const expectedRoutes = [
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
   '/buzz-cut-filter',
+  '/bald-filter',
+  '/bangs-filter',
+  '/perm-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -41,7 +44,7 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 14)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 17)
     assert.equal(cards.filter((card) => card.category === 'video').length, 6)
   }
 })
@@ -54,6 +57,34 @@ test('AI Hairstyle Changer hub cards use the current page demo image', () => {
 
     assert.ok(hairstyleCard, `${locale} is missing AI Hairstyle Changer`)
     assert.equal(hairstyleCard.image, hairstyleDemoImage)
+  }
+})
+
+test('P0 hairstyle filter hub cards are localized and use page demo images', () => {
+  const expectedImages = {
+    '/bald-filter': 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
+    '/bangs-filter': 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+    '/perm-filter': 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
+  }
+
+  for (const [href, image] of Object.entries(expectedImages)) {
+    const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === href)
+    assert.ok(englishCard, `English AI Tools hub should include ${href}`)
+    assert.equal(englishCard.image, image)
+    assert.equal(englishCard.category, 'image')
+
+    for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+      const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === href)
+
+      assert.ok(localizedCard, `${locale} AI Tools hub should include ${href}`)
+      assert.equal(localizedCard.image, image)
+      assert.notEqual(localizedCard.title, englishCard.title, `${locale} ${href} title should not fall back to English`)
+      assert.notEqual(
+        localizedCard.description,
+        englishCard.description,
+        `${locale} ${href} description should not fall back to English`,
+      )
+    }
   }
 })
 

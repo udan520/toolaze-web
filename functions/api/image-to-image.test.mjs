@@ -500,6 +500,144 @@ test('AI Zine Poster Generator checks account credits before OpenAI vision analy
   }
 })
 
+test('Photo Abstract Generator compiles the uploaded photo into the full editorial prompt before KIE generation', async () => {
+  const originalFetch = globalThis.fetch
+  const fetchCalls = []
+  let kieRequestBody = null
+
+  globalThis.fetch = async (url, init) => {
+    fetchCalls.push(String(url))
+    if (String(url) === 'https://api.openai.com/v1/responses') {
+      return Response.json({
+        output: [{
+          content: [{
+            type: 'output_text',
+            text: JSON.stringify({
+              orientation: 'landscape',
+              subjectType: 'landscape',
+              spatialFacts: [
+                'a low horizon crosses the upper third',
+                'two dark cliffs frame a pale opening',
+                'the brightest water sits right of center',
+              ],
+              structuralAxes: ['low horizontal horizon'],
+              movementDirection: 'left to right toward open water',
+              spatialRhythm: 'two dense masses separated by a wide pause',
+              tonalHierarchy: 'dark stone around pale water and sky',
+              negativeSpace: 'open sky and water between the cliffs',
+              colorRoles: {
+                dominant: 'muted sea blue',
+                dark: 'charcoal stone',
+                light: 'warm cloud white',
+                accents: ['rust brown'],
+              },
+              suggestedTitle: 'Between Quiet Cliffs',
+              safetyNotes: [],
+            }),
+          }],
+        }],
+      })
+    }
+
+    kieRequestBody = JSON.parse(String(init.body))
+    return Response.json({ code: 200, data: { taskId: 'task_photo_abstract_compiled' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        prompt: 'old condensed fallback prompt',
+        toolSlug: 'ai-photo-abstract-poster-generator',
+        toolLabel: 'Photo Abstract Poster Generator',
+        imageUrls: ['https://assets.toolaze.com/uploads/photo-abstract-source.webp'],
+        aspectRatio: '9:16',
+      }),
+      env: {
+        OPENAI_API_KEY: 'openai-test-key',
+        PHOTO_ABSTRACT_VISION_MODEL: 'gpt-photo-vision',
+        KIE_AI_API_KEY: 'kie-test-key',
+      },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(fetchCalls, [
+      'https://api.openai.com/v1/responses',
+      'https://api.kie.ai/api/v1/jobs/createTask',
+    ])
+    assert.equal(kieRequestBody.model, 'gpt-image-2-image-to-image')
+    assert.deepEqual(kieRequestBody.input.input_urls, ['https://assets.toolaze.com/uploads/photo-abstract-source.webp'])
+    assert.match(kieRequestBody.input.prompt, /vertical editorial diptych/i)
+    assert.match(kieRequestBody.input.prompt, /Between Quiet Cliffs/)
+    assert.match(kieRequestBody.input.prompt, /#F3F0E8/)
+    assert.doesNotMatch(kieRequestBody.input.prompt, /old condensed fallback prompt/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('Photo Abstract Generator falls back deterministically when visual analysis is unavailable', async () => {
+  const originalFetch = globalThis.fetch
+  const submittedPrompts = []
+
+  globalThis.fetch = async (_url, init) => {
+    submittedPrompts.push(JSON.parse(String(init.body)).input.prompt)
+    return Response.json({ code: 200, data: { taskId: `task_photo_abstract_${submittedPrompts.length}` } })
+  }
+
+  try {
+    for (let index = 0; index < 2; index += 1) {
+      const response = await onRequest({
+        request: createGenerationRequest({
+          prompt: '',
+          toolSlug: 'ai-photo-abstract-poster-generator',
+          imageUrls: ['https://assets.toolaze.com/uploads/photo-abstract-fallback.webp'],
+        }),
+        env: { KIE_AI_API_KEY: 'kie-test-key' },
+      })
+      assert.equal(response.status, 200)
+    }
+
+    assert.equal(submittedPrompts.length, 2)
+    assert.equal(submittedPrompts[0], submittedPrompts[1])
+    assert.match(submittedPrompts[0], /three to six observable spatial facts/i)
+    assert.match(submittedPrompts[0], /vertical editorial diptych/i)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('Photo Abstract Generator checks account credits before visual analysis', async () => {
+  const originalFetch = globalThis.fetch
+  let fetchCount = 0
+
+  globalThis.fetch = async () => {
+    fetchCount += 1
+    return Response.json({ code: 200, data: { taskId: 'should_not_start' } })
+  }
+
+  try {
+    const response = await onRequest({
+      request: createGenerationRequest({
+        prompt: '',
+        toolSlug: 'ai-photo-abstract-poster-generator',
+        imageUrls: ['https://assets.toolaze.com/uploads/photo-abstract-before-auth.webp'],
+      }),
+      env: {
+        OPENAI_API_KEY: 'openai-test-key',
+        KIE_AI_API_KEY: 'kie-test-key',
+        DB: createUnauthenticatedDb(),
+      },
+    })
+    const payload = await response.json()
+
+    assert.equal(response.status, 401)
+    assert.equal(payload.error, 'Please sign in with Google to generate images.')
+    assert.equal(fetchCount, 0)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('GPT Image 2 text-to-image requests keep the text-to-image provider model', async () => {
   const originalFetch = globalThis.fetch
   let requestBody = null

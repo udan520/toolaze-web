@@ -1,0 +1,32 @@
+{
+  "taskId": "2026-08-07-perm-filter",
+  "slug": "perm-filter",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "localeCoverage": [
+    "en",
+    "de",
+    "ja",
+    "es",
+    "zh-TW",
+    "pt",
+    "fr",
+    "ko",
+    "it"
+  ],
+  "sourceData": "src/data/en/perm-filter.json",
+  "canonicalPath": "/perm-filter",
+  "strategySummary": {
+    "competitorPattern": "Focused hairstyle-filter pages lead with upload-first tool UX, style presets, before-after demos, short how-to guidance, and FAQ answers for free/no-signup and realism limits.",
+    "toolazeApproach": "Use the real GPT Image 2 image-to-image tool, hidden built-in prompts for presets, selected-state cards, Custom text/reference modes, and a short SEO page instead of a long generic hairstyle page."
+  },
+  "releaseBoundary": {
+    "requiresPublicR2AssetsBeforeProduction": true,
+    "currentPreviewAssets": "local"
+  },
+  "outputs": {
+    "route": "src/app/perm-filter/page.tsx",
+    "localeRoute": "src/app/[locale]/perm-filter/page.tsx"
+  }
+}

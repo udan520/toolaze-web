@@ -933,6 +933,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiDanceGenerator',
       'aiHairstyleChanger',
       'buzzCutFilter',
+      'baldFilter',
+      'bangsFilter',
+      'permFilter',
       'aiHairColorChanger',
       'aiClothesChanger',
       'aiBikiniGenerator',
@@ -1002,6 +1005,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'aiDanceGenerator',
       'aiHairstyleChanger',
       'buzzCutFilter',
+      'baldFilter',
+      'bangsFilter',
+      'permFilter',
       'aiHairColorChanger',
       'aiClothesChanger',
       'aiBikiniGenerator',
@@ -1575,6 +1581,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     showPromptPresetSelectedState={content.topTool?.functionalAcceptance?.showPresetSelectedState === true}
                     hidePresetReferenceUploader={content.topTool?.functionalAcceptance?.hidePresetReferenceUploader === true}
                     enableCustomReferenceImageUpload={content.topTool?.functionalAcceptance?.enableCustomReferenceImageUpload === true}
+                    inlinePresetReferenceUpload={content.topTool?.functionalAcceptance?.inlinePresetReferenceUpload === true}
+                    combineCustomReferenceAndPrompt={content.topTool?.functionalAcceptance?.combineCustomReferenceAndPrompt === true}
                     customReferencePrompt={content.topTool?.functionalAcceptance?.customReferencePrompt}
                     compactResultPanel={content.topTool?.compactResultPanel === true}
                     customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}

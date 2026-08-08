@@ -1,0 +1,286 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bald-filter/bald-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "대머리 필터",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "남성 헤어스타일 선택",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "남성"
+        },
+        {
+          "id": "custom",
+          "label": "사용자 지정"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "men",
+      "presets": [
+        {
+          "label": "Bald",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Buzz Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Crew Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Textured Crop",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Taper Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Messy Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Short Curly",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Slick Back",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Soft Bowl",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Textured Flow",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Short Box Braids",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp",
+        "title": "대머리 필터 전후 예시",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "사용자 지정 헤어스타일 지시",
+      "promptPlaceholder": "삭발 마감, 헤어라인, 짧은 길이 또는 원하는 스타일을 설명하세요.",
+      "personUploadTitle": "인물 사진 업로드",
+      "personUploadHelper": "이미지 1: 편집할 인물 사진을 업로드하세요.",
+      "presetChoiceTitle": "내장 남성 헤어스타일 선택",
+      "customReferenceUploadTitle": "헤어스타일 참조 이미지 업로드",
+      "customTextModeLabel": "헤어스타일 설명",
+      "customReferenceModeLabel": "헤어스타일 참조"
+    }
+  },
+  "metadata": {
+    "title": "무료 대머리 필터 온라인 | 가입 없음 | Toolaze",
+    "description": "Toolaze 무료 대머리 필터를 가입 없이 사용하세요. 인물 사진 한 장을 올리고 얼굴은 유지한 채 삭발한 모습을 미리 볼 수 있습니다."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "무료 AI <span class=\"text-gradient\">대머리 필터</span> 온라인",
+    "desc": "선명한 인물 사진을 올리면 남성 탭에서 대머리 스타일이 선택된 상태로 시작합니다. Toolaze는 프리셋 지시문을 숨기고 사용자 지정을 유지해 가입 없이 삭발 느낌을 비교할 수 있게 합니다."
+  },
+  "safetyNotice": "결과는 시각적 삭발 콘셉트이며 실제 헤어라인, 두피 톤, 머리 형태를 보장하지 않습니다.",
+  "intro": {
+    "title": "삭발하기 전에 먼저 확인",
+    "content": [
+      {
+        "title": "삭발하기 전에 먼저 확인",
+        "text": "대머리 필터는 인물 사진의 머리카락만 자연스럽게 줄이고 얼굴, 눈썹, 수염, 의상, 조명, 배경을 최대한 유지합니다."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "대머리 필터 사용 방법",
+    "steps": [
+      {
+        "title": "사진 업로드",
+        "desc": "머리 전체, 헤어라인, 눈썹, 얼굴이 보이는 정면 또는 약간 측면 사진을 사용하세요."
+      },
+      {
+        "title": "대머리 또는 짧은 스타일 선택",
+        "desc": "남성 탭은 대머리로 열리며 다른 짧은 스타일도 비교할 수 있습니다."
+      },
+      {
+        "title": "생성 후 확인",
+        "desc": "프리셋은 입력창을 숨긴 채 내장 지시문을 사용하고 기록에 지시문이 남습니다."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "더 자연스러운 삭발 미리보기를 위한 사진 팁",
+    "subtitle": "모자, 후드, 잘린 이마 없이 머리와 헤어라인을 보여 주세요.",
+    "items": [
+      {
+        "title": "머리와 헤어라인 보이기",
+        "desc": "모자, 후드, 잘린 이마 없이 머리와 헤어라인을 보여 주세요.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "눈썹과 수염 보이기",
+        "desc": "눈썹과 수염을 선명하게 유지하세요.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "부드러운 정면 조명 사용",
+        "desc": "부드러운 정면 조명을 사용하세요.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "극단적 각도 피하기",
+        "desc": "프로필, 극단적 각도, 왜곡된 셀카를 피하세요.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "대머리 필터 FAQ",
+  "faq": [
+    {
+      "q": "무료이고 가입이 필요 없나요?",
+      "a": "네. 가입 없이 시작할 수 있지만 무제한 사용 약속은 아닙니다."
+    },
+    {
+      "q": "처음 무엇이 선택되나요?",
+      "a": "네. 남성 탭에서 대머리가 선택됩니다."
+    },
+    {
+      "q": "카드 이미지도 모델에 보내나요?",
+      "a": "아니요. 카드 이미지는 선택용이며 사진과 숨겨진 지시문을 사용합니다."
+    },
+    {
+      "q": "다른 스타일도 비교할 수 있나요?",
+      "a": "네. 다른 짧은 스타일도 비교할 수 있습니다."
+    },
+    {
+      "q": "중요한 얼굴 특징은 보존되나요?",
+      "a": "지시문은 눈썹과 수염 보존을 요청하지만 결과는 달라질 수 있습니다."
+    },
+    {
+      "q": "결과가 정확한가요?",
+      "a": "아니요. 시각 콘셉트입니다."
+    },
+    {
+      "q": "참고로 사용할 수 있나요?",
+      "a": "네. 이발사에게 방향을 설명하는 참고로 쓸 수 있습니다."
+    }
+  ],
+  "moreTools": "관련 AI 도구",
+  "moreToolsLinks": [
+    {
+      "title": "버즈컷 필터",
+      "description": "선명한 인물 사진으로 관련 헤어 및 이미지 편집도 비교하세요.",
+      "href": "/buzz-cut-filter",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "alt": "버즈컷 필터"
+      }
+    },
+    {
+      "title": "AI 헤어스타일 체인저",
+      "description": "선명한 인물 사진으로 관련 헤어 및 이미지 편집도 비교하세요.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI 헤어스타일 체인저"
+      }
+    },
+    {
+      "title": "AI 헤어 컬러 체인저",
+      "description": "선명한 인물 사진으로 관련 헤어 및 이미지 편집도 비교하세요.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI 헤어 컬러 체인저"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolaze 대머리 필터를 쓰는 이유",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "가입 없이 시작",
+        "desc": "계정 없이 삭발 느낌을 확인할 수 있습니다."
+      },
+      {
+        "icon": "🪒",
+        "iconType": "guidance",
+        "title": "대머리 기본 선택",
+        "desc": "대머리가 기본 선택되어 있습니다."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "지시문 숨김",
+        "desc": "프리셋 지시문은 숨겨지며 세부 요청은 사용자 지정에서 조정합니다."
+      }
+    ]
+  }
+}

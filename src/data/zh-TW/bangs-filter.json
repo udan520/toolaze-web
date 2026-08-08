@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "瀏海濾鏡",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "選擇瀏海風格",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "女性"
+        },
+        {
+          "id": "custom",
+          "label": "自訂"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "齊瀏海",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "短鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A 字鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "長層次",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "八字瀏海",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "斜瀏海",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "大波浪",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "精靈短髮",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "狼尾剪",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "高丸子頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "雙辮子",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "捲髮鮑伯頭",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "直髮",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "自訂",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "瀏海濾鏡前後對比示範",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "自訂髮型說明",
+      "promptPlaceholder": "請描述您想要的瀏海長度、密度、分線、質地或邊緣形狀。",
+      "personUploadTitle": "上傳人物照片",
+      "personUploadHelper": "圖 1：上傳您想要編輯的人像。",
+      "presetChoiceTitle": "選擇內建的瀏海風格之一",
+      "customReferenceUploadTitle": "上傳髮型參考圖片",
+      "customTextModeLabel": "描述髮型",
+      "customReferenceModeLabel": "參考髮型"
+    }
+  },
+  "metadata": {
+    "title": "免費線上瀏海濾鏡 | 免註冊 | Toolaze",
+    "description": "線上免費試用 Toolaze 的瀏海濾鏡，無需註冊。上傳一張人像照，即可預覽空氣瀏海、八字瀏海、齊瀏海、旁分瀏海等各種造型。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上 <span class=\\\"text-gradient\\\">AI 瀏海濾鏡</span>",
+    "desc": "上傳一張清晰的人像照，從「女性」分頁開始，預設已選取齊瀏海。Toolaze 提供多種瀏海風格，並隱藏了預設的內建提示詞，同時保留「自訂」選項，供您輸入文字描述或上傳髮型參考圖片。"
+  },
+  "safetyNotice": "呈現結果為視覺上的瀏海概念，不保證剪髮後的實際效果。真實的瀏海會受頭髮密度、髮漩、額頭形狀與整理方式而有所影響。",
+  "intro": {
+    "title": "什麼是 AI 瀏海濾鏡？",
+    "content": [
+      {
+        "title": "剪瀏海前的預覽工具",
+        "text": "AI 瀏海濾鏡能編輯人像照中的前方髮型，讓您在美髮沙龍預約、更換頭貼、規劃角色扮演或快速檢視造型時，預先測試八字瀏海、空氣瀏海、齊瀏海、旁分瀏海、空氣薄瀏海或捲瀏海，同時保留臉部與照片其餘部分。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用瀏海濾鏡",
+    "steps": [
+      {
+        "title": "上傳一張人像照",
+        "desc": "選擇正面且清晰的照片，確保您的額頭、髮際線與目前的髮型清楚可見。"
+      },
+      {
+        "title": "挑選瀏海風格",
+        "desc": "「女性」分頁開啟時預設為齊瀏海，您也可以切換為八字、旁分、短瀏海、層次、微卷或捲髮等造型。"
+      },
+      {
+        "title": "產生或切換至自訂",
+        "desc": "預設風格會使用隱藏的提示詞。如果您想自行描述瀏海風格或上傳髮型參考圖片，請開啟「自訂」。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "獲得更佳瀏海預覽效果的照片建議",
+    "subtitle": "瀏海效果取決於額頭、髮際線與臉部輪廓修飾，因此清晰的人像照非常重要。",
+    "items": [
+      {
+        "title": "露出額頭區域",
+        "desc": "避免戴帽子、有強烈陰影、手部或頭髮遮住整個瀏海區域。",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "使用正面照片",
+        "desc": "正面人像照有助於更輕鬆地預覽瀏海長度、分線與對稱性。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "保持頭髮紋理清晰",
+        "desc": "自然光有助於讓模型將瀏海自然融合至直髮、微卷或捲髮中。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "避免使用強效美顏濾鏡",
+        "desc": "濾鏡可能會模糊髮際線，使新瀏海看起來不夠真實。",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "瀏海濾鏡常見問題",
+  "faq": [
+    {
+      "q": "瀏海濾鏡是免費且無需註冊的嗎？",
+      "a": "是的。您可以開啟圖片工具、上傳一張人像照，無須註冊即可開始預覽瀏海。這並非無限次使用的承諾，實際使用仍可能受到生成次數限制或模型供應狀況影響。"
+    },
+    {
+      "q": "預設會選取哪一種瀏海風格？",
+      "a": "預設會選取「齊瀏海」，方便您立即預覽清晰的全瀏海改造效果。"
+    },
+    {
+      "q": "我可以嘗試哪些瀏海造型？",
+      "a": "您可以嘗試旁分瀏海、空氣瀏海、齊瀏海、斜瀏海、八字瀏海、透氣瀏海、極短瀏海和捲瀏海。"
+    },
+    {
+      "q": "預設卡片圖片會傳送給模型嗎？",
+      "a": "不會。預設卡片圖片是視覺選項。對於內建預設，Toolaze 會傳送您的肖像以及所選瀏海造型的隱藏提示詞。"
+    },
+    {
+      "q": "我可以上傳瀏海參考圖片嗎？",
+      "a": "可以。開啟「自訂」並選擇「參考髮型」以上傳髮型參考圖片。您也可以選擇「描述髮型」並以文字書寫瀏海風格。"
+    },
+    {
+      "q": "結果會準確顯示真實理髮的效果嗎？",
+      "a": "不會。這只是一個視覺概念。真實的瀏海取決於頭髮厚度、髮旋、額頭形狀、剪髮技術和日常造型。"
+    },
+    {
+      "q": "我可以在沙龍使用這個預覽嗎？",
+      "a": "可以。它有助於溝通您喜歡的方向，但造型師應根據您的髮質和臉型調整瀏海。"
+    }
+  ],
+  "moreTools": "相關 AI 工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 髮型變換器",
+      "description": "探索男女及自訂造型的完整髮型變換。",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI 髮型變換器"
+      }
+    },
+    {
+      "title": "燙髮濾鏡",
+      "description": "只要一張肖像，就能預覽柔和波浪、捲髮和沙龍燙髮方向。",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "燙髮濾鏡"
+      }
+    },
+    {
+      "title": "AI 染髮劑",
+      "description": "保留您的髮型並預覽不同的髮色。",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI 染髮劑"
+      }
+    }
+  ],
+  "features": {
+    "title": "為什麼使用 Toolaze 瀏海濾鏡？",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "內建多種瀏海",
+        "desc": "只要一張肖像，即可嘗試八字、空氣、齊、斜、旁分、透氣、極短和捲瀏海。"
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "免費、免註冊即可開始",
+        "desc": "開啟圖片工具、上傳肖像，無須建立帳戶即可開始比較瀏海構想。"
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "隨時提供自訂選項",
+        "desc": "使用內建造型以追求速度，或切換至「自訂」以描述不同的瀏海或上傳髮型參考。"
+      }
+    ]
+  }
+}

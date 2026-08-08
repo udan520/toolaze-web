@@ -1,0 +1,308 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/perm-filter/perm-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Dauerwellen-Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Dauerwellen-Stil auswählen",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Damen"
+        },
+        {
+          "id": "men",
+          "label": "Herren"
+        },
+        {
+          "id": "custom",
+          "label": "Benutzerdefiniert"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Soft-Wave-Dauerwelle",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Kurzer Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A-Linien-Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Lange Stufen",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Vorhangpony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Gerader Pony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Seitlicher Pony",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Große Wellen",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Pixie-Schnitt",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Wolf Cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Hoher Dutt",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Zwei Zöpfe",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Lockiger Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Glattes Haar",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Benutzerdefiniert",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "title": "Vorher-Nachher-Demo des Dauerwellen-Filters",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Benutzerdefinierte Frisuren-Anweisung",
+      "promptPlaceholder": "Beschreibe die gewünschte Lockengröße, Ansatzvolumen, Wellenweichheit, Länge oder den Dauerwellen-Stil.",
+      "personUploadTitle": "Personen-Foto hochladen",
+      "personUploadHelper": "Bild 1: Lade das Portrait hoch, das du bearbeiten möchtest.",
+      "presetChoiceTitle": "Wähle einen der integrierten Dauerwellen-Stile",
+      "customReferenceUploadTitle": "Frisuren-Referenz hochladen",
+      "customTextModeLabel": "Frisur beschreiben",
+      "customReferenceModeLabel": "Referenz-Frisur"
+    }
+  },
+  "metadata": {
+    "title": "Kostenloser Dauerwellen-Filter online | KI-Dauerwellen-Filter | Toolaze",
+    "description": "Probiere den kostenlosen KI-Dauerwellen-Filter von Toolaze online aus. Lade ein Portrait hoch und teste Soft-Wave-, Loose-Digital-, Locken-Bob-, Spiral-, koreanische Volumen-Dauerwellen und Herren-Dauerwellen-Stile."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Kostenloser KI <span class=\\\"text-gradient\\\">Dauerwellen-Filter</span> Online",
+    "desc": "Lade ein klares Portrait hoch und teste, wie du mit einer Dauerwelle aussehen würdest. Toolaze startet mit ausgewählter Soft-Wave-Dauerwelle, enthält Damen- und Herren-Dauerwellenstile, blendet Preset-Prompts aus und hält die benutzerdefinierte Option für Textbeschreibungen oder Referenzbilder bereit."
+  },
+  "safetyNotice": "Das Ergebnis ist ein visuelles Dauerwellen-Konzept, kein garantiertes Salonergebnis. Echte Locken hängen von Haarlänge, Dichte, Textur, chemischer Behandlung und Styling ab.",
+  "intro": {
+    "title": "Was ist ein KI-Dauerwellen-Filter?",
+    "content": [
+      {
+        "title": "Sieh dir gelocktes oder gewelltes Haar vor dem Friseurbesuch an",
+        "text": "Ein KI-Dauerwellen-Filter bearbeitet die sichtbare Frisur in einem Portrait in ein gelocktes oder gewelltes Dauerwellen-Konzept, während Gesicht, Ausdruck, Kleidung, Beleuchtung und Hintergrund erhalten bleiben. Verwende ihn, um weiche Wellen, Digital-Perm-Formen, lockige Bob-Stile, Spirallocken, koreanische Volumendauerwellen oder Herren-Wellen dauerhaft vor einem Friseurbesuch zu vergleichen."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "So verwendest du den Dauerwellen-Filter",
+    "steps": [
+      {
+        "title": "Lade ein Portrait hoch",
+        "desc": "Verwende ein klares Portrait, auf dem deine Haarlänge, dein Gesicht und dein aktueller Haaransatz gut sichtbar sind."
+      },
+      {
+        "title": "Wähle einen Dauerwellen-Stil",
+        "desc": "Beginne mit der Soft-Wave-Dauerwelle und vergleiche dann Lose-Digital-, Locken-Bob-, Spiral-, koreanische Volumen-, Beach-Wave- oder Herren-Dauerwellen-Stile."
+      },
+      {
+        "title": "Generiere oder passe die Lockenrichtung an",
+        "desc": "Voreingestellte Stile verwenden versteckte Prompts. Wechsle zu Benutzerdefiniert, wenn du engere Locken, lockerere Wellen, mehr Ansatzvolumen oder ein Referenz-Frisurenimage wünschst."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Fototipps für eine bessere Dauerwellen-Vorschau",
+    "subtitle": "Dauerwellen-Vorschauen funktionieren am besten, wenn das Modell deine aktuelle Haarlänge und deine gesichtsformende Kontur erkennen kann.",
+    "items": [
+      {
+        "title": "Zeige genügend Haarlänge",
+        "desc": "Vermeide zugeschnittene Fotos, bei denen die Seiten, der Scheitel oder die Spitzen außerhalb des Rahmens liegen.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Verwende natürliches Licht",
+        "desc": "Gleichmäßiges Licht hilft den Locken, sich harmonisch in das ursprüngliche Haar und die Gesichtsform einzufügen.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Halte das Gesicht frei",
+        "desc": "Haare können das Gesicht umrahmen, aber Sonnenbrillen, Hände oder starke Schatten machen die Bearbeitung instabiler.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Passe den Stil an deine Länge an",
+        "desc": "Sehr kurzes Haar zeigt lange Spirallocken möglicherweise nicht optimal an – wähle einen Dauerwellen-Stil, der deiner aktuellen Länge nahekommt, für sauberere Ergebnisse.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Dauerwellen-Filter FAQ",
+  "faq": [
+    {
+      "q": "Ist der Dauerwellen-Filter kostenlos auszuprobieren?",
+      "a": "Ja. Du kannst das Bildtool öffnen, ein Portrait hochladen und direkt Dauerwellen-Stile ausprobieren. Dies ist kein Versprechen auf unbegrenzte Nutzung; Generierungslimits oder Modellverfügbarkeit können dennoch gelten."
+    },
+    {
+      "q": "Welcher Dauerwellen-Stil ist standardmäßig ausgewählt?",
+      "a": "Die Soft-Wave-Dauerwelle ist standardmäßig ausgewählt, da sie einen natürlichen Ausgangspunkt darstellt, bevor engere Locken oder voluminösere Stile verglichen werden."
+    },
+    {
+      "q": "Können Männer den Dauerwellen-Filter nutzen?",
+      "a": "Ja. Die Seite enthält Herren-Dauerwellen-Presets wie Wavy Perm für Männer, kurze Locken-Dauerwelle, strukturierte Dauerwelle und Loose Flow Perm."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen Dauerwellen-Filter und KI-Frisurenwechsler?",
+      "a": "Der KI-Frisurenwechsler deckt viele Haarschnittrichtungen ab. Der Dauerwellen-Filter ist spezialisierter und konzentriert sich auf gelockte, gewellte und Salon-Dauerwellen-Looks."
+    },
+    {
+      "q": "Wird das Vorschaubild der Karte an das Modell gesendet?",
+      "a": "Nein. Für integrierte Voreinstellungen sendet Toolaze dein hochgeladenes Portrait plus den versteckten Dauerwellen-Prompt. Das Kartenbild hilft dir lediglich bei der Auswahl des Stils."
+    },
+    {
+      "q": "Kann ich eine benutzerdefinierte Dauerwelle beschreiben?",
+      "a": "Ja. Öffne Benutzerdefiniert und wähle Frisur beschreiben, um Lockengröße, Volumen, Scheitelung oder Länge einzugeben. Du kannst auch Referenz-Frisur verwenden, um ein Frisuren-Referenzbild hochzuladen."
+    },
+    {
+      "q": "Ist das Ergebnis eine exakte Salon-Vorhersage?",
+      "a": "Nein. Es ist ein visuelles Konzept. Echte Dauerwellen-Ergebnisse hängen von Haarzustand, Länge, Dichte, vorherigen Behandlungen, chemischer Verarbeitung und Styling ab."
+    }
+  ],
+  "moreTools": "Verwandte KI-Tools",
+  "moreToolsLinks": [
+    {
+      "title": "Pony-Filter",
+      "description": "Teste Vorhangpony, fransigen, geraden, seitlichen und lockigen Pony anhand eines Portraits.",
+      "href": "/bangs-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "alt": "Pony-Filter"
+      }
+    },
+    {
+      "title": "KI-Frisurenwechsler",
+      "description": "Entdecke kurze, lange, strukturierte und individuelle Frisurenrichtungen.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "KI-Frisurenwechsler"
+      }
+    },
+    {
+      "title": "KI-Haarfarbenwechsler",
+      "description": "Probiere natürliche und kreative Haarfarben mit deiner aktuellen Frisur aus.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "KI-Haarfarbenwechsler"
+      }
+    }
+  ],
+  "features": {
+    "title": "Warum den Toolaze Dauerwellen-Filter nutzen?",
+    "items": [
+      {
+        "icon": "🌀",
+        "iconType": "guidance",
+        "title": "Dauerwellen-Stile für Damen und Herren",
+        "desc": "Vergleiche weiche Wellen, Digital-Perms, Locken-Bob-Looks, koreanische Volumendauerwellen und Herren-Dauerwellen anhand eines Portraits."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Kostenloser Start online",
+        "desc": "Lade ein Portrait hoch und teste eine Dauerwellen-Richtung vor dem Friseurbesuch."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Benutzerdefinierte Lockenkontrolle",
+        "desc": "Verwende integrierte Stile für Schnelligkeit oder wechsle zu Benutzerdefiniert, um engere Locken, Ansatzvolumen, Lockengröße oder eine Frisurenreferenz zu beschreiben."
+      }
+    ]
+  }
+}

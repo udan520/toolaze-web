@@ -12,6 +12,23 @@ const pages = Object.fromEntries(
 const aiImageToolSource = readFileSync('src/components/AiImageGenerationTool.tsx', 'utf8')
 const toolL2Source = readFileSync('src/components/blocks/ToolL2PageContent.tsx', 'utf8')
 
+const bangsPresetLabels = {
+  en: ['Blunt Bangs', 'Side-Swept Bangs'],
+  de: ['Gerader Pony', 'Seitlicher Pony'],
+  ja: ['ぱっつん前髪', '斜め前髪'],
+  es: ['Flequillo recto', 'Flequillo lateral'],
+  'zh-TW': ['齊瀏海', '斜瀏海'],
+  pt: ['Franja reta', 'Franja lateral'],
+  fr: ['Frange droite', 'Frange sur le côté'],
+  ko: ['일자 앞머리', '사이드뱅'],
+  it: ['Frangia dritta', 'Frangia laterale'],
+}
+
+const bangsPresetImages = [
+  'https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp',
+  'https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp',
+]
+
 test('AI Hairstyle Changer keeps Women, Men, and Custom as the top-level hairstyle tabs', () => {
   for (const locale of locales) {
     const page = pages[locale]
@@ -26,6 +43,24 @@ test('AI Hairstyle Changer keeps Women, Men, and Custom as the top-level hairsty
   }
 })
 
+test('AI Hairstyle Changer offers blunt and side-swept bangs in every Women preset group', () => {
+  for (const locale of locales) {
+    const presets = pages[locale].topTool.functionalAcceptance.presets
+    const womenPresets = presets.filter((preset) => preset.group === 'women')
+
+    for (const [index, label] of bangsPresetLabels[locale].entries()) {
+      const preset = womenPresets.find((candidate) => candidate.label === label)
+      assert.ok(preset, `${locale} is missing ${label}`)
+      assert.ok(preset.prompt.trim(), `${locale} ${label} must keep its hidden generation prompt`)
+      assert.equal(preset.image, bangsPresetImages[index], `${locale} ${label} must use its matching template`)
+      assert.match(preset.image, /^https:\/\/assets\.toolaze\.com\/ai-hairstyle-changer\/templates\/women\/.+\.webp$/)
+    }
+
+    assert.match(womenPresets.find((preset) => preset.label === bangsPresetLabels[locale][0]).prompt, /blunt bangs/i)
+    assert.match(womenPresets.find((preset) => preset.label === bangsPresetLabels[locale][1]).prompt, /side-swept bangs/i)
+  }
+})
+
 test('AI Hairstyle Changer Custom tab supports prompt or hairstyle-reference input, not both at once', () => {
   for (const locale of locales) {
     const page = pages[locale]
@@ -34,6 +69,8 @@ test('AI Hairstyle Changer Custom tab supports prompt or hairstyle-reference inp
     assert.equal(page.topTool.functionalAcceptance.customPromptTabId, 'custom')
     assert.equal(page.topTool.functionalAcceptance.hidePresetReferenceUploader, true)
     assert.equal(page.topTool.functionalAcceptance.enableCustomReferenceImageUpload, true)
+    assert.notEqual(page.topTool.functionalAcceptance.inlinePresetReferenceUpload, true)
+    assert.notEqual(page.topTool.functionalAcceptance.combineCustomReferenceAndPrompt, true)
     assert.equal(page.topTool.functionalAcceptance.showPresetSelectedState, true)
     assert.match(page.topTool.functionalAcceptance.customReferencePrompt, /hairstyle reference image/i)
     assert.ok(page.topTool.textOverrides.presetChoiceTitle)
@@ -54,19 +91,19 @@ test('AI Hairstyle Changer Custom tab supports prompt or hairstyle-reference inp
   assert.match(aiImageToolSource, /workflowPresetTabCount = Math\.max\(promptPresetTabs\.length, 1\)/)
   assert.match(aiImageToolSource, /gridTemplateColumns: `repeat\(\$\{workflowPresetTabCount\}, minmax\(0, 1fr\)\)`/)
   assert.doesNotMatch(aiImageToolSource, /data-workflow-preset-tabs[\s\S]{0,200}grid-cols-2/)
-  assert.match(aiImageToolSource, /shouldShowCustomInputModeSwitch = shouldRenderWorkflowTabsAboveUpload && activePromptPresetTab === customPromptTabId && enableCustomReferenceImageUpload/)
-  assert.match(aiImageToolSource, /shouldUseCustomReferenceUploader = shouldShowCustomInputModeSwitch && customInputMode === 'reference'/)
+  assert.match(aiImageToolSource, /shouldShowCustomInputModeSwitch = combineCustomReferenceAndPrompt \? false : \([\s\S]*activePromptPresetTab === customPromptTabId[\s\S]*enableCustomReferenceImageUpload/)
+  assert.match(aiImageToolSource, /shouldUseReferenceOnlyCustomMode = shouldShowCustomInputModeSwitch && customInputMode === 'reference'/)
   assert.match(aiImageToolSource, /!\(\(hidePresetPromptInput && activePromptPresetTab !== customPromptTabId\) \|\| shouldUseCustomReferenceUploader\)/)
 })
 
 test('AI Hairstyle Changer Custom reference mode enables generate from uploaded references', () => {
   assert.match(
     aiImageToolSource,
-    /const currentEffectivePrompt = shouldUseCustomReferenceUploader \? customReferencePrompt\.trim\(\) : prompt\.trim\(\)/,
+    /const currentEffectivePrompt = shouldUseCombinedCustomReference[\s\S]*shouldUseReferenceOnlyCustomMode[\s\S]*customReferencePrompt\.trim\(\)/,
   )
   assert.match(
     aiImageToolSource,
-    /const canGenerate = Boolean\(currentEffectivePrompt\) && \(activeTab !== 'image-to-image' \|\| hasCurrentReferenceImages\)/,
+    /const canGenerate = Boolean\(currentEffectivePrompt\)[\s\S]*?&& \(activeTab !== 'image-to-image' \|\| hasCurrentReferenceImages\)/,
   )
   assert.match(aiImageToolSource, /disabled=\{!canGenerate\}/)
   assert.doesNotMatch(

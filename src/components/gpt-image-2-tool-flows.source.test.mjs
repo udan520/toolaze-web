@@ -712,12 +712,23 @@ test('generic GPT Image 2 top component can use a JSON-configured model id', () 
   assert.doesNotMatch(gptTopBranch, /modelId="gpt-image-2"/)
 })
 
-test('AI Clothes Changer keeps workflow tabs above upload and clothing presets below upload', () => {
+test('AI Clothes Changer exposes Women, Men, and combined Custom workflows', () => {
   assert.equal(aiClothesChangerContent.topTool?.mode, 'image-to-image')
   assert.equal(aiClothesChangerContent.topTool?.maxUploadImages, 2)
+  const acceptance = aiClothesChangerContent.topTool?.functionalAcceptance
+
   assert.deepEqual(
-    aiClothesChangerContent.topTool?.functionalAcceptance?.presetTabs?.map((tab) => tab.id),
-    ['clothing-reference', 'custom'],
+    acceptance?.presetTabs?.map((tab) => tab.id),
+    ['women', 'men', 'custom'],
+  )
+  assert.equal(acceptance?.defaultPromptPresetTabId, 'women')
+  assert.equal(acceptance?.enableCustomReferenceImageUpload, true)
+  assert.equal(acceptance?.combineCustomReferenceAndPrompt, true)
+  assert.equal(acceptance?.inlinePresetReferenceUpload, false)
+  assert.equal(acceptance?.showPresetSelectedState, true)
+  assert.match(
+    acceptance?.customReferencePrompt || '',
+    /Image 1 is the person photo\. Image 2 is the target clothing reference\./,
   )
 
   const workflowTabsIndex = aiImageToolSource.indexOf('data-workflow-preset-tabs')
@@ -745,18 +756,27 @@ test('AI Clothes Changer keeps workflow tabs above upload and clothing presets b
   assert.match(aiImageToolSource, /preset\.referenceImage \|\| preset\.image/)
   assert.match(aiImageToolSource, /requestClothingReferenceFiles/)
   assert.match(aiImageToolSource, /requestClothingReferenceRemoteUrls/)
+  assert.match(
+    l2Source,
+    /inlinePresetReferenceUpload=\{content\.topTool\?\.functionalAcceptance\?\.inlinePresetReferenceUpload === true\}/,
+  )
+  assert.match(
+    l2Source,
+    /combineCustomReferenceAndPrompt=\{content\.topTool\?\.functionalAcceptance\?\.combineCustomReferenceAndPrompt === true\}/,
+  )
+  assert.match(aiImageToolSource, /shouldUseCombinedCustomReference/)
+  assert.match(aiImageToolSource, /composePromptParts\(customReferencePrompt\.trim\(\), prompt\.trim\(\)\)/)
+  assert.match(aiImageToolSource, /composePromptParts\(customReferencePrompt\.trim\(\), requestPrompt\)/)
 })
 
-test('AI Clothes Changer renders clothing presets as four compact import shortcuts', () => {
+test('AI Clothes Changer keeps the selected clothing reference visually active', () => {
   const presetShortcutBlock = aiImageToolSource.slice(
     aiImageToolSource.indexOf('{visiblePromptPresets.map((preset) => {'),
     aiImageToolSource.indexOf('})}', aiImageToolSource.indexOf('{visiblePromptPresets.map((preset) => {')) + 3,
   )
 
-  assert.match(aiImageToolSource, /shouldRenderWorkflowTabsAboveUpload\s*\? 'grid grid-cols-4 gap-2'/)
-  assert.match(presetShortcutBlock, /aspect-\[3\/4\]/)
   assert.match(presetShortcutBlock, /object-contain/)
-  assert.notEqual(aiClothesChangerContent.topTool?.functionalAcceptance?.showPresetSelectedState, true)
+  assert.equal(aiClothesChangerContent.topTool?.functionalAcceptance?.showPresetSelectedState, true)
   assert.match(presetShortcutBlock, /aria-pressed=\{showPromptPresetSelectedState \? isPromptPresetSelected : undefined\}/)
   assert.match(presetShortcutBlock, /isPromptPresetSelected = showPromptPresetSelectedState && selectedPromptPreset === preset\.label/)
   assert.match(presetShortcutBlock, /isPromptPresetSelected[\s\S]*ring-2 ring-\[#4F46E5\]\/25/)
@@ -807,19 +827,6 @@ test('AI Breast Expansion is discoverable from public Toolaze entry points in ev
       common.home?.homepageToolCardSummaries?.['ai-breast-expansion']?.summary?.trim(),
       `${locale} home summary should exist`,
     )
-  }
-})
-
-test('AI Clothes Changer presets use four generated R2 clothing references', () => {
-  const presets =
-    aiClothesChangerContent.topTool?.functionalAcceptance?.presets?.filter(
-      (preset) => preset.group === 'clothing-reference',
-    ) || []
-
-  assert.equal(presets.length, 4)
-  for (const preset of presets) {
-    assert.match(preset.image, /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
-    assert.equal(preset.referenceImage, preset.image)
   }
 })
 

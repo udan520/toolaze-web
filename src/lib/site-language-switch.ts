@@ -52,6 +52,9 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'ai-zine-poster-generator': ALL_LOCALE_CODES,
   'ai-photo-abstract-poster-generator': ALL_LOCALE_CODES,
   'world-cup-ai-image-generator': ALL_LOCALE_CODES,
+  'bald-filter': ALL_LOCALE_CODES,
+  'bangs-filter': ALL_LOCALE_CODES,
+  'perm-filter': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
   'ai-tools': ALL_LOCALE_CODES,

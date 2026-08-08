@@ -1,0 +1,308 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/perm-filter/perm-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro Permanente",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Elige un estilo de permanente",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Mujeres"
+        },
+        {
+          "id": "men",
+          "label": "Hombres"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Permanente de onda suave",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a soft wave perm with loose salon waves, natural bounce, realistic strand texture, and balanced volume around the face. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Bob corto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "Bob en A",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Capas largas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Flequillo cortina",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Flequillo recto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Flequillo lateral",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Ondas grandes",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Corte pixie",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Corte wolf",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Moño alto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Dos trenzas",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Bob rizado",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Pelo liso",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Personalizado",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "title": "Demostración de antes y después del filtro permanente",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Instrucción de peinado personalizado",
+      "promptPlaceholder": "Describe el tamaño de los rizos, el volumen en la raíz, la suavidad de las ondas, el largo o el estilo de permanente que deseas.",
+      "personUploadTitle": "Sube la foto de la persona",
+      "personUploadHelper": "Imagen 1: sube el retrato que deseas editar.",
+      "presetChoiceTitle": "Elige uno de los estilos de permanente integrados",
+      "customReferenceUploadTitle": "Sube una referencia de peinado",
+      "customTextModeLabel": "Describe el estilo de cabello",
+      "customReferenceModeLabel": "Estilo de cabello de referencia"
+    }
+  },
+  "metadata": {
+    "title": "Filtro de permanente gratis en línea | Filtro de permanente con IA | Toolaze",
+    "description": "Prueba gratis el filtro de permanente con IA de Toolaze en línea. Sube un retrato y previsualiza estilos de onda suave, digital suelta, bob rizado, espiral, volumen coreano y permanente para hombres."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Filtro de <span class=\\\"text-gradient\\\">permanente</span> con IA gratis en línea",
+    "desc": "Sube un retrato claro y previsualiza cómo te verías con una permanente. Toolaze comienza con la permanente de onda suave seleccionada, incluye estilos de permanente para mujeres y hombres, oculta los avisos preestablecidos y mantiene la opción personalizada disponible para una descripción de texto o imagen de referencia."
+  },
+  "safetyNotice": "El resultado es un concepto visual de permanente, no un resultado de salón garantizado. Los rizos reales dependen de la longitud, densidad, textura, proceso químico y peinado del cabello.",
+  "intro": {
+    "title": "¿Qué es un filtro de permanente con IA?",
+    "content": [
+      {
+        "title": "Mira tu cabello rizado u ondulado antes de reservar una permanente",
+        "text": "Un filtro de permanente con IA edita el peinado visible en un retrato convirtiéndolo en un concepto de permanente rizada u ondulada mientras conserva el rostro, la expresión, la ropa, la iluminación y el fondo. Úsalo para comparar ondas suaves, formas de permanente digital, estilos de bob rizado, rizos en espiral, permanentes de volumen coreano o permanentes onduladas para hombres antes de una visita al salón."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Cómo usar el filtro de permanente",
+    "steps": [
+      {
+        "title": "Sube un retrato",
+        "desc": "Usa un retrato claro donde se vea la longitud de tu cabello, tu rostro y tu línea capilar actual."
+      },
+      {
+        "title": "Elige un estilo de permanente",
+        "desc": "Comienza con la permanente de onda suave, luego compara estilos de permanente digital suelta, bob rizado, espiral, volumen coreano, onda de playa o permanente ondulada para hombres."
+      },
+      {
+        "title": "Genera o personaliza la dirección del rizo",
+        "desc": "Los estilos preestablecidos usan indicaciones ocultas. Cambia a personalizado si deseas rizos más apretados, ondas más sueltas, más volumen en la raíz o una imagen de cabello de referencia."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consejos de fotografía para una mejor vista previa de la permanente",
+    "subtitle": "Las vistas previas de permanente funcionan mejor cuando el modelo puede ver la longitud actual de tu cabello y la forma que enmarca tu rostro.",
+    "items": [
+      {
+        "title": "Muestra suficiente longitud de cabello",
+        "desc": "Evita fotos recortadas donde los lados, la coronilla o las puntas estén fuera del encuadre.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Usa iluminación natural",
+        "desc": "Una luz uniforme ayuda a que los rizos se mezclen con el cabello original y la forma del rostro.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Mantén el rostro despejado",
+        "desc": "El cabello puede enmarcar el rostro, pero las gafas, las manos o las sombras pesadas hacen que la edición sea menos estable.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Haz coincidir el estilo con tu longitud",
+        "desc": "El cabello muy corto puede no previsualizar bien los rizos largos en espiral; elige un estilo de permanente cercano a tu longitud actual para obtener resultados más limpios.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Preguntas frecuentes sobre el filtro de permanente",
+  "faq": [
+    {
+      "q": "¿Es gratis probar el filtro de permanente?",
+      "a": "Sí. Puedes abrir la herramienta de imagen, subir un retrato y empezar a previsible estilos de permanente. Esta no es una promesa de uso ilimitado; aún pueden aplicarse límites de generación o disponibilidad del modelo."
+    },
+    {
+      "q": "¿Qué estilo de permanente está seleccionado por defecto?",
+      "a": "La Permanente de Ondas Suaves está seleccionada por defecto porque es un punto de partida natural antes de comparar rizos más apretados o estilos de mayor volumen."
+    },
+    {
+      "q": "¿Pueden los hombres usar el Filtro de Permanente?",
+      "a": "Sí. La página incluye preajustes de permanente para hombres como Permanente Ondulada para Hombres, Permanente Corta rizada, Permanente Texturizada y Permanente de Flujo Suelto."
+    },
+    {
+      "q": "¿Cuál es la diferencia entre el Filtro de Permanente y el Cambiador de Peinado con IA?",
+      "a": "El Cambiador de Peinado con IA abarca muchas direcciones de corte de cabello. El Filtro de Permanente es más específico y se centra en estilos rizados, ondulados y de salón."
+    },
+    {
+      "q": "¿Se envía al modelo la imagen de la tarjeta de preajuste?",
+      "a": "No. Para los preajustes integrados, Toolaze envía tu retrato cargado más el mensaje de permanente oculto. La imagen de la tarjeta solo te ayuda a elegir un estilo."
+    },
+    {
+      "q": "¿Puedo describir una permanente personalizada?",
+      "a": "Sí. Abre Personalizado y elige Describir estilo de cabello para escribir el tamaño del rizo, el volumen, la raya o el largo. También puedes usar Estilo de cabello de referencia para subir una imagen de referencia de peinado."
+    },
+    {
+      "q": "¿Es el resultado una predicción exacta del salón de belleza?",
+      "a": "No. Es un concepto visual. Los resultados reales de la permanente dependen de la condición del cabello, largo, densidad, tratamientos previos, procesamiento químico y peinado."
+    }
+  ],
+  "moreTools": "Herramientas de IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "Filtro de Flequillo",
+      "description": "Previsualiza flequillos de cortina, desfilados, rectos, de lado y rizados a partir de un retrato.",
+      "href": "/bangs-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "alt": "Filtro de Flequillo"
+      }
+    },
+    {
+      "title": "Cambiador de Peinado con IA",
+      "description": "Explora direcciones de peinado cortas, largas, texturizadas y personalizadas.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "Cambiador de Peinado con IA"
+      }
+    },
+    {
+      "title": "Cambiador de Color de Cabello con IA",
+      "description": "Previsualiza colores de cabello naturales y creativos en tu peinado actual.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "Cambiador de Color de Cabello con IA"
+      }
+    }
+  ],
+  "features": {
+    "title": "¿Por qué usar el Filtro de Permanente de Toolaze?",
+    "items": [
+      {
+        "icon": "🌀",
+        "iconType": "guidance",
+        "title": "Estilos de permanente para mujeres y hombres",
+        "desc": "Compara ondas suaves, permanentes digitales, looks de bob rizado, permanentes de volumen coreano y permanentes onduladas para hombres desde un solo retrato."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Inicio en línea gratuito",
+        "desc": "Sube un retrato y prueba una dirección de permanente antes de comprometerte con una visita al salón."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Control de cURL personalizado",
+        "desc": "Usa estilos integrados para mayor velocidad o cambia a Personalizado para describir rizos más definidos, volumen en la raíz, tamaño de los rizos o una referencia de peinado."
+      }
+    ]
+  }
+}

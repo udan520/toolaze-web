@@ -76,6 +76,9 @@ const cardAssets = {
     'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
   buzzCut: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
+  bald: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
+  bangs: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+  perm: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
     'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
@@ -216,6 +219,27 @@ const en: StoredAiToolsPageCopy = {
       href: '/buzz-cut-filter',
       image: cardAssets.buzzCut,
       description: 'Upload one portrait and preview a close buzz cut or short clipper-cut variation while keeping the face and photo context stable.',
+      category: 'image',
+    },
+    {
+      title: 'Bald Filter',
+      href: '/bald-filter',
+      image: cardAssets.bald,
+      description: 'Upload one portrait and preview a clean shaved-head look while keeping the face, eyebrows, and photo context stable.',
+      category: 'image',
+    },
+    {
+      title: 'Bangs Filter',
+      href: '/bangs-filter',
+      image: cardAssets.bangs,
+      description: 'Preview curtain bangs, wispy bangs, blunt bangs, side bangs, and more from one portrait.',
+      category: 'image',
+    },
+    {
+      title: 'Perm Filter',
+      href: '/perm-filter',
+      image: cardAssets.perm,
+      description: 'Preview soft waves, curly bobs, spiral curls, Korean volume perms, and men’s perm styles from one portrait.',
       category: 'image',
     },
     {
@@ -463,6 +487,9 @@ type SupplementalCopy = {
   imageToVideo: Pick<AiToolsCard, 'title' | 'description'>
   hairstyle: Pick<AiToolsCard, 'title' | 'description'>
   buzzCut: Pick<AiToolsCard, 'title' | 'description'>
+  bald?: Pick<AiToolsCard, 'title' | 'description'>
+  bangs?: Pick<AiToolsCard, 'title' | 'description'>
+  perm?: Pick<AiToolsCard, 'title' | 'description'>
   hairColor: Pick<AiToolsCard, 'title' | 'description'>
   clothes: Pick<AiToolsCard, 'title' | 'description'>
   bikini: Pick<AiToolsCard, 'title' | 'description'>
@@ -488,6 +515,9 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
     imageToVideo: { title: 'Image to Video Generator', description: 'Animate photos, product images, artwork, and reference frames with controlled AI motion.' },
     hairstyle: { title: 'AI Hairstyle Changer', description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.' },
     buzzCut: { title: 'Buzz Cut Filter', description: 'Upload one portrait and preview a close buzz cut or short clipper-cut variation while keeping the face and photo context stable.' },
+    bald: { title: 'Bald Filter', description: 'Upload one portrait and preview a clean shaved-head look while keeping the face, eyebrows, and photo context stable.' },
+    bangs: { title: 'Bangs Filter', description: 'Preview curtain bangs, wispy bangs, blunt bangs, side bangs, and more from one portrait.' },
+    perm: { title: 'Perm Filter', description: 'Preview soft waves, curly bobs, spiral curls, Korean volume perms, and men’s perm styles from one portrait.' },
     hairColor: { title: 'AI Hair Color Changer', description: 'Preview natural and creative hair colors on your photo with reference-guided AI editing.' },
     clothes: { title: 'AI Clothes Changer', description: 'Upload a person photo and preview realistic outfit changes with virtual try-on style prompts.' },
     bikini: { title: 'AI Bikini Generator', description: 'Upload an adult person photo and a bikini reference to preview tasteful swimwear edits while preserving the original person.' },
@@ -679,6 +709,61 @@ const supplementalCopies: Record<AiToolsLocale, SupplementalCopy> = {
   },
 }
 
+const hairFilterSupplemental: Record<
+  AiToolsLocale,
+  {
+    bald: Pick<AiToolsCard, 'title' | 'description'>
+    bangs: Pick<AiToolsCard, 'title' | 'description'>
+    perm: Pick<AiToolsCard, 'title' | 'description'>
+  }
+> = {
+  en: {
+    bald: { title: 'Bald Filter', description: 'Upload one portrait and preview a clean shaved-head look while keeping the face, eyebrows, and photo context stable.' },
+    bangs: { title: 'Bangs Filter', description: 'Preview curtain bangs, wispy bangs, blunt bangs, side bangs, and more from one portrait.' },
+    perm: { title: 'Perm Filter', description: 'Preview soft waves, curly bobs, spiral curls, Korean volume perms, and men’s perm styles from one portrait.' },
+  },
+  de: {
+    bald: { title: 'Glatzenfilter', description: 'Lade ein Porträt hoch und prüfe einen rasierten Look, während Gesicht und Foto-Kontext erhalten bleiben.' },
+    bangs: { title: 'Pony-Filter', description: 'Vergleiche Pony-Ideen wie Curtain, leichte, gerade, seitliche oder lockige Fransen aus einem Porträt.' },
+    perm: { title: 'Dauerwellen-Filter', description: 'Teste weiche Wellen, Locken, Volumen und Männer-Perms aus einem klaren Porträt.' },
+  },
+  ja: {
+    bald: { title: '光頭フィルター', description: 'ポートレート1枚で顔を保ったまま、自然なスキンヘッドの見え方を確認できます。' },
+    bangs: { title: '前髪フィルター', description: 'カーテンバング、軽め、ぱっつん、流し、短め、カール前髪を写真1枚で比較できます。' },
+    perm: { title: 'パーマフィルター', description: 'ゆるい波、カール、ボリューム、男性向けパーマをポートレートから試せます。' },
+  },
+  es: {
+    bald: { title: 'Filtro de calva', description: 'Sube un retrato y previsualiza un look rapado manteniendo rostro y contexto de la foto.' },
+    bangs: { title: 'Filtro de flequillo', description: 'Compara flequillo cortina, ligero, recto, lateral, corto y rizado desde una foto.' },
+    perm: { title: 'Filtro de permanente', description: 'Prueba ondas suaves, rizos, volumen y estilos masculinos de permanente desde un retrato.' },
+  },
+  'zh-TW': {
+    bald: { title: '光頭濾鏡', description: '上傳一張人像，保留臉部與照片脈絡，預覽乾淨剃光頭效果。' },
+    bangs: { title: '瀏海濾鏡', description: '用一張照片比較八字、空氣、齊瀏海、旁分、短瀏海與捲瀏海。' },
+    perm: { title: '燙髮濾鏡', description: '從一張人像預覽柔和波浪、捲髮、蓬鬆感與男生燙髮。' },
+  },
+  pt: {
+    bald: { title: 'Filtro de careca', description: 'Envie um retrato e visualize um look raspado mantendo rosto e contexto da foto.' },
+    bangs: { title: 'Filtro de franja', description: 'Compare franja cortina, leve, reta, lateral, curta e cacheada a partir de uma foto.' },
+    perm: { title: 'Filtro de permanente', description: 'Teste ondas suaves, cachos, volume e estilos masculinos de permanente em um retrato.' },
+  },
+  fr: {
+    bald: { title: 'Filtre crâne rasé', description: 'Importez un portrait et prévisualisez un look rasé en gardant le visage et le contexte.' },
+    bangs: { title: 'Filtre frange', description: 'Comparez frange rideau, légère, droite, latérale, courte et bouclée depuis une photo.' },
+    perm: { title: 'Filtre permanente', description: 'Testez ondulations douces, boucles, volume et styles homme depuis un portrait.' },
+  },
+  ko: {
+    bald: { title: '대머리 필터', description: '사진 한 장으로 얼굴과 배경을 유지한 채 삭발한 모습을 미리 확인합니다.' },
+    bangs: { title: '앞머리 필터', description: '커튼뱅, 가벼운 앞머리, 일자, 사이드, 짧은, 컬 앞머리를 비교합니다.' },
+    perm: { title: '펌 필터', description: '부드러운 웨이브, 컬, 볼륨, 남성 펌 스타일을 인물 사진으로 확인합니다.' },
+  },
+  it: {
+    bald: { title: 'Filtro calvo', description: 'Carica un ritratto e visualizza un look rasato mantenendo volto e contesto della foto.' },
+    bangs: { title: 'Filtro frangia', description: 'Confronta frangia a tendina, leggera, piena, laterale, corta e riccia da una foto.' },
+    perm: { title: 'Filtro permanente', description: 'Prova onde morbide, ricci, volume e stili uomo di permanente da un ritratto.' },
+  },
+}
+
 function applyLocalizedCard(
   baseCard: AiToolsCard,
   localizedCard: Pick<AiToolsCard, 'title' | 'description'>,
@@ -702,6 +787,9 @@ const aiToolsCardOrder = [
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
   '/buzz-cut-filter',
+  '/bald-filter',
+  '/bangs-filter',
+  '/perm-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -740,6 +828,9 @@ function getSupplementalCardByHref(
     '/talking-avatar-creator': supplemental.talkingAvatar,
     '/ai-hairstyle-changer': supplemental.hairstyle,
     '/buzz-cut-filter': supplemental.buzzCut,
+    '/bald-filter': supplemental.bald || hairFilterSupplemental[locale].bald,
+    '/bangs-filter': supplemental.bangs || hairFilterSupplemental[locale].bangs,
+    '/perm-filter': supplemental.perm || hairFilterSupplemental[locale].perm,
     '/ai-hair-color-changer': supplemental.hairColor,
     '/ai-clothes-changer': supplemental.clothes,
     '/ai-bikini-generator': supplemental.bikini,

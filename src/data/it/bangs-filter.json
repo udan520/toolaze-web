@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro Frangia",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Scegli uno stile di frangia",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Donne"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizzato"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Frangia dritta",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Caschetto corto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "Caschetto A-line",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Scalatura lunga",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Frangia a tendina",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Frangia laterale",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Onde ampie",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Pixie cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Wolf cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Chignon alto",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Due trecce",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Caschetto riccio",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Capelli lisci",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Personalizzato",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "Demo prima e dopo del filtro frangia",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Istruzione per acconciatura personalizzata",
+      "promptPlaceholder": "Descrivi la lunghezza, la densità, la riga, la consistenza o la forma della frangia che desideri.",
+      "personUploadTitle": "Carica la foto della persona",
+      "personUploadHelper": "Immagine 1: carica il ritratto che desideri modificare.",
+      "presetChoiceTitle": "Scegli uno degli stili di frangia integrati",
+      "customReferenceUploadTitle": "Carica un riferimento per l'acconciatura",
+      "customTextModeLabel": "Descrivi l'acconciatura",
+      "customReferenceModeLabel": "Acconciatura di riferimento"
+    }
+  },
+  "metadata": {
+    "title": "Filtro Frangia Online Gratuito | Nessuna Registrazione | Toolaze",
+    "description": "Prova il filtro per la frangia gratuito di Toolaze online senza registrazione. Carica un ritratto e prova in anteprima frangia a tendina, frangia a sipario, frangia sfilata, frangia laterale e altro ancora."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\\\"text-gradient\\\">Filtro Frangia</span> IA gratuito online",
+    "desc": "Carica un ritratto nitido e parti dalla scheda Donne con Frangia Piena selezionata. Toolaze offre molteplici stili di frangia, nasconde il prompt integrato per i preset e mantiene l'opzione Personalizzato disponibile per una descrizione testuale o un riferimento di acconciatura."
+  },
+  "safetyNotice": "Il risultato è un concetto visivo della frangia, non un risultato garantito in salone. La frangia reale dipende dalla densità dei capelli, dai capelli a strappo, dalla forma della fronte e dallo styling.",
+  "intro": {
+    "title": "Cos'è un filtro per la frangia IA?",
+    "content": [
+      {
+        "title": "Anteprima della frangia prima di tagliare i capelli",
+        "text": "Un filtro per la frangia IA modifica l'acconciatura anteriore in un ritratto in modo da poter provare frangia a tendina, frangia sfilata, frangia piena, frangia laterale, frangia trasparente o frangia riccia preservando il viso e il resto della foto. Usalo prima di una visita in salone, di un aggiornamento del profilo, della pianificazione di un cosplay o di un rapido controllo dello stile."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come usare il filtro per la frangia",
+    "steps": [
+      {
+        "title": "Carica un ritratto",
+        "desc": "Scegli una foto frontale nitida in cui la fronte, l'attaccatura dei capelli e l'acconciatura attuale siano visibili."
+      },
+      {
+        "title": "Scegli uno stile di frangia",
+        "desc": "La scheda Donne si apre con Frangia Piena selezionata e puoi passare ad acconciature a tendina, con riga laterale, corte, scalate, mosse o ricce."
+      },
+      {
+        "title": "Genera o passa a Personalizzato",
+        "desc": "Gli stili preimpostati usano prompt nascosti. Apri Personalizzato se desideri descrivere uno stile di frangia o caricare un'immagine di riferimento per l'acconciatura."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consigli fotografici per una migliore anteprima della frangia",
+    "subtitle": "La frangia dipende dalla fronte, dall'attaccatura dei capelli e dalla cornice del viso, quindi è importante un ritratto pulito.",
+    "items": [
+      {
+        "title": "Mostra l'area della fronte",
+        "desc": "Evita cappelli, ombre pesanti, mani o capelli che coprono l'intera area della frangia.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Usa una foto frontale",
+        "desc": "I ritratti dritti rendono più facile l'anteprima della lunghezza, della riga e della simmetria della frangia.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Mantieni visibile la consistenza dei capelli",
+        "desc": "L'illuminazione naturale aiuta il modello a fondere la frangia in capelli lisci, mossi o ricci.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Evita forti filtri di bellezza",
+        "desc": "I filtri possono sfocare l'attaccatura dei capelli e rendere la nuova frangia meno credibile.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Domande frequenti sul filtro per la frangia",
+  "faq": [
+    {
+      "q": "Il filtro per la frangia è gratuito e senza registrazione?",
+      "a": "Sì. Puoi aprire lo strumento di immagine, caricare un ritratto e iniziare a visualizzare in anteprima la frangia senza registrarti. Questa non è una promessa di uso illimitato; potrebbero comunque essere applicati limiti di generazione o disponibilità del modello."
+    },
+    {
+      "q": "Quale stile di frangia è selezionato per predefinito?",
+      "a": "La frangia pari è selezionata come predefinita per consentire di visualizzare immediatamente in anteprima una trasformazione netta e completa."
+    },
+    {
+      "q": "Quali stili di frangia posso provare?",
+      "a": "Puoi provare frangia a tendina, frangia sfoltita, frangia pari, frangia laterale, frangia a collo di bottiglia, frangia trasparente, micro frangia e frangia riccia."
+    },
+    {
+      "q": "L'immagine della scheda preimpostata viene inviata al modello?",
+      "a": "No. Le immagini delle schede preimpostate sono scelte visive. Per le preimpostazioni integrate, Toolaze invia il tuo ritratto insieme al prompt nascosto per lo stile di frangia selezionato."
+    },
+    {
+      "q": "Posso caricare un'immagine di riferimento per la frangia?",
+      "a": "Sì. Apri Personalizzato e scegli Acconciatura di riferimento per caricare un'immagine di riferimento per i capelli. Puoi anche scegliere Descrivi acconciatura e scrivere lo stile della frangia in formato testuale."
+    },
+    {
+      "q": "Il risultato mostrerà esattamente l'aspetto di un vero taglio di capelli?",
+      "a": "No. È un concetto visivo. Una vera frangia dipende dallo spessore dei capelli, dai capelli ribelli, dalla forma della fronte, dalla tecnica di taglio e dallo styling quotidiano."
+    },
+    {
+      "q": "Posso usare l'anteprima in un salone di bellezza?",
+      "a": "Sì. Può aiutare a comunicare la direzione che preferisci, ma un parrucchiere dovrebbe adattare la frangia alla consistenza dei tuoi capelli e alla forma del tuo viso."
+    }
+  ],
+  "moreTools": "Strumenti AI correlati",
+  "moreToolsLinks": [
+    {
+      "title": "Cambio acconciatura AI",
+      "description": "Esplora modifiche complete dell'acconciatura per donne, uomini e look personalizzati.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "Cambio acconciatura AI"
+      }
+    },
+    {
+      "title": "Filtro per permanente",
+      "description": "Visualizza in anteprima onde morbide, ricci e direzioni di permanente da salone a partire da un singolo ritratto.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "Filtro per permanente"
+      }
+    },
+    {
+      "title": "Cambio colore capelli AI",
+      "description": "Conserva la tua acconciatura e visualizza in anteprima un colore di capelli diverso.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "Cambio colore capelli AI"
+      }
+    }
+  ],
+  "features": {
+    "title": "Perché usare il filtro per frangia di Toolaze?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "Molteplici frange integrate",
+        "desc": "Prova frangia a tendina, sfoltita, pari, laterale, a collo di bottiglia, trasparente, micro e riccia da un unico ritratto."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Inizio gratuito e senza registrazione",
+        "desc": "Apri lo strumento di immagine, carica un ritratto e inizia a confrontare le idee per la frangia senza creare un account."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "La personalizzazione rimane disponibile",
+        "desc": "Usa gli stili integrati per maggiore velocità, oppure passa a Personalizzato per descrivere una frangia diversa o caricare un riferimento per l'acconciatura."
+      }
+    ]
+  }
+}

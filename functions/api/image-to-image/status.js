@@ -5,6 +5,7 @@
  */
 import { getCurrentUser } from '../../_shared/auth.mjs';
 import { getCreditSummary, refundCredits } from '../../_shared/credits.mjs';
+import { updateGenerationAttemptStatus } from '../../_shared/generation-attempts.mjs';
 import { getImageGenerationCreditRefundDescription } from '../../_shared/generation-credit-label.mjs';
 import {
   GENERATION_TASK_ACCESS_ERROR,
@@ -250,6 +251,21 @@ export async function onRequest(context) {
     const creditRefund = status === 'FAILED'
       ? await refundFailedGenerationCredits(env, request, body, taskId, message)
       : null;
+    if (status === 'FAILED') {
+      await updateGenerationAttemptStatus(env, {
+        userId: user?.id,
+        taskId,
+        status: 'failed',
+        failureReason: message || 'Generation failed',
+      });
+    } else if (status === 'SUCCEEDED') {
+      await updateGenerationAttemptStatus(env, {
+        userId: user?.id,
+        taskId,
+        status: 'succeeded',
+        outputUrl: resultUrl,
+      });
+    }
 
     return jsonResponse({
       status,

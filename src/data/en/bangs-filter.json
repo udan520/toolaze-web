@@ -1,0 +1,298 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bangs-filter/bangs-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Bangs Filter",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Choose a Bangs Style",
+      "presetTabs": [
+        {
+          "id": "women",
+          "label": "Women"
+        },
+        {
+          "id": "custom",
+          "label": "Custom"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "women",
+      "presets": [
+        {
+          "label": "Blunt Bangs",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to straight blunt bangs cut evenly across the forehead with clean salon edges, natural density, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp"
+        },
+        {
+          "label": "Short Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished short bob ending near the jaw, with clean rounded shape, soft natural volume, realistic strands, and a believable hairline. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/short-bob.webp"
+        },
+        {
+          "label": "A-Line Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a sleek A-line bob, shorter at the back and gradually longer toward the front, with a precise salon shape, realistic texture, and natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/a-line-bob.webp"
+        },
+        {
+          "label": "Long Layers",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to long flowing layers with soft face-framing pieces, natural movement, realistic strands, and balanced volume. Preserve the same face, body, clothing, pose, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/long-layers.webp"
+        },
+        {
+          "label": "Curtain Bangs",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft curtain bangs parted at the center with face-framing layers, natural volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curtain-bangs.webp"
+        },
+        {
+          "label": "Side-Swept Bangs",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to soft side-swept bangs that angle naturally across the forehead with layered face framing, realistic strands, and balanced volume. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background.",
+          "image": "https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp"
+        },
+        {
+          "label": "Big Waves",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to glamorous large soft waves with full-bodied volume, smooth defined curves, realistic strands, and a natural hairline. Preserve the same person and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/women/big-waves.webp"
+        },
+        {
+          "label": "Pixie Cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a refined pixie cut with short tapered sides, softly textured top, delicate fringe, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/pixie-cut.webp"
+        },
+        {
+          "label": "Wolf Cut",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern wolf cut with choppy crown layers, soft volume, tapered ends, subtle face framing, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/wolf-cut.webp"
+        },
+        {
+          "label": "Top Bun",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a neat high top bun with a smooth gathered base, a softly rounded bun, subtle natural flyaways, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/top-bun.webp"
+        },
+        {
+          "label": "Two Braids",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to two balanced braids with a clean center part, realistic woven strands, natural roots, and a believable hairline. Preserve the face, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/women/two-braids.webp"
+        },
+        {
+          "label": "Curly Bob",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a chin-to-shoulder-length curly bob with defined soft curls, balanced volume, realistic strands, and a natural hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/curly-bob.webp"
+        },
+        {
+          "label": "Straight Hair",
+          "group": "women",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to smooth straight hair with a clean center part, polished natural shine, realistic individual strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/women/straight-hair.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp",
+        "title": "Bangs Filter before-after demo",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Custom Hairstyle Instruction",
+      "promptPlaceholder": "Describe the bangs length, density, parting, texture, or fringe shape you want.",
+      "personUploadTitle": "Upload person photo",
+      "personUploadHelper": "Image 1: upload the portrait you want to edit.",
+      "presetChoiceTitle": "Choose one of the built-in bangs styles",
+      "customReferenceUploadTitle": "Upload hairstyle reference",
+      "customTextModeLabel": "Describe hair style",
+      "customReferenceModeLabel": "Reference hair style"
+    }
+  },
+  "metadata": {
+    "title": "Free Bangs Filter Online | No Signup | Toolaze",
+    "description": "Try Toolaze's free Bangs Filter online with no signup. Upload one portrait and preview curtain bangs, wispy bangs, blunt bangs, side bangs, and more."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Free AI <span class=\"text-gradient\">Bangs Filter</span> Online",
+    "desc": "Upload one clear portrait and start from the Women tab with Blunt Bangs selected. Toolaze gives you multiple bang styles, hides the built-in prompt for presets, and keeps Custom available for a text description or hairstyle reference."
+  },
+  "safetyNotice": "The result is a visual bangs concept, not a guaranteed salon outcome. Real fringe depends on hair density, cowlicks, forehead shape, and styling.",
+  "intro": {
+    "title": "What Is an AI Bangs Filter?",
+    "content": [
+      {
+        "title": "Preview bangs before cutting fringe",
+        "text": "An AI bangs filter edits the front hairstyle in a portrait so you can test curtain bangs, wispy bangs, blunt bangs, side bangs, see-through bangs, or curly bangs while preserving the face and the rest of the photo. Use it before a salon visit, a profile refresh, cosplay planning, or a quick style check."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "How to Use the Bangs Filter",
+    "steps": [
+      {
+        "title": "Upload one portrait",
+        "desc": "Choose a clear face-forward photo where your forehead, hairline, and current hairstyle are visible."
+      },
+      {
+        "title": "Pick a bangs style",
+        "desc": "The Women tab opens with Blunt Bangs selected, and you can switch to curtain, side-swept, short, layered, wavy, or curly hairstyles."
+      },
+      {
+        "title": "Generate or switch to Custom",
+        "desc": "Preset styles use hidden prompts. Open Custom if you want to describe a fringe style or upload a hairstyle reference image."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Photo Tips for a Better Bangs Preview",
+    "subtitle": "Bangs depend on the forehead, hairline, and face framing, so a clean portrait matters.",
+    "items": [
+      {
+        "title": "Show your forehead area",
+        "desc": "Avoid hats, heavy shadows, hands, or hair covering the full fringe area.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Use a front-facing photo",
+        "desc": "Straight-on portraits make bang length, parting, and symmetry easier to preview.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Keep hair texture visible",
+        "desc": "Natural lighting helps the model blend bangs into straight, wavy, or curly hair.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Avoid strong beauty filters",
+        "desc": "Filters can blur the hairline and make the new fringe look less believable.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "Bangs Filter FAQ",
+  "faq": [
+    {
+      "q": "Is the Bangs Filter free with no signup?",
+      "a": "Yes. You can open the image tool, upload one portrait, and start previewing bangs without signing up. This is not an unlimited-use promise; generation limits or model availability may still apply."
+    },
+    {
+      "q": "Which bangs style is selected by default?",
+      "a": "Blunt Bangs is selected by default so you can immediately preview a clear full-fringe transformation."
+    },
+    {
+      "q": "What bang styles can I try?",
+      "a": "You can try Curtain Bangs, Wispy Bangs, Blunt Bangs, Side Bangs, Bottleneck Bangs, See-Through Bangs, Micro Bangs, and Curly Bangs."
+    },
+    {
+      "q": "Does the preset card image get sent to the model?",
+      "a": "No. Preset card images are visual choices. For built-in presets, Toolaze sends your portrait plus the hidden prompt for the selected bangs style."
+    },
+    {
+      "q": "Can I upload a bangs reference image?",
+      "a": "Yes. Open Custom and choose Reference hair style to upload a hairstyle reference image. You can also choose Describe hair style and write the fringe style in text."
+    },
+    {
+      "q": "Will the result show exactly how a real haircut will look?",
+      "a": "No. It is a visual concept. Real bangs depend on hair thickness, cowlicks, forehead shape, cut technique, and daily styling."
+    },
+    {
+      "q": "Can I use the preview at a salon?",
+      "a": "Yes. It can help communicate the direction you like, but a stylist should adapt the fringe to your hair texture and face shape."
+    }
+  ],
+  "moreTools": "Related AI Tools",
+  "moreToolsLinks": [
+    {
+      "title": "AI Hairstyle Changer",
+      "description": "Explore full hairstyle changes for women, men, and custom looks.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AI Hairstyle Changer"
+      }
+    },
+    {
+      "title": "Perm Filter",
+      "description": "Preview soft waves, curls, and salon-perm directions from one portrait.",
+      "href": "/perm-filter",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp",
+        "alt": "Perm Filter"
+      }
+    },
+    {
+      "title": "AI Hair Color Changer",
+      "description": "Keep your hairstyle and preview a different hair color.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AI Hair Color Changer"
+      }
+    }
+  ],
+  "features": {
+    "title": "Why Use Toolaze Bangs Filter?",
+    "items": [
+      {
+        "icon": "💇‍♀️",
+        "iconType": "guidance",
+        "title": "Multiple bangs are built in",
+        "desc": "Try curtain, wispy, blunt, side, bottleneck, see-through, micro, and curly bangs from one portrait."
+      },
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Free, no-signup start",
+        "desc": "Open the image tool, upload a portrait, and start comparing fringe ideas without creating an account."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Custom stays available",
+        "desc": "Use the built-in styles for speed, or switch to Custom to describe a different fringe or upload a hairstyle reference."
+      }
+    ]
+  }
+}

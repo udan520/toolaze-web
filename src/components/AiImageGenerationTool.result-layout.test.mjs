@@ -195,21 +195,42 @@ test('desktop history prompts scroll instead of clipping long text', () => {
   assert.doesNotMatch(source, /data-desktop-(?:result|pending-result|failed-result)-prompt[\s\S]{0,120}title=\{item\.prompt\}/)
 })
 
-test('inline history prompt blocks stay hidden for automatic prompt tools', () => {
-  const assertHiddenPromptGate = (startMarker, endMarker, promptMarker) => {
+test('desktop pending history prompt can be copied while generation is running', () => {
+  const pendingBlock = source.slice(
+    source.indexOf('const renderDesktopPendingResultItem'),
+    source.indexOf('const applyGenerationItemToForm'),
+  )
+
+  assert.match(pendingBlock, /onClick=\{\(\) => void copyPromptToClipboard\(item\.prompt\)\}/)
+  assert.match(pendingBlock, /title=\{toolText\.copyPrompt\}/)
+})
+
+test('desktop history prompt wheel does not chain to the page', () => {
+  assert.match(source, /const handleDesktopPromptPreviewWheel = \(event: React\.WheelEvent<HTMLParagraphElement>\) => \{/)
+  assert.match(source, /event\.stopPropagation\(\)/)
+  assert.match(source, /cannotScroll \|\| scrollingPastTop \|\| scrollingPastBottom/)
+  assert.match(source, /event\.preventDefault\(\)/)
+  assert.match(source, /onWheel=\{handleDesktopPromptPreviewWheel\}/)
+})
+
+test('inline history prompt blocks stay visible when the form prompt input is hidden', () => {
+  const assertIndependentHistoryPrompt = (startMarker, endMarker, promptMarker) => {
     const block = source.slice(source.indexOf(startMarker), source.indexOf(endMarker))
     const promptIndex = block.indexOf(promptMarker)
     assert.ok(promptIndex > 0, `${promptMarker} should exist in ${startMarker}`)
-    assert.ok(
-      block.lastIndexOf('!hidePromptInput', promptIndex) >= 0,
-      `${promptMarker} should be gated by hidePromptInput`,
+    const nearbySource = block.slice(Math.max(0, promptIndex - 220), promptIndex + 120)
+    assert.doesNotMatch(
+      nearbySource,
+      /!hidePromptInput/,
+      `${promptMarker} should not be gated by hidePromptInput`,
     )
   }
 
-  assertHiddenPromptGate('const renderDesktopResultItem', 'const renderDesktopPendingResultItem', 'data-desktop-result-prompt')
-  assertHiddenPromptGate('const renderDesktopPendingResultItem', 'const applyGenerationItemToForm', 'data-desktop-pending-result-prompt')
-  assertHiddenPromptGate('const renderDesktopFailedResultItem', 'const renderDesktopResultFeed', 'data-desktop-failed-result-prompt')
-  assertHiddenPromptGate('const renderMobileHistoryFeed', 'const desktopTopPaddingClass', 'data-mobile-result-prompt')
+  assertIndependentHistoryPrompt('const renderDesktopResultItem', 'const renderDesktopPendingResultItem', 'data-desktop-result-prompt')
+  assertIndependentHistoryPrompt('const renderDesktopPendingResultItem', 'const applyGenerationItemToForm', 'data-desktop-pending-result-prompt')
+  assertIndependentHistoryPrompt('const renderDesktopFailedResultItem', 'const renderDesktopResultFeed', 'data-desktop-failed-result-prompt')
+  assertIndependentHistoryPrompt('const renderMobileHistoryFeed', 'const desktopTopPaddingClass', 'data-mobile-result-prompt')
+  assert.match(source, /\{!hidePromptInput && !isCouplePhotoMakerMode && \(/)
 })
 
 test('desktop history metadata appears as light tags above the prompt', () => {

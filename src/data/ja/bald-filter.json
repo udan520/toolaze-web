@@ -1,0 +1,286 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bald-filter/bald-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "光頭フィルター",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "男性ヘアスタイルを選択",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "男性"
+        },
+        {
+          "id": "custom",
+          "label": "カスタム"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "men",
+      "presets": [
+        {
+          "label": "Bald",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Buzz Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Crew Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Textured Crop",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Taper Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Messy Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Short Curly",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Slick Back",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Soft Bowl",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Textured Flow",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Short Box Braids",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp",
+        "title": "光頭フィルターのビフォーアフター例",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "カスタムの髪型指示",
+      "promptPlaceholder": "剃り上げの仕上がり、生え際、短さ、試したい短髪を説明してください。",
+      "personUploadTitle": "人物写真をアップロード",
+      "personUploadHelper": "画像1：編集したいポートレートをアップロードします。",
+      "presetChoiceTitle": "内蔵の男性ヘアスタイルを選択",
+      "customReferenceUploadTitle": "髪型参考画像をアップロード",
+      "customTextModeLabel": "髪型を説明",
+      "customReferenceModeLabel": "髪型を参照"
+    }
+  },
+  "metadata": {
+    "title": "無料の光頭フィルター｜登録不要｜Toolaze",
+    "description": "登録なしで使える Toolaze の無料光頭フィルター。ポートレートを1枚アップロードし、顔を保ったまま自然な丸刈り・スキンヘッドの見え方を確認できます。"
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "無料AI <span class=\"text-gradient\">光頭フィルター</span> オンライン",
+    "desc": "鮮明なポートレートを1枚アップロードすると、男性タブで光頭が選択された状態から始まります。Toolaze はプリセット指示を非表示にし、カスタムも残したまま、登録なしで自然なスキンヘッドの見え方を比較できます。"
+  },
+  "safetyNotice": "結果は視覚イメージであり、実際の生え際、頭皮の色、頭の形を保証するものではありません。",
+  "intro": {
+    "title": "登録なしで光頭を確認",
+    "content": [
+      {
+        "title": "登録なしで光頭を確認",
+        "text": "光頭・丸刈りの見え方を大きく変える前に確認できます。顔、眉、ひげ、服、背景はなるべく保ったまま、頭髪だけを自然に短くします。"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "光頭フィルターの使い方",
+    "steps": [
+      {
+        "title": "写真をアップロード",
+        "desc": "頭全体、生え際、眉、顔が見える正面または少し斜めの写真を使います。"
+      },
+      {
+        "title": "光頭または短髪を選択",
+        "desc": "男性タブは光頭から始まり、他の短髪スタイルも比較できます。"
+      },
+      {
+        "title": "生成して確認",
+        "desc": "プリセットでは入力欄を隠したまま内蔵指示を使い、履歴では指示を確認できます。"
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "より自然な光頭プレビューの写真のコツ",
+    "subtitle": "帽子、フード、切れた額を避け、頭と生え際を見せます。",
+    "items": [
+      {
+        "title": "頭と生え際を見せる",
+        "desc": "帽子、フード、切れた額を避け、頭と生え際を見せます。",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "眉とひげを見せる",
+        "desc": "眉とひげをはっきり見せます。",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "正面の柔らかい光を使う",
+        "desc": "やわらかい正面光を使います。",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "極端な角度を避ける",
+        "desc": "横顔や極端な広角自撮りを避けます。",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "光頭フィルター FAQ",
+  "faq": [
+    {
+      "q": "無料で登録不要ですか？",
+      "a": "はい。登録なしで開始できますが、無制限利用の約束ではありません。"
+    },
+    {
+      "q": "最初に何が選ばれますか？",
+      "a": "はい。男性タブで光頭が選択されています。"
+    },
+    {
+      "q": "カード画像もモデルに送られますか？",
+      "a": "いいえ。カード画像は選択用で、写真と非表示指示だけを使います。"
+    },
+    {
+      "q": "他のスタイルも比較できますか？",
+      "a": "はい。他の短髪スタイルも比較できます。"
+    },
+    {
+      "q": "大事な顔の特徴は保たれますか？",
+      "a": "内蔵指示は眉とひげを保つよう求めますが、結果は変わる場合があります。"
+    },
+    {
+      "q": "結果は正確ですか？",
+      "a": "いいえ。視覚イメージです。"
+    },
+    {
+      "q": "参考として使えますか？",
+      "a": "はい。方向性を伝える参考として使えます。"
+    }
+  ],
+  "moreTools": "関連AIツール",
+  "moreToolsLinks": [
+    {
+      "title": "バズカットフィルター",
+      "description": "同じ写真から関連する髪型や画像編集も試せます。",
+      "href": "/buzz-cut-filter",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "alt": "バズカットフィルター"
+      }
+    },
+    {
+      "title": "AIヘアスタイルチェンジャー",
+      "description": "同じ写真から関連する髪型や画像編集も試せます。",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "AIヘアスタイルチェンジャー"
+      }
+    },
+    {
+      "title": "AIヘアカラーチェンジャー",
+      "description": "同じ写真から関連する髪型や画像編集も試せます。",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "AIヘアカラーチェンジャー"
+      }
+    }
+  ],
+  "features": {
+    "title": "Toolaze 光頭フィルターを使う理由",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "登録なしで開始",
+        "desc": "アカウントなしで光頭や短髪を試せます。"
+      },
+      {
+        "icon": "🪒",
+        "iconType": "guidance",
+        "title": "光頭が選択済み",
+        "desc": "光頭が最初から選択されています。"
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "指示は非表示",
+        "desc": "プリセット指示は非表示で、細かい希望はカスタムで指定できます。"
+      }
+    ]
+  }
+}

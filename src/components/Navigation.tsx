@@ -60,6 +60,9 @@ const defaultNavTranslations = {
   talkingAvatarCreator: 'AI Talking Avatar',
   aiHairstyleChanger: 'AI Hairstyle Changer',
   buzzCutFilter: 'Buzz Cut Filter',
+  baldFilter: 'Bald Filter',
+  bangsFilter: 'Bangs Filter',
+  permFilter: 'Perm Filter',
   aiHairColorChanger: 'AI Hair Color Changer',
   aiClothesChanger: 'AI Clothes Changer',
   aiBikiniGenerator: 'AI Bikini Generator',
@@ -174,6 +177,9 @@ const AI_TOOLS_DEMO_IMAGES = {
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
   buzzCutFilter: '/ai-hairstyle-changer/templates/men/buzz-cut.webp',
+  baldFilter: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
+  bangsFilter: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+  permFilter: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
   aiClothesChanger: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
   aiBikiniGenerator: 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
@@ -216,6 +222,9 @@ type AiToolNavLabelKey =
   | 'aiBabyGenerator'
   | 'aiCouplePhotoMaker'
   | 'buzzCutFilter'
+  | 'baldFilter'
+  | 'bangsFilter'
+  | 'permFilter'
   | 'aiZinePosterGenerator'
   | 'photoAbstractPosterGenerator'
   | 'worldCupAiImageGenerator'
@@ -238,6 +247,9 @@ const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/unrestricted-ai-image-generator', labelKey: 'unrestrictedAiImageGenerator', imageKey: 'unrestrictedAiImageGenerator', hot: true },
   { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
   { href: '/buzz-cut-filter', labelKey: 'buzzCutFilter', imageKey: 'buzzCutFilter' },
+  { href: '/bald-filter', labelKey: 'baldFilter', imageKey: 'baldFilter' },
+  { href: '/bangs-filter', labelKey: 'bangsFilter', imageKey: 'bangsFilter' },
+  { href: '/perm-filter', labelKey: 'permFilter', imageKey: 'permFilter' },
   { href: '/ai-hair-color-changer', labelKey: 'aiHairColorChanger', imageKey: 'aiHairColorChanger' },
   { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger' },
   { href: '/ai-bikini-generator', labelKey: 'aiBikiniGenerator', imageKey: 'aiBikiniGenerator' },

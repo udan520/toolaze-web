@@ -534,6 +534,33 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
       },
     },
     {
+      title: navCopy.baldFilter || 'Bald Filter',
+      href: localizeHomeHref('/bald-filter'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
+        alt: 'Bald Filter demo image',
+      },
+    },
+    {
+      title: navCopy.bangsFilter || 'Bangs Filter',
+      href: localizeHomeHref('/bangs-filter'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-before-after-demo.webp',
+        alt: 'Bangs Filter demo image',
+      },
+    },
+    {
+      title: navCopy.permFilter || 'Perm Filter',
+      href: localizeHomeHref('/perm-filter'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
+        alt: 'Perm Filter demo image',
+      },
+    },
+    {
       title: navCopy.aiHairColorChanger || 'AI Hair Color Changer',
       href: localizeHomeHref('/ai-hair-color-changer'),
       media: {

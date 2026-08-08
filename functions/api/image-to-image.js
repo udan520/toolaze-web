@@ -7,6 +7,11 @@ import {
   getImageGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
 import {
+  attachGenerationAttemptTask,
+  createGenerationAttempt,
+  updateGenerationAttemptStatus,
+} from '../_shared/generation-attempts.mjs';
+import {
   createModerationExternalId,
   moderatePromptBeforeGeneration,
 } from '../_shared/creem-moderation.mjs';
@@ -16,6 +21,10 @@ import {
   compileZinePosterPromptFromImage,
   isZinePosterTool,
 } from '../_shared/zine-poster-compiler.mjs';
+import {
+  compilePhotoAbstractPromptFromImage,
+  isPhotoAbstractPosterTool,
+} from '../_shared/photo-abstract-editorial-compiler.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -286,6 +295,7 @@ export async function onRequest(context) {
   const { request, env } = context;
   const method = request.method;
   let creditContext = null;
+  let generationAttempt = null;
 
   if (method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS });
@@ -364,7 +374,9 @@ export async function onRequest(context) {
       return jsonResponse({ error: `Maximum ${maxImages} images allowed` }, 400);
     }
     const shouldCompileZinePoster = isZinePosterTool(formData.get('toolSlug')) && isImageToImage && imageUrls.length > 0;
-    if (!prompt && !shouldCompileZinePoster) {
+    const shouldCompilePhotoAbstract = isPhotoAbstractPosterTool(formData.get('toolSlug')) && isImageToImage && imageUrls.length > 0;
+    const shouldCompileReferencePrompt = shouldCompileZinePoster || shouldCompilePhotoAbstract;
+    if (!prompt && !shouldCompileReferencePrompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
     }
     if (model === 'gpt-image-1-5') {
@@ -390,7 +402,7 @@ export async function onRequest(context) {
     let apiKey = null;
     let dailyCapChecked = false;
 
-    if (shouldCompileZinePoster) {
+    if (shouldCompileReferencePrompt) {
       apiKey = getApiKey(env);
       if (!apiKey) {
         return jsonResponse({ error: 'API key not configured (KIE_AI_API_KEY)' }, 500);
@@ -407,13 +419,22 @@ export async function onRequest(context) {
       creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
       if (creditContext.response) return creditContext.response;
 
-      const zinePrompt = await compileZinePosterPromptFromImage({
-        imageUrl: imageUrls[0],
-        env,
-        fetchImpl: fetch,
-        seed: `${formData.get('sourcePath') || ''}|${formData.get('toolLabel') || ''}`,
-      });
-      prompt = zinePrompt.prompt;
+      if (shouldCompileZinePoster) {
+        const zinePrompt = await compileZinePosterPromptFromImage({
+          imageUrl: imageUrls[0],
+          env,
+          fetchImpl: fetch,
+          seed: `${formData.get('sourcePath') || ''}|${formData.get('toolLabel') || ''}`,
+        });
+        prompt = zinePrompt.prompt;
+      } else {
+        const photoAbstractPrompt = await compilePhotoAbstractPromptFromImage({
+          imageUrl: imageUrls[0],
+          env,
+          fetchImpl: fetch,
+        });
+        prompt = photoAbstractPrompt.prompt;
+      }
     }
 
     if (!prompt) {
@@ -451,6 +472,23 @@ export async function onRequest(context) {
       creditContext = await consumeGenerationCredits(env, request, model, normalizedResolution, creditMetadata);
       if (creditContext.response) return creditContext.response;
     }
+
+    generationAttempt = await createGenerationAttempt(env, creditContext.user?.id, {
+      mediaType,
+      status: 'pending',
+      model,
+      prompt,
+      inputUrls: imageUrls.slice(0, maxImages),
+      aspectRatio,
+      resolution: normalizedResolution,
+      outputFormat: isVideoGenerationModel(model)
+        ? JSON.stringify({ duration: durationSeconds })
+        : outputFormat,
+      toolSlug: creditMetadata.toolSlug,
+      toolLabel: creditMetadata.toolLabel,
+      sourcePath: creditMetadata.sourcePath,
+      consumptionId: creditContext.consumption?.consumptionId,
+    });
 
     const input = model === 'gpt-image-1-5'
       ? {
@@ -528,15 +566,22 @@ export async function onRequest(context) {
       if (model === 'gpt-image-2' && /model name you specified is not supported/i.test(String(msg))) {
         msg = 'Current KIE key does not support GPT Image 2. Set KIE_GPT_IMAGE_2_TEXT_MODEL or KIE_GPT_IMAGE_2_IMAGE_MODEL to your account-enabled model id.';
       }
+      const errorMessage = String(msg || 'Failed to create task');
       const credits = await refundGenerationCredits(env, creditContext, {
         ...creditMetadata,
-        error: String(msg || 'Failed to create task'),
+        error: errorMessage,
+      });
+      await updateGenerationAttemptStatus(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        status: 'failed',
+        failureReason: errorMessage,
       });
       console.error('KIE generation task creation failed', {
         status: response.status,
         model,
         providerModelId,
-        error: String(msg || 'Failed to create task'),
+        error: errorMessage,
       });
       return jsonResponse({
         error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE,
@@ -546,6 +591,12 @@ export async function onRequest(context) {
     }
 
     if (result?.code === 200 && result?.data?.taskId) {
+      await attachGenerationAttemptTask(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        taskId: result.data.taskId,
+        consumptionId: creditContext.consumption?.consumptionId,
+      });
       if (creditContext.consumption?.consumptionId) {
         await attachGenerationTaskIdToConsumption(
           env,
@@ -585,9 +636,16 @@ export async function onRequest(context) {
       });
     }
 
+    const unexpectedError = result?.message ?? result?.msg ?? 'Unexpected response format';
     const credits = await refundGenerationCredits(env, creditContext, {
       ...creditMetadata,
-      error: result?.message ?? result?.msg ?? 'Unexpected response format',
+      error: unexpectedError,
+    });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext.user?.id,
+      status: 'failed',
+      failureReason: String(unexpectedError),
     });
     console.error('KIE generation task returned an unexpected response', {
       model,
@@ -601,12 +659,19 @@ export async function onRequest(context) {
       credits,
     }, 500);
   } catch (e) {
+    const errorMessage = e instanceof Error ? e.message : 'Internal server error';
     const credits = await refundGenerationCredits(env, creditContext, {
       ...(creditContext?.metadata || {}),
-      error: e instanceof Error ? e.message : 'Internal server error',
+      error: errorMessage,
+    });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext?.user?.id,
+      status: 'failed',
+      failureReason: errorMessage,
     });
     return jsonResponse({
-      error: e instanceof Error ? e.message : 'Internal server error',
+      error: errorMessage,
       credits,
     }, 500);
   }

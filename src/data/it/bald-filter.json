@@ -1,0 +1,286 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/model-assets/bald-filter/bald-reference.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro calvo",
+    "functionalAcceptance": {
+      "recommendedMode": "gender-tab-preset-first-with-custom",
+      "presetTitle": "Scegli acconciatura uomo",
+      "presetTabs": [
+        {
+          "id": "men",
+          "label": "Uomo"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizzato"
+        }
+      ],
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "men",
+      "presets": [
+        {
+          "label": "Bald",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Remove only the visible hair and create a clean fully shaved bald head with realistic scalp texture, natural skin shading, and anatomically believable head shape. Preserve the same face, eyebrows, facial hair, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/bald.webp"
+        },
+        {
+          "label": "Buzz Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a close even buzz cut with very short uniform length, realistic scalp shading, precise edges, and a natural hairline. Preserve the same face, age, expression, pose, clothing, lighting, and background.",
+          "image": "/ai-hairstyle-changer/templates/men/buzz-cut.webp"
+        },
+        {
+          "label": "Crew Cut",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a classic crew cut with short tapered sides and slightly longer structured hair on top, realistic texture, clean edges, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/crew-cut.webp"
+        },
+        {
+          "label": "Textured Crop",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a short textured crop with neat sides, separated natural texture on top, subtle forward styling, realistic strands, and a clean hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-crop.webp"
+        },
+        {
+          "label": "Taper Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a clean taper fade with gradual blending around the temples and neckline, controlled length on top, realistic texture, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/taper-fade.webp"
+        },
+        {
+          "label": "Messy Fade",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a messy textured top with a modern faded side profile, natural separation, controlled volume, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/messy-fade.webp"
+        },
+        {
+          "label": "Short Curly",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short defined curls with tidy sides, balanced natural volume, realistic curl texture, and a believable hairline. Preserve the face and every non-hair detail.",
+          "image": "/ai-hairstyle-changer/templates/men/short-curly.webp"
+        },
+        {
+          "label": "Slick Back",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a polished slicked-back style with controlled volume, visible natural strand direction, a clean silhouette, and a realistic hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/slick-back.webp"
+        },
+        {
+          "label": "Soft Bowl",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to a modern soft bowl cut with rounded shape, lightweight fringe, subtle texture, tidy sides, and a natural hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/soft-bowl.webp"
+        },
+        {
+          "label": "Textured Flow",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to medium-length textured flow swept naturally back and to the sides, with layered movement, realistic strands, and a believable hairline. Preserve all non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/textured-flow.webp"
+        },
+        {
+          "label": "Short Box Braids",
+          "group": "men",
+          "prompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to short box braids with clean geometric parting, realistic braided texture, natural roots, balanced length, and a believable hairline. Preserve all facial and non-hair details.",
+          "image": "/ai-hairstyle-changer/templates/men/short-box-braids.webp"
+        },
+        {
+          "label": "Custom",
+          "group": "custom",
+          "prompt": ""
+        }
+      ],
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Use the uploaded portrait as the identity reference. Change only the hairstyle to match the uploaded hairstyle reference image. Preserve the same face, facial features, skin tone, expression, age, pose, clothing, body, camera angle, lighting, and background. Do not copy the reference person identity, face, clothing, or background."
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp",
+        "title": "Demo prima e dopo del filtro calvo",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "promptLabel": "Istruzione acconciatura personalizzata",
+      "promptPlaceholder": "Descrivi finitura rasata, attaccatura, lunghezza corta o stile desiderato.",
+      "personUploadTitle": "Carica foto persona",
+      "personUploadHelper": "Immagine 1: carica il ritratto da modificare.",
+      "presetChoiceTitle": "Scegli un’acconciatura uomo integrata",
+      "customReferenceUploadTitle": "Carica riferimento acconciatura",
+      "customTextModeLabel": "Descrivi acconciatura",
+      "customReferenceModeLabel": "Riferimento acconciatura"
+    }
+  },
+  "metadata": {
+    "title": "Filtro calvo gratis online | Senza registrazione | Toolaze",
+    "description": "Prova gratis il Filtro calvo di Toolaze senza registrazione. Carica un ritratto e visualizza un look rasato mantenendo il viso."
+  },
+  "sectionsOrder": [
+    "howToUse",
+    "intro",
+    "features",
+    "photoTips",
+    "faq"
+  ],
+  "hero": {
+    "h1": "Filtro <span class=\"text-gradient\">calvo IA</span> gratis online",
+    "desc": "Carica un ritratto chiaro e inizia nella scheda Uomo con calvo selezionato. Toolaze nasconde l’istruzione integrata degli stili, mantiene Personalizzato disponibile e permette di confrontare un look rasato senza registrazione."
+  },
+  "safetyNotice": "Il risultato è un concetto visivo rasato, non una garanzia su attaccatura, cuoio capelluto o forma della testa.",
+  "intro": {
+    "title": "Guarda il look rasato prima di cambiare",
+    "content": [
+      {
+        "title": "Guarda il look rasato prima di cambiare",
+        "text": "Il filtro calvo modifica i capelli visibili in un ritratto e conserva volto, sopracciglia, barba, abiti, luce e sfondo."
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Come usare il Filtro calvo",
+    "steps": [
+      {
+        "title": "Carica un ritratto",
+        "desc": "Usa una foto chiara frontale o a tre quarti con testa, attaccatura, sopracciglia e viso visibili."
+      },
+      {
+        "title": "Scegli calvo o taglio corto",
+        "desc": "La scheda Uomo apre su calvo e permette di confrontare altri tagli corti."
+      },
+      {
+        "title": "Genera e controlla",
+        "desc": "Toolaze usa un’istruzione integrata e nasconde il campo testo per gli stili."
+      }
+    ]
+  },
+  "photoTips": {
+    "title": "Consigli foto per una migliore anteprima rasata",
+    "subtitle": "Mostra testa e attaccatura senza cappelli, cappucci o fronte tagliata.",
+    "items": [
+      {
+        "title": "Mostra testa e attaccatura",
+        "desc": "Mostra testa e attaccatura senza cappelli, cappucci o fronte tagliata.",
+        "color": "linear-gradient(135deg, #dbeafe, #2563eb)"
+      },
+      {
+        "title": "Mostra sopracciglia e barba",
+        "desc": "Tieni chiare sopracciglia e barba.",
+        "color": "linear-gradient(135deg, #ede9fe, #7c3aed)"
+      },
+      {
+        "title": "Usa luce frontale morbida",
+        "desc": "Usa luce frontale morbida per ombre più naturali.",
+        "color": "linear-gradient(135deg, #dcfce7, #15803d)"
+      },
+      {
+        "title": "Evita angoli estremi",
+        "desc": "Evita profili, angoli estremi e selfie distorti.",
+        "color": "linear-gradient(135deg, #fef3c7, #ea580c)"
+      }
+    ]
+  },
+  "faqTitle": "FAQ Bald Filter",
+  "faq": [
+    {
+      "q": "È gratis senza registrazione?",
+      "a": "Sì. Puoi iniziare senza registrarti; non è promessa di uso illimitato."
+    },
+    {
+      "q": "Cosa è selezionato all’inizio?",
+      "a": "Sì. La scheda Uomo apre con calvo selezionato."
+    },
+    {
+      "q": "L’immagine della scheda viene inviata al modello?",
+      "a": "No. La scheda aiuta solo a scegliere; usa ritratto e istruzione nascosta."
+    },
+    {
+      "q": "Posso confrontare altri stili?",
+      "a": "Sì. Puoi confrontare altri tagli corti."
+    },
+    {
+      "q": "I dettagli importanti restano?",
+      "a": "L’istruzione chiede di conservare sopracciglia e barba, ma può variare."
+    },
+    {
+      "q": "Il risultato è esatto?",
+      "a": "No. È un concetto visivo."
+    },
+    {
+      "q": "Posso usarlo come riferimento?",
+      "a": "Sì. Usalo come riferimento con il barbiere."
+    }
+  ],
+  "moreTools": "Strumenti IA correlati",
+  "moreToolsLinks": [
+    {
+      "title": "Filtro Buzz Cut",
+      "description": "Confronta modifiche correlate di capelli e immagine da un ritratto chiaro.",
+      "href": "/buzz-cut-filter",
+      "media": {
+        "type": "image",
+        "src": "/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp",
+        "alt": "Filtro Buzz Cut"
+      }
+    },
+    {
+      "title": "Cambio acconciatura IA",
+      "description": "Confronta modifiche correlate di capelli e immagine da un ritratto chiaro.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding",
+        "alt": "Cambio acconciatura IA"
+      }
+    },
+    {
+      "title": "Cambio colore capelli IA",
+      "description": "Confronta modifiche correlate di capelli e immagine da un ritratto chiaro.",
+      "href": "/ai-hair-color-changer",
+      "media": {
+        "type": "image",
+        "src": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "alt": "Cambio colore capelli IA"
+      }
+    }
+  ],
+  "features": {
+    "title": "Perché usare Toolaze Bald Filter",
+    "items": [
+      {
+        "icon": "⚡",
+        "iconType": "speed",
+        "title": "Inizio senza registrazione",
+        "desc": "Prova un look rasato senza creare account."
+      },
+      {
+        "icon": "🪒",
+        "iconType": "guidance",
+        "title": "Calvo selezionato",
+        "desc": "Calvo parte selezionato, con tagli corti vicini."
+      },
+      {
+        "icon": "👤",
+        "iconType": "privacy",
+        "title": "Istruzioni nascoste",
+        "desc": "Le istruzioni sono nascoste; usa Personalizzato per dettagli."
+      }
+    ]
+  }
+}
