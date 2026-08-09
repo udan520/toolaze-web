@@ -89,6 +89,21 @@ function getUtilitySeoRedirects() {
   return redirects
 }
 
+function getEnglishLocaleRedirects() {
+  return [
+    {
+      source: '/en',
+      destination: '/',
+      permanent: true,
+    },
+    {
+      source: '/en/:path*',
+      destination: '/:path*',
+      permanent: true,
+    },
+  ]
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir,
@@ -119,7 +134,9 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    return isStaticExport ? [] : getUtilitySeoRedirects()
+    return isStaticExport
+      ? []
+      : [...getUtilitySeoRedirects(), ...getEnglishLocaleRedirects()]
   },
   // 注意：静态导出模式下无法使用 rewrites，所以无法代理 Hugging Face 请求
   // Transformers.js 需要直接从 Hugging Face 加载模型文件

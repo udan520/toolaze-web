@@ -13,7 +13,7 @@ interface PageProps {
 // 为静态导出生成所有语言版本的参数
 export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  return locales.map((locale) => ({ locale }))
+  return locales.filter((locale) => locale !== 'en').map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

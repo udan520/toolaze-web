@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "A imagem 1 é a foto original da pessoa. A imagem 2 é a referência de biquíni ou moda praia. Troque apenas a roupa visível em cada pessoa claramente visível da imagem 1 por a moda praia da imagem 2. Se a imagem 1 contiver várias pessoas, aplique o mesmo estilo de moda praia a cada pessoa claramente visível. Mantenha todo o resto exatamente igual para cada pessoa e para a cena: rosto, identidade, idade, tom de pele, cabelo, corpo, proporções corporais, pose, mãos, expressão, posição relativa, fundo, iluminação, ângulo da câmera, enquadramento e qualidade da imagem. Não afine, não aumente, não retoque, não remodele, não mude a pose, não mude o rosto, não mude o corpo, não altere as posições relativas e não modifique a cena. Combine o estilo, a cobertura, o tecido, a cor, as alças e a silhueta da moda praia da imagem 2 o mais próximo possível. Mantenha o resultado realista, de bom gosto, não explícito e adequado para uma prévia de moda praia.",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "Gerador de biquíni com IA",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "Referência de biquíni"
+          "label": "Estilos de biquíni"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "Biquíni preto clássico",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "Enviar foto de uma pessoa adulta",
+      "personUploadHelper": "Imagem 1: use a foto adulta pré-preenchida ou envie a pessoa que deseja editar.",
+      "presetChoiceTitle": "Escolher um estilo de biquíni",
+      "customTextModeLabel": "Descrever biquíni",
+      "customReferenceModeLabel": "Referência de biquíni",
+      "customReferenceUploadTitle": "Enviar referência de biquíni",
+      "customReferenceUploadHelper": "Imagem 2: envie uma referência de biquíni ou moda praia de bom gosto.",
       "uploadTitle": "Enviar foto da pessoa + referência de biquíni",
       "uploadHelper": "Envie primeiro a foto adulta e depois adicione uma referência de moda praia de bom gosto.",
-      "promptLabel": "Descreva a moda praia",
-      "promptPlaceholder": "Personalizado: envie uma foto adulta e descreva estilo, cobertura, cor, alças, tecido e uso do biquíni."
+      "promptLabel": "Detalhes do estilo do biquíni",
+      "promptPlaceholder": "Exemplo: um biquíni azul-marinho de cintura alta, com alças largas, cobertura média e tecido canelado."
     }
   },
   "metadata": {

@@ -111,9 +111,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export function generateStaticParams(): Array<{ locale: string; model: string }> {
   const params: Array<{ locale: string; model: string }> = []
-  /** 全 locale × 全 model：不支持语种的组合在运行时 redirect 到英文 canonical，避免静态导出 404 */
+  /** 非英语 locale × 全 model：不支持语种的组合在运行时 redirect 到英文 canonical，避免静态导出 404 */
   for (const model of Object.keys(MODEL_TOOL_MAP)) {
-    for (const locale of SUPPORTED_LOCALES) {
+    for (const locale of SUPPORTED_LOCALES.filter((locale) => locale !== 'en')) {
       params.push({ locale, model })
     }
   }

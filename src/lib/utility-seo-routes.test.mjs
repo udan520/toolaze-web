@@ -82,7 +82,7 @@ test('utility L3 routes use the shared policy and permanent redirects', () => {
   assert.match(localizedRoute, /isUtilityTool/)
   assert.match(localizedRoute, /export const dynamicParams = false/)
   assert.match(localizedRoute, /const UTILITY_REDIRECT_LOCALES = \[/)
-  assert.match(localizedRoute, /for \(const locale of UTILITY_REDIRECT_LOCALES\)/)
+  assert.match(localizedRoute, /for \(const locale of UTILITY_REDIRECT_LOCALES\.filter\(\(locale\) => locale !== 'en'\)\)/)
   assert.match(localizedRoute, /emojiCopyPasteSlugs, 'all-tools'/)
   assert.match(
     localizedRoute,

@@ -3,8 +3,9 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import HistoryPageClient from '@/components/HistoryPageClient'
 import { loadCommonTranslations } from '@/lib/seo-loader'
+import { permanentRedirect } from 'next/navigation'
 
-const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
+const LOCALIZED_LOCALES = ['de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
 interface PageProps {
   params: Promise<{
@@ -15,7 +16,7 @@ interface PageProps {
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((locale) => ({ locale }))
+  return LOCALIZED_LOCALES.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -28,13 +29,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: copy.metadataDescription || 'View your Toolaze AI generation history, download results, and reprompt previous image or video generations.',
     robots: 'noindex, nofollow',
     alternates: {
-      canonical: `https://toolaze.com/${locale}/history`,
+      canonical: locale === 'en'
+        ? 'https://toolaze.com/history'
+        : `https://toolaze.com/${locale}/history`,
     },
   }
 }
 
 export default async function LocalizedHistoryPage({ params }: PageProps) {
   const { locale } = await params
+  if (locale === 'en') permanentRedirect('/history')
+
   const t = await loadCommonTranslations(locale)
   return (
     <>

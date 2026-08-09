@@ -17,7 +17,7 @@ interface PageProps {
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
-  return EARN_CREDITS_LOCALES.map((locale) => ({ locale }))
+  return EARN_CREDITS_LOCALES.filter((locale) => locale !== 'en').map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

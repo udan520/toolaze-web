@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "画像1は元の人物写真です。画像2はビキニまたは水着の参照画像です。画像1のはっきり見える各人物に見えている服だけを画像2の水着に置き換えてください。画像1に複数の人物がいる場合は、同じ水着スタイルをはっきり見える各人物に適用してください。それ以外は各人物とシーンについて正確に同じままにします。顔、本人性、年齢、肌の色、髪、体型、身体比率、ポーズ、手、表情、相対位置、背景、光、カメラ角度、構図、画質を変えないでください。細くしない、拡大しない、レタッチしない、体型を作り替えない、ポーズを変えない、顔を変えない、身体を変えない、相対位置を変えない、シーンを変更しないでください。画像2の水着のスタイル、カバー範囲、素材、色、ストラップ、シルエットにできるだけ近づけてください。結果はリアルで上品、露骨ではなく、水着プレビューに適したものにしてください。",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "AIビキニジェネレーター",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "ビキニ参照"
+          "label": "ビキニスタイル"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "クラシックブラックビキニ",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "成人の人物写真をアップロード",
+      "personUploadHelper": "画像1：入力済みの成人写真を使うか、編集する人物写真をアップロードします。",
+      "presetChoiceTitle": "ビキニスタイルを選択",
+      "customTextModeLabel": "ビキニを説明",
+      "customReferenceModeLabel": "ビキニ参照",
+      "customReferenceUploadTitle": "ビキニ参照をアップロード",
+      "customReferenceUploadHelper": "画像2：上品なビキニまたは水着の参照画像をアップロードします。",
       "uploadTitle": "人物写真 + ビキニ参照をアップロード",
       "uploadHelper": "成人の人物写真を先にアップロードし、上品な水着参照を追加してください。",
-      "promptLabel": "水着を説明",
-      "promptPlaceholder": "カスタム: 成人の人物写真をアップロードし、ビキニの形、カバー範囲、色、ストラップ、素材、用途を説明します。"
+      "promptLabel": "ビキニスタイルの詳細",
+      "promptPlaceholder": "例：幅広ストラップ、適度なカバー範囲、リブ素材のネイビーブルーのハイウエストビキニ。"
     }
   },
   "metadata": {

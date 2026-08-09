@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "圖片 1 是原始人物照片。圖片 2 是比基尼或泳裝參考圖。只將圖片 1 中每個清楚可見人物身上的可見服裝替換為圖片 2 的泳裝。如果圖片 1 中有多人，請將同一泳裝風格套用到每個清楚可見的人物。每個人物與場景的其他所有內容都要完全保持不變：臉、身分、年齡、膚色、頭髮、身形、身體比例、姿勢、手、表情、相對位置、背景、光線、鏡頭角度、構圖與畫質。不要瘦身、不要放大、不要修飾、不要重塑、不要改變姿勢、不要改變臉、不要改變身體，不要改變相對位置，也不要修改場景。盡可能貼近圖片 2 的泳裝款式、覆蓋度、布料、顏色、肩帶與輪廓。結果需真實、得體、非露骨，適合泳裝預覽。",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "AI 比基尼生成器",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "比基尼參考圖"
+          "label": "比基尼款式"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "經典黑色比基尼",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "上傳成人人物照片",
+      "personUploadHelper": "圖片 1：使用預先填入的成人照片，或上傳要編輯的人物照片。",
+      "presetChoiceTitle": "選擇比基尼款式",
+      "customTextModeLabel": "描述比基尼",
+      "customReferenceModeLabel": "比基尼參考圖",
+      "customReferenceUploadTitle": "上傳比基尼參考圖",
+      "customReferenceUploadHelper": "圖片 2：上傳得體的比基尼或泳裝參考圖。",
       "uploadTitle": "上傳人物照片 + 比基尼參考圖",
       "uploadHelper": "先上傳成人人物照片，再加入得體的泳裝參考圖。",
-      "promptLabel": "描述泳裝",
-      "promptPlaceholder": "自訂：上傳一張成人人物照片，描述比基尼款式、覆蓋度、顏色、肩帶、布料與使用情境。"
+      "promptLabel": "比基尼款式細節",
+      "promptPlaceholder": "例如：海軍藍高腰比基尼，搭配寬肩帶、中等覆蓋度與羅紋布料。"
     }
   },
   "metadata": {

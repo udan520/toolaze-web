@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el traje de baño de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el estilo, la cobertura, la tela, el color, los tirantes y la silueta del traje de baño de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "Generador de bikini con IA",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "Referencia de bikini"
+          "label": "Estilos de bikini"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "Bikini negro clásico",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "Subir foto de una persona adulta",
+      "personUploadHelper": "Imagen 1: usa la foto adulta precargada o sube la foto de la persona que quieres editar.",
+      "presetChoiceTitle": "Elegir un estilo de bikini",
+      "customTextModeLabel": "Describir bikini",
+      "customReferenceModeLabel": "Referencia de bikini",
+      "customReferenceUploadTitle": "Subir referencia de bikini",
+      "customReferenceUploadHelper": "Imagen 2: sube una referencia de bikini o traje de baño de buen gusto.",
       "uploadTitle": "Sube foto de persona + referencia de bikini",
       "uploadHelper": "Sube primero la foto adulta y después una referencia de traje de baño de buen gusto.",
-      "promptLabel": "Describe el traje de baño",
-      "promptPlaceholder": "Personalizado: sube una foto adulta y describe estilo de bikini, cobertura, color, tirantes, tela y uso."
+      "promptLabel": "Detalles del estilo de bikini",
+      "promptPlaceholder": "Ejemplo: Un bikini azul marino de cintura alta, con tirantes anchos, cobertura media y tejido acanalado."
     }
   },
   "metadata": {

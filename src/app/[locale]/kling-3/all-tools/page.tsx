@@ -8,7 +8,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  return locales.map((locale) => ({ locale }))
+  return locales.filter((locale) => locale !== 'en').map((locale) => ({ locale }))
 }
 
 export default async function Kling3AllToolsLocalePage({ params }: PageProps) {

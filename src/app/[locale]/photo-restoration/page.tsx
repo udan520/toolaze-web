@@ -13,7 +13,7 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
-  return locales.map((locale) => ({ locale }))
+  return locales.filter((locale) => locale !== 'en').map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

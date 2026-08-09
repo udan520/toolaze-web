@@ -17,8 +17,8 @@ export const dynamicParams = false
 export async function generateStaticParams(): Promise<Array<{ locale: string; tool: string }>> {
   // output: 'export' 要求动态路由至少返回一个静态参数；真实多语言工具页由显式路由负责。
   return [
-    { locale: 'en', tool: 'not-found' },
-    ...SUPPORTED_LOCALES.flatMap((locale) =>
+    { locale: 'de', tool: 'not-found' },
+    ...SUPPORTED_LOCALES.filter((locale) => locale !== 'en').flatMap((locale) =>
       ENGLISH_ONLY_ROOT_ROUTES.map((tool) => ({ locale, tool }))
     ),
   ]

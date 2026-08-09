@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il costume da bagno dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere lo stile, la copertura, il tessuto, il colore, le spalline e la silhouette del costume dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "Generatore di bikini IA",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "Riferimento bikini"
+          "label": "Stili bikini"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "Bikini nero classico",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "Carica la foto di una persona adulta",
+      "personUploadHelper": "Immagine 1: usa la foto adulta precompilata o carica la persona che vuoi modificare.",
+      "presetChoiceTitle": "Scegli uno stile bikini",
+      "customTextModeLabel": "Descrivi bikini",
+      "customReferenceModeLabel": "Riferimento bikini",
+      "customReferenceUploadTitle": "Carica riferimento bikini",
+      "customReferenceUploadHelper": "Immagine 2: carica un riferimento bikini o costume da bagno di buon gusto.",
       "uploadTitle": "Carica foto persona + riferimento bikini",
       "uploadHelper": "Carica prima la foto adulta e poi aggiungi un riferimento costume da bagno di buon gusto.",
-      "promptLabel": "Descrivi il costume da bagno",
-      "promptPlaceholder": "Personalizzato: carica una foto adulta e descrivi stile, copertura, colore, spalline, tessuto e uso del bikini."
+      "promptLabel": "Dettagli dello stile bikini",
+      "promptPlaceholder": "Esempio: un bikini blu navy a vita alta, con spalline larghe, copertura media e tessuto a coste."
     }
   },
   "metadata": {

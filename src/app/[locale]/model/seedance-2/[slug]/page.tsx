@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   const slugs = await getAllSlugs('seedance-2', 'en')
   const redirectSlugs = [...new Set([...slugs, 'ai-video-generator'])]
 
-  return SUPPORTED_LOCALES.flatMap((locale) =>
+  return SUPPORTED_LOCALES.filter((locale) => locale !== 'en').flatMap((locale) =>
     redirectSlugs.map((slug) => ({
       locale,
       slug,

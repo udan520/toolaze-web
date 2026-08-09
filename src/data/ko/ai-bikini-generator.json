@@ -8,7 +8,9 @@
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
     "defaultPrompt": "이미지 1은 원본 인물 사진입니다. 이미지 2는 비키니 또는 수영복 참조 이미지입니다. 이미지 1에서 명확하게 보이는 각 인물의 보이는 의상만 이미지 2의 수영복(으)로 교체하세요. 이미지 1에 여러 사람이 있는 경우, 명확하게 보이는 각 인물에게 동일한 수영복 스타일을 적용하세요. 각 인물과 장면의 그 외 모든 것은 정확히 그대로 유지하세요: 얼굴, 정체성, 나이, 피부 톤, 머리카락, 체형, 신체 비율, 포즈, 손, 표정, 상대 위치, 배경, 조명, 카메라 각도, 구도, 이미지 품질. 날씬하게 만들지 말고, 확대하지 말고, 보정하지 말고, 체형을 바꾸지 말고, 포즈를 바꾸지 말고, 얼굴을 바꾸지 말고, 몸을 바꾸지 말고, 상대 위치를 바꾸지 말고, 장면을 수정하지 마세요. 이미지 2의 수영복 스타일, 커버 범위, 소재, 색상, 스트랩, 실루엣을(를) 최대한 가깝게 맞추세요. 결과는 사실적이고 단정하며 노골적이지 않고 수영복 미리보기에 적합해야 합니다.",
-    "defaultImageUrls": [],
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
+    ],
     "hideModelBranding": true,
     "compactResultPanel": true,
     "displayName": "AI 비키니 생성기",
@@ -19,7 +21,7 @@
       "presetTabs": [
         {
           "id": "bikini-reference",
-          "label": "비키니 참조"
+          "label": "비키니 스타일"
         },
         {
           "id": "custom",
@@ -28,6 +30,12 @@
       ],
       "hidePresetPromptInput": true,
       "customPromptTabId": "custom",
+      "defaultPromptPresetTabId": "bikini-reference",
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "clothingReferencePresetGrid": true,
+      "enableCustomReferenceImageUpload": true,
+      "customReferencePrompt": "Image 1 is the original adult person photo. Image 2 is the bikini or swimwear reference image. Replace only the visible clothing on each clearly visible adult person in image 1 with the swimwear style from image 2. Preserve face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not copy the reference person's identity, face, body, pose, background, or accessories. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
       "presets": [
         {
           "label": "클래식 블랙 비키니",
@@ -124,10 +132,17 @@
       }
     ],
     "textOverrides": {
+      "personUploadTitle": "성인 인물 사진 업로드",
+      "personUploadHelper": "이미지 1: 미리 입력된 성인 사진을 사용하거나 편집할 인물 사진을 업로드하세요.",
+      "presetChoiceTitle": "비키니 스타일 선택",
+      "customTextModeLabel": "비키니 설명",
+      "customReferenceModeLabel": "비키니 참조",
+      "customReferenceUploadTitle": "비키니 참조 업로드",
+      "customReferenceUploadHelper": "이미지 2: 단정한 비키니 또는 수영복 참조 이미지를 업로드하세요.",
       "uploadTitle": "인물 사진 + 비키니 참조 업로드",
       "uploadHelper": "성인 인물 사진을 먼저 업로드한 다음 단정한 수영복 참조 이미지를 추가하세요.",
-      "promptLabel": "수영복 설명",
-      "promptPlaceholder": "맞춤: 성인 인물 사진을 업로드하고 비키니 스타일, 커버 범위, 색상, 스트랩, 소재, 용도를 설명하세요."
+      "promptLabel": "비키니 스타일 세부 정보",
+      "promptPlaceholder": "예: 넓은 스트랩, 적당한 커버 범위, 골지 소재의 네이비 하이웨이스트 비키니."
     }
   },
   "metadata": {

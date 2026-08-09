@@ -1355,6 +1355,7 @@ export default function AiImageGenerationTool({
   const restoredGenerationPollIdsRef = useRef(new Set<string>())
   const skipNextWorkflowReferenceSyncRef = useRef(false)
   const hasInitializedPromptPresetTabRef = useRef(false)
+  const clearedDefaultPersonImageUrlsRef = useRef(new Set<string>())
   const presetReferenceImages = useMemo(
     () => new Set(
       promptPresets
@@ -1524,8 +1525,7 @@ export default function AiImageGenerationTool({
   const shouldUseSecondaryReferenceUploader = shouldUsePresetReferenceUploader || shouldUseCustomReferenceUploader
   const isClothingReferencePresetGrid = clothingReferencePresetGrid
     && activePromptPresetTab !== customPromptTabId
-    && ['women', 'men'].includes(activePromptPresetTab)
-    && visiblePromptPresets.some((preset) => ['women', 'men'].includes(preset.group || ''))
+    && visiblePromptPresets.some((preset) => preset.group === activePromptPresetTab)
   const shouldUseSelectedPresetReference = isClothingReferencePresetGrid
     && Boolean(selectedPromptPresetReferenceImage)
   const shouldIncludeSecondaryReference = shouldUseSelectedPresetReference || shouldUseSecondaryReferenceUploader
@@ -1626,7 +1626,10 @@ export default function AiImageGenerationTool({
       return
     }
 
-    const baseImageUrls = defaultImageUrls.filter((url) => !presetReferenceImages.has(url))
+    const baseImageUrls = defaultImageUrls.filter(
+      (url) => !presetReferenceImages.has(url)
+        && !clearedDefaultPersonImageUrlsRef.current.has(url)
+    )
     const presetReferenceImage = shouldUsePresetReferenceUploader ? selectedPromptPresetReferenceImage : undefined
     const nextRemoteImageUrls = shouldRenderWorkflowTabsAboveUpload
       ? baseImageUrls.slice(0, personUploadMaxImages)
@@ -2149,7 +2152,7 @@ export default function AiImageGenerationTool({
 
     if (validFiles.length === 0) return
 
-    const currentCount = imageFiles.length
+    const currentCount = imageFiles.length + remoteImageUrls.length
     const remainingSlots = personUploadMaxImages - currentCount
     if (remainingSlots <= 0) {
       showToast(formatToolText(toolText.maxImagesAllowed, { max: personUploadMaxImages, remaining: 0 }), 'warning')
@@ -2165,19 +2168,24 @@ export default function AiImageGenerationTool({
       preview: URL.createObjectURL(file)
     }))
 
-    setRemoteImageUrls([])
     setImageFiles(prev => {
       const combined = [...prev, ...newImages]
       return combined.slice(0, personUploadMaxImages)
     })
   }
 
-  const replaceRemoteImageWithFile = (index: number, file: File) => {
+  const replaceRemoteImageWithFile = (index: number, url: string, file: File) => {
+    clearedDefaultPersonImageUrlsRef.current.add(url)
     setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
     setImageFiles((prev) => [
       ...prev,
       { file, preview: URL.createObjectURL(file) },
     ].slice(0, personUploadMaxImages))
+  }
+
+  const removeRemotePersonImage = (index: number, url: string) => {
+    clearedDefaultPersonImageUrlsRef.current.add(url)
+    setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
   }
 
   const replaceLocalImageWithFile = (index: number, file: File) => {
@@ -4194,8 +4202,8 @@ export default function AiImageGenerationTool({
                       onLoad: () => setRemoteImagePreviewState(url, 'loaded'),
                       onError: () => setRemoteImagePreviewState(url, previewState === 'retrying' ? 'failed' : 'retrying'),
                       onPreview: () => setPreviewImage(url),
-                      onRemove: () => setRemoteImageUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index)),
-                      onReplace: (file: File) => replaceRemoteImageWithFile(index, file),
+                      onRemove: () => removeRemotePersonImage(index, url),
+                      onReplace: (file: File) => replaceRemoteImageWithFile(index, url, file),
                     }
                   }),
                   ...imageFiles.map((item, index) => ({

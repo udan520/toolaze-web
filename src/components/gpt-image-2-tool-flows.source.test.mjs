@@ -55,6 +55,9 @@ const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
 const aiBreastExpansionContent = JSON.parse(
   readFileSync(new URL('../data/en/ai-breast-expansion.json', import.meta.url), 'utf8'),
 )
+const aiBabyGeneratorContent = JSON.parse(
+  readFileSync(new URL('../data/en/ai-baby-generator.json', import.meta.url), 'utf8'),
+)
 const aiDanceLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
 const localizedFreeCreditPatterns = {
   en: /20 free credits/i,
@@ -89,6 +92,24 @@ function sourceBetween(source, start, end) {
   assert.notEqual(endIndex, -1, `missing source marker: ${end}`)
   return source.slice(startIndex, endIndex)
 }
+
+test('shared default person images preserve undeleted defaults across preset changes', () => {
+  assert.equal(aiBabyGeneratorContent.topTool.defaultImageUrls.length, 2)
+  assert.match(
+    aiImageToolSource,
+    /const baseImageUrls = defaultImageUrls\.filter\([\s\S]*!clearedDefaultPersonImageUrlsRef\.current\.has\(url\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /const currentCount = imageFiles\.length \+ remoteImageUrls\.length[\s\S]*const remainingSlots = personUploadMaxImages - currentCount/,
+  )
+  const handleFilesSource = sourceBetween(
+    aiImageToolSource,
+    'const handleFiles = (files: FileList | File[]) => {',
+    'const replaceRemoteImageWithFile',
+  )
+  assert.doesNotMatch(handleFilesSource, /setRemoteImageUrls\(\[\]\)/)
+})
 
 const aiVideoToolMenuSource = sourceBetween(
   navigationSource,
@@ -909,6 +930,71 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
   }
 })
 
+test('AI Bikini Generator defaults to styles and offers prompt or reference Custom modes in every locale', () => {
+  const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
+  let sharedDefaultPersonUrl = ''
+
+  for (const locale of aiDanceLocales) {
+    const pageContent = JSON.parse(
+      readFileSync(new URL(`../data/${locale}/ai-bikini-generator.json`, import.meta.url), 'utf8'),
+    )
+    const factoryContent = JSON.parse(readFileSync(`${factoryContentDirectory}/${locale}.json`, 'utf8'))
+
+    for (const content of [pageContent, factoryContent]) {
+      const topTool = content.topTool || {}
+      const acceptance = topTool.functionalAcceptance || {}
+      const defaultPersonUrls = topTool.defaultImageUrls || []
+
+      assert.equal(defaultPersonUrls.length, 1, `${locale} should preload one adult person photo`)
+      assert.match(defaultPersonUrls[0], /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
+      assert.notEqual(defaultPersonUrls[0], topTool.sampleImages?.[0]?.url, `${locale} should not submit the before-after demo as input`)
+      sharedDefaultPersonUrl ||= defaultPersonUrls[0]
+      assert.equal(defaultPersonUrls[0], sharedDefaultPersonUrl, `${locale} should reuse the same default person photo`)
+
+      assert.equal(acceptance.defaultPromptPresetTabId, 'bikini-reference')
+      assert.equal(acceptance.showPresetSelectedState, true)
+      assert.equal(acceptance.hidePresetReferenceUploader, true)
+      assert.equal(acceptance.clothingReferencePresetGrid, true)
+      assert.equal(acceptance.enableCustomReferenceImageUpload, true)
+      assert.equal(acceptance.customPromptTabId, 'custom')
+      assert.match(acceptance.customReferencePrompt || '', /bikini|swimwear/i)
+      assert.match(acceptance.customReferencePrompt || '', /reference image/i)
+      assert.ok(topTool.textOverrides?.customTextModeLabel?.trim(), `${locale} custom text mode label`)
+      assert.ok(topTool.textOverrides?.customReferenceModeLabel?.trim(), `${locale} custom reference mode label`)
+      assert.ok(topTool.textOverrides?.customReferenceUploadTitle?.trim(), `${locale} custom reference upload title`)
+      assert.ok(topTool.textOverrides?.promptLabel?.trim(), `${locale} bikini prompt label`)
+      assert.ok(topTool.textOverrides?.promptPlaceholder?.trim(), `${locale} bikini prompt placeholder`)
+      assert.doesNotMatch(
+        topTool.textOverrides.promptPlaceholder,
+        /upload|photo|person|adult|hochladen|erwachsen|sube|foto|adulta|importez|adulte|carica|adulta|アップロード|成人|人物写真|업로드|성인|인물 사진|envie|adulta|上傳|成人|人物照片/i,
+        `${locale} prompt placeholder should describe bikini details only`,
+      )
+    }
+  }
+
+  const acceptance = aiBikiniGeneratorContent.topTool.functionalAcceptance
+  assert.equal(acceptance.presetTabs[0].label, 'Bikini Styles')
+  assert.equal(aiBikiniGeneratorContent.topTool.textOverrides.customTextModeLabel, 'Describe Bikini')
+  assert.equal(aiBikiniGeneratorContent.topTool.textOverrides.customReferenceModeLabel, 'Reference Bikini')
+  assert.equal(aiBikiniGeneratorContent.topTool.textOverrides.customReferenceUploadTitle, 'Upload Bikini Reference')
+  assert.equal(aiBikiniGeneratorContent.topTool.textOverrides.promptLabel, 'Bikini Style Details')
+  assert.match(aiBikiniGeneratorContent.topTool.textOverrides.promptPlaceholder, /^Example:/)
+  assert.match(aiImageToolSource, /shouldShowCustomInputModeSwitch = combineCustomReferenceAndPrompt \? false/)
+  assert.match(aiImageToolSource, /shouldUseReferenceOnlyCustomMode = shouldShowCustomInputModeSwitch && customInputMode === 'reference'/)
+  assert.match(
+    aiImageToolSource,
+    /isClothingReferencePresetGrid = clothingReferencePresetGrid[\s\S]*activePromptPresetTab !== customPromptTabId[\s\S]*Boolean\(selectedPromptPresetReferenceImage\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /requestClothingReferenceRemoteUrls = shouldIncludeSecondaryReference[\s\S]*requestSelectedPresetReferenceImage[\s\S]*clothingReferenceRemoteUrls/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /effectiveRequestPrompt = shouldUseCombinedCustomReference[\s\S]*shouldUseReferenceOnlyCustomMode[\s\S]*customReferencePrompt\.trim\(\)[\s\S]*requestPrompt/,
+  )
+})
+
 test('AI Bikini Generator prompt ideas mirror eight bikini reference styles in every locale', () => {
   const factoryContentDirectory = '_codex/seo-pipeline/tasks/2026-07-31-ai-bikini-generator/content'
 
@@ -950,6 +1036,7 @@ test('AI Bikini Generator visible SEO copy is user-facing and free-claim qualifi
     'swatch',
     'recommendedMode',
     'customPromptTabId',
+    'customReferencePrompt',
   ])
   const collectStrings = (value, path = []) => {
     if (typeof value === 'string') {

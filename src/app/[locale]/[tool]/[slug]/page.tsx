@@ -107,16 +107,6 @@ export const dynamicParams = false
 export const revalidate = 86400
 
 const UTILITY_REDIRECT_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
-const PREGENERATED_LOCALES = ['en'] as const
-const PREGENERATED_TOOL_SLUG_LIMITS: Record<string, number> = {
-  'seedance-2': 3,
-  'watermark-remover': 2,
-}
-
-function getPregeneratedSlugs(tool: string, slugs: string[]) {
-  const limit = PREGENERATED_TOOL_SLUG_LIMITS[tool] ?? 0
-  return slugs.slice(0, limit)
-}
 
 // 2. 告诉 Next.js 在打包时生成哪些静态页面 (SSG)
 export async function generateStaticParams() {
@@ -128,8 +118,6 @@ export async function generateStaticParams() {
     const converterSlugs = await getAllSlugs('image-converter', 'en') || []
     const fontGeneratorSlugs = await getAllSlugs('font-generator', 'en') || []
     const emojiCopyPasteSlugs = await getAllSlugs('emoji-copy-and-paste', 'en') || []
-    const seedance2Slugs = await getAllSlugs('seedance-2', 'en') || []
-    const watermarkRemoverSlugs = await getAllSlugs('watermark-remover', 'en') || []
 
     const utilityRedirects = [
       { tool: 'image-compressor', slugs: compressorSlugs },
@@ -139,7 +127,7 @@ export async function generateStaticParams() {
     ]
 
     // 父级 locale layout 禁止未声明参数，因此历史工具 URL 必须全部静态声明为 308。
-    for (const locale of UTILITY_REDIRECT_LOCALES) {
+    for (const locale of UTILITY_REDIRECT_LOCALES.filter((locale) => locale !== 'en')) {
       for (const { tool, slugs } of utilityRedirects) {
         for (const slug of slugs) {
           if (!slug || typeof slug !== 'string') continue
@@ -148,40 +136,16 @@ export async function generateStaticParams() {
       }
     }
 
-    for (const locale of PREGENERATED_LOCALES) {
-      // 添加 Seedance 2.0 L3 页面（/en/seedance-2/* 会重定向到 /seedance-2/*）
-      for (const slug of getPregeneratedSlugs('seedance-2', seedance2Slugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'seedance-2',
-            slug: slug,
-          })
-        }
-      }
-
-      // Watermark Remover L3（/ja/watermark-remover/...；英语 canonical 仍为 /watermark-remover/...）
-      for (const slug of getPregeneratedSlugs('watermark-remover', watermarkRemoverSlugs)) {
-        if (slug && typeof slug === 'string') {
-          params.push({
-            locale: locale,
-            tool: 'watermark-remover',
-            slug: slug,
-          })
-        }
-      }
-    }
-
   } catch (error) {
     console.error('Error in generateStaticParams:', error)
     // 如果出错，至少返回一个默认页面，避免构建失败
-    return [{ locale: 'en', tool: 'image-compressor', slug: 'compress-jpg' }]
+    return [{ locale: 'de', tool: 'image-compressor', slug: 'compress-jpg' }]
   }
   
   // 确保至少返回一个参数，避免构建失败
   if (params.length === 0) {
     console.warn('generateStaticParams returned empty array, using fallback')
-    return [{ locale: 'en', tool: 'image-compressor', slug: 'compress-jpg' }]
+    return [{ locale: 'de', tool: 'image-compressor', slug: 'compress-jpg' }]
   }
   
   return params

@@ -13,7 +13,7 @@ export function generateStaticParams(): Array<{ locale: string; id: string }> {
     .slice(0, PREGENERATED_PROMPT_DETAIL_LIMIT)
     .map((item) => item.tweetId)
 
-  return SITE_LOCALES.flatMap((locale) =>
+  return SITE_LOCALES.filter((locale) => locale.code !== 'en').flatMap((locale) =>
     promptIds.map((id) => ({
       locale: locale.code,
       id,
