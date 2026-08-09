@@ -42,6 +42,39 @@ test('createGenerationHistoryItem preserves same-origin reference image paths', 
   assert.equal(boundValues[6], JSON.stringify(item.inputUrls))
 })
 
+test('task-backed history finalization is idempotent', async () => {
+  const sqlStatements = []
+  const env = {
+    DB: {
+      prepare(sql) {
+        sqlStatements.push(sql)
+        return {
+          bind() {
+            return {
+              async run() {
+                return { success: true }
+              },
+            }
+          },
+        }
+      },
+    },
+  }
+  const item = {
+    taskId: 'task_123',
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    prompt: 'Portrait',
+    outputUrl: 'https://assets.toolaze.com/output.webp',
+  }
+
+  const first = await createGenerationHistoryItem(env, 'user_1', item)
+  const second = await createGenerationHistoryItem(env, 'user_1', item)
+
+  assert.equal(first.id, second.id)
+  assert.match(sqlStatements[0], /on conflict\s*\(id\)\s*do update/i)
+})
+
 test('generation history rewrites legacy R2 development URLs to the canonical asset domain', async () => {
   let boundValues = []
   const env = {

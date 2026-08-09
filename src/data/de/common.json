@@ -1105,7 +1105,10 @@
     "modeVideo": "Video",
     "modeTextToImage": "Text zu Bild",
     "modeImageToImage": "Bild zu Bild",
-    "createSimilar": "Ähnlich erstellen"
+    "createSimilar": "Ähnlich erstellen",
+    "statusGenerating": "Wird generiert",
+    "statusFailed": "Fehlgeschlagen",
+    "failureFallback": "Die Generierung ist fehlgeschlagen. Erstellen Sie die Anfrage erneut."
   },
   "creditsPage": {
     "metadataTitle": "Credit-Verlauf - Toolaze",

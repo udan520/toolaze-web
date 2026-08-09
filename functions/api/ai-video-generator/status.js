@@ -6,6 +6,7 @@
 import { getCurrentUser } from '../../_shared/auth.mjs';
 import { getCreditSummary, refundCredits } from '../../_shared/credits.mjs';
 import { getVideoGenerationCreditRefundDescription } from '../../_shared/generation-credit-label.mjs';
+import { updateGenerationAttemptStatus } from '../../_shared/generation-attempts.mjs';
 import {
   GENERATION_TASK_ACCESS_ERROR,
   verifyGenerationTaskAccess,
@@ -215,6 +216,21 @@ export async function onRequest(context) {
     const creditRefund = status === 'FAILED'
       ? await refundFailedVideoCredits(env, user, body, taskId, message)
       : null;
+    if (status === 'FAILED') {
+      await updateGenerationAttemptStatus(env, {
+        userId: user?.id,
+        taskId,
+        status: 'failed',
+        failureReason: message || 'Video generation failed',
+      });
+    } else if (status === 'SUCCEEDED') {
+      await updateGenerationAttemptStatus(env, {
+        userId: user?.id,
+        taskId,
+        status: 'succeeded',
+        outputUrl: videoUrl,
+      });
+    }
 
     return jsonResponse({
       status,

@@ -35,7 +35,10 @@ function normalizeHistoryReferenceImageUrl(url, env) {
 
 export async function createGenerationHistoryItem(env, userId, item) {
   const now = nowIso();
-  const id = createId('gen');
+  const taskId = String(item.taskId || '').trim();
+  const id = taskId
+    ? `gen_task_${encodeURIComponent(userId)}_${encodeURIComponent(taskId)}`
+    : createId('gen');
   const outputUrl = rewriteLegacyR2PublicUrl(String(item.outputUrl || '').trim(), env);
   const inputUrls = Array.isArray(item.inputUrls)
     ? item.inputUrls.map((url) => normalizeHistoryReferenceImageUrl(url, env)).filter(Boolean)
@@ -50,6 +53,19 @@ export async function createGenerationHistoryItem(env, userId, item) {
       aspect_ratio, resolution, output_format, native_audio, tool_slug, tool_label, source_path, created_at
     )
     values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    on conflict(id) do update set
+      media_type = excluded.media_type,
+      model = excluded.model,
+      prompt = excluded.prompt,
+      output_url = excluded.output_url,
+      input_urls = excluded.input_urls,
+      aspect_ratio = excluded.aspect_ratio,
+      resolution = excluded.resolution,
+      output_format = excluded.output_format,
+      native_audio = excluded.native_audio,
+      tool_slug = excluded.tool_slug,
+      tool_label = excluded.tool_label,
+      source_path = excluded.source_path
   `).bind(
     id,
     userId,

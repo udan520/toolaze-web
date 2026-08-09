@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 const source = readFileSync(new URL('./talking-avatar-creator.js', import.meta.url), 'utf8');
+const clientSource = readFileSync(new URL('../../src/components/TalkingAvatarCreatorTool.tsx', import.meta.url), 'utf8');
 
 test('Talking Avatar backend charges from shared Infinitalk pricing and request duration', () => {
   assert.match(
@@ -19,4 +20,14 @@ test('Talking Avatar backend charges from shared Infinitalk pricing and request 
   assert.match(source, /return Math\.max\(1, Math\.min\(15, Math\.ceil\(duration\)\)\)/);
   assert.match(source, /calculateVideoGenerationCredits\(INFINITALK_MODEL_ID, resolution, durationSeconds\)/);
   assert.match(source, /durationSeconds,/);
+});
+
+test('Talking Avatar persists and finalizes a resumable generation attempt', () => {
+  assert.match(source, /createGenerationAttempt/);
+  assert.match(source, /attachGenerationAttemptTask/);
+  assert.match(source, /updateGenerationAttemptStatus/);
+  assert.match(source, /inputUrls:\s*\[imageUrl, audioUrl\]/);
+  assert.match(source, /requiredCredits,/);
+  assert.match(clientSource, /persistHistory\(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution, taskId\)/);
+  assert.match(clientSource, /taskId,/);
 });

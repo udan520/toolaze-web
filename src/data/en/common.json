@@ -889,7 +889,10 @@
     "modeVideo": "Video",
     "modeTextToImage": "Text to Image",
     "modeImageToImage": "Image to Image",
-    "createSimilar": "Create Similar"
+    "createSimilar": "Create Similar",
+    "statusGenerating": "Generating",
+    "statusFailed": "Failed",
+    "failureFallback": "Generation failed. Recreate the request to try again."
   },
   "creditsPage": {
     "metadataTitle": "Credit Activity - Toolaze",

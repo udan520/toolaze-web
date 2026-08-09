@@ -1880,6 +1880,10 @@ export default function AiVideoGeneratorTool({
       formData.append('aspectRatio', aspectRatio)
       formData.append('duration', String(duration))
       formData.append('resolution', resolution)
+      if (requestHistoryTool.toolSlug) formData.append('toolSlug', requestHistoryTool.toolSlug)
+      if (requestHistoryTool.toolLabel) formData.append('toolLabel', requestHistoryTool.toolLabel)
+      if (requestHistoryTool.sourcePath) formData.append('sourcePath', requestHistoryTool.sourcePath)
+      formData.append('historyInputUrls', JSON.stringify([...imageUrls, ...motionVideoUrls]))
       if (supportsNativeAudio) {
         formData.append('nativeAudio', String(nativeAudio))
       }

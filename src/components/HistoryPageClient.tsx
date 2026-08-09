@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import DeleteIcon from './icons/DeleteIcon'
 import {
   buildHistoryRecreateHref,
@@ -30,6 +30,17 @@ type GenerationHistoryItem = {
   model: string
   prompt: string
   outputUrl: string
+  status: 'pending' | 'succeeded' | 'failed'
+  taskId?: string | null
+  failureReason?: string | null
+  updatedAt?: string
+  nativeAudio?: boolean
+  statusRequest?: {
+    endpoint: string
+    taskId: string
+    taskProvider?: string | null
+    creditHold: unknown
+  } | null
   inputUrls: string[]
   aspectRatio: string | null
   resolution: string | null
@@ -47,6 +58,7 @@ type HistoryDeleteDialog =
   | { mode: 'bulk' }
 
 const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'
+const PENDING_HISTORY_POLL_INTERVAL_MS = 5000
 
 const defaultHistoryPageCopy = {
   title: 'History',
@@ -95,6 +107,9 @@ const defaultHistoryPageCopy = {
   importingToMediaLibrary: 'Importing',
   importedToMediaLibrary: 'Imported',
   importMediaLibraryFailed: 'Import Failed',
+  statusGenerating: 'Generating',
+  statusFailed: 'Failed',
+  failureFallback: 'Generation failed. Recreate the request to try again.',
 }
 
 function getHistoryPageCopy(initialTranslations?: any) {
@@ -120,9 +135,12 @@ function isReferenceVideoUrl(url: string) {
 function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
   const mediaType: GenerationHistoryItem['mediaType'] =
     item.mediaType === 'video' || isVideoHistoryUrl(item.outputUrl) ? 'video' : 'image'
+  const status: GenerationHistoryItem['status'] =
+    item.status === 'pending' || item.status === 'failed' ? item.status : 'succeeded'
   const rawInputUrls = Array.isArray(item.inputUrls) ? item.inputUrls : []
   const normalizedItem = {
     ...item,
+    status,
     mediaType,
     inputUrls: rawInputUrls,
   }
@@ -158,6 +176,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   const [deleteDialog, setDeleteDialog] = useState<HistoryDeleteDialog | null>(null)
   const [isMediaLibraryAdmin, setIsMediaLibraryAdmin] = useState(false)
   const [importingMediaLibraryIds, setImportingMediaLibraryIds] = useState<Set<string>>(new Set())
+  const pendingPollInFlightRef = useRef(false)
 
   const sortedItems = useMemo(
     () => [...items].sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt)),
@@ -170,10 +189,15 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   const imageCount = items.filter((item) => item.mediaType === 'image').length
   const videoCount = items.filter((item) => item.mediaType === 'video').length
   const selectedItems = useMemo(
-    () => sortedItems.filter((item) => selectedIds.has(item.id)),
+    () => sortedItems.filter((item) => item.status === 'succeeded' && selectedIds.has(item.id)),
     [selectedIds, sortedItems],
   )
-  const allFilteredSelected = filteredItems.length > 0 && filteredItems.every((item) => selectedIds.has(item.id))
+  const selectableFilteredItems = useMemo(
+    () => filteredItems.filter((item) => item.status === 'succeeded'),
+    [filteredItems],
+  )
+  const allFilteredSelected = selectableFilteredItems.length > 0
+    && selectableFilteredItems.every((item) => selectedIds.has(item.id))
   const selectionDisabled = bulkDeleting || bulkDownloading
 
   const closePreview = useCallback(() => {
@@ -182,6 +206,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   }, [])
 
   const openPreview = useCallback((item: GenerationHistoryItem) => {
+    if (item.status !== 'succeeded') return
     setPreviewItem(item)
     setFullScreenPreviewUrl('')
   }, [])
@@ -205,37 +230,102 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
     }
   }, [closePreview, fullScreenPreviewUrl, previewItem])
 
+  const loadHistory = useCallback(async (showLoading = false) => {
+    if (showLoading) setLoading(true)
+    setError('')
+    try {
+      const response = await fetch('/api/history?limit=200', {
+        cache: 'no-store',
+        credentials: 'include',
+      })
+      if (response.status === 401) {
+        window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
+        throw new Error(copy.signInRequired)
+      }
+      if (!response.ok) throw new Error(copy.loadError)
+      const data = await response.json().catch(() => ({ items: [] }))
+      setItems(Array.isArray(data.items) ? data.items.map(normalizeGenerationHistoryItem) : [])
+    } catch (err) {
+      setError(err instanceof Error ? err.message : copy.loadError)
+    } finally {
+      if (showLoading) setLoading(false)
+    }
+  }, [copy.loadError, copy.signInRequired])
+
   useEffect(() => {
-    let cancelled = false
-    const loadHistory = async () => {
-      setLoading(true)
+    void loadHistory(true)
+  }, [loadHistory])
+
+  useEffect(() => {
+    const pendingItems = items.filter((item) => item.status === 'pending' && item.statusRequest)
+    if (pendingItems.length === 0) return
+
+    const refreshPendingHistory = async () => {
+      if (pendingPollInFlightRef.current || document.visibilityState === 'hidden') return
+      pendingPollInFlightRef.current = true
       setError('')
       try {
-        const response = await fetch('/api/history?limit=200', {
-          cache: 'no-store',
-          credentials: 'include',
-        })
-        if (response.status === 401) {
-          window.dispatchEvent(new CustomEvent('toolaze:open-auth-modal'))
-          throw new Error(copy.signInRequired)
+        for (const item of pendingItems) {
+          const statusRequest = item.statusRequest
+          if (!statusRequest) continue
+          const response = await fetch(statusRequest.endpoint, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              taskId: statusRequest.taskId,
+              taskProvider: statusRequest.taskProvider || null,
+              creditHold: statusRequest.creditHold,
+            }),
+          })
+          if (!response.ok) continue
+          const result = await response.json().catch(() => ({}))
+          if (result.status !== 'SUCCEEDED') continue
+          const providerOutputUrl = String(result.videoUrl || result.imageUrl || '').trim()
+          if (!providerOutputUrl) continue
+
+          let outputUrl = providerOutputUrl
+          const persistResponse = await fetch('/api/save-image-to-r2', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mediaUrl: providerOutputUrl, mediaType: item.mediaType }),
+          }).catch(() => null)
+          if (persistResponse?.ok) {
+            const persisted = await persistResponse.json().catch(() => ({}))
+            outputUrl = String(persisted.url || providerOutputUrl)
+          }
+
+          await fetch('/api/history', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...item,
+              inputUrls: item.recreateInputUrls || item.inputUrls,
+              outputUrl,
+              taskId: statusRequest.taskId,
+            }),
+          })
         }
-        if (!response.ok) throw new Error(copy.loadError)
-        const data = await response.json().catch(() => ({ items: [] }))
-        if (!cancelled) {
-          setItems(Array.isArray(data.items) ? data.items.map(normalizeGenerationHistoryItem) : [])
-        }
-      } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : copy.loadError)
       } finally {
-        if (!cancelled) setLoading(false)
+        pendingPollInFlightRef.current = false
+        await loadHistory(false)
       }
     }
 
-    void loadHistory()
-    return () => {
-      cancelled = true
+    const refreshWhenVisible = () => {
+      if (document.visibilityState === 'visible') void refreshPendingHistory()
     }
-  }, [copy.loadError, copy.signInRequired])
+    const intervalId = window.setInterval(() => void refreshPendingHistory(), PENDING_HISTORY_POLL_INTERVAL_MS)
+    document.addEventListener('visibilitychange', refreshWhenVisible)
+    window.addEventListener('focus', refreshWhenVisible)
+    return () => {
+      window.clearInterval(intervalId)
+      document.removeEventListener('visibilitychange', refreshWhenVisible)
+      window.removeEventListener('focus', refreshWhenVisible)
+    }
+  }, [items, loadHistory])
 
   useEffect(() => {
     let cancelled = false
@@ -298,10 +388,10 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   }
 
   const selectAllFilteredItems = () => {
-    if (selectionDisabled || filteredItems.length === 0) return
+    if (selectionDisabled || selectableFilteredItems.length === 0) return
     setSelectedIds((currentIds) => {
       const nextIds = new Set(currentIds)
-      for (const item of filteredItems) nextIds.add(item.id)
+      for (const item of selectableFilteredItems) nextIds.add(item.id)
       return nextIds
     })
   }
@@ -337,6 +427,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   }
 
   const handleDownload = async (item: GenerationHistoryItem) => {
+    if (item.status !== 'succeeded' || !item.outputUrl) return
     trackGenerationHistoryDownloadClick(item, { surface: 'history_page' })
 
     await downloadImageInCurrentPage({
@@ -348,7 +439,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   }
 
   const handleImportToMediaLibrary = async (item: GenerationHistoryItem) => {
-    if (importingMediaLibraryIds.has(item.id)) return
+    if (item.status !== 'succeeded' || importingMediaLibraryIds.has(item.id)) return
 
     setImportingMediaLibraryIds((currentIds) => {
       const nextIds = new Set(currentIds)
@@ -486,6 +577,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
   }
 
   const handleReprompt = (item: GenerationHistoryItem) => {
+    if (item.status === 'pending') return
     trackGenerationHistoryRecreateClick(item, { surface: 'history_page' })
 
     window.sessionStorage.setItem(PENDING_REPROMPT_STORAGE_KEY, JSON.stringify(buildHistoryRepromptPayload({ ...item, inputUrls: item.recreateInputUrls || item.inputUrls })))
@@ -653,7 +745,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5">
           {filteredItems.map((item) => (
             <article key={item.id} className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
-              {isMediaLibraryAdmin && !selectionMode && (
+              {isMediaLibraryAdmin && item.status === 'succeeded' && !selectionMode && (
                 <button
                   type="button"
                   data-history-import-media-library
@@ -664,7 +756,7 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                   {importingMediaLibraryIds.has(item.id) ? copy.importingToMediaLibrary : copy.importToMediaLibrary}
                 </button>
               )}
-              {selectionMode && (
+              {selectionMode && item.status === 'succeeded' && (
                 <label className="absolute left-2 top-2 z-10 inline-flex cursor-pointer items-center justify-center">
                   <input
                     data-history-card-select
@@ -678,13 +770,14 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                   />
                 </label>
               )}
-              <button
-                data-history-card-preview
-                type="button"
-                onClick={() => openPreview(item)}
-                className="group relative block w-full overflow-hidden text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label={item.mediaType === 'video' ? copy.previewLabel : copy.previewImageLabel}
-              >
+              {item.status === 'succeeded' ? (
+                <button
+                  data-history-card-preview
+                  type="button"
+                  onClick={() => openPreview(item)}
+                  className="group relative block w-full overflow-hidden text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  aria-label={item.mediaType === 'video' ? copy.previewLabel : copy.previewImageLabel}
+                >
                 {item.mediaType === 'video' ? (
                   <>
                     <video
@@ -733,7 +826,55 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                     <span className="min-w-0 truncate">{copy.referenceMedia}</span>
                   </span>
                 )}
-              </button>
+                </button>
+              ) : item.status === 'pending' ? (
+                <div
+                  data-history-status="pending"
+                  className="flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 bg-slate-100 px-4 text-center"
+                >
+                  <span className="h-8 w-8 animate-spin rounded-full border-2 border-slate-300 border-t-indigo-600" aria-hidden="true" />
+                  <div className="min-w-0">
+                    <p className="text-sm font-extrabold text-slate-900">{copy.statusGenerating}</p>
+                    <p className="mt-1 truncate text-xs font-semibold text-slate-500">{item.toolLabel || item.model}</p>
+                  </div>
+                  {item.inputUrls[0] && !isReferenceVideoUrl(item.inputUrls[0]) && (
+                    <img
+                      src={getHistoryReferenceThumbnailUrl(item.inputUrls[0])}
+                      alt=""
+                      className="h-14 w-14 rounded-lg object-contain ring-1 ring-slate-200"
+                    />
+                  )}
+                </div>
+              ) : (
+                <div
+                  data-history-status="failed"
+                  className="flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 bg-rose-50 px-4 text-center"
+                >
+                  <div>
+                    <p className="text-sm font-extrabold text-rose-700">{copy.statusFailed}</p>
+                    <p className="mt-2 line-clamp-3 text-xs font-semibold leading-5 text-rose-600">
+                      {item.failureReason || copy.failureFallback}
+                    </p>
+                  </div>
+                  <div className="flex w-full items-center justify-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleReprompt(item)}
+                      className="inline-flex min-h-8 items-center justify-center rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-extrabold text-white hover:bg-indigo-700"
+                    >
+                      {copy.recreate}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => void handleDelete(item)}
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-rose-200 bg-white text-rose-600 hover:bg-rose-100"
+                      aria-label={copy.delete}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                </div>
+              )}
             </article>
           ))}
         </div>

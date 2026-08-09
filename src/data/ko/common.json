@@ -1105,7 +1105,10 @@
     "modeVideo": "동영상",
     "modeTextToImage": "텍스트에서 이미지",
     "modeImageToImage": "이미지에서 이미지",
-    "createSimilar": "비슷하게 만들기"
+    "createSimilar": "비슷하게 만들기",
+    "statusGenerating": "생성 중",
+    "statusFailed": "실패",
+    "failureFallback": "생성에 실패했습니다. 요청을 다시 생성해 시도하세요."
   },
   "creditsPage": {
     "metadataTitle": "크레딧 활동 - Toolaze",

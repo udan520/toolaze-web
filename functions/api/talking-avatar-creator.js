@@ -6,6 +6,11 @@ import {
 } from '../_shared/generation-credit-label.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
 import { calculateVideoGenerationCredits } from '../_shared/generation-credits.mjs';
+import {
+  attachGenerationAttemptTask,
+  createGenerationAttempt,
+  updateGenerationAttemptStatus,
+} from '../_shared/generation-attempts.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const INFINITALK_MODEL_ID = 'infinitalk';
@@ -113,6 +118,7 @@ export async function onRequest(context) {
 
   let creditContext = null;
   let creditMetadata = null;
+  let generationAttempt = null;
 
   try {
     const formData = await request.formData();
@@ -151,6 +157,23 @@ export async function onRequest(context) {
     creditContext = await consumeTalkingAvatarCredits(env, request, requiredCredits, creditMetadata);
     if (creditContext.response) return creditContext.response;
 
+    generationAttempt = await createGenerationAttempt(env, creditContext.user?.id, {
+      mediaType: 'video',
+      status: 'pending',
+      model: INFINITALK_MODEL_ID,
+      prompt,
+      inputUrls: [imageUrl, audioUrl],
+      aspectRatio: 'auto',
+      resolution,
+      outputFormat: JSON.stringify({ duration: durationSeconds, mode: 'audio-driven' }),
+      nativeAudio: true,
+      toolSlug: creditMetadata.toolSlug,
+      toolLabel: creditMetadata.toolLabel,
+      sourcePath: readString(formData, 'sourcePath') || '/talking-avatar-creator',
+      requiredCredits,
+      consumptionId: creditContext.consumption?.consumptionId,
+    });
+
     const response = await fetch(`${KIE_AI_BASE}/createTask`, {
       method: 'POST',
       headers: {
@@ -175,6 +198,12 @@ export async function onRequest(context) {
         ...creditMetadata,
         error: String(msg || 'Failed to create talking avatar task'),
       });
+      await updateGenerationAttemptStatus(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        status: 'failed',
+        failureReason: String(msg || 'Failed to create talking avatar task'),
+      });
       console.error('KIE Infinitalk task creation failed', {
         status: response.status,
         error: String(msg || 'Failed to create talking avatar task'),
@@ -184,6 +213,13 @@ export async function onRequest(context) {
 
     const taskId = result?.data?.taskId ?? result?.taskId;
     if (taskId) {
+      await attachGenerationAttemptTask(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        taskId,
+        requiredCredits,
+        consumptionId: creditContext.consumption?.consumptionId,
+      });
       const payload = { taskId, requiredCredits };
       if (creditContext?.consumption?.consumptionId) {
         await attachGenerationTaskIdToConsumption(
@@ -217,6 +253,12 @@ export async function onRequest(context) {
 
     const videoUrl = result?.data?.videoUrl ?? result?.videoUrl;
     if (videoUrl) {
+      await updateGenerationAttemptStatus(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        status: 'succeeded',
+        outputUrl: videoUrl,
+      });
       return jsonResponse({
         videoUrl,
         requiredCredits,
@@ -228,11 +270,23 @@ export async function onRequest(context) {
       ...creditMetadata,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
     });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext.user?.id,
+      status: 'failed',
+      failureReason: String(result?.message ?? result?.msg ?? 'Unexpected response format'),
+    });
     return jsonResponse({ error: GENERATION_SERVICE_UNAVAILABLE_MESSAGE, code: 'UPSTREAM_GENERATION_ERROR', credits }, 500);
   } catch (error) {
     const credits = await refundTalkingAvatarCredits(env, creditContext, {
       ...(creditMetadata || {}),
       error: error instanceof Error ? error.message : 'Internal server error',
+    });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext?.user?.id,
+      status: 'failed',
+      failureReason: error instanceof Error ? error.message : 'Internal server error',
     });
     return jsonResponse({
       error: error instanceof Error ? error.message : 'Internal server error',

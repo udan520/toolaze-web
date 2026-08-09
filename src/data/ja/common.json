@@ -1117,7 +1117,10 @@
     "modeVideo": "動画",
     "modeTextToImage": "テキストから画像",
     "modeImageToImage": "画像から画像",
-    "createSimilar": "似た画像を作成"
+    "createSimilar": "似た画像を作成",
+    "statusGenerating": "生成中",
+    "statusFailed": "失敗",
+    "failureFallback": "生成に失敗しました。リクエストを再作成してもう一度お試しください。"
   },
   "creditsPage": {
     "metadataTitle": "クレジット履歴 - Toolaze",

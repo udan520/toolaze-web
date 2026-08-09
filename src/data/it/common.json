@@ -1105,7 +1105,10 @@
     "modeVideo": "Video",
     "modeTextToImage": "Da testo a immagine",
     "modeImageToImage": "Da immagine a immagine",
-    "createSimilar": "Crea simile"
+    "createSimilar": "Crea simile",
+    "statusGenerating": "Generazione in corso",
+    "statusFailed": "Non riuscito",
+    "failureFallback": "La generazione non è riuscita. Ricrea la richiesta per riprovare."
   },
   "creditsPage": {
     "metadataTitle": "Attività crediti - Toolaze",

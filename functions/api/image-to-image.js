@@ -488,6 +488,8 @@ export async function onRequest(context) {
       toolLabel: creditMetadata.toolLabel,
       sourcePath: creditMetadata.sourcePath,
       consumptionId: creditContext.consumption?.consumptionId,
+      requiredCredits: creditContext.requiredCredits,
+      taskProvider: 'image-to-image',
     });
 
     const input = model === 'gpt-image-1-5'
@@ -596,6 +598,8 @@ export async function onRequest(context) {
         userId: creditContext.user?.id,
         taskId: result.data.taskId,
         consumptionId: creditContext.consumption?.consumptionId,
+        requiredCredits: creditContext.requiredCredits,
+        taskProvider: 'image-to-image',
       });
       if (creditContext.consumption?.consumptionId) {
         await attachGenerationTaskIdToConsumption(

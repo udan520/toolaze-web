@@ -754,6 +754,7 @@ export default function TalkingAvatarCreatorTool({
     audioUrl: string,
     requestPrompt: string,
     requestResolution: Resolution,
+    taskId: string,
   ): Promise<PersistedTalkingAvatarHistoryItem | null> => {
     const historyTool = getHistoryToolMetadata(pathname, 'Infinitalk', 'infinitalk')
     try {
@@ -771,6 +772,7 @@ export default function TalkingAvatarCreatorTool({
           resolution: requestResolution,
           outputFormat: 'audio-driven',
           nativeAudio: true,
+          taskId,
           ...historyTool,
         }),
       })
@@ -848,6 +850,7 @@ export default function TalkingAvatarCreatorTool({
       formData.append('prompt', requestPrompt)
       formData.append('resolution', requestResolution)
       formData.append('durationSeconds', String(requestDurationSeconds))
+      formData.append('sourcePath', pathname)
 
       const response = await fetch('/api/talking-avatar-creator', {
         method: 'POST',
@@ -887,7 +890,7 @@ export default function TalkingAvatarCreatorTool({
       }
       const persistedVideoUrl = await persistGeneratedMediaToR2(nextVideoUrl, 'video')
 
-      const savedItem = await persistHistory(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution)
+      const savedItem = await persistHistory(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution, taskId)
       const historyItem: TalkingAvatarHistoryItem = {
         id: savedItem?.id || request.id,
         mediaType: 'video',

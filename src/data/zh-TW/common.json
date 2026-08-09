@@ -1105,7 +1105,10 @@
     "modeVideo": "影片",
     "modeTextToImage": "文字生成圖片",
     "modeImageToImage": "圖片轉圖片",
-    "createSimilar": "建立相似結果"
+    "createSimilar": "建立相似結果",
+    "statusGenerating": "生成中",
+    "statusFailed": "生成失敗",
+    "failureFallback": "生成失敗，請重新建立此任務後再試一次。"
   },
   "creditsPage": {
     "metadataTitle": "點數紀錄 - Toolaze",

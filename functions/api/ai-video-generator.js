@@ -6,6 +6,11 @@ import {
   getVideoGenerationCreditRefundDescription,
 } from '../_shared/generation-credit-label.mjs';
 import { attachGenerationTaskIdToConsumption } from '../_shared/generation-task-access.mjs';
+import {
+  attachGenerationAttemptTask,
+  createGenerationAttempt,
+  updateGenerationAttemptStatus,
+} from '../_shared/generation-attempts.mjs';
 import { resolveUploadReferences } from '../_shared/upload-reference.mjs';
 
 /**
@@ -650,6 +655,19 @@ function parseImageUrls(formData) {
   return imageUrl ? [imageUrl] : [];
 }
 
+function parseUrlArrayField(formData, key) {
+  const value = formData.get(key);
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(String(value));
+    return Array.isArray(parsed)
+      ? parsed.map((url) => String(url || '').trim()).filter(Boolean)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
 function parseSingleUrlField(formData, key) {
   return String(formData.get(key) || '').trim();
 }
@@ -929,6 +947,7 @@ export async function onRequest(context) {
   const method = request.method;
   let creditContext = null;
   let creditMetadata = null;
+  let generationAttempt = null;
 
   if (method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: CORS });
@@ -946,6 +965,10 @@ export async function onRequest(context) {
     const firstLastFrameInputs = parseFirstLastFrameUrls(formData);
     const hasFirstLastFrameInput = mode === 'image-to-video' && Boolean(firstLastFrameInputs.firstFrameUrl);
     const videoUrlInputs = parseVideoUrls(formData);
+    const historyInputUrls = parseUrlArrayField(formData, 'historyInputUrls');
+    const toolSlug = String(formData.get('toolSlug') || '').trim() || null;
+    const toolLabel = String(formData.get('toolLabel') || '').trim() || null;
+    const sourcePath = String(formData.get('sourcePath') || '').trim() || null;
 
     if (modelConfig.promptRequired !== false && !prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
@@ -1061,6 +1084,9 @@ export async function onRequest(context) {
       duration: duration.value,
       nativeAudio,
       requiredCredits,
+      toolSlug,
+      toolLabel,
+      sourcePath,
     };
 
     creditContext = await consumeVideoGenerationCredits(
@@ -1070,6 +1096,30 @@ export async function onRequest(context) {
       creditMetadata
     );
     if (creditContext.response) return creditContext.response;
+
+    generationAttempt = await createGenerationAttempt(env, creditContext.user?.id, {
+      mediaType: 'video',
+      status: 'pending',
+      model: modelConfig.creditModelId,
+      prompt,
+      inputUrls: historyInputUrls.length > 0
+        ? historyInputUrls
+        : [...imageUrls, ...firstLastFrameUrls, ...videoUrls],
+      aspectRatio: metadataAspectRatio,
+      resolution: resolution.value,
+      outputFormat: JSON.stringify({
+        duration: duration.value,
+        mode,
+        characterOrientation: formData.get('characterOrientation') || undefined,
+      }),
+      nativeAudio,
+      toolSlug,
+      toolLabel,
+      sourcePath,
+      taskProvider: modelConfig.taskProvider,
+      requiredCredits,
+      consumptionId: creditContext.consumption?.consumptionId,
+    });
 
     const response = await fetch(
       modelConfig.inputSchema === 'veo' ? KIE_VEO_CREATE_URL : `${KIE_AI_BASE}/createTask`, {
@@ -1093,6 +1143,12 @@ export async function onRequest(context) {
         requiredCredits,
         error: String(msg || 'Failed to create video task'),
       });
+      await updateGenerationAttemptStatus(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        status: 'failed',
+        failureReason: String(msg || 'Failed to create video task'),
+      });
       console.error('KIE video task creation failed', {
         status: response.status,
         model: modelConfig.creditModelId,
@@ -1108,6 +1164,14 @@ export async function onRequest(context) {
 
     const taskId = result?.data?.taskId ?? result?.taskId;
     if (taskId) {
+      await attachGenerationAttemptTask(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        taskId,
+        taskProvider: modelConfig.taskProvider,
+        requiredCredits,
+        consumptionId: creditContext.consumption?.consumptionId,
+      });
       const payload = {
         taskId,
         requiredCredits,
@@ -1142,6 +1206,12 @@ export async function onRequest(context) {
 
     const videoUrl = result?.data?.videoUrl ?? result?.videoUrl;
     if (videoUrl) {
+      await updateGenerationAttemptStatus(env, {
+        attemptId: generationAttempt?.id,
+        userId: creditContext.user?.id,
+        status: 'succeeded',
+        outputUrl: videoUrl,
+      });
       const payload = {
         videoUrl,
         requiredCredits,
@@ -1154,6 +1224,12 @@ export async function onRequest(context) {
       ...creditMetadata,
       requiredCredits,
       error: result?.message ?? result?.msg ?? 'Unexpected response format',
+    });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext.user?.id,
+      status: 'failed',
+      failureReason: String(result?.message ?? result?.msg ?? 'Unexpected response format'),
     });
     console.error('KIE video task returned an unexpected response', {
       model: modelConfig.creditModelId,
@@ -1171,6 +1247,12 @@ export async function onRequest(context) {
       ...(creditMetadata || {}),
       requiredCredits: creditMetadata?.requiredCredits,
       error: e instanceof Error ? e.message : 'Internal server error',
+    });
+    await updateGenerationAttemptStatus(env, {
+      attemptId: generationAttempt?.id,
+      userId: creditContext?.user?.id,
+      status: 'failed',
+      failureReason: e instanceof Error ? e.message : 'Internal server error',
     });
     const status = Number.isFinite(e?.status) ? e.status : 500;
     return jsonResponse({
