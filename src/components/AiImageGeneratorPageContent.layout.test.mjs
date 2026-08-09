@@ -13,3 +13,7 @@ test('ai image generator page wrapper does not add extra right padding around th
   assert.doesNotMatch(wrapperClass, /\bpr-2\b/)
   assert.doesNotMatch(wrapperClass, /\bmd:pr-6\b/)
 })
+
+test('ai image generator relies on the shared image-mode compact output settings', () => {
+  assert.doesNotMatch(source, /compactOutputSettings=/)
+})

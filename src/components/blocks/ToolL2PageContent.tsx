@@ -1496,8 +1496,8 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               <div className="w-full max-w-full">
                 <div className="flex flex-col">
                   <AiImageGenerationTool
-                    modelId="nano-banana-2"
-                    modelName="Nano Banana 2"
+                    modelId="gpt-image-2"
+                    modelName="GPT Image 2"
                     dailyLimitStorageKey="ai_couple_photo_maker_last_used_date"
                     presetMode="ai-couple-photo-maker"
                     heroBreadcrumbItems={breadcrumbItems}

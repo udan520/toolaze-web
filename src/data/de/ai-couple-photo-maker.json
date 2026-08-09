@@ -31,7 +31,7 @@
       },
       {
         "title": "Generieren & Herunterladen",
-        "desc": "Klicken Sie auf Generieren, um Ihr 1K PNG Paarfoto zu erstellen und das beste Ergebnis herunterzuladen."
+        "desc": "Wählen Sie ein Seitenverhältnis und eine Auflösung von 1K, 2K oder 4K, klicken Sie auf Generieren und laden Sie das beste Ergebnis herunter."
       }
     ]
   },
@@ -53,8 +53,8 @@
       {
         "icon": "🖼️",
         "iconType": "quality",
-        "title": "Auto-Verhältnis, 1K PNG-Ausgabe",
-        "desc": "Die Ausgabeeinstellungen sind für diesen Workflow optimiert: Automatisches Seitenverhältnis, PNG-Format und 1K-Auflösung."
+        "title": "Flexible Seitenverhältnisse und Auflösungen",
+        "desc": "Wählen Sie Auto oder ein gängiges Seitenverhältnis und generieren Sie mit GPT Image 2 in 1K, 2K oder 4K."
       },
       {
         "icon": "⚡",
@@ -72,7 +72,7 @@
         "icon": "💎",
         "iconType": "free",
         "title": "Einfache Kreditregel",
-        "desc": "Jede Generierung verbraucht 40 Credits mit festen Einstellungen, sodass Benutzer einen vorhersehbaren und konsistenten Workflow erhalten."
+        "desc": "Die Credits richten sich nach der Auflösung: 1K benötigt 10 Credits, 2K 15 und 4K 24."
       }
     ]
   },
@@ -81,7 +81,7 @@
     "content": [
       {
         "title": "Szenen-zentrierte Paarfotos",
-        "text": "Die meisten Bildtools benötigen komplexe Prompts, um romantische, hochwertige Paarfotos zu erhalten. Toolaze vereinfacht diesen Ablauf mit szenen-zentrierten Vorlagen, festen Generierungseinstellungen und einem visuellen Prozess, der auf schnellen Erfolg ausgelegt ist."
+        "text": "Die meisten Bildtools benötigen komplexe Prompts, um romantische, hochwertige Paarfotos zu erhalten. Toolaze vereinfacht diesen Ablauf mit szenen-zentrierten Vorlagen, wählbaren Ausgabeeinstellungen und einem visuellen Prozess, der auf schnellen Erfolg ausgelegt ist."
       },
       {
         "title": "Für echte Paarreferenzen entwickelt",
@@ -95,7 +95,7 @@
     "toolaze": "Toolaze",
     "vs": "VS",
     "otherTools": "Andere Tools",
-    "toolazeFeatures": "Ein/zwei Fotos hochladen, Szenen-zentrierte Voreinstellungen, Feste optimierte Einstellungen, Konsistenter Workflow für romantischen Stil, Vorhersehbare 40-Credit-Nutzung, Schneller Generierungsablauf",
+    "toolazeFeatures": "Ein/zwei Fotos hochladen, Szenen-zentrierte Voreinstellungen, Wählbare Seitenverhältnisse, 1K/2K/4K-Auflösung, Auflösungsbasierte Credits, Schneller Generierungsablauf",
     "othersFeatures": "Prompt-lastige Einrichtung, Begrenzte Szenenführung, Inkonsistente Standardparameter, Mehr Versuch und Irrtum, Unklare Krediterwartungen, Langsamere Iteration"
   },
   "scenesTitle": "Anwendungsfälle",
@@ -119,7 +119,7 @@
   "rating": {
     "title": "KI-Paar-Foto-Generator",
     "rating": "4.9/5 VON 10K+ ERSTELLERN",
-    "text": "Erstellen Sie romantische Paarfotos mit festen Qualitätseinstellungen und kuratierten Szenenvorlagen. Toolaze hilft Kreativen, schnell hochwertige Paarfotos zu generieren."
+    "text": "Erstellen Sie romantische Paarfotos mit wählbaren Ausgabeeinstellungen und kuratierten Szenenvorlagen. Toolaze hilft Kreativen, schnell hochwertige Paarfotos zu generieren."
   },
   "faqTitle": "Häufig gestellte Fragen",
   "faq": [
@@ -133,7 +133,7 @@
     },
     {
       "q": "Welche Einstellungen werden für die Ausgabe verwendet?",
-      "a": "Diese Seite verwendet feste Einstellungen: Nano Banana 2 Modell, automatisches Seitenverhältnis, PNG-Format und 1K-Auflösung."
+      "a": "Diese Seite verwendet GPT Image 2. Sie können Auto oder ein gängiges Seitenverhältnis sowie 1K-, 2K- oder 4K-Auflösung wählen."
     },
     {
       "q": "Können Benutzer auf dieser Seite Modelle wechseln?",
@@ -141,7 +141,7 @@
     },
     {
       "q": "Wie viele Credits kostet eine Generierung?",
-      "a": "Jede Generierung kostet 40 Credits. Die Kreditregel wird direkt über dem Generieren-Button angezeigt."
+      "a": "Der Preis hängt von der Auflösung ab: 1K kostet 10 Credits, 2K kostet 15 Credits und 4K kostet 24 Credits. Der aktuelle Preis steht auf dem Generieren-Button."
     },
     {
       "q": "Enthalten Vorlagen sowohl voreingestellte als auch benutzerdefinierte Optionen?",

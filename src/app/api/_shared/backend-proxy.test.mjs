@@ -19,7 +19,13 @@ test.after(() => {
 })
 
 const { proxyToPagesFunctions } = await import('./backend-proxy.js')
-const { resetLocalDevCreditsForTests, resetLocalDevHistoryForTests } = await import('./local-dev-auth.js')
+const {
+  attachLocalDevGenerationAttemptTask,
+  createLocalDevGenerationAttempt,
+  resetLocalDevCreditsForTests,
+  resetLocalDevHistoryForTests,
+  updateLocalDevGenerationAttemptStatus,
+} = await import('./local-dev-auth.js')
 
 test('local dev session can create a starter Creem checkout', async () => {
   const originalFetch = globalThis.fetch
@@ -297,6 +303,108 @@ test('local dev session can create and list generation history', async () => {
   assert.equal(listPayload.items.length, 1)
   assert.equal(listPayload.items[0].id, createPayload.item.id)
   assert.equal(listPayload.items[0].outputUrl, createPayload.item.outputUrl)
+})
+
+test('local dev history merges durable pending and failed attempts', async () => {
+  resetLocalDevCreditsForTests(1000)
+
+  const pendingAttempt = createLocalDevGenerationAttempt({
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    prompt: 'Create a couple portrait',
+    inputUrls: [
+      'blob:http://localhost:3016/temporary-preview',
+      'https://assets.toolaze.com/uploads/person.png',
+    ],
+    aspectRatio: 'auto',
+    resolution: '1K',
+    outputFormat: 'PNG',
+    toolSlug: 'ai-couple-photo-maker',
+    toolLabel: 'AI Couple Photo Maker',
+    sourcePath: '/ai-couple-photo-maker',
+    requiredCredits: 10,
+  })
+  attachLocalDevGenerationAttemptTask(pendingAttempt.id, 'task_pending', {
+    provider: 'local-dev',
+    taskId: 'task_pending',
+    requiredCredits: 10,
+    model: 'gpt-image-2',
+    isImageToImage: true,
+  })
+
+  const failedAttempt = createLocalDevGenerationAttempt({
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    prompt: 'Failed portrait',
+    inputUrls: ['https://assets.toolaze.com/uploads/failed.png'],
+    requiredCredits: 10,
+  })
+  updateLocalDevGenerationAttemptStatus({
+    attemptId: failedAttempt.id,
+    status: 'failed',
+    failureReason: 'Generation failed',
+  })
+
+  const response = await proxyToPagesFunctions(new Request('http://localhost:3016/api/history?limit=200', {
+    headers: {
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+  }), '/api/history')
+  const payload = await response.json()
+
+  assert.equal(response.status, 200)
+  assert.deepEqual(payload.items.map(({ status }) => status), ['failed', 'pending'])
+  assert.deepEqual(payload.items[1].inputUrls, ['https://assets.toolaze.com/uploads/person.png'])
+  assert.equal(payload.items[1].statusRequest.taskId, 'task_pending')
+  assert.equal(payload.items[1].statusRequest.endpoint, '/api/image-to-image/status')
+})
+
+test('local dev history links a completed task without leaving a duplicate attempt', async () => {
+  resetLocalDevCreditsForTests(1000)
+
+  const attempt = createLocalDevGenerationAttempt({
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    prompt: 'Create a couple portrait',
+    inputUrls: ['https://assets.toolaze.com/uploads/person.png'],
+    requiredCredits: 10,
+  })
+  attachLocalDevGenerationAttemptTask(attempt.id, 'task_completed', {
+    provider: 'local-dev',
+    taskId: 'task_completed',
+    requiredCredits: 10,
+    model: 'gpt-image-2',
+    isImageToImage: true,
+  })
+
+  const createResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/history', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: JSON.stringify({
+      taskId: 'task_completed',
+      mediaType: 'image',
+      model: 'gpt-image-2',
+      prompt: 'Create a couple portrait',
+      outputUrl: 'https://assets.toolaze.com/generated/result.png',
+      inputUrls: ['https://assets.toolaze.com/uploads/person.png'],
+    }),
+  }), '/api/history')
+  const created = await createResponse.json()
+
+  const listResponse = await proxyToPagesFunctions(new Request('http://localhost:3016/api/history?limit=200', {
+    headers: {
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+  }), '/api/history')
+  const listed = await listResponse.json()
+
+  assert.equal(createResponse.status, 201)
+  assert.equal(listed.items.length, 1)
+  assert.equal(listed.items[0].id, created.item.id)
+  assert.equal(listed.items[0].status, 'succeeded')
 })
 
 test('local dev session can claim a daily check-in reward', async () => {

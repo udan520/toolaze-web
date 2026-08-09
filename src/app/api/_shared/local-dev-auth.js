@@ -60,6 +60,7 @@ function normalizeLocalDevCreditState(value) {
     transactions: Array.isArray(source.transactions) ? source.transactions : fallback.transactions,
     holds,
     history: Array.isArray(source.history) ? source.history : [],
+    attempts: Array.isArray(source.attempts) ? source.attempts : [],
     rewardCheckIn: normalizeLocalDevCheckInState(source.rewardCheckIn),
     rewardXPosts: Array.isArray(source.rewardXPosts) ? source.rewardXPosts : [],
   }
@@ -80,6 +81,7 @@ function serializeLocalDevCreditState(state) {
     transactions: state.transactions,
     holds: Array.from(state.holds.values()),
     history: state.history,
+    attempts: state.attempts,
     rewardCheckIn: state.rewardCheckIn,
     rewardXPosts: state.rewardXPosts,
   }
@@ -139,6 +141,7 @@ function createLocalDevCreditState(balance = INITIAL_LOCAL_DEV_CREDIT_BALANCE) {
     })],
     holds: new Map(),
     history: [],
+    attempts: [],
     rewardCheckIn: normalizeLocalDevCheckInState(null),
     rewardXPosts: [],
   }
@@ -599,6 +602,105 @@ function normalizeLocalDevHistoryInputUrls(inputUrls) {
     : []
 }
 
+function createLocalDevGenerationAttemptId() {
+  return `gen_attempt_local_${Date.now()}_${Math.random().toString(16).slice(2)}`
+}
+
+function getLocalDevAttemptStatusRequest(attempt) {
+  if (attempt.status !== 'pending' || !attempt.taskId || !attempt.creditHold) return null
+
+  return {
+    endpoint: '/api/image-to-image/status',
+    taskId: attempt.taskId,
+    taskProvider: 'image-to-image',
+    creditHold: attempt.creditHold,
+  }
+}
+
+function serializeLocalDevGenerationAttempt(attempt) {
+  return {
+    ...attempt,
+    failureReason: attempt.failureReason || null,
+    statusRequest: getLocalDevAttemptStatusRequest(attempt),
+  }
+}
+
+export function createLocalDevGenerationAttempt(item) {
+  const state = getLocalDevCreditState()
+  const now = new Date().toISOString()
+  const attempt = {
+    id: createLocalDevGenerationAttemptId(),
+    taskId: null,
+    mediaType: item?.mediaType === 'video' ? 'video' : 'image',
+    status: 'pending',
+    model: String(item?.model || '').trim() || 'unknown',
+    prompt: String(item?.prompt || '').trim(),
+    outputUrl: '',
+    inputUrls: normalizeLocalDevHistoryInputUrls(item?.inputUrls),
+    aspectRatio: item?.aspectRatio || null,
+    resolution: item?.resolution || null,
+    outputFormat: item?.outputFormat || null,
+    nativeAudio: item?.nativeAudio === true,
+    toolSlug: String(item?.toolSlug || '').trim() || null,
+    toolLabel: String(item?.toolLabel || '').trim() || null,
+    sourcePath: String(item?.sourcePath || '').trim() || null,
+    requiredCredits: Number.isInteger(item?.requiredCredits) ? item.requiredCredits : null,
+    creditHold: null,
+    failureReason: null,
+    historyId: null,
+    createdAt: now,
+    updatedAt: now,
+  }
+
+  state.attempts.unshift(attempt)
+  persistLocalDevCreditState(state)
+  return serializeLocalDevGenerationAttempt(attempt)
+}
+
+export function attachLocalDevGenerationAttemptTask(attemptId, taskId, creditHold) {
+  const state = getLocalDevCreditState()
+  const attempt = state.attempts.find((item) => item.id === String(attemptId || ''))
+  if (!attempt || !taskId) return null
+
+  attempt.taskId = String(taskId)
+  attempt.creditHold = creditHold && typeof creditHold === 'object' ? creditHold : null
+  attempt.updatedAt = new Date().toISOString()
+  persistLocalDevCreditState(state)
+  return serializeLocalDevGenerationAttempt(attempt)
+}
+
+export function updateLocalDevGenerationAttemptStatus({ attemptId, taskId, status, outputUrl, failureReason } = {}) {
+  const state = getLocalDevCreditState()
+  const attempt = state.attempts.find((item) => (
+    attemptId ? item.id === String(attemptId) : taskId && item.taskId === String(taskId)
+  ))
+  if (!attempt) return null
+
+  attempt.status = status === 'succeeded' ? 'succeeded' : status === 'failed' ? 'failed' : 'pending'
+  if (outputUrl) attempt.outputUrl = String(outputUrl)
+  attempt.failureReason = failureReason ? String(failureReason) : null
+  attempt.updatedAt = new Date().toISOString()
+  persistLocalDevCreditState(state)
+  return serializeLocalDevGenerationAttempt(attempt)
+}
+
+export function listLocalDevGenerationHistory(limit = 100) {
+  const state = getLocalDevCreditState()
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 100, 200))
+  const completed = state.history.map((item) => ({
+    ...item,
+    status: 'succeeded',
+    updatedAt: item.createdAt,
+  }))
+  const lifecycle = state.attempts
+    .filter((attempt) => !attempt.historyId)
+    .map(serializeLocalDevGenerationAttempt)
+
+  return [...completed, ...lifecycle]
+    .sort((left, right) => Date.parse(right.createdAt) - Date.parse(left.createdAt))
+    .slice(0, safeLimit)
+}
+
 export function createLocalDevHistoryItem(item) {
   const state = getLocalDevCreditState()
   const mediaType = item?.mediaType === 'video' ? 'video' : 'image'
@@ -616,8 +718,13 @@ export function createLocalDevHistoryItem(item) {
     return { ok: false, status: 400, error: 'Model is required.' }
   }
 
+  const taskId = String(item?.taskId || '').trim()
+  const existingItem = taskId
+    ? state.history.find((historyItem) => historyItem.taskId === taskId)
+    : null
   const historyItem = {
-    id: createLocalDevHistoryId(),
+    id: existingItem?.id || createLocalDevHistoryId(),
+    taskId: taskId || null,
     mediaType,
     model,
     prompt,
@@ -633,23 +740,38 @@ export function createLocalDevHistoryItem(item) {
     createdAt: new Date().toISOString(),
   }
 
-  state.history.unshift(historyItem)
+  if (existingItem) {
+    state.history = state.history.map((candidate) => candidate.id === existingItem.id ? historyItem : candidate)
+  } else {
+    state.history.unshift(historyItem)
+  }
+  if (taskId) {
+    const attempt = state.attempts.find((candidate) => candidate.taskId === taskId)
+    if (attempt) {
+      attempt.status = 'succeeded'
+      attempt.outputUrl = outputUrl
+      attempt.historyId = historyItem.id
+      attempt.updatedAt = new Date().toISOString()
+    }
+  }
   persistLocalDevCreditState(state)
   return { ok: true, status: 201, item: historyItem }
 }
 
 export function listLocalDevHistory(limit = 100) {
-  const state = getLocalDevCreditState()
-  const safeLimit = Math.max(1, Math.min(Number(limit) || 100, 200))
-  return state.history.slice(0, safeLimit)
+  return listLocalDevGenerationHistory(limit)
 }
 
 export function deleteLocalDevHistoryItem(itemId) {
   const state = getLocalDevCreditState()
   const id = String(itemId || '').trim()
-  const before = state.history.length
+  const historyItem = state.history.find((item) => item.id === id)
+  const before = state.history.length + state.attempts.length
   state.history = state.history.filter((item) => item.id !== id)
-  const deleted = before - state.history.length
+  state.attempts = state.attempts.filter((attempt) => (
+    attempt.id !== id && (!historyItem || attempt.historyId !== historyItem.id)
+  ))
+  const deleted = before - state.history.length - state.attempts.length
   if (deleted > 0) persistLocalDevCreditState(state)
 
   return {
@@ -764,6 +886,7 @@ export function resetLocalDevCreditsForTests(balance = INITIAL_LOCAL_DEV_CREDIT_
 export function resetLocalDevHistoryForTests() {
   const state = getLocalDevCreditState()
   state.history = []
+  state.attempts = []
   persistLocalDevCreditState(state)
 }
 

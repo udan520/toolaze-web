@@ -31,7 +31,7 @@
       },
       {
         "title": "Gerar e Baixar",
-        "desc": "Clique em Gerar para criar sua foto de casal em PNG 1K e baixe o melhor resultado."
+        "desc": "Escolha uma proporção e resolução 1K, 2K ou 4K, clique em Gerar e baixe o melhor resultado."
       }
     ]
   },
@@ -53,8 +53,8 @@
       {
         "icon": "🖼️",
         "iconType": "quality",
-        "title": "Proporção Automática, Saída em PNG 1K",
-        "desc": "As configurações de saída são ajustadas para este fluxo: proporção automática, formato PNG e resolução 1K."
+        "title": "Proporções e Resoluções Flexíveis",
+        "desc": "Escolha Auto ou uma proporção comum e gere em 1K, 2K ou 4K com o GPT Image 2."
       },
       {
         "icon": "⚡",
@@ -72,7 +72,7 @@
         "icon": "💎",
         "iconType": "free",
         "title": "Regra Simples de Créditos",
-        "desc": "Cada geração consome 40 créditos com configurações fixas, para que os usuários tenham um fluxo de trabalho previsível e consistente."
+        "desc": "Os créditos variam conforme a resolução: 1K usa 10 créditos, 2K usa 15 e 4K usa 24."
       }
     ]
   },
@@ -81,7 +81,7 @@
     "content": [
       {
         "title": "Fotos de Casal com Foco na Cena",
-        "text": "A maioria das ferramentas de imagem precisa de comandos complexos para obter resultados de alta qualidade e românticos. O Toolaze simplifica esse fluxo com modelos focados na cena, configurações de geração fixas e um processo visual projetado para o sucesso rápido."
+        "text": "A maioria das ferramentas de imagem precisa de comandos complexos para obter resultados de alta qualidade e românticos. O Toolaze simplifica esse fluxo com modelos focados na cena, configurações de saída selecionáveis e um processo visual projetado para o sucesso rápido."
       },
       {
         "title": "Feito para Referências Reais de Casal",
@@ -95,7 +95,7 @@
     "toolaze": "Toolaze",
     "vs": "VS",
     "otherTools": "Outras Ferramentas",
-    "toolazeFeatures": "Upload de uma/duas fotos, Predefinições focadas na cena, Configurações otimizadas fixas, Fluxo de estilo romântico consistente, Uso previsível de 40 créditos, Fluxo de geração rápido",
+    "toolazeFeatures": "Upload de uma/duas fotos, Predefinições focadas na cena, Proporções selecionáveis, Resolução 1K/2K/4K, Créditos por resolução, Geração rápida",
     "othersFeatures": "Configuração pesada em comandos, Orientação de cena limitada, Padrões de parâmetros inconsistentes, Mais tentativa e erro, Expectativas de crédito pouco claras, Iteração mais lenta"
   },
   "scenesTitle": "Casos de Uso",
@@ -119,7 +119,7 @@
   "rating": {
     "title": "Criador de Fotos de Casal com IA",
     "rating": "4.9/5 DE MAIS DE 10 MIL CRIADORES",
-    "text": "Crie fotos românticas de casal com configurações de qualidade fixas e modelos de cena selecionados. O Toolaze ajuda criadores a gerar visuais de casal polidos rapidamente."
+    "text": "Crie fotos românticas de casal com configurações de saída selecionáveis e modelos de cena escolhidos. O Toolaze ajuda criadores a gerar visuais de casal polidos rapidamente."
   },
   "faqTitle": "Perguntas Frequentes",
   "faq": [
@@ -133,7 +133,7 @@
     },
     {
       "q": "Quais configurações são usadas para a saída?",
-      "a": "Esta página utiliza configurações fixas: modelo Nano Banana 2, proporção automática, formato PNG e resolução 1K."
+      "a": "Esta página usa o GPT Image 2. Você pode escolher Auto ou uma proporção comum e selecionar resolução 1K, 2K ou 4K."
     },
     {
       "q": "Os usuários podem trocar de modelo nesta página?",
@@ -141,7 +141,7 @@
     },
     {
       "q": "Quanto custa uma geração em créditos?",
-      "a": "Cada geração custa 40 créditos. A regra de créditos é exibida diretamente acima do botão Gerar."
+      "a": "O preço depende da resolução: 1K custa 10 créditos, 2K custa 15 e 4K custa 24. O preço atual aparece no botão Gerar."
     },
     {
       "q": "Os modelos incluem opções predefinidas e personalizadas?",

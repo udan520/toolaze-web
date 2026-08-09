@@ -9,6 +9,12 @@ import SiteImage from './SiteImage'
 import { trackToolazeEvent } from '@/lib/analytics'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { useCommonTranslations } from '@/lib/use-common-translations'
+import {
+  getDefaultImageAspectRatio,
+  orderImageAspectRatios,
+  resolveSupportedImageAspectRatio,
+  type ImageGenerationMode,
+} from '@/lib/image-aspect-ratio-policy'
 import DeleteIcon from './icons/DeleteIcon'
 import CloseIcon from './icons/CloseIcon'
 import ReferenceImageUploader from './ReferenceImageUploader'
@@ -265,7 +271,6 @@ type ImageModelId = AiImageGeneratorModelId
 const PENDING_GENERATION_STORAGE_KEY = 'toolaze:image-generation-pending:v1'
 const DEFAULT_VIDEO_DURATION_OPTIONS = [5, 8, 10, 15] as const
 const DEFAULT_VIDEO_DURATION_SECONDS = 8
-
 function normalizeVideoDurationOptions(options?: number[]): number[] {
   const validOptions = options?.filter((option) => Number.isInteger(option) && option >= 1 && option <= 15)
   return validOptions?.length
@@ -281,6 +286,18 @@ function getConfiguredVideoDurationSeconds(durationSeconds: number | undefined, 
 
 function getGenerationMediaType(modelId: ImageModelId): GenerationMediaType {
   return modelId === 'grok-video-1-5' ? 'video' : 'image'
+}
+
+function getAspectRatioShapeDimensions(value: string) {
+  if (value === 'auto' || value === 'Match Reference') return { width: 18, height: 18 }
+
+  const [widthPart, heightPart] = value.split(':').map(Number)
+  if (!(widthPart > 0) || !(heightPart > 0)) return { width: 18, height: 18 }
+
+  const ratio = widthPart / heightPart
+  return ratio >= 1
+    ? { width: 22, height: Math.max(8, Math.round(22 / ratio)) }
+    : { width: Math.max(8, Math.round(22 * ratio)), height: 22 }
 }
 
 function getGeneratedFileExtension(item: { mediaType?: GenerationMediaType }): string {
@@ -642,6 +659,7 @@ interface AiImageGenerationToolProps {
   customReferencePrompt?: string
   hidePromptInput?: boolean
   defaultAspectRatio?: string
+  compactOutputSettings?: boolean
   customPromptTabId?: string
   promptModifier?: PromptModifierConfig
   compactResultPanel?: boolean
@@ -812,16 +830,19 @@ const getModelGroupId = (modelId: ImageModelId) =>
 const getDefaultTabForModel = (id: ImageModelId): 'image-to-image' | 'text-to-image' =>
   MODEL_CONFIG[id].defaultMode
 
-const getDefaultAspectRatioForModel = (id: ImageModelId, presetMode: AiImageGenerationToolProps['presetMode']): string => {
+const getDefaultAspectRatioForModel = (
+  id: ImageModelId,
+  presetMode: AiImageGenerationToolProps['presetMode'],
+  mode: ImageGenerationMode = getDefaultTabForModel(id),
+): string => {
   if (id === 'grok-video-1-5') return '9:16'
 
   const ratioOptions = presetMode === 'ai-couple-photo-maker'
     ? WRAPPED_IMAGE_PLAY_RATIO_OPTIONS
     : MODEL_CONFIG[id].aspectRatios
 
-  return ratioOptions.some((item) => item.value === '16:9')
-    ? '16:9'
-    : ratioOptions[0]?.value || 'auto'
+  if (presetMode === 'ai-couple-photo-maker') return 'auto'
+  return getDefaultImageAspectRatio(ratioOptions, mode)
 }
 
 const getResolutionOptionsForModel = (id: ImageModelId): string[] =>
@@ -1156,6 +1177,7 @@ export default function AiImageGenerationTool({
   customReferencePrompt = '',
   hidePromptInput = false,
   defaultAspectRatio,
+  compactOutputSettings = true,
   customPromptTabId = 'custom',
   promptModifier,
   compactResultPanel = false,
@@ -1213,6 +1235,7 @@ export default function AiImageGenerationTool({
     resultRetentionLogin: 'Log In',
     resultRetentionMessage: ' to keep your generation history permanently.',
     viewAll: 'View All',
+    showLess: 'Show Less',
     historyResultAlt: 'History Result',
     inputAlt: 'Reference Image',
     fileTooLarge: 'File {name} exceeds 30MB limit',
@@ -1280,6 +1303,7 @@ export default function AiImageGenerationTool({
   const selectedModelName = modelOptions.find((option) => option.id === selectedModelId)?.name || modelName
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
   const selectedMediaType = getGenerationMediaType(selectedModelId)
+  const useCompactOutputSettings = compactOutputSettings && selectedMediaType === 'image'
   const displayModelName = hideModelBranding ? (selectedMediaType === 'video' ? 'AI video' : 'AI image') : selectedModelName
   const modelConfig = MODEL_CONFIG[selectedModelId]
   const getMaxImagesForModel = (id: ImageModelId) => {
@@ -1292,7 +1316,8 @@ export default function AiImageGenerationTool({
   const MAX_IMAGES = getMaxImagesForModel(selectedModelId)
   const MAX_FILE_SIZE_MB = modelConfig.maxFileSizeMb ?? 30
   const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
-  const [activeTab, setActiveTab] = useState<'image-to-image' | 'text-to-image'>(defaultMode || getDefaultTabForModel(modelId))
+  const initialActiveTab = defaultMode || getDefaultTabForModel(modelId)
+  const [activeTab, setActiveTab] = useState<ImageGenerationMode>(initialActiveTab)
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState(defaultPrompt)
   const [selectedPromptModifier, setSelectedPromptModifier] = useState(
@@ -1313,9 +1338,55 @@ export default function AiImageGenerationTool({
     )
     return firstPreset?.label ?? 'Custom'
   })
-  const [aspectRatio, setAspectRatio] = useState<string>(
-    defaultAspectRatio || getDefaultAspectRatioForModel(modelId, presetMode)
-  )
+  const [aspectRatiosByMode, setAspectRatiosByMode] = useState<Record<ImageGenerationMode, string>>(() => ({
+    'image-to-image': getDefaultAspectRatioForModel(modelId, presetMode, 'image-to-image'),
+    'text-to-image': getDefaultAspectRatioForModel(modelId, presetMode, 'text-to-image'),
+  }))
+  const aspectRatio = aspectRatiosByMode[activeTab]
+  const setAspectRatioForMode = useCallback((mode: ImageGenerationMode, value: string) => {
+    setAspectRatiosByMode((current) => ({ ...current, [mode]: value }))
+  }, [])
+  const setAspectRatio = useCallback((value: string | ((current: string) => string)) => {
+    setAspectRatiosByMode((current) => ({
+      ...current,
+      [activeTab]: typeof value === 'function' ? value(current[activeTab]) : value,
+    }))
+  }, [activeTab])
+  const handleGenerationModeChange = useCallback((nextMode: ImageGenerationMode) => {
+    if (nextMode === activeTab) return
+    setAspectRatiosByMode((current) => ({ ...current, [activeTab]: aspectRatio }))
+    setActiveTab(nextMode)
+  }, [activeTab, aspectRatio])
+  const normalizeAspectRatiosForModel = useCallback((
+    nextModelId: ImageModelId,
+    current: Record<ImageGenerationMode, string>,
+  ): Record<ImageGenerationMode, string> => {
+    const nextOptions = MODEL_CONFIG[nextModelId].aspectRatios
+    if (getGenerationMediaType(nextModelId) === 'video') {
+      const fallback = getDefaultAspectRatioForModel(nextModelId, presetMode)
+      return {
+        'image-to-image': nextOptions.some(({ value }) => value === current['image-to-image'])
+          ? current['image-to-image']
+          : fallback,
+        'text-to-image': nextOptions.some(({ value }) => value === current['text-to-image'])
+          ? current['text-to-image']
+          : fallback,
+      }
+    }
+
+    return {
+      'image-to-image': resolveSupportedImageAspectRatio(
+        nextOptions,
+        'image-to-image',
+        current['image-to-image'],
+      ),
+      'text-to-image': resolveSupportedImageAspectRatio(
+        nextOptions,
+        'text-to-image',
+        current['text-to-image'],
+      ),
+    }
+  }, [presetMode])
   const [resolution, setResolution] = useState<string>(getDefaultResolutionForModel(modelId))
   const configuredVideoDurationOptions = useMemo(
     () => normalizeVideoDurationOptions(videoDurationOptions),
@@ -1325,6 +1396,8 @@ export default function AiImageGenerationTool({
     getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds, configuredVideoDurationOptions)
   )
   const [outputFormat, setOutputFormat] = useState(isCouplePhotoMakerMode ? 'PNG' : 'Auto')
+  const [isCompactOutputSettingsOpen, setIsCompactOutputSettingsOpen] = useState(false)
+  const [showAllCompactAspectRatios, setShowAllCompactAspectRatios] = useState(false)
   const [selectedTemplateId, setSelectedTemplateId] = useState<string>(() => {
     const firstStyle = NANO_BANANA_2_COUPLE_TEMPLATES.find((item) => item.category === 'style')
     return firstStyle?.id ?? ''
@@ -1349,6 +1422,7 @@ export default function AiImageGenerationTool({
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const clothingPresetUploadInputRef = useRef<HTMLInputElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
+  const compactOutputSettingsRef = useRef<HTMLDivElement>(null)
   const mobileGenerationPanelRef = useRef<HTMLDivElement>(null)
   const shouldScrollToMobileHistoryRef = useRef(false)
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
@@ -1395,6 +1469,26 @@ export default function AiImageGenerationTool({
     () => getResolutionOptionsForModel(selectedModelId),
     [selectedModelId]
   )
+  const compactOrderedAspectRatios = useMemo(() => {
+    return selectedMediaType === 'image'
+      ? orderImageAspectRatios(modelConfig.aspectRatios)
+      : [...modelConfig.aspectRatios]
+  }, [modelConfig.aspectRatios, selectedMediaType])
+  const compactPrimaryAspectRatios = useMemo(() => {
+    const primaryOptions = compactOrderedAspectRatios.slice(0, 7)
+    const selectedOption = modelConfig.aspectRatios.find((option) => option.value === aspectRatio)
+    if (!selectedOption || primaryOptions.some((option) => option.value === selectedOption.value)) {
+      return primaryOptions
+    }
+
+    return primaryOptions.length >= 7
+      ? [...primaryOptions.slice(0, 6), selectedOption]
+      : [...primaryOptions, selectedOption]
+  }, [aspectRatio, compactOrderedAspectRatios, modelConfig.aspectRatios])
+  const compactSecondaryAspectRatioCount = Math.max(
+    modelConfig.aspectRatios.length - compactPrimaryAspectRatios.length,
+    0
+  )
 
   useEffect(() => {
     if (!shouldScrollToMobileHistoryRef.current || rightMode !== 'history' || pendingGenerationItems.length === 0) return
@@ -1413,10 +1507,10 @@ export default function AiImageGenerationTool({
       : modelId
     setSelectedModelId(nextModelId)
     setActiveModelGroupId(getModelGroupId(nextModelId))
-    setAspectRatio(getDefaultAspectRatioForModel(nextModelId, presetMode))
+    setAspectRatiosByMode((current) => normalizeAspectRatiosForModel(nextModelId, current))
     setResolution(getDefaultResolutionForModel(nextModelId))
-    if (!defaultMode) setActiveTab(getDefaultTabForModel(nextModelId))
-  }, [defaultMode, modelId, presetMode])
+    setActiveTab(defaultMode || getDefaultTabForModel(nextModelId))
+  }, [defaultMode, modelId, normalizeAspectRatiosForModel])
 
   useEffect(() => {
     if (!isModelMenuOpen) return
@@ -1443,6 +1537,33 @@ export default function AiImageGenerationTool({
   }, [isModelMenuOpen])
 
   useEffect(() => {
+    if (!isCompactOutputSettingsOpen) return
+
+    const closeCompactOutputSettings = () => {
+      setIsCompactOutputSettingsOpen(false)
+      setShowAllCompactAspectRatios(false)
+    }
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!compactOutputSettingsRef.current) return
+      if (event.target instanceof Node && compactOutputSettingsRef.current.contains(event.target)) return
+      closeCompactOutputSettings()
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeCompactOutputSettings()
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isCompactOutputSettingsOpen])
+
+  useEffect(() => {
     setActiveTab(defaultMode || getDefaultTabForModel(modelId))
   }, [defaultMode, modelId])
 
@@ -1451,10 +1572,11 @@ export default function AiImageGenerationTool({
   }, [defaultPrompt])
 
   useEffect(() => {
+    if (selectedMediaType === 'image') return
     if (!defaultAspectRatio) return
     if (!modelConfig.aspectRatios.some((item) => item.value === defaultAspectRatio)) return
     setAspectRatio(defaultAspectRatio)
-  }, [defaultAspectRatio, modelConfig.aspectRatios])
+  }, [defaultAspectRatio, modelConfig.aspectRatios, selectedMediaType, setAspectRatio])
 
   useEffect(() => {
     setVideoDurationSeconds(getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds, configuredVideoDurationOptions))
@@ -1568,6 +1690,7 @@ export default function AiImageGenerationTool({
   const followsReferenceImageAspectRatio = activeTab === 'image-to-image'
     && modelConfig.imageToImageAspectRatioMode === 'reference-image'
   const effectiveAspectRatio = followsReferenceImageAspectRatio ? 'Match Reference' : aspectRatio
+  const selectedAspectRatioShape = getAspectRatioShapeDimensions(effectiveAspectRatio)
 
   useEffect(() => {
     const nextValue =
@@ -1665,9 +1788,15 @@ export default function AiImageGenerationTool({
   }, [clothingReferenceRemoteUrls, remoteImageUrls])
 
   useEffect(() => {
-    if (modelConfig.aspectRatios.some((item) => item.value === aspectRatio)) return
-    setAspectRatio(modelConfig.aspectRatios[0]?.value || 'auto')
-  }, [aspectRatio, modelConfig.aspectRatios])
+    setAspectRatiosByMode((current) => {
+      const next = normalizeAspectRatiosForModel(selectedModelId, current)
+      if (
+        next['image-to-image'] === current['image-to-image']
+        && next['text-to-image'] === current['text-to-image']
+      ) return current
+      return next
+    })
+  }, [normalizeAspectRatiosForModel, selectedModelId])
 
   useEffect(() => {
     if (resolutionOptions.includes(resolution)) return
@@ -1762,7 +1891,11 @@ export default function AiImageGenerationTool({
       })
     }
 
-    if (detail.aspectRatio) setAspectRatio(detail.aspectRatio)
+    const nextMode = resolvePromptInsertMode({
+      requestedMode: detail.mode,
+      hasReferenceImages: urls.length > 0,
+    })
+    if (detail.aspectRatio) setAspectRatioForMode(nextMode, detail.aspectRatio)
     if (detail.resolution) setResolution(detail.resolution)
     if (detail.outputFormat) setOutputFormat(detail.outputFormat)
     if (detail.presetGroup) setActivePromptPresetTab(detail.presetGroup)
@@ -1773,21 +1906,17 @@ export default function AiImageGenerationTool({
       setRightMode('sample')
     }
 
-    const nextMode = resolvePromptInsertMode({
-      requestedMode: detail.mode,
-      hasReferenceImages: urls.length > 0,
-    })
     setRemoteImageUrls(resolvePromptInsertRemoteImageUrls({
       nextMode,
       currentRemoteImageUrls: remoteImageUrls,
       referenceUrls: urls,
       maxImages: MAX_IMAGES,
     }))
-    setActiveTab(nextMode)
+    handleGenerationModeChange(nextMode)
 
     if (nextPrompt) showToast(toolText.promptInserted, 'success')
     return true
-  }, [MAX_IMAGES, toolText.promptInserted, toolText.sampleImage, remoteImageUrls])
+  }, [MAX_IMAGES, handleGenerationModeChange, remoteImageUrls, setAspectRatioForMode, toolText.promptInserted, toolText.sampleImage])
 
   // 从提示词案例板块一键带入 Prompt，可选携带参考图。
   useEffect(() => {
@@ -2122,15 +2251,13 @@ export default function AiImageGenerationTool({
   )
 
   const selectedTemplateImage = selectedTemplate?.image || fallbackTemplateImage
-  const wrappedRatioOptions = useMemo(() => WRAPPED_IMAGE_PLAY_RATIO_OPTIONS, [])
-
   useEffect(() => {
     if (!isCouplePhotoMakerMode) return
     setActiveTab('image-to-image')
-    setAspectRatio('auto')
+    setAspectRatioForMode('image-to-image', 'auto')
     setResolution('1K')
     setOutputFormat('PNG')
-  }, [isCouplePhotoMakerMode])
+  }, [isCouplePhotoMakerMode, setAspectRatioForMode])
 
   useEffect(() => {
     if (!isCouplePhotoMakerMode || !selectedTemplateId) return
@@ -2532,6 +2659,14 @@ export default function AiImageGenerationTool({
         formData.append('imageUrls', JSON.stringify(generationInputUrls))
       }
 
+      setPendingGenerationItems((prev) => prev.map((item) => item.id === pendingItem.id
+        ? {
+            ...item,
+            inputPreview: generationInputUrls[0] || '',
+            inputUrls: generationInputUrls,
+          }
+        : item))
+
       trackToolazeEvent('generate_start', getGenerationAnalyticsPayload())
       const generateResponse = await requestImageGenerationTask(formData, toolText)
 
@@ -2919,12 +3054,7 @@ export default function AiImageGenerationTool({
     }
     setSelectedModelId(nextModelId)
     setActiveModelGroupId(getModelGroupId(nextModelId))
-    setAspectRatio((currentAspectRatio) => {
-      const nextAspectRatios = MODEL_CONFIG[nextModelId].aspectRatios
-      return nextAspectRatios.some((item) => item.value === currentAspectRatio)
-        ? currentAspectRatio
-        : nextAspectRatios[0]?.value || 'auto'
-    })
+    setAspectRatiosByMode((current) => normalizeAspectRatiosForModel(nextModelId, current))
     setResolution((currentResolution) => {
       const nextResolutionOptions = getResolutionOptionsForModel(nextModelId)
       return nextResolutionOptions.includes(currentResolution)
@@ -2933,7 +3063,11 @@ export default function AiImageGenerationTool({
     })
     setIsModelMenuOpen(false)
     if (isCouplePhotoMakerMode) return
-    setActiveTab(imageFiles.length > 0 || remoteImageUrls.length > 0 ? 'image-to-image' : getDefaultTabForModel(nextModelId))
+    setActiveTab(
+      imageFiles.length > 0 || remoteImageUrls.length > 0
+        ? 'image-to-image'
+        : getDefaultTabForModel(nextModelId),
+    )
   }
 
   const openResultSignIn = () => {
@@ -3322,12 +3456,15 @@ export default function AiImageGenerationTool({
     setImageFiles([])
     setClothingReferenceFiles([])
     setPrompt(item.prompt)
-    setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId || selectedModelId, presetMode))
+    setAspectRatioForMode(
+      recreateGenerationMode,
+      item.aspectRatio || getDefaultAspectRatioForModel(item.modelId || selectedModelId, presetMode, recreateGenerationMode),
+    )
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId || selectedModelId))
     setOutputFormat(item.outputFormat || 'Auto')
     setRemoteImageUrls(recreateReferenceSlots.personImageUrls)
     setClothingReferenceRemoteUrls(recreateReferenceSlots.secondaryReferenceImageUrls)
-    setActiveTab(recreateGenerationMode)
+    handleGenerationModeChange(recreateGenerationMode)
     setCurrentResult(item)
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
@@ -3350,7 +3487,7 @@ export default function AiImageGenerationTool({
 
     setImageFiles([])
     setRemoteImageUrls([item.outputPreview].slice(0, getMaxImagesForModel(selectedModelId)))
-    setActiveTab('image-to-image')
+    handleGenerationModeChange('image-to-image')
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }
@@ -3558,14 +3695,18 @@ export default function AiImageGenerationTool({
 
   const applyGenerationItemToForm = (item: PendingGenerationItem) => {
     const inputImageUrls = getOriginalHistoryInputImageUrls(item)
+    const restoredMode = item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image')
     setSelectedModelId(item.modelId)
     setActiveModelGroupId(getModelGroupId(item.modelId))
     setPrompt(item.prompt)
-    setAspectRatio(item.aspectRatio || getDefaultAspectRatioForModel(item.modelId, presetMode))
+    setAspectRatioForMode(
+      restoredMode,
+      item.aspectRatio || getDefaultAspectRatioForModel(item.modelId, presetMode, restoredMode),
+    )
     setResolution(item.resolution || getDefaultResolutionForModel(item.modelId))
     setOutputFormat(item.outputFormat || 'Auto')
     setRemoteImageUrls(inputImageUrls.slice(0, getMaxImagesForModel(item.modelId)))
-    setActiveTab(item.generationMode ?? (inputImageUrls.length > 0 ? 'image-to-image' : 'text-to-image'))
+    handleGenerationModeChange(restoredMode)
     setActiveSettingsHistoryItemId(item.id)
     historyItemRefs.current.get(item.id)?.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
   }
@@ -4031,7 +4172,7 @@ export default function AiImageGenerationTool({
               <div className="flex rounded-xl bg-[#EEF2FF] p-1">
                 <button
                   type="button"
-                  onClick={() => setActiveTab('image-to-image')}
+                  onClick={() => handleGenerationModeChange('image-to-image')}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                     activeTab === 'image-to-image'
                       ? 'bg-white text-[#4F46E5] shadow-sm'
@@ -4042,7 +4183,7 @@ export default function AiImageGenerationTool({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveTab('text-to-image')}
+                  onClick={() => handleGenerationModeChange('text-to-image')}
                   className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                     activeTab === 'text-to-image'
                       ? 'bg-white text-[#4F46E5] shadow-sm'
@@ -4320,29 +4461,6 @@ export default function AiImageGenerationTool({
                     </div>
                   ))}
                 </div>
-                <div className="mt-2">
-                  <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.aspectRatios}</label>
-                  <div className="grid grid-cols-4 gap-2">
-                    {wrappedRatioOptions.map((ar) => {
-                      const isSelected = aspectRatio === ar.value
-                      return (
-                        <button
-                          key={ar.value}
-                          type="button"
-                          aria-pressed={isSelected}
-                          onClick={() => setAspectRatio(ar.value)}
-                          className={`min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
-                            isSelected
-                              ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
-                              : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
-                          }`}
-                        >
-                          {ar.label}
-                        </button>
-                      )
-                    })}
-                  </div>
-                </div>
               </div>
             )}
 
@@ -4606,7 +4724,7 @@ export default function AiImageGenerationTool({
             )}
 
             {/* Output Aspect Ratios */}
-            {!isCouplePhotoMakerMode && (
+            {!useCompactOutputSettings && !isCouplePhotoMakerMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.outputAspectRatios}</label>
                 {followsReferenceImageAspectRatio ? (
@@ -4621,7 +4739,7 @@ export default function AiImageGenerationTool({
                   </button>
                 ) : (
                   <div className="grid grid-cols-4 gap-2">
-                    {modelConfig.aspectRatios.map((ar) => {
+                    {compactOrderedAspectRatios.map((ar) => {
                       const isSelected = aspectRatio === ar.value
                       return (
                         <button
@@ -4645,7 +4763,7 @@ export default function AiImageGenerationTool({
             )}
 
             {/* Model quality or resolution */}
-            {!isCouplePhotoMakerMode && (
+            {!useCompactOutputSettings && !isCouplePhotoMakerMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">
                   {modelConfig.setting.kind === 'quality'
@@ -4703,7 +4821,7 @@ export default function AiImageGenerationTool({
               </div>
             )}
 
-            {modelConfig.supportsOutputFormat && !isCouplePhotoMakerMode && (
+            {!useCompactOutputSettings && modelConfig.supportsOutputFormat && !isCouplePhotoMakerMode && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{toolText.outputFormat}</label>
                 <div className="relative">
@@ -4729,6 +4847,160 @@ export default function AiImageGenerationTool({
 
           {/* Generate 固定底部，始终在第一屏 */}
           <div data-generate-action-bar className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
+            {useCompactOutputSettings && (
+              <div ref={compactOutputSettingsRef} data-compact-output-settings className="mb-3">
+                {isCompactOutputSettingsOpen && (
+                  <div
+                    id="compact-output-settings-panel"
+                    data-compact-output-settings-panel
+                    className="mb-2 max-h-[330px] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 shadow-lg shadow-indigo-100/70"
+                  >
+                    <div className="mb-2 flex items-center justify-between gap-3">
+                      <span className="text-xs font-bold text-slate-700">{toolText.outputAspectRatios}</span>
+                      <span className="text-[10px] font-semibold text-slate-400">
+                        {followsReferenceImageAspectRatio ? 'Match Reference' : aspectRatio === 'auto' ? 'Auto' : aspectRatio}
+                      </span>
+                    </div>
+                    {followsReferenceImageAspectRatio ? (
+                      <button
+                        type="button"
+                        data-compact-match-reference-aspect-ratio
+                        aria-pressed="true"
+                        disabled
+                        className="inline-flex min-h-10 items-center justify-center rounded-lg border border-[#4F46E5] bg-[#EEF2FF] px-3 py-2 text-center text-xs font-bold text-[#4F46E5]"
+                      >
+                        Match Reference
+                      </button>
+                    ) : (
+                      <div role="group" aria-label={toolText.outputAspectRatios} className="grid grid-cols-4 gap-2">
+                      {(showAllCompactAspectRatios ? compactOrderedAspectRatios : compactPrimaryAspectRatios).map((option) => {
+                        const isSelected = aspectRatio === option.value
+                        const optionShape = getAspectRatioShapeDimensions(option.value)
+
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() => setAspectRatio(option.value)}
+                            className={`flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg border px-1.5 py-1.5 text-center text-[11px] font-bold transition-colors ${
+                              isSelected
+                                ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5]'
+                                : 'border-[#E0E7FF] bg-[#F8FAFF] text-slate-600 hover:border-[#C7D2FE] hover:bg-white'
+                            }`}
+                          >
+                            <span
+                              aria-hidden="true"
+                              className={`block rounded-[3px] border-2 ${isSelected ? 'border-[#4F46E5]' : 'border-slate-400'}`}
+                              style={{ width: optionShape.width, height: optionShape.height }}
+                            />
+                            <span>{option.label}</span>
+                          </button>
+                        )
+                      })}
+                      {!showAllCompactAspectRatios && compactSecondaryAspectRatioCount > 0 && (
+                        <button
+                          type="button"
+                          data-compact-more-aspect-ratios
+                          onClick={() => setShowAllCompactAspectRatios(true)}
+                          className="flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-[#C7D2FE] bg-white px-1.5 py-1.5 text-center text-[11px] font-bold text-slate-500 transition-colors hover:border-[#818CF8] hover:text-[#4F46E5]"
+                        >
+                          <span aria-hidden="true" className="text-base leading-none">+{compactSecondaryAspectRatioCount}</span>
+                          <span>{toolText.viewAll}</span>
+                        </button>
+                      )}
+                      {showAllCompactAspectRatios && compactSecondaryAspectRatioCount > 0 && (
+                        <button
+                          type="button"
+                          data-compact-less-aspect-ratios
+                          onClick={() => setShowAllCompactAspectRatios(false)}
+                          className="flex min-h-14 flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-[#C7D2FE] bg-white px-1.5 py-1.5 text-center text-[11px] font-bold text-slate-500 transition-colors hover:border-[#818CF8] hover:text-[#4F46E5]"
+                        >
+                          <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="h-4 w-4">
+                            <path d="m6 12 4-4 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          <span>{toolText.showLess}</span>
+                        </button>
+                      )}
+                      </div>
+                    )}
+
+                    <div className="mb-2 mt-4 text-xs font-bold text-slate-700">
+                      {modelConfig.setting.kind === 'quality'
+                        ? imageModelSelectorCopy?.quality || 'Quality'
+                        : toolText.resolution}
+                    </div>
+                    <div
+                      role="group"
+                      aria-label={modelConfig.setting.kind === 'quality'
+                        ? imageModelSelectorCopy?.quality || 'Quality'
+                        : toolText.resolution}
+                      className="grid gap-2"
+                      style={{ gridTemplateColumns: `repeat(${resolutionOptions.length}, minmax(0, 1fr))` }}
+                    >
+                      {resolutionOptions.map((option) => {
+                        const isSelected = resolution === option
+                        const label = modelConfig.setting.kind === 'quality'
+                          ? imageModelSelectorCopy?.qualityOptions?.[option as 'medium' | 'high'] || option[0].toUpperCase() + option.slice(1)
+                          : option
+                        return (
+                          <button
+                            key={option}
+                            type="button"
+                            aria-pressed={isSelected}
+                            onClick={() => setResolution(option)}
+                            className={`min-h-10 rounded-lg border px-2 py-2 text-center text-xs font-bold transition-colors ${
+                              isSelected
+                                ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5]'
+                                : 'border-[#E0E7FF] bg-[#F8FAFF] text-slate-600 hover:border-[#C7D2FE] hover:bg-white'
+                            }`}
+                          >
+                            {label}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  data-compact-output-settings-trigger
+                  aria-expanded={isCompactOutputSettingsOpen}
+                  aria-controls="compact-output-settings-panel"
+                  aria-label={`${toolText.outputAspectRatios}: ${effectiveAspectRatio}; ${toolText.resolution}: ${resolution}`}
+                  onClick={() => setIsCompactOutputSettingsOpen((current) => {
+                    if (current) setShowAllCompactAspectRatios(false)
+                    return !current
+                  })}
+                  className="grid min-h-12 w-full grid-cols-[1fr_1px_1fr_36px] items-center rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] px-2 text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-white"
+                >
+                  <span className="flex min-w-0 items-center justify-center gap-2 px-2">
+                    <span
+                      aria-hidden="true"
+                      className="block rounded-[3px] border-2 border-slate-500"
+                      style={{ width: selectedAspectRatioShape.width, height: selectedAspectRatioShape.height }}
+                    />
+                    <span className="truncate text-sm font-bold">
+                      {followsReferenceImageAspectRatio ? 'Match Reference' : aspectRatio === 'auto' ? 'Auto' : aspectRatio}
+                    </span>
+                  </span>
+                  <span aria-hidden="true" className="h-6 w-px bg-slate-200" />
+                  <span className="flex min-w-0 items-center justify-center gap-2 px-2">
+                    <span aria-hidden="true" className="rounded border border-slate-400 px-1 text-[9px] font-extrabold leading-4 text-slate-500">HD</span>
+                    <span className="truncate text-sm font-bold">{resolution}</span>
+                  </span>
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    className={`mx-auto h-4 w-4 text-[#4F46E5] transition-transform ${isCompactOutputSettingsOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path d="m6 8 4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+            )}
             <div className="flex gap-3">
               <button
                 type="button"

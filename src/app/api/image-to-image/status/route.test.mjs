@@ -21,6 +21,7 @@ import { POST as createImageTask } from '../route.js'
 import { POST as checkImageTaskStatus } from './route.js'
 import {
   getLocalDevCreditSummary,
+  listLocalDevHistory,
   resetLocalDevCreditsForTests,
 } from '../../_shared/local-dev-auth.js'
 
@@ -41,6 +42,31 @@ function createLocalDevGenerateRequest() {
   })
 }
 
+function createLocalDevImageToImageRequest() {
+  const formData = new FormData()
+  formData.append('prompt', 'Create a couple portrait')
+  formData.append('aspectRatio', 'auto')
+  formData.append('resolution', '1K')
+  formData.append('outputFormat', 'PNG')
+  formData.append('isImageToImage', 'true')
+  formData.append('model', 'gpt-image-2')
+  formData.append('toolSlug', 'ai-couple-photo-maker')
+  formData.append('toolLabel', 'AI Couple Photo Maker')
+  formData.append('sourcePath', '/ai-couple-photo-maker')
+  formData.append('imageUrls', JSON.stringify([
+    'https://assets.toolaze.com/uploads/person.png',
+    'https://assets.toolaze.com/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+  ]))
+
+  return new Request('http://localhost:3016/api/image-to-image', {
+    method: 'POST',
+    headers: {
+      Cookie: 'toolaze_session=toolaze-local-dev-session',
+    },
+    body: formData,
+  })
+}
+
 function createLocalDevStatusRequest(taskId, creditHold) {
   return new Request('http://localhost:3016/api/image-to-image/status', {
     method: 'POST',
@@ -51,6 +77,45 @@ function createLocalDevStatusRequest(taskId, creditHold) {
     body: JSON.stringify({ taskId, creditHold }),
   })
 }
+
+test('local dev image generation is visible in account history while pending', async () => {
+  const originalKey = process.env.KIE_AI_API_KEY
+  const originalFetch = globalThis.fetch
+  const originalCreemKey = process.env.CREEM_API_KEY
+  resetLocalDevCreditsForTests(1000)
+  process.env.KIE_AI_API_KEY = 'test-key'
+  process.env.CREEM_API_KEY = 'creem-test-key'
+
+  try {
+    globalThis.fetch = async (url) => {
+      if (String(url).includes('/v1/moderation/prompt')) {
+        return Response.json({ id: 'mod_allow', object: 'moderation_result', decision: 'allow', usage: { units: 1 } })
+      }
+      return Response.json({ code: 200, data: { taskId: 'task_pending_history' } })
+    }
+
+    const createResponse = await createImageTask(createLocalDevImageToImageRequest())
+    const createPayload = await createResponse.json()
+    const pending = listLocalDevHistory(10)[0]
+
+    assert.equal(createResponse.status, 200)
+    assert.equal(pending.status, 'pending')
+    assert.equal(pending.taskId, 'task_pending_history')
+    assert.deepEqual(pending.inputUrls, [
+      'https://assets.toolaze.com/uploads/person.png',
+      'https://assets.toolaze.com/ai-couple-photo-maker/rainy-eiffel-4x3.jpg',
+    ])
+    assert.equal(pending.toolSlug, 'ai-couple-photo-maker')
+    assert.deepEqual(pending.statusRequest.creditHold, createPayload.creditHold)
+  } finally {
+    resetLocalDevCreditsForTests(1000)
+    globalThis.fetch = originalFetch
+    if (originalKey === undefined) delete process.env.KIE_AI_API_KEY
+    else process.env.KIE_AI_API_KEY = originalKey
+    if (originalCreemKey === undefined) delete process.env.CREEM_API_KEY
+    else process.env.CREEM_API_KEY = originalCreemKey
+  }
+})
 
 test('local dev status refunds pre-deducted credits once when generation fails after task creation', async () => {
   const originalKey = process.env.KIE_AI_API_KEY
@@ -106,6 +171,7 @@ test('local dev status refunds pre-deducted credits once when generation fails a
     assert.equal(failedPayload.status, 'FAILED')
     assert.equal(failedPayload.refundedCredits, 10)
     assert.equal(failedPayload.credits.balance, 1000)
+    assert.equal(listLocalDevHistory(10)[0].status, 'failed')
 
     const duplicateRefundResponse = await checkImageTaskStatus(
       createLocalDevStatusRequest('task_failed', createPayload.creditHold),

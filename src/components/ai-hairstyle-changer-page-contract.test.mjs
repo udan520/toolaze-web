@@ -8,6 +8,9 @@ const slug = 'ai-hairstyle-changer'
 const pages = Object.fromEntries(
   locales.map((locale) => [locale, JSON.parse(readFileSync(`src/data/${locale}/${slug}.json`, 'utf8'))]),
 )
+const commonPages = Object.fromEntries(
+  locales.map((locale) => [locale, JSON.parse(readFileSync(`src/data/${locale}/common.json`, 'utf8'))]),
+)
 
 const aiImageToolSource = readFileSync('src/components/AiImageGenerationTool.tsx', 'utf8')
 const toolL2Source = readFileSync('src/components/blocks/ToolL2PageContent.tsx', 'utf8')
@@ -28,6 +31,63 @@ const bangsPresetImages = [
   'https://assets.toolaze.com/ai-hairstyle-changer/templates/women/blunt-bangs.webp',
   'https://assets.toolaze.com/ai-hairstyle-changer/templates/women/side-swept-bangs.webp',
 ]
+
+test('all shared image generators move output settings into the fixed action bar', () => {
+  assert.doesNotMatch(toolL2Source, /compactOutputSettings=/)
+  assert.match(aiImageToolSource, /compactOutputSettings\?: boolean/)
+  assert.match(aiImageToolSource, /compactOutputSettings = true/)
+  assert.match(
+    aiImageToolSource,
+    /const useCompactOutputSettings = compactOutputSettings && selectedMediaType === 'image'/,
+  )
+  assert.match(aiImageToolSource, /!useCompactOutputSettings && !isCouplePhotoMakerMode/)
+  assert.match(aiImageToolSource, /\{useCompactOutputSettings && \(/)
+  assert.doesNotMatch(aiImageToolSource, /\{useCompactOutputSettings && !isCouplePhotoMakerMode && \(/)
+  assert.match(aiImageToolSource, /orderImageAspectRatios\(modelConfig\.aspectRatios\)/)
+  assert.match(aiImageToolSource, /function getAspectRatioShapeDimensions\(value: string\)/)
+  assert.equal(
+    aiImageToolSource.match(/getAspectRatioShapeDimensions\(/g)?.length,
+    3,
+    'the aspect-ratio options and summary must share one shape calculation',
+  )
+  assert.match(
+    aiImageToolSource,
+    /data-compact-output-settings-trigger[\s\S]*style=\{\{ width: selectedAspectRatioShape\.width, height: selectedAspectRatioShape\.height \}\}/,
+  )
+  assert.match(aiImageToolSource, /showAllCompactAspectRatios \? compactOrderedAspectRatios : compactPrimaryAspectRatios/)
+  assert.match(
+    aiImageToolSource,
+    /data-generate-action-bar[\s\S]*data-compact-output-settings-panel[\s\S]*data-compact-more-aspect-ratios[\s\S]*data-compact-output-settings-trigger[\s\S]*data-generate-button/,
+  )
+  assert.match(aiImageToolSource, /aria-expanded=\{isCompactOutputSettingsOpen\}/)
+  assert.match(aiImageToolSource, /data-compact-less-aspect-ratios/)
+  assert.match(aiImageToolSource, /setShowAllCompactAspectRatios\(false\)/)
+  assert.match(aiImageToolSource, /const aspectRatiosByMode = useState|useState<Record<ImageGenerationMode, string>>/)
+  assert.match(aiImageToolSource, /const handleGenerationModeChange = useCallback/)
+  assert.match(aiImageToolSource, /handleGenerationModeChange\('image-to-image'\)/)
+  assert.match(aiImageToolSource, /handleGenerationModeChange\('text-to-image'\)/)
+  assert.doesNotMatch(aiImageToolSource, /data-output-aspect-ratio-select|data-output-resolution-select/)
+  for (const locale of locales) {
+    assert.ok(commonPages[locale].common.nanoBananaTool.showLess, `${locale} is missing the compact settings collapse label`)
+  }
+})
+
+test('compact output settings close on outside interaction without closing for inside clicks', () => {
+  assert.match(aiImageToolSource, /const compactOutputSettingsRef = useRef<HTMLDivElement>\(null\)/)
+  assert.match(aiImageToolSource, /ref=\{compactOutputSettingsRef\}[\s\S]*data-compact-output-settings/)
+  assert.match(
+    aiImageToolSource,
+    /if \(!isCompactOutputSettingsOpen\) return[\s\S]*const closeCompactOutputSettings = \(\) => \{[\s\S]*setIsCompactOutputSettingsOpen\(false\)[\s\S]*setShowAllCompactAspectRatios\(false\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /compactOutputSettingsRef\.current\.contains\(event\.target\)[\s\S]*closeCompactOutputSettings\(\)[\s\S]*event\.key === 'Escape'/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /document\.addEventListener\('mousedown', handlePointerDown\)[\s\S]*document\.addEventListener\('keydown', handleKeyDown\)[\s\S]*document\.removeEventListener\('mousedown', handlePointerDown\)[\s\S]*document\.removeEventListener\('keydown', handleKeyDown\)/,
+  )
+})
 
 test('AI Hairstyle Changer keeps Women, Men, and Custom as the top-level hairstyle tabs', () => {
   for (const locale of locales) {
@@ -121,5 +181,22 @@ test('AI Hairstyle Changer preset tabs do not require a second reference image',
   assert.match(
     aiImageToolSource,
     /const hasCurrentReferenceImages = shouldIncludeSecondaryReference[\s\S]*: hasCurrentPersonReferenceImages/,
+  )
+})
+
+test('AI Hairstyle Changer does not restore a deleted default person image when switching tabs', () => {
+  assert.match(aiImageToolSource, /const clearedDefaultPersonImageUrlsRef = useRef\(new Set<string>\(\)\)/)
+  assert.match(
+    aiImageToolSource,
+    /const baseImageUrls = defaultImageUrls\.filter\([\s\S]*!presetReferenceImages\.has\(url\)[\s\S]*&& !clearedDefaultPersonImageUrlsRef\.current\.has\(url\)/,
+  )
+  assert.match(
+    aiImageToolSource,
+    /const removeRemotePersonImage = \(index: number, url: string\) => \{[\s\S]*clearedDefaultPersonImageUrlsRef\.current\.add\(url\)[\s\S]*setRemoteImageUrls/,
+  )
+  assert.match(aiImageToolSource, /onRemove: \(\) => removeRemotePersonImage\(index, url\)/)
+  assert.match(
+    aiImageToolSource,
+    /const replaceRemoteImageWithFile = \(index: number, url: string, file: File\) => \{[\s\S]*clearedDefaultPersonImageUrlsRef\.current\.add\(url\)/,
   )
 })

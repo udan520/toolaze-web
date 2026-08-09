@@ -31,7 +31,7 @@
       },
       {
         "title": "Genera e Scarica",
-        "desc": "Clicca su Genera per creare la tua foto di coppia in PNG 1K e scarica il risultato migliore."
+        "desc": "Scegli un aspect ratio e la risoluzione 1K, 2K o 4K, fai clic su Genera e scarica il risultato migliore."
       }
     ]
   },
@@ -53,8 +53,8 @@
       {
         "icon": "🖼️",
         "iconType": "quality",
-        "title": "Rapporto automatico, output PNG 1K",
-        "desc": "Le impostazioni di output sono ottimizzate per questo workflow: aspect ratio automatico, formato PNG e risoluzione 1K."
+        "title": "Aspect Ratio e Risoluzioni Flessibili",
+        "desc": "Scegli Auto o un aspect ratio comune e genera in 1K, 2K o 4K con GPT Image 2."
       },
       {
         "icon": "⚡",
@@ -72,7 +72,7 @@
         "icon": "💎",
         "iconType": "free",
         "title": "Regola dei crediti semplice",
-        "desc": "Ogni generazione utilizza 40 crediti con impostazioni fisse, garantendo agli utenti un flusso di lavoro prevedibile e coerente."
+        "desc": "I crediti cambiano con la risoluzione: 1K usa 10 crediti, 2K ne usa 15 e 4K ne usa 24."
       }
     ]
   },
@@ -81,7 +81,7 @@
     "content": [
       {
         "title": "Foto di coppia basate sulle scene",
-        "text": "La maggior parte degli strumenti di immagine richiede prompt complessi per ottenere risultati di coppia romantici e di alta qualità. Toolaze semplifica questo flusso con modelli basati sulla scena, impostazioni di generazione fisse e un processo visivo progettato per il successo immediato."
+        "text": "La maggior parte degli strumenti di immagine richiede prompt complessi per ottenere risultati di coppia romantici e di alta qualità. Toolaze semplifica questo flusso con modelli basati sulla scena, impostazioni di output selezionabili e un processo visivo progettato per il successo immediato."
       },
       {
         "title": "Creato per riferimenti di coppia reali",
@@ -95,7 +95,7 @@
     "toolaze": "Toolaze",
     "vs": "VS",
     "otherTools": "Altri Strumenti",
-    "toolazeFeatures": "Caricamento di una/due foto, Preset basati sulla scena, Impostazioni fisse ottimizzate, Workflow coerente in stile romantico, Utilizzo prevedibile di 40 crediti, Generazione rapida",
+    "toolazeFeatures": "Caricamento di una/due foto, Preset basati sulla scena, Aspect ratio selezionabili, Risoluzione 1K/2K/4K, Crediti in base alla risoluzione, Generazione rapida",
     "othersFeatures": "Configurazione basata su prompt complessi, Guida limitata sulle scene, Parametri predefiniti incoerenti, Più tentativi ed errori, Aspettative sui crediti poco chiare, Iterazione più lenta"
   },
   "scenesTitle": "Casi d'uso",
@@ -119,7 +119,7 @@
   "rating": {
     "title": "Generatore di foto di coppia AI",
     "rating": "4.9/5 DA OLTRE 10K CREATORI",
-    "text": "Crea foto di coppia romantiche con impostazioni di qualità fisse e modelli di scene curati. Toolaze aiuta i creatori a generare rapidamente immagini di coppia rifinite."
+    "text": "Crea foto di coppia romantiche con impostazioni di output selezionabili e modelli di scene curati. Toolaze aiuta i creatori a generare rapidamente immagini di coppia rifinite."
   },
   "faqTitle": "Domande Frequenti",
   "faq": [
@@ -133,7 +133,7 @@
     },
     {
       "q": "Quali impostazioni vengono usate per l'output?",
-      "a": "Questa pagina utilizza impostazioni fisse: modello Nano Banana 2, aspect ratio automatico, formato PNG e risoluzione 1K."
+      "a": "Questa pagina utilizza GPT Image 2. Puoi scegliere Auto o un aspect ratio comune e selezionare la risoluzione 1K, 2K o 4K."
     },
     {
       "q": "Gli utenti possono cambiare modello su questa pagina?",
@@ -141,7 +141,7 @@
     },
     {
       "q": "Quanti crediti costa una generazione?",
-      "a": "Ogni generazione costa 40 crediti. La regola dei crediti è mostrata direttamente sopra il pulsante Genera."
+      "a": "Il prezzo dipende dalla risoluzione: 1K costa 10 crediti, 2K costa 15 crediti e 4K costa 24 crediti. Il prezzo attuale appare sul pulsante Genera."
     },
     {
       "q": "I modelli includono sia opzioni preimpostate che personalizzate?",

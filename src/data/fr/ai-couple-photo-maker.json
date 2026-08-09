@@ -31,7 +31,7 @@
       },
       {
         "title": "Générez et téléchargez",
-        "desc": "Cliquez sur Générer pour créer votre photo de couple en PNG 1K et téléchargez le meilleur résultat."
+        "desc": "Choisissez un ratio et une résolution 1K, 2K ou 4K, cliquez sur Générer puis téléchargez le meilleur résultat."
       }
     ]
   },
@@ -53,8 +53,8 @@
       {
         "icon": "🖼️",
         "iconType": "quality",
-        "title": "Ratio auto, Sortie PNG 1K",
-        "desc": "Les paramètres de sortie sont optimisés pour ce flux : format d'image automatique, format PNG et résolution 1K."
+        "title": "Ratios et Résolutions Flexibles",
+        "desc": "Choisissez Auto ou un ratio courant et générez en 1K, 2K ou 4K avec GPT Image 2."
       },
       {
         "icon": "⚡",
@@ -72,7 +72,7 @@
         "icon": "💎",
         "iconType": "free",
         "title": "Règle de crédits simple",
-        "desc": "Chaque génération utilise 40 crédits avec des paramètres fixes, offrant aux utilisateurs un flux de travail prévisible et cohérent."
+        "desc": "Les crédits varient selon la résolution : 1K utilise 10 crédits, 2K en utilise 15 et 4K en utilise 24."
       }
     ]
   },
@@ -95,7 +95,7 @@
     "toolaze": "Toolaze",
     "vs": "VS",
     "otherTools": "Autres outils",
-    "toolazeFeatures": "Téléchargement d'une/deux photos, Préréglages de scènes, Paramètres optimisés fixes, Flux de style romantique cohérent, Utilisation prévisible de 40 crédits, Flux de génération rapide",
+    "toolazeFeatures": "Téléchargement d'une/deux photos, Préréglages de scènes, Ratios sélectionnables, Résolution 1K/2K/4K, Crédits selon la résolution, Génération rapide",
     "othersFeatures": "Configuration lourde en invites, Guidage de scène limité, Paramètres par défaut incohérents, Plus d'essais et d'erreurs, Coût en crédits flou, Itération plus lente"
   },
   "scenesTitle": "Cas d'utilisation",
@@ -119,7 +119,7 @@
   "rating": {
     "title": "Générateur de photos de couple IA",
     "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
-    "text": "Créez des photos de couple romantiques avec des paramètres de qualité fixes et des modèles de scènes sélectionnés. Toolaze aide les créateurs à générer rapidement des visuels soignés."
+    "text": "Créez des photos de couple romantiques avec des paramètres de sortie sélectionnables et des modèles de scènes choisis. Toolaze aide les créateurs à générer rapidement des visuels soignés."
   },
   "faqTitle": "Foire Aux Questions",
   "faq": [
@@ -133,7 +133,7 @@
     },
     {
       "q": "Quels paramètres sont utilisés pour la sortie ?",
-      "a": "Cette page utilise des paramètres fixes : modèle Nano Banana 2, ratio d'aspect automatique, format PNG et résolution 1K."
+      "a": "Cette page utilise GPT Image 2. Vous pouvez choisir Auto ou un ratio courant, ainsi qu'une résolution 1K, 2K ou 4K."
     },
     {
       "q": "Les utilisateurs peuvent-ils changer de modèle sur cette page ?",
@@ -141,7 +141,7 @@
     },
     {
       "q": "Combien de crédits coûte une génération ?",
-      "a": "Chaque génération coûte 40 crédits. La règle des crédits est affichée directement au-dessus du bouton Générer."
+      "a": "Le prix dépend de la résolution : 1K coûte 10 crédits, 2K coûte 15 crédits et 4K coûte 24 crédits. Le prix actuel apparaît sur le bouton Générer."
     },
     {
       "q": "Les modèles incluent-ils des options prédéfinies et personnalisées ?",

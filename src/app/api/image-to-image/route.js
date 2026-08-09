@@ -3,12 +3,15 @@ export const dynamic = 'force-dynamic'
 
 import { onRequest as runLocalImageGeneration } from '../../../../functions/api/image-to-image.js'
 import {
+  attachLocalDevGenerationAttemptTask,
   consumeLocalDevCredits,
+  createLocalDevGenerationAttempt,
   getLocalDevCreditSummary,
   hasLocalDevSession,
   isLocalhost,
   refundLocalDevCredits,
   registerLocalDevCreditHold,
+  updateLocalDevGenerationAttemptStatus,
 } from '../_shared/local-dev-auth.js'
 import { calculateImageGenerationCredits } from '../_shared/generation-credits.js'
 import { proxyToPagesFunctions } from '../_shared/backend-proxy.js'
@@ -52,6 +55,14 @@ async function runLocalGenerationWithCredits(request) {
   const resolution = String(formData.get('resolution') || '1K')
   const durationSeconds = normalizeVideoDurationSeconds(formData.get('duration'))
   const isImageToImage = String(formData.get('isImageToImage') || '') === 'true'
+  const inputUrls = (() => {
+    try {
+      const parsed = JSON.parse(String(formData.get('imageUrls') || '[]'))
+      return Array.isArray(parsed) ? parsed : []
+    } catch {
+      return []
+    }
+  })()
   const requiredCredits = calculateImageGenerationCredits(model, resolution, durationSeconds)
   const creditMetadata = getImageGenerationCreditMetadata(model, isImageToImage, {
     resolution,
@@ -96,12 +107,31 @@ async function runLocalGenerationWithCredits(request) {
     )
   }
 
+  const generationAttempt = createLocalDevGenerationAttempt({
+    mediaType: 'image',
+    model,
+    prompt,
+    inputUrls,
+    aspectRatio: formData.get('aspectRatio'),
+    resolution,
+    outputFormat: formData.get('outputFormat'),
+    toolSlug: formData.get('toolSlug'),
+    toolLabel: formData.get('toolLabel'),
+    sourcePath: formData.get('sourcePath'),
+    requiredCredits,
+  })
+
   let response
   let payload
   try {
     response = await runLocalImageGeneration({ request, env: process.env })
     payload = await response.json().catch(() => ({}))
   } catch (error) {
+    updateLocalDevGenerationAttemptStatus({
+      attemptId: generationAttempt?.id,
+      status: 'failed',
+      failureReason: error instanceof Error ? error.message : 'Internal server error',
+    })
     const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription, creditMetadata)
     return Response.json(
       {
@@ -114,6 +144,11 @@ async function runLocalGenerationWithCredits(request) {
   }
 
   if (!response.ok) {
+    updateLocalDevGenerationAttemptStatus({
+      attemptId: generationAttempt?.id,
+      status: 'failed',
+      failureReason: payload?.error || 'Generation failed',
+    })
     const refundResult = refundLocalDevCredits(requiredCredits, creditRefundDescription, creditMetadata)
     return Response.json(
       {
@@ -127,6 +162,9 @@ async function runLocalGenerationWithCredits(request) {
 
   const taskId = payload?.taskId
   const creditHold = taskId ? registerLocalDevCreditHold(taskId, requiredCredits, creditMetadata) : null
+  if (taskId) {
+    attachLocalDevGenerationAttemptTask(generationAttempt?.id, taskId, creditHold)
+  }
 
   return Response.json({
     ...payload,

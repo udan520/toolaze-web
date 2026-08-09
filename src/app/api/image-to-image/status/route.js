@@ -6,6 +6,7 @@ import {
   hasLocalDevSession,
   isLocalhost,
   refundLocalDevCreditHold,
+  updateLocalDevGenerationAttemptStatus,
 } from '../../_shared/local-dev-auth.js'
 import { proxyToPagesFunctions } from '../../_shared/backend-proxy.js'
 import { getImageGenerationCreditRefundDescription } from '../../../../../functions/_shared/generation-credit-label.mjs'
@@ -27,6 +28,20 @@ async function runLocalGenerationStatusWithCreditRefund(request) {
   const body = await request.clone().json().catch(() => ({}))
   const response = await runLocalImageGenerationStatus({ request, env: process.env })
   const payload = await response.json().catch(() => ({}))
+
+  if (response.ok && payload?.status === 'FAILED') {
+    updateLocalDevGenerationAttemptStatus({
+      taskId: body.taskId,
+      status: 'failed',
+      failureReason: payload.message || 'Generation failed',
+    })
+  } else if (response.ok && payload?.status === 'SUCCEEDED') {
+    updateLocalDevGenerationAttemptStatus({
+      taskId: body.taskId,
+      status: 'succeeded',
+      outputUrl: payload.imageUrl || payload.videoUrl,
+    })
+  }
 
   if (
     response.ok &&

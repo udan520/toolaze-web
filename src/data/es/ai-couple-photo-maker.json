@@ -31,7 +31,7 @@
       },
       {
         "title": "Genera y Descarga",
-        "desc": "Haz clic en Generar para crear tu foto de pareja en PNG 1K y descarga el mejor resultado."
+        "desc": "Elige una relación de aspecto y resolución 1K, 2K o 4K, pulsa Generar y descarga el mejor resultado."
       }
     ]
   },
@@ -53,8 +53,8 @@
       {
         "icon": "🖼️",
         "iconType": "quality",
-        "title": "Relación de Aspecto Automática, Salida PNG 1K",
-        "desc": "Los ajustes de salida están optimizados para este flujo: relación de aspecto automática, formato PNG y resolución 1K."
+        "title": "Relaciones y Resoluciones Flexibles",
+        "desc": "Elige Auto u otra relación de aspecto común y genera en 1K, 2K o 4K con GPT Image 2."
       },
       {
         "icon": "⚡",
@@ -72,7 +72,7 @@
         "icon": "💎",
         "iconType": "free",
         "title": "Regla de Créditos Simple",
-        "desc": "Cada generación utiliza 40 créditos con ajustes fijos, para que los usuarios obtengan un flujo de trabajo predecible y consistente."
+        "desc": "Los créditos dependen de la resolución: 1K usa 10 créditos, 2K usa 15 y 4K usa 24."
       }
     ]
   },
@@ -81,7 +81,7 @@
     "content": [
       {
         "title": "Fotos de Pareja con Enfoque en la Escena",
-        "text": "La mayoría de las herramientas de imagen necesitan prompts complejos para obtener resultados de pareja románticos y de alta calidad. Toolaze simplifica este flujo con plantillas centradas en la escena, ajustes de generación fijos y un proceso visual diseñado para el éxito rápido."
+        "text": "La mayoría de las herramientas de imagen necesitan prompts complejos para obtener resultados de pareja románticos y de alta calidad. Toolaze simplifica este flujo con plantillas centradas en la escena, ajustes de salida seleccionables y un proceso visual diseñado para el éxito rápido."
       },
       {
         "title": "Diseñado para Referencias Reales de Pareja",
@@ -95,7 +95,7 @@
     "toolaze": "Toolaze",
     "vs": "VS",
     "otherTools": "Otras Herramientas",
-    "toolazeFeatures": "Carga de una/dos fotos, Ajustes de escena preestablecidos, Configuraciones fijas optimizadas, Flujo de estilo romántico consistente, Uso predecible de 40 créditos, Flujo de generación rápido",
+    "toolazeFeatures": "Carga de una/dos fotos, Escenas preestablecidas, Relaciones de aspecto seleccionables, Resolución 1K/2K/4K, Créditos según resolución, Generación rápida",
     "othersFeatures": "Configuración dependiente de prompts, Guía de escena limitada, Parámetros predeterminados inconsistentes, Más prueba y error, Expectativas de créditos poco claras, Iteración más lenta"
   },
   "scenesTitle": "Casos de Uso",
@@ -119,7 +119,7 @@
   "rating": {
     "title": "Creador de Fotos de Pareja con IA",
     "rating": "4.9/5 DE MÁS DE 10K CREADORES",
-    "text": "Crea fotos de pareja románticas con ajustes de calidad fijos y plantillas de escenas seleccionadas. Toolaze ayuda a los creadores a generar visuales de pareja pulidos rápidamente."
+    "text": "Crea fotos de pareja románticas con ajustes de salida seleccionables y plantillas de escenas elegidas. Toolaze ayuda a los creadores a generar visuales de pareja pulidos rápidamente."
   },
   "faqTitle": "Preguntas Frecuentes",
   "faq": [
@@ -133,7 +133,7 @@
     },
     {
       "q": "¿Qué ajustes se utilizan para la salida?",
-      "a": "Esta página utiliza ajustes fijos: modelo Nano Banana 2, relación de aspecto automática, formato PNG y resolución 1K."
+      "a": "Esta página utiliza GPT Image 2. Puedes elegir Auto u otra relación de aspecto común y seleccionar resolución 1K, 2K o 4K."
     },
     {
       "q": "¿Pueden los usuarios cambiar de modelo en esta página?",
@@ -141,7 +141,7 @@
     },
     {
       "q": "¿Cuántos créditos cuesta una generación?",
-      "a": "Cada generación cuesta 40 créditos. La regla de créditos se muestra directamente encima del botón Generar."
+      "a": "El precio depende de la resolución: 1K cuesta 10 créditos, 2K cuesta 15 y 4K cuesta 24. El precio actual aparece en el botón Generar."
     },
     {
       "q": "¿Las plantillas incluyen opciones tanto preestablecidas como personalizadas?",
