@@ -28,7 +28,7 @@
     "textOverrides": {
       "uploadTitle": "上傳一張照片",
       "uploadHelper": "請使用空間關係清楚的照片。支援 30MB 以內的 JPG、PNG 或 WebP。照片會保持原樣，海報在你的瀏覽器中本地組成。",
-      "generateLabel": "免費生成",
+      "generateLabel": "生成",
       "samplePhotoName": "示範照片",
       "uploadedPhotoName": "已上傳照片",
       "uploadLabel": "上傳",

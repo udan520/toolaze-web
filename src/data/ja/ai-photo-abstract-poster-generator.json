@@ -28,7 +28,7 @@
     "textOverrides": {
       "uploadTitle": "写真を1枚アップロード",
       "uploadHelper": "空間関係がはっきりした写真を使ってください。JPG、PNG、WebPは30MBまで対応します。写真は保ったまま、ブラウザー内でローカル合成します。",
-      "generateLabel": "無料で生成",
+      "generateLabel": "生成",
       "samplePhotoName": "サンプル写真",
       "uploadedPhotoName": "アップロード写真",
       "uploadLabel": "アップロード",

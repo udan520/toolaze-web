@@ -18,6 +18,7 @@ import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
 import TalkingAvatarCreatorTool from '@/components/TalkingAvatarCreatorTool'
+import PhotoAbstractPosterGeneratorTool from '@/components/PhotoAbstractPosterGeneratorTool'
 import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
@@ -1127,6 +1128,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const toolHeroOwnsBreadcrumb = [
       'watermark-remover',
       'photo-restoration',
+      'photo-abstract-poster',
       'ai-couple-photo-maker',
       'ai-baby-generator',
       'nano-banana-pro',
@@ -1456,6 +1458,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
+          ) : topComp === 'photo-abstract-poster' ? (
+            <PhotoAbstractPosterGeneratorTool
+              heroBreadcrumbItems={breadcrumbItems}
+              heroTitle={content.hero?.h1 ? renderH1WithGradient(content.hero.h1) : <>Photo Abstract Poster Generator</>}
+              heroDescription={content.hero?.desc}
+              defaultImageUrls={Array.isArray(content.topTool?.defaultImageUrls) ? content.topTool.defaultImageUrls : []}
+              sampleImages={Array.isArray(content.topTool?.sampleImages) ? content.topTool.sampleImages : undefined}
+              defaultAspectRatio={typeof content.topTool?.defaultAspectRatio === 'string' ? content.topTool.defaultAspectRatio : undefined}
+              textOverrides={content.topTool?.textOverrides}
+            />
           ) : topComp === 'photo-restoration' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">

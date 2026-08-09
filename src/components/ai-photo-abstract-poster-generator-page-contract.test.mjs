@@ -121,7 +121,8 @@ test('AI Photo Abstract Poster Generator keeps the top UI aligned with the image
   assert.doesNotMatch(ratioBlock, /\{ASPECT_OPTIONS\.map/)
   assert.doesNotMatch(ratioBlock, /9:16|4:5|1:1|16:9/)
   assert.doesNotMatch(localToolSource, /handleUseSample|useSampleLabel|Use sample photo/)
-  assert.match(localToolSource, /textOverrides\?\.generateLabel \|\| 'Generate for Free'/)
+  assert.match(localToolSource, /textOverrides\?\.generateLabel \|\| 'Generate'/)
+  assert.doesNotMatch(localToolSource, /Generate for Free/)
 })
 
 test('AI Photo Abstract Poster Generator demo image fits without crop or stretch', () => {
@@ -206,14 +207,24 @@ test('AI Photo Abstract Poster Generator wires page-owned demo and reference ass
 })
 
 test('AI Photo Abstract Poster Generator omits prompt examples for the upload-only user flow', () => {
+  const expectedGenerateLabels = {
+    de: 'Generieren',
+    en: 'Generate',
+    es: 'Generar',
+    fr: 'Générer',
+    it: 'Genera',
+    ja: '生成',
+    ko: '생성',
+    pt: 'Gerar',
+    'zh-TW': '生成',
+  }
+
   for (const locale of locales) {
     const current = pages[locale]
     assert.equal('promptExamples' in current, false)
     assert.equal('useSampleLabel' in current.topTool.textOverrides, false)
     assert.equal('aspectHelpers' in current.topTool.textOverrides, false)
-    assert.equal(current.topTool.textOverrides.generateLabel.length > 0, true)
-    if (locale === 'en') assert.equal(current.topTool.textOverrides.generateLabel, 'Generate for Free')
-    if (locale === 'zh-TW') assert.equal(current.topTool.textOverrides.generateLabel, '免費生成')
+    assert.equal(current.topTool.textOverrides.generateLabel, expectedGenerateLabels[locale])
     assert.equal(current.sectionsOrder.includes('promptExamples'), false)
     assert.deepEqual(current.sectionsOrder, [
       'intro',

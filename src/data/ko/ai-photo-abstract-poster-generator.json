@@ -28,7 +28,7 @@
     "textOverrides": {
       "uploadTitle": "사진 한 장 업로드",
       "uploadHelper": "공간 관계가 분명한 사진을 사용하세요. JPG, PNG, WebP는 30MB까지 지원합니다. 사진은 그대로 유지되고 포스터는 브라우저에서 로컬로 합성됩니다.",
-      "generateLabel": "무료로 생성",
+      "generateLabel": "생성",
       "samplePhotoName": "샘플 사진",
       "uploadedPhotoName": "업로드한 사진",
       "uploadLabel": "업로드",

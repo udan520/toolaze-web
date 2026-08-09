@@ -1062,7 +1062,7 @@ export default function PhotoAbstractPosterGeneratorTool({
   const latest = history[0]
   const uploadTitle = textOverrides?.uploadTitle || 'Upload one photo'
   const uploadHelper = textOverrides?.uploadHelper || 'JPG, PNG, or WebP up to 30MB. Your photo stays intact in the composition.'
-  const generateLabel = textOverrides?.generateLabel || 'Generate for Free'
+  const generateLabel = textOverrides?.generateLabel || 'Generate'
 
   const renderHeroContent = (options?: { mobile?: boolean }) => (
     <div>
