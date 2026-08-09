@@ -18,6 +18,10 @@ export function generateHreflangAlternates(
       languages[locale] = `${baseUrl}/${locale}${pathWithoutLocale}`
     }
   })
+
+  if (languages.en) {
+    languages['x-default'] = languages.en
+  }
   
   // Canonical URL: English doesn't have /en prefix
   const canonical = currentLocale === 'en' 

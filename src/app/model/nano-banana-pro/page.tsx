@@ -1,14 +1,19 @@
 import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
 import { getL2SeoContent } from '@/lib/seo-loader'
+import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
-export const metadata: Metadata = {
-  title: 'Nano Banana Pro - Free AI Image Generator (Image to Image & Text to Image) | Toolaze',
-  description: 'Generate stunning images with Nano Banana Pro AI. Free AI image generator with no sign up required. Transform photos with image-to-image or create art from text prompts. No registration, no credit card needed. Fast and high-quality image generation online.',
-  robots: 'index, follow',
-  alternates: {
-    canonical: 'https://toolaze.com/model/nano-banana-pro',
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const content = await getL2SeoContent('nano-banana-pro', 'en')
+  const hreflang = generateHreflangAlternates('en', '/model/nano-banana-pro')
+
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Nano Banana Pro - Free AI Image Generator (Image to Image & Text to Image) | Toolaze',
+    fallbackDescription: 'Generate stunning images with Nano Banana Pro AI. Free AI image generator with no sign up required. Transform photos with image-to-image or create art from text prompts. No registration, no credit card needed. Fast and high-quality image generation online.',
+  })
 }
 
 export default async function NanoBananaProPage() {

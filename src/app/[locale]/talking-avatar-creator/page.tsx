@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -21,14 +22,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const content = await getL2SeoContent('talking-avatar-creator', locale)
   const hreflang = generateHreflangAlternates(locale, '/talking-avatar-creator')
 
-  return {
-    title: content?.metadata?.title || 'AI Talking Avatar Creator Online | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Create an AI talking avatar video from one portrait image and one voice audio file with lip sync, facial motion, and short-form video output.',
-    robots: 'index, follow',
-    alternates: { canonical: hreflang.canonical, languages: hreflang.languages },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Talking Avatar Creator Online | Toolaze',
+    fallbackDescription: 'Create an AI talking avatar video from one portrait image and one voice audio file with lip sync, facial motion, and short-form video output.',
+  })
 }
 
 export default async function TalkingAvatarCreatorLocalePage({ params }: PageProps) {

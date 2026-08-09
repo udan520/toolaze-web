@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('unrestricted-ai-image-generator', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'Unrestricted AI Image Generator Online | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Create broader AI image concepts online with text-to-image, image-to-image, direct prompt control, and clear creative boundaries.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Unrestricted AI Image Generator Online | Toolaze',
+    fallbackDescription: 'Create broader AI image concepts online with text-to-image, image-to-image, direct prompt control, and clear creative boundaries.',
+  })
 }
 
 export default async function UnrestrictedAiImageGeneratorLocalePage({ params }: PageProps) {

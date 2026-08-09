@@ -131,6 +131,7 @@ test('retained English L3 pages do not advertise removed locale alternates', () 
 
   assert.deepEqual(alternates.languages, {
     en: 'https://toolaze.com/font-generator/fancy',
+    'x-default': 'https://toolaze.com/font-generator/fancy',
   })
 
   const compressorRoute = readSource('src', 'app', 'image-compressor', '[slug]', 'page.tsx')

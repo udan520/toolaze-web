@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -17,12 +18,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale = 'en' } = await params
   const hreflang = generateHreflangAlternates(locale, '/ai-asmr-video-generator')
   const content = await getL2SeoContent('ai-asmr-video-generator', locale)
-  return {
-    title: content?.metadata?.title || 'AI ASMR Video Generator with Sound | Toolaze',
-    description: content?.metadata?.description || 'Create tactile AI ASMR videos with synchronized sound from text or an image.',
-    robots: 'index, follow',
-    alternates: { canonical: hreflang.canonical, languages: hreflang.languages },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI ASMR Video Generator with Sound | Toolaze',
+    fallbackDescription: 'Create tactile AI ASMR videos with synchronized sound from text or an image.',
+  })
 }
 
 export default async function AiAsmrVideoGeneratorLocalePage({ params }: PageProps) {

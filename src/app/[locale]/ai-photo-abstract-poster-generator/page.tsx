@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, '/ai-photo-abstract-poster-generator')
   const content = await getL2SeoContent('ai-photo-abstract-poster-generator', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'Photo Abstract Poster Generator | Photo to Memory Panel | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Upload one photo and create a browser-composed abstract poster with the original image preserved above, a sparse memory panel below, and a short poetic English title.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Photo Abstract Poster Generator | Photo to Memory Panel | Toolaze',
+    fallbackDescription: 'Upload one photo and create a browser-composed abstract poster with the original image preserved above, a sparse memory panel below, and a short poetic English title.',
+  })
 }
 
 export default async function AiPhotoAbstractPosterGeneratorLocalePage({ params }: PageProps) {

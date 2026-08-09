@@ -6,6 +6,7 @@ import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getWan27ImageLandingCopy } from '@/lib/wan-2-7-image-landing-copy'
+import { WAN_2_7_IMAGE_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
 
 const pageUrl = 'https://toolaze.com/model/wan-2-7-image'
 const fourLineClampStyle = {
@@ -226,7 +227,7 @@ const xCommunityExamples = [
 ]
 
 const imageAssets: Record<string, string> = {
-  'thinking-mode': '/model-assets/wan-2-7-image/thinking-mode.webp',
+  'thinking-mode': WAN_2_7_IMAGE_PAGE_DEMO_IMAGE.url,
   'text-rendering': '/model-assets/wan-2-7-image/text-rendering.webp',
   'image-editing': '/model-assets/wan-2-7-image/image-editing.webp',
   'multi-reference': '/model-assets/wan-2-7-image/multi-reference.webp',

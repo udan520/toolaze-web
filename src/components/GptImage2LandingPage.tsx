@@ -6,6 +6,7 @@ import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getGptImage2LandingCopy, getGptImage2PageMetadata } from '@/lib/gpt-image-2-landing-copy'
+import { GPT_IMAGE_2_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
 
 const pageUrl = 'https://toolaze.com/model/gpt-image-2'
 
@@ -656,7 +657,7 @@ const imageAssets: Record<string, string> = {
   'feature-ui-layouts': '/model-assets/gpt-image-2/feature-ui-layouts.webp',
   'feature-commercial-output': '/model-assets/gpt-image-2/feature-commercial-output.webp',
   'feature-prompt-following': '/model-assets/gpt-image-2/feature-prompt-following.webp',
-  'gallery-product-poster': '/model-assets/gpt-image-2/prompt-product-poster.webp',
+  'gallery-product-poster': GPT_IMAGE_2_PAGE_DEMO_IMAGE.url,
   'gallery-social-ad': '/model-assets/gpt-image-2/gallery-social-ad.webp',
   'gallery-ui-mockup': '/model-assets/gpt-image-2/feature-ui-layouts.webp',
   'gallery-ecommerce': '/model-assets/gpt-image-2/prompt-ecommerce-product.webp',

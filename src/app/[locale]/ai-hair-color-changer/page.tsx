@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-hair-color-changer', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'AI Hair Color Changer Online - Change Hair Color with AI | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Upload a portrait and preview new hair colors online with AI image-to-image editing.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Hair Color Changer Online - Change Hair Color with AI | Toolaze',
+    fallbackDescription: 'Upload a portrait and preview new hair colors online with AI image-to-image editing.',
+  })
 }
 
 export default async function AiHairColorChangerLocalePage({ params }: PageProps) {

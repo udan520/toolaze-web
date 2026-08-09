@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -23,17 +24,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const content = await getL2SeoContent('photo-restoration', locale)
 
-  return {
-    title: content?.metadata?.title || 'Free Photo Restoration Online - Restore Old Photos with AI | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Restore old photos online free with AI. Remove scratches, dust, and noise, and improve details in one click.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free Photo Restoration Online - Restore Old Photos with AI | Toolaze',
+    fallbackDescription: 'Restore old photos online free with AI. Remove scratches, dust, and noise, and improve details in one click.',
+  })
 }
 
 export default async function PhotoRestorationLocalePage({ params }: PageProps) {

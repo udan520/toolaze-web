@@ -5,18 +5,12 @@ import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream50ProLandingCopy } from '@/lib/seedream-5-0-pro-landing-copy'
+import { SEEDREAM_5_0_PRO_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
 
 const pageUrl = 'https://toolaze.com/model/seedream-5-0-pro'
 const assetBaseUrl = '/model-assets/seedream-5-0-pro'
 
-const seedream50ProDemoImages = [
-  {
-    url: `${assetBaseUrl}/prompt-product-ad.webp`,
-    title: 'Seedream 5.0 Pro citrus beverage ad sample',
-    width: 960,
-    height: 720,
-  },
-]
+const seedream50ProDemoImages = [SEEDREAM_5_0_PRO_PAGE_DEMO_IMAGE]
 
 const imageAssets: Record<string, string> = {
   'feature-cinematic-generation': `${assetBaseUrl}/feature-cinematic-generation.webp`,

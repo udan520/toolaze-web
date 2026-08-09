@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, '/ai-zine-poster-generator')
   const content = await getL2SeoContent('ai-zine-poster-generator', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'AI Zine Poster Generator | Photo to Paper Poster | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Upload one photo and turn the main subject into a quiet zine-style AI poster with paper texture, sparse type, negative space, and one vivid color accent.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Zine Poster Generator | Photo to Paper Poster | Toolaze',
+    fallbackDescription: 'Upload one photo and turn the main subject into a quiet zine-style AI poster with paper texture, sparse type, negative space, and one vivid color accent.',
+  })
 }
 
 export default async function AiZinePosterGeneratorLocalePage({ params }: PageProps) {

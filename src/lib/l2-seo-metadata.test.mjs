@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import test from 'node:test'
 
 const helperPath = new URL('./l2-seo-metadata.ts', import.meta.url)
@@ -22,5 +23,18 @@ test('AI Clothes Changer route uses the shared L2 metadata helper for OG and Twi
   for (const source of [rootRoute, localeRoute]) {
     assert.match(source, /buildL2SeoMetadata/)
     assert.doesNotMatch(source, /openGraph:\s*\{[\s\S]*url:\s*hreflang\.canonical[\s\S]*\}\s*,?\s*\n\s*}/)
+  }
+})
+
+test('every L2 route using SEO content also uses the shared metadata helper', () => {
+  const files = execFileSync(
+    'rg',
+    ['-l', 'getL2SeoContent', 'src/app', '--glob', 'page.tsx'],
+    { encoding: 'utf8' },
+  ).trim().split('\n').filter(Boolean)
+
+  for (const file of files) {
+    const source = readFileSync(file, 'utf8')
+    assert.match(source, /buildL2SeoMetadata/, file)
   }
 })

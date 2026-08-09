@@ -7,18 +7,12 @@ import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream50LiteLandingCopy } from '@/lib/seedream-5-0-lite-landing-copy'
+import { SEEDREAM_5_0_LITE_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
 
 const pageUrl = 'https://toolaze.com/model/seedream-5-0-lite'
 const imageBaseUrl = 'https://assets.toolaze.com/model-assets/seedream-5-0-lite'
 
-const seedream50LiteDemoImages = [
-  {
-    url: `${imageBaseUrl}/gallery-search-grounded-product.webp`,
-    title: 'Seedream 5.0 Lite campaign poster sample',
-    width: 1200,
-    height: 900,
-  },
-]
+const seedream50LiteDemoImages = [SEEDREAM_5_0_LITE_PAGE_DEMO_IMAGE]
 
 const imageAssets: Record<string, string> = {
   'feature-deep-thinking': `${imageBaseUrl}/feature-deep-thinking.webp`,

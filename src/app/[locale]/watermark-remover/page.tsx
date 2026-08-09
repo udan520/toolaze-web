@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -23,17 +24,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const content = await getL2SeoContent('watermark-remover', locale)
 
-  return {
-    title: content?.metadata?.title || 'Free Watermark Remover - Remove Watermark from Images with AI | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Remove watermark from image online free. Erase watermarks from photos instantly with AI. JPG, PNG, WebP support. No sign-up required.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free Watermark Remover - Remove Watermark from Images with AI | Toolaze',
+    fallbackDescription: 'Remove watermark from image online free. Erase watermarks from photos instantly with AI. JPG, PNG, WebP support. No sign-up required.',
+  })
 }
 
 export default async function WatermarkRemoverLocalePage({ params }: PageProps) {

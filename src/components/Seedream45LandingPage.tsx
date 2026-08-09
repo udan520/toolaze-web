@@ -6,6 +6,7 @@ import PromptCopyButton from '@/components/PromptCopyButton'
 import RedditMediaCarousel from '@/components/RedditMediaCarousel'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream45LandingCopy } from '@/lib/seedream-4-5-landing-copy'
+import { SEEDREAM_4_5_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
 
 const pageUrl = 'https://toolaze.com/model/seedream-4-5'
 const fourLineClampStyle = {
@@ -518,7 +519,7 @@ const faqs = [
 ]
 
 const imageAssets: Record<string, string> = {
-  'feature-reference-consistency': '/model-assets/seedream-4-5/feature-reference-consistency.webp',
+  'feature-reference-consistency': SEEDREAM_4_5_PAGE_DEMO_IMAGE.url,
   'feature-4k-output': '/model-assets/seedream-4-5/feature-4k-output.webp',
   'feature-typography': '/model-assets/seedream-4-5/feature-typography.webp',
   'feature-commercial-design': '/model-assets/seedream-4-5/feature-commercial-design.webp',

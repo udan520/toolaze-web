@@ -15,6 +15,7 @@ import { getSeedream50ProPageMetadata } from '@/lib/seedream-5-0-pro-landing-cop
 import { GrokImagineVideo15LandingPage } from '@/components/GrokImagineVideo15LandingPage'
 import { getGrokImagineVideo15PageMetadata } from '@/lib/grok-imagine-video-1-5-landing-copy'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -100,15 +101,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const metadata = content?.metadata as { title?: string; description?: string } | undefined
   const hreflang = generateHreflangAlternates(locale, `/model/${model}`)
 
-  return {
-    title: metadata?.title || `${model} | Toolaze`,
-    description: metadata?.description || `Use ${model} online with Toolaze.`,
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: `${model} | Toolaze`,
+    fallbackDescription: `Use ${model} online with Toolaze.`,
+  })
 }
 
 export function generateStaticParams(): Array<{ locale: string; model: string }> {

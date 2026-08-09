@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { applyL2OpenGraphImage } from '@/lib/l2-seo-metadata'
+import { GPT_IMAGE_2_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 export const GPT_IMAGE_2_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -1763,13 +1766,15 @@ export function getGptImage2LandingCopy(locale: string): GptImage2LandingCopy {
 
 export function getGptImage2PageMetadata(locale: string, canonicalUrl = 'https://toolaze.com/model/gpt-image-2'): Metadata {
   const copy = getGptImage2LandingCopy(locale)
+  const hreflang = generateHreflangAlternates(locale, '/model/gpt-image-2')
 
-  return {
+  return applyL2OpenGraphImage({
     title: copy.metadata.title,
     description: copy.metadata.description,
     robots: 'index, follow',
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflang.languages,
     },
     openGraph: {
       title: copy.metadata.title,
@@ -1782,5 +1787,5 @@ export function getGptImage2PageMetadata(locale: string, canonicalUrl = 'https:/
       title: copy.metadata.title,
       description: copy.metadata.twitterDescription,
     },
-  }
+  }, { topTool: { sampleImages: [GPT_IMAGE_2_PAGE_DEMO_IMAGE] } })
 }

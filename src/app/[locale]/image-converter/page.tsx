@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -24,15 +25,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   const content = await getL2SeoContent('image-converter', locale)
   
-  return {
-    title: content?.metadata?.title || 'Free Image Converter - Batch Convert Images Online | Toolaze',
-    description: content?.metadata?.description || 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free Image Converter - Batch Convert Images Online | Toolaze',
+    fallbackDescription: 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.',
+  })
 }
 
 export default async function ImageConverterPage({ params }: PageProps) {

@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { applyL2OpenGraphImage } from '@/lib/l2-seo-metadata'
+import { SEEDREAM_5_0_PRO_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 export const SEEDREAM_5_0_PRO_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -1495,13 +1498,15 @@ export function getSeedream50ProPageMetadata(
   canonicalUrl = 'https://toolaze.com/model/seedream-5-0-pro',
 ): Metadata {
   const copy = getSeedream50ProLandingCopy(locale)
+  const hreflang = generateHreflangAlternates(locale, '/model/seedream-5-0-pro')
 
-  return {
+  return applyL2OpenGraphImage({
     title: copy.metadata.title,
     description: copy.metadata.description,
     robots: 'index, follow',
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflang.languages,
     },
     openGraph: {
       title: copy.metadata.title,
@@ -1514,5 +1519,5 @@ export function getSeedream50ProPageMetadata(
       title: copy.metadata.title,
       description: copy.metadata.twitterDescription,
     },
-  }
+  }, { topTool: { sampleImages: [SEEDREAM_5_0_PRO_PAGE_DEMO_IMAGE] } })
 }

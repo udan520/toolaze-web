@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-dance-generator', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'Free AI Dance Generator Online | Create Dance Visuals',
-    description:
-      content?.metadata?.description ||
-      'Use Toolaze AI Dance Generator online to create dance posters, choreography concepts, thumbnails, and social visuals from text prompts.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free AI Dance Generator Online | Create Dance Visuals',
+    fallbackDescription: 'Use Toolaze AI Dance Generator online to create dance posters, choreography concepts, thumbnails, and social visuals from text prompts.',
+  })
 }
 
 export default async function AiDanceGeneratorLocalePage({ params }: PageProps) {

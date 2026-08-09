@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -25,19 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-breast-expansion', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'AI Breast Expansion Online | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Preview natural, clothed adult bust-size edits online while preserving the original person, clothing, pose, and scene.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Breast Expansion Online | Toolaze',
+    fallbackDescription: 'Preview natural, clothed adult bust-size edits online while preserving the original person, clothing, pose, and scene.',
+  })
 }
 
 export default async function AiBreastExpansionLocalePage({ params }: PageProps) {

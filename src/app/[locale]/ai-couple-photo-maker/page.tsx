@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -26,19 +27,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const content = await getL2SeoContent('ai-couple-photo-maker', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'AI Couple Photo Maker Online Free - Upload One Photo, Pick a Scene | Toolaze',
-    description:
-      content?.metadata?.description ||
-      'Use AI Couple Photo Maker online free with Toolaze. Upload one or two couple photos, choose a preset scene, and generate realistic couple images in seconds.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Couple Photo Maker Online Free - Upload One Photo, Pick a Scene | Toolaze',
+    fallbackDescription: 'Use AI Couple Photo Maker online free with Toolaze. Upload one or two couple photos, choose a preset scene, and generate realistic couple images in seconds.',
+  })
 }
 
 export default async function AiCouplePhotoMakerLocalePage({ params }: PageProps) {

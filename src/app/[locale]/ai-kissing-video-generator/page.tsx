@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -24,19 +25,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, pathWithoutLocale)
   const content = await getL2SeoContent('ai-kissing-video-generator', locale)
 
-  return {
-    title:
-      content?.metadata?.title ||
-      'AI Kissing Video Generator Online | Create AI Kiss Videos',
-    description:
-      content?.metadata?.description ||
-      'Use Toolaze AI Kissing Video Generator online to turn photos into short romantic kiss videos for couple edits, story reels, and social clips.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'AI Kissing Video Generator Online | Create AI Kiss Videos',
+    fallbackDescription: 'Use Toolaze AI Kissing Video Generator online to turn photos into short romantic kiss videos for couple edits, story reels, and social clips.',
+  })
 }
 
 export default async function AiKissingVideoGeneratorLocalePage({ params }: PageProps) {

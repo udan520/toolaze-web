@@ -2,6 +2,7 @@ import ToolL2PageContent from '@/components/blocks/ToolL2PageContent'
 import type { Metadata } from 'next'
 import { getL2SeoContent } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 export const dynamic = 'force-static'
 
@@ -15,15 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
     content?.metadata?.description ||
     'Create HappyHorse AI videos on Toolaze from text prompts or one reference image.'
 
-  return {
-    title,
-    description,
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: title,
+    fallbackDescription: description,
+  })
 }
 
 export default async function HappyHorseAiVideoGeneratorModelPage() {

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -19,12 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hreflang = generateHreflangAlternates(locale, '/kling-ai-video-generator')
   const content = await getL2SeoContent('kling-ai-video-generator', locale)
 
-  return {
-    title: content?.metadata?.title || 'Kling AI Video Generator Online | Toolaze',
-    description: content?.metadata?.description || 'Create short AI videos with Kling 3.0 from text or reference images in Toolaze.',
-    robots: 'index, follow',
-    alternates: { canonical: hreflang.canonical, languages: hreflang.languages },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Kling AI Video Generator Online | Toolaze',
+    fallbackDescription: 'Create short AI videos with Kling 3.0 from text or reference images in Toolaze.',
+  })
 }
 
 export default async function KlingAiVideoGeneratorLocalePage({ params }: PageProps) {

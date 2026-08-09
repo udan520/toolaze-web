@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import { applyL2OpenGraphImage } from '@/lib/l2-seo-metadata'
+import { WAN_2_7_IMAGE_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 export const WAN_2_7_IMAGE_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -1387,13 +1390,15 @@ export function getWan27ImagePageMetadata(
   canonicalUrl = 'https://toolaze.com/model/wan-2-7-image',
 ): Metadata {
   const copy = getWan27ImageLandingCopy(locale)
+  const hreflang = generateHreflangAlternates(locale, '/model/wan-2-7-image')
 
-  return {
+  return applyL2OpenGraphImage({
     title: copy.metadata.title,
     description: copy.metadata.description,
     robots: 'index, follow',
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflang.languages,
     },
     openGraph: {
       title: copy.metadata.title,
@@ -1406,5 +1411,5 @@ export function getWan27ImagePageMetadata(
       title: copy.metadata.title,
       description: copy.metadata.twitterDescription,
     },
-  }
+  }, { topTool: { sampleImages: [WAN_2_7_IMAGE_PAGE_DEMO_IMAGE] } })
 }

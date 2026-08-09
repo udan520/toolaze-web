@@ -75,12 +75,34 @@ export function getL2OpenGraphImage(content: L2SeoContent | null | undefined) {
       : url === toAbsoluteToolazeUrl(heroDemoVideo?.poster) || url === toAbsoluteToolazeUrl(heroDemoVideo?.src)
         ? heroDemoVideo
         : firstSample
+  const hasPixelDimensions = Boolean(source?.width && source?.height && source.width >= 200 && source.height >= 200)
+  const isFallback = url === DEFAULT_OG_IMAGE
 
   return {
     url,
-    width: source?.width || 1200,
-    height: source?.height || 630,
-    alt: source?.alt || source?.ariaLabel || source?.title || 'Toolaze page preview',
+    width: isFallback ? 512 : hasPixelDimensions ? source?.width : 1200,
+    height: isFallback ? 512 : hasPixelDimensions ? source?.height : 630,
+    alt: isFallback ? 'Toolaze Logo' : source?.alt || source?.ariaLabel || source?.title || 'Toolaze page preview',
+  }
+}
+
+export function applyL2OpenGraphImage(
+  metadata: Metadata,
+  content: L2SeoContent | null | undefined,
+): Metadata {
+  const ogImage = getL2OpenGraphImage(content)
+
+  return {
+    ...metadata,
+    openGraph: {
+      ...(metadata.openGraph || {}),
+      images: [ogImage],
+    },
+    twitter: {
+      ...(metadata.twitter || {}),
+      card: 'summary_large_image',
+      images: [ogImage.url],
+    },
   }
 }
 

@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { applyL2OpenGraphImage } from '@/lib/l2-seo-metadata'
+import { generateHreflangAlternates } from '@/lib/hreflang'
 
 export const GROK_IMAGINE_VIDEO_15_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -724,13 +726,15 @@ export function getGrokImagineVideo15PageMetadata(
   canonicalUrl = 'https://toolaze.com/model/grok-imagine-video-1-5',
 ): Metadata {
   const copy = getGrokImagineVideo15LandingCopy(locale)
+  const hreflang = generateHreflangAlternates(locale, '/model/grok-imagine-video-1-5')
 
-  return {
+  return applyL2OpenGraphImage({
     title: copy.metadata.title,
     description: copy.metadata.description,
     robots: 'index, follow',
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflang.languages,
     },
     openGraph: {
       title: copy.metadata.title,
@@ -743,5 +747,5 @@ export function getGrokImagineVideo15PageMetadata(
       title: copy.metadata.title,
       description: copy.metadata.twitterDescription,
     },
-  }
+  }, { heroDemoVideo: copy.hero.demoVideo })
 }

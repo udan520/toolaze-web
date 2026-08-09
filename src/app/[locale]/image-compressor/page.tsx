@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getL2SeoContent, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import { generateHreflangAlternates } from '@/lib/hreflang'
 import { redirect } from 'next/navigation'
+import { buildL2SeoMetadata } from '@/lib/l2-seo-metadata'
 
 interface PageProps {
   params: Promise<{
@@ -24,15 +25,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   const content = await getL2SeoContent('image-compressor', locale)
   
-  return {
-    title: content?.metadata?.title || 'Free Image Compressor - Batch Compress Images Online | Toolaze',
-    description: content?.metadata?.description || 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.',
-    robots: 'index, follow',
-    alternates: {
-      canonical: hreflang.canonical,
-      languages: hreflang.languages,
-    },
-  }
+  return buildL2SeoMetadata({
+    content,
+    hreflang,
+    fallbackTitle: 'Free Image Compressor - Batch Compress Images Online | Toolaze',
+    fallbackDescription: 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.',
+  })
 }
 
 export default async function ImageCompressorPage({ params }: PageProps) {
