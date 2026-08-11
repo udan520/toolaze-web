@@ -1,0 +1,21 @@
+{
+  "taskId": "2026-08-10-seedance-2-5-live-generator",
+  "slug": "seedance-2-5",
+  "pageType": "model",
+  "status": "ready_for_publish",
+  "modelId": "seedance-2-5",
+  "providerModel": "bytedance/seedance-2-5",
+  "canonicalPath": "/model/seedance-2-5",
+  "createdAt": "2026-08-10T00:00:00+08:00",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/data/en/seedance-2-5.json",
+  "intent": "Replace the Seedance 2.5 launch placeholder with the live KIE generator and update public content to the supported API contract.",
+  "releaseBoundary": "Includes the existing model page, shared video generator configuration, multimodal upload and history behavior, KIE request mapping, pricing, localized public content, and SEO Factory records. Excludes commits, pushes, production deployment, navigation expansion, migrations, and admin routes.",
+  "verifiedCapabilities": [
+    "4-30 second output at 480p or 720p",
+    "Up to 30 image, 10 video, and 10 audio references",
+    "First/last-frame and multimodal reference modes are mutually exclusive",
+    "Optional native audio and MP4 or MOV output",
+    "Reference-video pricing uses input plus output duration"
+  ]
+}

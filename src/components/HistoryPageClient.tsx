@@ -132,6 +132,10 @@ function isReferenceVideoUrl(url: string) {
   return /\.(mp4|webm|mov|m4v|mkv)(?:[?#].*)?$/i.test(String(url || '').trim())
 }
 
+function isReferenceAudioUrl(url: string) {
+  return /\.(mp3|wav)(?:[?#].*)?$/i.test(String(url || '').trim())
+}
+
 function normalizeGenerationHistoryItem(item: GenerationHistoryItem): GenerationHistoryItem {
   const mediaType: GenerationHistoryItem['mediaType'] =
     item.mediaType === 'video' || isVideoHistoryUrl(item.outputUrl) ? 'video' : 'image'
@@ -957,6 +961,18 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
                     <h2 className="mb-3 text-sm font-extrabold text-slate-900">{copy.referenceMedia}</h2>
                     <div className="flex flex-wrap gap-3">
                       {previewItem.inputUrls.map((url, index) => {
+                        if (isReferenceAudioUrl(url)) {
+                          return (
+                            <audio
+                              key={`${url}-${index}`}
+                              data-history-reference-audio
+                              src={url}
+                              controls
+                              preload="metadata"
+                              className="h-10 w-full max-w-[16rem]"
+                            />
+                          )
+                        }
                         return (
                           <button
                             key={`${url}-${index}`}
@@ -1125,7 +1141,16 @@ export default function HistoryPageClient({ initialTranslations, locale = 'en' }
           >
             <span className="text-2xl leading-none">×</span>
           </button>
-          {isReferenceVideoUrl(fullScreenPreviewUrl) ? (
+          {isReferenceAudioUrl(fullScreenPreviewUrl) ? (
+            <audio
+              data-history-fullscreen-reference-audio
+              src={fullScreenPreviewUrl}
+              className="w-full max-w-xl"
+              controls
+              autoPlay
+              onClick={(event) => event.stopPropagation()}
+            />
+          ) : isReferenceVideoUrl(fullScreenPreviewUrl) ? (
             <video
               data-history-fullscreen-reference-video
               src={fullScreenPreviewUrl}

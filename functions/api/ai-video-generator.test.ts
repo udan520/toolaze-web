@@ -25,6 +25,22 @@ async function readJson(response: Response) {
   return response.json() as Promise<Record<string, any>>
 }
 
+function createMp4DurationResponse(durationSeconds: number) {
+  const bytes = new Uint8Array(32)
+  const view = new DataView(bytes.buffer)
+  view.setUint32(0, bytes.length, false)
+  bytes.set([0x6d, 0x76, 0x68, 0x64], 4)
+  view.setUint32(20, 1000, false)
+  view.setUint32(24, Math.round(durationSeconds * 1000), false)
+  return new Response(bytes, {
+    status: 206,
+    headers: {
+      'Content-Length': String(bytes.length),
+      'Content-Type': 'video/mp4',
+    },
+  })
+}
+
 function createUnauthenticatedDb() {
   return {
     prepare() {
@@ -180,6 +196,269 @@ test('AI video generator creates a Kie Grok 1.5 image-to-video task', async () =
   }
 })
 
+test('AI video generator creates a Kie Seedance 2.5 multimodal task', async () => {
+  const calls: FetchCall[] = []
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    if (String(url) === 'https://assets.toolaze.com/uploads/motion.mp4') {
+      return createMp4DurationResponse(6)
+    }
+    calls.push({ url: String(url), init })
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_25_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2-5',
+        prompt: 'Use the product references and match the supplied soundtrack rhythm.',
+        imageUrls: JSON.stringify(['https://cdn.example.com/product.png']),
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/motion.mp4']),
+        videoDurations: JSON.stringify([6]),
+        audioUrls: JSON.stringify(['https://cdn.example.com/music.mp3']),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '10',
+        nativeAudio: 'true',
+        outputFormat: 'mp4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'seedance_25_task', requiredCredits: 1216 })
+    const payload = JSON.parse(String(calls[0].init?.body))
+    assert.deepEqual(payload, {
+      model: 'bytedance/seedance-2-5',
+      input: {
+        prompt: 'Use the product references and match the supplied soundtrack rhythm.',
+        reference_image_urls: ['https://cdn.example.com/product.png'],
+        reference_video_urls: ['https://assets.toolaze.com/uploads/motion.mp4'],
+        reference_audio_urls: ['https://cdn.example.com/music.mp3'],
+        generate_audio: true,
+        resolution: '720p',
+        aspect_ratio: '16:9',
+        duration: 10,
+        output_format: 'mp4',
+        nsfw_checker: true,
+      },
+    })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Seedance 2.5 first/last frames mixed with references', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response('{}')
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2-5',
+        prompt: 'A controlled transition.',
+        firstFrameUrl: 'https://cdn.example.com/first.png',
+        lastFrameUrl: 'https://cdn.example.com/last.png',
+        videoUrls: JSON.stringify(['https://cdn.example.com/reference.mp4']),
+        videoDurations: JSON.stringify([5]),
+        resolution: '480p',
+        duration: '5',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.match(String((await readJson(response)).error), /cannot be combined/i)
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator accepts Seedance 2.5 video-only multimodal image-to-video mode', async () => {
+  let requestBody: Record<string, any> | undefined
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    if (String(url) === 'https://assets.toolaze.com/uploads/reference.mp4') {
+      return createMp4DurationResponse(4)
+    }
+    requestBody = JSON.parse(String(init?.body))
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_25_video_only' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2-5',
+        prompt: 'Follow the motion and timing from the reference video.',
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/reference.mp4']),
+        videoDurations: JSON.stringify([4]),
+        resolution: '480p',
+        duration: '4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.equal(requestBody?.input.reference_video_urls?.[0], 'https://assets.toolaze.com/uploads/reference.mp4')
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator derives Seedance 2.5 reference pricing from video metadata', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL) => {
+    if (String(url) === 'https://assets.toolaze.com/uploads/thirty-seconds.mp4') {
+      return createMp4DurationResponse(30)
+    }
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_25_metered' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2-5',
+        prompt: 'Use the full reference clip.',
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/thirty-seconds.mp4']),
+        videoDurations: JSON.stringify([2]),
+        resolution: '480p',
+        duration: '4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'seedance_25_metered', requiredCredits: 1156 })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Seedance 2.5 durations without reference videos', async () => {
+  const response = await createVideoTask({
+    request: createFormRequest({
+      mode: 'text-to-video',
+      model: 'seedance-2-5',
+      prompt: 'A text-only scene.',
+      videoDurations: JSON.stringify([0.1]),
+      resolution: '480p',
+      duration: '30',
+    }),
+    env: { KIE_AI_API_KEY: 'test-key' },
+  })
+
+  assert.equal(response.status, 400)
+  assert.match(String((await readJson(response)).error), /matching reference video URLs/i)
+})
+
+test('AI video generator prices Seedance 2.5 Native Audio without a reference video', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => new Response(JSON.stringify({
+    code: 200,
+    data: { taskId: 'seedance_25_native_audio' },
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  })) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-2-5',
+        prompt: 'A scene with generated ambient sound.',
+        nativeAudio: 'true',
+        resolution: '480p',
+        duration: '4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 200)
+    assert.deepEqual(await readJson(response), { taskId: 'seedance_25_native_audio', requiredCredits: 224 })
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Seedance 2.5 references in text-to-video mode', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response('{}')
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-2-5',
+        prompt: 'A text-only cinematic scene.',
+        imageUrls: JSON.stringify(['https://assets.toolaze.com/uploads/reference.png']),
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/reference.mp4']),
+        audioUrls: JSON.stringify(['https://assets.toolaze.com/uploads/reference.mp3']),
+        resolution: '480p',
+        duration: '4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.match(String((await readJson(response)).error), /image-to-video mode/i)
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('AI video generator rejects Seedance 2.5 frame references in text-to-video mode', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async () => {
+    providerCalled = true
+    return new Response('{}')
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'text-to-video',
+        model: 'seedance-2-5',
+        prompt: 'A text-only cinematic scene.',
+        firstFrameUrl: 'https://assets.toolaze.com/uploads/first.png',
+        resolution: '480p',
+        duration: '4',
+      }),
+      env: { KIE_AI_API_KEY: 'test-key' },
+    })
+
+    assert.equal(response.status, 400)
+    assert.match(String((await readJson(response)).error), /image-to-video mode/i)
+    assert.equal(providerCalled, false)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
 test('AI video generator creates a Kie Kling 2.6 Motion Control task', async () => {
   const calls: FetchCall[] = []
   const originalFetch = globalThis.fetch
@@ -199,6 +478,7 @@ test('AI video generator creates a Kie Kling 2.6 Motion Control task', async () 
         prompt: '',
         imageUrls: JSON.stringify(['https://cdn.example.com/character.png']),
         videoUrls: JSON.stringify(['https://cdn.example.com/motion.mp4']),
+        videoDurations: JSON.stringify([8]),
         aspectRatio: '16:9',
         resolution: '720p',
         duration: '12',

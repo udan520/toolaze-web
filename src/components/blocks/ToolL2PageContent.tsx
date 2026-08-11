@@ -18,7 +18,6 @@ import EmojiCategoryPage from '@/components/EmojiCategoryPage'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import AiVideoGeneratorTool from '@/components/AiVideoGeneratorTool'
 import TalkingAvatarCreatorTool from '@/components/TalkingAvatarCreatorTool'
-import Seedance25LaunchUpdates from '@/components/blocks/Seedance25LaunchUpdates'
 import NanoBanana2HeroPlaceholder from '@/components/blocks/NanoBanana2HeroPlaceholder'
 import TrustBar from '@/components/blocks/TrustBar'
 import Intro from '@/components/blocks/Intro'
@@ -32,6 +31,10 @@ import Scenarios from '@/components/blocks/Scenarios'
 import Rating from '@/components/blocks/Rating'
 import FAQ from '@/components/blocks/FAQ'
 import PromptExamples from '@/components/blocks/PromptExamples'
+import Seedance25Proof from '@/components/blocks/Seedance25Proof'
+import ModelFeatureStories from '@/components/blocks/ModelFeatureStories'
+import Seedance25HowTo from '@/components/blocks/Seedance25HowTo'
+import Seedance25UseCases from '@/components/blocks/Seedance25UseCases'
 import type { PromptInsertMode } from '@/lib/prompt-insert-mode'
 import ToolCard from '@/components/ToolCard'
 import React from 'react'
@@ -106,6 +109,7 @@ const VIDEO_GENERATOR_DEFAULT_MODELS: Record<string, AiVideoGeneratorModelId> = 
   'wan-2-5-ai-video-generator': 'wan-2-5',
   'kling-ai-video-generator': 'kling-3',
   'seedance-2': 'seedance-2',
+  'seedance-2-5': 'seedance-2-5',
   'kling-3': 'kling-3',
   'kling-3-motion-control': 'kling-3-motion-control',
   'kling-2-6-pro-motion-control': 'kling-2-6-motion-control',
@@ -1124,7 +1128,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           { label: breadcrumbT.home, href: locale === 'en' ? '/' : `/${locale}` },
           { label: pageTitle },
         ]
-    const toolHeroOwnsBreadcrumb = [
+    const toolHeroOwnsBreadcrumb = Boolean(videoGeneratorDefaultModel) || [
       'watermark-remover',
       'photo-restoration',
       'ai-couple-photo-maker',
@@ -1132,18 +1136,6 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'nano-banana-pro',
       'gpt-image-2',
       'nano-banana-2',
-      'ai-video-generator',
-      'ai-asmr-video-generator',
-      'veo-3-1-ai-video-generator',
-      'wan-2-7-ai-video-generator',
-      'wan-2-6-ai-video-generator',
-      'wan-2-5-ai-video-generator',
-      'kling-ai-video-generator',
-      'kling-3',
-      'kling-3-motion-control',
-      'kling-2-6-pro-motion-control',
-      'seedance-2',
-      'text-to-video-generator',
       'talking-avatar-creator',
     ].includes(topComp)
 
@@ -1272,7 +1264,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
       'faq'
     ]
     let sectionsOrder = content.sectionsOrder || defaultSectionsOrder
-    if (IMAGE_MODEL_L2S.includes(tool) || (VIDEO_MODEL_L2S.includes(tool) && tool !== 'seedance-2-5')) {
+    if (IMAGE_MODEL_L2S.includes(tool) || VIDEO_MODEL_L2S.includes(tool)) {
       sectionsOrder = sectionsOrder.filter((s: string) => s !== 'comparison')
     }
     const hasReviewSafeTestimonials = (content.testimonials as TestimonialsSection | undefined)?.reviewSafe === true
@@ -1644,24 +1636,6 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 </div>
               </div>
             </header>
-          ) : topComp === 'seedance-2-5' ? (
-            <header className="bg-[#F8FAFF] pb-12 px-6">
-              <div className="max-w-4xl mx-auto text-center pt-8 mb-12">
-                <h1 className="text-[40px] font-extrabold tracking-tight mb-6 leading-tight text-slate-900">
-                  {content.hero?.h1 ? (
-                    renderH1WithGradient(content.hero.h1)
-                  ) : (
-                    <>Seedance 2.5 AI Video Generator</>
-                  )}
-                </h1>
-                {content.hero?.desc && (
-                  <p className="desc-text text-lg md:text-xl max-w-4xl mx-auto">
-                    {content.hero.desc}
-                  </p>
-                )}
-              </div>
-              <Seedance25LaunchUpdates copy={content.launchUpdates} />
-            </header>
           ) : topComp === 'nano-banana-2' ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">
               <div className="w-full max-w-full">
@@ -1701,6 +1675,20 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           {(() => {
             // 定义各个板块的渲染函数
             const sectionRenderers: Record<string, (bgClass: string, index: number) => React.ReactNode> = {
+              seedanceProof: (bgClass: string) => (
+                <Seedance25Proof
+                  key="seedanceProof"
+                  {...(content.seedanceProof as React.ComponentProps<typeof Seedance25Proof>)}
+                  bgClass={bgClass}
+                />
+              ),
+              featureStories: (bgClass: string) => (
+                <ModelFeatureStories
+                  key="featureStories"
+                  {...(content.featureStories as React.ComponentProps<typeof ModelFeatureStories>)}
+                  bgClass={bgClass}
+                />
+              ),
               modelIntro: () => {
                 const mi = content.modelIntro as { title?: string; description?: string | string[]; image?: { src: string; alt: string }; modelName?: string; modelType?: string; featureCards?: Array<{ title: string; content: string }> } | undefined
                 if (!mi?.title) return null
@@ -1808,7 +1796,13 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   />
                 )
               },
-              howToUse: (bgClass: string) => (
+              howToUse: (bgClass: string) => topComp === 'seedance-2-5' && content.howToUse?.steps?.every((step: { media?: unknown }) => step.media) ? (
+                <Seedance25HowTo
+                  key="howToUse"
+                  {...(content.howToUse as React.ComponentProps<typeof Seedance25HowTo>)}
+                  bgClass={bgClass}
+                />
+              ) : (
                 <HowToUse
                   key="howToUse"
                   title={content.howToUse?.title}
@@ -1835,6 +1829,17 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                 )
               },
               scenes: (bgClass: string) => {
+                if (topComp === 'seedance-2-5' && content.scenes?.some((scene: { bestFor?: unknown; direction?: unknown }) => scene.bestFor || scene.direction)) {
+                  return (
+                    <Seedance25UseCases
+                      key="scenes"
+                      title={content.scenesTitle}
+                      subtitle={content.scenesSubtitle}
+                      items={content.scenes}
+                      bgClass={bgClass}
+                    />
+                  )
+                }
                 // 确保使用 JSON 中的翻译标题
                 const scenesTitle = content.scenesTitle
                 return (

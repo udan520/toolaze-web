@@ -10,9 +10,10 @@ type HistoryRepromptSource = {
   aspectRatio?: string | null
   resolution?: string | null
   outputFormat?: string | null
+  nativeAudio?: boolean | null
 }
 
-type HistoryRecreateMode = 'text-to-image' | 'image-to-image' | 'image-to-video'
+type HistoryRecreateMode = 'text-to-image' | 'image-to-image' | 'text-to-video' | 'image-to-video'
 
 type HistoryRecreateSource = {
   mediaType?: 'image' | 'video' | null
@@ -68,6 +69,21 @@ function getHistoryToolSlug(item: HistoryRepromptSource): string {
 
 function isReusableVideoUrl(url: string): boolean {
   return /\.(m4v|mkv|mov|mp4|webm)(?:[?#].*)?$/i.test(url)
+}
+
+function isReusableAudioUrl(url: string): boolean {
+  return /\.(mp3|wav)(?:[?#].*)?$/i.test(url)
+}
+
+function getStoredVideoMode(outputFormat: string | null | undefined): 'text-to-video' | 'image-to-video' | null {
+  try {
+    const parsed = JSON.parse(String(outputFormat || ''))
+    return parsed?.mode === 'text-to-video' || parsed?.mode === 'image-to-video'
+      ? parsed.mode
+      : null
+  } catch {
+    return null
+  }
 }
 
 function isKling3MotionControlHistory(item: HistoryRepromptSource, toolSlug: string): boolean {
@@ -175,26 +191,35 @@ export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
     : getOriginalHistoryInputImageUrls(item)
   const isTalkingAvatar = toolSlug === 'talking-avatar-creator'
   const isKling3MotionControl = isKling3MotionControlHistory(item, toolSlug)
-  const motionVideoUrls = isKling3MotionControl ? originalInputUrls.filter(isReusableVideoUrl) : []
-  const nonVideoInputUrls = isKling3MotionControl
-    ? originalInputUrls.filter((url) => !isReusableVideoUrl(url))
+  const isVideoGeneration = item.mediaType === 'video'
+  const motionVideoUrls = isVideoGeneration ? originalInputUrls.filter(isReusableVideoUrl) : []
+  const audioUrls = isVideoGeneration ? originalInputUrls.filter(isReusableAudioUrl) : []
+  const nonVideoInputUrls = isVideoGeneration
+    ? originalInputUrls.filter((url) => !isReusableVideoUrl(url) && !isReusableAudioUrl(url))
     : originalInputUrls
   const imageUrls = isTalkingAvatar && nonVideoInputUrls[0] ? [nonVideoInputUrls[0]] : nonVideoInputUrls
   const talkingAvatarAudioUrl = isTalkingAvatar && originalInputUrls[1] ? originalInputUrls[1] : ''
+  const storedVideoMode = isVideoGeneration ? getStoredVideoMode(item.outputFormat) : null
   const mode: HistoryRecreateMode = isKling3MotionControl
     ? 'image-to-video'
-    : imageUrls.length > 0 ? 'image-to-image' : 'text-to-image'
+    : isTalkingAvatar
+      ? 'image-to-image'
+    : isVideoGeneration
+      ? storedVideoMode || (imageUrls.length > 0 || motionVideoUrls.length > 0 || audioUrls.length > 0 ? 'image-to-video' : 'text-to-video')
+      : imageUrls.length > 0 ? 'image-to-image' : 'text-to-image'
 
   return {
     prompt: item.prompt || '',
     imageUrls,
     ...(motionVideoUrls.length > 0 ? { videoUrls: motionVideoUrls } : {}),
+    ...(audioUrls.length > 0 ? { audioUrls } : {}),
     ...(isTalkingAvatar && originalInputUrls.length > 0 ? { inputUrls: originalInputUrls } : {}),
     ...(talkingAvatarAudioUrl ? { audioUrl: talkingAvatarAudioUrl, audioUrls: [talkingAvatarAudioUrl] } : {}),
     modelId: item.model || undefined,
     aspectRatio: item.aspectRatio || undefined,
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
+    ...(isVideoGeneration && item.nativeAudio === true ? { nativeAudio: true } : {}),
     mode,
     ...(toolSlug ? { toolSlug } : {}),
     ...(item.sourcePath ? { sourcePath: item.sourcePath } : {}),

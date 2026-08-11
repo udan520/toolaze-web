@@ -3,6 +3,7 @@ import { calculateVideoGenerationCredits } from './generation-credits'
 export type AiVideoGeneratorModeId = 'image-to-video' | 'text-to-video'
 export type AiVideoGeneratorModelId =
   | 'grok-1-5-video'
+  | 'seedance-2-5'
   | 'seedance-2'
   | 'seedance-2-mini'
   | 'seedance-2-fast'
@@ -55,14 +56,19 @@ export interface AiVideoGeneratorModelConfig {
   maxImages: number
   maxFileSizeMb: number
   supportsFirstLastFrame?: boolean
+  supportsMultimodalReferences?: boolean
+  multimodalReferenceModes?: AiVideoGeneratorModeId[]
   maxVideos?: number
   maxVideoFileSizeMb?: number
+  maxAudioFiles?: number
+  maxAudioFileSizeMb?: number
   supportsMotionReferenceVideo?: boolean
   promptRequired?: boolean
   durationMode?: 'manual' | 'reference-video'
   imageToVideoAspectRatioMode?: 'manual' | 'reference-image'
   referenceVideoMinDurationSeconds?: number
   referenceVideoMaxDurationSeconds?: number
+  referenceVideoTotalMaxDurationSeconds?: number
   acceptedImageMimeTypes?: string[]
   acceptedImageExtensions?: string[]
   acceptedImageFormats?: string[]
@@ -73,7 +79,9 @@ export interface AiVideoGeneratorModelConfig {
   invalidImageTypeMessage?: string
   invalidImageDimensionsMessage?: string
   acceptedMotionVideoFormats?: string[]
-  uploadPurpose?: 'kling-motion-control'
+  acceptedAudioFormats?: string[]
+  outputFormats?: string[]
+  uploadPurpose?: 'kling-motion-control' | 'seedance-multimodal-reference'
   aspectRatios: Array<AiVideoGeneratorOption>
   durations: number[]
   defaultDuration?: number
@@ -140,6 +148,44 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     samplePrompt:
       'A cinematic close-up of a futuristic sneaker rotating on a glossy black platform, neon rim light, slow push-in camera, premium commercial style.',
     previewTone: 'Cinematic motion preview',
+  },
+  {
+    id: 'seedance-2-5',
+    name: 'Seedance 2.5',
+    vendor: 'ByteDance',
+    description: 'Long-form multimodal video generation with image, video, audio, and first/last-frame control.',
+    logoSrc: '/model-logos/bytedance.svg',
+    logoAlt: 'ByteDance logo',
+    qualityRating: 5,
+    badge: 'New',
+    minCredits: 224,
+    defaultMode: 'image-to-video',
+    supportedModes: ['image-to-video', 'text-to-video'],
+    maxImages: 30,
+    maxFileSizeMb: 30,
+    supportsFirstLastFrame: true,
+    supportsMultimodalReferences: true,
+    multimodalReferenceModes: ['image-to-video'],
+    maxVideos: 10,
+    maxVideoFileSizeMb: 200,
+    maxAudioFiles: 10,
+    maxAudioFileSizeMb: 15,
+    referenceVideoMinDurationSeconds: 2,
+    referenceVideoMaxDurationSeconds: 30,
+    referenceVideoTotalMaxDurationSeconds: 30,
+    acceptedMotionVideoFormats: ['MP4', 'QuickTime'],
+    acceptedAudioFormats: ['WAV', 'MP3'],
+    uploadPurpose: 'seedance-multimodal-reference',
+    aspectRatios: SEEDANCE_2_ASPECT_RATIOS.map((value) => ({ value, label: value === 'adaptive' ? 'Adaptive' : value })),
+    durations: Array.from({ length: 27 }, (_, index) => index + 4),
+    defaultDuration: 5,
+    resolutions: ['480p', '720p'],
+    supportsNativeAudio: true,
+    nativeAudioResolutions: ['480p', '720p'],
+    outputFormats: ['mp4', 'mov'],
+    promptPlaceholder: 'Describe the scene, camera, timing, reference roles, and audio direction.',
+    samplePrompt: 'A cinematic product story using the reference images for identity, the reference video for camera rhythm, and the reference audio for timing.',
+    previewTone: '30-second multimodal studio',
   },
   {
     id: 'seedance-2',
@@ -562,6 +608,7 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
 
 const NATIVE_AUDIO_OUTPUT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
   'grok-1-5-video',
+  'seedance-2-5',
   'seedance-2',
   'seedance-2-mini',
   'seedance-1-5-pro',
@@ -581,6 +628,7 @@ const NATIVE_AUDIO_OUTPUT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
 ])
 
 const MULTI_SHOT_MODEL_IDS = new Set<AiVideoGeneratorModelId>([
+  'seedance-2-5',
   'seedance-2',
   'seedance-2-mini',
   'seedance-2-fast',
@@ -614,7 +662,7 @@ export const AI_VIDEO_GENERATOR_MODEL_GROUPS: AiVideoGeneratorModelGroup[] = [
     name: 'Grok',
     logoSrc: '/model-logos/grok.svg',
     logoAlt: 'Grok logo',
-    models: [AI_VIDEO_GENERATOR_MODEL_OPTIONS[0]],
+    models: AI_VIDEO_GENERATOR_MODEL_OPTIONS.filter((model) => model.id.startsWith('grok-')),
   },
   {
     id: 'seedance',
@@ -671,6 +719,16 @@ export function getAiVideoGeneratorModelGroupsForMode(
         .sort((left, right) => right.qualityRating - left.qualityRating),
     }))
     .filter((group) => group.models.length > 0)
+}
+
+export function supportsAiVideoMultimodalReferencesForMode(
+  model: AiVideoGeneratorModelConfig,
+  mode: AiVideoGeneratorModeId,
+): boolean {
+  return Boolean(
+    model.supportsMultimodalReferences
+      && model.multimodalReferenceModes?.includes(mode),
+  )
 }
 
 export function getAiVideoGeneratorFallbackModel(

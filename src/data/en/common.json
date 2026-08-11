@@ -842,7 +842,14 @@
       "characterOrientationVideo": "Video",
       "characterOrientationHelper": "Use Image to match the person's orientation in the character image (max 10s video). Use Video to follow the character orientation in the reference video (max 30s video).",
       "referenceImageAspectRatioLabel": "Match Reference",
-      "referenceImageAspectRatioHelper": "Output follows the uploaded reference shape. Crop the reference before upload for 16:9 output."
+      "referenceImageAspectRatioHelper": "Output follows the uploaded reference shape. Crop the reference before upload for 16:9 output.",
+      "referenceVideos": "Reference Videos",
+      "referenceAudio": "Reference Audio",
+      "outputFormat": "Output Format",
+      "multimodalReferenceVideoHelper": "MP4 or MOV, up to {count} files and {total}s total. Each file: {min}-{max}s, max {size}MB.",
+      "multimodalReferenceAudioHelper": "WAV or MP3, up to {count} files. Each file: 2-30s, max {size}MB.",
+      "referenceAudioInvalidType": "Use WAV or MP3 for reference audio.",
+      "referenceAudioInvalidDuration": "Reference audio must be between 2 and 30 seconds."
     }
   },
   "historyPage": {

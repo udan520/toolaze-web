@@ -4,12 +4,25 @@ import { join } from 'node:path'
 import test from 'node:test'
 
 const source = readFileSync(join(process.cwd(), 'src', 'components', 'AiVideoGeneratorTool.tsx'), 'utf8')
+const agentsSource = readFileSync(join(process.cwd(), 'AGENTS.md'), 'utf8')
 const uploaderSource = readFileSync(join(process.cwd(), 'src', 'components', 'ReferenceImageUploader.tsx'), 'utf8')
 const motionReferenceVideoUploaderPath = join(process.cwd(), 'src', 'components', 'MotionReferenceVideoUploader.tsx')
+const promptReferenceMentionPickerPath = join(process.cwd(), 'src', 'components', 'PromptReferenceMentionPicker.tsx')
+const promptReferenceMentionOverlayPath = join(process.cwd(), 'src', 'components', 'PromptReferenceMentionOverlay.tsx')
 
 function readMotionReferenceVideoUploaderSource() {
   assert.equal(existsSync(motionReferenceVideoUploaderPath), true, 'shared motion reference video uploader component should exist')
   return readFileSync(motionReferenceVideoUploaderPath, 'utf8')
+}
+
+function readPromptReferenceMentionPickerSource() {
+  assert.equal(existsSync(promptReferenceMentionPickerPath), true, 'prompt reference mention picker should exist')
+  return readFileSync(promptReferenceMentionPickerPath, 'utf8')
+}
+
+function readPromptReferenceMentionOverlaySource() {
+  assert.equal(existsSync(promptReferenceMentionOverlayPath), true, 'prompt reference mention overlay should exist')
+  return readFileSync(promptReferenceMentionOverlayPath, 'utf8')
 }
 
 function extractConstFunctionSource(name: string) {
@@ -70,7 +83,7 @@ test('AI video generator can preload page demo inputs from content data', () => 
   assert.match(source, /initialPrompt\?: string/, 'video tool should accept an initial prompt')
   assert.match(source, /initialCharacterOrientation\?: 'image' \| 'video'/, 'video tool should accept an initial character orientation')
   assert.match(source, /useState<string\[\]>\(\(\) => \(\s*Array\.isArray\(initialImageUrls\)/, 'remote image URL state should seed from initialImageUrls')
-  assert.match(source, /useState<string\[\]>\(\(\) => \(\s*Array\.isArray\(initialMotionVideoUrls\)/, 'remote motion video URL state should seed from initialMotionVideoUrls')
+  assert.match(source, /remoteUrls: Array\.isArray\(initialMotionVideoUrls\) \? initialMotionVideoUrls\.filter\(Boolean\)/, 'combined motion video state should seed remote URLs from initialMotionVideoUrls')
   assert.match(source, /Math\.ceil\(Number\(initialMotionVideoDurationSeconds\)\)/, 'reference-video pages should seed the generated duration from the preloaded video')
   assert.match(source, /useState<'image' \| 'video'>\(initialCharacterOrientation \|\| 'video'\)/, 'character orientation should seed from page data')
   assert.match(source, /useState\(initialPrompt \|\| ''\)/, 'prompt should seed from page data')
@@ -122,6 +135,211 @@ test('AI video generator keeps prompt sizing aligned with the image tool', () =>
   assert.notEqual(source.indexOf('h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl'), -1, 'prompt textarea should match image-tool height and Safari-safe scrolling style')
   assert.equal(source.includes('rows={6}'), false, 'prompt textarea should not use the previous taller six-row sizing')
   assert.equal(source.includes('rounded-2xl border border-slate-200 bg-slate-50/70'), false, 'prompt textarea should not keep the older video-only styling')
+})
+
+test('prompt reference mention picker groups uploaded media with identifiable previews', () => {
+  const pickerSource = readPromptReferenceMentionPickerSource()
+
+  assert.match(pickerSource, /export interface PromptReferenceMentionItem/, 'picker should expose a typed reference item contract')
+  assert.match(pickerSource, /data-prompt-reference-mention-picker/, 'picker should expose a stable surface for interaction tests')
+  assert.match(pickerSource, /Images|Videos|Audio/, 'picker should group references by media type')
+  assert.match(pickerSource, /item\.kind === 'image'[\s\S]*<img/, 'image references should render thumbnails')
+  assert.match(pickerSource, /item\.kind === 'video'[\s\S]*<video/, 'video references should render contained previews')
+  assert.match(pickerSource, /item\.kind === 'audio'/, 'audio references should render a dedicated fallback visual')
+  assert.match(pickerSource, /Upload a reference to mention it\./, 'picker should explain its empty state without extra decoration')
+  assert.match(pickerSource, /aria-label=\{`Mention \$\{item\.label\}`\}/, 'each reference should be an accessible mention action')
+  assert.match(pickerSource, /onClick=\{\(\) => onSelect\(item\)\}/, 'selecting an item should return that exact reference')
+  assert.match(pickerSource, /object-contain/, 'video references should remain uncropped for inspection')
+})
+
+test('AI video generator wires prompt reference mentions to the active resource state', () => {
+  assert.match(source, /PromptReferenceMentionPicker/, 'video generator should render the shared mention picker')
+  assert.match(source, /insertPromptReferenceMention/, 'video generator should use cursor-aware insertion math')
+  assert.match(source, /event\.key !== '@'/, 'typing at-sign should open the mention flow')
+  assert.match(source, /data-prompt-reference-mention-trigger/, 'prompt field should expose a clickable at-sign trigger')
+  assert.match(source, /setPromptMentionTriggerIndex/, 'keyboard and button openings should track replacement context')
+  assert.match(source, /requestAnimationFrame\(\(\) => \{[\s\S]*setSelectionRange\(result\.caret/, 'selection should return to the caret after insertion')
+  assert.match(source, /ordinalRegistry\.get\('image', `remote:\$\{url\}`\)/, 'remote images should keep stable image numbering')
+  assert.match(source, /ordinalRegistry\.get\('image', `local:\$\{item\.preview\}`\)/, 'local images should keep stable image numbering')
+  assert.match(source, /ordinalRegistry\.get\('video', `remote:\$\{url\}`\)/, 'remote videos should keep stable video numbering')
+  assert.match(source, /ordinalRegistry\.get\('audio', `remote:\$\{url\}`\)/, 'remote audio should keep stable audio numbering')
+  assert.match(source, /'@First Frame'/, 'first-frame mode should expose a named first-frame mention')
+  assert.match(source, /'@Last Frame'/, 'first-frame mode should expose a named last-frame mention')
+  assert.match(source, /document\.addEventListener\('mousedown', handlePromptMentionPointerDown\)/, 'outside pointer presses should close the picker')
+  assert.match(source, /if \(event\.key === 'Escape'\) setIsPromptMentionPickerOpen\(false\)/, 'Escape should close the picker')
+  assert.match(source, /Mention a reference/, 'the trigger should have an accessible label')
+})
+
+test('prompt reference trigger sits in the lower-left corner without covering prompt text', () => {
+  assert.match(
+    source,
+    /data-prompt-reference-mention-trigger[\s\S]*className="[^"]*bottom-3 left-3[^"]*z-20/,
+    'the at-sign trigger should sit in the prompt field lower-left corner',
+  )
+  assert.doesNotMatch(
+    source,
+    /data-prompt-reference-mention-trigger[\s\S]{0,500}className="[^"]*right-3/,
+    'the at-sign trigger should no longer be pinned to the right edge',
+  )
+  assert.match(
+    source,
+    /rows=\{4\}[\s\S]*className=\{`[^`]*pl-12 pr-4/,
+    'the prompt field should reserve left padding for the trigger',
+  )
+})
+
+test('prompt reference labels stay bound to surviving resources after a non-tail deletion', async () => {
+  const pickerModule = await import('./PromptReferenceMentionPicker') as Record<string, unknown>
+  const createRegistry = pickerModule.createPromptReferenceMentionOrdinalRegistry
+  if (typeof createRegistry !== 'function') {
+    assert.fail('picker module should expose the stable ordinal registry')
+  }
+  const registry = createRegistry()
+  const initialResources = ['remote:first', 'remote:middle', 'remote:last']
+  const initialLabels = initialResources.map((identity) => `@Image ${registry.get('image', identity)}`)
+
+  assert.deepEqual(initialLabels, ['@Image 1', '@Image 2', '@Image 3'])
+
+  const survivingResources = ['remote:first', 'remote:last']
+  const survivingLabels = survivingResources.map((identity) => `@Image ${registry.get('image', identity)}`)
+
+  assert.deepEqual(survivingLabels, ['@Image 1', '@Image 3'], 'deleting the middle resource must not renumber the surviving tail resource')
+  assert.equal(survivingLabels.includes('@Image 2'), false, 'the deleted resource token must no longer match a current item')
+
+  registry.syncActive('image', survivingResources)
+  const replacementLabel = `@Image ${registry.get('image', 'remote:replacement')}`
+  assert.equal(replacementLabel, '@Image 4', 'cleaning inactive identities must not reuse a removed ordinal')
+  assert.equal(registry.get('image', 'remote:last'), 3, 'active identity cleanup must preserve surviving labels')
+})
+
+test('AI video generator derives mention labels from stable resource identities without reordering payload arrays', () => {
+  const pickerSource = readPromptReferenceMentionPickerSource()
+
+  assert.match(source, /promptReferenceMentionOrdinalRegistryRef/, 'generator should retain mention ordinals for its mounted lifetime')
+  assert.match(source, /get\('image', `remote:\$\{url\}`\)/, 'remote image identity should be URL-backed')
+  assert.match(source, /get\('image', `local:\$\{item\.preview\}`\)/, 'local image identity should use its unique object URL')
+  assert.match(source, /get\('video', `remote:\$\{url\}`\)/, 'remote video identity should be URL-backed')
+  assert.match(source, /get\('video', `local:\$\{item\.preview\}`\)/, 'local video identity should use its unique object URL')
+  assert.match(source, /get\('audio', `remote:\$\{url\}`\)/, 'remote audio identity should be URL-backed')
+  assert.match(source, /get\('audio', `local:\$\{item\.preview\}`\)/, 'local audio identity should use its unique object URL')
+  assert.match(source, /formData\.append\('imageUrls', JSON\.stringify\(uploadedImageMedia\.referenceGenerationUrls\)\)/, 'stable labels must not alter image payload ordering')
+  assert.match(source, /formData\.append\('videoUrls', JSON\.stringify\(uploadedMotionVideoMedia\.generationUrls\)\)/, 'stable labels must not alter video payload ordering')
+  assert.match(source, /ordinalRegistry\.syncActive\('image'/, 'generator should retire image identities no longer in current resources')
+  assert.match(source, /ordinalRegistry\.syncActive\('video'/, 'generator should retire video identities no longer in current resources')
+  assert.match(source, /ordinalRegistry\.syncActive\('audio'/, 'generator should retire audio identities no longer in current resources')
+  assert.match(pickerSource, /ordinals\[kind\]\.delete\(identity\)/, 'registry cleanup should remove inactive identity entries')
+  assert.match(pickerSource, /nextOrdinal\[kind\] \+= 1/, 'registry cleanup must keep ordinal allocation monotonic')
+})
+
+test('prompt reference mentions render as synchronized purple visual tokens over the native textarea', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
+  assert.match(overlaySource, /splitPromptReferenceMentions\(value, items\)/, 'the mirror should segment only references backed by current resources')
+  assert.match(overlaySource, /segment\.reference[\s\S]*text-\[#4F46E5\]/, 'current-resource mention segments should render purple')
+  assert.match(overlaySource, /data-prompt-reference-mention-overlay/, 'the mirror should expose a stable synchronized surface')
+  assert.match(source, /<PromptReferenceMentionOverlay[\s\S]*value=\{prompt\}[\s\S]*items=\{promptReferenceMentionItems\}/, 'the generator should feed current prompt and resources to the mirror')
+  assert.match(source, /text-transparent[\s\S]*caret-slate-800[\s\S]*placeholder:text-slate-400/, 'the native textarea should hide glyphs while preserving caret and placeholder visibility')
+  assert.match(source, /onScroll=\{handlePromptScroll\}/, 'textarea scrolling should synchronize the visual mirror')
+  assert.match(source, /promptMentionOverlayRef\.current\.scrollTop = event\.currentTarget\.scrollTop/, 'vertical textarea scrolling should update the mirror')
+  assert.match(source, /promptMentionOverlayRef\.current\.scrollLeft = event\.currentTarget\.scrollLeft/, 'horizontal textarea scrolling should update the mirror')
+})
+
+test('prompt reference tokens show SSR-safe portal previews for each media kind', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
+  assert.match(overlaySource, /createPortal/, 'reference previews should escape textarea clipping through a portal')
+  assert.match(overlaySource, /typeof document === 'undefined'/, 'portal rendering should be safe during SSR')
+  assert.match(overlaySource, /window\.innerWidth/, 'preview placement should account for the viewport edge')
+  assert.match(overlaySource, /reference\.kind === 'image'[\s\S]*<img/, 'image tokens should preview the referenced image')
+  assert.match(overlaySource, /reference\.kind === 'video'[\s\S]*<video[\s\S]*object-contain/, 'video tokens should use an uncropped preview')
+  assert.match(overlaySource, /reference\.kind === 'audio'[\s\S]*data-prompt-reference-audio-preview/, 'audio tokens should show an identity card')
+})
+
+test('prompt token hit testing finds hover previews without owning pointer events', async () => {
+  const overlayModule = await import('./PromptReferenceMentionOverlay') as Record<string, unknown>
+  const findTokenAtPoint = overlayModule.findPromptReferenceTokenAtPoint
+  if (typeof findTokenAtPoint !== 'function') {
+    assert.fail('overlay module should expose pointer-independent token hit testing')
+  }
+
+  const image = { id: 'image-1', kind: 'image', label: '@Image 1', name: 'Image', src: '/image.webp' }
+  const targets = [{ reference: image, rect: { left: 10, right: 90, top: 20, bottom: 44 } }]
+
+  assert.equal(findTokenAtPoint(targets, 40, 30), image, 'a point inside the visual token should resolve its preview resource')
+  assert.equal(findTokenAtPoint(targets, 100, 30), null, 'a point outside visual tokens should clear the preview')
+
+  const wrappedTargets = [
+    { reference: image, rect: { left: 10, right: 90, top: 20, bottom: 44 } },
+    { reference: image, rect: { left: 10, right: 50, top: 48, bottom: 72 } },
+  ]
+  assert.equal(findTokenAtPoint(wrappedTargets, 70, 60), null, 'the empty corner of a wrapped token bounding box must not count as a hit')
+  assert.equal(findTokenAtPoint(wrappedTargets, 30, 60), image, 'each wrapped line fragment should remain hoverable')
+})
+
+test('prompt visual tokens never intercept native textarea selection gestures', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
+  assert.match(overlaySource, /data-prompt-reference-mention-overlay[\s\S]*pointer-events-none/, 'the mirror should remain pointer transparent')
+  assert.doesNotMatch(overlaySource, /pointer-events-auto/, 'token spans must not become pointer targets above the textarea')
+  assert.doesNotMatch(overlaySource, /onMouseEnter|onMouseLeave|onMouseDown|onPointerDown/, 'tokens must not own click, drag, or hover events')
+  assert.match(overlaySource, /textarea\.addEventListener\('mousemove'/, 'hover observation should stay scoped to the native textarea')
+  assert.match(overlaySource, /getClientRects\(\)/, 'wrapped tokens should expose every rendered line fragment')
+  assert.doesNotMatch(overlaySource, /getBoundingClientRect\(\)/, 'wrapped token hit testing must not use one enclosing rectangle')
+  assert.match(overlaySource, /querySelector\('textarea'\)[\s\S]*event\.target !== textarea/, 'geometry hits should only preview when the native textarea is the real pointer target')
+})
+
+test('prompt reference previews invalidate stale portal geometry and removed resources', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
+  assert.match(overlaySource, /addEventListener\('scroll',[\s\S]*true\)/, 'page and textarea scroll should invalidate fixed preview coordinates')
+  assert.match(overlaySource, /addEventListener\('resize'/, 'viewport resize should invalidate fixed preview coordinates')
+  assert.match(overlaySource, /useEffect\(\(\) => \{[\s\S]*setHoveredReference\(null\)[\s\S]*\}, \[value, items\]\)/, 'prompt or current-resource changes should clear hovered media')
+  assert.match(overlaySource, /items\.some\([\s\S]*item\.id === reference\.id[\s\S]*item\.src === reference\.src/, 'portal rendering should reject removed or replaced resources synchronously')
+})
+
+test('prompt reference picker contains wheel and touch scrolling without disabling its own scroll', () => {
+  const pickerSource = readPromptReferenceMentionPickerSource()
+  const scrollHandler = pickerSource.match(/const stopScrollPropagation[\s\S]*?\n\}/)?.[0] || ''
+
+  assert.match(pickerSource, /overflow-y-auto[\s\S]*overscroll-contain/, 'picker should contain boundary overscroll')
+  assert.match(pickerSource, /onWheel=\{stopScrollPropagation\}/, 'wheel events should not reach the generator panel or page')
+  assert.match(pickerSource, /onTouchMove=\{stopScrollPropagation\}/, 'touch scrolling should not reach the generator panel or page')
+  assert.match(pickerSource, /event\.stopPropagation\(\)/, 'scroll isolation should stop propagation')
+  assert.doesNotMatch(scrollHandler, /preventDefault\(\)/, 'picker scrolling itself must remain native')
+})
+
+test('prompt reference picker exposes listbox popup semantics while textarea keeps focus', () => {
+  const pickerSource = readPromptReferenceMentionPickerSource()
+
+  assert.match(pickerSource, /id=\{id\}[\s\S]*role="listbox"/, 'picker should expose the trigger-controlled listbox id')
+  assert.match(pickerSource, /role="option"[\s\S]*aria-selected=\{item\.id === activeItemId\}/, 'reference actions should expose option selection state')
+  assert.match(source, /aria-haspopup="listbox"/, 'mention trigger should identify its popup type')
+  assert.match(source, /aria-controls=\{promptMentionPickerId\}/, 'mention trigger should own the stable listbox id')
+  assert.match(source, /event\.key === 'ArrowDown'[\s\S]*event\.key === 'ArrowUp'[\s\S]*event\.key === 'Enter'/, 'textarea keyboard handling should navigate and select listbox options')
+  assert.match(source, /useEffect\(\(\) => \{[\s\S]*setPromptMentionActiveIndex[\s\S]*promptReferenceMentionItems\.length[\s\S]*\}, \[promptReferenceMentionItems\]\)/, 'resource removal should keep the active option index in range')
+  assert.match(source, /if \(event\.key === 'Escape'\)[\s\S]*promptTextareaRef\.current\?\.focus\(\)/, 'Escape should close the popup and restore textarea focus')
+})
+
+test('prompt reference trigger and picker stay above the visual mirror', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+  const pickerSource = readPromptReferenceMentionPickerSource()
+
+  assert.match(overlaySource, /data-prompt-reference-mention-overlay[\s\S]*z-10/, 'visual mirror should use the base prompt overlay layer')
+  assert.match(source, /data-prompt-reference-mention-trigger[\s\S]*className="[^"]*z-20/, 'at-sign trigger should stay clickable above the mirror')
+  assert.match(pickerSource, /data-prompt-reference-mention-picker[\s\S]*z-30/, 'picker should remain above both the mirror and trigger')
+})
+
+test('project rules enforce shared hero ownership and reusable defect recurrence prevention', () => {
+  assert.match(agentsSource, /breadcrumb、H1、Demo[\s\S]*单一 owner/, 'shared hero structures should have one explicit owner')
+  assert.match(agentsSource, /isolated[\s\S]*reusable/, 'defects should be classified by recurrence scope')
+  assert.match(agentsSource, /可复用模式[\s\S]*项目规则[\s\S]*契约测试/, 'reusable defect patterns should require both a project rule and a contract test')
+})
+
+test('AI video generator keeps multimodal references out of text-to-video mode', () => {
+  assert.match(source, /supportsAiVideoMultimodalReferencesForMode\(modelConfig, activeMode\)/, 'multimodal UI should read a mode-level capability contract')
+  assert.match(source, /\{supportsMultimodalReferences && !isUsingFirstLastFrame \? \(/, 'reference video and audio uploads should only render when the active mode supports them')
+  assert.match(source, /if \(!supportsMultimodalReferences\) return \{ generationUrls: \[\], historyUrls: \[\] \}/, 'hidden multimodal references should not upload in text-to-video mode')
+  assert.match(source, /referenceVideoDuration: supportsMultimodalReferences \? referenceVideoDurationTotal : 0/, 'hidden reference videos should not affect text-to-video pricing')
 })
 
 test('Kling character orientation sits directly below the prompt field', () => {
@@ -190,6 +408,17 @@ test('AI video generator supports explicit first and last frame image slots for 
   assert.match(source, /formData\.append\('imageUrls', JSON\.stringify\(uploadedImageMedia\.referenceGenerationUrls\)\)/, 'ordinary reference images should continue using imageUrls')
   assert.match(source, /formData\.append\('firstFrameUrl', uploadedImageMedia\.firstLastFrameGenerationUrls\[0\]\)/, 'first frame should use a dedicated request field')
   assert.match(source, /formData\.append\('lastFrameUrl', uploadedImageMedia\.firstLastFrameGenerationUrls\[1\]\)/, 'last frame should use a dedicated request field')
+})
+
+test('AI video generator preserves ordinary reference images when first/last-frame mode toggles', () => {
+  const toggleHandler = extractConstFunctionSource('handleFirstLastFrameToggle')
+
+  assert.doesNotMatch(toggleHandler, /imageFilesRef\.current\.forEach/, 'the toggle must not revoke ordinary local image previews')
+  assert.doesNotMatch(toggleHandler, /imageFilesRef\.current = \[\]/, 'the toggle must not reset the ordinary local image ref')
+  assert.doesNotMatch(toggleHandler, /setImageFiles\(\[\]\)/, 'the toggle must preserve ordinary local images')
+  assert.doesNotMatch(toggleHandler, /setRemoteImageUrls\(\[\]\)/, 'the toggle must preserve ordinary remote images')
+  assert.match(toggleHandler, /motionVideoFilesRef\.current\.forEach/, 'the toggle should keep clearing incompatible reference videos')
+  assert.match(toggleHandler, /audioFilesRef\.current\.forEach/, 'the toggle should keep clearing incompatible reference audio')
 })
 
 test('Kling motion control restricts character image uploads to KIE-supported image formats', () => {
@@ -461,7 +690,7 @@ test('AI video history Recreate restores every recorded setting without generati
   assert.match(historyApply, /if \(!item\.modelId\) return/)
   assert.match(historyApply, /setSelectedModelId\(item\.modelId\)/)
   assert.match(historyApply, /setActiveModelGroupId\(getAiVideoGeneratorModelGroupId\(item\.modelId\)\)/)
-  assert.match(historyApply, /const nextMode = item\.inputUrls\.length > 0 \? 'image-to-video' : item\.mode as AiVideoGeneratorModeId/)
+  assert.match(historyApply, /const nextMode = item\.mode as AiVideoGeneratorModeId/)
   assert.match(historyApply, /setActiveMode\(nextMode\)/)
   assert.match(historyApply, /setPrompt\(item\.prompt\)/)
   assert.match(historyApply, /setAspectRatio\(/)
@@ -477,6 +706,8 @@ test('AI video history Recreate restores every recorded setting without generati
   assert.match(source, /activeSettingsHistoryItemId === item\.id/)
   assert.match(source, /nativeAudio:\s*request\.nativeAudio/)
   assert.match(source, /nativeAudio:\s*item\.nativeAudio === true/)
+  assert.match(source, /mode:\s*request\.mode/, 'video history should persist the original creation mode')
+  assert.match(source, /getHistoryGenerationMode\(item\.outputFormat, inferredHistoryMode\)/, 'persisted history should restore the stored creation mode')
 })
 
 test('AI video generator uses the shared generation history API for completed videos', () => {

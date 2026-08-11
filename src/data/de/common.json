@@ -858,7 +858,14 @@
       "characterOrientationVideo": "Video",
       "characterOrientationHelper": "Bild übernimmt die Ausrichtung der Person im Charakterbild (Video max. 10 s). Video folgt der Figurenausrichtung im Referenzvideo (Video max. 30 s).",
       "referenceImageAspectRatioLabel": "Folgt dem Referenzbild",
-      "referenceImageAspectRatioHelper": "Die Ausgabe folgt der Form der hochgeladenen Referenz. Schneide die Referenz vor dem Upload auf 16:9 zu."
+      "referenceImageAspectRatioHelper": "Die Ausgabe folgt der Form der hochgeladenen Referenz. Schneide die Referenz vor dem Upload auf 16:9 zu.",
+      "referenceVideos": "Referenzvideos",
+      "referenceAudio": "Referenzaudio",
+      "outputFormat": "Ausgabeformat",
+      "multimodalReferenceVideoHelper": "MP4 oder MOV, bis zu {count} Dateien und insgesamt {total}s. Pro Datei: {min}-{max}s, maximal {size}MB.",
+      "multimodalReferenceAudioHelper": "WAV oder MP3, bis zu {count} Dateien. Pro Datei: 2-30s, maximal {size}MB.",
+      "referenceAudioInvalidType": "Verwende WAV oder MP3 fuer Referenzaudio.",
+      "referenceAudioInvalidDuration": "Referenzaudio muss zwischen 2 und 30 Sekunden lang sein."
     }
   },
   "imageCompressor": {

@@ -10,6 +10,7 @@ import {
   getAiVideoGeneratorModelConfig,
   getAiVideoGeneratorFallbackModel,
   getAiVideoGeneratorModelGroupsForMode,
+  supportsAiVideoMultimodalReferencesForMode,
 } from './ai-video-generator-config'
 
 test('AI video generator keeps text-to-video and image-to-video as the only creation modes', () => {
@@ -65,6 +66,7 @@ test('AI video generator exposes all configured video model variants', () => {
     AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => model.id),
     [
       'grok-1-5-video',
+      'seedance-2-5',
       'seedance-2',
       'seedance-2-mini',
       'seedance-2-fast',
@@ -73,6 +75,7 @@ test('AI video generator exposes all configured video model variants', () => {
       'seedance-1-pro',
       'seedance-1-lite',
       'wan-2-7',
+      'wan-3-0',
       'wan-2-6',
       'wan-2-5',
       'wan-2-2',
@@ -107,13 +110,13 @@ test('AI video generator exposes a two-level visible model menu for every video 
         id: 'seedance',
         logoSrc: '/model-logos/bytedance.svg',
         logoAlt: 'ByteDance logo',
-        modelIds: ['seedance-2', 'seedance-2-mini', 'seedance-2-fast', 'seedance-1-5-pro', 'seedance-1-pro-fast', 'seedance-1-pro', 'seedance-1-lite'],
+        modelIds: ['seedance-2-5', 'seedance-2', 'seedance-2-mini', 'seedance-2-fast', 'seedance-1-5-pro', 'seedance-1-pro-fast', 'seedance-1-pro', 'seedance-1-lite'],
       },
       {
         id: 'wan',
         logoSrc: '/model-logos/wan.ico',
         logoAlt: 'Wan logo',
-        modelIds: ['wan-2-7', 'wan-2-6', 'wan-2-5', 'wan-2-2'],
+        modelIds: ['wan-2-7', 'wan-3-0', 'wan-2-6', 'wan-2-5', 'wan-2-2'],
       },
       {
         id: 'kling',
@@ -141,6 +144,32 @@ test('AI video generator exposes a two-level visible model menu for every video 
       },
     ]
   )
+})
+
+test('Seedance 2.5 exposes the documented KIE multimodal contract', () => {
+  const model = getAiVideoGeneratorModelConfig('seedance-2-5')
+
+  assert.equal(model.name, 'Seedance 2.5')
+  assert.deepEqual(model.supportedModes, ['image-to-video', 'text-to-video'])
+  assert.equal(model.maxImages, 30)
+  assert.equal(model.maxVideos, 10)
+  assert.equal(model.maxAudioFiles, 10)
+  assert.equal(model.maxVideoFileSizeMb, 200)
+  assert.equal(model.maxAudioFileSizeMb, 15)
+  assert.equal(model.supportsFirstLastFrame, true)
+  assert.equal(model.supportsMultimodalReferences, true)
+  assert.deepEqual(model.multimodalReferenceModes, ['image-to-video'])
+  assert.equal(supportsAiVideoMultimodalReferencesForMode(model, 'image-to-video'), true)
+  assert.equal(supportsAiVideoMultimodalReferencesForMode(model, 'text-to-video'), false)
+  assert.equal(model.supportsNativeAudio, true)
+  assert.deepEqual(model.acceptedMotionVideoFormats, ['MP4', 'QuickTime'])
+  assert.deepEqual(model.acceptedAudioFormats, ['WAV', 'MP3'])
+  assert.equal(model.referenceVideoMinDurationSeconds, 2)
+  assert.equal(model.referenceVideoMaxDurationSeconds, 30)
+  assert.equal(model.referenceVideoTotalMaxDurationSeconds, 30)
+  assert.deepEqual(model.durations, Array.from({ length: 27 }, (_, index) => index + 4))
+  assert.deepEqual(model.resolutions, ['480p', '720p'])
+  assert.deepEqual(model.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
 })
 
 test('Kling 3 Motion Control follows reference-video motion-control constraints', () => {
@@ -361,6 +390,7 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
 
   const expectedMinimumCreditsByModel = new Map([
     ['grok-1-5-video', 3],
+    ['seedance-2-5', 224],
     ['seedance-2', 190],
     ['seedance-2-mini', 95],
     ['seedance-2-fast', 155],
@@ -369,6 +399,7 @@ test('AI video generator model menu minimum credits match shared pricing', () =>
     ['seedance-1-pro', 30],
     ['seedance-1-lite', 20],
     ['wan-2-7', 64],
+    ['wan-3-0', 64],
     ['wan-2-6', 140],
     ['wan-2-5', 120],
     ['wan-2-2', 16],
@@ -429,6 +460,7 @@ test('video capability labels match the audited KIE model matrix', () => {
 
   assert.deepEqual(nativeAudioModels, [
     'grok-1-5-video',
+    'seedance-2-5',
     'seedance-2',
     'seedance-2-mini',
     'seedance-1-5-pro',
@@ -447,6 +479,7 @@ test('video capability labels match the audited KIE model matrix', () => {
     'happyhorse',
   ])
   assert.deepEqual(multiShotModels, [
+    'seedance-2-5',
     'seedance-2',
     'seedance-2-mini',
     'seedance-2-fast',
@@ -464,6 +497,7 @@ test('video capability labels match the audited KIE model matrix', () => {
     'happyhorse',
   ])
   assert.deepEqual(firstLastFrameModels, [
+    'seedance-2-5',
     'seedance-2',
     'seedance-2-mini',
     'seedance-2-fast',
