@@ -166,7 +166,7 @@ export default function PromptReferenceMentionOverlay({
         ref={mirrorRef}
         data-prompt-reference-mention-overlay
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 overflow-hidden whitespace-pre-wrap break-words rounded-xl border border-transparent px-4 py-3 pr-12 text-base leading-6 text-slate-800 md:text-sm"
+        className="pointer-events-none absolute inset-0 z-10 overflow-hidden whitespace-pre-wrap break-words rounded-xl border border-transparent px-4 pb-12 pt-3 text-base leading-6 text-slate-800 md:text-sm"
       >
         {segments.map((segment, index) => (
           'reference' in segment ? (

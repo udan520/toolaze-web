@@ -170,7 +170,20 @@ test('AI video generator wires prompt reference mentions to the active resource 
   assert.match(source, /Mention a reference/, 'the trigger should have an accessible label')
 })
 
-test('prompt reference trigger sits in the lower-left corner without covering prompt text', () => {
+test('Seedance 2.0 keeps first/last frames mutually exclusive with multimodal references', () => {
+  const configSource = readFileSync(join(process.cwd(), 'src', 'lib', 'ai-video-generator-config.ts'), 'utf8')
+
+  assert.doesNotMatch(configSource, /id: 'seedance-2',[\s\S]*?canCombineFirstLastFrameWithReferences: true/)
+  assert.match(source, /supportsMultimodalReferences && \(!isUsingFirstLastFrame \|\| canCombineFirstLastFrameWithReferences\)/)
+  assert.match(source, /formData\.append\('webSearch', String\(webSearch\)\)/)
+  assert.match(source, /data-video-web-search-toggle/)
+  assert.match(source, /referenceAudioTotalMaxDurationSeconds/)
+  assert.match(source, /webSearch: request\.webSearch/)
+})
+
+test('prompt reference trigger uses the lower-left corner without reserving a full text column', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
   assert.match(
     source,
     /data-prompt-reference-mention-trigger[\s\S]*className="[^"]*bottom-3 left-3[^"]*z-20/,
@@ -181,10 +194,20 @@ test('prompt reference trigger sits in the lower-left corner without covering pr
     /data-prompt-reference-mention-trigger[\s\S]{0,500}className="[^"]*right-3/,
     'the at-sign trigger should no longer be pinned to the right edge',
   )
+  assert.doesNotMatch(
+    source,
+    /rows=\{4\}[\s\S]*className=\{`[^`]*pl-12/,
+    'the prompt field should not reserve a full left column for the at-sign trigger',
+  )
   assert.match(
     source,
-    /rows=\{4\}[\s\S]*className=\{`[^`]*pl-12 pr-4/,
-    'the prompt field should reserve left padding for the trigger',
+    /rows=\{4\}[\s\S]*className=\{`[^`]*px-4[^`]*supportsPromptReferenceMentions \? 'pb-12 pt-3 text-transparent/,
+    'mention-capable prompt text should start at the normal left inset and reserve space below for the trigger',
+  )
+  assert.match(
+    overlaySource,
+    /data-prompt-reference-mention-overlay[\s\S]*className="[^"]*px-4 pb-12 pt-3/,
+    'the mention overlay should use the same left and bottom insets as the textarea',
   )
 })
 
@@ -337,7 +360,7 @@ test('project rules enforce shared hero ownership and reusable defect recurrence
 
 test('AI video generator keeps multimodal references out of text-to-video mode', () => {
   assert.match(source, /supportsAiVideoMultimodalReferencesForMode\(modelConfig, activeMode\)/, 'multimodal UI should read a mode-level capability contract')
-  assert.match(source, /\{supportsMultimodalReferences && !isUsingFirstLastFrame \? \(/, 'reference video and audio uploads should only render when the active mode supports them')
+  assert.match(source, /\{supportsMultimodalReferences && \(!isUsingFirstLastFrame \|\| canCombineFirstLastFrameWithReferences\) \? \(/, 'reference video and audio uploads should only render when the active mode supports them')
   assert.match(source, /if \(!supportsMultimodalReferences\) return \{ generationUrls: \[\], historyUrls: \[\] \}/, 'hidden multimodal references should not upload in text-to-video mode')
   assert.match(source, /referenceVideoDuration: supportsMultimodalReferences \? referenceVideoDurationTotal : 0/, 'hidden reference videos should not affect text-to-video pricing')
 })
@@ -815,7 +838,7 @@ test('AI video generator reports GA4 generation and credit funnel events', () =>
   assert.match(payloadBuilder, /generation_mode:\s*activeMode/)
   assert.match(payloadBuilder, /resolution,\s*/)
   assert.match(payloadBuilder, /duration_seconds:\s*duration/)
-  assert.match(payloadBuilder, /native_audio:\s*supportsNativeAudio && nativeAudio/)
+  assert.match(payloadBuilder, /native_audio:\s*effectiveNativeAudio/)
   assert.match(payloadBuilder, /credit_cost:\s*generationCreditCost/)
   assert.match(payloadBuilder, /has_reference_images:\s*referenceMediaCount > 0/)
   assert.match(payloadBuilder, /reference_image_count:\s*referenceImageCount/)
@@ -842,20 +865,23 @@ test('AI video generator aligns the outer desktop shell with the image generator
 })
 
 test('AI video generator shows the current credit cost inside the generate button', () => {
-  assert.notEqual(source.indexOf("import { calculateVideoGenerationCredits } from '@/lib/generation-credits'"), -1, 'video tool should reuse the shared video credit calculator')
+  assert.notEqual(source.indexOf("from '@/lib/generation-credits'"), -1, 'video tool should reuse the shared video credit calculator')
   assert.notEqual(source.indexOf('getAiVideoGeneratorModelMinimumCredits'), -1, 'video tool should reuse computed model minimum credits')
   assert.equal(source.includes('label: `${option.minCredits}+`'), false, 'model menu should not render a hand-maintained minCredits value')
   assert.notEqual(source.indexOf('const generationCreditCost = useMemo'), -1, 'video tool should derive a current credit cost from model settings')
   assert.notEqual(source.indexOf('calculateVideoGenerationCredits(selectedModelId, resolution, duration, {'), -1, 'video cost should use exact mapped pricing and fall back to model minimum credits')
-  assert.notEqual(source.indexOf('nativeAudio: supportsNativeAudio && nativeAudio'), -1, 'video cost should include Native Audio when enabled')
+  assert.notEqual(source.indexOf('nativeAudio: effectiveNativeAudio'), -1, 'video cost should include the effective Native Audio state')
   assert.notEqual(source.indexOf('data-generate-credit-cost'), -1, 'generate button should expose the visible credit cost')
   assert.notEqual(source.indexOf('aria-label={`${generationCreditCost} credits`}'), -1, 'generate button credit cost should remain accessible')
   assert.notEqual(source.indexOf('/credits-icons/diamond-3d-indigo.svg'), -1, 'generate button should use the Toolaze credits icon')
 })
 
 test('AI video generator exposes Kling Native Audio as a priced toggle', () => {
+  assert.notEqual(source.indexOf('hasVideoNativeAudioPriceDifference'), -1, 'video tool should derive Native Audio choice visibility from shared pricing')
+  assert.notEqual(source.indexOf('const effectiveNativeAudio = supportsNativeAudio && (nativeAudioHasPriceDifference ? nativeAudio : true)'), -1, 'same-price Native Audio should default on')
+  assert.notEqual(source.indexOf('supportsNativeAudio && nativeAudioHasPriceDifference ? ('), -1, 'same-price Native Audio should hide the toggle')
   assert.notEqual(source.indexOf('data-video-native-audio-toggle'), -1, 'video tool should expose a Native Audio toggle')
-  assert.notEqual(source.indexOf("formData.append('nativeAudio', String(nativeAudio))"), -1, 'video requests should send Native Audio state')
+  assert.notEqual(source.indexOf("formData.append('nativeAudio', String(effectiveNativeAudio))"), -1, 'video requests should send the effective Native Audio state')
   assert.notEqual(source.indexOf('modelConfig.nativeAudioResolutions?.includes(value)'), -1, 'unsupported Native Audio resolutions should disable the toggle')
   assert.notEqual(source.indexOf('text.nativeAudio'), -1, 'Native Audio label should be rendered from text slots')
 })

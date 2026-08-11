@@ -69,6 +69,9 @@ export interface AiVideoGeneratorModelConfig {
   referenceVideoMinDurationSeconds?: number
   referenceVideoMaxDurationSeconds?: number
   referenceVideoTotalMaxDurationSeconds?: number
+  referenceAudioTotalMaxDurationSeconds?: number
+  canCombineFirstLastFrameWithReferences?: boolean
+  supportsWebSearch?: boolean
   acceptedImageMimeTypes?: string[]
   acceptedImageExtensions?: string[]
   acceptedImageFormats?: string[]
@@ -118,6 +121,8 @@ export const AI_VIDEO_GENERATOR_MODE_OPTIONS: AiVideoGeneratorModeOption[] = [
 
 const SEEDANCE_2_DURATIONS = Array.from({ length: 11 }, (_, index) => index + 5)
 const SEEDANCE_2_ASPECT_RATIOS = ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9']
+const SEEDANCE_2_STANDARD_DURATIONS = Array.from({ length: 12 }, (_, index) => index + 4)
+const SEEDANCE_2_STANDARD_ASPECT_RATIOS = ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9']
 
 const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
   {
@@ -196,14 +201,31 @@ const AI_VIDEO_GENERATOR_MODEL_OPTIONS_BASE = [
     logoAlt: 'ByteDance logo',
     qualityRating: 5,
     badge: 'Hot',
-    minCredits: 190,
+    minCredits: 152,
     defaultMode: 'image-to-video',
     maxImages: 9,
     supportsFirstLastFrame: true,
+    supportsMultimodalReferences: true,
+    multimodalReferenceModes: ['image-to-video'],
+    maxVideos: 3,
+    maxVideoFileSizeMb: 50,
+    maxAudioFiles: 3,
+    maxAudioFileSizeMb: 15,
+    referenceVideoMinDurationSeconds: 1,
+    referenceVideoMaxDurationSeconds: 15,
+    referenceVideoTotalMaxDurationSeconds: 15,
+    referenceAudioTotalMaxDurationSeconds: 15,
+    supportsWebSearch: true,
+    acceptedMotionVideoFormats: ['MP4', 'QuickTime'],
+    acceptedAudioFormats: ['MPEG', 'WAV', 'X-WAV', 'AAC', 'MP4', 'OGG'],
+    uploadPurpose: 'seedance-multimodal-reference',
     maxFileSizeMb: 30,
-    aspectRatios: SEEDANCE_2_ASPECT_RATIOS.map((value) => ({ value, label: value === 'adaptive' ? 'Adaptive' : value })),
-    durations: SEEDANCE_2_DURATIONS,
+    aspectRatios: SEEDANCE_2_STANDARD_ASPECT_RATIOS.map((value) => ({ value, label: value })),
+    durations: SEEDANCE_2_STANDARD_DURATIONS,
+    defaultDuration: 5,
     resolutions: ['480p', '720p', '1080p', '4K'],
+    supportsNativeAudio: true,
+    nativeAudioResolutions: ['480p', '720p', '1080p', '4K'],
     promptPlaceholder:
       'Describe the motion, camera path, lighting, and audio mood for the video.',
     samplePrompt:

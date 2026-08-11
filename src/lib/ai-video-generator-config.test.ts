@@ -172,6 +172,28 @@ test('Seedance 2.5 exposes the documented KIE multimodal contract', () => {
   assert.deepEqual(model.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
 })
 
+test('Seedance 2.0 exposes the documented KIE multimodal contract', () => {
+  const model = getAiVideoGeneratorModelConfig('seedance-2')
+
+  assert.equal(model.maxImages, 9)
+  assert.equal(model.maxVideos, 3)
+  assert.equal(model.maxAudioFiles, 3)
+  assert.equal(model.maxVideoFileSizeMb, 50)
+  assert.equal(model.maxAudioFileSizeMb, 15)
+  assert.equal(model.supportsFirstLastFrame, true)
+  assert.equal(model.supportsMultimodalReferences, true)
+  assert.notEqual(model.canCombineFirstLastFrameWithReferences, true)
+  assert.equal(model.supportsWebSearch, true)
+  assert.equal(model.supportsNativeAudio, true)
+  assert.equal(model.referenceVideoTotalMaxDurationSeconds, 15)
+  assert.equal(model.referenceAudioTotalMaxDurationSeconds, 15)
+  assert.deepEqual(model.acceptedMotionVideoFormats, ['MP4', 'QuickTime'])
+  assert.deepEqual(model.acceptedAudioFormats, ['MPEG', 'WAV', 'X-WAV', 'AAC', 'MP4', 'OGG'])
+  assert.deepEqual(model.durations, Array.from({ length: 12 }, (_, index) => index + 4))
+  assert.deepEqual(model.aspectRatios.map((ratio) => ratio.value), ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9'])
+  assert.equal(model.outputFormats, undefined)
+})
+
 test('Kling 3 Motion Control follows reference-video motion-control constraints', () => {
   const model = getAiVideoGeneratorModelConfig('kling-3-motion-control')
 
@@ -330,11 +352,11 @@ test('AI video generator model configs define practical video output defaults', 
 
   assert.equal(seedance.maxImages, 9)
   assert.equal(seedance.supportsFirstLastFrame, true)
-  assert.deepEqual(seedance.aspectRatios.map((ratio) => ratio.value), ['adaptive', '16:9', '9:16', '1:1', '4:3', '3:4', '21:9'])
-  assert.deepEqual(seedance.durations, Array.from({ length: 11 }, (_, index) => index + 5))
+  assert.deepEqual(seedance.aspectRatios.map((ratio) => ratio.value), ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9'])
+  assert.deepEqual(seedance.durations, Array.from({ length: 12 }, (_, index) => index + 4))
   assert.equal(seedance.logoSrc, '/model-logos/bytedance.svg')
   assert.equal(seedance.qualityRating, 5)
-  assert.equal(seedance.minCredits, 190)
+  assert.equal(seedance.minCredits, 152)
   assert.deepEqual(seedance.resolutions, ['480p', '720p', '1080p', '4K'])
 
   assert.equal(seedanceMini.name, 'Seedance 2.0 Mini')
@@ -386,12 +408,12 @@ test('AI video generator model configs define practical video output defaults', 
 })
 
 test('AI video generator model menu minimum credits match shared pricing', () => {
-  assert.equal(getAiVideoGeneratorModelMinimumCredits(getAiVideoGeneratorModelConfig('seedance-2')), 190)
+  assert.equal(getAiVideoGeneratorModelMinimumCredits(getAiVideoGeneratorModelConfig('seedance-2')), 152)
 
   const expectedMinimumCreditsByModel = new Map([
     ['grok-1-5-video', 3],
     ['seedance-2-5', 224],
-    ['seedance-2', 190],
+    ['seedance-2', 152],
     ['seedance-2-mini', 95],
     ['seedance-2-fast', 155],
     ['seedance-1-5-pro', 16],

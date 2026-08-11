@@ -92,6 +92,7 @@ test('AI Video navigation keeps AI Dance and Talking Avatar in AI Tools only', (
 
 test('AI Video model links render as tag-style entries after the function cards', () => {
   const expectedModelLinks = [
+    '/model/seedance-2-5',
     '/ai-video-generator?model=seedance-2-mini',
     '/model/seedance-2',
     '/model/veo-3-1-ai-video-generator',
@@ -110,7 +111,7 @@ test('AI Video model links render as tag-style entries after the function cards'
   const modelIndexes = expectedModelLinks.map((href) => aiVideoModelMenuSource.indexOf(`href: '${href}'`))
   assert.ok(modelIndexes.every((index) => index >= 0))
   assert.deepEqual(modelIndexes, [...modelIndexes].sort((a, b) => a - b))
-  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'/)
+  assert.ok(aiVideoModelMenuSource.indexOf("href: '/model/seedance-2-5'") < aiVideoModelMenuSource.indexOf("href: '/model/seedance-2'"))
   assert.match(aiVideoModelMenuSource, /href: '\/ai-video-generator\?model=seedance-2-mini'[\s\S]*badgeKey: 'new'/)
   assert.match(aiVideoModelMenuSource, /href: '\/model\/kling-2-6-pro-motion-control'[\s\S]*badgeKey: 'hot'/)
 

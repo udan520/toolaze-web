@@ -223,3 +223,15 @@ export function calculateVideoGenerationCredits(modelId, resolution, duration, o
     : normalizedDuration;
   return Math.ceil(creditsPerSecond * billableDuration);
 }
+
+export function hasVideoNativeAudioPriceDifference(modelId, resolution, duration, options = {}) {
+  const withoutNativeAudio = calculateVideoGenerationCredits(modelId, resolution, duration, {
+    ...options,
+    nativeAudio: false,
+  });
+  const withNativeAudio = calculateVideoGenerationCredits(modelId, resolution, duration, {
+    ...options,
+    nativeAudio: true,
+  });
+  return withoutNativeAudio !== withNativeAudio;
+}

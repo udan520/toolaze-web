@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { AI_VIDEO_GENERATOR_MODEL_OPTIONS } from './ai-video-generator-config'
 import { AI_IMAGE_GENERATOR_MODEL_OPTIONS } from './ai-image-generator-config'
-import { MODEL_HUB_MODELS } from './model-hub'
+import { getModelHubModels, MODEL_HUB_MODELS } from './model-hub'
 
 test('AI Models hub includes every model available in the shared video generator', () => {
   const hubVideoNames = new Set(
@@ -33,4 +33,13 @@ test('AI Models hub includes every image model available in the shared image gen
       .filter((name) => !hubImageNames.has(name)),
     [],
   )
+})
+
+test('AI Models hub places Seedance 2.5 before every other video model', () => {
+  const videoModels = getModelHubModels('video')
+
+  assert.equal(videoModels[0]?.href, '/model/seedance-2-5')
+  assert.equal(videoModels.filter((model) => model.href === '/model/seedance-2-5').length, 1)
+  assert.equal(videoModels.filter((model) => model.name === 'Seedance 2.5').length, 1)
+  assert.ok(videoModels.findIndex((model) => model.href === '/model/seedance-2-5') < videoModels.findIndex((model) => model.href === '/model/seedance-2'))
 })

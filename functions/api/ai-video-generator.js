@@ -1,6 +1,6 @@
 import { getCurrentUser } from '../_shared/auth.mjs';
 import { consumeCredits, getCreditSummary, refundCredits } from '../_shared/credits.mjs';
-import { calculateVideoGenerationCredits } from '../_shared/generation-credits.mjs';
+import { calculateVideoGenerationCredits, hasVideoNativeAudioPriceDifference } from '../_shared/generation-credits.mjs';
 import {
   getVideoGenerationCreditDescription,
   getVideoGenerationCreditRefundDescription,
@@ -86,16 +86,24 @@ const VIDEO_MODEL_CONFIGS = {
     aliases: ['seedance-2-0'],
     inputSchema: 'seedance',
     maxImages: 9,
-    defaultAspectRatio: 'adaptive',
-    aspectRatios: new Set(SEEDANCE_2_ASPECT_RATIOS),
+    maxVideos: 3,
+    maxAudioFiles: 3,
+    multimodalReferenceModes: new Set(['image-to-video']),
+    referenceVideosRequired: false,
+    maxReferenceVideoTotalDuration: 15,
+    defaultAspectRatio: '16:9',
+    aspectRatios: new Set(['16:9', '4:3', '1:1', '3:4', '9:16', '21:9']),
     defaultResolution: '480p',
     resolutions: new Set(['480p', '720p', '1080p', '4K']),
+    nativeAudioResolutions: new Set(['480p', '720p', '1080p', '4K']),
     defaultDuration: 5,
     minDuration: 4,
     maxDuration: 15,
     unsupportedAspectRatioError: 'Unsupported aspect ratio for Seedance 2.0',
     unsupportedResolutionError: 'Unsupported resolution for Seedance 2.0',
     tooManyImagesError: 'Seedance 2.0 supports up to 9 reference images',
+    tooManyVideosError: 'Seedance 2.0 supports up to 3 reference videos',
+    tooManyAudioFilesError: 'Seedance 2.0 supports up to 3 reference audio files',
     unsupportedDurationError: 'Duration must be between 4 and 15 seconds for Seedance 2.0',
     unconfiguredError: 'Seedance 2.0 video model is not configured',
   },
@@ -938,6 +946,7 @@ function buildProviderInput({
     input.generate_audio = Boolean(nativeAudio) || boolFormValue(formData, 'generateAudio');
     input.return_last_frame = boolFormValue(formData, 'returnLastFrame');
     input.web_search = boolFormValue(formData, 'webSearch');
+    input.nsfw_checker = true;
     if (mode === 'image-to-video') {
       if (firstFrameUrl) {
         input.first_frame_url = firstFrameUrl;
@@ -945,7 +954,9 @@ function buildProviderInput({
           input.last_frame_url = lastFrameUrl;
         }
       } else {
-        input.reference_image_urls = imageUrls;
+        if (imageUrls.length > 0) input.reference_image_urls = imageUrls;
+        if (videoUrls.length > 0) input.reference_video_urls = videoUrls;
+        if (audioUrls.length > 0) input.reference_audio_urls = audioUrls;
       }
     }
     return input;
@@ -1121,9 +1132,12 @@ export async function onRequest(context) {
     const audioUrlInputs = parseUrlArrayField(formData, 'audioUrls');
     const submittedVideoDurations = parsePositiveNumberArrayField(formData, 'videoDurations');
     const historyInputUrls = parseUrlArrayField(formData, 'historyInputUrls');
+    const historyVideoUrls = parseUrlArrayField(formData, 'historyVideoUrls');
+    const historyAudioUrls = parseUrlArrayField(formData, 'historyAudioUrls');
     const toolSlug = String(formData.get('toolSlug') || '').trim() || null;
     const toolLabel = String(formData.get('toolLabel') || '').trim() || null;
     const sourcePath = String(formData.get('sourcePath') || '').trim() || null;
+    const webSearch = modelConfig.inputSchema === 'seedance' && boolFormValue(formData, 'webSearch');
 
     if (modelConfig.promptRequired !== false && !prompt) {
       return jsonResponse({ error: 'Prompt is required' }, 400);
@@ -1145,15 +1159,15 @@ export async function onRequest(context) {
       return jsonResponse({ error: `${modelConfig.displayName} does not support first/last-frame inputs` }, 400);
     }
     if (
-      modelConfig.inputSchema === 'seedance-2-5'
+      (modelConfig.inputSchema === 'seedance-2-5' || modelConfig.inputSchema === 'seedance')
       && hasFirstLastFrameInput
       && (imageUrlInputs.length > 0 || videoUrlInputs.length > 0 || audioUrlInputs.length > 0)
     ) {
-      return jsonResponse({ error: 'Seedance 2.5 first/last frames cannot be combined with multimodal references' }, 400);
+      return jsonResponse({ error: `${modelConfig.displayName} first/last frames cannot be combined with multimodal references` }, 400);
     }
-    const hasSeedance25MultimodalReference = modelConfig.inputSchema === 'seedance-2-5'
+    const hasSeedanceMultimodalReference = (modelConfig.inputSchema === 'seedance-2-5' || modelConfig.maxVideos)
       && (videoUrlInputs.length > 0 || audioUrlInputs.length > 0)
-    if (mode === 'image-to-video' && imageUrlInputs.length === 0 && !hasFirstLastFrameInput && !hasSeedance25MultimodalReference) {
+    if (mode === 'image-to-video' && imageUrlInputs.length === 0 && !hasFirstLastFrameInput && !hasSeedanceMultimodalReference) {
       return jsonResponse({ error: 'Image-to-video requires at least one image URL' }, 400);
     }
     if (mode === 'image-to-video' && !hasFirstLastFrameInput && imageUrlInputs.length > modelConfig.maxImages) {
@@ -1199,8 +1213,13 @@ export async function onRequest(context) {
     ) {
       return jsonResponse({ error: 'Reference video duration must be between 3 and 10 seconds for image character orientation' }, 400);
     }
+    const nativeAudioPriceDiffers = hasVideoNativeAudioPriceDifference(
+      modelConfig.creditModelId,
+      resolution.value,
+      duration.value
+    );
     const nativeAudio = Boolean(modelConfig.nativeAudioResolutions)
-      && boolFormValue(formData, 'nativeAudio');
+      && (nativeAudioPriceDiffers ? boolFormValue(formData, 'nativeAudio') : true);
     if (nativeAudio && !modelConfig.nativeAudioResolutions?.has(resolution.value)) {
       return jsonResponse({ error: 'Native Audio for Kling 3.0 supports 720p and 1080p only' }, 400);
     }
@@ -1223,7 +1242,7 @@ export async function onRequest(context) {
     const videoUrls = await resolveUploadReferences(videoUrlInputs, apiKey);
     const audioUrls = await resolveUploadReferences(audioUrlInputs, apiKey);
     let trustedReferenceVideoDurations = [];
-    if (modelConfig.inputSchema === 'seedance-2-5' && videoUrls.length > 0) {
+    if ((modelConfig.inputSchema === 'seedance-2-5' || modelConfig.creditModelId === 'seedance-2') && videoUrls.length > 0) {
       try {
         trustedReferenceVideoDurations = await Promise.all(
           videoUrls.map((url) => getTrustedReferenceVideoDuration(url, env))
@@ -1231,11 +1250,11 @@ export async function onRequest(context) {
       } catch (error) {
         return jsonResponse({ error: error instanceof Error ? error.message : 'Unable to inspect reference videos' }, 400);
       }
-      if (trustedReferenceVideoDurations.some((item) => item < 2 || item > 30)) {
+      if (modelConfig.inputSchema === 'seedance-2-5' && trustedReferenceVideoDurations.some((item) => item < 2 || item > 30)) {
         return jsonResponse({ error: 'Seedance 2.5 reference videos must be between 2 and 30 seconds' }, 400);
       }
       if (trustedReferenceVideoDurations.reduce((sum, item) => sum + item, 0) > modelConfig.maxReferenceVideoTotalDuration) {
-        return jsonResponse({ error: 'Seedance 2.5 reference videos cannot exceed 30 seconds in total' }, 400);
+        return jsonResponse({ error: `${modelConfig.displayName} reference videos cannot exceed ${modelConfig.maxReferenceVideoTotalDuration} seconds in total` }, 400);
       }
     }
     const urlExtensionError = validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls);
@@ -1318,6 +1337,9 @@ export async function onRequest(context) {
         firstLastFrame: hasFirstLastFrameInput,
         outputFormat,
         referenceVideoDurations: trustedReferenceVideoDurations,
+        referenceVideoUrls: historyVideoUrls,
+        referenceAudioUrls: historyAudioUrls,
+        webSearch,
       }),
       nativeAudio,
       toolSlug,

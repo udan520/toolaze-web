@@ -52,6 +52,8 @@ test('footer separates image tools, video tools, image models, and video models'
   assert.match(videoModelBlock, /\/model\/seedance-2-5/)
   assert.match(videoModelBlock, /\/model\/seedance-2/)
   assert.match(videoModelBlock, /\/model\/kling-3/)
+  assert.ok(videoModelBlock.indexOf("'/model/seedance-2-5'") < videoModelBlock.indexOf("'/model/seedance-2'"))
+  assert.ok(videoModelBlock.indexOf("'/model/seedance-2-5'") < videoModelBlock.indexOf("'/model/veo-3-1-ai-video-generator'"))
 })
 
 test('footer no longer renders utility directory groups', () => {

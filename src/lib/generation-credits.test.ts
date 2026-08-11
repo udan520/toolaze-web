@@ -3,6 +3,7 @@ import test from 'node:test'
 import {
   calculateImageGenerationCredits,
   calculateVideoGenerationCredits,
+  hasVideoNativeAudioPriceDifference,
   VIDEO_GENERATION_CREDIT_RATES,
 } from './generation-credits'
 
@@ -68,6 +69,13 @@ test('Seedance 2.5 prices video references from input plus output duration', () 
   assert.equal(calculateVideoGenerationCredits('seedance-2-5', '480p', 4, { referenceVideoDuration: 6 }), 340)
   assert.equal(calculateVideoGenerationCredits('seedance-2-5', '720p', 10, { referenceVideoDuration: 12.2 }), 1748)
   assert.equal(calculateVideoGenerationCredits('kling-2-6-motion-control', '720p', 12, { referenceVideoDuration: 8 }), 264)
+})
+
+test('native audio is user-selectable only when it changes the video price', () => {
+  assert.equal(hasVideoNativeAudioPriceDifference('seedance-2-5', '480p', 4), false)
+  assert.equal(hasVideoNativeAudioPriceDifference('seedance-2', '1080p', 15), false)
+  assert.equal(hasVideoNativeAudioPriceDifference('kling-3', '720p', 5), true)
+  assert.equal(hasVideoNativeAudioPriceDifference('pixverse-v6', '720p', 5), true)
 })
 
 test('image pricing moves 9-credit results to the next ten', () => {

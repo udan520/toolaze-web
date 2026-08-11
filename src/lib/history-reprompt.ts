@@ -11,6 +11,7 @@ type HistoryRepromptSource = {
   resolution?: string | null
   outputFormat?: string | null
   nativeAudio?: boolean | null
+  webSearch?: boolean | null
 }
 
 type HistoryRecreateMode = 'text-to-image' | 'image-to-image' | 'text-to-video' | 'image-to-video'
@@ -72,7 +73,16 @@ function isReusableVideoUrl(url: string): boolean {
 }
 
 function isReusableAudioUrl(url: string): boolean {
-  return /\.(mp3|wav)(?:[?#].*)?$/i.test(url)
+  return /\.(aac|m4a|mp3|ogg|wav)(?:[?#].*)?$/i.test(url)
+}
+
+function getStoredReferenceUrls(outputFormat: string | null | undefined, key: 'referenceVideoUrls' | 'referenceAudioUrls'): string[] {
+  try {
+    const values = JSON.parse(String(outputFormat || ''))?.[key]
+    return Array.isArray(values) ? values.map(normalizeReusableReferenceImageUrl).filter(Boolean) : []
+  } catch {
+    return []
+  }
 }
 
 function getStoredVideoMode(outputFormat: string | null | undefined): 'text-to-video' | 'image-to-video' | null {
@@ -83,6 +93,14 @@ function getStoredVideoMode(outputFormat: string | null | undefined): 'text-to-v
       : null
   } catch {
     return null
+  }
+}
+
+function getStoredWebSearch(outputFormat: string | null | undefined): boolean {
+  try {
+    return JSON.parse(String(outputFormat || ''))?.webSearch === true
+  } catch {
+    return false
   }
 }
 
@@ -192,10 +210,18 @@ export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
   const isTalkingAvatar = toolSlug === 'talking-avatar-creator'
   const isKling3MotionControl = isKling3MotionControlHistory(item, toolSlug)
   const isVideoGeneration = item.mediaType === 'video'
-  const motionVideoUrls = isVideoGeneration ? originalInputUrls.filter(isReusableVideoUrl) : []
-  const audioUrls = isVideoGeneration ? originalInputUrls.filter(isReusableAudioUrl) : []
+  const storedMotionVideoUrls = isVideoGeneration ? getStoredReferenceUrls(item.outputFormat, 'referenceVideoUrls') : []
+  const storedAudioUrls = isVideoGeneration ? getStoredReferenceUrls(item.outputFormat, 'referenceAudioUrls') : []
+  const motionVideoUrls = storedMotionVideoUrls.length > 0
+    ? storedMotionVideoUrls
+    : isVideoGeneration ? originalInputUrls.filter(isReusableVideoUrl) : []
+  const audioUrls = storedAudioUrls.length > 0
+    ? storedAudioUrls
+    : isVideoGeneration ? originalInputUrls.filter(isReusableAudioUrl) : []
+  const motionVideoUrlSet = new Set(motionVideoUrls)
+  const audioUrlSet = new Set(audioUrls)
   const nonVideoInputUrls = isVideoGeneration
-    ? originalInputUrls.filter((url) => !isReusableVideoUrl(url) && !isReusableAudioUrl(url))
+    ? originalInputUrls.filter((url) => !motionVideoUrlSet.has(url) && !audioUrlSet.has(url) && !isReusableVideoUrl(url) && !isReusableAudioUrl(url))
     : originalInputUrls
   const imageUrls = isTalkingAvatar && nonVideoInputUrls[0] ? [nonVideoInputUrls[0]] : nonVideoInputUrls
   const talkingAvatarAudioUrl = isTalkingAvatar && originalInputUrls[1] ? originalInputUrls[1] : ''
@@ -220,6 +246,7 @@ export function buildHistoryRepromptPayload(item: HistoryRepromptSource) {
     resolution: item.resolution || undefined,
     outputFormat: item.outputFormat || undefined,
     ...(isVideoGeneration && item.nativeAudio === true ? { nativeAudio: true } : {}),
+    ...(isVideoGeneration && (item.webSearch === true || getStoredWebSearch(item.outputFormat)) ? { webSearch: true } : {}),
     mode,
     ...(toolSlug ? { toolSlug } : {}),
     ...(item.sourcePath ? { sourcePath: item.sourcePath } : {}),

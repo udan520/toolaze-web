@@ -20,7 +20,9 @@ test('video generation records failed attempts on every terminal creation failur
 })
 
 test('video attempts persist public History URLs instead of provider-only upload references', () => {
-  assert.match(clientSource, /formData\.append\('historyInputUrls', JSON\.stringify\(\[\.\.\.imageUrls, \.\.\.motionVideoUrls\]\)\)/)
+  assert.match(clientSource, /formData\.append\('historyInputUrls', JSON\.stringify\(\[\.\.\.imageUrls, \.\.\.motionVideoUrls, \.\.\.audioUrls\]\)\)/)
+  assert.match(clientSource, /formData\.append\('historyVideoUrls', JSON\.stringify\(motionVideoUrls\)\)/)
+  assert.match(clientSource, /formData\.append\('historyAudioUrls', JSON\.stringify\(audioUrls\)\)/)
   assert.match(source, /parseUrlArrayField\(formData, 'historyInputUrls'\)/)
   assert.match(source, /inputUrls:\s*historyInputUrls/)
 })

@@ -865,7 +865,10 @@
       "multimodalReferenceVideoHelper": "MP4 또는 MOV, 최대 {count}개, 총 {total}초. 파일당 {min}-{max}초, 최대 {size}MB.",
       "multimodalReferenceAudioHelper": "WAV 또는 MP3, 최대 {count}개. 파일당 2-30초, 최대 {size}MB.",
       "referenceAudioInvalidType": "레퍼런스 오디오는 WAV 또는 MP3를 사용하세요.",
-      "referenceAudioInvalidDuration": "레퍼런스 오디오는 2-30초여야 합니다."
+      "referenceAudioInvalidDuration": "레퍼런스 오디오는 2-30초여야 합니다.",
+      "referenceAudioTotalDuration": "레퍼런스 오디오의 총 길이는 {total}초 이하여야 합니다.",
+      "webSearch": "웹 검색",
+      "webSearchHint": "프롬프트에 도움이 될 때 최신 공개 정보를 사용합니다."
     }
   },
   "imageCompressor": {

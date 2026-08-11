@@ -163,6 +163,7 @@ type HomeDashboardModelLogo = {
 }
 
 const HOME_DASHBOARD_MODEL_LOGOS: Record<string, HomeDashboardModelLogo> = {
+  'seedance-2-5': { src: '/model-logos/bytedance.svg', alt: 'ByteDance logo' },
   'seedance-2': { src: '/model-logos/bytedance.svg', alt: 'ByteDance logo' },
   'gpt-image-2': { src: '/model-logos/openai.svg', alt: 'OpenAI logo' },
   'seedream-5-0-pro': { src: '/model-logos/bytedance.svg', alt: 'ByteDance logo' },
@@ -810,7 +811,7 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     height: 788,
     alt: 'Seedance 2.0 Mini golden hour portrait video generation preview',
   }
-  const dashboardModelCards = ['seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
+  const dashboardModelCards = ['seedance-2-5', 'seedance-2', 'gpt-image-2', 'seedream-5-0-pro', 'kling-3']
     .map(findHomeCard)
     .filter((item): item is ToolCard => Boolean(item))
     .slice(0, 4)
@@ -872,7 +873,16 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
     ]
   })
   const videoModelCards: HomeModelCardsRailCard[] = []
-  for (const item of aiVideoTools) {
+  const videoModelPriority = ['seedance-2-5', 'seedance-2']
+  const sortedAiVideoTools = [...aiVideoTools].sort((left, right) => {
+    const leftPriority = videoModelPriority.indexOf(left.tool)
+    const rightPriority = videoModelPriority.indexOf(right.tool)
+    if (leftPriority === -1 && rightPriority === -1) return 0
+    if (leftPriority === -1) return 1
+    if (rightPriority === -1) return -1
+    return leftPriority - rightPriority
+  })
+  for (const item of sortedAiVideoTools) {
     const videoModelDemo = getHomeVideoModelDemoMedia(item)
     const imageFallback = getHomeModelCardImage(item.tool)
     const baseCard = {

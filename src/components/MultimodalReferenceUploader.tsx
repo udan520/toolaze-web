@@ -20,6 +20,8 @@ interface MultimodalReferenceUploaderProps {
   uploadLabel: string
   videoHelper: string
   audioHelper: string
+  videoAccept?: string
+  audioAccept?: string
   onVideoFiles: (files: FileList | null) => void
   onAudioFiles: (files: FileList | null) => void
   onRemoveVideo: (index: number) => void
@@ -36,6 +38,8 @@ export default function MultimodalReferenceUploader({
   uploadLabel,
   videoHelper,
   audioHelper,
+  videoAccept = 'video/mp4,video/quicktime,.mp4,.mov',
+  audioAccept = 'audio/wav,audio/x-wav,audio/mpeg,.wav,.mp3',
   onVideoFiles,
   onAudioFiles,
   onRemoveVideo,
@@ -66,7 +70,7 @@ export default function MultimodalReferenceUploader({
           type="file"
           multiple
           className="hidden"
-          accept="video/mp4,video/quicktime,.mp4,.mov"
+          accept={videoAccept}
           onChange={(event) => {
             onVideoFiles(event.target.files)
             event.currentTarget.value = ''
@@ -109,7 +113,7 @@ export default function MultimodalReferenceUploader({
           type="file"
           multiple
           className="hidden"
-          accept="audio/wav,audio/x-wav,audio/mpeg,.wav,.mp3"
+          accept={audioAccept}
           onChange={(event) => {
             onAudioFiles(event.target.files)
             event.currentTarget.value = ''

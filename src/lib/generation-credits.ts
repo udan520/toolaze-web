@@ -249,3 +249,20 @@ export function calculateVideoGenerationCredits(
     : normalizedDuration
   return Math.ceil(creditsPerSecond * billableDuration)
 }
+
+export function hasVideoNativeAudioPriceDifference(
+  modelId: VideoGenerationModelId,
+  resolution: string,
+  duration: number,
+  options: { referenceVideoDuration?: number } = {},
+): boolean {
+  const withoutNativeAudio = calculateVideoGenerationCredits(modelId, resolution, duration, {
+    ...options,
+    nativeAudio: false,
+  })
+  const withNativeAudio = calculateVideoGenerationCredits(modelId, resolution, duration, {
+    ...options,
+    nativeAudio: true,
+  })
+  return withoutNativeAudio !== withNativeAudio
+}

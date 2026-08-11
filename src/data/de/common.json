@@ -865,7 +865,10 @@
       "multimodalReferenceVideoHelper": "MP4 oder MOV, bis zu {count} Dateien und insgesamt {total}s. Pro Datei: {min}-{max}s, maximal {size}MB.",
       "multimodalReferenceAudioHelper": "WAV oder MP3, bis zu {count} Dateien. Pro Datei: 2-30s, maximal {size}MB.",
       "referenceAudioInvalidType": "Verwende WAV oder MP3 fuer Referenzaudio.",
-      "referenceAudioInvalidDuration": "Referenzaudio muss zwischen 2 und 30 Sekunden lang sein."
+      "referenceAudioInvalidDuration": "Referenzaudio muss zwischen 2 und 30 Sekunden lang sein.",
+      "referenceAudioTotalDuration": "Das Referenzaudio darf insgesamt höchstens {total} Sekunden lang sein.",
+      "webSearch": "Websuche",
+      "webSearchHint": "Verwendet aktuelle öffentliche Informationen, wenn sie für den Prompt hilfreich sind."
     }
   },
   "imageCompressor": {

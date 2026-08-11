@@ -50,6 +50,7 @@
 - 图片或视频模型/工具的生成比例若由上传参考图、参考视频等参考媒体决定，而不是由 provider 对当前生成模式实际支持的固定 `aspect_ratio` / 尺寸参数决定，前端不得展示可点击的 `16:9`、`9:16`、`1:1` 等假比例选项；比例控件默认显示一个已选中的只读项，英文优先命名为 `Match Reference`，中文优先命名为“跟随参考图”，并用辅助文案说明“输出会跟随上传参考媒体的比例，想要 16:9 / 9:16 需先裁剪参考素材”。该控件宽度必须按内容自适应，不得默认占满整行。每次接入新生成模型时，必须按 text-to-image / image-to-image / text-to-video / image-to-video 等实际模式显式声明比例行为，并补 UI 与 API payload 契约测试；provider 未声明或不支持比例字段时，前端使用 `Match Reference`，后端不得继续发送或记录虚假的自定义比例。若要允许用户选择固定比例，必须同时提供真实裁剪框并把裁剪后的参考素材用于生成。
 - 新增或修改生成模型时，Vercel 前端模型清单与 Cloudflare 生成后端清单必须通过 `npm run check:generation-contract`。生产发布顺序固定为先发布 Cloudflare Production 契约与生成函数，再发布 Vercel Production；Cloudflare 线上契约版本不一致时，Vercel Production 构建必须失败，不得绕过后继续上线。
 - 新增或修改任何生成模型扣点时，定价必须以 **KIE 模型 API 定价** 为准，不使用 Google、Fal、Replicate、官方模型页或其它公开模型成本替代。先核对 KIE 模型页面展示价格，再核对 KIE MCP/模型 registry 中的 credits 价格；两者一致时按 `1 credit = $0.005` 和目标 200% 利润计算 Toolaze 扣点并落地测试。若 KIE 页面价与 KIE MCP/registry 价格不一致，必须先反馈差异、来源和建议扣点，等用户确认后再修改代码。
+- 原声开关仅在开启与关闭原声会改变当前生成扣点时展示；两种状态扣点相同的模型必须隐藏该选项，并默认以开启原声提交。前端可见状态、请求参数、历史记录与 Recreate 必须使用同一个有效原声值，不得出现 UI 隐藏但实际按关闭原声生成的情况。
 
 ## SEO 页面与常驻视频资产规则
 

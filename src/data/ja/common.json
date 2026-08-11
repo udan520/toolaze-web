@@ -877,7 +877,10 @@
       "multimodalReferenceVideoHelper": "MP4またはMOV、最大{count}本、合計{total}秒。各ファイルは{min}〜{max}秒、最大{size}MB。",
       "multimodalReferenceAudioHelper": "WAVまたはMP3、最大{count}個。各ファイルは2〜30秒、最大{size}MB。",
       "referenceAudioInvalidType": "参照音声にはWAVまたはMP3を使用してください。",
-      "referenceAudioInvalidDuration": "参照音声は2〜30秒にしてください。"
+      "referenceAudioInvalidDuration": "参照音声は2〜30秒にしてください。",
+      "referenceAudioTotalDuration": "参照音声の合計は{total}秒以内にしてください。",
+      "webSearch": "ウェブ検索",
+      "webSearchHint": "プロンプトに役立つ場合、最新の公開情報を使用します。"
     }
   },
   "imageCompressor": {

@@ -31,6 +31,7 @@ const VIDEO_MODEL_PAGE_HREFS: Partial<Record<AiVideoGeneratorModelId, string>> =
   'pixverse-v6': '/model/pixverse-v6-ai-video-generator',
   'happyhorse-1-1': '/model/happyhorse-ai-video-generator',
   'happyhorse': '/model/happyhorse-ai-video-generator',
+  'seedance-2-5': '/model/seedance-2-5',
   'seedance-2': '/model/seedance-2',
   'kling-3': '/model/kling-3',
   'kling-2-6-motion-control': '/model/kling-2-6-pro-motion-control',
@@ -111,15 +112,6 @@ const LEGACY_MODEL_HUB_MODELS: ModelHubModel[] = [
     logoAlt: 'Dreamina logo',
     qualityRating: 4,
   },
-  {
-    name: 'Seedance 2.5',
-    href: '/model/seedance-2-5',
-    category: 'video',
-    vendor: 'ByteDance',
-    logoSrc: '/model-logos/bytedance.svg',
-    logoAlt: 'ByteDance logo',
-    qualityRating: null,
-  },
   ...AI_VIDEO_GENERATOR_MODEL_OPTIONS.map((model) => ({
     name: model.name,
     href: VIDEO_MODEL_PAGE_HREFS[model.id] || '/ai-video-generator',
@@ -159,6 +151,10 @@ export function getModelHubModels(category: ModelHubCategory): ModelHubModel[] {
   return MODEL_HUB_MODELS
     .filter((model) => category === 'all' || model.category === category)
     .sort((left, right) => {
+      if (category === 'video' || category === 'all') {
+        if (left.href === '/model/seedance-2-5') return -1
+        if (right.href === '/model/seedance-2-5') return 1
+      }
       if (left.qualityRating === null) return 1
       if (right.qualityRating === null) return -1
       return right.qualityRating - left.qualityRating

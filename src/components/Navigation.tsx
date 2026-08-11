@@ -352,6 +352,7 @@ const AI_VIDEO_FUNCTION_MENU_ITEMS: readonly AiVideoFunctionMenuItem[] = [
 ]
 
 const AI_VIDEO_MODEL_MENU_ITEMS: readonly AiVideoModelMenuItem[] = [
+  { href: '/model/seedance-2-5', labelKey: 'seedance25', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
   { href: '/ai-video-generator?model=seedance-2-mini', labelKey: 'seedance2Mini', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'new' },
   { href: '/model/seedance-2', labelKey: 'seedance2', logoSrc: '/model-logos/bytedance.svg', badgeKey: 'hot' },
   { href: '/model/veo-3-1-ai-video-generator', labelKey: 'veo31Video', logoSrc: '/model-logos/google-gemini.png' },

@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   calculateImageGenerationCredits,
   calculateVideoGenerationCredits,
+  hasVideoNativeAudioPriceDifference,
   VIDEO_GENERATION_CREDIT_RATES,
 } from './generation-credits.mjs';
 
@@ -90,6 +91,13 @@ test('video pricing never moves 9-credit totals to the next ten', () => {
   assert.equal(calculateVideoGenerationCredits('grok-1-5-video', '480p', 3), 9);
   assert.equal(calculateVideoGenerationCredits('seedance-2-mini', '480p', 1), 19);
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '1080p', 1), 29);
+});
+
+test('native audio is user-selectable only when it changes the video price', () => {
+  assert.equal(hasVideoNativeAudioPriceDifference('seedance-2-5', '480p', 4), false);
+  assert.equal(hasVideoNativeAudioPriceDifference('seedance-2', '1080p', 15), false);
+  assert.equal(hasVideoNativeAudioPriceDifference('kling-3', '720p', 5), true);
+  assert.equal(hasVideoNativeAudioPriceDifference('pixverse-v6', '720p', 5), true);
 });
 
 test('Infinitalk uses KIE per-second video pricing for Talking Avatar', () => {

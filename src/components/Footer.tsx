@@ -464,6 +464,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
             <ul className="space-y-2 mt-4">
               <li>
                 <Link
+                  href={getLocalizedHref('/model/seedance-2-5')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.seedance25 || 'Seedance 2.5'}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={getLocalizedHref('/model/veo-3-1-ai-video-generator')}
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
@@ -532,14 +540,6 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.happyHorse || 'HappyHorse'}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={getLocalizedHref('/model/seedance-2-5')}
-                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
-                >
-                  {translations.seedance25 || 'Seedance 2.5'}
                 </Link>
               </li>
               <li>

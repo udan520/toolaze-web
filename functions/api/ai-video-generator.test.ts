@@ -369,15 +369,20 @@ test('AI video generator rejects Seedance 2.5 durations without reference videos
   assert.match(String((await readJson(response)).error), /matching reference video URLs/i)
 })
 
-test('AI video generator prices Seedance 2.5 Native Audio without a reference video', async () => {
+test('AI video generator defaults Seedance 2.5 Native Audio on when it does not change the price', async () => {
+  let providerGenerateAudio: unknown = null
   const originalFetch = globalThis.fetch
-  globalThis.fetch = (async () => new Response(JSON.stringify({
-    code: 200,
-    data: { taskId: 'seedance_25_native_audio' },
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  })) as typeof fetch
+  globalThis.fetch = (async (_url: RequestInfo | URL, init?: RequestInit) => {
+    const providerPayload = JSON.parse(String(init?.body || '{}'))
+    providerGenerateAudio = providerPayload?.input?.generate_audio
+    return new Response(JSON.stringify({
+      code: 200,
+      data: { taskId: 'seedance_25_native_audio' },
+    }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
 
   try {
     const response = await createVideoTask({
@@ -385,7 +390,6 @@ test('AI video generator prices Seedance 2.5 Native Audio without a reference vi
         mode: 'text-to-video',
         model: 'seedance-2-5',
         prompt: 'A scene with generated ambient sound.',
-        nativeAudio: 'true',
         resolution: '480p',
         duration: '4',
       }),
@@ -394,6 +398,7 @@ test('AI video generator prices Seedance 2.5 Native Audio without a reference vi
 
     assert.equal(response.status, 200)
     assert.deepEqual(await readJson(response), { taskId: 'seedance_25_native_audio', requiredCredits: 224 })
+    assert.equal(providerGenerateAudio, true)
   } finally {
     globalThis.fetch = originalFetch
   }
@@ -784,19 +789,22 @@ test('AI video generator sends Seedance 2.0 multi-reference images by default', 
     assert.equal(payload.input.image_urls, undefined)
     assert.equal(payload.input.resolution, '1080p')
     assert.equal(payload.input.duration, 15)
-    assert.equal(payload.input.generate_audio, false)
+    assert.equal(payload.input.generate_audio, true)
     assert.equal(payload.input.return_last_frame, false)
     assert.equal(payload.input.web_search, false)
-    assert.equal(payload.input.nsfw_checker, undefined)
+    assert.equal(payload.input.nsfw_checker, true)
   } finally {
     globalThis.fetch = originalFetch
   }
 })
 
-test('AI video generator sends Seedance 2.0 first-and-last frames only from explicit frame fields', async () => {
+test('AI video generator rejects Seedance 2.0 first-and-last frames mixed with multimodal references', async () => {
   const calls: FetchCall[] = []
   const originalFetch = globalThis.fetch
   globalThis.fetch = (async (url: RequestInfo | URL, init?: RequestInit) => {
+    if (String(url) === 'https://assets.toolaze.com/uploads/reference.mp4') {
+      return createMp4DurationResponse(6)
+    }
     calls.push({ url: String(url), init })
     return new Response(JSON.stringify({ code: 200, data: { taskId: 'seedance_frames_task' } }), {
       status: 200,
@@ -816,6 +824,10 @@ test('AI video generator sends Seedance 2.0 first-and-last frames only from expl
           'https://cdn.example.com/reference-a.png',
           'https://cdn.example.com/reference-b.png',
         ]),
+        videoUrls: JSON.stringify(['https://assets.toolaze.com/uploads/reference.mp4']),
+        audioUrls: JSON.stringify(['https://cdn.example.com/reference.wav']),
+        nativeAudio: 'true',
+        webSearch: 'true',
         aspectRatio: '16:9',
         resolution: '1080p',
         duration: '15',
@@ -825,16 +837,54 @@ test('AI video generator sends Seedance 2.0 first-and-last frames only from expl
       },
     })
 
-    assert.equal(response.status, 200)
-    assert.deepEqual(await readJson(response), { taskId: 'seedance_frames_task', requiredCredits: 3060 })
-    assert.equal(calls.length, 1)
+    assert.equal(response.status, 400)
+    assert.deepEqual(await readJson(response), {
+      error: 'Seedance 2.0 first/last frames cannot be combined with multimodal references',
+    })
+    assert.equal(calls.length, 0)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
 
-    const payload = JSON.parse(String(calls[0].init?.body))
-    assert.equal(payload.model, 'bytedance/seedance-2')
-    assert.equal(payload.input.first_frame_url, 'https://cdn.example.com/start.png')
-    assert.equal(payload.input.last_frame_url, 'https://cdn.example.com/end.png')
-    assert.equal(payload.input.reference_image_urls, undefined)
-    assert.equal(payload.input.image_urls, undefined)
+test('AI video generator rejects Seedance 2.0 reference videos over 15 seconds in total', async () => {
+  let providerCalled = false
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = (async (url: RequestInfo | URL) => {
+    if (String(url).startsWith('https://assets.toolaze.com/uploads/reference-')) {
+      return createMp4DurationResponse(8)
+    }
+    providerCalled = true
+    return new Response(JSON.stringify({ code: 200, data: { taskId: 'unexpected_task' } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }) as typeof fetch
+
+  try {
+    const response = await createVideoTask({
+      request: createFormRequest({
+        mode: 'image-to-video',
+        model: 'seedance-2',
+        prompt: 'Use both reference videos.',
+        videoUrls: JSON.stringify([
+          'https://assets.toolaze.com/uploads/reference-a.mp4',
+          'https://assets.toolaze.com/uploads/reference-b.mp4',
+        ]),
+        aspectRatio: '16:9',
+        resolution: '720p',
+        duration: '5',
+      }),
+      env: {
+        KIE_AI_API_KEY: 'test-key',
+      },
+    })
+
+    assert.equal(response.status, 400)
+    assert.deepEqual(await readJson(response), {
+      error: 'Seedance 2.0 reference videos cannot exceed 15 seconds in total',
+    })
+    assert.equal(providerCalled, false)
   } finally {
     globalThis.fetch = originalFetch
   }
