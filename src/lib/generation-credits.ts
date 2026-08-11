@@ -43,6 +43,7 @@ export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
   ratesByResolution: Record<string, number>
   ratesByResolutionAndDuration?: Record<string, Record<number, number>>
   nativeAudioRatesByResolution?: Record<string, number>
+  referenceVideoRatesByResolution?: Record<string, number>
   fixedPerVideo?: boolean
 }> = {
   'infinitalk': {
@@ -58,6 +59,11 @@ export const VIDEO_GENERATION_CREDIT_RATES: Record<VideoGenerationModelId, {
       '480p': 3,
       '720p': 6,
     },
+  },
+  'seedance-2-5': {
+    source: 'Kie Seedance 2.5 pricing: without reference video 480p $0.140/output second and 720p $0.315/output second; with reference video 480p $0.085 and 720p $0.190 per input-plus-output second. Toolaze price = Kie cost × 2 at $0.005 per credit.',
+    ratesByResolution: { '480p': 56, '720p': 126 },
+    referenceVideoRatesByResolution: { '480p': 34, '720p': 76 },
   },
   'seedance-2': {
     source: 'Kie Seedance 2 pricing, no-video column: 480p $0.095/output second, 720p $0.205/output second, 1080p $0.51/output second, 4K $1.04/output second; Toolaze price = Kie cost × 2, then round(price / $0.005 per credit)',
@@ -222,17 +228,24 @@ export function calculateVideoGenerationCredits(
   modelId: VideoGenerationModelId,
   resolution: string,
   duration: number,
-  options: { nativeAudio?: boolean } = {}
+  options: { nativeAudio?: boolean; referenceVideoDuration?: number } = {}
 ): number | null {
   const rateConfig = VIDEO_GENERATION_CREDIT_RATES[modelId]
   const normalizedDuration = Math.ceil(Number(duration))
   const fixedSpecCredits = rateConfig?.ratesByResolutionAndDuration?.[resolution]?.[normalizedDuration]
   if (fixedSpecCredits) return fixedSpecCredits
-  const ratesByResolution = options.nativeAudio
-    ? rateConfig?.nativeAudioRatesByResolution
-    : rateConfig?.ratesByResolution
+  const hasReferenceVideoPricing = Number(options.referenceVideoDuration) > 0
+    && Boolean(rateConfig?.referenceVideoRatesByResolution)
+  const ratesByResolution = hasReferenceVideoPricing
+    ? rateConfig?.referenceVideoRatesByResolution
+    : options.nativeAudio && rateConfig?.nativeAudioRatesByResolution
+      ? rateConfig.nativeAudioRatesByResolution
+      : rateConfig?.ratesByResolution
   const creditsPerSecond = ratesByResolution?.[resolution]
   if (!creditsPerSecond || !Number.isFinite(normalizedDuration) || normalizedDuration <= 0) return null
   if (rateConfig.fixedPerVideo) return creditsPerSecond
-  return Math.ceil(creditsPerSecond * normalizedDuration)
+  const billableDuration = hasReferenceVideoPricing
+    ? normalizedDuration + Math.ceil(Number(options.referenceVideoDuration))
+    : normalizedDuration
+  return Math.ceil(creditsPerSecond * billableDuration)
 }

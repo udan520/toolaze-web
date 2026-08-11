@@ -64,6 +64,11 @@ test('History preview renders every reference media item including motion refere
   assert.match(source, /<video[\s\S]*src=\{url\}[\s\S]*preload="metadata"/, 'reference videos should render with video metadata previews')
   assert.match(source, /data-history-fullscreen-reference-video/, 'fullscreen reference preview should support videos')
   assert.match(source, /isReferenceVideoUrl\(fullScreenPreviewUrl\) \? \(/, 'fullscreen preview should not render reference videos through an img tag')
+  assert.match(source, /function isReferenceAudioUrl\(url: string\)/, 'history should classify reference audio separately from images')
+  assert.match(source, /data-history-reference-audio/, 'history preview should expose reference audio controls')
+  assert.match(source, /<audio[\s\S]*src=\{url\}[\s\S]*preload="metadata"/, 'reference audio should render with native controls')
+  assert.match(source, /data-history-fullscreen-reference-audio/, 'fullscreen reference preview should support audio')
+  assert.match(source, /isReferenceAudioUrl\(fullScreenPreviewUrl\) \? \(/, 'fullscreen preview should not render reference audio through an img tag')
 })
 
 test('History h5 preview keeps compact actions and a four-line scrolling prompt', () => {

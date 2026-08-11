@@ -276,6 +276,67 @@ test('keeps image-to-image Recreate tied to original input references', () => {
   })
 })
 
+test('restores Seedance video, audio, image, and output settings for Recreate', () => {
+  const item = {
+    ...baseHistoryItem,
+    mediaType: 'video' as const,
+    model: 'seedance-2-5',
+    nativeAudio: true,
+    toolSlug: 'seedance-2-5',
+    sourcePath: '/model/seedance-2-5',
+    inputUrls: [
+      'https://assets.toolaze.com/uploads/reference.png',
+      'https://assets.toolaze.com/uploads/reference.mp4',
+      'https://assets.toolaze.com/uploads/reference.mp3',
+    ],
+    outputFormat: JSON.stringify({
+      duration: 10,
+      mode: 'image-to-video',
+      outputFormat: 'mov',
+      referenceVideoDurations: [6],
+    }),
+  }
+
+  assert.deepEqual(buildHistoryRepromptPayload(item), {
+    prompt: item.prompt,
+    imageUrls: [item.inputUrls[0]],
+    videoUrls: [item.inputUrls[1]],
+    audioUrls: [item.inputUrls[2]],
+    modelId: item.model,
+    aspectRatio: item.aspectRatio,
+    resolution: item.resolution,
+    outputFormat: item.outputFormat,
+    nativeAudio: true,
+    mode: 'image-to-video',
+    sourcePath: item.sourcePath,
+    mediaType: 'video',
+    toolSlug: item.toolSlug,
+  })
+})
+
+test('restores the stored Seedance text-to-video mode with multimodal references', () => {
+  const item = {
+    ...baseHistoryItem,
+    mediaType: 'video' as const,
+    model: 'seedance-2-5',
+    inputUrls: [
+      'https://assets.toolaze.com/uploads/reference.mp4',
+      'https://assets.toolaze.com/uploads/reference.wav',
+    ],
+    outputFormat: JSON.stringify({
+      duration: 8,
+      mode: 'text-to-video',
+      outputFormat: 'mp4',
+      referenceVideoDurations: [4],
+    }),
+  }
+
+  const payload = buildHistoryRepromptPayload(item)
+  assert.equal(payload.mode, 'text-to-video')
+  assert.deepEqual(payload.videoUrls, [item.inputUrls[0]])
+  assert.deepEqual(payload.audioUrls, [item.inputUrls[1]])
+})
+
 test('uses input preview as the original input image for Recreate when input urls are missing', () => {
   const item = {
     ...baseHistoryItem,

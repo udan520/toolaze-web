@@ -48,6 +48,36 @@ const VIDEO_MODEL_CONFIGS = {
     tooManyImagesError: 'Grok Imagine Video 1.5 supports exactly one reference image',
     unconfiguredError: 'Grok Imagine Video 1.5 video model is not configured',
   },
+  'seedance-2-5': {
+    displayName: 'Seedance 2.5',
+    envKey: 'KIE_SEEDANCE_2_5_VIDEO_MODEL',
+    fallbackProviderModel: 'bytedance/seedance-2-5',
+    creditModelId: 'seedance-2-5',
+    aliases: ['bytedance/seedance-2-5'],
+    inputSchema: 'seedance-2-5',
+    maxImages: 30,
+    maxVideos: 10,
+    maxAudioFiles: 10,
+    multimodalReferenceModes: new Set(['image-to-video']),
+    referenceVideosRequired: false,
+    maxReferenceVideoTotalDuration: 30,
+    defaultAspectRatio: 'adaptive',
+    aspectRatios: new Set(SEEDANCE_2_ASPECT_RATIOS),
+    defaultResolution: '720p',
+    resolutions: new Set(['480p', '720p']),
+    nativeAudioResolutions: new Set(['480p', '720p']),
+    outputFormats: new Set(['mp4', 'mov']),
+    defaultDuration: 5,
+    minDuration: 4,
+    maxDuration: 30,
+    unsupportedDurationError: 'Duration must be between 4 and 30 seconds for Seedance 2.5',
+    unsupportedAspectRatioError: 'Unsupported aspect ratio for Seedance 2.5',
+    unsupportedResolutionError: 'Unsupported resolution for Seedance 2.5',
+    tooManyImagesError: 'Seedance 2.5 supports up to 30 reference images',
+    tooManyVideosError: 'Seedance 2.5 supports up to 10 reference videos',
+    tooManyAudioFilesError: 'Seedance 2.5 supports up to 10 reference audio files',
+    unconfiguredError: 'Seedance 2.5 video model is not configured',
+  },
   'seedance-2': {
     displayName: 'Seedance 2.0',
     envKey: 'KIE_SEEDANCE_2_VIDEO_MODEL',
@@ -716,6 +746,105 @@ function parseVideoUrls(formData) {
   return videoUrl ? [videoUrl] : [];
 }
 
+function parsePositiveNumberArrayField(formData, key) {
+  const value = formData.get(key);
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(String(value));
+    return Array.isArray(parsed)
+      ? parsed.map(Number).filter((item) => Number.isFinite(item) && item > 0)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+const REFERENCE_VIDEO_RANGE_BYTES = 4 * 1024 * 1024;
+const TRUSTED_REFERENCE_VIDEO_HOSTS = new Set([
+  'assets.toolaze.com',
+  'kieai.redpandaai.co',
+  'tempfile.redpandaai.co',
+]);
+
+function getTrustedReferenceVideoHosts(env) {
+  const hosts = new Set(TRUSTED_REFERENCE_VIDEO_HOSTS);
+  const configuredBase = String(env?.R2_PUBLIC_BASE_URL || '').trim();
+  if (configuredBase) {
+    try {
+      hosts.add(new URL(configuredBase).hostname.toLowerCase());
+    } catch {
+      // Ignore invalid optional development configuration.
+    }
+  }
+  return hosts;
+}
+
+function assertTrustedReferenceVideoUrl(value, env) {
+  const parsed = new URL(String(value || '').trim());
+  if (parsed.protocol !== 'https:' || parsed.username || parsed.password) {
+    throw new Error('Reference videos must use a trusted HTTPS upload URL');
+  }
+  if (!getTrustedReferenceVideoHosts(env).has(parsed.hostname.toLowerCase())) {
+    throw new Error('Reference videos must be uploaded through Toolaze before generation');
+  }
+  return parsed.toString();
+}
+
+function parseIsoBmffDurationSeconds(buffer) {
+  const bytes = new Uint8Array(buffer);
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  for (let typeOffset = 4; typeOffset + 24 <= bytes.length; typeOffset += 1) {
+    if (
+      bytes[typeOffset] !== 0x6d
+      || bytes[typeOffset + 1] !== 0x76
+      || bytes[typeOffset + 2] !== 0x68
+      || bytes[typeOffset + 3] !== 0x64
+    ) continue;
+
+    const version = bytes[typeOffset + 4];
+    try {
+      if (version === 0 && typeOffset + 24 <= bytes.length) {
+        const timescale = view.getUint32(typeOffset + 16, false);
+        const duration = view.getUint32(typeOffset + 20, false);
+        if (timescale > 0 && duration > 0) return duration / timescale;
+      }
+      if (version === 1 && typeOffset + 36 <= bytes.length) {
+        const timescale = view.getUint32(typeOffset + 24, false);
+        const duration = view.getBigUint64(typeOffset + 28, false);
+        if (timescale > 0 && duration > 0n) return Number(duration) / timescale;
+      }
+    } catch {
+      // Continue scanning in case this byte sequence was not an mvhd box.
+    }
+  }
+  return null;
+}
+
+async function fetchReferenceVideoRange(url, range) {
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: { Range: range },
+  });
+  if (!response.ok) throw new Error('Unable to inspect reference video duration');
+  const contentLength = Number(response.headers.get('Content-Length'));
+  if (response.status === 200 && Number.isFinite(contentLength) && contentLength > REFERENCE_VIDEO_RANGE_BYTES) {
+    throw new Error('Reference video host must support byte-range requests');
+  }
+  return response.arrayBuffer();
+}
+
+async function getTrustedReferenceVideoDuration(url, env) {
+  const trustedUrl = assertTrustedReferenceVideoUrl(url, env);
+  const firstChunk = await fetchReferenceVideoRange(trustedUrl, `bytes=0-${REFERENCE_VIDEO_RANGE_BYTES - 1}`);
+  const firstDuration = parseIsoBmffDurationSeconds(firstChunk);
+  if (Number.isFinite(firstDuration) && firstDuration > 0) return firstDuration;
+
+  const finalChunk = await fetchReferenceVideoRange(trustedUrl, `bytes=-${REFERENCE_VIDEO_RANGE_BYTES}`);
+  const finalDuration = parseIsoBmffDurationSeconds(finalChunk);
+  if (Number.isFinite(finalDuration) && finalDuration > 0) return finalDuration;
+  throw new Error('Unable to read MP4 or MOV reference video duration');
+}
+
 function getUrlExtension(value) {
   const raw = String(value || '').trim();
   if (!raw) return '';
@@ -752,6 +881,7 @@ function normalizeCharacterOrientation(value, defaultOrientation = 'video') {
 }
 
 function supportsExplicitFirstLastFrameFields(modelConfig) {
+  if (modelConfig.inputSchema === 'seedance-2-5') return true;
   if (modelConfig.inputSchema === 'seedance') return true;
   if (modelConfig.inputSchema === 'wan' && modelConfig.imageField === 'first_frame_url') return true;
   if (modelConfig.inputSchema === 'kling') return true;
@@ -770,6 +900,7 @@ function buildProviderInput({
   firstFrameUrl,
   lastFrameUrl,
   videoUrls,
+  audioUrls,
   aspectRatio,
   resolution,
   duration,
@@ -781,6 +912,27 @@ function buildProviderInput({
     resolution,
     duration,
   };
+
+  if (modelConfig.inputSchema === 'seedance-2-5') {
+    const seedance25Input = {
+      prompt,
+      generate_audio: Boolean(nativeAudio),
+      resolution,
+      aspect_ratio: aspectRatio,
+      duration,
+      output_format: String(formData.get('outputFormat') || 'mp4').toLowerCase(),
+      nsfw_checker: true,
+    };
+    if (firstFrameUrl) {
+      seedance25Input.first_frame_url = firstFrameUrl;
+      if (lastFrameUrl) seedance25Input.last_frame_url = lastFrameUrl;
+    } else {
+      if (imageUrls.length > 0) seedance25Input.reference_image_urls = imageUrls;
+      if (videoUrls.length > 0) seedance25Input.reference_video_urls = videoUrls;
+      if (audioUrls.length > 0) seedance25Input.reference_audio_urls = audioUrls;
+    }
+    return seedance25Input;
+  }
 
   if (modelConfig.inputSchema === 'seedance') {
     input.generate_audio = Boolean(nativeAudio) || boolFormValue(formData, 'generateAudio');
@@ -963,8 +1115,11 @@ export async function onRequest(context) {
     const prompt = String(formData.get('prompt') || '').trim();
     const imageUrlInputs = parseImageUrls(formData);
     const firstLastFrameInputs = parseFirstLastFrameUrls(formData);
+    const hasAnyFirstLastFrameInput = Boolean(firstLastFrameInputs.firstFrameUrl || firstLastFrameInputs.lastFrameUrl);
     const hasFirstLastFrameInput = mode === 'image-to-video' && Boolean(firstLastFrameInputs.firstFrameUrl);
     const videoUrlInputs = parseVideoUrls(formData);
+    const audioUrlInputs = parseUrlArrayField(formData, 'audioUrls');
+    const submittedVideoDurations = parsePositiveNumberArrayField(formData, 'videoDurations');
     const historyInputUrls = parseUrlArrayField(formData, 'historyInputUrls');
     const toolSlug = String(formData.get('toolSlug') || '').trim() || null;
     const toolLabel = String(formData.get('toolLabel') || '').trim() || null;
@@ -976,25 +1131,47 @@ export async function onRequest(context) {
     if (modelConfig.supportedModes && !modelConfig.supportedModes.has(mode)) {
       return jsonResponse({ error: modelConfig.unsupportedModeError }, 400);
     }
+    if (
+      modelConfig.multimodalReferenceModes
+      && !modelConfig.multimodalReferenceModes.has(mode)
+      && (hasAnyFirstLastFrameInput || imageUrlInputs.length > 0 || videoUrlInputs.length > 0 || audioUrlInputs.length > 0)
+    ) {
+      return jsonResponse({ error: `${modelConfig.displayName} reference resources are only supported in image-to-video mode` }, 400);
+    }
     if (mode === 'image-to-video' && firstLastFrameInputs.lastFrameUrl && !firstLastFrameInputs.firstFrameUrl) {
       return jsonResponse({ error: 'First/last-frame mode requires a first frame URL' }, 400);
     }
     if (hasFirstLastFrameInput && !supportsExplicitFirstLastFrameFields(modelConfig)) {
       return jsonResponse({ error: `${modelConfig.displayName} does not support first/last-frame inputs` }, 400);
     }
-    if (mode === 'image-to-video' && imageUrlInputs.length === 0 && !hasFirstLastFrameInput) {
+    if (
+      modelConfig.inputSchema === 'seedance-2-5'
+      && hasFirstLastFrameInput
+      && (imageUrlInputs.length > 0 || videoUrlInputs.length > 0 || audioUrlInputs.length > 0)
+    ) {
+      return jsonResponse({ error: 'Seedance 2.5 first/last frames cannot be combined with multimodal references' }, 400);
+    }
+    const hasSeedance25MultimodalReference = modelConfig.inputSchema === 'seedance-2-5'
+      && (videoUrlInputs.length > 0 || audioUrlInputs.length > 0)
+    if (mode === 'image-to-video' && imageUrlInputs.length === 0 && !hasFirstLastFrameInput && !hasSeedance25MultimodalReference) {
       return jsonResponse({ error: 'Image-to-video requires at least one image URL' }, 400);
     }
     if (mode === 'image-to-video' && !hasFirstLastFrameInput && imageUrlInputs.length > modelConfig.maxImages) {
       return jsonResponse({ error: modelConfig.tooManyImagesError }, 400);
     }
     if (modelConfig.maxVideos) {
-      if (videoUrlInputs.length === 0) {
+      if (modelConfig.referenceVideosRequired !== false && videoUrlInputs.length === 0) {
         return jsonResponse({ error: modelConfig.missingVideoError }, 400);
       }
       if (videoUrlInputs.length > modelConfig.maxVideos) {
         return jsonResponse({ error: modelConfig.tooManyVideosError }, 400);
       }
+    }
+    if (modelConfig.maxAudioFiles && audioUrlInputs.length > modelConfig.maxAudioFiles) {
+      return jsonResponse({ error: modelConfig.tooManyAudioFilesError }, 400);
+    }
+    if (modelConfig.inputSchema === 'seedance-2-5' && videoUrlInputs.length === 0 && submittedVideoDurations.length > 0) {
+      return jsonResponse({ error: 'Reference video durations require matching reference video URLs' }, 400);
     }
 
     const aspectRatio = normalizeAspectRatio(formData.get('aspectRatio'), modelConfig);
@@ -1010,6 +1187,10 @@ export async function onRequest(context) {
     const duration = normalizeDuration(formData.get('duration'), modelConfig);
     if (duration.error) {
       return jsonResponse({ error: duration.error }, 400);
+    }
+    const outputFormat = String(formData.get('outputFormat') || 'mp4').trim().toLowerCase();
+    if (modelConfig.outputFormats && !modelConfig.outputFormats.has(outputFormat)) {
+      return jsonResponse({ error: `Unsupported output format for ${modelConfig.displayName}` }, 400);
     }
     if (
       modelConfig.inputSchema === 'kling-motion-control'
@@ -1040,6 +1221,23 @@ export async function onRequest(context) {
       apiKey
     );
     const videoUrls = await resolveUploadReferences(videoUrlInputs, apiKey);
+    const audioUrls = await resolveUploadReferences(audioUrlInputs, apiKey);
+    let trustedReferenceVideoDurations = [];
+    if (modelConfig.inputSchema === 'seedance-2-5' && videoUrls.length > 0) {
+      try {
+        trustedReferenceVideoDurations = await Promise.all(
+          videoUrls.map((url) => getTrustedReferenceVideoDuration(url, env))
+        );
+      } catch (error) {
+        return jsonResponse({ error: error instanceof Error ? error.message : 'Unable to inspect reference videos' }, 400);
+      }
+      if (trustedReferenceVideoDurations.some((item) => item < 2 || item > 30)) {
+        return jsonResponse({ error: 'Seedance 2.5 reference videos must be between 2 and 30 seconds' }, 400);
+      }
+      if (trustedReferenceVideoDurations.reduce((sum, item) => sum + item, 0) > modelConfig.maxReferenceVideoTotalDuration) {
+        return jsonResponse({ error: 'Seedance 2.5 reference videos cannot exceed 30 seconds in total' }, 400);
+      }
+    }
     const urlExtensionError = validateKlingMotionControlUrlExtensions(modelConfig, imageUrls, videoUrls);
     if (urlExtensionError) {
       return jsonResponse({ error: urlExtensionError }, 400);
@@ -1054,6 +1252,7 @@ export async function onRequest(context) {
       firstFrameUrl: firstLastFrameUrls[0] || '',
       lastFrameUrl: firstLastFrameUrls[1] || '',
       videoUrls,
+      audioUrls,
       aspectRatio: aspectRatio.value,
       resolution: resolution.value,
       duration: duration.value,
@@ -1064,7 +1263,12 @@ export async function onRequest(context) {
       modelConfig.creditModelId,
       resolution.value,
       duration.value,
-      { nativeAudio }
+      {
+        nativeAudio,
+        referenceVideoDuration: modelConfig.inputSchema === 'seedance-2-5'
+          ? trustedReferenceVideoDurations.reduce((sum, item) => sum + item, 0)
+          : 0,
+      }
     );
     if (!Number.isInteger(requiredCredits) || requiredCredits <= 0) {
       return jsonResponse({ error: 'Video pricing is not configured for this model.' }, 500);
@@ -1104,13 +1308,16 @@ export async function onRequest(context) {
       prompt,
       inputUrls: historyInputUrls.length > 0
         ? historyInputUrls
-        : [...imageUrls, ...firstLastFrameUrls, ...videoUrls],
+        : [...imageUrls, ...firstLastFrameUrls, ...videoUrls, ...audioUrls],
       aspectRatio: metadataAspectRatio,
       resolution: resolution.value,
       outputFormat: JSON.stringify({
         duration: duration.value,
         mode,
         characterOrientation: formData.get('characterOrientation') || undefined,
+        firstLastFrame: hasFirstLastFrameInput,
+        outputFormat,
+        referenceVideoDurations: trustedReferenceVideoDurations,
       }),
       nativeAudio,
       toolSlug,

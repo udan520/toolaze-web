@@ -858,7 +858,14 @@
       "characterOrientationVideo": "Video",
       "characterOrientationHelper": "Immagine mantiene l’orientamento della persona nell’immagine del personaggio (video max 10 s). Video segue l’orientamento del personaggio nel video di riferimento (video max 30 s).",
       "referenceImageAspectRatioLabel": "Segue l'immagine di riferimento",
-      "referenceImageAspectRatioHelper": "L'output segue il formato del riferimento caricato. Ritaglia il riferimento in 16:9 prima del caricamento."
+      "referenceImageAspectRatioHelper": "L'output segue il formato del riferimento caricato. Ritaglia il riferimento in 16:9 prima del caricamento.",
+      "referenceVideos": "Video di riferimento",
+      "referenceAudio": "Audio di riferimento",
+      "outputFormat": "Formato di uscita",
+      "multimodalReferenceVideoHelper": "MP4 o MOV, fino a {count} file e {total}s totali. Ogni file: {min}-{max}s, massimo {size}MB.",
+      "multimodalReferenceAudioHelper": "WAV o MP3, fino a {count} file. Ogni file: 2-30s, massimo {size}MB.",
+      "referenceAudioInvalidType": "Usa WAV o MP3 per l audio di riferimento.",
+      "referenceAudioInvalidDuration": "L audio di riferimento deve durare tra 2 e 30 secondi."
     }
   },
   "imageCompressor": {

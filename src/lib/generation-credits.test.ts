@@ -55,6 +55,21 @@ test('video pricing never moves 9-credit totals to the next ten', () => {
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '1080p', 1), 29)
 })
 
+test('Seedance 2.5 prices video references from input plus output duration', () => {
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-5'].ratesByResolution['480p'], 56)
+  assert.equal(VIDEO_GENERATION_CREDIT_RATES['seedance-2-5'].ratesByResolution['720p'], 126)
+  assert.deepEqual(VIDEO_GENERATION_CREDIT_RATES['seedance-2-5'].referenceVideoRatesByResolution, {
+    '480p': 34,
+    '720p': 76,
+  })
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '480p', 4), 224)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '480p', 4, { nativeAudio: true }), 224)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '720p', 10), 1260)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '480p', 4, { referenceVideoDuration: 6 }), 340)
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '720p', 10, { referenceVideoDuration: 12.2 }), 1748)
+  assert.equal(calculateVideoGenerationCredits('kling-2-6-motion-control', '720p', 12, { referenceVideoDuration: 8 }), 264)
+})
+
 test('image pricing moves 9-credit results to the next ten', () => {
   assert.equal(calculateImageGenerationCredits('nano-banana-2-lite', '1K'), 10)
   assert.equal(calculateImageGenerationCredits('gpt-image-2', '1K'), 10)

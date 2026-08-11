@@ -858,7 +858,14 @@
       "characterOrientationVideo": "비디오",
       "characterOrientationHelper": "이미지는 캐릭터 이미지 속 인물의 방향을 유지합니다(비디오 최대 10초). 비디오는 참조 비디오 속 캐릭터 방향을 따릅니다(비디오 최대 30초).",
       "referenceImageAspectRatioLabel": "참조 이미지를 따름",
-      "referenceImageAspectRatioHelper": "출력은 업로드한 참조의 비율을 따릅니다. 16:9 출력이 필요하면 업로드 전에 참조를 잘라 주세요."
+      "referenceImageAspectRatioHelper": "출력은 업로드한 참조의 비율을 따릅니다. 16:9 출력이 필요하면 업로드 전에 참조를 잘라 주세요.",
+      "referenceVideos": "레퍼런스 비디오",
+      "referenceAudio": "레퍼런스 오디오",
+      "outputFormat": "출력 형식",
+      "multimodalReferenceVideoHelper": "MP4 또는 MOV, 최대 {count}개, 총 {total}초. 파일당 {min}-{max}초, 최대 {size}MB.",
+      "multimodalReferenceAudioHelper": "WAV 또는 MP3, 최대 {count}개. 파일당 2-30초, 최대 {size}MB.",
+      "referenceAudioInvalidType": "레퍼런스 오디오는 WAV 또는 MP3를 사용하세요.",
+      "referenceAudioInvalidDuration": "레퍼런스 오디오는 2-30초여야 합니다."
     }
   },
   "imageCompressor": {

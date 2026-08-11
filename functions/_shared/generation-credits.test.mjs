@@ -82,6 +82,8 @@ test('maps Kie video costs to credits from KIE cost times two', () => {
   assert.equal(calculateVideoGenerationCredits('veo-3-1-quality', '720p', 4), 450);
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5), 70);
   assert.equal(calculateVideoGenerationCredits('pixverse-v6', '720p', 5, { nativeAudio: true }), 95);
+  assert.equal(calculateVideoGenerationCredits('seedance-2-5', '480p', 4, { nativeAudio: true }), 224);
+  assert.equal(calculateVideoGenerationCredits('kling-2-6-motion-control', '720p', 12, { referenceVideoDuration: 8 }), 264);
 });
 
 test('video pricing never moves 9-credit totals to the next ten', () => {

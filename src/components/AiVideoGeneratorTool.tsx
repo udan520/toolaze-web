@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type ChangeEvent, type Dispatch, type KeyboardEvent as ReactKeyboardEvent, type SetStateAction, type UIEvent as ReactUIEvent } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -14,15 +14,18 @@ import {
   getAiVideoGeneratorModelConfig,
   getAiVideoGeneratorFallbackModel,
   getAiVideoGeneratorModelGroupsForMode,
+  supportsAiVideoMultimodalReferencesForMode,
 } from '@/lib/ai-video-generator-config'
 import { getLocalizedModelSelectorCopy } from '@/lib/model-selector-i18n'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { calculateVideoGenerationCredits } from '@/lib/generation-credits'
+import { replaceRemoteMotionVideoState } from '@/lib/motion-video-state'
 import { useCommonTranslations } from '@/lib/use-common-translations'
 import Breadcrumb, { type BreadcrumbItem } from '@/components/Breadcrumb'
 import CloseIcon from './icons/CloseIcon'
 import DeleteIcon from '@/components/icons/DeleteIcon'
 import MotionReferenceVideoUploader, { type MotionReferenceVideoUploaderItem } from '@/components/MotionReferenceVideoUploader'
+import MultimodalReferenceUploader from '@/components/MultimodalReferenceUploader'
 import ReferenceImageUploader from '@/components/ReferenceImageUploader'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import {
@@ -45,6 +48,13 @@ import { trackGenerationHistoryRecreateClick } from '@/lib/generation-history-an
 import { trackToolazeEvent } from '@/lib/analytics'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import { parseLocalePath } from '@/lib/site-language-switch'
+import PromptReferenceMentionPicker, {
+  createPromptReferenceMentionOrdinalRegistry,
+  type PromptReferenceMentionItem,
+  type PromptReferenceMentionOrdinalRegistry,
+} from './PromptReferenceMentionPicker'
+import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
+import { insertPromptReferenceMention } from '@/lib/prompt-reference-mentions'
 
 interface ImageItem {
   file: File
@@ -59,6 +69,12 @@ interface VideoItem {
   file: File
   preview: string
   durationSeconds?: number
+}
+
+interface AudioItem {
+  file: File
+  preview: string
+  durationSeconds: number
 }
 
 type VideoGenerationStatus = 'processing' | 'succeeded' | 'failed'
@@ -90,6 +106,9 @@ interface VideoGenerationRequest {
   inputPreview: string
   inputUrls: string[]
   motionVideoUrls?: string[]
+  audioUrls?: string[]
+  referenceVideoDurations?: number[]
+  outputFormat?: string
   characterOrientation?: 'image' | 'video'
   firstLastFrame?: boolean
   createdAt: string
@@ -118,6 +137,8 @@ interface VideoHistoryItem {
   inputPreview: string
   inputUrls: string[]
   motionVideoUrls?: string[]
+  audioUrls?: string[]
+  referenceVideoDurations?: number[]
   characterOrientation?: 'image' | 'video'
   firstLastFrame?: boolean
   outputPreview: string
@@ -156,6 +177,7 @@ interface AiVideoGeneratorToolProps {
   initialMotionVideoUrls?: string[]
   initialMotionVideoPosters?: string[]
   initialMotionVideoDurationSeconds?: number
+  initialAudioUrls?: string[]
   initialPrompt?: string
   initialCharacterOrientation?: 'image' | 'video'
   demoVideo?: {
@@ -173,6 +195,7 @@ interface PromptInsertEventDetail {
   imageUrl?: string
   imageUrls?: string[]
   videoUrls?: string[]
+  audioUrls?: string[]
   imageName?: string
   modelId?: string
   aspectRatio?: string
@@ -181,6 +204,7 @@ interface PromptInsertEventDetail {
   durationSeconds?: number
   mode?: string
   characterOrientation?: 'image' | 'video'
+  nativeAudio?: boolean
 }
 
 const FALLBACK_TEXT = {
@@ -250,6 +274,13 @@ const FALLBACK_TEXT = {
   motionReferenceVideoDurationNote: 'Duration follows the uploaded reference video ({min}-{max} seconds).',
   motionReferenceVideoInvalidType: 'Use a supported video format for the motion reference video.',
   motionReferenceVideoInvalidDuration: 'Motion reference video must be {min}-{max} seconds.',
+  multimodalReferenceVideoHelper: 'MP4 or MOV, up to {count} files and {total}s total. Each file: {min}-{max}s, max {size}MB.',
+  multimodalReferenceAudioHelper: 'WAV or MP3, up to {count} files. Each file: 2-30s, max {size}MB.',
+  referenceAudioInvalidType: 'Use WAV or MP3 for reference audio.',
+  referenceAudioInvalidDuration: 'Reference audio must be between 2 and 30 seconds.',
+  referenceVideos: 'Reference Videos',
+  referenceAudio: 'Reference Audio',
+  outputFormat: 'Output Format',
   characterOrientation: 'Character Orientation',
   characterOrientationImage: 'Image',
   characterOrientationVideo: 'Video',
@@ -262,6 +293,7 @@ const REFERENCE_IMAGE_ASPECT_RATIO_LABEL = FALLBACK_TEXT.referenceImageAspectRat
 
 const VIDEO_HISTORY_MODEL_SLUGS: Record<AiVideoGeneratorModelId, string> = {
   'grok-1-5-video': 'grok-imagine-video-1-5',
+  'seedance-2-5': 'seedance-2-5',
   'seedance-2': 'seedance-2',
   'seedance-2-mini': 'seedance-2-mini',
   'seedance-2-fast': 'seedance-2-fast',
@@ -349,6 +381,40 @@ function getHistoryUsesFirstLastFrame(outputFormat: string | null | undefined) {
   }
 }
 
+function getHistoryReferenceVideoDurations(outputFormat: string | null | undefined) {
+  try {
+    const parsed = JSON.parse(String(outputFormat || ''))
+    return Array.isArray(parsed?.referenceVideoDurations)
+      ? parsed.referenceVideoDurations.map(Number).filter((item: number) => Number.isFinite(item) && item > 0)
+      : []
+  } catch {
+    return []
+  }
+}
+
+function getHistoryOutputFileFormat(outputFormat: string | null | undefined) {
+  try {
+    const parsed = JSON.parse(String(outputFormat || ''))
+    return parsed?.outputFormat === 'mov' ? 'mov' : 'mp4'
+  } catch {
+    return 'mp4'
+  }
+}
+
+function getHistoryGenerationMode(
+  outputFormat: string | null | undefined,
+  fallback: AiVideoGeneratorModeId,
+): AiVideoGeneratorModeId {
+  try {
+    const parsed = JSON.parse(String(outputFormat || ''))
+    return parsed?.mode === 'text-to-video' || parsed?.mode === 'image-to-video'
+      ? parsed.mode
+      : fallback
+  } catch {
+    return fallback
+  }
+}
+
 function isVideoHistoryMediaType(item: PersistedVideoHistoryItem) {
   return item.mediaType === 'video' || /\.(mp4|webm|mov|m4v)(?:[?#].*)?$/i.test(String(item.outputUrl || '').trim())
 }
@@ -358,10 +424,16 @@ function isMotionVideoReferenceUrl(url: string) {
   return value.startsWith('toolaze-upload-ref:video:') || /\.(mp4|webm|mov|m4v|mkv)(?:[?#].*)?$/i.test(value)
 }
 
+function isAudioReferenceUrl(url: string) {
+  const value = String(url || '').trim()
+  return value.startsWith('toolaze-upload-ref:audio:') || /\.(mp3|wav)(?:[?#].*)?$/i.test(value)
+}
+
 function splitVideoInputUrls(inputUrls: string[]) {
   return {
-    imageUrls: inputUrls.filter((url) => !isMotionVideoReferenceUrl(url)),
+    imageUrls: inputUrls.filter((url) => !isMotionVideoReferenceUrl(url) && !isAudioReferenceUrl(url)),
     motionVideoUrls: inputUrls.filter(isMotionVideoReferenceUrl),
+    audioUrls: inputUrls.filter(isAudioReferenceUrl),
   }
 }
 
@@ -384,7 +456,7 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
   const rawInputUrls = Array.isArray(item.inputUrls)
     ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
     : []
-  const { imageUrls: inputUrls, motionVideoUrls } = splitVideoInputUrls(rawInputUrls)
+  const { imageUrls: inputUrls, motionVideoUrls, audioUrls } = splitVideoInputUrls(rawInputUrls)
 
   if (mediaType === 'image') {
     return {
@@ -411,7 +483,9 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
 
   const modelId = getVideoModelIdFromHistoryModel(item.model)
   const modelConfig = getAiVideoGeneratorModelConfig(modelId)
-  const historyMode: AiVideoGeneratorModeId = inputUrls.length > 0 ? 'image-to-video' : 'text-to-video'
+  const hasReferenceMedia = inputUrls.length > 0 || motionVideoUrls.length > 0 || audioUrls.length > 0
+  const inferredHistoryMode: AiVideoGeneratorModeId = hasReferenceMedia ? 'image-to-video' : 'text-to-video'
+  const historyMode = getHistoryGenerationMode(item.outputFormat, inferredHistoryMode)
   const historyAspectRatio = historyMode === 'image-to-video' && modelConfig.imageToVideoAspectRatioMode === 'reference-image'
     ? REFERENCE_IMAGE_ASPECT_RATIO_LABEL
     : item.aspectRatio || modelConfig.aspectRatios[0]?.value || '16:9'
@@ -427,11 +501,13 @@ function mapPersistedVideoHistoryItem(item: PersistedVideoHistoryItem): VideoHis
     aspectRatio: historyAspectRatio,
     duration: getHistoryDuration(item.outputFormat, modelConfig.defaultDuration || modelConfig.durations[0] || 5),
     resolution: item.resolution || modelConfig.resolutions[0] || '480p',
-    outputFormat: item.outputFormat || null,
     nativeAudio: item.nativeAudio === true,
     inputPreview: inputUrls[0] || '',
     inputUrls,
     motionVideoUrls,
+    audioUrls,
+    referenceVideoDurations: getHistoryReferenceVideoDurations(item.outputFormat),
+    outputFormat: getHistoryOutputFileFormat(item.outputFormat),
     firstLastFrame: getHistoryUsesFirstLastFrame(item.outputFormat),
     characterOrientation: modelConfig.supportsMotionReferenceVideo
       ? getHistoryCharacterOrientation(item.outputFormat)
@@ -535,6 +611,30 @@ function getMotionReferenceVideoDuration(file: File): Promise<number> {
   })
 }
 
+function getReferenceAudioDuration(file: File): Promise<number> {
+  return new Promise((resolve, reject) => {
+    if (typeof document === 'undefined') {
+      reject(new Error('Audio metadata is unavailable'))
+      return
+    }
+    const objectUrl = URL.createObjectURL(file)
+    const audio = document.createElement('audio')
+    const cleanup = () => URL.revokeObjectURL(objectUrl)
+    audio.preload = 'metadata'
+    audio.onloadedmetadata = () => {
+      const durationSeconds = Number(audio.duration)
+      cleanup()
+      if (Number.isFinite(durationSeconds) && durationSeconds > 0) resolve(durationSeconds)
+      else reject(new Error('Audio duration is unavailable'))
+    }
+    audio.onerror = () => {
+      cleanup()
+      reject(new Error('Audio duration is unavailable'))
+    }
+    audio.src = objectUrl
+  })
+}
+
 function getOptionButtonClassName(isSelected: boolean) {
   return `min-h-10 rounded-xl border px-2 py-2 text-center text-xs font-bold transition-all ${
     isSelected
@@ -550,7 +650,7 @@ function getVideoModelOptionMetadata(option: AiVideoGeneratorModelConfig) {
     ? `${option.referenceVideoMinDurationSeconds || firstDuration}-${option.referenceVideoMaxDurationSeconds || lastDuration}s reference`
     : `${firstDuration}-${lastDuration}s`
   const audioOutputLabel = option.supportsNativeAudioOutput
-    ? option.supportsMotionReferenceVideo
+    ? option.supportsMotionReferenceVideo || option.supportsMultimodalReferences
       ? 'Reference Audio'
       : 'Native Audio'
     : 'No Native Audio'
@@ -608,12 +708,14 @@ export default function AiVideoGeneratorTool({
   initialMotionVideoUrls,
   initialMotionVideoPosters,
   initialMotionVideoDurationSeconds,
+  initialAudioUrls,
   initialPrompt,
   initialCharacterOrientation,
   demoVideo,
   initialTranslations,
 }: AiVideoGeneratorToolProps) {
   const pathname = usePathname()
+  const promptMentionPickerId = useId()
   const commonTranslations = useCommonTranslations(initialTranslations)
   const text = { ...FALLBACK_TEXT, ...(commonTranslations?.common?.aiVideoGeneratorTool || {}) }
   const localizedModelSelectorCopy = useMemo(
@@ -632,7 +734,15 @@ export default function AiVideoGeneratorTool({
   const imageFilesRef = useRef<ImageItem[]>([])
   const firstLastFrameImagesRef = useRef<Array<ReferenceImageSource | null>>([null, null])
   const motionVideoFilesRef = useRef<VideoItem[]>([])
+  const audioFilesRef = useRef<AudioItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
+  const promptMentionRootRef = useRef<HTMLDivElement>(null)
+  const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
+  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
+  const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
+  if (!promptReferenceMentionOrdinalRegistryRef.current) {
+    promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
+  }
   const historyItemRefs = useRef(new Map<string, HTMLDivElement>())
   const [selectedModelId, setSelectedModelId] = useState<AiVideoGeneratorModelId>(modelId)
   const modelConfig = useMemo(() => getAiVideoGeneratorModelConfig(selectedModelId), [selectedModelId])
@@ -665,9 +775,38 @@ export default function AiVideoGeneratorTool({
   ))
   const [firstLastFrameEnabled, setFirstLastFrameEnabled] = useState(false)
   const [firstLastFrameImages, setFirstLastFrameImages] = useState<Array<ReferenceImageSource | null>>([null, null])
-  const [motionVideoFiles, setMotionVideoFiles] = useState<VideoItem[]>([])
-  const [remoteMotionVideoUrls, setRemoteMotionVideoUrls] = useState<string[]>(() => (
-    Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls.filter(Boolean).slice(0, modelConfig.maxVideos || 1) : []
+  const [motionVideoState, setMotionVideoState] = useState(() => {
+    const durationSeconds = Number(initialMotionVideoDurationSeconds)
+    return {
+      localItems: [] as VideoItem[],
+      remoteUrls: Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls.filter(Boolean).slice(0, modelConfig.maxVideos || 1) : [],
+      remoteDurations: Number.isFinite(durationSeconds) && durationSeconds > 0 ? [durationSeconds] : [],
+    }
+  })
+  const motionVideoFiles = motionVideoState.localItems
+  const remoteMotionVideoUrls = motionVideoState.remoteUrls
+  const remoteMotionVideoDurations = motionVideoState.remoteDurations
+  const setMotionVideoFiles: Dispatch<SetStateAction<VideoItem[]>> = (nextItems) => {
+    setMotionVideoState((prev) => ({
+      ...prev,
+      localItems: typeof nextItems === 'function' ? nextItems(prev.localItems) : nextItems,
+    }))
+  }
+  const setRemoteMotionVideoUrls: Dispatch<SetStateAction<string[]>> = (nextUrls) => {
+    setMotionVideoState((prev) => ({
+      ...prev,
+      remoteUrls: typeof nextUrls === 'function' ? nextUrls(prev.remoteUrls) : nextUrls,
+    }))
+  }
+  const setRemoteMotionVideoDurations: Dispatch<SetStateAction<number[]>> = (nextDurations) => {
+    setMotionVideoState((prev) => ({
+      ...prev,
+      remoteDurations: typeof nextDurations === 'function' ? nextDurations(prev.remoteDurations) : nextDurations,
+    }))
+  }
+  const [audioFiles, setAudioFiles] = useState<AudioItem[]>([])
+  const [remoteAudioUrls, setRemoteAudioUrls] = useState<string[]>(() => (
+    Array.isArray(initialAudioUrls) ? initialAudioUrls.filter(Boolean).slice(0, modelConfig.maxAudioFiles || 0) : []
   ))
   const initialMotionVideoPosterMap = useMemo(() => {
     const urls = Array.isArray(initialMotionVideoUrls) ? initialMotionVideoUrls : []
@@ -676,6 +815,10 @@ export default function AiVideoGeneratorTool({
   }, [initialMotionVideoPosters, initialMotionVideoUrls])
   const [characterOrientation, setCharacterOrientation] = useState<'image' | 'video'>(initialCharacterOrientation || 'video')
   const [prompt, setPrompt] = useState(initialPrompt || '')
+  const [isPromptMentionPickerOpen, setIsPromptMentionPickerOpen] = useState(false)
+  const [promptMentionTriggerIndex, setPromptMentionTriggerIndex] = useState<number | null>(null)
+  const [promptMentionSelection, setPromptMentionSelection] = useState({ start: 0, end: 0 })
+  const [promptMentionActiveIndex, setPromptMentionActiveIndex] = useState(0)
   const [aspectRatio, setAspectRatio] = useState(modelConfig.aspectRatios[0]?.value || '16:9')
   const [duration, setDuration] = useState(() => {
     if (modelConfig.durationMode === 'reference-video') {
@@ -686,6 +829,7 @@ export default function AiVideoGeneratorTool({
   })
   const [resolution, setResolution] = useState(modelConfig.resolutions[0] || '1080p')
   const [nativeAudio, setNativeAudio] = useState(false)
+  const [outputFormat, setOutputFormat] = useState('mp4')
   const [isPreparing, setIsPreparing] = useState(false)
   const [currentRequest, setCurrentRequest] = useState<VideoGenerationRequest | null>(null)
   const [creditExhaustedModalOpen, setCreditExhaustedModalOpen] = useState(false)
@@ -697,16 +841,24 @@ export default function AiVideoGeneratorTool({
   const shouldAllowLeftOverlay = isModelMenuOpen
   const supportsNativeAudio = Boolean(modelConfig.supportsNativeAudio)
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
+  const supportsMultimodalReferences = supportsAiVideoMultimodalReferencesForMode(modelConfig, activeMode)
+  const supportsReferenceVideos = supportsMotionReferenceVideo || supportsMultimodalReferences
   const supportsFirstLastFrame = activeMode === 'image-to-video' && Boolean(modelConfig.supportsFirstLastFrame)
   const promptRequired = modelConfig.promptRequired !== false
   const promptLabel = promptRequired ? text.prompt : `${text.prompt} (${text.optional})`
   const followsReferenceImageAspectRatio = activeMode === 'image-to-video' && modelConfig.imageToVideoAspectRatioMode === 'reference-image'
   const minimumCreditCost = useMemo(() => getAiVideoGeneratorModelMinimumCredits(modelConfig), [modelConfig])
+  const referenceVideoDurationTotal = useMemo(
+    () => [...remoteMotionVideoDurations, ...motionVideoFiles.map((item) => item.durationSeconds || 0)]
+      .reduce((sum, item) => sum + item, 0),
+    [motionVideoFiles, remoteMotionVideoDurations],
+  )
   const generationCreditCost = useMemo(
     () => calculateVideoGenerationCredits(selectedModelId, resolution, duration, {
       nativeAudio: supportsNativeAudio && nativeAudio,
+      referenceVideoDuration: supportsMultimodalReferences ? referenceVideoDurationTotal : 0,
     }) ?? minimumCreditCost,
-    [selectedModelId, resolution, duration, supportsNativeAudio, nativeAudio, minimumCreditCost],
+    [selectedModelId, resolution, duration, supportsNativeAudio, nativeAudio, supportsMultimodalReferences, referenceVideoDurationTotal, minimumCreditCost],
   )
 
   const revokeReferenceImageSource = (item: ReferenceImageSource | null | undefined) => {
@@ -726,7 +878,21 @@ export default function AiVideoGeneratorTool({
 
   const handleFirstLastFrameToggle = () => {
     if (!supportsFirstLastFrame) return
-    setFirstLastFrameEnabled((current) => !current)
+    setFirstLastFrameEnabled((current) => {
+      const next = !current
+      if (next && supportsMultimodalReferences) {
+        motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+        motionVideoFilesRef.current = []
+        setMotionVideoFiles([])
+        setRemoteMotionVideoUrls([])
+        setRemoteMotionVideoDurations([])
+        audioFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+        audioFilesRef.current = []
+        setAudioFiles([])
+        setRemoteAudioUrls([])
+      }
+      return next
+    })
   }
 
   const firstLastFrameToggle = supportsFirstLastFrame ? (
@@ -777,12 +943,20 @@ export default function AiVideoGeneratorTool({
         (!nextModel.nativeAudioResolutions || nextModel.nativeAudioResolutions.includes(nextResolution)),
       ),
     )
-    if (!nextModel.supportsMotionReferenceVideo) {
+    if (!nextModel.supportsMotionReferenceVideo && !nextModel.supportsMultimodalReferences) {
       motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
       motionVideoFilesRef.current = []
       setMotionVideoFiles([])
       setRemoteMotionVideoUrls([])
+      setRemoteMotionVideoDurations([])
     }
+    if (!nextModel.supportsMultimodalReferences) {
+      audioFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+      audioFilesRef.current = []
+      setAudioFiles([])
+      setRemoteAudioUrls([])
+    }
+    setOutputFormat(nextModel.outputFormats?.[0] || 'mp4')
     setIsModelMenuOpen(false)
   }
 
@@ -832,6 +1006,10 @@ export default function AiVideoGeneratorTool({
   }, [motionVideoFiles])
 
   useEffect(() => {
+    audioFilesRef.current = audioFiles
+  }, [audioFiles])
+
+  useEffect(() => {
     if (supportsFirstLastFrame || !firstLastFrameEnabled) return
 
     clearFirstLastFrameImages()
@@ -843,6 +1021,7 @@ export default function AiVideoGeneratorTool({
       imageFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
       firstLastFrameImagesRef.current.forEach(revokeReferenceImageSource)
       motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+      audioFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     }
   }, [])
 
@@ -894,7 +1073,13 @@ export default function AiVideoGeneratorTool({
       ? detail.imageUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
       : []
     const referenceUrls = imageUrls.length > 0 ? imageUrls : singleImageUrl ? [singleImageUrl] : []
-    if (!promptText && referenceUrls.length === 0) return false
+    const referenceVideoUrls = Array.isArray(detail?.videoUrls)
+      ? detail.videoUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+      : []
+    const referenceAudioUrls = Array.isArray(detail?.audioUrls)
+      ? detail.audioUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean)
+      : []
+    if (!promptText && referenceUrls.length === 0 && referenceVideoUrls.length === 0 && referenceAudioUrls.length === 0) return false
 
     const nextModel = detail?.modelId
       ? getAiVideoGeneratorModelConfig(getVideoModelIdFromHistoryModel(detail.modelId))
@@ -902,7 +1087,9 @@ export default function AiVideoGeneratorTool({
     const requestedMode: AiVideoGeneratorModeId =
       detail?.mode === 'text-to-video' || detail?.mode === 'image-to-video'
         ? detail.mode
-        : referenceUrls.length > 0 ? 'image-to-video' : 'text-to-video'
+        : referenceUrls.length > 0 || referenceVideoUrls.length > 0 || referenceAudioUrls.length > 0
+          ? 'image-to-video'
+          : 'text-to-video'
     const nextMode = nextModel.supportedModes.includes(requestedMode)
       ? requestedMode
       : getInitialVideoMode(nextModel, undefined)
@@ -933,7 +1120,10 @@ export default function AiVideoGeneratorTool({
         ? detail.resolution
         : nextModel.resolutions[0] || '480p',
     )
-    setNativeAudio(false)
+    setNativeAudio(Boolean(nextModel.supportsNativeAudio && detail?.nativeAudio))
+    setOutputFormat(detail?.outputFormat === 'mov' || detail?.outputFormat === 'mp4'
+      ? detail.outputFormat
+      : getHistoryOutputFileFormat(detail?.outputFormat))
     setCharacterOrientation(nextModel.supportsMotionReferenceVideo
       ? detail?.characterOrientation || getHistoryCharacterOrientation(detail?.outputFormat)
       : 'video')
@@ -945,6 +1135,9 @@ export default function AiVideoGeneratorTool({
     motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
     motionVideoFilesRef.current = []
     setMotionVideoFiles([])
+    audioFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+    audioFilesRef.current = []
+    setAudioFiles([])
     if (shouldUseFirstLastFrame) {
       const remoteSlots = referenceUrls.slice(0, 2).map((url) => ({ source: 'remote' as const, url }))
       firstLastFrameImagesRef.current = [remoteSlots[0] || null, remoteSlots[1] || null]
@@ -955,8 +1148,12 @@ export default function AiVideoGeneratorTool({
       setFirstLastFrameEnabled(false)
       setRemoteImageUrls(nextMode === 'image-to-video' ? referenceUrls.slice(0, nextModel.maxImages) : [])
     }
-    setRemoteMotionVideoUrls(nextModel.supportsMotionReferenceVideo && Array.isArray(detail?.videoUrls)
-      ? detail.videoUrls.map(normalizeReusableReferenceImageUrl).filter(Boolean).slice(0, nextModel.maxVideos || 1)
+    setRemoteMotionVideoUrls((nextModel.supportsMotionReferenceVideo || nextModel.supportsMultimodalReferences)
+      ? referenceVideoUrls.slice(0, nextModel.maxVideos || 1)
+      : [])
+    setRemoteMotionVideoDurations(getHistoryReferenceVideoDurations(detail?.outputFormat).slice(0, nextModel.maxVideos || 1))
+    setRemoteAudioUrls(nextModel.supportsMultimodalReferences
+      ? referenceAudioUrls.slice(0, nextModel.maxAudioFiles || 0)
       : [])
     window.scrollTo({ top: 0, behavior: 'smooth' })
     return true
@@ -1033,11 +1230,15 @@ export default function AiVideoGeneratorTool({
 
   const firstLastFrameImageCount = firstLastFrameImages.filter(Boolean).length
   const referenceImageCount = remoteImageUrls.length + imageFiles.length
+  const motionReferenceVideoCount = remoteMotionVideoUrls.length + motionVideoFiles.length
+  const referenceAudioCount = remoteAudioUrls.length + audioFiles.length
   const isUsingFirstLastFrame = supportsFirstLastFrame && firstLastFrameEnabled
+  const hasAnyMultimodalReference = referenceImageCount > 0 || motionReferenceVideoCount > 0 || referenceAudioCount > 0
   const hasRequiredReferenceImage = isUsingFirstLastFrame
     ? Boolean(firstLastFrameImages[0])
-    : referenceImageCount > 0
-  const motionReferenceVideoCount = remoteMotionVideoUrls.length + motionVideoFiles.length
+    : supportsMultimodalReferences
+      ? hasAnyMultimodalReference
+      : referenceImageCount > 0
   const referenceVideoMaxDurationSeconds = characterOrientation === 'image' ? 10 : modelConfig.referenceVideoMaxDurationSeconds || 30
   const shouldShowGenerationCreditCost = modelConfig.durationMode !== 'reference-video' || motionReferenceVideoCount > 0
   const motionReferenceVideoFormats = modelConfig.acceptedMotionVideoFormats?.join(', ') || 'MP4, QuickTime'
@@ -1064,6 +1265,165 @@ export default function AiVideoGeneratorTool({
         durationSeconds: motionVideoFiles[0].durationSeconds,
       }
       : null
+  const multimodalVideoItems = [
+    ...remoteMotionVideoUrls.map((url, index) => ({
+      id: `remote-video-${url}-${index}`,
+      name: `Reference video ${index + 1}`,
+      src: url,
+      durationSeconds: remoteMotionVideoDurations[index],
+    })),
+    ...motionVideoFiles.map((item, index) => ({
+      id: `local-video-${item.file.name}-${index}`,
+      name: item.file.name,
+      src: item.preview,
+      durationSeconds: item.durationSeconds,
+    })),
+  ]
+  const multimodalAudioItems = [
+    ...remoteAudioUrls.map((url, index) => ({
+      id: `remote-audio-${url}-${index}`,
+      name: `Reference audio ${index + 1}`,
+      src: url,
+    })),
+    ...audioFiles.map((item, index) => ({
+      id: `local-audio-${item.file.name}-${index}`,
+      name: item.file.name,
+      src: item.preview,
+      durationSeconds: item.durationSeconds,
+    })),
+  ]
+  const promptReferenceMentionItems = useMemo<PromptReferenceMentionItem[]>(() => {
+    const ordinalRegistry = promptReferenceMentionOrdinalRegistryRef.current
+    if (!ordinalRegistry) return []
+
+    ordinalRegistry.syncActive('image', [
+      ...remoteImageUrls.map((url) => `remote:${url}`),
+      ...imageFiles.map((item) => `local:${item.preview}`),
+    ])
+    ordinalRegistry.syncActive('video', [
+      ...remoteMotionVideoUrls.map((url) => `remote:${url}`),
+      ...motionVideoFiles.map((item) => `local:${item.preview}`),
+    ])
+    ordinalRegistry.syncActive('audio', [
+      ...remoteAudioUrls.map((url) => `remote:${url}`),
+      ...audioFiles.map((item) => `local:${item.preview}`),
+    ])
+
+    if (isUsingFirstLastFrame) {
+      return firstLastFrameImages.flatMap((item, index) => {
+        if (!item) return []
+        const label = index === 0 ? '@First Frame' : '@Last Frame'
+        return [{
+          id: `frame-${index}-${getReferenceImageSourcePreview(item)}`,
+          kind: 'image' as const,
+          label,
+          name: label.slice(1),
+          src: getReferenceImageSourcePreview(item),
+        }]
+      })
+    }
+
+    if (!supportsMultimodalReferences && !supportsFirstLastFrame) return []
+
+    const imageItems: PromptReferenceMentionItem[] = [
+      ...remoteImageUrls.map((url) => {
+        const ordinal = ordinalRegistry.get('image', `remote:${url}`)
+        return {
+          id: `mention-remote-image-${ordinal}`,
+          kind: 'image' as const,
+          label: `@Image ${ordinal}`,
+          name: `Reference image ${ordinal}`,
+          src: url,
+        }
+      }),
+      ...imageFiles.map((item) => {
+        const ordinal = ordinalRegistry.get('image', `local:${item.preview}`)
+        return {
+          id: `mention-local-image-${ordinal}`,
+          kind: 'image' as const,
+          label: `@Image ${ordinal}`,
+          name: item.file.name,
+          src: item.preview,
+        }
+      }),
+    ]
+
+    if (!supportsMultimodalReferences) return imageItems
+
+    return [
+      ...imageItems,
+      ...remoteMotionVideoUrls.map((url) => {
+        const ordinal = ordinalRegistry.get('video', `remote:${url}`)
+        return {
+          id: `mention-remote-video-${ordinal}`,
+          kind: 'video' as const,
+          label: `@Video ${ordinal}`,
+          name: `Reference video ${ordinal}`,
+          src: url,
+        }
+      }),
+      ...motionVideoFiles.map((item) => {
+        const ordinal = ordinalRegistry.get('video', `local:${item.preview}`)
+        return {
+          id: `mention-local-video-${ordinal}`,
+          kind: 'video' as const,
+          label: `@Video ${ordinal}`,
+          name: item.file.name,
+          src: item.preview,
+        }
+      }),
+      ...remoteAudioUrls.map((url) => {
+        const ordinal = ordinalRegistry.get('audio', `remote:${url}`)
+        return {
+          id: `mention-remote-audio-${ordinal}`,
+          kind: 'audio' as const,
+          label: `@Audio ${ordinal}`,
+          name: `Reference audio ${ordinal}`,
+          src: url,
+        }
+      }),
+      ...audioFiles.map((item) => {
+        const ordinal = ordinalRegistry.get('audio', `local:${item.preview}`)
+        return {
+          id: `mention-local-audio-${ordinal}`,
+          kind: 'audio' as const,
+          label: `@Audio ${ordinal}`,
+          name: item.file.name,
+          src: item.preview,
+        }
+      }),
+    ]
+  }, [
+    audioFiles,
+    firstLastFrameImages,
+    imageFiles,
+    isUsingFirstLastFrame,
+    motionVideoFiles,
+    remoteAudioUrls,
+    remoteImageUrls,
+    remoteMotionVideoUrls,
+    supportsFirstLastFrame,
+    supportsMultimodalReferences,
+  ])
+  const supportsPromptReferenceMentions = supportsMultimodalReferences || supportsFirstLastFrame
+  useEffect(() => {
+    setPromptMentionActiveIndex((current) => (
+      promptReferenceMentionItems.length === 0
+        ? 0
+        : Math.min(current, promptReferenceMentionItems.length - 1)
+    ))
+  }, [promptReferenceMentionItems])
+  const multimodalVideoHelper = formatText(text.multimodalReferenceVideoHelper, {
+    count: modelConfig.maxVideos || 10,
+    total: modelConfig.referenceVideoTotalMaxDurationSeconds || 30,
+    min: modelConfig.referenceVideoMinDurationSeconds || 2,
+    max: modelConfig.referenceVideoMaxDurationSeconds || 30,
+    size: modelConfig.maxVideoFileSizeMb || 200,
+  })
+  const multimodalAudioHelper = formatText(text.multimodalReferenceAudioHelper, {
+    count: modelConfig.maxAudioFiles || 10,
+    size: modelConfig.maxAudioFileSizeMb || 15,
+  })
   const firstLastFramePreviewImage = firstLastFrameImages.find((item): item is ReferenceImageSource => Boolean(item))
   const currentReferenceImagePreview = isUsingFirstLastFrame
     ? getReferenceImageSourcePreview(firstLastFramePreviewImage)
@@ -1099,8 +1459,132 @@ export default function AiVideoGeneratorTool({
     if (typeof nextDuration === 'number') setDuration(nextDuration)
   }
 
+  const handlePromptMentionKeyDown = (event: ReactKeyboardEvent<HTMLTextAreaElement>) => {
+    if (!supportsPromptReferenceMentions || event.key !== '@' || event.metaKey || event.ctrlKey || event.altKey) return
+
+    event.preventDefault()
+    const textarea = event.currentTarget
+    const selectionStart = textarea.selectionStart
+    const selectionEnd = textarea.selectionEnd
+    const nextPrompt = `${textarea.value.slice(0, selectionStart)}@${textarea.value.slice(selectionEnd)}`
+    const nextCaret = selectionStart + 1
+
+    setPrompt(nextPrompt)
+    setPromptMentionTriggerIndex(selectionStart)
+    setPromptMentionSelection({ start: nextCaret, end: nextCaret })
+    setPromptMentionActiveIndex(0)
+    setIsPromptMentionPickerOpen(true)
+    requestAnimationFrame(() => {
+      promptTextareaRef.current?.focus()
+      promptTextareaRef.current?.setSelectionRange(nextCaret, nextCaret)
+    })
+  }
+
+  const handlePromptChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const nextValue = event.target.value
+    const nextCaret = event.target.selectionStart
+    setPrompt(nextValue)
+
+    if (!isPromptMentionPickerOpen || promptMentionTriggerIndex === null) return
+    if (nextValue[promptMentionTriggerIndex] !== '@') {
+      setPromptMentionTriggerIndex(null)
+      setIsPromptMentionPickerOpen(false)
+      return
+    }
+    setPromptMentionSelection({ start: promptMentionTriggerIndex + 1, end: nextCaret })
+  }
+
+  const handlePromptScroll = (event: ReactUIEvent<HTMLTextAreaElement>) => {
+    if (!promptMentionOverlayRef.current) return
+    promptMentionOverlayRef.current.scrollTop = event.currentTarget.scrollTop
+    promptMentionOverlayRef.current.scrollLeft = event.currentTarget.scrollLeft
+  }
+
+  const handlePromptMentionTriggerClick = () => {
+    const textarea = promptTextareaRef.current
+    const selectionStart = textarea?.selectionStart ?? prompt.length
+    const selectionEnd = textarea?.selectionEnd ?? selectionStart
+
+    setPromptMentionTriggerIndex(null)
+    setPromptMentionSelection({ start: selectionStart, end: selectionEnd })
+    setPromptMentionActiveIndex(0)
+    setIsPromptMentionPickerOpen(true)
+    requestAnimationFrame(() => textarea?.focus())
+  }
+
+  const handlePromptReferenceMentionSelect = (item: PromptReferenceMentionItem) => {
+    const result = insertPromptReferenceMention({
+      value: prompt,
+      selectionStart: promptMentionSelection.start,
+      selectionEnd: promptMentionSelection.end,
+      triggerIndex: promptMentionTriggerIndex,
+      mention: item.label,
+    })
+
+    setPrompt(result.value)
+    setIsPromptMentionPickerOpen(false)
+    setPromptMentionTriggerIndex(null)
+    setPromptMentionSelection({ start: result.caret, end: result.caret })
+    requestAnimationFrame(() => {
+      promptTextareaRef.current?.focus()
+      promptTextareaRef.current?.setSelectionRange(result.caret, result.caret)
+    })
+  }
+
+  const handlePromptKeyDown = (event: ReactKeyboardEvent<HTMLTextAreaElement>) => {
+    if (isPromptMentionPickerOpen) {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setIsPromptMentionPickerOpen(false)
+        promptTextareaRef.current?.focus()
+        return
+      }
+      if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && promptReferenceMentionItems.length > 0) {
+        event.preventDefault()
+        const direction = event.key === 'ArrowDown' ? 1 : -1
+        setPromptMentionActiveIndex((current) => (
+          (current + direction + promptReferenceMentionItems.length) % promptReferenceMentionItems.length
+        ))
+        return
+      }
+      if (event.key === 'Enter' && promptReferenceMentionItems[promptMentionActiveIndex]) {
+        event.preventDefault()
+        handlePromptReferenceMentionSelect(promptReferenceMentionItems[promptMentionActiveIndex])
+        return
+      }
+    }
+
+    handlePromptMentionKeyDown(event)
+  }
+
+  useEffect(() => {
+    if (!isPromptMentionPickerOpen) return
+
+    const handlePromptMentionPointerDown = (event: MouseEvent) => {
+      if (event.target instanceof Node && promptMentionRootRef.current?.contains(event.target)) return
+      setIsPromptMentionPickerOpen(false)
+    }
+
+    const handlePromptMentionKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsPromptMentionPickerOpen(false)
+      if (event.key === 'Escape') promptTextareaRef.current?.focus()
+    }
+
+    document.addEventListener('mousedown', handlePromptMentionPointerDown)
+    document.addEventListener('keydown', handlePromptMentionKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handlePromptMentionPointerDown)
+      document.removeEventListener('keydown', handlePromptMentionKeyDown)
+    }
+  }, [isPromptMentionPickerOpen])
+
+  useEffect(() => {
+    if (supportsPromptReferenceMentions) return
+    setIsPromptMentionPickerOpen(false)
+  }, [supportsPromptReferenceMentions])
+
   const getVideoAnalyticsPayload = useCallback((extra?: Record<string, string | number | boolean | undefined>) => {
-    const referenceMediaCount = referenceImageCount + motionReferenceVideoCount
+    const referenceMediaCount = referenceImageCount + motionReferenceVideoCount + referenceAudioCount
 
     return {
       source: 'ai_video_generator_tool',
@@ -1126,6 +1610,7 @@ export default function AiVideoGeneratorTool({
     generationCreditCost,
     modelConfig.name,
     motionReferenceVideoCount,
+    referenceAudioCount,
     nativeAudio,
     pathname,
     referenceImageCount,
@@ -1267,6 +1752,7 @@ export default function AiVideoGeneratorTool({
     if (!selectedMotionVideo) return
     if (selectedMotionVideo.source === 'remote') {
       setRemoteMotionVideoUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== selectedMotionVideo.index))
+      setRemoteMotionVideoDurations((prev) => prev.filter((_, itemIndex) => itemIndex !== selectedMotionVideo.index))
       return
     }
 
@@ -1328,7 +1814,7 @@ export default function AiVideoGeneratorTool({
       return null
     }
 
-    setDuration(Math.ceil(videoDurationSeconds))
+    if (!supportsMultimodalReferences) setDuration(Math.ceil(videoDurationSeconds))
     return {
       file,
       preview: URL.createObjectURL(file),
@@ -1345,17 +1831,98 @@ export default function AiVideoGeneratorTool({
     const validItems: VideoItem[] = []
     for (const file of list.slice(0, remainingSlots)) {
       const item = await buildMotionVideoItem(file)
-      if (item) validItems.push(item)
+      if (!item) continue
+      const nextTotal = referenceVideoDurationTotal
+        + validItems.reduce((sum, candidate) => sum + (candidate.durationSeconds || 0), 0)
+        + (item.durationSeconds || 0)
+      if (supportsMultimodalReferences && nextTotal > (modelConfig.referenceVideoTotalMaxDurationSeconds || 30)) {
+        URL.revokeObjectURL(item.preview)
+        dispatchToolazeTopNotice({
+          type: 'warning',
+          title: 'Warning',
+          message: `Reference videos cannot exceed ${modelConfig.referenceVideoTotalMaxDurationSeconds || 30} seconds in total.`,
+        })
+        break
+      }
+      validItems.push(item)
     }
 
     if (validItems.length === 0) return
 
-    motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
-    motionVideoFilesRef.current = []
-    setRemoteMotionVideoUrls([])
+    if (supportsMultimodalReferences) {
+      setMotionVideoFiles((prev) => [...prev, ...validItems].slice(0, maxVideos))
+    } else {
+      motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
+      motionVideoFilesRef.current = []
+      setRemoteMotionVideoUrls([])
+      setRemoteMotionVideoDurations([])
+      setMotionVideoFiles((prev) => {
+        prev.forEach((item) => URL.revokeObjectURL(item.preview))
+        return [...validItems].slice(0, maxVideos)
+      })
+    }
+  }
+
+  const removeMultimodalVideo = (index: number) => {
+    if (index < remoteMotionVideoUrls.length) {
+      setRemoteMotionVideoUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+      setRemoteMotionVideoDurations((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+      return
+    }
+    const localIndex = index - remoteMotionVideoUrls.length
     setMotionVideoFiles((prev) => {
-      prev.forEach((item) => URL.revokeObjectURL(item.preview))
-      return [...validItems].slice(0, maxVideos)
+      const item = prev[localIndex]
+      if (item) URL.revokeObjectURL(item.preview)
+      return prev.filter((_, itemIndex) => itemIndex !== localIndex)
+    })
+  }
+
+  const buildAudioItem = async (file: File): Promise<AudioItem | null> => {
+    const isAccepted = ['audio/wav', 'audio/x-wav', 'audio/mpeg'].includes(file.type) || /\.(wav|mp3)$/i.test(file.name)
+    if (!isAccepted) {
+      dispatchToolazeTopNotice({ type: 'warning', title: 'Warning', message: text.referenceAudioInvalidType })
+      return null
+    }
+    if (file.size > (modelConfig.maxAudioFileSizeMb || 15) * 1024 * 1024) {
+      dispatchToolazeTopNotice({
+        type: 'warning',
+        title: 'Warning',
+        message: formatText(text.fileTooLarge, { name: file.name, size: modelConfig.maxAudioFileSizeMb || 15 }),
+      })
+      return null
+    }
+    try {
+      const durationSeconds = await getReferenceAudioDuration(file)
+      if (durationSeconds < 2 || durationSeconds > 30) throw new Error('invalid duration')
+      return { file, preview: URL.createObjectURL(file), durationSeconds }
+    } catch {
+      dispatchToolazeTopNotice({ type: 'warning', title: 'Warning', message: text.referenceAudioInvalidDuration })
+      return null
+    }
+  }
+
+  const handleAudioFiles = async (files: FileList | File[]) => {
+    const list = Array.isArray(files) ? files : Array.from(files)
+    const remainingSlots = (modelConfig.maxAudioFiles || 0) - referenceAudioCount
+    if (remainingSlots <= 0) return
+    const validItems: AudioItem[] = []
+    for (const file of list.slice(0, remainingSlots)) {
+      const item = await buildAudioItem(file)
+      if (item) validItems.push(item)
+    }
+    if (validItems.length > 0) setAudioFiles((prev) => [...prev, ...validItems].slice(0, modelConfig.maxAudioFiles || 0))
+  }
+
+  const removeAudioReference = (index: number) => {
+    if (index < remoteAudioUrls.length) {
+      setRemoteAudioUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
+      return
+    }
+    const localIndex = index - remoteAudioUrls.length
+    setAudioFiles((prev) => {
+      const item = prev[localIndex]
+      if (item) URL.revokeObjectURL(item.preview)
+      return prev.filter((_, itemIndex) => itemIndex !== localIndex)
     })
   }
 
@@ -1364,14 +1931,20 @@ export default function AiVideoGeneratorTool({
     file: File,
     source: MotionReferenceVideoUploaderItem['source'] = 'local',
   ) => {
+    const targetRemoteUrl = source === 'remote' ? remoteMotionVideoUrls[index] : ''
     const nextItem = await buildMotionVideoItem(file)
     if (!nextItem) return
 
     if (source === 'remote') {
-      setRemoteMotionVideoUrls((prev) => prev.filter((_, itemIndex) => itemIndex !== index))
-      motionVideoFilesRef.current.forEach((item) => URL.revokeObjectURL(item.preview))
-      motionVideoFilesRef.current = []
-      setMotionVideoFiles([nextItem])
+      if (!targetRemoteUrl) {
+        URL.revokeObjectURL(nextItem.preview)
+        return
+      }
+      setMotionVideoState((prev) => replaceRemoteMotionVideoState({
+        ...prev,
+        targetRemoteUrl,
+        nextItem,
+      }))
       return
     }
 
@@ -1583,6 +2156,7 @@ export default function AiVideoGeneratorTool({
     }
 
     const uploadUrl = getUploadUrlForModel(modelConfig)
+    const effectiveUploadUrl = modelConfig.uploadPurpose === 'seedance-multimodal-reference' ? '/api/upload' : uploadUrl
 
     const uploadImageItem = async (imageItem: ImageItem) => {
       const uploadForm = new FormData()
@@ -1591,7 +2165,7 @@ export default function AiVideoGeneratorTool({
 
       let uploadResponse: Response
       try {
-        uploadResponse = await fetch(uploadUrl, { method: 'POST', body: uploadForm })
+        uploadResponse = await fetch(effectiveUploadUrl, { method: 'POST', body: uploadForm })
       } catch {
         throw new Error(text.uploadRequestFailed)
       }
@@ -1657,11 +2231,12 @@ export default function AiVideoGeneratorTool({
   }
 
   const uploadMotionVideos = async (): Promise<UploadedMediaReferences> => {
-    if (!supportsMotionReferenceVideo) return { generationUrls: [], historyUrls: [] }
+    if (!supportsReferenceVideos) return { generationUrls: [], historyUrls: [] }
 
     const generationUrls: string[] = [...remoteMotionVideoUrls]
     const historyUrls: string[] = [...remoteMotionVideoUrls]
     const uploadUrl = getUploadUrlForModel(modelConfig)
+    const effectiveUploadUrl = modelConfig.uploadPurpose === 'seedance-multimodal-reference' ? '/api/upload' : uploadUrl
 
     for (const videoItem of motionVideoFiles) {
       const uploadForm = new FormData()
@@ -1670,7 +2245,7 @@ export default function AiVideoGeneratorTool({
 
       let uploadResponse: Response
       try {
-        uploadResponse = await fetch(uploadUrl, { method: 'POST', body: uploadForm })
+        uploadResponse = await fetch(effectiveUploadUrl, { method: 'POST', body: uploadForm })
       } catch {
         throw new Error(text.uploadRequestFailed)
       }
@@ -1690,6 +2265,28 @@ export default function AiVideoGeneratorTool({
       historyUrls.push(historyReference)
     }
 
+    return { generationUrls, historyUrls }
+  }
+
+  const uploadAudioReferences = async (): Promise<UploadedMediaReferences> => {
+    if (!supportsMultimodalReferences) return { generationUrls: [], historyUrls: [] }
+    const generationUrls = [...remoteAudioUrls]
+    const historyUrls = [...remoteAudioUrls]
+    const uploadUrl = getUploadUrlForModel(modelConfig)
+    const effectiveUploadUrl = modelConfig.uploadPurpose === 'seedance-multimodal-reference' ? '/api/upload' : uploadUrl
+    for (const audioItem of audioFiles) {
+      const uploadForm = new FormData()
+      uploadForm.append('file', audioItem.file)
+      appendUploadPurposeField(uploadForm)
+      const uploadResponse = await fetch(effectiveUploadUrl, { method: 'POST', body: uploadForm })
+      const uploadResult = await parseJsonSafely(uploadResponse, text.serverNonJson)
+      if (!uploadResponse.ok) throw new Error(uploadResult.error || formatText(text.uploadFailedWithStatus, { status: uploadResponse.status }))
+      const mediaReference = String(uploadResult.uploadRef || uploadResult.url || '').trim()
+      const historyReference = String(uploadResult.url || uploadResult.uploadRef || '').trim()
+      if (!mediaReference || !historyReference) throw new Error(text.uploadRequestFailed)
+      generationUrls.push(mediaReference)
+      historyUrls.push(historyReference)
+    }
     return { generationUrls, historyUrls }
   }
 
@@ -1729,11 +2326,14 @@ export default function AiVideoGeneratorTool({
           model: getVideoHistoryModelSlug(request.modelId),
           prompt: request.prompt,
           outputUrl: videoUrl,
-          inputUrls,
+          inputUrls: [...inputUrls, ...(request.audioUrls || [])],
           aspectRatio: request.aspectRatio,
           resolution: request.resolution,
           outputFormat: JSON.stringify({
             duration: request.duration,
+            mode: request.mode,
+            outputFormat: request.outputFormat || 'mp4',
+            ...(request.referenceVideoDurations?.length ? { referenceVideoDurations: request.referenceVideoDurations } : {}),
             ...(request.characterOrientation ? { characterOrientation: request.characterOrientation } : {}),
             ...(request.firstLastFrame ? { firstLastFrame: true } : {}),
           }),
@@ -1854,6 +2454,9 @@ export default function AiVideoGeneratorTool({
       inputPreview: currentReferenceImagePreview,
       inputUrls: currentReferenceImageUrls,
       motionVideoUrls: remoteMotionVideoUrls,
+      audioUrls: remoteAudioUrls,
+      referenceVideoDurations: [...remoteMotionVideoDurations, ...motionVideoFiles.map((item) => item.durationSeconds || 0)],
+      outputFormat,
       characterOrientation: supportsMotionReferenceVideo ? characterOrientation : undefined,
       firstLastFrame: isUsingFirstLastFrame,
       createdAt: formatLocalTimestampToSeconds(new Date(startedAt).toISOString()),
@@ -1868,11 +2471,13 @@ export default function AiVideoGeneratorTool({
     try {
       const uploadedImageMedia = await uploadImages()
       const uploadedMotionVideoMedia = await uploadMotionVideos()
+      const uploadedAudioMedia = await uploadAudioReferences()
       const imageUrls = isUsingFirstLastFrame
         ? uploadedImageMedia.firstLastFrameHistoryUrls
         : uploadedImageMedia.referenceHistoryUrls
       const motionVideoUrls = uploadedMotionVideoMedia.historyUrls
-      setCurrentRequest((current) => current?.id === request.id ? { ...current, inputUrls: imageUrls, motionVideoUrls } : current)
+      const audioUrls = uploadedAudioMedia.historyUrls
+      setCurrentRequest((current) => current?.id === request.id ? { ...current, inputUrls: imageUrls, motionVideoUrls, audioUrls } : current)
       const formData = new FormData()
       formData.append('mode', activeMode)
       formData.append('model', selectedModelId)
@@ -1880,10 +2485,11 @@ export default function AiVideoGeneratorTool({
       formData.append('aspectRatio', aspectRatio)
       formData.append('duration', String(duration))
       formData.append('resolution', resolution)
+      formData.append('outputFormat', outputFormat)
       if (requestHistoryTool.toolSlug) formData.append('toolSlug', requestHistoryTool.toolSlug)
       if (requestHistoryTool.toolLabel) formData.append('toolLabel', requestHistoryTool.toolLabel)
       if (requestHistoryTool.sourcePath) formData.append('sourcePath', requestHistoryTool.sourcePath)
-      formData.append('historyInputUrls', JSON.stringify([...imageUrls, ...motionVideoUrls]))
+      formData.append('historyInputUrls', JSON.stringify([...imageUrls, ...motionVideoUrls, ...audioUrls]))
       if (supportsNativeAudio) {
         formData.append('nativeAudio', String(nativeAudio))
       }
@@ -1897,7 +2503,11 @@ export default function AiVideoGeneratorTool({
       }
       if (uploadedMotionVideoMedia.generationUrls.length > 0) {
         formData.append('videoUrls', JSON.stringify(uploadedMotionVideoMedia.generationUrls))
-        formData.append('characterOrientation', characterOrientation)
+        formData.append('videoDurations', JSON.stringify(request.referenceVideoDurations || []))
+        if (supportsMotionReferenceVideo) formData.append('characterOrientation', characterOrientation)
+      }
+      if (uploadedAudioMedia.generationUrls.length > 0) {
+        formData.append('audioUrls', JSON.stringify(uploadedAudioMedia.generationUrls))
       }
 
       failureStage = 'create_or_poll'
@@ -1933,6 +2543,7 @@ export default function AiVideoGeneratorTool({
         videoUrl: persistedVideoUrl,
         inputUrls: imageUrls,
         motionVideoUrls,
+        audioUrls,
         characterOrientation: request.characterOrientation,
         firstLastFrame: request.firstLastFrame,
         inputPreview: request.inputPreview,
@@ -1954,10 +2565,13 @@ export default function AiVideoGeneratorTool({
         aspectRatio: completedRequest.aspectRatio,
         duration: completedRequest.duration,
         resolution: completedRequest.resolution,
+        outputFormat: completedRequest.outputFormat || 'mp4',
         nativeAudio: completedRequest.nativeAudio,
         inputPreview: completedRequest.inputPreview,
         inputUrls: imageUrls,
         motionVideoUrls,
+        audioUrls,
+        referenceVideoDurations: completedRequest.referenceVideoDurations,
         characterOrientation: completedRequest.characterOrientation,
         firstLastFrame: completedRequest.firstLastFrame,
         outputPreview: persistedVideoUrl,
@@ -2019,7 +2633,7 @@ export default function AiVideoGeneratorTool({
 
     if (!item.modelId) return
     const itemConfig = getAiVideoGeneratorModelConfig(item.modelId)
-    const nextMode = item.inputUrls.length > 0 ? 'image-to-video' : item.mode as AiVideoGeneratorModeId
+    const nextMode = item.mode as AiVideoGeneratorModeId
     const shouldUseFirstLastFrame = nextMode === 'image-to-video'
       && Boolean(itemConfig.supportsFirstLastFrame)
       && item.firstLastFrame === true
@@ -2031,6 +2645,7 @@ export default function AiVideoGeneratorTool({
     setDuration(item.duration || itemConfig.defaultDuration || itemConfig.durations[0] || 5)
     setResolution(item.resolution || itemConfig.resolutions[0] || '480p')
     setNativeAudio(Boolean(itemConfig.supportsNativeAudio && item.nativeAudio))
+    setOutputFormat(item.outputFormat || itemConfig.outputFormats?.[0] || 'mp4')
     setCharacterOrientation(item.characterOrientation || 'video')
     clearFirstLastFrameImages()
     if (shouldUseFirstLastFrame) {
@@ -2043,13 +2658,19 @@ export default function AiVideoGeneratorTool({
       setFirstLastFrameEnabled(false)
       setRemoteImageUrls(item.inputUrls.slice(0, itemConfig.maxImages))
     }
-    setRemoteMotionVideoUrls(itemConfig.supportsMotionReferenceVideo ? (item.motionVideoUrls || []).slice(0, itemConfig.maxVideos || 1) : [])
+    setRemoteMotionVideoUrls((itemConfig.supportsMotionReferenceVideo || itemConfig.supportsMultimodalReferences) ? (item.motionVideoUrls || []).slice(0, itemConfig.maxVideos || 1) : [])
+    setRemoteMotionVideoDurations((item.referenceVideoDurations || []).slice(0, itemConfig.maxVideos || 1))
+    setRemoteAudioUrls(itemConfig.supportsMultimodalReferences ? (item.audioUrls || []).slice(0, itemConfig.maxAudioFiles || 0) : [])
     setImageFiles((prev) => {
       prev.forEach((image) => URL.revokeObjectURL(image.preview))
       return []
     })
     setMotionVideoFiles((prev) => {
       prev.forEach((video) => URL.revokeObjectURL(video.preview))
+      return []
+    })
+    setAudioFiles((prev) => {
+      prev.forEach((audio) => URL.revokeObjectURL(audio.preview))
       return []
     })
     setActiveSettingsHistoryItemId(item.id)
@@ -2121,11 +2742,13 @@ export default function AiVideoGeneratorTool({
   const renderVideoReferenceMedia = ({
     imageUrls,
     motionVideoUrls,
+    audioUrls,
   }: {
     imageUrls: string[]
     motionVideoUrls: string[]
+    audioUrls: string[]
   }) => {
-    const hasReferences = imageUrls.length > 0 || motionVideoUrls.length > 0
+    const hasReferences = imageUrls.length > 0 || motionVideoUrls.length > 0 || audioUrls.length > 0
     if (!hasReferences) return null
 
     return (
@@ -2146,12 +2769,22 @@ export default function AiVideoGeneratorTool({
             <video
               data-video-history-reference-video
               src={url}
-              className="h-14 w-20 rounded-lg object-cover ring-1 ring-[#E0E7FF]"
+              className="h-14 w-20 rounded-lg bg-slate-950 object-contain object-center ring-1 ring-[#E0E7FF]"
               preload="metadata"
               muted
               playsInline
             />
           </div>
+        ))}
+        {audioUrls.map((url, index) => (
+          <audio
+            key={`audio-${url}-${index}`}
+            data-video-history-reference-audio
+            src={url}
+            controls
+            preload="metadata"
+            className="h-10 w-full max-w-[16rem]"
+          />
         ))}
       </div>
     )
@@ -2190,6 +2823,7 @@ export default function AiVideoGeneratorTool({
           {renderVideoReferenceMedia({
             imageUrls: item.inputUrls.length > 0 ? item.inputUrls : (item.inputPreview ? [item.inputPreview] : []),
             motionVideoUrls: item.motionVideoUrls || [],
+            audioUrls: item.audioUrls || [],
           })}
         </div>
       </div>
@@ -2281,6 +2915,7 @@ export default function AiVideoGeneratorTool({
           {renderVideoReferenceMedia({
             imageUrls: item.inputUrls,
             motionVideoUrls: item.motionVideoUrls || [],
+            audioUrls: item.audioUrls || [],
           })}
 
           <div data-video-result-actions className="mt-auto flex flex-wrap gap-2 pt-1">
@@ -2368,6 +3003,7 @@ export default function AiVideoGeneratorTool({
         {renderVideoReferenceMedia({
           imageUrls: item.inputUrls,
           motionVideoUrls: item.motionVideoUrls || [],
+          audioUrls: item.audioUrls || [],
         })}
 
         <div data-mobile-video-history-actions className="grid grid-cols-3 gap-2">
@@ -2447,6 +3083,7 @@ export default function AiVideoGeneratorTool({
           {renderVideoReferenceMedia({
             imageUrls: item.inputUrls.length > 0 ? item.inputUrls : (item.inputPreview ? [item.inputPreview] : []),
             motionVideoUrls: item.motionVideoUrls || [],
+            audioUrls: item.audioUrls || [],
           })}
         </div>
       </div>
@@ -2832,15 +3469,85 @@ export default function AiVideoGeneratorTool({
                     />
                   ) : null}
 
-                  <div>
-                    <label className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{promptLabel}</label>
-                    <textarea
-                      value={prompt}
-                      onChange={(event) => setPrompt(event.target.value)}
-                      placeholder={text.promptPlaceholder}
-                      rows={4}
-                      className="h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm"
+                  {supportsMultimodalReferences && !isUsingFirstLastFrame ? (
+                    <MultimodalReferenceUploader
+                      videoItems={multimodalVideoItems}
+                      audioItems={multimodalAudioItems}
+                      maxVideos={modelConfig.maxVideos || 10}
+                      maxAudioFiles={modelConfig.maxAudioFiles || 10}
+                      videoTitle={text.referenceVideos}
+                      audioTitle={text.referenceAudio}
+                      uploadLabel={text.upload}
+                      videoHelper={multimodalVideoHelper}
+                      audioHelper={multimodalAudioHelper}
+                      onVideoFiles={(files) => {
+                        if (files?.length) void handleMotionVideoFiles(files)
+                      }}
+                      onAudioFiles={(files) => {
+                        if (files?.length) void handleAudioFiles(files)
+                      }}
+                      onRemoveVideo={removeMultimodalVideo}
+                      onRemoveAudio={removeAudioReference}
                     />
+                  ) : null}
+
+                  <div ref={promptMentionRootRef}>
+                    <label className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{promptLabel}</label>
+                    <div className="relative rounded-xl bg-slate-50/50">
+                      {supportsPromptReferenceMentions ? (
+                        <PromptReferenceMentionOverlay
+                          value={prompt}
+                          items={promptReferenceMentionItems}
+                          mirrorRef={promptMentionOverlayRef}
+                        />
+                      ) : null}
+                      <textarea
+                        ref={promptTextareaRef}
+                        value={prompt}
+                        onChange={handlePromptChange}
+                        onScroll={handlePromptScroll}
+                        onSelect={(event) => {
+                          if (isPromptMentionPickerOpen) {
+                            setPromptMentionSelection({
+                              start: event.currentTarget.selectionStart,
+                              end: event.currentTarget.selectionEnd,
+                            })
+                          }
+                        }}
+                        onKeyDown={handlePromptKeyDown}
+                        aria-controls={isPromptMentionPickerOpen ? promptMentionPickerId : undefined}
+                        aria-expanded={isPromptMentionPickerOpen}
+                        aria-activedescendant={isPromptMentionPickerOpen && promptReferenceMentionItems[promptMentionActiveIndex]
+                          ? `${promptMentionPickerId}-option-${promptReferenceMentionItems[promptMentionActiveIndex].id}`
+                          : undefined}
+                        placeholder={text.promptPlaceholder}
+                        rows={4}
+                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-transparent py-3 pl-12 pr-4 text-base leading-6 ${supportsPromptReferenceMentions ? 'text-transparent caret-slate-800' : 'text-slate-800'} placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm`}
+                      />
+                      {supportsPromptReferenceMentions ? (
+                        <button
+                          type="button"
+                          data-prompt-reference-mention-trigger
+                          aria-label="Mention a reference"
+                          aria-expanded={isPromptMentionPickerOpen}
+                          aria-haspopup="listbox"
+                          aria-controls={promptMentionPickerId}
+                          onMouseDown={(event) => event.preventDefault()}
+                          onClick={handlePromptMentionTriggerClick}
+                          className="absolute bottom-3 left-3 z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                        >
+                          @
+                        </button>
+                      ) : null}
+                      {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
+                        <PromptReferenceMentionPicker
+                          id={promptMentionPickerId}
+                          items={promptReferenceMentionItems}
+                          activeItemId={promptReferenceMentionItems[promptMentionActiveIndex]?.id}
+                          onSelect={handlePromptReferenceMentionSelect}
+                        />
+                      ) : null}
+                    </div>
                   </div>
 
                   {activeMode === 'image-to-video' && supportsMotionReferenceVideo ? (
@@ -2904,6 +3611,25 @@ export default function AiVideoGeneratorTool({
                         </div>
                       )}
                     </div>
+
+                    {modelConfig.outputFormats && modelConfig.outputFormats.length > 1 ? (
+                      <div data-video-output-format-selector>
+                        <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.outputFormat}</span>
+                        <div role="group" aria-label={text.outputFormat} className="grid grid-cols-2 gap-2">
+                          {modelConfig.outputFormats.map((value) => (
+                            <button
+                              key={value}
+                              type="button"
+                              aria-pressed={outputFormat === value}
+                              onClick={() => setOutputFormat(value)}
+                              className={getOptionButtonClassName(outputFormat === value)}
+                            >
+                              {value.toUpperCase()}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
 
                     <div>
                       <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.resolution}</span>

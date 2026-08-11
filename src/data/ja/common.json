@@ -870,7 +870,14 @@
       "characterOrientationVideo": "動画",
       "characterOrientationHelper": "画像ではキャラクター画像の人物と同じ向きになります（動画は最大10秒）。動画では参照動画内のキャラクターの向きに従います（動画は最大30秒）。",
       "referenceImageAspectRatioLabel": "参照画像に従います",
-      "referenceImageAspectRatioHelper": "出力はアップロードした参照素材の形状に従います。16:9で出力したい場合は、アップロード前に参照素材をトリミングしてください。"
+      "referenceImageAspectRatioHelper": "出力はアップロードした参照素材の形状に従います。16:9で出力したい場合は、アップロード前に参照素材をトリミングしてください。",
+      "referenceVideos": "参照動画",
+      "referenceAudio": "参照音声",
+      "outputFormat": "出力形式",
+      "multimodalReferenceVideoHelper": "MP4またはMOV、最大{count}本、合計{total}秒。各ファイルは{min}〜{max}秒、最大{size}MB。",
+      "multimodalReferenceAudioHelper": "WAVまたはMP3、最大{count}個。各ファイルは2〜30秒、最大{size}MB。",
+      "referenceAudioInvalidType": "参照音声にはWAVまたはMP3を使用してください。",
+      "referenceAudioInvalidDuration": "参照音声は2〜30秒にしてください。"
     }
   },
   "imageCompressor": {

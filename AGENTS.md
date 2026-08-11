@@ -13,6 +13,7 @@
 ## UI 文案与提示规范
 
 - 产品级 UI 文案、提示、弹窗和 CTA 规则以 `docs/UI_STYLE_GUIDE.md` 为准；修改相关组件或文案前先对照该文档。
+- 页面正文中的 H1、H2、H3 等内容标题必须是所属区块的首个视觉信息；标题上方不得放 eyebrow、kicker、badge、步骤号、分类名或纯装饰标签。Breadcrumb 和全局导航属于页面结构，不受此限制。步骤号、时间、分类等必要辅助信息应放在对应标题之后。
 - 全局顶部提示只使用 `Success`、`Failed`、`Warning` 三种状态；处理中、待确认、退款/返还等场景按 `docs/UI_STYLE_GUIDE.md` 映射，不新增独立状态。
 - 所有按钮文字必须在按钮内水平和垂直居中显示，包含 icon、loading 状态或多语言长文案时也要保持视觉居中。
 - 生成历史、积分扣除和积分退款记录的用户可见标题默认显示当前功能/工具名（如 `Clothes Changer`），补充信息显示底层模型名（如 `Seedream 5.0 Lite`）；模型页或无功能包装的通用生成器可直接以模型名作为主标题，避免把底层模型名误显示成功能标签。
@@ -38,9 +39,13 @@
 - 目标是快速给出可预览结果：先读 2-3 个目标文件，直接做最小 patch，再跑 1-2 个相关测试和页面 200 / HTML 标记 smoke。
 - 每次生成、改写或接入落地页后，最终回复必须提供可预览链接；若本地预览服务未启动，需明确给出推荐启动命令、端口和目标路径，不能只汇报文件改动。
 - 落地页的 prompt 示例板块默认只保留 4 个示例；除非用户明确要求扩展，不得生成第 5 个或更多 prompt 卡片。
+- 公开落地页、模型页和工具页的 FAQ 最多保留 6 条；每条必须解决剩余的高意图疑问，不得重复 Hero、Key Features、How To、Comparison 或 Use Cases 已完整回答的内容。
 - 浏览器自动化交互只在用户要求视觉/交互确认，或源码与 HTML smoke 不能证明问题时再做；默认不为了单纯给预览链接而启动完整浏览器流程。
 - 小型首屏布局、组件接线、文案微调默认不扩展后端 API、导航、sitemap、SEO Factory 记录或完整验证矩阵，除非改动实际触碰这些面。
 - 共享生成组件变更若影响真实生成请求、模型选择、上传、积分、历史记录或 API 参数，必须补针对性测试；否则优先用源码契约测试、类型检查和本地页面 smoke。
+- 共享 Hero 中的 breadcrumb、H1、Demo 等结构必须只有一个单一 owner；外层页面和共享生成组件不得重复渲染同一结构，ownership 必须由结构能力或配置解析，不得依赖页面 slug 手工名单。
+- 每个缺陷修复前必须先分类为 isolated 或 reusable；可复用模式必须同时补充项目规则和契约测试，禁止只修单个页面或单个调用点后结束。
+- 共享视频生成器分支负责渲染 hero breadcrumb，外层页面不得重复渲染；新增视频模型必须依靠生成器配置解析 ownership，不得加入 breadcrumb ownership 手工名单。
 - 视频上传组件、Motion Control 参考视频、历史记录参考视频和其它需要用户检查视频内容的预览，默认必须完整展示原始画面：使用 `object-contain` / 居中显示，不裁剪、不拉伸；9:16、1:1、16:9 等比例都应放在容器中间并保留必要背景留白。只有明确作为装饰性封面、入口海报或无需检查主体细节的卡片，才可以使用裁剪式 `object-cover`，且需要有对应源码契约测试防止误用。
 - 图片或视频模型/工具的生成比例若由上传参考图、参考视频等参考媒体决定，而不是由 provider 对当前生成模式实际支持的固定 `aspect_ratio` / 尺寸参数决定，前端不得展示可点击的 `16:9`、`9:16`、`1:1` 等假比例选项；比例控件默认显示一个已选中的只读项，英文优先命名为 `Match Reference`，中文优先命名为“跟随参考图”，并用辅助文案说明“输出会跟随上传参考媒体的比例，想要 16:9 / 9:16 需先裁剪参考素材”。该控件宽度必须按内容自适应，不得默认占满整行。每次接入新生成模型时，必须按 text-to-image / image-to-image / text-to-video / image-to-video 等实际模式显式声明比例行为，并补 UI 与 API payload 契约测试；provider 未声明或不支持比例字段时，前端使用 `Match Reference`，后端不得继续发送或记录虚假的自定义比例。若要允许用户选择固定比例，必须同时提供真实裁剪框并把裁剪后的参考素材用于生成。
 - 新增或修改生成模型时，Vercel 前端模型清单与 Cloudflare 生成后端清单必须通过 `npm run check:generation-contract`。生产发布顺序固定为先发布 Cloudflare Production 契约与生成函数，再发布 Vercel Production；Cloudflare 线上契约版本不一致时，Vercel Production 构建必须失败，不得绕过后继续上线。
@@ -60,6 +65,7 @@
 - AI Clothes Changer 的内置服装参考图必须是真实可读的全身人像穿着该服装，而不是单独平铺衣服、裁切半身、抽象服装图或 UI 占位。默认内置 4 类：正式 business 西装、奢华礼服、黑色比基尼、另一款彩色/度假风比基尼；泳装示例必须是成人、非露骨、非性化的正常穿着展示。
 - 视频、聊天、多模态等非图片工具只有在免费额度、登录要求和限制已经明确时，才可在标题、H1、FAQ 或 CTA 中使用 `Free`。若免费来自注册赠送 credits，可覆盖一次真实生成，就应明确写出注册条件、credits 数量以及适用模型或设置；不得据此延伸成 `Unlimited Free`、`Free Forever`、`No Signup` 或 `No Login`，除非这些承诺也已单独验证。
 - 用户可见 SEO 文案不得出现“this page is built”“the page covers”“one model page”“search intent”等编辑、站点架构或 SEO 规划口吻；直接写能力、限制、设置、输出和用户决策依据。
+- 证据核验语言只留在内部研究与验收记录，不得直接写进公开落地页。完成事实核验后应直接陈述用户可理解的产品事实与创作结果，避免 `documented`、`verified`、`visible limits`、`current generator`、`decision point`、`planning burden`、`actual controls`、`not a guarantee` 等研究报告、审计或实现口吻；必要限制用一句自然产品文案放在对应设置或 FAQ，不得让免责声明主导正文。
 - 新增或改写任何 SEO 落地页后，必须对最终页面 JSON 和渲染 HTML 做一次用户可见文案负面扫描；至少覆盖 `this page`、`the page is designed`、`search intent`、`keyword`、`ranking`、`SEO`、`AI Overview`、`API platform`、`integration`、`provider route`、`Unlimited Free`、`Free Forever`、`No Signup`、`No Login` 等词，并修掉所有命中，除非命中属于开发文档或用户不可见字段。
 - 新增或改写带多语言 JSON 的 SEO 落地页时，不能只本地化 metadata、H1、导航或首屏描述；必须递归检查 intro、how-to、tips、prompt 示例标题/说明、对比表、features、FAQ、related tools、schema 可见文本等嵌套字段。除 URL、图片路径、模型名、品牌名、技术规格和刻意给用户复制的 prompt 外，非英文 locale 不得复用英文正文。
 - 任何页面标题、H1、meta description、FAQ 或 CTA 使用 `Free` / `免费` / `gratis` / `gratuit` 等免费承诺时，必须在同一页面可见位置说明真实条件：是否需要注册、赠送 credits 数量、可覆盖的模型或设置、以及更高规格或持续使用可能需要更多 credits；并用针对性测试或脚本断言禁止 `Unlimited Free`、`Free Forever`、`No Signup`、`No Login` 等未验证扩展承诺。
