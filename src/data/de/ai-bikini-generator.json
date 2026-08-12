@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
+    "defaultAspectRatio": "9:16",
     "defaultPrompt": "Bild 1 ist das ursprüngliche Personenfoto. Bild 2 ist die Bikini- oder Bademoden-Referenz. Ersetzen Sie nur die sichtbare Kleidung jeder klar sichtbaren Person in Bild 1 durch die Bademode aus Bild 2. Wenn Bild 1 mehrere Personen enthält, wenden Sie denselben Bademodenstil auf jede klar sichtbare Person an. Lassen Sie alles andere bei jeder Person und in der Szene exakt unverändert: Gesicht, Identität, Alter, Hautton, Haare, Körperform, Körperproportionen, Pose, Hände, Ausdruck, relative Position, Hintergrund, Licht, Kamerawinkel, Bildausschnitt und Bildqualität. Nicht verschlanken, nicht vergrößern, nicht retuschieren, nicht umformen, Pose nicht ändern, Gesicht nicht ändern, Körper nicht ändern, relative Positionen nicht ändern und Szene nicht verändern. Stimmen Sie Stil, Bedeckung, Stoff, Farbe, Träger und Silhouette der Bademode möglichst genau mit Bild 2 ab. Das Ergebnis soll realistisch, geschmackvoll, nicht explizit und für eine Bademoden-Vorschau geeignet sein.",
     "defaultImageUrls": [
       "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"

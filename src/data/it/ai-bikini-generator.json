@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
+    "defaultAspectRatio": "9:16",
     "defaultPrompt": "L’immagine 1 è la foto originale della persona. L’immagine 2 è il riferimento bikini o costume da bagno. Sostituisci solo i vestiti visibili su ogni persona chiaramente visibile nell’immagine 1 con il costume da bagno dell’immagine 2. Se l’immagine 1 contiene più persone, applica lo stesso stile di costume da bagno a ogni persona chiaramente visibile. Mantieni tutto il resto esattamente uguale per ogni persona e per la scena: volto, identità, età, tono della pelle, capelli, forma del corpo, proporzioni corporee, posa, mani, espressione, posizione relativa, sfondo, luce, angolo camera, inquadratura e qualità immagine. Non snellire, non ingrandire, non ritoccare, non rimodellare, non cambiare posa, non cambiare volto, non cambiare corpo, non cambiare le posizioni relative e non modificare la scena. Fai corrispondere lo stile, la copertura, il tessuto, il colore, le spalline e la silhouette del costume dell’immagine 2 il più possibile. Mantieni il risultato realistico, di buon gusto, non esplicito e adatto a un’anteprima di costume da bagno.",
     "defaultImageUrls": [
       "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"

@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
+    "defaultAspectRatio": "9:16",
     "defaultPrompt": "Image 1 is the original person photo. Image 2 is the bikini or swimwear reference. Replace only the visible clothing on each clearly visible person in image 1 with the swimwear from image 2. If image 1 contains multiple people, apply the same swimwear style to every clearly visible person. Keep everything else exactly the same for each person and the scene: face, identity, age, skin tone, hair, body shape, body proportions, pose, hands, expression, relative position, background, lighting, camera angle, framing, and image quality. Do not slim, do not enlarge, do not retouch, do not reshape, do not change posture, do not change the face, do not change the body, do not change relative positions, and do not modify the scene. Match the swimwear style, coverage, fabric, color, straps, and silhouette from image 2 as closely as possible. Keep the result realistic, tasteful, non-explicit, and suitable for a swimwear preview.",
     "defaultImageUrls": [
       "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"
