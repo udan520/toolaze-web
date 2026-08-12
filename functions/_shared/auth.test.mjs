@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getSafeReturnTo } from './http.mjs';
+import {
+  getClientCountry,
+  getClientIp,
+  getSafeReturnTo,
+} from './http.mjs';
 import {
   base64UrlEncodeBytes,
   base64UrlEncodeText,
@@ -302,8 +306,22 @@ class FakeD1Statement {
     const normalized = normalizeSql(this.sql);
 
     if (normalized.startsWith('insert into users')) {
-      assert.equal(this.values.length, 7);
-      const [id, googleSub, email, name, avatarUrl, createdAt, updatedAt] = this.values;
+      assert.equal(this.values.length, 13);
+      const [
+        id,
+        googleSub,
+        email,
+        name,
+        avatarUrl,
+        firstLoginAt,
+        lastLoginAt,
+        signupIp,
+        signupCountry,
+        lastLoginIp,
+        lastLoginCountry,
+        createdAt,
+        updatedAt,
+      ] = this.values;
       if (this.db.users.some((user) => user.google_sub === googleSub)) {
         throw new Error(`Unique constraint failed: users.google_sub ${googleSub}`);
       }
@@ -313,6 +331,12 @@ class FakeD1Statement {
         email,
         name,
         avatar_url: avatarUrl,
+        first_login_at: firstLoginAt,
+        last_login_at: lastLoginAt,
+        signup_ip: signupIp,
+        signup_country: signupCountry,
+        last_login_ip: lastLoginIp,
+        last_login_country: lastLoginCountry,
         created_at: createdAt,
         updated_at: updatedAt,
       });
@@ -354,9 +378,28 @@ class FakeD1Statement {
     }
 
     if (normalized.startsWith('update users')) {
-      const [email, name, avatarUrl, updatedAt, googleSub] = this.values;
+      const [
+        email,
+        name,
+        avatarUrl,
+        lastLoginAt,
+        lastLoginIp,
+        lastLoginCountry,
+        updatedAt,
+        googleSub,
+      ] = this.values;
       const user = this.db.users.find((item) => item.google_sub === googleSub);
-      if (user) Object.assign(user, { email, name, avatar_url: avatarUrl, updated_at: updatedAt });
+      if (user) {
+        Object.assign(user, {
+          email,
+          name,
+          avatar_url: avatarUrl,
+          last_login_at: lastLoginAt,
+          last_login_ip: lastLoginIp,
+          last_login_country: lastLoginCountry,
+          updated_at: updatedAt,
+        });
+      }
       return { success: true };
     }
 
@@ -626,7 +669,7 @@ class FakeD1Statement {
     }
 
     if (normalized.startsWith('insert into generation_history')) {
-      assert.equal(this.values.length, 15);
+      assert.equal(this.values.length, 17);
       const [
         id,
         userId,
@@ -642,6 +685,8 @@ class FakeD1Statement {
         toolSlug,
         toolLabel,
         sourcePath,
+        requestIp,
+        requestCountry,
         createdAt,
       ] = this.values;
       assert.match(id, /^gen_[a-f0-9]{32}$/);
@@ -661,6 +706,8 @@ class FakeD1Statement {
         tool_slug: toolSlug,
         tool_label: toolLabel,
         source_path: sourcePath,
+        request_ip: requestIp,
+        request_country: requestCountry,
         created_at: createdAt,
       });
       return { success: true, meta: { changes: 1 } };
@@ -788,6 +835,31 @@ test('getSafeReturnTo rejects unsafe return paths', () => {
   assert.equal(getSafeReturnTo('//evil.example/path'), '/');
   assert.equal(getSafeReturnTo('/foo\\bar'), '/');
   assert.equal(getSafeReturnTo(''), '/');
+});
+
+test('getClientIp reads Cloudflare IP before proxy fallbacks', () => {
+  assert.equal(getClientIp(new Request('https://toolaze.test', {
+    headers: {
+      'CF-Connecting-IP': ' 203.0.113.8 ',
+      'X-Forwarded-For': '198.51.100.9, 198.51.100.10',
+    },
+  })), '203.0.113.8');
+  assert.equal(getClientIp(new Request('https://toolaze.test', {
+    headers: {
+      'X-Forwarded-For': ' 198.51.100.9, 198.51.100.10 ',
+    },
+  })), '198.51.100.9');
+  assert.equal(getClientIp(new Request('https://toolaze.test')), null);
+});
+
+test('getClientCountry reads normalized Cloudflare country codes', () => {
+  assert.equal(getClientCountry(new Request('https://toolaze.test', {
+    headers: { 'CF-IPCountry': ' us ' },
+  })), 'US');
+  assert.equal(getClientCountry(new Request('https://toolaze.test', {
+    headers: { 'CF-IPCountry': 'XX' },
+  })), null);
+  assert.equal(getClientCountry(new Request('https://toolaze.test')), null);
 });
 
 test('signed state can be read before expiry', async () => {
@@ -1138,12 +1210,18 @@ test('upsertUser inserts first Google user then updates the same google_sub', as
     email: 'first@example.com',
     name: 'First Name',
     avatarUrl: 'https://example.com/first.png',
+  }, null, {
+    ip: '203.0.113.8',
+    country: 'US',
   });
   const updated = await upsertUser(env, {
     googleSub: 'google-sub-1',
     email: 'second@example.com',
     name: 'Second Name',
     avatarUrl: 'https://example.com/second.png',
+  }, null, {
+    ip: '198.51.100.9',
+    country: 'CA',
   });
 
   assert.match(inserted.id, /^user_[a-f0-9]{32}$/);
@@ -1154,6 +1232,12 @@ test('upsertUser inserts first Google user then updates the same google_sub', as
   assert.equal(env.DB.users[0].email, 'second@example.com');
   assert.equal(env.DB.users[0].name, 'Second Name');
   assert.equal(env.DB.users[0].avatar_url, 'https://example.com/second.png');
+  assert.equal(env.DB.users[0].signup_ip, '203.0.113.8');
+  assert.equal(env.DB.users[0].signup_country, 'US');
+  assert.equal(env.DB.users[0].last_login_ip, '198.51.100.9');
+  assert.equal(env.DB.users[0].last_login_country, 'CA');
+  assert.match(env.DB.users[0].first_login_at, /^\d{4}-\d{2}-\d{2}T/);
+  assert.match(env.DB.users[0].last_login_at, /^\d{4}-\d{2}-\d{2}T/);
 });
 
 test('upsertUser records signup attribution once for newly inserted users', async () => {
@@ -1584,6 +1668,8 @@ test('generation history stores and lists successful generated media', async () 
     toolSlug: 'ai-image-generator',
     toolLabel: 'AI Image Generator',
     sourcePath: '/ai-image-generator',
+    requestIp: null,
+    requestCountry: null,
     createdAt: item.createdAt,
   }]);
 });

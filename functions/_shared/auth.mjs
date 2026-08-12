@@ -162,41 +162,120 @@ export async function verifyGoogleIdToken(env, idToken) {
   };
 }
 
-export async function upsertUser(env, profile, signupAttribution = null) {
+export async function upsertUser(env, profile, signupAttribution = null, loginMetadata = null) {
   const existing = await env.DB.prepare(
     'SELECT id FROM users WHERE google_sub = ?'
   ).bind(profile.googleSub).first();
   const now = new Date().toISOString();
+  const loginIp = normalizeNullableText(loginMetadata?.ip);
+  const loginCountry = normalizeCountryCode(loginMetadata?.country);
 
   if (existing) {
-    await env.DB.prepare(
-      'UPDATE users SET email = ?, name = ?, avatar_url = ?, updated_at = ? WHERE google_sub = ?'
-    ).bind(
-      profile.email,
-      profile.name || null,
-      profile.avatarUrl || null,
-      now,
-      profile.googleSub
-    ).run();
+    await runUserLoginUpdate(env, {
+      email: profile.email,
+      name: profile.name || null,
+      avatarUrl: profile.avatarUrl || null,
+      lastLoginAt: now,
+      lastLoginIp: loginIp,
+      lastLoginCountry: loginCountry,
+      updatedAt: now,
+      googleSub: profile.googleSub,
+    });
     return { id: existing.id, isNew: false };
   }
 
   const id = `user_${createUuidSuffix()}`;
-  await env.DB.prepare(
-    'INSERT INTO users (id, google_sub, email, name, avatar_url, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
-  ).bind(
+  await runUserInsert(env, {
     id,
-    profile.googleSub,
-    profile.email,
-    profile.name || null,
-    profile.avatarUrl || null,
-    now,
-    now
-  ).run();
+    googleSub: profile.googleSub,
+    email: profile.email,
+    name: profile.name || null,
+    avatarUrl: profile.avatarUrl || null,
+    firstLoginAt: now,
+    lastLoginAt: now,
+    signupIp: loginIp,
+    signupCountry: loginCountry,
+    lastLoginIp: loginIp,
+    lastLoginCountry: loginCountry,
+    createdAt: now,
+    updatedAt: now,
+  });
 
   await recordSignupAttribution(env, id, signupAttribution, now);
 
   return { id, isNew: true };
+}
+
+async function runUserInsert(env, values) {
+  try {
+    await env.DB.prepare(
+      `INSERT INTO users (
+        id, google_sub, email, name, avatar_url,
+        first_login_at, last_login_at, signup_ip, signup_country, last_login_ip, last_login_country,
+        created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(
+      values.id,
+      values.googleSub,
+      values.email,
+      values.name,
+      values.avatarUrl,
+      values.firstLoginAt,
+      values.lastLoginAt,
+      values.signupIp,
+      values.signupCountry,
+      values.lastLoginIp,
+      values.lastLoginCountry,
+      values.createdAt,
+      values.updatedAt
+    ).run();
+  } catch (error) {
+    if (!isMissingLoginColumnError(error)) throw error;
+
+    await env.DB.prepare(
+      'INSERT INTO users (id, google_sub, email, name, avatar_url, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
+    ).bind(
+      values.id,
+      values.googleSub,
+      values.email,
+      values.name,
+      values.avatarUrl,
+      values.createdAt,
+      values.updatedAt
+    ).run();
+  }
+}
+
+async function runUserLoginUpdate(env, values) {
+  try {
+    await env.DB.prepare(
+      `UPDATE users
+       SET email = ?, name = ?, avatar_url = ?,
+         last_login_at = ?, last_login_ip = ?, last_login_country = ?, updated_at = ?
+       WHERE google_sub = ?`
+    ).bind(
+      values.email,
+      values.name,
+      values.avatarUrl,
+      values.lastLoginAt,
+      values.lastLoginIp,
+      values.lastLoginCountry,
+      values.updatedAt,
+      values.googleSub
+    ).run();
+  } catch (error) {
+    if (!isMissingLoginColumnError(error)) throw error;
+
+    await env.DB.prepare(
+      'UPDATE users SET email = ?, name = ?, avatar_url = ?, updated_at = ? WHERE google_sub = ?'
+    ).bind(
+      values.email,
+      values.name,
+      values.avatarUrl,
+      values.updatedAt,
+      values.googleSub
+    ).run();
+  }
 }
 
 export async function createSession(env, userId) {
@@ -419,6 +498,25 @@ function isAllowedSignupHost(hostname, siteUrl) {
 
 function isLocalhostHostname(hostname) {
   return ['localhost', '127.0.0.1', '::1', '[::1]'].includes(hostname);
+}
+
+function normalizeNullableText(value) {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
+function normalizeCountryCode(value) {
+  const trimmed = normalizeNullableText(value);
+  if (!trimmed || !/^[A-Za-z]{2}$/.test(trimmed)) return null;
+  const country = trimmed.toUpperCase();
+  return country === 'XX' ? null : country;
+}
+
+function isMissingLoginColumnError(error) {
+  return /no such column:\s*(?:first_login_at|last_login_at|signup_ip|signup_country|last_login_ip|last_login_country)/i.test(
+    error instanceof Error ? error.message : String(error),
+  );
 }
 
 function getSiteUrl(env) {

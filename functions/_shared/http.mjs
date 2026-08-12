@@ -40,3 +40,31 @@ export function getSafeReturnTo(value) {
   if (value.includes('\\')) return '/';
   return value;
 }
+
+export function getClientIp(request) {
+  if (!request?.headers) return null;
+
+  const cloudflareIp = readHeaderValue(request, 'CF-Connecting-IP');
+  if (cloudflareIp) return cloudflareIp;
+
+  const forwardedFor = readHeaderValue(request, 'X-Forwarded-For');
+  if (forwardedFor) {
+    const firstIp = forwardedFor.split(',')[0]?.trim();
+    if (firstIp) return firstIp;
+  }
+
+  return readHeaderValue(request, 'X-Real-IP');
+}
+
+export function getClientCountry(request) {
+  const country = readHeaderValue(request, 'CF-IPCountry');
+  if (!country || country.toUpperCase() === 'XX') return null;
+  return /^[A-Za-z]{2}$/.test(country) ? country.toUpperCase() : null;
+}
+
+function readHeaderValue(request, name) {
+  const value = request.headers.get(name);
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}

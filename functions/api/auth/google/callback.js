@@ -8,7 +8,13 @@ import {
   verifyGoogleIdToken,
 } from '../../../_shared/auth.mjs';
 import { NEW_USER_CREDITS, grantNewUserCredits } from '../../../_shared/credits.mjs';
-import { getSafeReturnTo, jsonResponse, redirectResponse } from '../../../_shared/http.mjs';
+import {
+  getClientCountry,
+  getClientIp,
+  getSafeReturnTo,
+  jsonResponse,
+  redirectResponse,
+} from '../../../_shared/http.mjs';
 
 function redirectWithClearedState(location, env) {
   return redirectResponse(location, 302, {
@@ -37,7 +43,10 @@ export async function onRequest(context) {
 
     const tokens = await exchangeGoogleCode(env, code);
     const profile = await verifyGoogleIdToken(env, tokens.id_token);
-    const user = await upsertUser(env, profile, statePayload.signupAttribution);
+    const user = await upsertUser(env, profile, statePayload.signupAttribution, {
+      ip: getClientIp(request),
+      country: getClientCountry(request),
+    });
     const grantedNewUserCredits = user.isNew
       ? await grantNewUserCredits(env, user.id)
       : false;

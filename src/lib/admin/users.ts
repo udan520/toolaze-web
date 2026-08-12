@@ -11,8 +11,12 @@ export type AdminUser = {
   signupPath: string | null
   signupUrl: string | null
   signupReferrer: string | null
+  signupIp: string | null
+  signupCountry: string | null
   creditBalance: number
   lastLoginAt: string | null
+  lastLoginIp: string | null
+  lastLoginCountry: string | null
   hasActiveSession: boolean
   imageGenerationCount: number
   videoGenerationCount: number
@@ -49,6 +53,8 @@ export type AdminGenerationHistoryItem = {
   toolSlug: string | null
   toolLabel: string | null
   sourcePath: string | null
+  requestIp: string | null
+  requestCountry: string | null
   createdAt: string
 }
 
@@ -88,8 +94,12 @@ SELECT
   signup_attribution.signup_path AS signup_path,
   signup_attribution.signup_url AS signup_url,
   signup_attribution.referrer AS signup_referrer,
+  u.signup_ip,
+  u.signup_country,
   COALESCE(ca.balance, 0) AS credit_balance,
-  session_stats.last_login_at,
+  COALESCE(u.last_login_at, session_stats.last_login_at) AS last_login_at,
+  u.last_login_ip,
+  u.last_login_country,
   COALESCE(session_stats.has_active_session, 0) AS has_active_session,
   COALESCE(generation_stats.image_generation_count, 0) AS image_generation_count,
   COALESCE(generation_stats.video_generation_count, 0) AS video_generation_count,
@@ -182,6 +192,20 @@ const USER_DASHBOARD_LEGACY_SQL = USER_DASHBOARD_SQL
     '',
   )
 
+const USER_DASHBOARD_LEGACY_LOGIN_METADATA_SQL = USER_DASHBOARD_SQL
+  .replace('  u.signup_ip,\n  u.signup_country,\n', '  NULL AS signup_ip,\n  NULL AS signup_country,\n')
+  .replace(
+    '  COALESCE(u.last_login_at, session_stats.last_login_at) AS last_login_at,\n  u.last_login_ip,\n  u.last_login_country,\n',
+    '  session_stats.last_login_at,\n  NULL AS last_login_ip,\n  NULL AS last_login_country,\n',
+  )
+
+const USER_DASHBOARD_LEGACY_ALL_SQL = USER_DASHBOARD_LEGACY_SQL
+  .replace('  u.signup_ip,\n  u.signup_country,\n', '  NULL AS signup_ip,\n  NULL AS signup_country,\n')
+  .replace(
+    '  COALESCE(u.last_login_at, session_stats.last_login_at) AS last_login_at,\n  u.last_login_ip,\n  u.last_login_country,\n',
+    '  session_stats.last_login_at,\n  NULL AS last_login_ip,\n  NULL AS last_login_country,\n',
+  )
+
 const ADMIN_GRANT_HISTORY_SQL = `
 SELECT
   ct.id,
@@ -216,12 +240,17 @@ SELECT
   gh.tool_slug,
   gh.tool_label,
   gh.source_path,
+  gh.request_ip,
+  gh.request_country,
   gh.created_at
 FROM generation_history gh
 JOIN users u ON u.id = gh.user_id
 ORDER BY gh.created_at DESC
 LIMIT 200;
 `.trim()
+
+const GENERATION_RECORDS_LEGACY_SQL = GENERATION_RECORDS_SQL
+  .replace('  gh.request_ip,\n  gh.request_country,\n', '  NULL AS request_ip,\n  NULL AS request_country,\n')
 
 function buildUserUsageSql(userId: string): string {
   return `
@@ -238,12 +267,19 @@ SELECT
   tool_slug,
   tool_label,
   source_path,
+  request_ip,
+  request_country,
   created_at
 FROM generation_history
 WHERE user_id = ${quoteSqlString(userId)}
 ORDER BY created_at DESC
 LIMIT 100;
 `.trim()
+}
+
+function buildUserUsageLegacySql(userId: string): string {
+  return buildUserUsageSql(userId)
+    .replace('  request_ip,\n  request_country,\n', '  NULL AS request_ip,\n  NULL AS request_country,\n')
 }
 
 export function parseWranglerRows(stdout: string): AdminUser[] {
@@ -331,6 +367,14 @@ export async function fetchProductionUserUsage(
       throw error
     }
 
+    if (isMissingRequestMetadataColumnError(error)) {
+      const stdout = await runWithTimeout(
+        runner('npx', buildD1ReadArgs(buildUserUsageLegacySql(userId))),
+        commandTimeoutMs,
+      )
+      return parseGenerationHistoryRows(stdout)
+    }
+
     throw new Error(formatWranglerError(error))
   }
 }
@@ -360,6 +404,14 @@ export async function fetchProductionGenerationRecords(
   } catch (error) {
     if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
       throw error
+    }
+
+    if (isMissingRequestMetadataColumnError(error)) {
+      const stdout = await runWithTimeout(
+        runner('npx', buildD1ReadArgs(GENERATION_RECORDS_LEGACY_SQL)),
+        commandTimeoutMs,
+      )
+      return parseGenerationRecordRows(stdout)
     }
 
     throw new Error(formatWranglerError(error))
@@ -396,23 +448,30 @@ async function fetchProductionUserRows(
   runner: CommandRunner,
   commandTimeoutMs: number,
 ): Promise<AdminUser[]> {
-  try {
-    const stdout = await runWithTimeout(
-      runner('npx', buildD1ReadArgs(USER_DASHBOARD_SQL)),
-      commandTimeoutMs,
-    )
+  const queries = [
+    USER_DASHBOARD_SQL,
+    USER_DASHBOARD_LEGACY_LOGIN_METADATA_SQL,
+    USER_DASHBOARD_LEGACY_SQL,
+    USER_DASHBOARD_LEGACY_ALL_SQL,
+  ]
+  let lastError: unknown
 
-    return parseWranglerRows(stdout)
-  } catch (error) {
-    if (!isMissingSignupAttributionTableError(error)) throw error
-
-    const stdout = await runWithTimeout(
-      runner('npx', buildD1ReadArgs(USER_DASHBOARD_LEGACY_SQL)),
-      commandTimeoutMs,
-    )
-
-    return parseWranglerRows(stdout)
+  for (const sql of queries) {
+    try {
+      const stdout = await runWithTimeout(
+        runner('npx', buildD1ReadArgs(sql)),
+        commandTimeoutMs,
+      )
+      return parseWranglerRows(stdout)
+    } catch (error) {
+      if (!isMissingSignupAttributionTableError(error) && !isMissingLoginMetadataColumnError(error)) {
+        throw error
+      }
+      lastError = error
+    }
   }
+
+  throw lastError
 }
 
 function buildD1ReadArgs(sql: string): string[] {
@@ -439,6 +498,25 @@ function isMissingSignupAttributionTableError(error: unknown): boolean {
   }
 
   return /no such table:\s*user_signup_attribution/i.test(messageParts.join('\n'))
+}
+
+function isMissingLoginMetadataColumnError(error: unknown): boolean {
+  return /no such column:\s*(?:u\.)?(?:first_login_at|last_login_at|signup_ip|signup_country|last_login_ip|last_login_country)/i.test(
+    collectErrorMessage(error),
+  )
+}
+
+function isMissingRequestMetadataColumnError(error: unknown): boolean {
+  return /no such column:\s*(?:gh\.)?(?:request_ip|request_country)/i.test(collectErrorMessage(error))
+}
+
+function collectErrorMessage(error: unknown): string {
+  const messageParts = [error instanceof Error ? error.message : String(error)]
+  if (isRecord(error)) {
+    if (typeof error.stderr === 'string') messageParts.push(error.stderr)
+    if (typeof error.stdout === 'string') messageParts.push(error.stdout)
+  }
+  return messageParts.join('\n')
 }
 
 function runWithTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
@@ -483,8 +561,12 @@ function mapWranglerRow(value: unknown): AdminUser {
     signupPath: readNullableString(value.signup_path),
     signupUrl: readNullableString(value.signup_url),
     signupReferrer: readNullableString(value.signup_referrer),
+    signupIp: readNullableString(value.signup_ip),
+    signupCountry: readNullableString(value.signup_country),
     creditBalance: readNumber(value.credit_balance),
     lastLoginAt: readNullableString(value.last_login_at),
+    lastLoginIp: readNullableString(value.last_login_ip),
+    lastLoginCountry: readNullableString(value.last_login_country),
     hasActiveSession: readNumber(value.has_active_session) > 0,
     imageGenerationCount: readNumber(value.image_generation_count),
     videoGenerationCount: readNumber(value.video_generation_count),
@@ -533,6 +615,8 @@ function mapGenerationHistoryRow(value: unknown): AdminGenerationHistoryItem {
     toolSlug: readNullableString(value.tool_slug),
     toolLabel: readNullableString(value.tool_label),
     sourcePath: readNullableString(value.source_path),
+    requestIp: readNullableString(value.request_ip),
+    requestCountry: readNullableString(value.request_country),
     createdAt: readRequiredString(value.created_at, 'created_at'),
   }
 }

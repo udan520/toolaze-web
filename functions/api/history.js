@@ -4,7 +4,12 @@ import {
   deleteGenerationHistoryItem,
   listGenerationHistory,
 } from '../_shared/generation-history.mjs';
-import { handleOptions, jsonResponse } from '../_shared/http.mjs';
+import {
+  getClientCountry,
+  getClientIp,
+  handleOptions,
+  jsonResponse,
+} from '../_shared/http.mjs';
 import {
   deleteGenerationAttempt,
   deleteGenerationAttemptsForHistory,
@@ -111,6 +116,8 @@ export async function onRequest(context) {
       toolSlug: body.toolSlug,
       toolLabel: body.toolLabel,
       sourcePath: body.sourcePath,
+      requestIp: getClientIp(request),
+      requestCountry: getClientCountry(request),
     });
 
     if (taskId) {

@@ -161,13 +161,17 @@ export default function UserDashboard({ data }: UserDashboardProps) {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[1540px] w-full border-collapse text-left">
+          <table className="min-w-[1920px] w-full border-collapse text-left">
             <thead>
               <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
                 <th className="px-5 py-3">用户</th>
                 <th className="px-4 py-3">注册时间</th>
                 <th className="px-4 py-3">注册入口</th>
+                <th className="px-4 py-3">注册 IP</th>
+                <th className="px-4 py-3">注册国家</th>
                 <th className="px-4 py-3">最近登录</th>
+                <th className="px-4 py-3">最近登录 IP</th>
+                <th className="px-4 py-3">最近登录国家</th>
                 <th className="px-4 py-3">会话</th>
                 <th className="px-4 py-3 text-right">余额</th>
                 <th className="px-4 py-3 text-right">图片</th>
@@ -189,7 +193,7 @@ export default function UserDashboard({ data }: UserDashboardProps) {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={12} className="px-5 py-14 text-center text-sm text-slate-500">
+                  <td colSpan={16} className="px-5 py-14 text-center text-sm text-slate-500">
                     没有符合当前筛选条件的用户。
                   </td>
                 </tr>
@@ -408,7 +412,19 @@ function UserRow({ user, onGrant }: { user: AdminUser; onGrant: () => void }) {
           referrer={user.signupReferrer}
         />
       </td>
+      <td className="px-4 py-4">
+        <IpCell ip={user.signupIp} />
+      </td>
+      <td className="px-4 py-4">
+        <CountryCell country={user.signupCountry} />
+      </td>
       <td className="whitespace-nowrap px-4 py-4 text-xs">{formatDate(user.lastLoginAt)}</td>
+      <td className="px-4 py-4">
+        <IpCell ip={user.lastLoginIp} />
+      </td>
+      <td className="px-4 py-4">
+        <CountryCell country={user.lastLoginCountry} />
+      </td>
       <td className="px-4 py-4">
         <span
           className={
@@ -465,6 +481,18 @@ function ModelBadge({ model }: { model: string | null }) {
       <p className="truncate font-mono text-xs font-semibold text-slate-700">{model}</p>
     </div>
   )
+}
+
+function IpCell({ ip }: { ip: string | null }) {
+  return ip
+    ? <span className="font-mono text-xs font-semibold text-slate-700">{ip}</span>
+    : <span className="text-xs text-slate-400">—</span>
+}
+
+function CountryCell({ country }: { country: string | null }) {
+  return country
+    ? <span className="text-xs font-semibold text-slate-700">{country}</span>
+    : <span className="text-xs text-slate-400">—</span>
 }
 
 function SignupSourceBadge({

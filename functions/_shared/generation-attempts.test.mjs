@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import test from 'node:test'
 
 import {
+  createGenerationAttempt,
   deleteGenerationAttempt,
   deleteGenerationAttemptsForHistory,
   linkGenerationAttemptHistory,
@@ -57,6 +58,8 @@ test('listGenerationAttempts maps resume metadata for account history polling', 
     task_provider: 'veo',
     required_credits: 40,
     history_id: null,
+    request_ip: '203.0.113.8',
+    request_country: 'US',
     created_at: '2026-08-09T00:00:00.000Z',
     updated_at: '2026-08-09T00:00:05.000Z',
   }])
@@ -67,8 +70,29 @@ test('listGenerationAttempts maps resume metadata for account history polling', 
   assert.equal(item.taskProvider, 'veo')
   assert.equal(item.requiredCredits, 40)
   assert.equal(item.consumptionId, 'consume_1')
+  assert.equal(item.requestIp, '203.0.113.8')
+  assert.equal(item.requestCountry, 'US')
   assert.deepEqual(item.inputUrls, ['https://assets.toolaze.com/input.png'])
   assert.deepEqual(env.calls[0].values, ['user_1', 200])
+})
+
+test('createGenerationAttempt stores request IP and country metadata', async () => {
+  const env = createEnv()
+
+  const result = await createGenerationAttempt(env, 'user_1', {
+    mediaType: 'image',
+    status: 'pending',
+    model: 'gpt-image-2',
+    prompt: 'A product photo',
+    requestIp: '203.0.113.8',
+    requestCountry: 'US',
+  })
+
+  assert.match(result.id, /^gen_attempt_[a-f0-9]{32}$/)
+  assert.match(env.calls[0].sql, /request_ip/i)
+  assert.match(env.calls[0].sql, /request_country/i)
+  assert.equal(env.calls[0].values[22], '203.0.113.8')
+  assert.equal(env.calls[0].values[23], 'US')
 })
 
 test('attempt lifecycle mutations are scoped to the authenticated account', async () => {

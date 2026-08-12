@@ -124,11 +124,13 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[1540px] w-full border-collapse text-left">
+        <table className="min-w-[1740px] w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
               <th className="px-5 py-3">时间</th>
               <th className="px-4 py-3">用户</th>
+              <th className="px-4 py-3">IP</th>
+              <th className="px-4 py-3">国家</th>
               <th className="px-4 py-3">功能</th>
               <th className="px-4 py-3">类型</th>
               <th className="px-4 py-3">模型</th>
@@ -155,6 +157,12 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
                         {record.userId}
                       </p>
                     </Link>
+                  </td>
+                  <td className="px-4 py-4">
+                    <IpCell ip={record.requestIp} />
+                  </td>
+                  <td className="px-4 py-4">
+                    <CountryCell country={record.requestCountry} />
                   </td>
                   <td className="px-4 py-4">
                     <p className="max-w-56 truncate font-semibold text-slate-950">
@@ -188,7 +196,7 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
               ))
             ) : (
               <tr>
-                <td colSpan={8} className="px-5 py-14 text-center text-sm text-slate-500">
+                <td colSpan={10} className="px-5 py-14 text-center text-sm text-slate-500">
                   暂无任务生成记录。
                 </td>
               </tr>
@@ -198,6 +206,18 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
       </div>
     </section>
   )
+}
+
+function IpCell({ ip }: { ip: string | null }) {
+  return ip
+    ? <span className="font-mono text-xs font-semibold text-slate-700">{ip}</span>
+    : <span className="text-xs text-slate-400">—</span>
+}
+
+function CountryCell({ country }: { country: string | null }) {
+  return country
+    ? <span className="text-xs font-semibold text-slate-700">{country}</span>
+    : <span className="text-xs text-slate-400">—</span>
 }
 
 function OutputPreview({ item }: { item: AdminGenerationRecordItem }) {

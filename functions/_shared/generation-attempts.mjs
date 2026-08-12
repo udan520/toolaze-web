@@ -32,9 +32,28 @@ function isMissingAttemptTableError(error) {
   );
 }
 
+function isMissingRequestMetadataColumnError(error) {
+  return /no such column:\s*(?:request_ip|request_country)|table generation_attempts has no column named (?:request_ip|request_country)/i.test(
+    error instanceof Error ? error.message : String(error),
+  );
+}
+
 function logAttemptError(action, error) {
-  if (isMissingAttemptTableError(error)) return;
+  if (isMissingAttemptTableError(error) || isMissingRequestMetadataColumnError(error)) return;
   console.warn(`Unable to ${action} generation attempt`, error);
+}
+
+function normalizeNullableText(value) {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
+function normalizeCountryCode(value) {
+  const trimmed = normalizeNullableText(value);
+  if (!trimmed || !/^[A-Za-z]{2}$/.test(trimmed)) return null;
+  const country = trimmed.toUpperCase();
+  return country === 'XX' ? null : country;
 }
 
 export async function createGenerationAttempt(env, userId, item) {
@@ -42,6 +61,34 @@ export async function createGenerationAttempt(env, userId, item) {
 
   const now = nowIso();
   const id = createId('gen_attempt');
+  const values = {
+    id,
+    userId,
+    taskId: item.taskId || null,
+    mediaType: item.mediaType === 'video' ? 'video' : 'image',
+    status: item.status || 'pending',
+    model: String(item.model || '').trim() || 'unknown',
+    prompt: String(item.prompt || '').trim(),
+    outputUrl: item.outputUrl || null,
+    inputUrls: serializeInputUrls(item.inputUrls),
+    aspectRatio: item.aspectRatio || null,
+    resolution: item.resolution || null,
+    outputFormat: item.outputFormat || null,
+    nativeAudio: item.nativeAudio === true ? 1 : 0,
+    toolSlug: item.toolSlug || null,
+    toolLabel: item.toolLabel || null,
+    sourcePath: item.sourcePath || null,
+    failureReason: item.failureReason || null,
+    creditTransactionId: item.creditTransactionId || null,
+    consumptionId: item.consumptionId || null,
+    taskProvider: item.taskProvider || null,
+    requiredCredits: Number.isInteger(item.requiredCredits) ? item.requiredCredits : null,
+    historyId: item.historyId || null,
+    requestIp: normalizeNullableText(item.requestIp),
+    requestCountry: normalizeCountryCode(item.requestCountry),
+    createdAt: now,
+    updatedAt: now,
+  };
 
   try {
     await env.DB.prepare(`
@@ -49,38 +96,84 @@ export async function createGenerationAttempt(env, userId, item) {
         id, user_id, task_id, media_type, status, model, prompt, output_url,
         input_urls, aspect_ratio, resolution, output_format, native_audio,
         tool_slug, tool_label, source_path, failure_reason, credit_transaction_id,
-        consumption_id, task_provider, required_credits, history_id, created_at, updated_at
+        consumption_id, task_provider, required_credits, history_id, request_ip, request_country,
+        created_at, updated_at
       )
-      values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
-      id,
-      userId,
-      item.taskId || null,
-      item.mediaType === 'video' ? 'video' : 'image',
-      item.status || 'pending',
-      String(item.model || '').trim() || 'unknown',
-      String(item.prompt || '').trim(),
-      item.outputUrl || null,
-      serializeInputUrls(item.inputUrls),
-      item.aspectRatio || null,
-      item.resolution || null,
-      item.outputFormat || null,
-      item.nativeAudio === true ? 1 : 0,
-      item.toolSlug || null,
-      item.toolLabel || null,
-      item.sourcePath || null,
-      item.failureReason || null,
-      item.creditTransactionId || null,
-      item.consumptionId || null,
-      item.taskProvider || null,
-      Number.isInteger(item.requiredCredits) ? item.requiredCredits : null,
-      item.historyId || null,
-      now,
-      now,
+      values.id,
+      values.userId,
+      values.taskId,
+      values.mediaType,
+      values.status,
+      values.model,
+      values.prompt,
+      values.outputUrl,
+      values.inputUrls,
+      values.aspectRatio,
+      values.resolution,
+      values.outputFormat,
+      values.nativeAudio,
+      values.toolSlug,
+      values.toolLabel,
+      values.sourcePath,
+      values.failureReason,
+      values.creditTransactionId,
+      values.consumptionId,
+      values.taskProvider,
+      values.requiredCredits,
+      values.historyId,
+      values.requestIp,
+      values.requestCountry,
+      values.createdAt,
+      values.updatedAt,
     ).run();
 
     return { id, createdAt: now };
   } catch (error) {
+    if (isMissingRequestMetadataColumnError(error)) {
+      try {
+        await env.DB.prepare(`
+          insert into generation_attempts (
+            id, user_id, task_id, media_type, status, model, prompt, output_url,
+            input_urls, aspect_ratio, resolution, output_format, native_audio,
+            tool_slug, tool_label, source_path, failure_reason, credit_transaction_id,
+            consumption_id, task_provider, required_credits, history_id, created_at, updated_at
+          )
+          values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `).bind(
+          values.id,
+          values.userId,
+          values.taskId,
+          values.mediaType,
+          values.status,
+          values.model,
+          values.prompt,
+          values.outputUrl,
+          values.inputUrls,
+          values.aspectRatio,
+          values.resolution,
+          values.outputFormat,
+          values.nativeAudio,
+          values.toolSlug,
+          values.toolLabel,
+          values.sourcePath,
+          values.failureReason,
+          values.creditTransactionId,
+          values.consumptionId,
+          values.taskProvider,
+          values.requiredCredits,
+          values.historyId,
+          values.createdAt,
+          values.updatedAt,
+        ).run();
+
+        return { id, createdAt: now };
+      } catch (fallbackError) {
+        logAttemptError('create', fallbackError);
+        return null;
+      }
+    }
     logAttemptError('create', error);
     return null;
   }
@@ -122,16 +215,7 @@ export async function listGenerationAttempts(env, userId, limit = 100) {
   const safeLimit = Math.max(1, Math.min(Number(limit) || 100, 200));
 
   try {
-    const result = await env.DB.prepare(`
-      select id, task_id, media_type, status, model, prompt, output_url,
-        input_urls, aspect_ratio, resolution, output_format, native_audio,
-        tool_slug, tool_label, source_path, failure_reason, credit_transaction_id,
-        consumption_id, task_provider, required_credits, history_id, created_at, updated_at
-      from generation_attempts
-      where user_id = ?
-      order by created_at desc
-      limit ?
-    `).bind(userId, safeLimit).all();
+    const result = await listGenerationAttemptRows(env, userId, safeLimit);
 
     return (result?.results || []).map((row) => ({
       id: row.id,
@@ -155,12 +239,43 @@ export async function listGenerationAttempts(env, userId, limit = 100) {
       taskProvider: row.task_provider,
       requiredCredits: Number(row.required_credits) || null,
       historyId: row.history_id,
+      requestIp: normalizeNullableText(row.request_ip),
+      requestCountry: normalizeCountryCode(row.request_country),
       createdAt: row.created_at,
       updatedAt: row.updated_at,
     }));
   } catch (error) {
     logAttemptError('list', error);
     return [];
+  }
+}
+
+async function listGenerationAttemptRows(env, userId, safeLimit) {
+  try {
+    return await env.DB.prepare(`
+      select id, task_id, media_type, status, model, prompt, output_url,
+        input_urls, aspect_ratio, resolution, output_format, native_audio,
+        tool_slug, tool_label, source_path, failure_reason, credit_transaction_id,
+        consumption_id, task_provider, required_credits, history_id, request_ip, request_country,
+        created_at, updated_at
+      from generation_attempts
+      where user_id = ?
+      order by created_at desc
+      limit ?
+    `).bind(userId, safeLimit).all();
+  } catch (error) {
+    if (!isMissingRequestMetadataColumnError(error)) throw error;
+
+    return env.DB.prepare(`
+      select id, task_id, media_type, status, model, prompt, output_url,
+        input_urls, aspect_ratio, resolution, output_format, native_audio,
+        tool_slug, tool_label, source_path, failure_reason, credit_transaction_id,
+        consumption_id, task_provider, required_credits, history_id, created_at, updated_at
+      from generation_attempts
+      where user_id = ?
+      order by created_at desc
+      limit ?
+    `).bind(userId, safeLimit).all();
   }
 }
 

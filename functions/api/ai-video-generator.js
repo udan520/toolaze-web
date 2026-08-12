@@ -12,6 +12,7 @@ import {
   updateGenerationAttemptStatus,
 } from '../_shared/generation-attempts.mjs';
 import { resolveUploadReferences } from '../_shared/upload-reference.mjs';
+import { getClientCountry, getClientIp } from '../_shared/http.mjs';
 
 /**
  * Cloudflare Pages Function: AI 视频生成 - 创建 Kie 视频任务
@@ -1348,6 +1349,8 @@ export async function onRequest(context) {
       taskProvider: modelConfig.taskProvider,
       requiredCredits,
       consumptionId: creditContext.consumption?.consumptionId,
+      requestIp: getClientIp(request),
+      requestCountry: getClientCountry(request),
     });
 
     const response = await fetch(

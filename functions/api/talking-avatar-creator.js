@@ -11,6 +11,7 @@ import {
   createGenerationAttempt,
   updateGenerationAttemptStatus,
 } from '../_shared/generation-attempts.mjs';
+import { getClientCountry, getClientIp } from '../_shared/http.mjs';
 
 const KIE_AI_BASE = 'https://api.kie.ai/api/v1/jobs';
 const INFINITALK_MODEL_ID = 'infinitalk';
@@ -172,6 +173,8 @@ export async function onRequest(context) {
       sourcePath: readString(formData, 'sourcePath') || '/talking-avatar-creator',
       requiredCredits,
       consumptionId: creditContext.consumption?.consumptionId,
+      requestIp: getClientIp(request),
+      requestCountry: getClientCountry(request),
     });
 
     const response = await fetch(`${KIE_AI_BASE}/createTask`, {

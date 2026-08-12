@@ -25,6 +25,7 @@ import {
   compilePhotoAbstractPromptFromImage,
   isPhotoAbstractPosterTool,
 } from '../_shared/photo-abstract-editorial-compiler.mjs';
+import { getClientCountry, getClientIp } from '../_shared/http.mjs';
 
 /**
  * Cloudflare Pages Function: Nano Banana Pro 生图 - 创建任务
@@ -490,6 +491,8 @@ export async function onRequest(context) {
       consumptionId: creditContext.consumption?.consumptionId,
       requiredCredits: creditContext.requiredCredits,
       taskProvider: 'image-to-image',
+      requestIp: getClientIp(request),
+      requestCountry: getClientCountry(request),
     });
 
     const input = model === 'gpt-image-1-5'

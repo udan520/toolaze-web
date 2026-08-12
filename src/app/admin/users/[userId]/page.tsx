@@ -125,10 +125,12 @@ function UsageTable({ items }: { items: AdminGenerationHistoryItem[] }) {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[1280px] w-full border-collapse text-left">
+        <table className="min-w-[1480px] w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
               <th className="px-5 py-3">时间</th>
+              <th className="px-4 py-3">IP</th>
+              <th className="px-4 py-3">国家</th>
               <th className="px-4 py-3">功能</th>
               <th className="px-4 py-3">类型</th>
               <th className="px-4 py-3">模型</th>
@@ -142,6 +144,12 @@ function UsageTable({ items }: { items: AdminGenerationHistoryItem[] }) {
               items.map((item) => (
                 <tr key={item.id} className="text-sm text-slate-700 transition hover:bg-indigo-50/30">
                   <td className="whitespace-nowrap px-5 py-4 text-xs">{formatDate(item.createdAt)}</td>
+                  <td className="px-4 py-4">
+                    <IpCell ip={item.requestIp} />
+                  </td>
+                  <td className="px-4 py-4">
+                    <CountryCell country={item.requestCountry} />
+                  </td>
                   <td className="px-4 py-4">
                     <p className="max-w-56 truncate font-semibold text-slate-950">
                       {item.toolLabel || item.toolSlug || '—'}
@@ -174,7 +182,7 @@ function UsageTable({ items }: { items: AdminGenerationHistoryItem[] }) {
               ))
             ) : (
               <tr>
-                <td colSpan={7} className="px-5 py-14 text-center text-sm text-slate-500">
+                <td colSpan={9} className="px-5 py-14 text-center text-sm text-slate-500">
                   该用户暂无生成使用记录。
                 </td>
               </tr>
@@ -184,6 +192,18 @@ function UsageTable({ items }: { items: AdminGenerationHistoryItem[] }) {
       </div>
     </section>
   )
+}
+
+function IpCell({ ip }: { ip: string | null }) {
+  return ip
+    ? <span className="font-mono text-xs font-semibold text-slate-700">{ip}</span>
+    : <span className="text-xs text-slate-400">—</span>
+}
+
+function CountryCell({ country }: { country: string | null }) {
+  return country
+    ? <span className="text-xs font-semibold text-slate-700">{country}</span>
+    : <span className="text-xs text-slate-400">—</span>
 }
 
 function OutputPreview({ item }: { item: AdminGenerationHistoryItem }) {

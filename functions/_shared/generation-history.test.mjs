@@ -144,6 +144,40 @@ test('generation history stores Native Audio as a dedicated boolean field', asyn
   assert.equal(item.nativeAudio, true)
 })
 
+test('generation history stores request IP and country metadata', async () => {
+  let boundValues = []
+  const env = {
+    DB: {
+      prepare() {
+        return {
+          bind(...values) {
+            boundValues = values
+            return {
+              async run() {
+                return { success: true }
+              },
+            }
+          },
+        }
+      },
+    },
+  }
+
+  const item = await createGenerationHistoryItem(env, 'user_test', {
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    prompt: 'request metadata prompt',
+    outputUrl: 'https://example.com/output.png',
+    requestIp: '203.0.113.8',
+    requestCountry: 'US',
+  })
+
+  assert.equal(boundValues[14], '203.0.113.8')
+  assert.equal(boundValues[15], 'US')
+  assert.equal(item.requestIp, '203.0.113.8')
+  assert.equal(item.requestCountry, 'US')
+})
+
 test('generation history maps persisted Native Audio values back to booleans', async () => {
   const env = {
     DB: {
@@ -167,6 +201,8 @@ test('generation history maps persisted Native Audio values back to booleans', a
                     tool_slug: 'ai-video-generator',
                     tool_label: 'AI Video Generator',
                     source_path: '/ai-video-generator',
+                    request_ip: '203.0.113.8',
+                    request_country: 'US',
                     created_at: '2026-07-21T00:00:00.000Z',
                   }],
                 }
@@ -181,6 +217,8 @@ test('generation history maps persisted Native Audio values back to booleans', a
   const [item] = await listGenerationHistory(env, 'user_test')
 
   assert.equal(item.nativeAudio, true)
+  assert.equal(item.requestIp, '203.0.113.8')
+  assert.equal(item.requestCountry, 'US')
 })
 
 test('generation history rewrites legacy R2 URLs when reading persisted rows', async () => {
@@ -208,6 +246,8 @@ test('generation history rewrites legacy R2 URLs when reading persisted rows', a
                     tool_slug: 'ai-image-generator',
                     tool_label: 'AI Image Generator',
                     source_path: '/ai-image-generator',
+                    request_ip: null,
+                    request_country: null,
                     created_at: '2026-08-04T00:00:00.000Z',
                   }],
                 }
@@ -237,4 +277,12 @@ test('generation history migration adds the Native Audio column with a safe defa
 test('history API forwards Native Audio to shared persistence', () => {
   const apiSource = readFileSync(join(process.cwd(), 'functions', 'api', 'history.js'), 'utf8')
   assert.match(apiSource, /nativeAudio:\s*body\.nativeAudio/)
+})
+
+test('history API forwards request IP and country to shared persistence', () => {
+  const apiSource = readFileSync(join(process.cwd(), 'functions', 'api', 'history.js'), 'utf8')
+  assert.match(apiSource, /getClientIp\(request\)/)
+  assert.match(apiSource, /getClientCountry\(request\)/)
+  assert.match(apiSource, /requestIp:/)
+  assert.match(apiSource, /requestCountry:/)
 })
