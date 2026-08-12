@@ -26,6 +26,17 @@ function parseInputUrls(value) {
   }
 }
 
+function parseMetadata(value) {
+  if (!value) return {};
+  if (typeof value === 'object' && !Array.isArray(value)) return value;
+  try {
+    const parsed = JSON.parse(String(value));
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
 function isMissingAttemptTableError(error) {
   return /no such table:\s*generation_attempts/i.test(
     error instanceof Error ? error.message : String(error),
@@ -246,6 +257,74 @@ export async function listGenerationAttempts(env, userId, limit = 100) {
     }));
   } catch (error) {
     logAttemptError('list', error);
+    return [];
+  }
+}
+
+export async function listOrphanGenerationAttempts(env, userId, limit = 100) {
+  if (!env?.DB || !userId) return [];
+  const safeLimit = Math.max(1, Math.min(Number(limit) || 100, 200));
+
+  try {
+    const result = await env.DB.prepare(`
+      select cc.id as consumption_id, ct.id as transaction_id,
+        ct.metadata, ct.description, ct.created_at
+      from credit_consumptions cc
+      join credit_transactions ct on ct.id = cc.transaction_id
+      where cc.user_id = ?
+        and ct.user_id = ?
+        and ct.amount < 0
+        and ct.reason in ('image_generation', 'video_generation')
+        and json_extract(ct.metadata, '$.taskId') is not null
+        and not exists (
+          select 1
+          from generation_attempts ga
+          where ga.user_id = cc.user_id
+            and ga.consumption_id = cc.id
+        )
+      order by ct.created_at desc
+      limit ?
+    `).bind(userId, userId, safeLimit).all();
+
+    return (result?.results || []).flatMap((row) => {
+      const metadata = parseMetadata(row.metadata);
+      const taskId = String(metadata.taskId || '').trim();
+      if (!taskId) return [];
+      const isVideo = metadata.mediaType === 'video'
+        || row.description?.toLowerCase().includes('video');
+      return [{
+        id: `gen_recovered_${row.consumption_id}`,
+        userId,
+        taskId,
+        mediaType: isVideo ? 'video' : 'image',
+        status: 'pending',
+        model: String(metadata.model || 'unknown'),
+        prompt: String(metadata.prompt || ''),
+        outputUrl: '',
+        inputUrls: Array.isArray(metadata.inputUrls) ? metadata.inputUrls : [],
+        aspectRatio: metadata.aspectRatio || null,
+        resolution: metadata.resolution || null,
+        outputFormat: metadata.outputFormat || null,
+        nativeAudio: metadata.nativeAudio === true,
+        toolSlug: metadata.toolSlug || null,
+        toolLabel: metadata.toolLabel || row.description || null,
+        sourcePath: metadata.sourcePath || null,
+        failureReason: null,
+        creditTransactionId: row.transaction_id,
+        consumptionId: row.consumption_id,
+        taskProvider: isVideo ? (metadata.taskProvider || null) : 'image-to-image',
+        requiredCredits: Number.isInteger(Number(metadata.requiredCredits))
+          ? Number(metadata.requiredCredits)
+          : null,
+        historyId: null,
+        requestIp: null,
+        requestCountry: null,
+        createdAt: row.created_at,
+        updatedAt: row.created_at,
+      }];
+    });
+  } catch (error) {
+    logAttemptError('list orphan', error);
     return [];
   }
 }

@@ -15,6 +15,7 @@ import {
   deleteGenerationAttemptsForHistory,
   linkGenerationAttemptHistory,
   listGenerationAttempts,
+  listOrphanGenerationAttempts,
   updateGenerationAttemptStatus,
 } from '../_shared/generation-attempts.mjs';
 
@@ -76,11 +77,23 @@ export async function onRequest(context) {
   if (request.method === 'GET') {
     const url = new URL(request.url);
     const limit = Math.max(1, Math.min(Number(url.searchParams.get('limit') || '100') || 100, 200));
-    const [historyItems, attempts] = await Promise.all([
+    const [historyItems, attempts, orphanAttempts] = await Promise.all([
       listGenerationHistory(env, user.id, limit),
       listGenerationAttempts(env, user.id, limit),
+      listOrphanGenerationAttempts(env, user.id, limit),
     ]);
-    const items = mergeHistoryItems(historyItems, attempts, limit);
+    const knownTaskIds = new Set(attempts.map((attempt) => attempt.taskId).filter(Boolean));
+    const knownHistoryIds = new Set(historyItems.map((item) => item.id));
+    const mergedAttempts = [
+      ...attempts,
+      ...orphanAttempts.filter((attempt) => (
+        !knownTaskIds.has(attempt.taskId)
+        && !knownHistoryIds.has(
+          `gen_task_${encodeURIComponent(user.id)}_${encodeURIComponent(attempt.taskId)}`,
+        )
+      )),
+    ];
+    const items = mergeHistoryItems(historyItems, mergedAttempts, limit);
     return jsonResponse({ items });
   }
 

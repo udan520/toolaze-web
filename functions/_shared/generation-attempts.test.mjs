@@ -7,6 +7,7 @@ import {
   deleteGenerationAttempt,
   deleteGenerationAttemptsForHistory,
   linkGenerationAttemptHistory,
+  listOrphanGenerationAttempts,
   listGenerationAttempts,
 } from './generation-attempts.mjs'
 
@@ -74,6 +75,37 @@ test('listGenerationAttempts maps resume metadata for account history polling', 
   assert.equal(item.requestCountry, 'US')
   assert.deepEqual(item.inputUrls, ['https://assets.toolaze.com/input.png'])
   assert.deepEqual(env.calls[0].values, ['user_1', 200])
+})
+
+test('listOrphanGenerationAttempts recovers a charged task from transaction metadata', async () => {
+  const env = createEnv([{
+    consumption_id: 'consume_orphan',
+    transaction_id: 'txn_orphan',
+    task_id: 'task_orphan',
+    metadata: JSON.stringify({
+      taskId: 'task_orphan',
+      model: 'seedream-5-0-lite',
+      mediaType: 'image',
+      requiredCredits: 17,
+      toolSlug: 'ai-clothes-changer',
+      toolLabel: 'Clothes Changer',
+      sourcePath: '/ai-clothes-changer',
+      isImageToImage: true,
+    }),
+    description: 'Clothes Changer',
+    created_at: '2026-08-12T12:23:51.689Z',
+  }])
+
+  const [item] = await listOrphanGenerationAttempts(env, 'user_1', 50)
+
+  assert.equal(item.id, 'gen_recovered_consume_orphan')
+  assert.equal(item.taskId, 'task_orphan')
+  assert.equal(item.status, 'pending')
+  assert.equal(item.taskProvider, 'image-to-image')
+  assert.equal(item.requiredCredits, 17)
+  assert.equal(item.toolSlug, 'ai-clothes-changer')
+  assert.equal(item.toolLabel, 'Clothes Changer')
+  assert.equal(item.consumptionId, 'consume_orphan')
 })
 
 test('createGenerationAttempt stores request IP and country metadata', async () => {

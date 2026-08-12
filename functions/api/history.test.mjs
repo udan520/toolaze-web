@@ -29,6 +29,9 @@ class TestStatement {
   }
 
   async all() {
+    if (this.sql.includes('from credit_consumptions')) {
+      return { results: this.env.orphanRows }
+    }
     if (this.sql.includes('from generation_attempts')) {
       return { results: this.env.attemptRows }
     }
@@ -51,6 +54,7 @@ function createEnv() {
     historyInserts: [],
     historyRows: [],
     attemptRows: [],
+    orphanRows: [],
     statements: [],
     DB: {
       prepare(sql) {
@@ -166,6 +170,40 @@ test('video output submitted through image generation resumes through the image 
   const payload = await response.json()
 
   assert.equal(payload.items[0].statusRequest.endpoint, '/api/image-to-image/status')
+})
+
+test('history feed exposes orphan charged tasks for status recovery', async () => {
+  const env = createEnv()
+  env.orphanRows = [{
+    consumption_id: 'consume_orphan',
+    transaction_id: 'txn_orphan',
+    task_id: 'task_orphan',
+    metadata: JSON.stringify({
+      taskId: 'task_orphan',
+      model: 'seedream-5-0-lite',
+      mediaType: 'image',
+      requiredCredits: 17,
+      toolSlug: 'ai-clothes-changer',
+      toolLabel: 'Clothes Changer',
+      sourcePath: '/ai-clothes-changer',
+    }),
+    description: 'Clothes Changer',
+    created_at: '2026-08-12T12:23:51.689Z',
+  }]
+
+  const response = await onRequest({
+    env,
+    request: new Request('https://toolaze.test/api/history', {
+      headers: { Cookie: 'toolaze_session=test-session-token' },
+    }),
+  })
+  const payload = await response.json()
+
+  assert.equal(payload.items[0].id, 'gen_recovered_consume_orphan')
+  assert.equal(payload.items[0].status, 'pending')
+  assert.equal(payload.items[0].toolSlug, 'ai-clothes-changer')
+  assert.equal(payload.items[0].statusRequest.endpoint, '/api/image-to-image/status')
+  assert.equal(payload.items[0].statusRequest.creditHold.consumptionId, 'consume_orphan')
 })
 
 test('history function accepts promptless video history for motion control', async () => {
