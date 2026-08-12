@@ -19,6 +19,30 @@ export type PromptReferenceMentionSegment<T extends PromptReferenceMention> =
   | { text: string }
   | { text: string; reference: T }
 
+export interface DeletePromptReferenceMentionInput {
+  value: string
+  selectionStart: number
+  selectionEnd: number
+  key: 'Backspace' | 'Delete'
+  mentions: readonly PromptReferenceMention[]
+}
+
+export interface DeletePromptReferenceMentionResult {
+  value: string
+  caret: number
+}
+
+export function supportsConfiguredPromptReferenceMentions(
+  capacities: readonly number[],
+  options: { isFirstLastFrameMode?: boolean } = {},
+): boolean {
+  if (options.isFirstLastFrameMode) return false
+
+  return capacities.reduce((total, capacity) => (
+    total + (Number.isFinite(capacity) ? Math.max(0, Math.floor(capacity)) : 0)
+  ), 0) >= 2
+}
+
 function hasMentionEndBoundary(value: string, end: number): boolean {
   const nextCharacter = value[end]
 
@@ -63,6 +87,69 @@ export function splitPromptReferenceMentions<T extends PromptReferenceMention>(
   }
 
   return segments
+}
+
+interface PromptReferenceMentionRange {
+  start: number
+  end: number
+}
+
+function getPromptReferenceMentionRanges(
+  value: string,
+  mentions: readonly PromptReferenceMention[],
+): PromptReferenceMentionRange[] {
+  const ranges: PromptReferenceMentionRange[] = []
+  let cursor = 0
+
+  for (const segment of splitPromptReferenceMentions(value, mentions)) {
+    const start = cursor
+    cursor += segment.text.length
+    if ('reference' in segment) ranges.push({ start, end: cursor })
+  }
+
+  return ranges
+}
+
+export function deletePromptReferenceMention({
+  value,
+  selectionStart,
+  selectionEnd,
+  key,
+  mentions,
+}: DeletePromptReferenceMentionInput): DeletePromptReferenceMentionResult | null {
+  const ranges = getPromptReferenceMentionRanges(value, mentions)
+  const isCollapsed = selectionStart === selectionEnd
+  const affectedRanges = ranges.filter((range) => {
+    if (isCollapsed) {
+      const isInsideRange = selectionStart > range.start && selectionStart < range.end
+      return isInsideRange || (key === 'Backspace' ? range.end === selectionStart : range.start === selectionStart)
+    }
+
+    return range.start < selectionEnd && range.end > selectionStart
+  })
+
+  if (affectedRanges.length === 0) return null
+
+  let deleteStart = isCollapsed ? affectedRanges[0].start : selectionStart
+  let deleteEnd = isCollapsed ? affectedRanges[affectedRanges.length - 1].end : selectionEnd
+  deleteStart = Math.min(deleteStart, ...affectedRanges.map((range) => range.start))
+  deleteEnd = Math.max(deleteEnd, ...affectedRanges.map((range) => range.end))
+
+  let prefix = value.slice(0, deleteStart)
+  let suffix = value.slice(deleteEnd)
+  if (/[ \t]$/.test(prefix) && /^[ \t]/.test(suffix)) {
+    suffix = suffix.slice(1)
+  } else if (prefix.length === 0 && /^[ \t]/.test(suffix)) {
+    suffix = suffix.slice(1)
+  } else if (suffix.length === 0 && /[ \t]$/.test(prefix)) {
+    prefix = prefix.slice(0, -1)
+    deleteStart -= 1
+  }
+
+  return {
+    value: `${prefix}${suffix}`,
+    caret: deleteStart,
+  }
 }
 
 function trimTrailingInlineWhitespace(value: string): string {

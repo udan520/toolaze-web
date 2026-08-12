@@ -1,7 +1,93 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 
-import { insertPromptReferenceMention, splitPromptReferenceMentions } from './prompt-reference-mentions'
+import {
+  deletePromptReferenceMention,
+  insertPromptReferenceMention,
+  splitPromptReferenceMentions,
+  supportsConfiguredPromptReferenceMentions,
+} from './prompt-reference-mentions'
+
+test('enables mentions from configured reference capacity instead of uploaded count', () => {
+  assert.equal(supportsConfiguredPromptReferenceMentions([2]), true)
+  assert.equal(supportsConfiguredPromptReferenceMentions([1, 1]), true)
+  assert.equal(supportsConfiguredPromptReferenceMentions([1, 0]), false)
+  assert.equal(supportsConfiguredPromptReferenceMentions([8], { isFirstLastFrameMode: true }), false)
+})
+
+test('backspace deletes the whole mention before the caret', () => {
+  assert.deepEqual(deletePromptReferenceMention({
+    value: 'Use @Image 1 gently',
+    selectionStart: 12,
+    selectionEnd: 12,
+    key: 'Backspace',
+    mentions: [{ label: '@Image 1' }],
+  }), {
+    value: 'Use gently',
+    caret: 4,
+  })
+})
+
+test('delete removes the whole mention after the caret', () => {
+  assert.deepEqual(deletePromptReferenceMention({
+    value: 'Use @Video 1 gently',
+    selectionStart: 4,
+    selectionEnd: 4,
+    key: 'Delete',
+    mentions: [{ label: '@Video 1' }],
+  }), {
+    value: 'Use gently',
+    caret: 4,
+  })
+})
+
+test('backspace or delete inside a mention removes the whole token', () => {
+  for (const key of ['Backspace', 'Delete'] as const) {
+    assert.deepEqual(deletePromptReferenceMention({
+      value: 'Use @Image 1 gently',
+      selectionStart: 8,
+      selectionEnd: 8,
+      key,
+      mentions: [{ label: '@Image 1' }],
+    }), {
+      value: 'Use gently',
+      caret: 4,
+    })
+  }
+})
+
+test('selection intersecting a mention expands to the whole token', () => {
+  assert.deepEqual(deletePromptReferenceMention({
+    value: 'Use @Audio 1 for pacing',
+    selectionStart: 8,
+    selectionEnd: 10,
+    key: 'Backspace',
+    mentions: [{ label: '@Audio 1' }],
+  }), {
+    value: 'Use for pacing',
+    caret: 4,
+  })
+})
+
+test('mention deletion preserves line breaks and ignores ordinary at-sign text', () => {
+  assert.deepEqual(deletePromptReferenceMention({
+    value: 'First\n@Image 1\nNext',
+    selectionStart: 14,
+    selectionEnd: 14,
+    key: 'Backspace',
+    mentions: [{ label: '@Image 1' }],
+  }), {
+    value: 'First\n\nNext',
+    caret: 6,
+  })
+  assert.equal(deletePromptReferenceMention({
+    value: 'Email @someone',
+    selectionStart: 14,
+    selectionEnd: 14,
+    key: 'Backspace',
+    mentions: [{ label: '@Image 1' }],
+  }), null)
+})
 
 test('replaces a typed at-sign trigger with the selected mention', () => {
   const result = insertPromptReferenceMention({

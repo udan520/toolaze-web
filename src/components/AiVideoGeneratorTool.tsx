@@ -54,7 +54,11 @@ import PromptReferenceMentionPicker, {
   type PromptReferenceMentionOrdinalRegistry,
 } from './PromptReferenceMentionPicker'
 import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
-import { insertPromptReferenceMention } from '@/lib/prompt-reference-mentions'
+import {
+  deletePromptReferenceMention,
+  insertPromptReferenceMention,
+  supportsConfiguredPromptReferenceMentions,
+} from '@/lib/prompt-reference-mentions'
 
 interface ImageItem {
   file: File
@@ -1359,21 +1363,8 @@ export default function AiVideoGeneratorTool({
       ...audioFiles.map((item) => `local:${item.preview}`),
     ])
 
-    if (isUsingFirstLastFrame && !canCombineFirstLastFrameWithReferences) {
-      return firstLastFrameImages.flatMap((item, index) => {
-        if (!item) return []
-        const label = index === 0 ? '@First Frame' : '@Last Frame'
-        return [{
-          id: `frame-${index}-${getReferenceImageSourcePreview(item)}`,
-          kind: 'image' as const,
-          label,
-          name: label.slice(1),
-          src: getReferenceImageSourcePreview(item),
-        }]
-      })
-    }
-
-    if (!supportsMultimodalReferences && !supportsFirstLastFrame) return []
+    if (isUsingFirstLastFrame) return []
+    if (activeMode !== 'image-to-video') return []
 
     const imageItems: PromptReferenceMentionItem[] = [
       ...remoteImageUrls.map((url) => {
@@ -1398,7 +1389,7 @@ export default function AiVideoGeneratorTool({
       }),
     ]
 
-    if (!supportsMultimodalReferences) return imageItems
+    if (!supportsMultimodalReferences && !supportsMotionReferenceVideo) return imageItems
 
     return [
       ...imageItems,
@@ -1422,7 +1413,7 @@ export default function AiVideoGeneratorTool({
           src: item.preview,
         }
       }),
-      ...remoteAudioUrls.map((url) => {
+      ...(supportsMultimodalReferences ? remoteAudioUrls.map((url) => {
         const ordinal = ordinalRegistry.get('audio', `remote:${url}`)
         return {
           id: `mention-remote-audio-${ordinal}`,
@@ -1431,8 +1422,8 @@ export default function AiVideoGeneratorTool({
           name: `Reference audio ${ordinal}`,
           src: url,
         }
-      }),
-      ...audioFiles.map((item) => {
+      }) : []),
+      ...(supportsMultimodalReferences ? audioFiles.map((item) => {
         const ordinal = ordinalRegistry.get('audio', `local:${item.preview}`)
         return {
           id: `mention-local-audio-${ordinal}`,
@@ -1441,10 +1432,11 @@ export default function AiVideoGeneratorTool({
           name: item.file.name,
           src: item.preview,
         }
-      }),
+      }) : []),
     ]
   }, [
     audioFiles,
+    activeMode,
     canCombineFirstLastFrameWithReferences,
     firstLastFrameImages,
     imageFiles,
@@ -1454,9 +1446,19 @@ export default function AiVideoGeneratorTool({
     remoteImageUrls,
     remoteMotionVideoUrls,
     supportsFirstLastFrame,
+    supportsMotionReferenceVideo,
     supportsMultimodalReferences,
   ])
-  const supportsPromptReferenceMentions = supportsMultimodalReferences || supportsFirstLastFrame
+  const supportsPromptReferenceMentions = supportsConfiguredPromptReferenceMentions(
+    activeMode === 'image-to-video'
+      ? [
+        modelConfig.maxImages,
+        supportsReferenceVideos ? (modelConfig.maxVideos || 1) : 0,
+        supportsMultimodalReferences ? (modelConfig.maxAudioFiles || 0) : 0,
+      ]
+      : [],
+    { isFirstLastFrameMode: isUsingFirstLastFrame },
+  )
   useEffect(() => {
     setPromptMentionActiveIndex((current) => (
       promptReferenceMentionItems.length === 0
@@ -1594,6 +1596,26 @@ export default function AiVideoGeneratorTool({
   }
 
   const handlePromptKeyDown = (event: ReactKeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+      const deletion = deletePromptReferenceMention({
+        value: event.currentTarget.value,
+        selectionStart: event.currentTarget.selectionStart,
+        selectionEnd: event.currentTarget.selectionEnd,
+        key: event.key,
+        mentions: promptReferenceMentionItems,
+      })
+      if (deletion) {
+        event.preventDefault()
+        setPrompt(deletion.value)
+        setIsPromptMentionPickerOpen(false)
+        requestAnimationFrame(() => {
+          promptTextareaRef.current?.focus()
+          promptTextareaRef.current?.setSelectionRange(deletion.caret, deletion.caret)
+        })
+        return
+      }
+    }
+
     if (isPromptMentionPickerOpen) {
       if (event.key === 'Escape') {
         event.preventDefault()

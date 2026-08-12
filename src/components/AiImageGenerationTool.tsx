@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useRef, useCallback, useEffect, useLayoutEffect } from 'react'
-import type { ReactNode } from 'react'
+import { useState, useRef, useCallback, useEffect, useId, useLayoutEffect } from 'react'
+import type { ChangeEvent, KeyboardEvent as ReactKeyboardEvent, ReactNode, UIEvent as ReactUIEvent } from 'react'
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -72,6 +72,17 @@ import {
   type AiImageGeneratorModelId,
 } from '@/lib/ai-image-generator-config'
 import { getLocalizedModelSelectorCopy } from '@/lib/model-selector-i18n'
+import PromptReferenceMentionPicker, {
+  createPromptReferenceMentionOrdinalRegistry,
+  type PromptReferenceMentionItem,
+  type PromptReferenceMentionOrdinalRegistry,
+} from './PromptReferenceMentionPicker'
+import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
+import {
+  deletePromptReferenceMention,
+  insertPromptReferenceMention,
+  supportsConfiguredPromptReferenceMentions,
+} from '@/lib/prompt-reference-mentions'
 
 type RightPanelMode = 'sample' | 'generating' | 'history'
 type GenerationMediaType = 'image' | 'video'
@@ -1320,6 +1331,11 @@ export default function AiImageGenerationTool({
   const [activeTab, setActiveTab] = useState<ImageGenerationMode>(initialActiveTab)
   const [imageFiles, setImageFiles] = useState<ImageItem[]>([])
   const [prompt, setPrompt] = useState(defaultPrompt)
+  const [isPromptMentionPickerOpen, setIsPromptMentionPickerOpen] = useState(false)
+  const [promptMentionTriggerIndex, setPromptMentionTriggerIndex] = useState<number | null>(null)
+  const [promptMentionSelection, setPromptMentionSelection] = useState({ start: 0, end: 0 })
+  const [promptMentionActiveIndex, setPromptMentionActiveIndex] = useState(0)
+  const promptMentionPickerId = useId()
   const [selectedPromptModifier, setSelectedPromptModifier] = useState(
     promptModifier?.defaultValue ||
       promptModifier?.options[0]?.value ||
@@ -1420,6 +1436,12 @@ export default function AiImageGenerationTool({
   const [generatingSeconds, setGeneratingSeconds] = useState(0)
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
+  const promptMentionRootRef = useRef<HTMLDivElement>(null)
+  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
+  const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
+  if (!promptReferenceMentionOrdinalRegistryRef.current) {
+    promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
+  }
   const clothingPresetUploadInputRef = useRef<HTMLInputElement>(null)
   const modelSelectorRef = useRef<HTMLDivElement>(null)
   const compactOutputSettingsRef = useRef<HTMLDivElement>(null)
@@ -1666,6 +1688,33 @@ export default function AiImageGenerationTool({
     : MAX_IMAGES
   const personUploadMaxImages = shouldRenderWorkflowTabsAboveUpload ? Math.min(1, MAX_IMAGES) : currentMaxUploadImages
   const clothingReferenceMaxImages = Math.min(1, MAX_IMAGES)
+  const promptReferenceCapacity = activeTab === 'image-to-image'
+    ? personUploadMaxImages + (shouldRenderStandaloneReferenceUploader ? clothingReferenceMaxImages : 0)
+    : 0
+  const supportsPromptReferenceMentions = supportsConfiguredPromptReferenceMentions([promptReferenceCapacity])
+  const promptReferenceMentionItems = useMemo<PromptReferenceMentionItem[]>(() => {
+    const ordinalRegistry = promptReferenceMentionOrdinalRegistryRef.current
+    if (!ordinalRegistry || activeTab !== 'image-to-image') return []
+
+    const references = [
+      ...remoteImageUrls.map((url) => ({ identity: `remote:${url}`, src: url, name: 'Reference image' })),
+      ...imageFiles.map((item) => ({ identity: `local:${item.preview}`, src: item.preview, name: item.file.name })),
+      ...clothingReferenceRemoteUrls.map((url) => ({ identity: `remote:${url}`, src: url, name: 'Reference image' })),
+      ...clothingReferenceFiles.map((item) => ({ identity: `local:${item.preview}`, src: item.preview, name: item.file.name })),
+    ]
+    ordinalRegistry.syncActive('image', references.map((item) => item.identity))
+
+    return references.map((item) => {
+      const ordinal = ordinalRegistry.get('image', item.identity)
+      return {
+        id: `mention-image-${ordinal}`,
+        kind: 'image' as const,
+        label: `@Image ${ordinal}`,
+        name: item.name === 'Reference image' ? `Reference image ${ordinal}` : item.name,
+        src: item.src,
+      }
+    })
+  }, [activeTab, clothingReferenceFiles, clothingReferenceRemoteUrls, imageFiles, remoteImageUrls])
   const currentEffectivePrompt = shouldUseCombinedCustomReference
     ? composePromptParts(customReferencePrompt.trim(), prompt.trim())
     : shouldUseReferenceOnlyCustomMode
@@ -1690,6 +1739,138 @@ export default function AiImageGenerationTool({
     && modelConfig.imageToImageAspectRatioMode === 'reference-image'
   const effectiveAspectRatio = followsReferenceImageAspectRatio ? 'Match Reference' : aspectRatio
   const selectedAspectRatioShape = getAspectRatioShapeDimensions(effectiveAspectRatio)
+
+  const updatePromptValue = (nextPrompt: string) => {
+    setPrompt(nextPrompt)
+    if (activePromptPresetTab === customPromptTabId) setCustomPromptDraft(nextPrompt)
+  }
+
+  const handlePromptChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const nextValue = event.target.value
+    const nextCaret = event.target.selectionStart
+    updatePromptValue(nextValue)
+
+    if (!isPromptMentionPickerOpen || promptMentionTriggerIndex === null) return
+    if (nextValue[promptMentionTriggerIndex] !== '@') {
+      setPromptMentionTriggerIndex(null)
+      setIsPromptMentionPickerOpen(false)
+      return
+    }
+    setPromptMentionSelection({ start: promptMentionTriggerIndex + 1, end: nextCaret })
+  }
+
+  const handlePromptScroll = (event: ReactUIEvent<HTMLTextAreaElement>) => {
+    if (!promptMentionOverlayRef.current) return
+    promptMentionOverlayRef.current.scrollTop = event.currentTarget.scrollTop
+    promptMentionOverlayRef.current.scrollLeft = event.currentTarget.scrollLeft
+  }
+
+  const handlePromptMentionTriggerClick = () => {
+    const textarea = promptTextareaRef.current
+    const selectionStart = textarea?.selectionStart ?? prompt.length
+    const selectionEnd = textarea?.selectionEnd ?? selectionStart
+    setPromptMentionTriggerIndex(null)
+    setPromptMentionSelection({ start: selectionStart, end: selectionEnd })
+    setPromptMentionActiveIndex(0)
+    setIsPromptMentionPickerOpen(true)
+    requestAnimationFrame(() => textarea?.focus())
+  }
+
+  const handlePromptReferenceMentionSelect = (item: PromptReferenceMentionItem) => {
+    const result = insertPromptReferenceMention({
+      value: prompt,
+      selectionStart: promptMentionSelection.start,
+      selectionEnd: promptMentionSelection.end,
+      triggerIndex: promptMentionTriggerIndex,
+      mention: item.label,
+    })
+    updatePromptValue(result.value)
+    setIsPromptMentionPickerOpen(false)
+    setPromptMentionTriggerIndex(null)
+    requestAnimationFrame(() => {
+      promptTextareaRef.current?.focus()
+      promptTextareaRef.current?.setSelectionRange(result.caret, result.caret)
+    })
+  }
+
+  const handlePromptKeyDown = (event: ReactKeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+      const deletion = deletePromptReferenceMention({
+        value: event.currentTarget.value,
+        selectionStart: event.currentTarget.selectionStart,
+        selectionEnd: event.currentTarget.selectionEnd,
+        key: event.key,
+        mentions: promptReferenceMentionItems,
+      })
+      if (deletion) {
+        event.preventDefault()
+        updatePromptValue(deletion.value)
+        setIsPromptMentionPickerOpen(false)
+        requestAnimationFrame(() => promptTextareaRef.current?.setSelectionRange(deletion.caret, deletion.caret))
+        return
+      }
+    }
+
+    if (isPromptMentionPickerOpen) {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setIsPromptMentionPickerOpen(false)
+        return
+      }
+      if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && promptReferenceMentionItems.length > 0) {
+        event.preventDefault()
+        const direction = event.key === 'ArrowDown' ? 1 : -1
+        setPromptMentionActiveIndex((current) => (
+          (current + direction + promptReferenceMentionItems.length) % promptReferenceMentionItems.length
+        ))
+        return
+      }
+      if (event.key === 'Enter' && promptReferenceMentionItems[promptMentionActiveIndex]) {
+        event.preventDefault()
+        handlePromptReferenceMentionSelect(promptReferenceMentionItems[promptMentionActiveIndex])
+        return
+      }
+    }
+
+    if (!supportsPromptReferenceMentions || event.key !== '@' || event.metaKey || event.ctrlKey || event.altKey) return
+    event.preventDefault()
+    const selectionStart = event.currentTarget.selectionStart
+    const selectionEnd = event.currentTarget.selectionEnd
+    const nextPrompt = `${event.currentTarget.value.slice(0, selectionStart)}@${event.currentTarget.value.slice(selectionEnd)}`
+    const nextCaret = selectionStart + 1
+    updatePromptValue(nextPrompt)
+    setPromptMentionTriggerIndex(selectionStart)
+    setPromptMentionSelection({ start: nextCaret, end: nextCaret })
+    setPromptMentionActiveIndex(0)
+    setIsPromptMentionPickerOpen(true)
+    requestAnimationFrame(() => promptTextareaRef.current?.setSelectionRange(nextCaret, nextCaret))
+  }
+
+  useEffect(() => {
+    if (!isPromptMentionPickerOpen) return
+
+    const handlePromptMentionPointerDown = (event: MouseEvent) => {
+      if (event.target instanceof Node && promptMentionRootRef.current?.contains(event.target)) return
+      setIsPromptMentionPickerOpen(false)
+    }
+    const handlePromptMentionEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      setIsPromptMentionPickerOpen(false)
+      promptTextareaRef.current?.focus()
+    }
+
+    document.addEventListener('mousedown', handlePromptMentionPointerDown)
+    document.addEventListener('keydown', handlePromptMentionEscape)
+    return () => {
+      document.removeEventListener('mousedown', handlePromptMentionPointerDown)
+      document.removeEventListener('keydown', handlePromptMentionEscape)
+    }
+  }, [isPromptMentionPickerOpen])
+
+  useEffect(() => {
+    if (supportsPromptReferenceMentions) return
+    setIsPromptMentionPickerOpen(false)
+  }, [supportsPromptReferenceMentions])
 
   useEffect(() => {
     const nextValue =
@@ -4686,21 +4867,60 @@ export default function AiImageGenerationTool({
                 {!((hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) || shouldUseCustomReferenceUploader) && (
                   <>
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || toolText.prompt}</label>
-                    <div data-left-prompt-field className="relative">
+                    <div ref={promptMentionRootRef} data-left-prompt-field className="relative rounded-xl bg-slate-50/50">
+                      {supportsPromptReferenceMentions ? (
+                        <PromptReferenceMentionOverlay
+                          value={prompt}
+                          items={promptReferenceMentionItems}
+                          mirrorRef={promptMentionOverlayRef}
+                        />
+                      ) : null}
                       <textarea
                         ref={promptTextareaRef}
                         data-left-prompt-input
                         value={prompt}
-                        onChange={(e) => {
-                          setPrompt(e.target.value)
-                          if (activePromptPresetTab === customPromptTabId) {
-                            setCustomPromptDraft(e.target.value)
-                          }
+                        onChange={handlePromptChange}
+                        onScroll={handlePromptScroll}
+                        onSelect={(event) => {
+                          if (!isPromptMentionPickerOpen) return
+                          setPromptMentionSelection({
+                            start: event.currentTarget.selectionStart,
+                            end: event.currentTarget.selectionEnd,
+                          })
                         }}
+                        onKeyDown={handlePromptKeyDown}
+                        aria-controls={isPromptMentionPickerOpen ? promptMentionPickerId : undefined}
+                        aria-expanded={isPromptMentionPickerOpen}
+                        aria-activedescendant={isPromptMentionPickerOpen && promptReferenceMentionItems[promptMentionActiveIndex]
+                          ? `${promptMentionPickerId}-option-${promptReferenceMentionItems[promptMentionActiveIndex].id}`
+                          : undefined}
                         placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
-                        className="h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-slate-50/50 px-4 py-3 pr-11 text-base leading-6 text-slate-800 placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm"
+                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-transparent px-4 pr-11 text-base leading-6 ${supportsPromptReferenceMentions ? 'pb-12 pt-3 text-transparent caret-slate-800' : 'py-3 text-slate-800'} placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm`}
                         rows={4}
                       />
+                      {supportsPromptReferenceMentions ? (
+                        <button
+                          type="button"
+                          data-prompt-reference-mention-trigger
+                          aria-label="Mention a reference"
+                          aria-expanded={isPromptMentionPickerOpen}
+                          aria-haspopup="listbox"
+                          aria-controls={promptMentionPickerId}
+                          onMouseDown={(event) => event.preventDefault()}
+                          onClick={handlePromptMentionTriggerClick}
+                          className="absolute bottom-3 left-3 z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                        >
+                          @
+                        </button>
+                      ) : null}
+                      {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
+                        <PromptReferenceMentionPicker
+                          id={promptMentionPickerId}
+                          items={promptReferenceMentionItems}
+                          activeItemId={promptReferenceMentionItems[promptMentionActiveIndex]?.id}
+                          onSelect={handlePromptReferenceMentionSelect}
+                        />
+                      ) : null}
                       {prompt && (
                         <button
                           type="button"

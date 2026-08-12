@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import test from 'node:test'
+
+const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+
+test('image mentions are enabled only for configured multi-image image-to-image modes', () => {
+  assert.match(source, /supportsConfiguredPromptReferenceMentions/)
+  assert.match(source, /activeTab === 'image-to-image'/)
+  assert.match(source, /currentMaxUploadImages/)
+  assert.match(source, /PromptReferenceMentionOverlay/)
+  assert.match(source, /PromptReferenceMentionPicker/)
+})
+
+test('image prompt deletion uses the shared atomic mention behavior', () => {
+  assert.match(source, /deletePromptReferenceMention/)
+  assert.match(source, /event\.key === 'Backspace' \|\| event\.key === 'Delete'/)
+  assert.match(source, /mentions: promptReferenceMentionItems/)
+})
