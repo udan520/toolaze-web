@@ -64,8 +64,10 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
   const englishAssets = english.map((item) => item.image)
 
   for (const locale of locales) {
-    const acceptance = readContent(locale).topTool.functionalAcceptance
+    const topTool = readContent(locale).topTool
+    const acceptance = topTool.functionalAcceptance
     const presets = acceptance.presets
+    assert.equal(topTool.defaultAspectRatio, '9:16', locale)
     assert.equal(presets.filter((item) => item.group === 'women').length, 8, locale)
     assert.equal(presets.filter((item) => item.group === 'men').length, 8, locale)
     assert.deepEqual(presets.map((item) => item.image), englishAssets, locale)

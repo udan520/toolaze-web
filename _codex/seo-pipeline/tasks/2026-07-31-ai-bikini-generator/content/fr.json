@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
+    "defaultAspectRatio": "9:16",
     "defaultPrompt": "L’image 1 est la photo originale de la personne. L’image 2 est la référence bikini ou maillot de bain. Remplacez uniquement le vêtement visible sur chaque personne clairement visible dans l’image 1 par le maillot de bain de l’image 2. Si l’image 1 contient plusieurs personnes, appliquez le même style de maillot à chaque personne clairement visible. Gardez tout le reste exactement identique pour chaque personne et pour la scène : visage, identité, âge, teint, cheveux, silhouette, proportions du corps, pose, mains, expression, fond, lumière, angle caméra, cadrage et qualité d’image. Ne pas amincir, ne pas agrandir, ne pas retoucher, ne pas remodeler, ne pas changer la pose, ne pas changer le visage, ne pas changer le corps et ne pas modifier la scène. Faites correspondre le style, la couvrance, le tissu, la couleur, les bretelles et la silhouette du maillot de l’image 2 aussi précisément que possible. Gardez un résultat réaliste, sobre, non explicite et adapté à un aperçu de maillot de bain.",
     "defaultImageUrls": [
       "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"

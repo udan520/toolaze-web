@@ -47,6 +47,17 @@ test('reference-shaped image generation uses a compact Match Reference control a
   assert.match(source, /if \(!followsReferenceImageAspectRatio\) \{\s*formData\.append\('aspectRatio', requestAspectRatio\)/)
 })
 
+test('page-level default aspect ratio applies to supported image generation models', () => {
+  const defaultAspectRatioEffect = source.match(
+    /useEffect\(\(\) => \{\s*if \(!defaultAspectRatio\)[\s\S]*?\}, \[defaultAspectRatio, modelConfig\.aspectRatios, setAspectRatio\]\)/,
+  )?.[0] || ''
+
+  assert.notEqual(defaultAspectRatioEffect, '', 'default aspect ratio effect should apply to image tools')
+  assert.doesNotMatch(defaultAspectRatioEffect, /selectedMediaType === 'image'/)
+  assert.match(defaultAspectRatioEffect, /modelConfig\.aspectRatios\.some\(\(item\) => item\.value === defaultAspectRatio\)/)
+  assert.match(defaultAspectRatioEffect, /setAspectRatio\(defaultAspectRatio\)/)
+})
+
 test('desktop result combines image preview and controls in one card', () => {
   assert.match(source, /data-desktop-result-card/)
   assert.match(source, /data-desktop-result-feed/)

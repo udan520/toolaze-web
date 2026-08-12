@@ -7,6 +7,7 @@
     "mode": "image-to-image",
     "maxUploadImages": 2,
     "modelId": "seedream-5-0-lite",
+    "defaultAspectRatio": "9:16",
     "defaultPrompt": "La imagen 1 es la foto original de la persona. La imagen 2 es la referencia de bikini o traje de baño. Reemplaza solo la ropa visible de cada persona claramente visible en la imagen 1 con el traje de baño de la imagen 2. Si la imagen 1 contiene varias personas, aplica el mismo estilo de traje de baño a cada persona claramente visible. Mantén todo lo demás exactamente igual para cada persona y la escena: rostro, identidad, edad, tono de piel, cabello, forma corporal, proporciones corporales, pose, manos, expresión, posición relativa, fondo, iluminación, ángulo de cámara, encuadre y calidad de imagen. No adelgaces, no agrandes, no retoques, no remodeles, no cambies la pose, no cambies el rostro, no cambies el cuerpo, no cambies las posiciones relativas y no modifiques la escena. Igualar el estilo, la cobertura, la tela, el color, los tirantes y la silueta del traje de baño de la imagen 2 lo más posible. Mantén el resultado realista, de buen gusto, no explícito y adecuado para una vista previa de traje de baño.",
     "defaultImageUrls": [
       "https://assets.toolaze.com/uploads/428e19f757bb4705958a929a6d0de64b.webp"

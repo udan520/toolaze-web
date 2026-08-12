@@ -1572,11 +1572,10 @@ export default function AiImageGenerationTool({
   }, [defaultPrompt])
 
   useEffect(() => {
-    if (selectedMediaType === 'image') return
     if (!defaultAspectRatio) return
     if (!modelConfig.aspectRatios.some((item) => item.value === defaultAspectRatio)) return
     setAspectRatio(defaultAspectRatio)
-  }, [defaultAspectRatio, modelConfig.aspectRatios, selectedMediaType, setAspectRatio])
+  }, [defaultAspectRatio, modelConfig.aspectRatios, setAspectRatio])
 
   useEffect(() => {
     setVideoDurationSeconds(getConfiguredVideoDurationSeconds(defaultVideoDurationSeconds, configuredVideoDurationOptions))
