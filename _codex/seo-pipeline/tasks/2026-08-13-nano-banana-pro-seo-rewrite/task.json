@@ -1,0 +1,247 @@
+{
+  "taskId": "2026-08-13-nano-banana-pro-seo-rewrite",
+  "slug": "nano-banana-pro",
+  "pageType": "model",
+  "status": "ready_for_publish",
+  "topic": "Nano Banana Pro English model-page rewrite",
+  "createdAt": "2026-08-13T00:00:00+08:00",
+  "localeCoverage": ["en"],
+  "canonicalPath": "/model/nano-banana-pro",
+  "sourceData": "src/data/en/nano-banana-pro.json",
+  "releaseThesis": {
+    "thesis": "Nano Banana Pro is a free, no-sign-up AI image generator for prompt-led creation and reference-guided image editing with up to eight uploaded reference images and 1K, 2K, or 4K output choices.",
+    "previousVersionBaseline": {
+      "value": "N/A",
+      "status": "N/A",
+      "reason": "No reliable official previous-version baseline was used for this rewrite."
+    },
+    "primaryDelta": {
+      "value": "N/A",
+      "status": "N/A",
+      "reason": "The page uses non-comparative positioning rather than an unverified upgrade claim."
+    },
+    "supportingDeltas": [],
+    "userProblemsSolved": [
+      "Lets creators start from a written brief or combine several visual references in one image workflow.",
+      "Keeps output size, format, and common publishing ratios in the same generation flow."
+    ],
+    "bestFor": ["Reference-guided image editing with up to eight uploaded images", "Image creation that needs 1K, 2K, or 4K output choices"],
+    "chooseAlternativeWhen": ["Choose Nano Banana 2 when a project needs more than eight references or its extra ultra-wide and ultra-tall ratios."],
+    "officialSources": [
+      {
+        "id": "google-nano-banana-pro",
+        "claim": "Nano Banana Pro is a Google DeepMind image generation and editing model with improved text rendering, enhanced world knowledge, multiple-language text generation, reference consistency, diagrams/infographics support, and up to 4K resolution.",
+        "url": "https://blog.google/innovation-and-ai/products/nano-banana-pro/",
+        "sourceType": "official product announcement",
+        "checkedAt": "2026-08-13"
+      },
+      {
+        "id": "kie-nano-banana-pro",
+        "claim": "Toolaze-supported settings include text-to-image and image-to-image, up to eight reference images, 1K/2K/4K output choices, supported ratios, and PNG/JPEG/WebP output choices.",
+        "url": "https://docs.kie.ai/market/google/pro-image-to-image.md",
+        "sourceType": "provider documentation",
+        "checkedAt": "2026-08-13"
+      }
+    ],
+    "derivedClaims": []
+  },
+  "competitorResearch": {
+    "checkedAt": "2026-08-13",
+    "market": "United States",
+    "query": "Nano Banana Pro AI image generator",
+    "findings": [
+      {"competitor": "EaseMate AI", "url": "https://www.easemate.ai/nano-banana-2-ai-image-generator", "relevance": "same-family image-generator page", "depth": "A long tool-led page that places free/no-sign-up access, image inputs, feature explanation, steps, examples, and FAQ around the generator.", "keyCoverage": ["access", "inputs", "workflow", "examples", "FAQ"], "takeaway": "Put free/no-sign-up access and the real workflow near the generator; do not copy its unlimited-free, speed, or quality claims."},
+      {"competitor": "Pollo AI", "url": "https://api.pollo.ai/google/nano-banana-2-google", "relevance": "same-family model platform page", "depth": "Separates model access, creation modes, prompt input, and selection information across product surfaces.", "keyCoverage": ["model access", "modes", "prompt workflow", "selection"], "takeaway": "Explain what the model does, how to use it, and when to choose its sibling; do not use Pollo-specific limits or pricing as Toolaze facts."},
+      {"competitor": "OpenArt", "url": "https://openart.ai/image/create/nano-banana-pro", "relevance": "direct model workspace", "depth": "Makes the model, prompt, reference upload, and output workflow visible in the creation workspace, with model-selection content elsewhere on the site.", "keyCoverage": ["prompt", "references", "output controls", "model selection"], "takeaway": "Keep text-to-image and reference-guided editing as distinct user actions, with a clear path from prompt or references to output."},
+      {"competitor": "ImagineArt", "url": "https://www.imagine.art/apps/nano-banana-pro", "relevance": "direct model landing page", "depth": "Uses a model page plus comparison, task-specific, and tutorial surfaces to cover editing workflows, use cases, and selection guidance.", "keyCoverage": ["model explanation", "tasks", "comparison", "tutorials"], "takeaway": "Turn settings into concrete tasks such as product direction, text-led posters, and reference-guided scenes; do not import its reference-count, timing, editing, or quality claims."},
+      {"competitor": "Topview", "url": "https://www.topview.ai/nanobananapro", "relevance": "direct model landing page", "depth": "Leads with an explanation of the model and task-oriented capability modules, including structured prompt examples.", "keyCoverage": ["model definition", "task modules", "prompt examples"], "takeaway": "Use task-specific section titles and prompt examples instead of generic feature labels; do not copy commercial-use or performance claims."},
+      {"competitor": "Artlist", "url": "https://artlist.io/ai/models/nano-banana-pro", "relevance": "direct model page and comparison content", "depth": "Connects model explanation, example-driven editing workflow, and family-level selection guidance.", "keyCoverage": ["workflow", "examples", "model choice"], "takeaway": "State the Pro-versus-sibling choice in one clear conclusion rather than only leaving it to a table."},
+      {"competitor": "Krea", "url": "https://www.krea.ai/models/nano-banana-pro", "relevance": "direct model page and editor ecosystem", "depth": "Spreads model information across the model page, editing workflow, documentation, and FAQ, keeping prompt and reference decisions visible.", "keyCoverage": ["editing", "prompt", "references", "FAQ"], "takeaway": "Make prompt-led creation and reference-guided editing visibly distinct; do not transfer Krea-specific commercial, speed, or access terms."}
+    ],
+    "sharedCoverage": ["direct result-led hero", "real workflow near the generator", "prompt or reference guidance", "concrete use cases", "selection help and access FAQ"],
+    "nonPortableClaims": ["competitor-specific quality, speed, privacy, licensing, pricing, and model-limit statements"],
+    "modelDefinitionExtraction": [
+      {
+        "competitor": "EaseMate AI",
+        "url": "https://www.easemate.ai/nano-banana-2-ai-image-generator",
+        "openingDefinition": "N/A — the page was region-blocked during the check.",
+        "firstDifferentiators": [],
+        "userTasksOrOutputs": [],
+        "sectionShape": "N/A",
+        "nonPortableClaims": ["unverified page copy"]
+      },
+      {
+        "competitor": "Pollo AI",
+        "url": "https://api.pollo.ai/google/nano-banana-2-google",
+        "openingDefinition": "N/A — the page connection timed out during the check.",
+        "firstDifferentiators": [],
+        "userTasksOrOutputs": [],
+        "sectionShape": "N/A",
+        "nonPortableClaims": ["unverified page copy"]
+      },
+      {
+        "competitor": "OpenArt",
+        "url": "https://openart.ai/image/create/nano-banana-pro",
+        "openingDefinition": "N/A — the workspace did not yield accessible model-definition copy during the check.",
+        "firstDifferentiators": ["prompt-led creation", "reference upload", "output controls"],
+        "userTasksOrOutputs": ["create from prompt", "guide with references"],
+        "sectionShape": "workspace-first rather than a standalone definition section",
+        "nonPortableClaims": ["workspace-specific controls and access"]
+      },
+      {
+        "competitor": "ImagineArt",
+        "url": "https://www.imagine.art/apps/nano-banana-pro",
+        "openingDefinition": "N/A — no accessible model-definition copy was returned during the check.",
+        "firstDifferentiators": ["editing workflows", "task guidance", "model comparison"],
+        "userTasksOrOutputs": ["editing", "tutorial-led model selection"],
+        "sectionShape": "model page plus task and tutorial surfaces",
+        "nonPortableClaims": ["editing quality, timing, and limits"]
+      },
+      {
+        "competitor": "Topview",
+        "url": "https://www.topview.ai/nanobananapro",
+        "openingDefinition": "Defines Nano Banana Pro as a reasoning-led AI image generator for creating and editing images with logic and real-world knowledge.",
+        "firstDifferentiators": ["visual reasoning", "legible in-image text", "consistent characters"],
+        "userTasksOrOutputs": ["commercial ads", "professional content production"],
+        "sectionShape": "identity -> three differentiators -> commercial use",
+        "nonPortableClaims": ["commercial-ready, licensing, and quality claims"]
+      },
+      {
+        "competitor": "Artlist",
+        "url": "https://artlist.io/ai/models/nano-banana-pro",
+        "openingDefinition": "N/A — no accessible model-definition copy was returned during the check.",
+        "firstDifferentiators": ["editing workflow", "examples", "model-family selection"],
+        "userTasksOrOutputs": ["example-driven editing", "family-level choice"],
+        "sectionShape": "model explanation linked to examples and selection guidance",
+        "nonPortableClaims": ["access, licensing, and plan terms"]
+      },
+      {
+        "competitor": "Krea",
+        "url": "https://www.krea.ai/models/nano-banana-pro",
+        "openingDefinition": "N/A — no accessible model-definition copy was returned during the check.",
+        "firstDifferentiators": ["prompt creation", "reference-led editing"],
+        "userTasksOrOutputs": ["create with prompts", "edit with references"],
+        "sectionShape": "model page connected to editor, documentation, and FAQ",
+        "nonPortableClaims": ["commercial, speed, and access terms"]
+      }
+    ]
+  },
+  "competitorFeatureExtraction": [
+    {
+      "competitor": "EaseMate AI",
+      "url": "https://www.easemate.ai/nano-banana-2-ai-image-generator",
+      "featureTitles": [],
+      "coreCapabilities": ["generator access", "image input", "workflow", "examples"],
+      "proofOrWorkflow": ["tool controls", "steps", "example outputs", "FAQ"],
+      "whyItIsModelSpecific": "No accessible named Key Features were retained from the region-blocked page; its lesson is depth around workflow rather than a transferable capability claim.",
+      "nonPortableClaims": ["access, free-tier, speed, and quality terms"]
+    },
+    {
+      "competitor": "Pollo AI",
+      "url": "https://api.pollo.ai/google/nano-banana-2-google",
+      "featureTitles": [],
+      "coreCapabilities": ["model access", "creation modes", "prompt workflow", "model selection"],
+      "proofOrWorkflow": ["generator controls and selection surfaces"],
+      "whyItIsModelSpecific": "The page was not reachable from this environment; only the product-surface pattern was retained, not named feature claims.",
+      "nonPortableClaims": ["model limits, credits, and access terms"]
+    },
+    {
+      "competitor": "OpenArt",
+      "url": "https://openart.ai/image/create/nano-banana-pro",
+      "featureTitles": [],
+      "coreCapabilities": ["prompt", "reference upload", "output controls", "model selection"],
+      "proofOrWorkflow": ["direct creation workspace"],
+      "whyItIsModelSpecific": "The workspace makes inputs and output controls visible but did not yield accessible named feature copy in this check.",
+      "nonPortableClaims": ["workspace-specific controls and access"]
+    },
+    {
+      "competitor": "ImagineArt",
+      "url": "https://www.imagine.art/apps/nano-banana-pro",
+      "featureTitles": [],
+      "coreCapabilities": ["editing workflows", "tasks", "comparison", "tutorials"],
+      "proofOrWorkflow": ["model page plus related task and tutorial surfaces"],
+      "whyItIsModelSpecific": "No accessible named Key Features were extracted in this check; its useful pattern is turning capabilities into practical decision content.",
+      "nonPortableClaims": ["editing quality, timing, and reference limits"]
+    },
+    {
+      "competitor": "Topview",
+      "url": "https://www.topview.ai/nanobananapro",
+      "featureTitles": ["Reasoning Image Generation", "AI Image Editing (Multi-Turn)", "Text Rendering in Images", "High-Resolution Output", "Brand-Consistent Image Generation"],
+      "coreCapabilities": ["visual reasoning", "iterative editing", "image-native text", "high-resolution output", "brand consistency"],
+      "proofOrWorkflow": ["editorial feature rows with adjacent output media", "prompt examples", "use-case blocks"],
+      "whyItIsModelSpecific": "It leads with named underlying abilities such as text rendering and reasoning instead of generic tasks such as making posters.",
+      "nonPortableClaims": ["commercial-ready use, multi-turn behavior, licensing, speed, and quality statements"]
+    },
+    {
+      "competitor": "Artlist",
+      "url": "https://artlist.io/ai/models/nano-banana-pro",
+      "featureTitles": [],
+      "coreCapabilities": ["editing workflow", "example-driven proof", "model-family selection"],
+      "proofOrWorkflow": ["examples and family-level comparison content"],
+      "whyItIsModelSpecific": "No accessible named Key Features were extracted in this check; the retained pattern is clear model-selection guidance.",
+      "nonPortableClaims": ["access, licensing, and model-plan terms"]
+    },
+    {
+      "competitor": "Krea",
+      "url": "https://www.krea.ai/models/nano-banana-pro",
+      "featureTitles": [],
+      "coreCapabilities": ["editing", "prompt creation", "references", "FAQ"],
+      "proofOrWorkflow": ["model page, editor, documentation, and FAQ"],
+      "whyItIsModelSpecific": "No accessible named Key Features were extracted in this check; the retained pattern is distinct prompt-led and reference-led paths.",
+      "nonPortableClaims": ["commercial, speed, and access terms"]
+    }
+  ],
+  "officialFeatureEvidence": [
+    {
+      "proposedFeature": "Accurate, Multilingual Text Inside Images",
+      "officialCapability": "Google says Nano Banana Pro creates accurate, legible text directly in images in multiple languages, and supports localization and translation.",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/nano-banana-pro/",
+      "sourceType": "official_product_page",
+      "checkedAt": "2026-08-13",
+      "userOutcome": "Evaluate type hierarchy, language treatment, and layout in posters, mockups, packaging concepts, and social creative.",
+      "proofMedia": "https://assets.toolaze.com/uploads/ad539e56954f4954afa987ba6eb767e9.webp",
+      "siblingSubstitutionResult": "passes"
+    },
+    {
+      "proposedFeature": "Reference-Guided Subject Consistency",
+      "officialCapability": "Google describes consistency by design, including maintaining the consistency and resemblance of people and supplied elements in complex compositions.",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/nano-banana-pro/",
+      "sourceType": "official_product_page",
+      "checkedAt": "2026-08-13",
+      "userOutcome": "Keep a recognizable subject or visual identity while changing scene, styling, lighting, or composition.",
+      "proofMedia": "https://assets.toolaze.com/uploads/b21da58a5dd4439997741c1898f1f85e.webp",
+      "siblingSubstitutionResult": "passes"
+    },
+    {
+      "proposedFeature": "Reasoning-Led Infographics and Product Visuals",
+      "officialCapability": "Google describes reasoning and world knowledge for diagrams, infographics, and context-rich visuals, plus available 2K and 4K resolution. Toolaze supports up to eight references and 1K/2K/4K choices.",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/nano-banana-pro/",
+      "sourceType": "official_product_page",
+      "checkedAt": "2026-08-13",
+      "userOutcome": "Turn an information-heavy brief into a visual explanation or a product composition that connects several supplied directions.",
+      "proofMedia": "https://assets.toolaze.com/uploads/c6568d6075074706a0c563f75db6edb8.webp",
+      "siblingSubstitutionResult": "passes"
+    },
+    {
+      "proposedFeature": "Up to 4K Output",
+      "officialCapability": "Google lists available 2K and 4K resolution for Nano Banana Pro. Toolaze exposes 1K, 2K, and 4K output controls for the model.",
+      "sourceUrl": "https://blog.google/innovation-and-ai/products/nano-banana-pro/",
+      "sourceType": "official_product_page",
+      "checkedAt": "2026-08-13",
+      "userOutcome": "Choose a larger generated file for close review of detail-heavy concepts, product textures, and in-image typography.",
+      "proofMedia": "https://assets.toolaze.com/uploads/53dc44735bb14fdf94e14e39d2012731.jpg",
+      "siblingSubstitutionResult": "passes"
+    }
+  ],
+  "outputs": [
+    "src/data/en/nano-banana-pro.json",
+    "_codex/seo-pipeline/tasks/2026-08-13-nano-banana-pro-seo-rewrite/content/en.json",
+    "src/components/nano-banana-pro-page-contract.test.mjs"
+  ],
+  "assetManifest": [
+    {"url": "https://assets.toolaze.com/uploads/c6568d6075074706a0c563f75db6edb8.webp", "width": 960, "height": 717, "bytes": 22794, "purpose": "multi-reference composition and larger-output feature proof", "generatedWith": "Nano Banana Pro", "createdAt": "2026-08-13"},
+    {"url": "https://assets.toolaze.com/uploads/ad539e56954f4954afa987ba6eb767e9.webp", "width": 960, "height": 717, "bytes": 13768, "purpose": "image-native text feature proof", "generatedWith": "Nano Banana Pro", "createdAt": "2026-08-13"},
+    {"url": "https://assets.toolaze.com/uploads/b21da58a5dd4439997741c1898f1f85e.webp", "width": 960, "height": 717, "bytes": 36434, "purpose": "reference-guided subject consistency feature proof", "generatedWith": "Nano Banana Pro", "createdAt": "2026-08-13"},
+    {"url": "https://assets.toolaze.com/uploads/53dc44735bb14fdf94e14e39d2012731.jpg", "width": 380, "height": 390, "bytes": 0, "purpose": "Toolaze Nano Banana Pro resolution control proof with 4K selected", "generatedWith": "Toolaze generator UI", "createdAt": "2026-08-13"}
+  ]
+}

@@ -1,6 +1,12 @@
 {
   "tasks": [
     {
+      "taskId": "2026-08-13-nano-banana-pro-seo-rewrite",
+      "slug": "nano-banana-pro",
+      "pageType": "model",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-08-10-seedance-2-5-live-generator",
       "slug": "seedance-2-5",
       "pageType": "model",

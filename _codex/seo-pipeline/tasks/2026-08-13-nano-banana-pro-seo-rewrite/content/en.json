@@ -67,8 +67,8 @@
         ],
         "media": {
           "type": "image",
-      "src": "https://assets.toolaze.com/uploads/53dc44735bb14fdf94e14e39d2012731.jpg",
-      "alt": "Toolaze Nano Banana Pro output controls with 4K selected"
+          "src": "https://assets.toolaze.com/uploads/53dc44735bb14fdf94e14e39d2012731.jpg",
+          "alt": "Toolaze Nano Banana Pro output controls with 4K selected"
         }
       }
     ]
@@ -76,47 +76,118 @@
   "howToUse": {
     "title": "How to Use Nano Banana Pro",
     "steps": [
-      {"title": "Choose a Creation Mode", "desc": "Use Text to Image for a new concept, or Image to Image when you want references to guide the result."},
-      {"title": "Write the Brief and Add References", "desc": "Describe the subject, setting, composition, and visual direction. For reference-guided work, upload up to 8 JPG, PNG, or WebP images."},
-      {"title": "Set Output and Generate", "desc": "Choose a ratio, select 1K, 2K, or 4K, pick an output format, then generate, review, and download your image."}
+      {
+        "title": "Choose a Creation Mode",
+        "desc": "Use Text to Image for a new concept, or Image to Image when you want references to guide the result."
+      },
+      {
+        "title": "Write the Brief and Add References",
+        "desc": "Describe the subject, setting, composition, and visual direction. For reference-guided work, upload up to 8 JPG, PNG, or WebP images."
+      },
+      {
+        "title": "Set Output and Generate",
+        "desc": "Choose a ratio, select 1K, 2K, or 4K, pick an output format, then generate, review, and download your image."
+      }
     ]
   },
   "promptExamples": {
     "title": "Nano Banana Pro Prompt Examples",
     "subtitle": "Use these as a starting point, then add your own references when the subject, product, or style needs closer direction.",
     "items": [
-      {"title": "Editorial Product Launch", "prompt": "A premium fragrance bottle on pale travertine, early morning window light, soft shadows, warm ivory and sage color palette, high-end editorial product photography, generous negative space for a headline"},
-      {"title": "Poster With Clear Information Hierarchy", "prompt": "A contemporary museum exhibition poster for an imaginary design festival, bold geometric forms, balanced grid, dark navy background with coral accents, large readable English title: FORM / FUTURE, refined editorial typography"},
-      {"title": "Reference-Guided Fashion Concept", "prompt": "Use the uploaded references for the silhouette, fabric mood, and studio lighting. Create a full-length fashion campaign image of one model in a clean sculptural set, composed for a 4:5 magazine cover, natural skin texture, understated styling"},
-      {"title": "Cinematic Travel Still", "prompt": "A quiet coastal train platform at blue hour, one traveler in a mustard coat, wind moving through tall grass, wide cinematic framing, subtle film grain, cool ocean haze, realistic atmospheric lighting"}
+      {
+        "title": "Editorial Product Launch",
+        "prompt": "A premium fragrance bottle on pale travertine, early morning window light, soft shadows, warm ivory and sage color palette, high-end editorial product photography, generous negative space for a headline"
+      },
+      {
+        "title": "Poster With Clear Information Hierarchy",
+        "prompt": "A contemporary museum exhibition poster for an imaginary design festival, bold geometric forms, balanced grid, dark navy background with coral accents, large readable English title: FORM / FUTURE, refined editorial typography"
+      },
+      {
+        "title": "Reference-Guided Fashion Concept",
+        "prompt": "Use the uploaded references for the silhouette, fabric mood, and studio lighting. Create a full-length fashion campaign image of one model in a clean sculptural set, composed for a 4:5 magazine cover, natural skin texture, understated styling"
+      },
+      {
+        "title": "Cinematic Travel Still",
+        "prompt": "A quiet coastal train platform at blue hour, one traveler in a mustard coat, wind moving through tall grass, wide cinematic framing, subtle film grain, cool ocean haze, realistic atmospheric lighting"
+      }
     ]
   },
   "modelComparison": {
     "title": "Nano Banana Pro vs Nano Banana 2",
     "subtitle": "Choose Nano Banana Pro when eight focused references and standard production ratios are enough. Choose Nano Banana 2 when the brief needs more references or extra ultra-wide and ultra-tall formats.",
     "featuredColumn": "baseline",
-    "columnHeaders": {"metric": "Decision point", "baseline": "Nano Banana Pro", "target": "Nano Banana 2"},
+    "columnHeaders": {
+      "metric": "Decision point",
+      "baseline": "Nano Banana Pro",
+      "target": "Nano Banana 2"
+    },
     "rows": [
-      {"label": "Maximum reference images", "baseline": "Up to 8 images.", "target": "Up to 14 images."},
-      {"label": "Aspect-ratio range", "baseline": "Common portrait, landscape, square, and 21:9 ratios.", "target": "The same core ratios plus 1:4, 4:1, 1:8, and 8:1."},
-      {"label": "Starting Credits", "baseline": "24 Credits at 1K or 2K; 42 Credits at 4K.", "target": "15 Credits at 1K; 24 Credits at 2K; 36 Credits at 4K."},
-      {"label": "When to choose it", "baseline": "Choose Pro for a focused reference set of up to eight images and standard production ratios.", "target": "Choose Nano Banana 2 for a reference-heavy workflow or extra ultra-wide and ultra-tall ratio options."}
+      {
+        "label": "Maximum reference images",
+        "baseline": "Up to 8 images.",
+        "target": "Up to 14 images."
+      },
+      {
+        "label": "Aspect-ratio range",
+        "baseline": "Common portrait, landscape, square, and 21:9 ratios.",
+        "target": "The same core ratios plus 1:4, 4:1, 1:8, and 8:1."
+      },
+      {
+        "label": "Starting Credits",
+        "baseline": "24 Credits at 1K or 2K; 42 Credits at 4K.",
+        "target": "15 Credits at 1K; 24 Credits at 2K; 36 Credits at 4K."
+      },
+      {
+        "label": "When to choose it",
+        "baseline": "Choose Pro for a focused reference set of up to eight images and standard production ratios.",
+        "target": "Choose Nano Banana 2 for a reference-heavy workflow or extra ultra-wide and ultra-tall ratio options."
+      }
     ]
   },
   "scenesTitle": "What You Can Create",
   "scenes": [
-    {"icon": "🛍️", "title": "Product Launch Creative Direction", "desc": "Upload a product shot, palette, and styling references, then describe the set, lighting, and copy space you want for a campaign concept."},
-    {"icon": "🎨", "title": "Text-Led Poster Concepts", "desc": "Start with a title, theme, and visual direction to shape a poster or cover concept, then select the ratio that fits the final placement."},
-    {"icon": "📚", "title": "Reference-Guided Character Frames", "desc": "Use one reference for the character and others for wardrobe, setting, and mood to direct a new scene or storyboard-style frame."}
+    {
+      "icon": "🛍️",
+      "title": "Product Launch Creative Direction",
+      "desc": "Upload a product shot, palette, and styling references, then describe the set, lighting, and copy space you want for a campaign concept."
+    },
+    {
+      "icon": "🎨",
+      "title": "Text-Led Poster Concepts",
+      "desc": "Start with a title, theme, and visual direction to shape a poster or cover concept, then select the ratio that fits the final placement."
+    },
+    {
+      "icon": "📚",
+      "title": "Reference-Guided Character Frames",
+      "desc": "Use one reference for the character and others for wardrobe, setting, and mood to direct a new scene or storyboard-style frame."
+    }
   ],
   "faqTitle": "Frequently Asked Questions",
   "faq": [
-    {"q": "Is Nano Banana Pro free to use?", "a": "Yes. You can start using Nano Banana Pro on Toolaze for free."},
-    {"q": "Do I need to sign up to use Nano Banana Pro?", "a": "No. You can start the Nano Banana Pro generator without signing up."},
-    {"q": "Which image files can I upload?", "a": "Nano Banana Pro accepts JPG, PNG, and WebP reference images. You can upload up to 8 images, with a maximum file size of 30MB per image."},
-    {"q": "Can I choose the output format?", "a": "Yes. Choose Auto, PNG, JPEG, or WebP before generating when you need a specific export format."},
-    {"q": "What do 1K, 2K, and 4K cost on Toolaze?", "a": "Nano Banana Pro uses 24 Credits for 1K or 2K output and 42 Credits for 4K output."},
-    {"q": "When should I choose Nano Banana 2 instead?", "a": "Choose Nano Banana 2 when you need to work with more than 8 reference images or want its additional 1:4, 4:1, 1:8, and 8:1 ratio options."}
+    {
+      "q": "Is Nano Banana Pro free to use?",
+      "a": "Yes. You can start using Nano Banana Pro on Toolaze for free."
+    },
+    {
+      "q": "Do I need to sign up to use Nano Banana Pro?",
+      "a": "No. You can start the Nano Banana Pro generator without signing up."
+    },
+    {
+      "q": "Which image files can I upload?",
+      "a": "Nano Banana Pro accepts JPG, PNG, and WebP reference images. You can upload up to 8 images, with a maximum file size of 30MB per image."
+    },
+    {
+      "q": "Can I choose the output format?",
+      "a": "Yes. Choose Auto, PNG, JPEG, or WebP before generating when you need a specific export format."
+    },
+    {
+      "q": "What do 1K, 2K, and 4K cost on Toolaze?",
+      "a": "Nano Banana Pro uses 24 Credits for 1K or 2K output and 42 Credits for 4K output."
+    },
+    {
+      "q": "When should I choose Nano Banana 2 instead?",
+      "a": "Choose Nano Banana 2 when you need to work with more than 8 reference images or want its additional 1:4, 4:1, 1:8, and 8:1 ratio options."
+    }
   ],
   "topComponent": "nano-banana-pro",
   "moreTools": "More AI Image Models"
