@@ -56,7 +56,8 @@ test('video-mode image generator reuses the compact output settings bar with dur
   assert.doesNotMatch(compactDurationSelector, /configuredVideoDurationOptions\.map\(\(option\) =>/)
   assert.match(source, /selectedMediaType === 'video' \? `; Video Duration: \$\{videoDurationSeconds\}s` : ''/)
   assert.match(source, /selectedMediaType === 'video' \? 'grid-cols-\[1fr_1px_1fr_1px_1fr_36px\]'/)
-  assert.match(source, /data-compact-output-settings-panel[\s\S]*absolute bottom-full left-0 right-0 z-30 mb-2[\s\S]*md:static/)
+  assert.match(source, /data-compact-output-settings[\s\S]*className="relative z-\[60\] mb-3"[\s\S]*data-compact-output-settings-panel[\s\S]*absolute bottom-full left-0 right-0 z-\[70\] mb-2[\s\S]*md:static/)
+  assert.doesNotMatch(source, /data-compact-output-settings-panel[\s\S]*z-30/)
 })
 
 test('page-level default aspect ratio applies to supported image generation models', () => {
@@ -303,13 +304,14 @@ test('left prompt input shows four lines and scrolls overflow', () => {
   assert.match(source, /data-left-prompt-input[\s\S]*rows=\{4\}/)
 })
 
-test('left prompt input has an inline clear action', () => {
+test('left prompt input has a dedicated clear action row', () => {
   assert.match(source, /data-left-prompt-field/)
   assert.match(source, /data-left-prompt-clear/)
   assert.match(source, /data-left-prompt-clear[\s\S]*aria-label="Clear Prompt"/)
   assert.match(source, /data-left-prompt-clear[\s\S]*setPrompt\(''\)/)
   assert.match(source, /data-left-prompt-clear[\s\S]*setCustomPromptDraft\(''\)/)
-  assert.match(source, /data-left-prompt-clear[\s\S]*<CloseIcon size=\{14\}/)
+  assert.match(source, /data-left-prompt-clear[\s\S]*<DeleteIcon size=\{14\} \/>[\s\S]*Clear/)
+  assert.match(source, /data-prompt-reference-mention-trigger[\s\S]*data-left-prompt-clear/)
   assert.doesNotMatch(source, /data-left-prompt-input[\s\S]*pr-11/)
 })
 

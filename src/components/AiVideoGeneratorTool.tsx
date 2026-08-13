@@ -3638,21 +3638,40 @@ export default function AiVideoGeneratorTool({
                         rows={4}
                         className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
                       />
-                      {supportsPromptReferenceMentions ? (
-                        <div className="relative flex h-11 items-center px-3">
-                          <button
-                            type="button"
-                            data-prompt-reference-mention-trigger
-                            aria-label="Mention a reference"
-                            aria-expanded={isPromptMentionPickerOpen}
-                            aria-haspopup="listbox"
-                            aria-controls={promptMentionPickerId}
-                            onMouseDown={(event) => event.preventDefault()}
-                            onClick={handlePromptMentionTriggerClick}
-                            className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
-                          >
-                            @
-                          </button>
+                      {(supportsPromptReferenceMentions || prompt) ? (
+                        <div className="relative flex h-11 items-center justify-between px-3">
+                          {supportsPromptReferenceMentions ? (
+                            <button
+                              type="button"
+                              data-prompt-reference-mention-trigger
+                              aria-label="Mention a reference"
+                              aria-expanded={isPromptMentionPickerOpen}
+                              aria-haspopup="listbox"
+                              aria-controls={promptMentionPickerId}
+                              onMouseDown={(event) => event.preventDefault()}
+                              onClick={handlePromptMentionTriggerClick}
+                              className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                            >
+                              @
+                            </button>
+                          ) : <span />}
+                          {prompt ? (
+                            <button
+                              type="button"
+                              data-prompt-clear
+                              aria-label="Clear Prompt"
+                              onClick={() => {
+                                setPrompt('')
+                                setIsPromptMentionPickerOpen(false)
+                                setPromptMentionTriggerIndex(null)
+                                requestAnimationFrame(() => promptTextareaRef.current?.focus())
+                              }}
+                              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                            >
+                              <DeleteIcon size={14} />
+                              Clear
+                            </button>
+                          ) : null}
                         </div>
                       ) : null}
                       {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (

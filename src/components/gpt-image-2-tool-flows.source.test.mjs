@@ -513,6 +513,7 @@ test('Wan 2.5 Video has a homepage card image and admin preview coverage', () =>
 
 test('AI Video model tags are separated from tool links and show manufacturer icons', () => {
   const orderedRoutes = [
+    '/model/seedance-2-5',
     '/ai-video-generator?model=seedance-2-mini',
     '/model/seedance-2',
     '/model/kling-3-motion-control',
@@ -535,7 +536,7 @@ test('AI Video model tags are separated from tool links and show manufacturer ic
     aiVideoModelMenuSource,
     /href: '\/model\/wan-2-5-ai-video-generator'[\s\S]*logoSrc: '\/model-logos\/wan\.ico'/,
   )
-  assert.doesNotMatch(aiVideoModelMenuSource, /href: '\/model\/seedance-2-5'/)
+  assert.ok(aiVideoModelMenuSource.indexOf("href: '/model/seedance-2-5'") < aiVideoModelMenuSource.indexOf("href: '/model/seedance-2'"))
   assert.match(
     aiVideoModelMenuSource,
     /href: '\/ai-video-generator\?model=seedance-2-mini'[\s\S]*logoSrc: '\/model-logos\/bytedance\.svg'[\s\S]*badgeKey: 'new'/,
@@ -827,6 +828,7 @@ test('AI Clothes Changer keeps the selected clothing reference visually active',
 
 test('AI Clothes Changer uses Seedream 5.0 Lite for generation', () => {
   assert.equal(aiClothesChangerContent.topTool?.modelId, 'seedream-5-0-lite')
+  assert.equal(aiClothesChangerContent.topTool?.defaultAspectRatio, '9:16')
   assert.doesNotMatch(JSON.stringify(aiClothesChangerContent), /GPT Image 2/)
 })
 
@@ -885,6 +887,7 @@ test('AI Bikini Generator uses Seedream 5.0 Lite and preserves the source person
   assert.equal(aiBikiniGeneratorContent.topTool?.mode, 'image-to-image')
   assert.equal(aiBikiniGeneratorContent.topTool?.maxUploadImages, 2)
   assert.equal(aiBikiniGeneratorContent.topTool?.modelId, 'seedream-5-0-lite')
+  assert.equal(aiBikiniGeneratorContent.topTool?.defaultAspectRatio, '9:16')
   assert.doesNotMatch(JSON.stringify(aiBikiniGeneratorContent), /GPT Image 2/i)
   assert.match(
     aiBikiniGeneratorContent.topTool?.sampleImages?.[0]?.url || '',
@@ -945,6 +948,7 @@ test('AI Bikini Generator defaults to styles and offers prompt or reference Cust
       const acceptance = topTool.functionalAcceptance || {}
       const defaultPersonUrls = topTool.defaultImageUrls || []
 
+      assert.equal(topTool.defaultAspectRatio, '9:16', `${locale} should default to portrait output`)
       assert.equal(defaultPersonUrls.length, 1, `${locale} should preload one adult person photo`)
       assert.match(defaultPersonUrls[0], /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/)
       assert.notEqual(defaultPersonUrls[0], topTool.sampleImages?.[0]?.url, `${locale} should not submit the before-after demo as input`)

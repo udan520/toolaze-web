@@ -4901,21 +4901,41 @@ export default function AiImageGenerationTool({
                         className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
                         rows={4}
                       />
-                      {supportsPromptReferenceMentions ? (
-                        <div className="relative flex h-11 items-center px-3">
-                          <button
-                            type="button"
-                            data-prompt-reference-mention-trigger
-                            aria-label="Mention a reference"
-                            aria-expanded={isPromptMentionPickerOpen}
-                            aria-haspopup="listbox"
-                            aria-controls={promptMentionPickerId}
-                            onMouseDown={(event) => event.preventDefault()}
-                            onClick={handlePromptMentionTriggerClick}
-                            className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
-                          >
-                            @
-                          </button>
+                      {(supportsPromptReferenceMentions || prompt) ? (
+                        <div className="relative flex h-11 items-center justify-between px-3">
+                          {supportsPromptReferenceMentions ? (
+                            <button
+                              type="button"
+                              data-prompt-reference-mention-trigger
+                              aria-label="Mention a reference"
+                              aria-expanded={isPromptMentionPickerOpen}
+                              aria-haspopup="listbox"
+                              aria-controls={promptMentionPickerId}
+                              onMouseDown={(event) => event.preventDefault()}
+                              onClick={handlePromptMentionTriggerClick}
+                              className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                            >
+                              @
+                            </button>
+                          ) : <span />}
+                          {prompt ? (
+                            <button
+                              type="button"
+                              data-left-prompt-clear
+                              aria-label="Clear Prompt"
+                              onClick={() => {
+                                setPrompt('')
+                                setCustomPromptDraft('')
+                                setIsPromptMentionPickerOpen(false)
+                                setPromptMentionTriggerIndex(null)
+                                requestAnimationFrame(() => promptTextareaRef.current?.focus())
+                              }}
+                              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                            >
+                              <DeleteIcon size={14} />
+                              Clear
+                            </button>
+                          ) : null}
                         </div>
                       ) : null}
                       {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
@@ -4926,21 +4946,6 @@ export default function AiImageGenerationTool({
                           onSelect={handlePromptReferenceMentionSelect}
                         />
                       ) : null}
-                      {prompt && (
-                        <button
-                          type="button"
-                          data-left-prompt-clear
-                          aria-label="Clear Prompt"
-                          onClick={() => {
-                            setPrompt('')
-                            setCustomPromptDraft('')
-                            promptTextareaRef.current?.focus()
-                          }}
-                          className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
-                        >
-                          <CloseIcon size={14} />
-                        </button>
-                      )}
                     </div>
                   </>
                 )}
@@ -5058,12 +5063,12 @@ export default function AiImageGenerationTool({
           {/* Generate 固定底部，始终在第一屏 */}
           <div data-generate-action-bar className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
             {useCompactOutputSettings && (
-              <div ref={compactOutputSettingsRef} data-compact-output-settings className="relative mb-3">
+              <div ref={compactOutputSettingsRef} data-compact-output-settings className="relative z-[60] mb-3">
                 {isCompactOutputSettingsOpen && (
                   <div
                     id="compact-output-settings-panel"
                     data-compact-output-settings-panel
-                    className="absolute bottom-full left-0 right-0 z-30 mb-2 max-h-[min(70dvh,420px)] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 shadow-lg shadow-indigo-100/70 md:static md:mb-2 md:max-h-[330px]"
+                    className="absolute bottom-full left-0 right-0 z-[70] mb-2 max-h-[min(70dvh,420px)] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 shadow-lg shadow-indigo-100/70 md:static md:mb-2 md:max-h-[330px]"
                   >
                     <div className="mb-2 flex items-center justify-between gap-3">
                       <span className="text-xs font-bold text-slate-700">{toolText.outputAspectRatios}</span>

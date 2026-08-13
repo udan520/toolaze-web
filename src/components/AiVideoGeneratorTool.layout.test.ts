@@ -313,6 +313,11 @@ test('prompt reference trigger and picker use the dedicated action row', () => {
   assert.match(pickerSource, /data-prompt-reference-mention-picker[\s\S]*z-30/, 'picker should remain above the prompt action row')
 })
 
+test('prompt action row keeps Clear beside the at-sign trigger', () => {
+  assert.match(source, /data-prompt-reference-mention-trigger[\s\S]*data-prompt-clear/, 'video prompt actions should keep Clear on the same row as the at-sign trigger')
+  assert.match(source, /data-prompt-clear[\s\S]*aria-label="Clear Prompt"[\s\S]*<DeleteIcon size=\{14\} \/>[\s\S]*Clear/, 'video Clear action should use an explicit label and trash icon')
+})
+
 test('project rules enforce shared hero ownership and reusable defect recurrence prevention', () => {
   assert.match(agentsSource, /breadcrumb、H1、Demo[\s\S]*单一 owner/, 'shared hero structures should have one explicit owner')
   assert.match(agentsSource, /isolated[\s\S]*reusable/, 'defects should be classified by recurrence scope')

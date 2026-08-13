@@ -115,11 +115,13 @@ test('utility all-tools routes permanently redirect to their L2 parent', () => {
 test('legacy Kling aliases use server-side permanent redirects', () => {
   const klingRoute = readSource('src', 'app', 'kling-3', 'page.tsx')
   const klingAllToolsRoute = readSource('src', 'app', 'kling-3', 'all-tools', 'page.tsx')
+  const canonicalAllToolsRoute = readSource('src', 'app', 'model', 'kling-3', 'all-tools', 'page.tsx')
 
   assert.match(klingRoute, /permanentRedirect\('\/model\/kling-3'\)/)
   assert.doesNotMatch(klingRoute, /useEffect|useRouter|router\.push|'use client'/)
-  assert.match(klingAllToolsRoute, /permanentRedirect\('\/model\/kling-3\/all-tools'\)/)
+  assert.match(klingAllToolsRoute, /permanentRedirect\('\/model\/kling-3'\)/)
   assert.doesNotMatch(klingAllToolsRoute, /useEffect|useRouter|router\.push|'use client'/)
+  assert.match(canonicalAllToolsRoute, /permanentRedirect\('\/model\/kling-3'\)/)
 })
 
 test('retained English L3 pages do not advertise removed locale alternates', () => {
