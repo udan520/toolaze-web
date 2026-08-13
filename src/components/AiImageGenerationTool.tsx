@@ -477,6 +477,8 @@ interface PromptInsertEventDetail {
   mode?: PromptInsertMode
   presetLabel?: string
   presetGroup?: string
+  selectClothingPreset?: boolean
+  preserveDemo?: boolean
 }
 
 interface PromptDemoImage {
@@ -667,6 +669,7 @@ interface AiImageGenerationToolProps {
   inlinePresetReferenceUpload?: boolean
   combineCustomReferenceAndPrompt?: boolean
   clothingReferencePresetGrid?: boolean
+  defaultCustomInputMode?: 'prompt' | 'reference'
   customReferencePrompt?: string
   hidePromptInput?: boolean
   defaultAspectRatio?: string
@@ -1185,6 +1188,7 @@ export default function AiImageGenerationTool({
   inlinePresetReferenceUpload = false,
   combineCustomReferenceAndPrompt = false,
   clothingReferencePresetGrid = false,
+  defaultCustomInputMode = 'prompt',
   customReferencePrompt = '',
   hidePromptInput = false,
   defaultAspectRatio,
@@ -1343,7 +1347,7 @@ export default function AiImageGenerationTool({
       ''
   )
   const [customPromptDraft, setCustomPromptDraft] = useState('')
-  const [customInputMode, setCustomInputMode] = useState<'prompt' | 'reference'>('prompt')
+  const [customInputMode, setCustomInputMode] = useState<'prompt' | 'reference'>(defaultCustomInputMode)
   const [activePromptPresetTab, setActivePromptPresetTab] = useState(
     getInitialPromptPresetTabId(promptPresetTabs, defaultPromptPresetTabId)
   )
@@ -1901,7 +1905,7 @@ export default function AiImageGenerationTool({
 
     if (tabId === customPromptTabId) {
       setSelectedPromptPreset('Custom')
-      setCustomInputMode('prompt')
+      setCustomInputMode(defaultCustomInputMode)
       setPrompt(customPromptDraft)
       applyPromptPresetReferenceImage(undefined)
       requestAnimationFrame(() => promptTextareaRef.current?.focus())
@@ -2050,6 +2054,20 @@ export default function AiImageGenerationTool({
   }, [prompt])
 
   const applyPromptInsertDetail = useCallback((detail: PromptInsertEventDetail) => {
+    if (detail.selectClothingPreset) {
+      const selectedPreset = promptPresets.find((preset) => preset.label === detail.presetLabel)
+      if (!selectedPreset) return false
+
+      if (detail.presetGroup) setActivePromptPresetTab(detail.presetGroup)
+      setSelectedPromptPreset(selectedPreset.label)
+      if (selectedPreset.prompt?.trim()) {
+        shouldPositionInsertedPromptRef.current = true
+        setPrompt(selectedPreset.prompt)
+      }
+      applyPromptPresetReferenceImage(selectedPreset.referenceImage || selectedPreset.image)
+      return true
+    }
+
     const nextPrompt = detail.prompt?.trim()
     const imageUrl = normalizeReusableReferenceImageUrl(detail.imageUrl)
     const imageUrls = Array.isArray(detail.imageUrls)
@@ -2059,7 +2077,7 @@ export default function AiImageGenerationTool({
     if (!nextPrompt && urls.length === 0 && !detail.demoImageUrl?.trim()) return false
     const demoImageUrl = detail.demoImageUrl?.trim()
 
-    if (demoImageUrl) {
+    if (!detail.preserveDemo && demoImageUrl) {
       setRightMode('sample')
       setPromptDemoImage({
         url: demoImageUrl,
@@ -2096,7 +2114,7 @@ export default function AiImageGenerationTool({
 
     if (nextPrompt) showToast(toolText.promptInserted, 'success')
     return true
-  }, [MAX_IMAGES, handleGenerationModeChange, remoteImageUrls, setAspectRatioForMode, toolText.promptInserted, toolText.sampleImage])
+  }, [MAX_IMAGES, applyPromptPresetReferenceImage, handleGenerationModeChange, promptPresets, remoteImageUrls, setAspectRatioForMode, toolText.promptInserted, toolText.sampleImage])
 
   // 从提示词案例板块一键带入 Prompt，可选携带参考图。
   useEffect(() => {
@@ -4553,18 +4571,6 @@ export default function AiImageGenerationTool({
               <div data-custom-input-mode-switch className="grid grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1">
                 <button
                   type="button"
-                  aria-pressed={customInputMode === 'prompt'}
-                  onClick={() => setCustomInputMode('prompt')}
-                  className={`min-h-10 rounded-lg px-3 py-2 text-center text-xs font-bold transition-colors ${
-                    customInputMode === 'prompt'
-                      ? 'bg-white text-[#4F46E5] shadow-sm'
-                      : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
-                  }`}
-                >
-                  {sceneText?.customTextModeLabel || 'Describe hair style'}
-                </button>
-                <button
-                  type="button"
                   aria-pressed={customInputMode === 'reference'}
                   onClick={() => setCustomInputMode('reference')}
                   className={`min-h-10 rounded-lg px-3 py-2 text-center text-xs font-bold transition-colors ${
@@ -4574,6 +4580,18 @@ export default function AiImageGenerationTool({
                   }`}
                 >
                   {sceneText?.customReferenceModeLabel || 'Reference hair style'}
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={customInputMode === 'prompt'}
+                  onClick={() => setCustomInputMode('prompt')}
+                  className={`min-h-10 rounded-lg px-3 py-2 text-center text-xs font-bold transition-colors ${
+                    customInputMode === 'prompt'
+                      ? 'bg-white text-[#4F46E5] shadow-sm'
+                      : 'text-slate-500 hover:bg-white/70 hover:text-slate-800'
+                  }`}
+                >
+                  {sceneText?.customTextModeLabel || 'Describe hair style'}
                 </button>
               </div>
             )}
@@ -4828,7 +4846,7 @@ export default function AiImageGenerationTool({
                                 </span>
                                 <span className={`block px-1 py-1 text-center text-[10px] font-semibold text-slate-600 ${
                                   isClothingReferencePresetGrid
-                                    ? 'min-h-8 line-clamp-2 whitespace-normal leading-4'
+                                    ? 'truncate whitespace-nowrap'
                                     : 'truncate'
                                 }`}>
                                   {preset.label}

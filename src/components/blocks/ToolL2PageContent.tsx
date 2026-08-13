@@ -1334,6 +1334,16 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
           }
         })
       : []
+    const isClothesChanger = tool === 'ai-clothes-changer'
+    const clothingPresetItems = promptPresets
+      .filter((preset) => preset.group === 'women' || preset.group === 'men')
+      .map((preset) => ({
+        title: preset.label,
+        prompt: preset.prompt || '',
+        image: preset.image,
+        referenceImage: preset.referenceImage,
+        group: preset.group,
+      }))
 
     return (
       <>
@@ -1585,6 +1595,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     inlinePresetReferenceUpload={content.topTool?.functionalAcceptance?.inlinePresetReferenceUpload === true}
                     combineCustomReferenceAndPrompt={content.topTool?.functionalAcceptance?.combineCustomReferenceAndPrompt === true}
                     clothingReferencePresetGrid={content.topTool?.functionalAcceptance?.clothingReferencePresetGrid === true}
+                    defaultCustomInputMode={isClothesChanger ? 'reference' : undefined}
                     customReferencePrompt={content.topTool?.functionalAcceptance?.customReferencePrompt}
                     compactResultPanel={content.topTool?.compactResultPanel === true}
                     customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}
@@ -1865,16 +1876,18 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               },
               promptExamples: (bgClass: string) => {
                 const promptExamples = content.promptExamples as { title?: string; subtitle?: string; layout?: 'grid' | 'horizontal' | 'reference-video'; items?: Array<{ title: string; prompt: string; referenceImage?: string; image?: string; video?: string; poster?: string; description?: string; aspectRatio?: string; duration?: string; uploadDate?: string; note?: string; color?: string }> } | undefined
-                if (!promptExamples?.items || promptExamples.items.length === 0) return null
+                const items = isClothesChanger ? clothingPresetItems : promptExamples?.items
+                if (!items || items.length === 0) return null
                 return (
                   <PromptExamples
                     key="promptExamples"
-                    title={promptExamples.title}
-                    subtitle={promptExamples.subtitle}
-                    items={promptExamples.items}
+                    title={promptExamples?.title}
+                    subtitle={promptExamples?.subtitle}
+                    items={items}
                     bgClass={bgClass}
                     layout={promptExamples.layout || (tool === 'ai-dance-generator' ? 'horizontal' : 'grid')}
                     targetMode={promptExampleTargetMode}
+                    clothingPresetGrid={isClothesChanger}
                   />
                 )
               },

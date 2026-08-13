@@ -772,7 +772,7 @@ test('AI Clothes Changer exposes preset-only gender workflows and exclusive Cust
   assert.deepEqual(aiClothesChangerContent.topTool?.defaultImageUrls, [])
   assert.match(
     aiClothesChangerContent.topTool?.sampleImages?.[0]?.url,
-    /^https:\/\/assets\.toolaze\.com\/uploads\/[a-z0-9]+\.webp$/,
+    /^https:\/\/assets\.toolaze\.com\/(?:uploads\/[a-z0-9]+|landing-pages\/ai-clothes-changer\/demo\/ivory-couture-before-after)\.webp$/,
   )
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.width, 1600)
   assert.equal(aiClothesChangerContent.topTool?.sampleImages?.[0]?.height, 900)

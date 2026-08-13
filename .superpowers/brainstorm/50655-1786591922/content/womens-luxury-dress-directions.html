@@ -1,0 +1,44 @@
+<style>
+  .directions { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:28px; }
+  .direction { border:1px solid #e7e5e4; border-radius:18px; overflow:hidden; background:#fff; cursor:pointer; transition:.18s ease; }
+  .direction:hover { transform:translateY(-3px); box-shadow:0 14px 30px #1c19171a; }
+  .direction.selected { outline:3px solid #111827; outline-offset:2px; }
+  .look { position:relative; min-height:370px; display:flex; align-items:flex-end; justify-content:center; overflow:hidden; }
+  .look:before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 22%,#fff9 0 14%,transparent 43%),linear-gradient(145deg,#f7f5f2,#e9e3dc); }
+  .look span { position:relative; z-index:1; }
+  .model { width:82px; height:114px; position:absolute; top:47px; border-radius:48px 48px 27px 27px; background:linear-gradient(90deg,#b76f51,#e0a080 68%,#a85841); box-shadow:0 4px 17px #41220b2b; }
+  .hair { position:absolute; top:32px; width:94px; height:74px; border-radius:48px 48px 24px 24px; background:#211612; z-index:0; }
+  .neck { width:29px; height:42px; position:absolute; top:142px; background:#d88967; z-index:1; border-radius:0 0 16px 16px; }
+  .gown { position:relative; z-index:2; width:280px; height:195px; clip-path:polygon(39% 0,61% 0,68% 18%,79% 35%,98% 100%,2% 100%,21% 35%,32% 18%); }
+  .red-carpet .gown { background:linear-gradient(100deg,#073d37,#0d6c5e 45%,#0b443e); box-shadow:inset 24px 0 28px #fff2, inset -30px 0 35px #001c19; }
+  .couture .gown { width:300px; height:206px; clip-path:polygon(37% 0,63% 0,73% 26%,89% 48%,100% 100%,0 100%,11% 48%,27% 26%); background:linear-gradient(115deg,#f5e8cc,#fffdf5 47%,#cdb58a); box-shadow:inset 18px 0 27px #ffffffd9, inset -23px 0 32px #8c725044; }
+  .creative .gown { background:linear-gradient(100deg,#070d35,#252b78 47%,#0b113e); box-shadow:inset 18px 0 30px #7179d177, inset -30px 0 38px #00031e; }
+  .creative .gown:after { content:'✦  ·  ✧  ·  ✦  ·  ✧'; color:#e6d3a4; font-size:26px; letter-spacing:5px; position:absolute; top:78px; left:18px; transform:rotate(-5deg); }
+  .cape { position:absolute; z-index:1; top:169px; width:350px; height:145px; border-radius:60% 60% 22% 22%; background:linear-gradient(90deg,#d1b98f,#fffaf0 48%,#b89a70); opacity:.76; clip-path:polygon(16% 0,84% 0,100% 100%,0 100%); }
+  .card-copy { padding:18px 18px 20px; }
+  .card-copy h3 { font-size:18px; margin:0 0 8px; color:#1c1917; }
+  .card-copy p { font-size:14px; line-height:1.55; color:#57534e; margin:0; }
+  .pill { display:inline-block; margin-top:12px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#44403c; background:#f5f5f4; padding:6px 9px; border-radius:99px; }
+  .hint { margin-top:22px; padding:14px 16px; border-radius:12px; background:#f5f5f4; color:#44403c; font-size:14px; }
+  @media(max-width:760px){.directions{grid-template-columns:1fr}.look{min-height:290px}}
+</style>
+
+<h2>女装礼服预设：先定主风格</h2>
+<p class="subtitle">点击一项选定。三种都可以进入预设库；这一步主要确认你希望占比最高的视觉方向。</p>
+
+<div class="directions" data-multiselect>
+  <article class="direction red-carpet" data-choice="red-carpet" onclick="toggleSelect(this)">
+    <div class="look"><span class="hair"></span><span class="model"></span><span class="neck"></span><span class="gown"></span></div>
+    <div class="card-copy"><h3>A. 红毯晚宴礼服</h3><p>缎面、垂坠、宝石色与利落长裙摆。适合婚礼宾客、颁奖礼、晚宴和正式肖像。</p><span class="pill">优雅 · 最通用</span></div>
+  </article>
+  <article class="direction couture" data-choice="couture" onclick="toggleSelect(this)">
+    <div class="look"><span class="hair"></span><span class="model"></span><span class="neck"></span><span class="cape"></span><span class="gown"></span></div>
+    <div class="card-copy"><h3>B. 高定建筑感</h3><p>立体褶裥、披肩、干净的象牙白或金属光泽。画面辨识度强，更像秀场与杂志大片。</p><span class="pill">高级 · 设计感</span></div>
+  </article>
+  <article class="direction creative" data-choice="creative" onclick="toggleSelect(this)">
+    <div class="look"><span class="hair"></span><span class="model"></span><span class="neck"></span><span class="gown"></span></div>
+    <div class="card-copy"><h3>C. 创意主题礼服</h3><p>星空刺绣、花卉立体装饰、渐变薄纱等可读细节。最吸睛，但应保持为少数特色款。</p><span class="pill">吸睛 · 差异化</span></div>
+  </article>
+</div>
+
+<p class="hint">我建议以 A 为主、B 为次、C 放 2–3 件做亮点：共将现有女装 8 个预设调整为至少 6 个礼服/奢华/创意裙装，保留 1–2 个轻松风格以维持使用场景覆盖。</p>

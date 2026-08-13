@@ -181,7 +181,7 @@ const AI_TOOLS_DEMO_IMAGES = {
   bangsFilter: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
   permFilter: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   aiHairColorChanger: '/ai-hair-color-changer/rose-pink-before-after.webp',
-  aiClothesChanger: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+  aiClothesChanger: 'https://assets.toolaze.com/landing-pages/ai-clothes-changer/demo/ivory-couture-before-after.webp',
   aiBikiniGenerator: 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   aiBreastExpansion: '/ai-breast-expansion/demo-before-after.webp',
   aiImageGenerator:
