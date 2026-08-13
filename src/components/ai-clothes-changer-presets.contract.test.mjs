@@ -69,11 +69,19 @@ const readContent = (locale) => JSON.parse(
 const rootRouteSource = readFileSync(new URL('../app/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 const localeRouteSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 const l2SeoMetadataSource = readFileSync(new URL('../lib/l2-seo-metadata.ts', import.meta.url), 'utf8')
+const toolL2PageSource = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.meta.url), 'utf8')
 
 test('English catalog publishes the approved women catalog followed by the men catalog', () => {
   const presets = readContent('en').topTool.functionalAcceptance.presets
   assert.deepEqual(presets.filter((item) => item.group === 'women').map((item) => item.label), expectedWomen)
   assert.deepEqual(presets.filter((item) => item.group === 'men').map((item) => item.label), expectedMen)
+})
+
+test('optional prompt examples keep the shared L2 renderer type-safe', () => {
+  assert.match(
+    toolL2PageSource,
+    /layout=\{promptExamples\?\.layout \|\| \(tool === 'ai-dance-generator' \? 'horizontal' : 'grid'\)\}/,
+  )
 })
 
 test('English women catalog keeps the approved luxury wardrobe mix', () => {

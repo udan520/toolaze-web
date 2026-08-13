@@ -1885,7 +1885,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     subtitle={promptExamples?.subtitle}
                     items={items}
                     bgClass={bgClass}
-                    layout={promptExamples.layout || (tool === 'ai-dance-generator' ? 'horizontal' : 'grid')}
+                    layout={promptExamples?.layout || (tool === 'ai-dance-generator' ? 'horizontal' : 'grid')}
                     targetMode={promptExampleTargetMode}
                     clothingPresetGrid={isClothesChanger}
                   />
