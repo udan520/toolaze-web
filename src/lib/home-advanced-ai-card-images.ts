@@ -37,7 +37,7 @@ export const HOME_ADVANCED_AI_CARD_IMAGES = {
     alt: 'Photo Abstract Poster Generator original photo and abstract memory panel preview',
   },
   'ai-clothes-changer': {
-    src: 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+    src: 'https://assets.toolaze.com/landing-pages/ai-clothes-changer/demo/ivory-couture-before-after.webp',
     width: 1600,
     height: 900,
     alt: 'AI Clothes Changer before and after outfit preview',

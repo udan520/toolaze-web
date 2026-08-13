@@ -4,25 +4,42 @@ import test from 'node:test'
 
 const locales = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const expectedWomen = [
+  'Black Suit',
+  'Caramel Suit',
+  'Pink Suit',
+  'Black Swim',
+  'Emerald Gown',
+  'Velvet Gown',
+  'Ivory Couture',
+  'Celestial',
   'Ivory Quiet Luxury',
   'Parisian Tweed',
   'Modern Power Suit',
   'Silk Evening Gown',
   'Elevated Smart Casual',
   'Luxe Streetwear',
-  'Classic Black Swim',
-  'Resort Print Swim',
+  'Classic Black Swim (Original)',
+  'Black Bikini',
 ]
 const expectedMen = [
-  'Executive Business Suit',
-  'Black-Tie Tuxedo',
-  'Quiet Luxury Knit',
-  'Modern Smart Casual',
+  'Midnight Tuxedo',
+  'Sage Suit',
+  'Camel Coat',
+  'Velvet Dinner',
+  'White Resort',
+  'Leather Aviator',
+  'Monochrome Tech',
+  'Indigo Tailoring',
+  'Executive Suit',
+  'Black Tuxedo',
+  'Quiet Knit',
+  'Modern Casual',
   'Luxe Streetwear',
   'Denim Weekend',
-  'Performance Athleisure',
+  'Performance Wear',
   'Riviera Linen',
 ]
+const ivoryCoutureDemoUrl = 'https://assets.toolaze.com/landing-pages/ai-clothes-changer/demo/ivory-couture-before-after.webp'
 const expectedPresetChoiceTitles = {
   en: 'Choose a Clothing Style',
   de: 'Kleidungsstil wählen',
@@ -53,13 +70,51 @@ const rootRouteSource = readFileSync(new URL('../app/ai-clothes-changer/page.tsx
 const localeRouteSource = readFileSync(new URL('../app/[locale]/ai-clothes-changer/page.tsx', import.meta.url), 'utf8')
 const l2SeoMetadataSource = readFileSync(new URL('../lib/l2-seo-metadata.ts', import.meta.url), 'utf8')
 
-test('English catalog publishes the approved two rows per gender', () => {
+test('English catalog publishes the approved women catalog followed by the men catalog', () => {
   const presets = readContent('en').topTool.functionalAcceptance.presets
   assert.deepEqual(presets.filter((item) => item.group === 'women').map((item) => item.label), expectedWomen)
   assert.deepEqual(presets.filter((item) => item.group === 'men').map((item) => item.label), expectedMen)
 })
 
-test('every locale has 8 women and 8 men presets with the same R2 assets', () => {
+test('English women catalog keeps the approved luxury wardrobe mix', () => {
+  const women = readContent('en').topTool.functionalAcceptance.presets
+    .filter((item) => item.group === 'women')
+    .slice(0, 8)
+
+  assert.deepEqual(
+    women.map((item) => item.label),
+    ['Black Suit', 'Caramel Suit', 'Pink Suit', 'Black Swim', 'Emerald Gown', 'Velvet Gown', 'Ivory Couture', 'Celestial'],
+  )
+  assert.deepEqual(
+    women.map((item) => item.image),
+    [
+      'black-evening-suit',
+      'caramel-quiet-luxury-suit',
+      'blush-satin-suit',
+      'classic-black-swim',
+      'emerald-red-carpet-gown',
+      'burgundy-velvet-mermaid-gown',
+      'ivory-architectural-couture',
+      'midnight-celestial-couture',
+    ].map((slug) => `https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/women/${slug}.webp`),
+  )
+})
+
+test('English catalog restores the legacy black bikini in place of the resort-print swim preset', () => {
+  const women = readContent('en').topTool.functionalAcceptance.presets
+    .filter((item) => item.group === 'women')
+  const legacyBlackBikiniUrl = 'https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/d9c58f4a47544904909fc28a0e9cd584.webp'
+  const blackBikini = women.at(-1)
+
+  assert.equal(blackBikini.label, 'Black Bikini')
+  assert.equal(blackBikini.image, legacyBlackBikiniUrl)
+  assert.equal(blackBikini.referenceImage, legacyBlackBikiniUrl)
+  assert.match(blackBikini.prompt, /Image 1 is the person photo\. Image 2 is the target clothing reference\./)
+  assert.match(blackBikini.prompt, /black bikini/i)
+  assert.doesNotMatch(JSON.stringify(women), /resort-print-swim|botanical/i)
+})
+
+test('every locale has 16 women and 16 men presets with the same R2 assets', () => {
   const english = readContent('en').topTool.functionalAcceptance.presets
   const englishAssets = english.map((item) => item.image)
 
@@ -68,14 +123,17 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
     const acceptance = topTool.functionalAcceptance
     const presets = acceptance.presets
     assert.equal(topTool.defaultAspectRatio, '9:16', locale)
-    assert.equal(presets.filter((item) => item.group === 'women').length, 8, locale)
-    assert.equal(presets.filter((item) => item.group === 'men').length, 8, locale)
+    assert.equal(presets.filter((item) => item.group === 'women').length, 16, locale)
+    assert.equal(presets.filter((item) => item.group === 'men').length, 16, locale)
     assert.deepEqual(presets.map((item) => item.image), englishAssets, locale)
     assert.equal(acceptance.inlinePresetReferenceUpload, false, locale)
     assert.equal(acceptance.hidePresetReferenceUploader, true, locale)
     assert.equal(acceptance.enableCustomReferenceImageUpload, true, locale)
     assert.equal(acceptance.combineCustomReferenceAndPrompt, false, locale)
     assert.equal(acceptance.clothingReferencePresetGrid, true, locale)
+    assert.equal(topTool.sampleImages?.[0]?.url, ivoryCoutureDemoUrl, locale)
+    assert.equal(topTool.sampleImages?.[0]?.width, 1600, locale)
+    assert.equal(topTool.sampleImages?.[0]?.height, 900, locale)
     assert.equal(readContent(locale).topTool.textOverrides.presetChoiceTitle, expectedPresetChoiceTitles[locale], locale)
     assert.deepEqual(
       [
@@ -101,7 +159,7 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
     for (const preset of presets) {
       assert.match(
         preset.image,
-        /^https:\/\/assets\.toolaze\.com\/landing-pages\/ai-clothes-changer\/presets\/(women|men)\/[a-z0-9-]+\.webp$/,
+        /^(https:\/\/assets\.toolaze\.com\/landing-pages\/ai-clothes-changer\/presets\/(women|men)\/[a-z0-9-]+\.webp|https:\/\/pub-efeb0c7b9b53478d960218de80c52e3d\.r2\.dev\/uploads\/d9c58f4a47544904909fc28a0e9cd584\.webp)$/,
       )
       assert.equal(preset.referenceImage, preset.image)
       assert.match(preset.prompt, /Image 1 is the person photo\. Image 2 is the target clothing reference\./)
@@ -109,12 +167,78 @@ test('every locale has 8 women and 8 men presets with the same R2 assets', () =>
   }
 })
 
+test('English men catalog begins with eight premium varied looks and keeps every visible name to two words', () => {
+  const men = readContent('en').topTool.functionalAcceptance.presets
+    .filter((item) => item.group === 'men')
+
+  assert.deepEqual(men.map((item) => item.label), expectedMen)
+  assert.ok(men.every((item) => item.label.trim().split(/\s+/).length <= 2))
+  assert.deepEqual(
+    men.slice(0, 8).map((item) => item.image),
+    [
+      'midnight-tuxedo',
+      'sage-double-breasted-suit',
+      'camel-overcoat',
+      'velvet-dinner-jacket',
+      'white-resort-linen',
+      'leather-aviator',
+      'monochrome-techwear',
+      'indigo-tailoring',
+    ].map((slug) => `https://assets.toolaze.com/landing-pages/ai-clothes-changer/presets/men/${slug}.webp`),
+  )
+})
+
+test('Clothes inspiration grid reuses every top clothing preset and selects it without replacing the demo', () => {
+  const l2Source = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.meta.url), 'utf8')
+  const promptExamplesSource = readFileSync(new URL('./blocks/PromptExamples.tsx', import.meta.url), 'utf8')
+  const generatorSource = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+
+  assert.match(l2Source, /isClothesChanger[\s\S]*const items = isClothesChanger \? clothingPresetItems : promptExamples\?\.items/)
+  assert.match(l2Source, /items={items}/)
+  assert.match(l2Source, /isClothesChanger[\s\S]*clothingPresetGrid/)
+  const clothesGridBranch = promptExamplesSource.match(/if \(clothingPresetGrid\) \{([\s\S]*?)\n  \}\n\n  return \(/)?.[1] || ''
+  assert.match(promptExamplesSource, /createSimilar: 'Create Similar'/)
+  assert.doesNotMatch(clothesGridBranch, /Copy Prompt/)
+  assert.match(promptExamplesSource, /selectClothingPreset: true/)
+  assert.match(promptExamplesSource, /preserveDemo: true/)
+  assert.match(generatorSource, /if \(detail\.selectClothingPreset\) \{[\s\S]*?applyPromptPresetReferenceImage[\s\S]*?return true/)
+  assert.match(generatorSource, /if \(!detail\.preserveDemo && demoImageUrl\)/)
+  assert.match(promptExamplesSource, /window\.scrollTo\(\{ top: 0, behavior: 'smooth' \}\)/)
+})
+
+test('Clothes Custom mode puts reference outfit before describe outfit', () => {
+  const generatorSource = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+  const customModeSwitch = generatorSource.match(/\{shouldShowCustomInputModeSwitch && \(([\s\S]*?)\n            \)\}/)?.[1] || ''
+
+  assert.match(customModeSwitch, /aria-pressed=\{customInputMode === 'reference'\}[\s\S]*?customReferenceModeLabel[\s\S]*?aria-pressed=\{customInputMode === 'prompt'\}[\s\S]*?customTextModeLabel/)
+})
+
+test('Clothes Custom mode defaults to Reference Outfit', () => {
+  const generatorSource = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
+  const l2Source = readFileSync(new URL('./blocks/ToolL2PageContent.tsx', import.meta.url), 'utf8')
+
+  assert.match(generatorSource, /defaultCustomInputMode\?: 'prompt' \| 'reference'/)
+  assert.match(generatorSource, /useState<'prompt' \| 'reference'>\(defaultCustomInputMode\)/)
+  assert.match(generatorSource, /if \(tabId === customPromptTabId\) \{[\s\S]*?setCustomInputMode\(defaultCustomInputMode\)/)
+  assert.match(l2Source, /defaultCustomInputMode=\{isClothesChanger \? 'reference' : undefined\}/)
+})
+
+test('Clothes feature cards use distinct semantic icon types', () => {
+  const featuresSource = readFileSync(new URL('./blocks/Features.tsx', import.meta.url), 'utf8')
+  const content = readContent('en').features.items
+
+  assert.deepEqual(content.map((item) => item.iconType), ['reference', 'identity', 'safety'])
+  assert.match(featuresSource, /reference:/)
+  assert.match(featuresSource, /identity:/)
+  assert.match(featuresSource, /safety:/)
+})
+
 test('localized labels do not reuse the English catalog wholesale', () => {
   const englishLabels = readContent('en').topTool.functionalAcceptance.presets.map((item) => item.label)
   for (const locale of locales.filter((item) => item !== 'en')) {
     const labels = readContent(locale).topTool.functionalAcceptance.presets.map((item) => item.label)
     assert.notDeepEqual(labels, englishLabels, locale)
-    assert.equal(new Set(labels).size, 16, `${locale} labels should stay unique`)
+    assert.equal(new Set(labels).size, 32, `${locale} labels should stay unique`)
   }
 })
 
@@ -122,7 +246,8 @@ test('clothes presets use a responsive four-column 9:16 grid without an inline u
   const source = readFileSync(new URL('./AiImageGenerationTool.tsx', import.meta.url), 'utf8')
   assert.match(source, /isClothingReferencePresetGrid[\s\S]*grid-cols-4/)
   assert.match(source, /isClothingReferencePresetGrid \? 'aspect-\[9\/16\]' : 'aspect-\[3\/4\]'/)
-  assert.match(source, /isClothingReferencePresetGrid[\s\S]*line-clamp-2/)
+  assert.match(source, /isClothingReferencePresetGrid[\s\S]*truncate\s+whitespace-nowrap/)
+  assert.doesNotMatch(source, /isClothingReferencePresetGrid \? 'min-h-8 line-clamp-2 whitespace-normal leading-4'/)
   assert.match(source, /shouldRenderStandaloneReferenceUploader/)
 })
 

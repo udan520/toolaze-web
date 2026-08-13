@@ -744,7 +744,7 @@ const HOME_ADVANCED_AI_CARD_IMAGES = {
   'ai-hair-color-changer': '/ai-hair-color-changer/rose-pink-before-after.webp',
   'ai-zine-poster-generator': 'https://assets.toolaze.com/model-assets/ai-zine-poster-generator/zine-poster-demo.webp',
   'ai-photo-abstract-poster-generator': '/model-assets/ai-photo-abstract-poster-generator/photo-abstract-poster-demo.webp',
-  'ai-clothes-changer': 'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+  'ai-clothes-changer': 'https://assets.toolaze.com/landing-pages/ai-clothes-changer/demo/ivory-couture-before-after.webp',
   'ai-bikini-generator': 'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   'ai-breast-expansion': '/ai-breast-expansion/demo-before-after.webp',
   'photo-restoration': 'https://assets.toolaze.com/home-advanced-ai/photo-restoration-demo-before-after.webp',

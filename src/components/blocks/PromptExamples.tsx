@@ -28,6 +28,7 @@ interface PromptExamplesProps {
   bgClass?: string
   targetMode?: PromptInsertMode
   layout?: 'grid' | 'horizontal' | 'reference-video'
+  clothingPresetGrid?: boolean
 }
 
 const PROMPT_COPY_NOUN = 'Prompt'
@@ -35,75 +36,93 @@ const PROMPT_COPY_NOUN = 'Prompt'
 const PROMPT_EXAMPLE_LABELS = {
   en: {
     groupAria: 'Hairstyle example groups',
+    clothingGroupAria: 'Clothing style groups',
     women: 'Women',
     men: 'Men',
     usePrompt: 'Use Prompt',
     copyPrompt: `Copy ${PROMPT_COPY_NOUN}`,
     copiedPrompt: `Copied ${PROMPT_COPY_NOUN}`,
+    createSimilar: 'Create Similar',
   },
   de: {
     groupAria: 'Frisur-Beispielgruppen',
+    clothingGroupAria: 'Kleidungsstil-Gruppen',
     women: 'Frauen',
     men: 'Männer',
     usePrompt: 'Prompt verwenden',
     copyPrompt: 'Prompt kopieren',
     copiedPrompt: 'Prompt kopiert',
+    createSimilar: 'Ähnliches erstellen',
   },
   ja: {
     groupAria: 'ヘアスタイル例グループ',
+    clothingGroupAria: '衣装スタイルグループ',
     women: '女性',
     men: '男性',
     usePrompt: 'プロンプトを使う',
     copyPrompt: 'プロンプトをコピー',
     copiedPrompt: 'プロンプトをコピー済み',
+    createSimilar: '似たスタイルを作成',
   },
   es: {
     groupAria: 'Grupos de ejemplos de peinados',
+    clothingGroupAria: 'Grupos de estilos de ropa',
     women: 'Mujeres',
     men: 'Hombres',
     usePrompt: 'Usar prompt',
     copyPrompt: 'Copiar prompt',
     copiedPrompt: 'Prompt copiado',
+    createSimilar: 'Crear similar',
   },
   'zh-TW': {
     groupAria: '髮型範例分組',
+    clothingGroupAria: '服裝風格分組',
     women: '女性',
     men: '男性',
     usePrompt: '使用提示詞',
     copyPrompt: '複製提示詞',
     copiedPrompt: '已複製提示詞',
+    createSimilar: '建立相似款',
   },
   pt: {
     groupAria: 'Grupos de exemplos de penteados',
+    clothingGroupAria: 'Grupos de estilos de roupa',
     women: 'Mulheres',
     men: 'Homens',
     usePrompt: 'Usar prompt',
     copyPrompt: 'Copiar prompt',
     copiedPrompt: 'Prompt copiado',
+    createSimilar: 'Criar semelhante',
   },
   fr: {
     groupAria: 'Groupes d’exemples de coiffures',
+    clothingGroupAria: 'Groupes de styles vestimentaires',
     women: 'Femmes',
     men: 'Hommes',
     usePrompt: 'Utiliser le prompt',
     copyPrompt: 'Copier le prompt',
     copiedPrompt: 'Prompt copié',
+    createSimilar: 'Créer un style similaire',
   },
   ko: {
     groupAria: '헤어스타일 예시 그룹',
+    clothingGroupAria: '의상 스타일 그룹',
     women: '여성',
     men: '남성',
     usePrompt: '프롬프트 사용',
     copyPrompt: '프롬프트 복사',
     copiedPrompt: '프롬프트 복사됨',
+    createSimilar: '비슷하게 만들기',
   },
   it: {
     groupAria: 'Gruppi di esempi di acconciature',
+    clothingGroupAria: 'Gruppi di stili di abbigliamento',
     women: 'Donna',
     men: 'Uomo',
     usePrompt: 'Usa prompt',
     copyPrompt: 'Copia prompt',
     copiedPrompt: 'Prompt copiato',
+    createSimilar: 'Crea simile',
   },
 } as const
 
@@ -173,6 +192,7 @@ export default function PromptExamples({
   bgClass = 'bg-white',
   targetMode,
   layout = 'grid',
+  clothingPresetGrid = false,
 }: PromptExamplesProps) {
   const labels = getPromptExampleLabels(usePathname())
   const hasGenderGroups = items.some((item) => item.group === 'women') && items.some((item) => item.group === 'men')
@@ -188,6 +208,19 @@ export default function PromptExamples({
   const handleUsePrompt = (item: PromptExampleItem) => {
     window.dispatchEvent(new CustomEvent('toolaze:use-prompt', {
       detail: buildPromptExampleUseDetail(item, targetMode),
+    }))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleCreateSimilar = (item: PromptExampleItem) => {
+    window.dispatchEvent(new CustomEvent('toolaze:use-prompt', {
+      detail: {
+        prompt: item.prompt,
+        presetLabel: item.title,
+        presetGroup: item.group,
+        selectClothingPreset: true,
+        preserveDemo: true,
+      },
     }))
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -291,6 +324,44 @@ export default function PromptExamples({
                 </article>
               )
             })}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  if (clothingPresetGrid) {
+    return (
+      <section className={`${bgClass} py-24 px-6`}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">{title}</h2>
+          {subtitle && <p className="desc-text text-center max-w-3xl mx-auto mb-12">{subtitle}</p>}
+          {hasGenderGroups && (
+            <div className="mb-10 flex justify-center">
+              <div role="tablist" aria-label={labels.clothingGroupAria} className="inline-flex rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
+                {[{ id: 'women', text: labels.women }, { id: 'men', text: labels.men }].map((tab) => {
+                  const isActive = activeGroup === tab.id
+                  return (
+                    <button key={tab.id} type="button" role="tab" aria-selected={isActive} onClick={() => setActiveGroup(tab.id)} className={`rounded-xl px-5 py-2 text-sm font-semibold transition-colors ${isActive ? 'bg-slate-900 text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'}`}>
+                      {tab.text}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {visibleItems.map((item, idx) => (
+              <article key={`${item.title}-${idx}`} className="overflow-hidden rounded-3xl border border-indigo-50 bg-white shadow-sm">
+                {item.image && <div className="aspect-[9/16] bg-slate-50 p-2"><img src={item.image} alt={item.title} className="block h-full w-full object-contain" loading="lazy" /></div>}
+                <div className="p-4">
+                  <h3 className="truncate whitespace-nowrap text-base font-bold text-slate-800">{item.title}</h3>
+                  <button type="button" onClick={() => handleCreateSimilar(item)} className="mt-4 w-full rounded-xl px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:shadow-lg" style={{ background: 'linear-gradient(135deg, #4F46E5 0%, #9333EA 100%)' }}>
+                    {labels.createSimilar}
+                  </button>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

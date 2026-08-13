@@ -81,7 +81,7 @@ const cardAssets = {
   perm: 'https://assets.toolaze.com/model-assets/perm-filter/perm-filter-before-after-demo.webp',
   hairColor: '/ai-hair-color-changer/rose-pink-before-after.webp',
   clothes:
-    'https://assets.toolaze.com/uploads/84b9bf50f4414a2c962ebd3f74cb07f0.webp',
+    'https://assets.toolaze.com/landing-pages/ai-clothes-changer/demo/ivory-couture-before-after.webp',
   bikini:
     'https://assets.toolaze.com/uploads/6bcf91ffd06e45a8bcda2ea867015141.webp',
   breastExpansion: '/ai-breast-expansion/demo-before-after.webp',

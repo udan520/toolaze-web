@@ -108,6 +108,21 @@ const LineIcon = ({ type }: { type: string }) => {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 5.5c2.8 3 4.2 5.2 4.2 7.3A4.2 4.2 0 117.8 12.8c0-2.1 1.4-4.3 4.2-7.3zM17.5 6.5h1.8M18.4 5.6v1.8" />
       </svg>
     ),
+    reference: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7.5A2.5 2.5 0 016.5 5h11A2.5 2.5 0 0120 7.5v9a2.5 2.5 0 01-2.5 2.5h-11A2.5 2.5 0 014 16.5v-9zM8 9h8M8 12h5M8 15h3" />
+      </svg>
+    ),
+    identity: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 12a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm-6 7a6 6 0 0112 0M18 8h3m-1.5-1.5v3" />
+      </svg>
+    ),
+    safety: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3l7 3v5c0 4.5-2.8 7.8-7 10-4.2-2.2-7-5.5-7-10V6l7-3zM9 12l2 2 4-4" />
+      </svg>
+    ),
   }
   return icons[type] || icons.guidance
 }
