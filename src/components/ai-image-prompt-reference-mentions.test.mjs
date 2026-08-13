@@ -8,8 +8,10 @@ test('image mentions are enabled only for configured multi-image image-to-image 
   assert.match(source, /supportsConfiguredPromptReferenceMentions/)
   assert.match(source, /activeTab === 'image-to-image'/)
   assert.match(source, /currentMaxUploadImages/)
-  assert.match(source, /PromptReferenceMentionOverlay/)
   assert.match(source, /PromptReferenceMentionPicker/)
+  assert.match(source, /relative flex h-11 items-center px-3/)
+  assert.doesNotMatch(source, /relative flex h-11 items-center border-t border-slate-200\/90 px-3/)
+  assert.doesNotMatch(source, /text-transparent caret-slate-800/)
 })
 
 test('image prompt deletion uses the shared atomic mention behavior', () => {

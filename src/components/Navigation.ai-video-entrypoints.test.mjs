@@ -44,6 +44,24 @@ test('AI Video navigation exposes video tools and Wan 2.5 model entry points', (
   assert.match(aiVideoModelMenuSource, /href: '\/model\/wan-2-5-ai-video-generator'/)
 })
 
+test('AI Video appears before AI Tools in desktop and mobile navigation', () => {
+  const desktopTools = navigationSource.slice(
+    navigationSource.indexOf('{/* 一级菜单：AI Tools */}'),
+    navigationSource.indexOf('{/* 一级菜单：AI Image */}'),
+  )
+  const desktopVideo = getDesktopAiVideoBlock()
+  const mobileTools = navigationSource.slice(
+    navigationSource.indexOf('{/* AI Tools 部分 */}'),
+    navigationSource.indexOf('{/* AI Image 部分 */}'),
+  )
+  const mobileVideo = getMobileAiVideoBlock()
+
+  assert.match(desktopVideo, /className="relative group order-2"/)
+  assert.match(desktopTools, /className="relative group order-3"/)
+  assert.match(mobileVideo, /className="order-2 border-b/)
+  assert.match(mobileTools, /className="order-3 border-b/)
+})
+
 function getDesktopAiVideoBlock() {
   return navigationSource.slice(
     navigationSource.indexOf('{/* 一级菜单：AI Video */}'),

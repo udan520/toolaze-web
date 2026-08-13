@@ -2061,7 +2061,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </div>
           </div>
           {/* 一级菜单：AI Tools */}
-          <div className="relative group order-2">
+          <div className="relative group order-3">
             <button
               type="button"
               onClick={() => toggleDesktopMenu('ai-tools')}
@@ -2135,7 +2135,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             </div>
           </div>
           {/* 一级菜单：AI Video */}
-          <div className="relative group order-3">
+          <div className="relative group order-2">
             <button
               type="button"
               onClick={() => toggleDesktopMenu('ai-video')}
@@ -2329,7 +2329,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </div>
               </div>
               {/* AI Tools 部分 */}
-              <div className="order-2 border-b border-indigo-50 pb-4">
+              <div className="order-3 border-b border-indigo-50 pb-4">
                 <div className="mb-3 text-sm font-bold text-slate-700">
                   {navTranslations.aiTools || defaultNavTranslations.aiTools}
                 </div>
@@ -2372,7 +2372,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
                 </div>
               </div>
               {/* AI Video 部分 */}
-              <div className="order-3 border-b border-indigo-50 pb-4">
+              <div className="order-2 border-b border-indigo-50 pb-4">
                 <div className="mb-3 text-sm font-bold text-slate-700">{navTranslations.aiVideo || defaultNavTranslations.aiVideo}</div>
                 <div data-ai-video-section="functions" className="space-y-2">
                   {AI_VIDEO_FUNCTION_MENU_ITEMS.map((item) => renderAiVideoFunctionMenuItem(item, 'mobile'))}

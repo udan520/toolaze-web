@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState, type ChangeEvent, type Dispatch, type KeyboardEvent as ReactKeyboardEvent, type SetStateAction, type UIEvent as ReactUIEvent } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type ChangeEvent, type Dispatch, type KeyboardEvent as ReactKeyboardEvent, type SetStateAction } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -27,6 +27,7 @@ import DeleteIcon from '@/components/icons/DeleteIcon'
 import MotionReferenceVideoUploader, { type MotionReferenceVideoUploaderItem } from '@/components/MotionReferenceVideoUploader'
 import MultimodalReferenceUploader from '@/components/MultimodalReferenceUploader'
 import ReferenceImageUploader from '@/components/ReferenceImageUploader'
+import VideoDurationSlider from './VideoDurationSlider'
 import { formatLocalTimestampToSeconds } from '@/lib/credit-history-time'
 import {
   getCachedGenerationAuthState,
@@ -53,7 +54,6 @@ import PromptReferenceMentionPicker, {
   type PromptReferenceMentionItem,
   type PromptReferenceMentionOrdinalRegistry,
 } from './PromptReferenceMentionPicker'
-import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
 import {
   deletePromptReferenceMention,
   insertPromptReferenceMention,
@@ -770,9 +770,9 @@ export default function AiVideoGeneratorTool({
   const motionVideoFilesRef = useRef<VideoItem[]>([])
   const audioFilesRef = useRef<AudioItem[]>([])
   const modelSelectorRef = useRef<HTMLDivElement>(null)
+  const videoOutputSettingsRef = useRef<HTMLDivElement>(null)
   const promptMentionRootRef = useRef<HTMLDivElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
-  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
   const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
   if (!promptReferenceMentionOrdinalRegistryRef.current) {
     promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
@@ -862,6 +862,7 @@ export default function AiVideoGeneratorTool({
     return modelConfig.defaultDuration || modelConfig.durations[0] || 5
   })
   const [resolution, setResolution] = useState(modelConfig.resolutions[0] || '1080p')
+  const [isVideoOutputSettingsOpen, setIsVideoOutputSettingsOpen] = useState(false)
   const [nativeAudio, setNativeAudio] = useState(false)
   const [webSearch, setWebSearch] = useState(false)
   const [outputFormat, setOutputFormat] = useState('mp4')
@@ -878,6 +879,27 @@ export default function AiVideoGeneratorTool({
   const supportsWebSearch = Boolean(modelConfig.supportsWebSearch)
   const supportsMotionReferenceVideo = Boolean(modelConfig.supportsMotionReferenceVideo)
   const supportsMultimodalReferences = supportsAiVideoMultimodalReferencesForMode(modelConfig, activeMode)
+
+  useEffect(() => {
+    if (!isVideoOutputSettingsOpen) return
+
+    const closeVideoOutputSettings = () => setIsVideoOutputSettingsOpen(false)
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!videoOutputSettingsRef.current) return
+      if (event.target instanceof Node && videoOutputSettingsRef.current.contains(event.target)) return
+      closeVideoOutputSettings()
+    }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeVideoOutputSettings()
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isVideoOutputSettingsOpen])
   const supportsReferenceVideos = supportsMotionReferenceVideo || supportsMultimodalReferences
   const supportsFirstLastFrame = activeMode === 'image-to-video' && Boolean(modelConfig.supportsFirstLastFrame)
   const promptRequired = modelConfig.promptRequired !== false
@@ -1511,18 +1533,7 @@ export default function AiVideoGeneratorTool({
   const historyPageHref = getLocalizedInternalPath(pathname, '/history')
   const isGenerating = currentRequest?.status === 'processing'
   const hasDesktopResultTabs = isGenerating || currentRequest?.status === 'failed' || history.length > 0
-  const durationOptions = modelConfig.durations
-  const selectedDurationIndex = Math.max(0, durationOptions.indexOf(duration))
-  const durationSliderMax = Math.max(durationOptions.length - 1, 0)
-  const durationSliderProgress = durationSliderMax > 0
-    ? (selectedDurationIndex / durationSliderMax) * 100
-    : 0
-  const handleDurationSliderChange = (nextIndex: number | string) => {
-    const index = Math.max(0, Math.min(durationSliderMax, Number(nextIndex)))
-    const nextDuration = durationOptions[index]
-    if (typeof nextDuration === 'number') setDuration(nextDuration)
-  }
-
+  const aspectRatioLabel = modelConfig.aspectRatios.find((option) => option.value === aspectRatio)?.label || aspectRatio
   const handlePromptMentionKeyDown = (event: ReactKeyboardEvent<HTMLTextAreaElement>) => {
     if (!supportsPromptReferenceMentions || event.key !== '@' || event.metaKey || event.ctrlKey || event.altKey) return
 
@@ -1556,12 +1567,6 @@ export default function AiVideoGeneratorTool({
       return
     }
     setPromptMentionSelection({ start: promptMentionTriggerIndex + 1, end: nextCaret })
-  }
-
-  const handlePromptScroll = (event: ReactUIEvent<HTMLTextAreaElement>) => {
-    if (!promptMentionOverlayRef.current) return
-    promptMentionOverlayRef.current.scrollTop = event.currentTarget.scrollTop
-    promptMentionOverlayRef.current.scrollLeft = event.currentTarget.scrollLeft
   }
 
   const handlePromptMentionTriggerClick = () => {
@@ -2485,45 +2490,6 @@ export default function AiVideoGeneratorTool({
     }
 
     throw new Error(text.generationTimeout)
-  }
-
-  const renderManualDurationSlider = () => {
-    if (modelConfig.durationMode === 'reference-video') return null
-
-    return (
-      <div
-        data-video-duration-slider
-        className="rounded-lg bg-[#EEF2FF]/25 px-3 py-2 transition-colors duration-200 hover:bg-[#EEF2FF]/40"
-      >
-        <div className="relative h-6">
-          <div className="absolute left-0 right-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-[#E0E7FF]" />
-          <div
-            data-video-duration-slider-fill
-            className="absolute left-0 top-1/2 h-1 -translate-y-1/2 rounded-full bg-[#4F46E5]"
-            style={{ width: `${durationSliderProgress}%` }}
-          />
-          <input
-            data-video-duration-range
-            type="range"
-            min={0}
-            max={durationSliderMax}
-            step={1}
-            value={selectedDurationIndex}
-            onChange={(event) => handleDurationSliderChange(event.target.value)}
-            className="absolute inset-x-[-2px] top-0 h-6 w-[calc(100%+4px)] cursor-pointer opacity-0"
-            aria-label={text.duration}
-            aria-valuetext={`${duration}s`}
-          />
-          <div
-            data-video-duration-thumb
-            className="pointer-events-none absolute top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#4F46E5] shadow-md shadow-[#4F46E5]/20 ring-2 ring-white"
-            style={{ left: `${durationSliderProgress}%` }}
-          >
-            <span className="sr-only">{duration}s</span>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   const handleGenerate = async () => {
@@ -3649,19 +3615,11 @@ export default function AiVideoGeneratorTool({
 
                   <div ref={promptMentionRootRef}>
                     <label className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{promptLabel}</label>
-                    <div className="relative rounded-xl bg-slate-50/50">
-                      {supportsPromptReferenceMentions ? (
-                        <PromptReferenceMentionOverlay
-                          value={prompt}
-                          items={promptReferenceMentionItems}
-                          mirrorRef={promptMentionOverlayRef}
-                        />
-                      ) : null}
+                    <div className="relative overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/50 transition-colors focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/40">
                       <textarea
                         ref={promptTextareaRef}
                         value={prompt}
                         onChange={handlePromptChange}
-                        onScroll={handlePromptScroll}
                         onSelect={(event) => {
                           if (isPromptMentionPickerOpen) {
                             setPromptMentionSelection({
@@ -3678,22 +3636,24 @@ export default function AiVideoGeneratorTool({
                           : undefined}
                         placeholder={text.promptPlaceholder}
                         rows={4}
-                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-transparent px-4 text-base leading-6 ${supportsPromptReferenceMentions ? 'pb-12 pt-3 text-transparent caret-slate-800' : 'py-3 text-slate-800'} placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm`}
+                        className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
                       />
                       {supportsPromptReferenceMentions ? (
-                        <button
-                          type="button"
-                          data-prompt-reference-mention-trigger
-                          aria-label="Mention a reference"
-                          aria-expanded={isPromptMentionPickerOpen}
-                          aria-haspopup="listbox"
-                          aria-controls={promptMentionPickerId}
-                          onMouseDown={(event) => event.preventDefault()}
-                          onClick={handlePromptMentionTriggerClick}
-                          className="absolute bottom-3 left-3 z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
-                        >
-                          @
-                        </button>
+                        <div className="relative flex h-11 items-center px-3">
+                          <button
+                            type="button"
+                            data-prompt-reference-mention-trigger
+                            aria-label="Mention a reference"
+                            aria-expanded={isPromptMentionPickerOpen}
+                            aria-haspopup="listbox"
+                            aria-controls={promptMentionPickerId}
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={handlePromptMentionTriggerClick}
+                            className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                          >
+                            @
+                          </button>
+                        </div>
                       ) : null}
                       {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
                         <PromptReferenceMentionPicker
@@ -3731,43 +3691,7 @@ export default function AiVideoGeneratorTool({
                     </div>
                   ) : null}
 
-                  <div className="grid gap-3 grid-cols-1">
-                    <div>
-                      <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.aspectRatio}</span>
-                      {followsReferenceImageAspectRatio ? (
-                        <div data-video-reference-aspect-ratio-note>
-                          <div role="group" aria-label={text.aspectRatio} className="inline-flex">
-                            <button
-                              type="button"
-                              aria-pressed="true"
-                              disabled
-                              className={`${getOptionButtonClassName(true)} cursor-default whitespace-nowrap opacity-100`}
-                            >
-                              {text.referenceImageAspectRatioLabel}
-                            </button>
-                          </div>
-                          <p className="mt-1 text-[11px] leading-4 text-slate-500">{text.referenceImageAspectRatioHelper}</p>
-                        </div>
-                      ) : (
-                        <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-3 gap-2">
-                          {modelConfig.aspectRatios.map((ratio) => {
-                            const isSelected = aspectRatio === ratio.value
-                            return (
-                              <button
-                                key={ratio.value}
-                                type="button"
-                                aria-pressed={isSelected}
-                                onClick={() => setAspectRatio(ratio.value)}
-                                className={getOptionButtonClassName(isSelected)}
-                              >
-                                {ratio.label}
-                              </button>
-                            )
-                          })}
-                        </div>
-                      )}
-                    </div>
-
+                  <div className="grid grid-cols-1 gap-3">
                     {modelConfig.outputFormats && modelConfig.outputFormats.length > 1 ? (
                       <div data-video-output-format-selector>
                         <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.outputFormat}</span>
@@ -3786,48 +3710,6 @@ export default function AiVideoGeneratorTool({
                         </div>
                       </div>
                     ) : null}
-
-                    <div>
-                      <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.resolution}</span>
-                      <div role="group" aria-label={text.resolution} className="grid grid-cols-3 gap-2">
-                        {modelConfig.resolutions.map((value) => {
-                          const isSelected = resolution === value
-                          return (
-                            <button
-                              key={value}
-                              type="button"
-                              aria-pressed={isSelected}
-                              onClick={() => {
-                                setResolution(value)
-                                if (nativeAudio && !modelConfig.nativeAudioResolutions?.includes(value)) {
-                                  setNativeAudio(false)
-                                }
-                              }}
-                              className={getOptionButtonClassName(isSelected)}
-                            >
-                              {value}
-                            </button>
-                          )
-                        })}
-                      </div>
-                    </div>
-
-                    {modelConfig.durationMode === 'reference-video' ? (
-                      <div data-video-reference-duration-note className="rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] px-4 py-3 text-xs font-semibold leading-5 text-slate-600">
-                        {formatText(text.motionReferenceVideoDurationNote, {
-                          min: modelConfig.referenceVideoMinDurationSeconds || 3,
-                          max: referenceVideoMaxDurationSeconds,
-                        })}
-                      </div>
-                    ) : (
-                      <div data-video-duration-selector>
-                        <div className="mb-2 flex items-center justify-between gap-3">
-                          <span className="block text-xs font-semibold tracking-wide text-slate-500">{text.duration}</span>
-                          <span data-video-duration-value className="text-xs font-extrabold text-[#3730A3]">{duration}s</span>
-                        </div>
-                        {renderManualDurationSlider()}
-                      </div>
-                    )}
 
                     {supportsNativeAudio && nativeAudioHasPriceDifference ? (
                       <div data-video-native-audio-toggle className="rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] p-3">
@@ -3873,6 +3755,122 @@ export default function AiVideoGeneratorTool({
                       </div>
                     ) : null}
                   </div>
+                </div>
+
+                <div ref={videoOutputSettingsRef} data-video-output-settings className="relative flex-shrink-0 border-t border-[#E0E7FF] bg-white p-3 md:p-4">
+                  {isVideoOutputSettingsOpen ? (
+                    <div id="video-output-settings-panel" data-video-output-settings-panel className="absolute bottom-full left-0 right-0 z-30 mb-2 max-h-[min(70dvh,420px)] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] p-3 shadow-lg shadow-indigo-100/60 md:static md:mb-2 md:max-h-none">
+                      <div>
+                        <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.aspectRatio}</span>
+                        {followsReferenceImageAspectRatio ? (
+                          <div data-video-reference-aspect-ratio-note>
+                            <button
+                              type="button"
+                              aria-pressed="true"
+                              disabled
+                              className={`${getOptionButtonClassName(true)} cursor-default whitespace-nowrap opacity-100`}
+                            >
+                              {text.referenceImageAspectRatioLabel}
+                            </button>
+                            <p className="mt-1 text-[11px] leading-4 text-slate-500">{text.referenceImageAspectRatioHelper}</p>
+                          </div>
+                        ) : (
+                          <div role="group" aria-label={text.aspectRatio} className="grid grid-cols-3 gap-2">
+                            {modelConfig.aspectRatios.map((ratio) => {
+                              const isSelected = aspectRatio === ratio.value
+                              return (
+                                <button
+                                  key={ratio.value}
+                                  type="button"
+                                  aria-pressed={isSelected}
+                                  onClick={() => {
+                                    setAspectRatio(ratio.value)
+                                  }}
+                                  className={getOptionButtonClassName(isSelected)}
+                                >
+                                  {ratio.label}
+                                </button>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="mt-3">
+                        <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.resolution}</span>
+                        <div role="group" aria-label={text.resolution} className="grid grid-cols-3 gap-2">
+                          {modelConfig.resolutions.map((value) => {
+                            const isSelected = resolution === value
+                            return (
+                              <button
+                                key={value}
+                                type="button"
+                                aria-pressed={isSelected}
+                                onClick={() => {
+                                  setResolution(value)
+                                  if (nativeAudio && !modelConfig.nativeAudioResolutions?.includes(value)) {
+                                    setNativeAudio(false)
+                                  }
+                                }}
+                                className={getOptionButtonClassName(isSelected)}
+                              >
+                                {value}
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+
+                      <div className="mt-3">
+                        <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.duration}</span>
+                        {modelConfig.durationMode === 'reference-video' ? (
+                          <div data-video-reference-duration-note className="rounded-lg border border-[#E0E7FF] bg-white px-3 py-2 text-xs font-semibold leading-5 text-slate-600">
+                            {formatText(text.motionReferenceVideoDurationNote, {
+                              min: modelConfig.referenceVideoMinDurationSeconds || 3,
+                              max: referenceVideoMaxDurationSeconds,
+                            })}
+                          </div>
+                        ) : (
+                          <div data-video-duration-selector>
+                            <span data-video-duration-value className="mb-2 block text-right text-xs font-extrabold text-[#3730A3]">{duration}s</span>
+                            <VideoDurationSlider
+                              options={modelConfig.durations}
+                              value={duration}
+                              onChange={setDuration}
+                              ariaLabel={text.duration}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  <button
+                    type="button"
+                    data-video-output-settings-trigger
+                    aria-expanded={isVideoOutputSettingsOpen}
+                    aria-controls="video-output-settings-panel"
+                    onClick={() => setIsVideoOutputSettingsOpen((current) => !current)}
+                    className="grid min-h-12 w-full grid-cols-[1fr_1px_1fr_1px_1fr_36px] items-center rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] px-2 text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-white"
+                  >
+                    <span data-video-output-aspect-ratio-value className="flex min-w-0 items-center justify-center gap-2 px-2">
+                      <span aria-hidden="true" className="h-3 w-5 rounded-[3px] border-2 border-slate-500" />
+                      <span className="truncate text-sm font-bold">{followsReferenceImageAspectRatio ? text.referenceImageAspectRatioLabel : aspectRatioLabel}</span>
+                    </span>
+                    <span aria-hidden="true" className="h-6 w-px bg-slate-200" />
+                    <span data-video-output-resolution-value className="flex min-w-0 items-center justify-center gap-2 px-2">
+                      <span aria-hidden="true" className="rounded border border-slate-400 px-1 text-[9px] font-extrabold leading-4 text-slate-500">HD</span>
+                      <span className="truncate text-sm font-bold">{resolution}</span>
+                    </span>
+                    <span aria-hidden="true" className="h-6 w-px bg-slate-200" />
+                    <span data-video-output-duration-value className="flex min-w-0 items-center justify-center gap-1 px-2">
+                      <span aria-hidden="true" className="text-xs font-bold text-slate-500">{modelConfig.durationMode === 'reference-video' ? '~' : ''}</span>
+                      <span className="truncate text-sm font-bold">{modelConfig.durationMode === 'reference-video' ? text.referenceImageAspectRatioLabel : `${duration}s`}</span>
+                    </span>
+                    <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className={`mx-auto h-4 w-4 text-[#4F46E5] transition-transform ${isVideoOutputSettingsOpen ? 'rotate-180' : ''}`}>
+                      <path d="m6 8 4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
                 </div>
 
                 <div data-generate-action-bar className="flex-shrink-0 border-t border-[#E0E7FF] bg-white p-4 md:p-6">

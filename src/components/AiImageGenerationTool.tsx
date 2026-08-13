@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect, useId, useLayoutEffect } from 'react'
-import type { ChangeEvent, KeyboardEvent as ReactKeyboardEvent, ReactNode, UIEvent as ReactUIEvent } from 'react'
+import type { ChangeEvent, KeyboardEvent as ReactKeyboardEvent, ReactNode } from 'react'
 import { useMemo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -77,7 +77,7 @@ import PromptReferenceMentionPicker, {
   type PromptReferenceMentionItem,
   type PromptReferenceMentionOrdinalRegistry,
 } from './PromptReferenceMentionPicker'
-import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
+import VideoDurationSlider from './VideoDurationSlider'
 import {
   deletePromptReferenceMention,
   insertPromptReferenceMention,
@@ -1314,7 +1314,7 @@ export default function AiImageGenerationTool({
   const selectedModelName = modelOptions.find((option) => option.id === selectedModelId)?.name || modelName
   const selectedModelOption = modelOptions.find((option) => option.id === selectedModelId)
   const selectedMediaType = getGenerationMediaType(selectedModelId)
-  const useCompactOutputSettings = compactOutputSettings && selectedMediaType === 'image'
+  const useCompactOutputSettings = compactOutputSettings && (selectedMediaType === 'image' || selectedMediaType === 'video')
   const displayModelName = hideModelBranding ? (selectedMediaType === 'video' ? 'AI video' : 'AI image') : selectedModelName
   const modelConfig = MODEL_CONFIG[selectedModelId]
   const getMaxImagesForModel = (id: ImageModelId) => {
@@ -1437,7 +1437,6 @@ export default function AiImageGenerationTool({
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const promptMentionRootRef = useRef<HTMLDivElement>(null)
-  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
   const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
   if (!promptReferenceMentionOrdinalRegistryRef.current) {
     promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
@@ -1757,12 +1756,6 @@ export default function AiImageGenerationTool({
       return
     }
     setPromptMentionSelection({ start: promptMentionTriggerIndex + 1, end: nextCaret })
-  }
-
-  const handlePromptScroll = (event: ReactUIEvent<HTMLTextAreaElement>) => {
-    if (!promptMentionOverlayRef.current) return
-    promptMentionOverlayRef.current.scrollTop = event.currentTarget.scrollTop
-    promptMentionOverlayRef.current.scrollLeft = event.currentTarget.scrollLeft
   }
 
   const handlePromptMentionTriggerClick = () => {
@@ -4867,20 +4860,12 @@ export default function AiImageGenerationTool({
                 {!((hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) || shouldUseCustomReferenceUploader) && (
                   <>
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || toolText.prompt}</label>
-                    <div ref={promptMentionRootRef} data-left-prompt-field className="relative rounded-xl bg-slate-50/50">
-                      {supportsPromptReferenceMentions ? (
-                        <PromptReferenceMentionOverlay
-                          value={prompt}
-                          items={promptReferenceMentionItems}
-                          mirrorRef={promptMentionOverlayRef}
-                        />
-                      ) : null}
+                    <div ref={promptMentionRootRef} data-left-prompt-field className="relative overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/50 transition-colors focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/40">
                       <textarea
                         ref={promptTextareaRef}
                         data-left-prompt-input
                         value={prompt}
                         onChange={handlePromptChange}
-                        onScroll={handlePromptScroll}
                         onSelect={(event) => {
                           if (!isPromptMentionPickerOpen) return
                           setPromptMentionSelection({
@@ -4895,23 +4880,25 @@ export default function AiImageGenerationTool({
                           ? `${promptMentionPickerId}-option-${promptReferenceMentionItems[promptMentionActiveIndex].id}`
                           : undefined}
                         placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
-                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl border border-slate-200/90 bg-transparent px-4 pr-11 text-base leading-6 ${supportsPromptReferenceMentions ? 'pb-12 pt-3 text-transparent caret-slate-800' : 'py-3 text-slate-800'} placeholder:text-slate-400 transition-colors focus:border-[#4F46E5] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/40 md:text-sm`}
+                        className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
                         rows={4}
                       />
                       {supportsPromptReferenceMentions ? (
-                        <button
-                          type="button"
-                          data-prompt-reference-mention-trigger
-                          aria-label="Mention a reference"
-                          aria-expanded={isPromptMentionPickerOpen}
-                          aria-haspopup="listbox"
-                          aria-controls={promptMentionPickerId}
-                          onMouseDown={(event) => event.preventDefault()}
-                          onClick={handlePromptMentionTriggerClick}
-                          className="absolute bottom-3 left-3 z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
-                        >
-                          @
-                        </button>
+                        <div className="relative flex h-11 items-center px-3">
+                          <button
+                            type="button"
+                            data-prompt-reference-mention-trigger
+                            aria-label="Mention a reference"
+                            aria-expanded={isPromptMentionPickerOpen}
+                            aria-haspopup="listbox"
+                            aria-controls={promptMentionPickerId}
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={handlePromptMentionTriggerClick}
+                            className="z-20 inline-flex h-7 w-7 items-center justify-center rounded-md border border-[#C7D2FE] bg-white text-sm font-bold text-[#4F46E5] shadow-sm transition hover:bg-[#EEF2FF] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                          >
+                            @
+                          </button>
+                        </div>
                       ) : null}
                       {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
                         <PromptReferenceMentionPicker
@@ -5014,29 +5001,15 @@ export default function AiImageGenerationTool({
               </div>
             )}
 
-            {selectedMediaType === 'video' && (
+            {selectedMediaType === 'video' && !useCompactOutputSettings && (
               <div>
                 <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">Video Duration</label>
-                <div className="grid grid-cols-4 gap-2">
-                  {configuredVideoDurationOptions.map((option) => {
-                    const isSelected = videoDurationSeconds === option
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        aria-pressed={isSelected}
-                        onClick={() => setVideoDurationSeconds(option)}
-                        className={`min-h-10 rounded-xl border px-3 py-2 text-center text-xs font-bold transition-all ${
-                          isSelected
-                            ? 'border-[#4F46E5] bg-[#EEF2FF] text-[#4F46E5] shadow-sm'
-                            : 'border-[#E0E7FF] bg-white text-slate-600 hover:border-[#C7D2FE] hover:bg-[#F8FAFF]'
-                        }`}
-                      >
-                        {option}s
-                      </button>
-                    )
-                  })}
-                </div>
+                <VideoDurationSlider
+                  options={configuredVideoDurationOptions}
+                  value={videoDurationSeconds}
+                  onChange={setVideoDurationSeconds}
+                  ariaLabel="Video Duration"
+                />
               </div>
             )}
 
@@ -5067,12 +5040,12 @@ export default function AiImageGenerationTool({
           {/* Generate 固定底部，始终在第一屏 */}
           <div data-generate-action-bar className="flex-shrink-0 rounded-b-2xl p-2 pt-4 md:p-6 md:pt-4 bg-white">
             {useCompactOutputSettings && (
-              <div ref={compactOutputSettingsRef} data-compact-output-settings className="mb-3">
+              <div ref={compactOutputSettingsRef} data-compact-output-settings className="relative mb-3">
                 {isCompactOutputSettingsOpen && (
                   <div
                     id="compact-output-settings-panel"
                     data-compact-output-settings-panel
-                    className="mb-2 max-h-[330px] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 shadow-lg shadow-indigo-100/70"
+                    className="absolute bottom-full left-0 right-0 z-30 mb-2 max-h-[min(70dvh,420px)] overflow-y-auto rounded-xl border border-[#E0E7FF] bg-white p-3 shadow-lg shadow-indigo-100/70 md:static md:mb-2 md:max-h-[330px]"
                   >
                     <div className="mb-2 flex items-center justify-between gap-3">
                       <span className="text-xs font-bold text-slate-700">{toolText.outputAspectRatios}</span>
@@ -5179,6 +5152,21 @@ export default function AiImageGenerationTool({
                         )
                       })}
                     </div>
+
+                    {selectedMediaType === 'video' && (
+                      <div data-compact-video-duration-selector className="mt-4">
+                        <div className="mb-2 flex items-center justify-between gap-3">
+                          <span className="text-xs font-bold text-slate-700">Video Duration</span>
+                          <span className="text-[10px] font-semibold text-slate-400">{videoDurationSeconds}s</span>
+                        </div>
+                        <VideoDurationSlider
+                          options={configuredVideoDurationOptions}
+                          value={videoDurationSeconds}
+                          onChange={setVideoDurationSeconds}
+                          ariaLabel="Video Duration"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -5187,12 +5175,12 @@ export default function AiImageGenerationTool({
                   data-compact-output-settings-trigger
                   aria-expanded={isCompactOutputSettingsOpen}
                   aria-controls="compact-output-settings-panel"
-                  aria-label={`${toolText.outputAspectRatios}: ${effectiveAspectRatio}; ${toolText.resolution}: ${resolution}`}
+                  aria-label={`${toolText.outputAspectRatios}: ${effectiveAspectRatio}; ${toolText.resolution}: ${resolution}${selectedMediaType === 'video' ? `; Video Duration: ${videoDurationSeconds}s` : ''}`}
                   onClick={() => setIsCompactOutputSettingsOpen((current) => {
                     if (current) setShowAllCompactAspectRatios(false)
                     return !current
                   })}
-                  className="grid min-h-12 w-full grid-cols-[1fr_1px_1fr_36px] items-center rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] px-2 text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-white"
+                  className={`grid min-h-12 w-full items-center rounded-xl border border-[#E0E7FF] bg-[#F8FAFF] px-2 text-slate-700 transition-colors hover:border-[#C7D2FE] hover:bg-white ${selectedMediaType === 'video' ? 'grid-cols-[1fr_1px_1fr_1px_1fr_36px]' : 'grid-cols-[1fr_1px_1fr_36px]'}`}
                 >
                   <span className="flex min-w-0 items-center justify-center gap-2 px-2">
                     <span
@@ -5209,6 +5197,12 @@ export default function AiImageGenerationTool({
                     <span aria-hidden="true" className="rounded border border-slate-400 px-1 text-[9px] font-extrabold leading-4 text-slate-500">HD</span>
                     <span className="truncate text-sm font-bold">{resolution}</span>
                   </span>
+                  {selectedMediaType === 'video' && (
+                    <>
+                      <span aria-hidden="true" className="h-6 w-px bg-slate-200" />
+                      <span className="flex min-w-0 items-center justify-center px-2 text-sm font-bold">{videoDurationSeconds}s</span>
+                    </>
+                  )}
                   <svg
                     aria-hidden="true"
                     viewBox="0 0 20 20"

@@ -102,37 +102,24 @@ test('AI video generator keeps desktop hero H1 compact on laptop viewports', () 
   assert.doesNotMatch(source, /data-video-hero-title[\s\S]{0,220}md:text-\[36px\]\s+xl:text-\[38px\]/)
 })
 
-test('AI video generator exposes compact settings with duration as a discrete node slider', () => {
+test('AI video generator exposes compact output setting menus', () => {
   assert.equal(source.includes('value={aspectRatio}'), false, 'aspect ratio should not render as a select value')
   assert.equal(source.includes('value={resolution}'), false, 'resolution should not render as a select value')
   assert.match(source, /modelConfig\.aspectRatios\.map\(\(ratio\) =>[\s\S]*aria-pressed=\{isSelected\}/, 'aspect ratio options should be visible pressed buttons')
   assert.match(source, /modelConfig\.resolutions\.map\(\(value\) =>[\s\S]*aria-pressed=\{isSelected\}/, 'resolution options should be visible pressed buttons')
-  assert.notEqual(source.indexOf('data-video-duration-selector'), -1, 'duration selector should exist')
-  assert.notEqual(source.indexOf('data-video-duration-slider'), -1, 'duration should render a fixed-width slider surface')
-  assert.notEqual(source.indexOf('data-video-duration-range'), -1, 'duration should use a native range input for dragging and keyboard control')
-  assert.notEqual(source.indexOf('data-video-duration-thumb'), -1, 'duration should render a visible thumb over the selected node')
-  assert.match(source, /const durationOptions = modelConfig\.durations/, 'duration nodes should be driven by the model duration list')
-  assert.match(source, /max=\{durationSliderMax\}[\s\S]*step=\{1\}[\s\S]*value=\{selectedDurationIndex\}/, 'range input should move in discrete duration-index steps')
-  assert.match(source, /style=\{\{ width: `\$\{durationSliderProgress\}%` \}\}/, 'slider fill should scale to the selected duration index')
-  assert.match(source, /data-video-duration-slider[\s\S]*rounded-lg[\s\S]*px-3 py-2/, 'duration slider should stay visually compact')
-  assert.match(source, /data-video-duration-range[\s\S]*h-6/, 'duration range input should use a compact hit surface')
-  assert.match(source, /data-video-duration-thumb[\s\S]*h-5 w-5/, 'duration thumb should be smaller than the first demo version')
-  assert.equal(source.includes('data-video-duration-node'), false, 'duration should not show individual visual nodes')
-  assert.equal(source.includes('data-video-duration-node-labels'), false, 'duration should not show per-node labels below the slider')
-  assert.equal(source.includes('data-video-duration-range-labels'), false, 'duration should not show min/max or step labels below the slider')
-  assert.equal(source.includes(' steps'), false, 'duration should not expose step-count copy')
-  assert.equal(source.includes("import { createPortal } from 'react-dom'"), false, 'duration slider should not need a portal')
-  assert.equal(source.includes('data-video-duration-menu'), false, 'duration should no longer expose a dropdown menu')
-  assert.equal(source.includes('data-video-duration-button'), false, 'duration should no longer use a dropdown trigger')
-  assert.equal(source.includes('role="group" aria-label={text.duration} className="grid grid-cols-3 gap-2"'), false, 'duration should not render all options as an expanded button grid')
+  assert.notEqual(source.indexOf('data-video-output-settings-panel'), -1, 'the active output setting should render in a compact panel')
+  assert.notEqual(source.indexOf('data-video-output-settings-trigger'), -1, 'all output values should use one compact summary trigger')
+  assert.match(source, /import VideoDurationSlider from '.\/VideoDurationSlider'/, 'video duration should use the shared slider component')
+  assert.match(source, /<VideoDurationSlider[\s\S]*options=\{modelConfig\.durations\}[\s\S]*value=\{duration\}/, 'duration slider should keep discrete duration options')
+  assert.match(source, /modelConfig\.aspectRatios\.find\(\(option\) => option\.value === aspectRatio\)\?\.label/, 'summary values should use title-cased configuration labels such as Auto')
   assert.notEqual(source.indexOf('const shouldAllowLeftOverlay = isModelMenuOpen'), -1, 'duration should no longer alter the left scroll clipping layer')
-  assert.equal(source.includes('isDurationMenuOpen'), false, 'duration slider should not keep menu state')
+  assert.equal(source.includes('isDurationMenuOpen'), false, 'duration should not keep separate menu state')
   assert.notEqual(source.indexOf("shouldAllowLeftOverlay ? 'md:overflow-visible' : 'md:overflow-y-auto'"), -1, 'left panel should return to vertical scrolling when floating menus close')
 })
 
 test('AI video generator keeps prompt sizing aligned with the image tool', () => {
   assert.notEqual(source.indexOf('rows={4}'), -1, 'prompt textarea should use four visible rows like the image tool')
-  assert.notEqual(source.indexOf('h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto rounded-xl'), -1, 'prompt textarea should match image-tool height and Safari-safe scrolling style')
+  assert.notEqual(source.indexOf('h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto'), -1, 'prompt textarea should match image-tool height and Safari-safe scrolling style')
   assert.equal(source.includes('rows={6}'), false, 'prompt textarea should not use the previous taller six-row sizing')
   assert.equal(source.includes('rounded-2xl border border-slate-200 bg-slate-50/70'), false, 'prompt textarea should not keep the older video-only styling')
 })
@@ -163,8 +150,7 @@ test('AI video generator wires prompt reference mentions to the active resource 
   assert.match(source, /ordinalRegistry\.get\('image', `local:\$\{item\.preview\}`\)/, 'local images should keep stable image numbering')
   assert.match(source, /ordinalRegistry\.get\('video', `remote:\$\{url\}`\)/, 'remote videos should keep stable video numbering')
   assert.match(source, /ordinalRegistry\.get\('audio', `remote:\$\{url\}`\)/, 'remote audio should keep stable audio numbering')
-  assert.match(source, /'@First Frame'/, 'first-frame mode should expose a named first-frame mention')
-  assert.match(source, /'@Last Frame'/, 'first-frame mode should expose a named last-frame mention')
+  assert.doesNotMatch(source, /@First Frame|@Last Frame/, 'first and last frame slots should not be exposed as generic reference mentions')
   assert.match(source, /document\.addEventListener\('mousedown', handlePromptMentionPointerDown\)/, 'outside pointer presses should close the picker')
   assert.match(source, /if \(event\.key === 'Escape'\) setIsPromptMentionPickerOpen\(false\)/, 'Escape should close the picker')
   assert.match(source, /Mention a reference/, 'the trigger should have an accessible label')
@@ -181,33 +167,17 @@ test('Seedance 2.0 keeps first/last frames mutually exclusive with multimodal re
   assert.match(source, /webSearch: request\.webSearch/)
 })
 
-test('prompt reference trigger uses the lower-left corner without reserving a full text column', () => {
-  const overlaySource = readPromptReferenceMentionOverlaySource()
-
+test('prompt reference trigger sits on its own row below the native prompt editor', () => {
   assert.match(
     source,
-    /data-prompt-reference-mention-trigger[\s\S]*className="[^"]*bottom-3 left-3[^"]*z-20/,
-    'the at-sign trigger should sit in the prompt field lower-left corner',
+    /<textarea[\s\S]*?<div className="relative flex h-11 items-center px-3">[\s\S]*data-prompt-reference-mention-trigger/,
+    'the at-sign trigger should render in a dedicated row below the textarea',
   )
+  assert.match(source, /px-4 py-3 text-base leading-6 text-slate-800/, 'mention-capable prompts should use native visible text so caret geometry stays accurate')
   assert.doesNotMatch(
     source,
-    /data-prompt-reference-mention-trigger[\s\S]{0,500}className="[^"]*right-3/,
-    'the at-sign trigger should no longer be pinned to the right edge',
-  )
-  assert.doesNotMatch(
-    source,
-    /rows=\{4\}[\s\S]*className=\{`[^`]*pl-12/,
-    'the prompt field should not reserve a full left column for the at-sign trigger',
-  )
-  assert.match(
-    source,
-    /rows=\{4\}[\s\S]*className=\{`[^`]*px-4[^`]*supportsPromptReferenceMentions \? 'pb-12 pt-3 text-transparent/,
-    'mention-capable prompt text should start at the normal left inset and reserve space below for the trigger',
-  )
-  assert.match(
-    overlaySource,
-    /data-prompt-reference-mention-overlay[\s\S]*className="[^"]*px-4 pb-12 pt-3/,
-    'the mention overlay should use the same left and bottom insets as the textarea',
+    /supportsPromptReferenceMentions \? 'pb-12 pt-3 text-transparent caret-slate-800'/,
+    'the prompt field should no longer reserve in-editor space or hide native text for the mention trigger',
   )
 })
 
@@ -254,17 +224,9 @@ test('AI video generator derives mention labels from stable resource identities 
   assert.match(pickerSource, /nextOrdinal\[kind\] \+= 1/, 'registry cleanup must keep ordinal allocation monotonic')
 })
 
-test('prompt reference mentions render as synchronized purple visual tokens over the native textarea', () => {
-  const overlaySource = readPromptReferenceMentionOverlaySource()
-
-  assert.match(overlaySource, /splitPromptReferenceMentions\(value, items\)/, 'the mirror should segment only references backed by current resources')
-  assert.match(overlaySource, /segment\.reference[\s\S]*text-\[#4F46E5\]/, 'current-resource mention segments should render purple')
-  assert.match(overlaySource, /data-prompt-reference-mention-overlay/, 'the mirror should expose a stable synchronized surface')
-  assert.match(source, /<PromptReferenceMentionOverlay[\s\S]*value=\{prompt\}[\s\S]*items=\{promptReferenceMentionItems\}/, 'the generator should feed current prompt and resources to the mirror')
-  assert.match(source, /text-transparent[\s\S]*caret-slate-800[\s\S]*placeholder:text-slate-400/, 'the native textarea should hide glyphs while preserving caret and placeholder visibility')
-  assert.match(source, /onScroll=\{handlePromptScroll\}/, 'textarea scrolling should synchronize the visual mirror')
-  assert.match(source, /promptMentionOverlayRef\.current\.scrollTop = event\.currentTarget\.scrollTop/, 'vertical textarea scrolling should update the mirror')
-  assert.match(source, /promptMentionOverlayRef\.current\.scrollLeft = event\.currentTarget\.scrollLeft/, 'horizontal textarea scrolling should update the mirror')
+test('prompt reference mentions keep native textarea text and caret behavior', () => {
+  assert.doesNotMatch(source, /<PromptReferenceMentionOverlay/, 'the editor should not duplicate text in an overlay layer')
+  assert.doesNotMatch(source, /text-transparent[\s\S]*caret-slate-800/, 'the native textarea should render its own text and caret')
 })
 
 test('prompt reference tokens show SSR-safe portal previews for each media kind', () => {
@@ -343,13 +305,12 @@ test('prompt reference picker exposes listbox popup semantics while textarea kee
   assert.match(source, /if \(event\.key === 'Escape'\)[\s\S]*promptTextareaRef\.current\?\.focus\(\)/, 'Escape should close the popup and restore textarea focus')
 })
 
-test('prompt reference trigger and picker stay above the visual mirror', () => {
-  const overlaySource = readPromptReferenceMentionOverlaySource()
+test('prompt reference trigger and picker use the dedicated action row', () => {
   const pickerSource = readPromptReferenceMentionPickerSource()
 
-  assert.match(overlaySource, /data-prompt-reference-mention-overlay[\s\S]*z-10/, 'visual mirror should use the base prompt overlay layer')
-  assert.match(source, /data-prompt-reference-mention-trigger[\s\S]*className="[^"]*z-20/, 'at-sign trigger should stay clickable above the mirror')
-  assert.match(pickerSource, /data-prompt-reference-mention-picker[\s\S]*z-30/, 'picker should remain above both the mirror and trigger')
+  assert.match(source, /relative flex h-11 items-center px-3[\s\S]*data-prompt-reference-mention-trigger/, 'at-sign trigger should sit in the dedicated action row')
+  assert.doesNotMatch(source, /data-prompt-reference-mention-trigger[\s\S]{0,300}border-t border-slate-200\/90/, 'the dedicated action row should not use a harsh divider')
+  assert.match(pickerSource, /data-prompt-reference-mention-picker[\s\S]*z-30/, 'picker should remain above the prompt action row')
 })
 
 test('project rules enforce shared hero ownership and reusable defect recurrence prevention', () => {
@@ -368,13 +329,13 @@ test('AI video generator keeps multimodal references out of text-to-video mode',
 test('Kling character orientation sits directly below the prompt field', () => {
   const promptFieldIndex = source.indexOf('{promptLabel}</label>')
   const orientationIndex = source.indexOf('<div data-character-orientation>')
-  const settingsIndex = source.indexOf('<div className="grid gap-3 grid-cols-1">', promptFieldIndex)
+  const outputSettingsIndex = source.indexOf('data-video-output-settings')
 
   assert.notEqual(promptFieldIndex, -1, 'prompt field should exist')
   assert.notEqual(orientationIndex, -1, 'character orientation should exist')
-  assert.notEqual(settingsIndex, -1, 'video settings should exist after the prompt')
+  assert.notEqual(outputSettingsIndex, -1, 'fixed output settings should exist after the prompt')
   assert.ok(promptFieldIndex < orientationIndex, 'character orientation should render below the prompt field')
-  assert.ok(orientationIndex < settingsIndex, 'character orientation should stay immediately before the remaining video settings')
+  assert.ok(orientationIndex < outputSettingsIndex, 'character orientation should stay above the fixed output settings')
 })
 
 test('AI video generator uses the shared compact reference-image tile', () => {
@@ -568,15 +529,14 @@ test('reference-video models hide generate credits until a valid reference video
   assert.match(source, /data-generate-credit-cost/)
 })
 
-test('Kling motion control prompts are optional and duration is not a fixed selector', () => {
+test('Kling motion control prompts are optional and duration follows the reference video', () => {
   assert.notEqual(source.indexOf('const promptRequired = modelConfig.promptRequired !== false'), -1, 'prompt requiredness should come from model config')
   assert.match(source, /const canGenerate = \(!promptRequired \|\| prompt\.trim\(\)\.length > 0\)/, 'optional-prompt models should generate without prompt text')
   assert.match(source, /promptRequired \? text\.prompt : `\$\{text\.prompt\} \(\$\{text\.optional\}\)`/, 'optional-prompt models should label the prompt clearly')
   assert.notEqual(source.indexOf("optional: 'Optional'"), -1, 'fallback copy should include Optional for prompt labels')
   assert.notEqual(source.indexOf("modelConfig.durationMode === 'reference-video'"), -1, 'reference-video models should branch away from manual duration selection')
-  assert.notEqual(source.indexOf('data-video-reference-duration-note'), -1, 'reference-video models should show a duration note instead of fixed options')
-  assert.notEqual(source.indexOf("motionReferenceVideoDurationNote: 'Duration follows the uploaded reference video ({min}-{max} seconds).'"), -1, 'reference-video duration note should explain the dynamic KIE duration rule')
-  assert.match(source, /const renderManualDurationSlider = \(\) => \{[\s\S]*if \(modelConfig\.durationMode === 'reference-video'\) return null/, 'reference-video models should not render the manual duration slider')
+  assert.match(source, /modelConfig\.durationMode === 'reference-video' \? \(\s*<div data-video-reference-duration-note/, 'reference-video models should show a read-only duration note in the expanded settings')
+  assert.match(source, /modelConfig\.durationMode === 'reference-video' \? text\.referenceImageAspectRatioLabel/, 'reference-video models should show a read-only summary label')
 })
 
 test('AI video generator uses the image-tool style two-level model selector above upload', () => {
@@ -862,6 +822,33 @@ test('AI video generator aligns the outer desktop shell with the image generator
   assert.match(source, /data-left-settings-scroll[\s\S]*md:flex-1[\s\S]*md:min-h-0[\s\S]*md:overflow-y-auto/)
   assert.match(source, /data-generate-action-bar[\s\S]*flex-shrink-0/)
   assert.match(source, /data-generate-button/)
+})
+
+test('AI video generator keeps a title-free compact output bar fixed directly above Generate', () => {
+  const scrollStart = source.indexOf('data-left-settings-scroll')
+  const outputSettingsIndex = source.indexOf('data-video-output-settings')
+  const generateActionIndex = source.indexOf('data-generate-action-bar')
+  const outputSettingsToGenerate = source.slice(outputSettingsIndex, generateActionIndex)
+
+  assert.notEqual(outputSettingsIndex, -1, 'output settings should expose a stable wrapper')
+  assert.ok(scrollStart < outputSettingsIndex, 'output settings should follow the scrollable input area')
+  assert.ok(outputSettingsIndex < generateActionIndex, 'output settings should appear before Generate')
+  assert.match(source, /data-left-settings-scroll[\s\S]*<\/div>\s*<div ref=\{videoOutputSettingsRef\} data-video-output-settings/, 'output settings should sit outside the scrolling input area')
+  assert.match(outputSettingsToGenerate, /flex-shrink-0/, 'output settings should not shrink inside the fixed action area')
+  assert.match(source, /const \[isVideoOutputSettingsOpen, setIsVideoOutputSettingsOpen\] = useState\(false\)/, 'the compact bar should use one shared expanded state')
+  assert.match(outputSettingsToGenerate, /data-video-output-settings-panel/, 'the compact bar should expand into a settings panel')
+  assert.match(outputSettingsToGenerate, /data-video-output-settings-trigger/, 'all current values should share one compact trigger')
+  assert.match(outputSettingsToGenerate, /data-video-output-settings-panel[\s\S]*absolute bottom-full left-0 right-0 z-30 mb-2[\s\S]*md:static/, 'mobile output settings should expand upward without pushing Generate down')
+  assert.match(source, /const videoOutputSettingsRef = useRef<HTMLDivElement>\(null\)/, 'video output settings should own an outside-click boundary')
+  assert.match(source, /if \(!isVideoOutputSettingsOpen\) return[\s\S]*videoOutputSettingsRef\.current\.contains\(event\.target\)[\s\S]*closeVideoOutputSettings\(\)[\s\S]*event\.key === 'Escape'/, 'video output settings should close only on outside click or Escape')
+  assert.doesNotMatch(outputSettingsToGenerate, /setAspectRatio\(ratio\.value\)[\s\S]{0,120}setIsVideoOutputSettingsOpen\(false\)/, 'selecting an aspect ratio should keep the panel open')
+  assert.doesNotMatch(outputSettingsToGenerate, /setResolution\(value\)[\s\S]{0,180}setIsVideoOutputSettingsOpen\(false\)/, 'selecting a resolution should keep the panel open')
+  assert.match(outputSettingsToGenerate, /data-video-output-aspect-ratio-value/, 'the compact bar should display the selected aspect ratio without a title')
+  assert.match(outputSettingsToGenerate, /data-video-output-resolution-value/, 'the compact bar should display the selected resolution without a title')
+  assert.match(outputSettingsToGenerate, /data-video-output-duration-value/, 'the compact bar should display the selected duration without a title')
+  assert.match(outputSettingsToGenerate, /onClick=\{\(\) => setIsVideoOutputSettingsOpen\(\(current\) => !current\)\}/, 'clicking any part of the single compact bar should toggle the complete settings panel')
+  assert.match(outputSettingsToGenerate, /text\.aspectRatio[\s\S]*text\.resolution[\s\S]*text\.duration/, 'the expanded panel should contain all output settings together')
+  assert.doesNotMatch(outputSettingsToGenerate, /setIsVideoOutputSettingsOpen\(false\)/, 'selecting an output option should keep the expanded panel open')
 })
 
 test('AI video generator shows the current credit cost inside the generate button', () => {

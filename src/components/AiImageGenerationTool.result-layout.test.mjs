@@ -47,6 +47,18 @@ test('reference-shaped image generation uses a compact Match Reference control a
   assert.match(source, /if \(!followsReferenceImageAspectRatio\) \{\s*formData\.append\('aspectRatio', requestAspectRatio\)/)
 })
 
+test('video-mode image generator reuses the compact output settings bar with duration', () => {
+  assert.match(source, /const useCompactOutputSettings = compactOutputSettings && \(selectedMediaType === 'image' \|\| selectedMediaType === 'video'\)/)
+  assert.match(source, /data-compact-video-duration-selector/)
+  assert.match(source, /<VideoDurationSlider/)
+  assert.match(source, /options=\{configuredVideoDurationOptions\}/)
+  const compactDurationSelector = source.match(/data-compact-video-duration-selector[\s\S]*?<\/div>\n\s*\)\}/)?.[0] || ''
+  assert.doesNotMatch(compactDurationSelector, /configuredVideoDurationOptions\.map\(\(option\) =>/)
+  assert.match(source, /selectedMediaType === 'video' \? `; Video Duration: \$\{videoDurationSeconds\}s` : ''/)
+  assert.match(source, /selectedMediaType === 'video' \? 'grid-cols-\[1fr_1px_1fr_1px_1fr_36px\]'/)
+  assert.match(source, /data-compact-output-settings-panel[\s\S]*absolute bottom-full left-0 right-0 z-30 mb-2[\s\S]*md:static/)
+})
+
 test('page-level default aspect ratio applies to supported image generation models', () => {
   const defaultAspectRatioEffect = source.match(
     /useEffect\(\(\) => \{\s*if \(!defaultAspectRatio\)[\s\S]*?\}, \[defaultAspectRatio, modelConfig\.aspectRatios, setAspectRatio\]\)/,
@@ -287,7 +299,7 @@ test('desktop history metadata appears as light tags above the prompt', () => {
 
 test('left prompt input shows four lines and scrolls overflow', () => {
   assert.match(source, /data-left-prompt-input/)
-  assert.match(source, /data-left-prompt-input[\s\S]*className="h-\[7\.5rem\][\s\S]*overflow-y-auto/)
+  assert.match(source, /data-left-prompt-input[\s\S]*className="[^"]*h-\[7\.5rem\][^"]*overflow-y-auto/)
   assert.match(source, /data-left-prompt-input[\s\S]*rows=\{4\}/)
 })
 
@@ -298,7 +310,7 @@ test('left prompt input has an inline clear action', () => {
   assert.match(source, /data-left-prompt-clear[\s\S]*setPrompt\(''\)/)
   assert.match(source, /data-left-prompt-clear[\s\S]*setCustomPromptDraft\(''\)/)
   assert.match(source, /data-left-prompt-clear[\s\S]*<CloseIcon size=\{14\}/)
-  assert.match(source, /data-left-prompt-input[\s\S]*pr-11/)
+  assert.doesNotMatch(source, /data-left-prompt-input[\s\S]*pr-11/)
 })
 
 test('desktop generation controls keep generate visible in the first viewport', () => {
