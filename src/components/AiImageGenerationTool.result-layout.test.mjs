@@ -384,41 +384,23 @@ test('desktop and mobile history show the original reference below the prompt', 
     source.indexOf('{renderResultRetentionPrompt()}', mobileResultStart),
   )
 
-  assert.match(resultBlock, /data-desktop-result-reference/)
-  const desktopReferenceSource = resultBlock.slice(
-    resultBlock.indexOf('data-desktop-result-reference'),
-    resultBlock.indexOf('</button>', resultBlock.indexOf('data-desktop-result-reference')),
-  )
-  assert.match(desktopReferenceSource, /title=\{`\$\{toolText\.inputImage\} \$\{index \+ 1\}`\}/)
-  assert.doesNotMatch(desktopReferenceSource, /<span className="min-w-0 truncate text-xs font-extrabold text-slate-600">/)
-  assert.doesNotMatch(desktopReferenceSource, /getHistoryReferencePreviewUrls\(item\)\.length > 1 \? `\$\{toolText\.inputImage\}/)
-  assert.doesNotMatch(desktopReferenceSource, /rounded-xl bg-\[#F8FAFF\] p-2/)
-  assert.doesNotMatch(desktopReferenceSource, /ring-1 ring-\[#E0E7FF\]/)
+  assert.match(source, /const renderHistoryReferenceMedia = \(item:/)
+  assert.match(resultBlock, /renderHistoryReferenceMedia\(item, 'desktop'\)/)
   assert.ok(
-    resultBlock.indexOf('data-desktop-result-prompt') < resultBlock.indexOf('data-desktop-result-reference'),
+    resultBlock.indexOf('data-desktop-result-prompt') < resultBlock.indexOf("renderHistoryReferenceMedia(item, 'desktop')"),
     'desktop original reference should render below the prompt',
   )
   assert.ok(
-    resultBlock.indexOf('data-desktop-result-reference') < resultBlock.indexOf('data-desktop-result-actions'),
+    resultBlock.indexOf("renderHistoryReferenceMedia(item, 'desktop')") < resultBlock.indexOf('data-desktop-result-actions'),
     'desktop original reference should render above history actions',
   )
-  assert.match(mobileResultBlock, /data-mobile-result-reference/)
-  assert.match(mobileResultBlock, /getHistoryReferencePreviewUrls\(currentResult\)/)
-  const mobileReferenceSource = mobileResultBlock.slice(
-    mobileResultBlock.indexOf('data-mobile-result-reference'),
-    mobileResultBlock.indexOf('</button>', mobileResultBlock.indexOf('data-mobile-result-reference')),
-  )
-  assert.match(mobileReferenceSource, /title=\{`\$\{toolText\.inputImage\} \$\{index \+ 1\}`\}/)
-  assert.doesNotMatch(mobileReferenceSource, /<span className="min-w-0 truncate text-xs font-extrabold text-slate-600">/)
-  assert.doesNotMatch(mobileReferenceSource, /getHistoryReferencePreviewUrls\(currentResult\)\.length > 1 \? `\$\{toolText\.inputImage\}/)
-  assert.doesNotMatch(mobileReferenceSource, /rounded-xl bg-\[#F8FAFF\] p-2/)
-  assert.doesNotMatch(mobileReferenceSource, /ring-1 ring-\[#E0E7FF\]/)
+  assert.match(mobileResultBlock, /renderHistoryReferenceMedia\(currentResult, 'mobile'\)/)
   assert.ok(
-    mobileResultBlock.indexOf('data-mobile-result-prompt') < mobileResultBlock.indexOf('data-mobile-result-reference'),
+    mobileResultBlock.indexOf('data-mobile-result-prompt') < mobileResultBlock.indexOf("renderHistoryReferenceMedia(currentResult, 'mobile')"),
     'mobile original reference should render below the prompt',
   )
   assert.ok(
-    mobileResultBlock.indexOf('data-mobile-result-reference') < mobileResultBlock.indexOf('data-mobile-result-actions'),
+    mobileResultBlock.indexOf("renderHistoryReferenceMedia(currentResult, 'mobile')") < mobileResultBlock.indexOf('data-mobile-result-actions'),
     'mobile original reference should render above history actions',
   )
 })
@@ -434,11 +416,35 @@ test('successful history renders every original reference image', () => {
     source.indexOf('{renderResultRetentionPrompt()}', mobileResultStart),
   )
 
-  assert.match(source, /const getHistoryReferencePreviewUrls = \(item: \{[\s\S]*inputPreview\?: string[\s\S]*inputUrls\?: string\[\][\s\S]*\}/)
-  assert.match(resultBlock, /getHistoryReferencePreviewUrls\(item\)\.map\(\(url, index\) => \(/)
-  assert.match(mobileResultBlock, /getHistoryReferencePreviewUrls\(currentResult\)\.map\(\(url, index\) => \(/)
+  assert.match(source, /const getHistoryReferenceMedia = \(item: \{[\s\S]*inputPreview\?: string[\s\S]*inputUrls\?: string\[\][\s\S]*\}/)
+  assert.match(source, /imageUrls: fallbackInputUrls\.filter/)
+  assert.match(resultBlock, /renderHistoryReferenceMedia\(item, 'desktop'\)/)
+  assert.match(mobileResultBlock, /renderHistoryReferenceMedia\(currentResult, 'mobile'\)/)
   assert.doesNotMatch(resultBlock, /\{item\.inputPreview && \(/)
   assert.doesNotMatch(mobileResultBlock, /\{currentResult\.inputPreview && \(/)
+})
+
+test('shared history keeps video metadata JSON out of tags and renders video or audio references with their native media elements', () => {
+  const resultBlock = source.slice(
+    source.indexOf('const renderDesktopResultItem'),
+    source.indexOf('const renderDesktopPendingResultItem'),
+  )
+  const mobileResultStart = source.indexOf('data-mobile-generation-panel')
+  const mobileResultBlock = source.slice(
+    mobileResultStart,
+    source.indexOf('{renderResultRetentionPrompt()}', mobileResultStart),
+  )
+
+  assert.match(source, /const getHistoryReferenceMedia = \(item: \{[\s\S]*mediaType\?: GenerationMediaType[\s\S]*outputFormat\?: string[\s\S]*\}\) => \{/)
+  assert.match(source, /const getHistoryMetaTags = \(item: \{[\s\S]*mediaType\?: GenerationMediaType[\s\S]*outputFormat\?: string[\s\S]*\}, timeLabel: string\) => \{[\s\S]*item\.mediaType === 'video'\s*\?\s*''/)
+  assert.match(source, /data-desktop-history-reference-video/)
+  assert.match(source, /data-desktop-history-reference-audio/)
+  assert.match(source, /data-mobile-history-reference-video/)
+  assert.match(source, /data-mobile-history-reference-audio/)
+  assert.match(source, /<video[\s\S]*object-contain/)
+  assert.match(source, /<audio[\s\S]*controls/)
+  assert.match(resultBlock, /renderHistoryReferenceMedia\(item, 'desktop'\)/)
+  assert.match(mobileResultBlock, /renderHistoryReferenceMedia\(currentResult, 'mobile'\)/)
 })
 
 test('left remote reference images show loading and fallback states', () => {

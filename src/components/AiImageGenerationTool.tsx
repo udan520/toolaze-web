@@ -387,6 +387,28 @@ function mapPersistedHistoryItem(item: PersistedGenerationHistoryItem): HistoryI
   }
 }
 
+function isVideoHistoryReferenceUrl(url: string) {
+  const value = String(url || '').trim()
+  return value.startsWith('toolaze-upload-ref:video:') || /\.(mp4|webm|mov|m4v|mkv)(?:[?#].*)?$/i.test(value)
+}
+
+function isAudioHistoryReferenceUrl(url: string) {
+  const value = String(url || '').trim()
+  return value.startsWith('toolaze-upload-ref:audio:') || /\.(aac|m4a|mp3|ogg|wav)(?:[?#].*)?$/i.test(value)
+}
+
+function getVideoHistoryReferenceUrls(
+  outputFormat: string | null | undefined,
+  key: 'referenceVideoUrls' | 'referenceAudioUrls',
+) {
+  try {
+    const values = JSON.parse(String(outputFormat || ''))?.[key]
+    return Array.isArray(values) ? values.map(normalizeReusableReferenceImageUrl).filter(Boolean) : []
+  } catch {
+    return []
+  }
+}
+
 function getPersistedHistoryCreatedAtMs(item: PersistedGenerationHistoryItem): number {
   const createdAtMs = Date.parse(item.createdAt || '')
   return Number.isFinite(createdAtMs) ? createdAtMs : 0
@@ -3469,15 +3491,40 @@ export default function AiImageGenerationTool({
       || (item.modelId ? modelOptions.find((option) => option.id === item.modelId)?.name || getGenerationModelLabel(item.modelId) : '')
       || selectedModelName
 
-  const getHistoryReferencePreviewUrls = (item: {
+  const getHistoryReferenceMedia = (item: {
     inputPreview?: string
     inputUrls?: string[]
+    mediaType?: GenerationMediaType
+    outputFormat?: string
   }) => {
     const inputUrls = Array.isArray(item.inputUrls)
-      ? item.inputUrls.filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+      ? item.inputUrls
+        .filter((url): url is string => typeof url === 'string' && url.trim().length > 0)
+        .map(normalizeReusableReferenceImageUrl)
+        .filter(Boolean)
       : []
-    if (inputUrls.length > 0) return inputUrls
-    return item.inputPreview ? [item.inputPreview] : []
+    const fallbackInputUrls = inputUrls.length > 0
+      ? inputUrls
+      : item.inputPreview
+        ? [normalizeReusableReferenceImageUrl(item.inputPreview)].filter(Boolean)
+        : []
+    if (item.mediaType !== 'video') {
+      return {
+        imageUrls: fallbackInputUrls,
+        motionVideoUrls: [],
+        audioUrls: [],
+      }
+    }
+
+    const storedVideoUrls = getVideoHistoryReferenceUrls(item.outputFormat, 'referenceVideoUrls')
+    const storedAudioUrls = getVideoHistoryReferenceUrls(item.outputFormat, 'referenceAudioUrls')
+    const videoUrlSet = new Set(storedVideoUrls)
+    const audioUrlSet = new Set(storedAudioUrls)
+    return {
+      imageUrls: fallbackInputUrls.filter((url) => !videoUrlSet.has(url) && !audioUrlSet.has(url) && !isVideoHistoryReferenceUrl(url) && !isAudioHistoryReferenceUrl(url)),
+      motionVideoUrls: storedVideoUrls.length > 0 ? storedVideoUrls : fallbackInputUrls.filter(isVideoHistoryReferenceUrl),
+      audioUrls: storedAudioUrls.length > 0 ? storedAudioUrls : fallbackInputUrls.filter(isAudioHistoryReferenceUrl),
+    }
   }
 
   const getInlineHistoryDisplay = (item: {
@@ -3507,6 +3554,7 @@ export default function AiImageGenerationTool({
   const getHistoryMetaTags = (item: {
     modelId?: ImageModelId
     modelName?: string
+    mediaType?: GenerationMediaType
     aspectRatio?: string
     resolution?: string
     outputFormat?: string
@@ -3515,7 +3563,9 @@ export default function AiImageGenerationTool({
     sourcePath?: string | null
   }, timeLabel: string) => {
     const display = getInlineHistoryDisplay(item)
-    const outputFormatTag = item.outputFormat && item.outputFormat !== 'Auto'
+    const outputFormatTag = item.mediaType === 'video'
+      ? ''
+      : item.outputFormat && item.outputFormat !== 'Auto'
       ? formatTagValue(item.outputFormat)
       : ''
     return [
@@ -3531,6 +3581,7 @@ export default function AiImageGenerationTool({
   const renderInlineHistoryMeta = (item: {
     modelId?: ImageModelId
     modelName?: string
+    mediaType?: GenerationMediaType
     aspectRatio?: string
     resolution?: string
     outputFormat?: string
@@ -3557,6 +3608,7 @@ export default function AiImageGenerationTool({
   const renderMobileHistoryMeta = (item: {
     modelId?: ImageModelId
     modelName?: string
+    mediaType?: GenerationMediaType
     aspectRatio?: string
     resolution?: string
     outputFormat?: string
@@ -3575,6 +3627,65 @@ export default function AiImageGenerationTool({
           >
             {tag}
           </span>
+        ))}
+      </div>
+    )
+  }
+
+  const renderHistoryReferenceMedia = (item: {
+    inputPreview?: string
+    inputUrls?: string[]
+    mediaType?: GenerationMediaType
+    outputFormat?: string
+  }, variant: 'desktop' | 'mobile') => {
+    const { imageUrls, motionVideoUrls, audioUrls } = getHistoryReferenceMedia(item)
+    if (imageUrls.length === 0 && motionVideoUrls.length === 0 && audioUrls.length === 0) return null
+
+    return (
+      <div className={variant === 'mobile' ? 'mt-3 flex flex-wrap gap-2' : 'flex max-w-md flex-wrap gap-2'}>
+        {imageUrls.map((url, index) => (
+          <button
+            key={`image-${url}-${index}`}
+            data-desktop-result-reference={variant === 'desktop' ? true : undefined}
+            data-mobile-result-reference={variant === 'mobile' ? true : undefined}
+            type="button"
+            onClick={() => setPreviewImage(url)}
+            className="inline-flex items-center p-0 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
+            title={`${toolText.inputImage} ${index + 1}`}
+          >
+            <img
+              src={getReferencePreviewUrl(url)}
+              alt={`${toolText.inputAlt} ${index + 1}`}
+              className="h-14 w-14 shrink-0 rounded-lg bg-slate-50 object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        ))}
+        {motionVideoUrls.map((url, index) => (
+          <video
+            key={`video-${url}-${index}`}
+            data-desktop-history-reference-video={variant === 'desktop' ? true : undefined}
+            data-mobile-history-reference-video={variant === 'mobile' ? true : undefined}
+            src={url}
+            controls
+            preload="metadata"
+            playsInline
+            className="h-14 w-24 shrink-0 rounded-lg bg-slate-950 object-contain object-center"
+            aria-label={`${toolText.inputImage} ${index + 1}`}
+          />
+        ))}
+        {audioUrls.map((url, index) => (
+          <audio
+            key={`audio-${url}-${index}`}
+            data-desktop-history-reference-audio={variant === 'desktop' ? true : undefined}
+            data-mobile-history-reference-audio={variant === 'mobile' ? true : undefined}
+            src={url}
+            controls
+            preload="metadata"
+            className="h-10 w-full max-w-[16rem]"
+            aria-label={`${toolText.inputImage} ${index + 1}`}
+          />
         ))}
       </div>
     )
@@ -3636,12 +3747,20 @@ export default function AiImageGenerationTool({
     const recreateReferenceSlots = splitDualUploadReferenceImageUrls(inputImageUrls, shouldRenderWorkflowTabsAboveUpload)
     if (shouldRenderWorkflowTabsAboveUpload) {
       skipNextWorkflowReferenceSyncRef.current = true
-      const nextWorkflowTab = recreateReferenceSlots.secondaryReferenceImageUrls.length > 0
-        ? promptPresetTabs.find((tab) => tab.id !== customPromptTabId)?.id || activePromptPresetTab
-        : customPromptTabId
+      const shouldRestoreCustomReference = Boolean(
+        recreateReferenceSlots.secondaryReferenceImageUrls.length > 0
+          && customReferencePrompt.trim()
+          && item.prompt.trim() === customReferencePrompt.trim()
+      )
+      const nextWorkflowTab = shouldRestoreCustomReference
+        ? customPromptTabId
+        : recreateReferenceSlots.secondaryReferenceImageUrls.length > 0
+          ? promptPresetTabs.find((tab) => tab.id !== customPromptTabId)?.id || activePromptPresetTab
+          : customPromptTabId
       setActivePromptPresetTab(nextWorkflowTab)
       setSelectedPromptPreset(nextWorkflowTab === customPromptTabId ? 'Custom' : '')
       setCustomPromptDraft(nextWorkflowTab === customPromptTabId ? item.prompt : '')
+      setCustomInputMode(shouldRestoreCustomReference ? 'reference' : defaultCustomInputMode)
     }
 
     imageFiles.forEach((image) => URL.revokeObjectURL(image.preview))
@@ -3751,28 +3870,7 @@ export default function AiImageGenerationTool({
           </div>
         )}
 
-        {getHistoryReferencePreviewUrls(item).length > 0 && (
-          <div className="flex max-w-md flex-wrap gap-2">
-            {getHistoryReferencePreviewUrls(item).map((url, index) => (
-              <button
-                key={`${url}-${index}`}
-                data-desktop-result-reference
-                type="button"
-                onClick={() => setPreviewImage(url)}
-                className="inline-flex items-center p-0 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
-                title={`${toolText.inputImage} ${index + 1}`}
-              >
-                <img
-                  src={getReferencePreviewUrl(url)}
-                  alt={`${toolText.inputAlt} ${index + 1}`}
-                  className="h-14 w-14 shrink-0 rounded-lg object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ))}
-          </div>
-        )}
+        {renderHistoryReferenceMedia(item, 'desktop')}
 
         <div data-desktop-result-actions className="flex flex-wrap gap-2 pt-1">
           <button
@@ -4145,28 +4243,7 @@ export default function AiImageGenerationTool({
                 </p>
               </div>
             )}
-            {getHistoryReferencePreviewUrls(currentResult).length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {getHistoryReferencePreviewUrls(currentResult).map((url, index) => (
-                  <button
-                    key={`${url}-${index}`}
-                    data-mobile-result-reference
-                    type="button"
-                    onClick={() => setPreviewImage(url)}
-                    className="inline-flex items-center p-0 transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4F46E5]/30"
-                    title={`${toolText.inputImage} ${index + 1}`}
-                  >
-                    <img
-                      src={getReferencePreviewUrl(url)}
-                      alt={`${toolText.inputAlt} ${index + 1}`}
-                      className="h-14 w-14 shrink-0 rounded-lg object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
+            {renderHistoryReferenceMedia(currentResult, 'mobile')}
             <div data-mobile-result-actions className={`mt-3 grid gap-2 ${currentResult.mediaType === 'video' ? 'grid-cols-3' : 'grid-cols-4'}`}>
               <button
                 type="button"

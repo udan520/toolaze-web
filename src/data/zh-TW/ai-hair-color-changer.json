@@ -16,6 +16,19 @@
       "recommendedMode": "preset-first-with-custom-prompt",
       "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
       "presetTitle": "選擇髮色",
+      "presetTabs": [
+        { "id": "preset", "label": "預設髮色" },
+        { "id": "custom", "label": "自訂" }
+      ],
+      "defaultPromptPresetTabId": "preset",
+      "customPromptTabId": "custom",
+      "enableCustomReferenceImageUpload": true,
+      "hidePresetReferenceUploader": true,
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "combineCustomReferenceAndPrompt": false,
+      "defaultCustomInputMode": "reference",
+      "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target hair color reference. Change only the hair color in image 1 to match the color, tones, highlights, roots, and finish visible in image 2. Preserve the face, identity, hairstyle, hair length, skin tone, body, pose, background, lighting, and camera framing from image 1. Keep the result natural and realistic.",
       "presets": [
         {
           "label": "玫瑰粉",
@@ -76,6 +89,16 @@
           "label": "自訂"
         }
       ]
+    },
+    "textOverrides": {
+      "personUploadTitle": "上傳你的照片",
+      "personUploadHelper": "圖片 1：上傳想更換髮色的人像照片。",
+      "customReferenceModeLabel": "參考髮色",
+      "customTextModeLabel": "描述髮色",
+      "customReferenceUploadTitle": "上傳髮色參考圖",
+      "customReferenceUploadHelper": "圖片 2：上傳含有想要髮色的照片。",
+      "promptLabel": "描述想要的髮色",
+      "promptPlaceholder": "例如：帶有細緻金色挑染與自然髮根的暖銅棕色。"
     },
     "sampleImages": [
       {
@@ -169,42 +192,48 @@
         "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
         "note": "適合活潑但仍精緻的髮色預覽。",
         "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
-        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "蜂蜜金",
         "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
         "note": "適合偏柔和的沙龍風格方向。",
         "color": "linear-gradient(135deg, #fde68a, #d97706)",
-        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "白金金",
         "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
         "note": "適合真實人像預覽的實用暖色系。",
         "color": "linear-gradient(135deg, #fb923c, #92400e)",
-        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "銅棕色",
         "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
         "note": "來源照片有足夠髮量與光線時效果最好。",
         "color": "linear-gradient(135deg, #fda4af, #991b1b)",
-        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "酒紅色",
         "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
         "note": "適合乾淨的銀色、灰色或冷色調造型。",
         "color": "linear-gradient(135deg, #f8fafc, #64748b)",
-        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "櫻桃紅",
         "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
         "note": "較深的創意髮色方向，對比更自然。",
         "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
-        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp",
+        "aspectRatio": "16:9"
       }
     ]
   },

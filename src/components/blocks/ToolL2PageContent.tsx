@@ -1314,6 +1314,12 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
     const configuredPresetLabels = Array.isArray(content.topTool?.functionalAcceptance?.presets)
       ? content.topTool.functionalAcceptance.presets
       : []
+    const configuredPresetTabs: Array<{ id: string }> = Array.isArray(content.topTool?.functionalAcceptance?.presetTabs)
+      ? content.topTool.functionalAcceptance.presetTabs
+      : []
+    const fallbackWorkflowPresetGroup = configuredPresetTabs.find(
+      (tab) => tab.id !== (content.topTool?.functionalAcceptance?.customPromptTabId || 'custom')
+    )?.id
     const promptPresetMap = new Map(
       promptPresetItems
         .filter((item) => item.title && item.prompt)
@@ -1329,7 +1335,9 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
             color: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.color : preset.color || matched?.color) || getPromptPresetColor(label),
             swatch: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.swatch : preset.swatch || matched?.swatch),
             image: label.toLowerCase() === 'custom' ? undefined : (typeof preset === 'string' ? matched?.image : preset.image),
-            group: typeof preset === 'string' ? matched?.group : preset.group || matched?.group,
+            group: typeof preset === 'string'
+              ? matched?.group || (matched?.prompt?.trim() ? fallbackWorkflowPresetGroup : undefined)
+              : preset.group || matched?.group || ((preset.prompt || matched?.prompt)?.trim() ? fallbackWorkflowPresetGroup : undefined),
             referenceImage: typeof preset === 'string' ? matched?.referenceImage : preset.referenceImage || matched?.referenceImage,
           }
         })
@@ -1595,7 +1603,11 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                     inlinePresetReferenceUpload={content.topTool?.functionalAcceptance?.inlinePresetReferenceUpload === true}
                     combineCustomReferenceAndPrompt={content.topTool?.functionalAcceptance?.combineCustomReferenceAndPrompt === true}
                     clothingReferencePresetGrid={content.topTool?.functionalAcceptance?.clothingReferencePresetGrid === true}
-                    defaultCustomInputMode={isClothesChanger ? 'reference' : undefined}
+                    defaultCustomInputMode={content.topTool?.functionalAcceptance?.defaultCustomInputMode === 'reference'
+                      ? 'reference'
+                      : isClothesChanger
+                        ? 'reference'
+                        : undefined}
                     customReferencePrompt={content.topTool?.functionalAcceptance?.customReferencePrompt}
                     compactResultPanel={content.topTool?.compactResultPanel === true}
                     customPromptTabId={content.topTool?.functionalAcceptance?.customPromptTabId || 'custom'}

@@ -48,6 +48,13 @@ const aiDanceFactoryContent = JSON.parse(
 const aiClothesChangerContent = JSON.parse(
   readFileSync(new URL('../data/en/ai-clothes-changer.json', import.meta.url), 'utf8'),
 )
+const aiHairColorLocales = ['en', 'de', 'es', 'fr', 'it', 'ja', 'ko', 'pt', 'zh-TW']
+const aiHairColorLocaleContent = Object.fromEntries(
+  aiHairColorLocales.map((locale) => [
+    locale,
+    JSON.parse(readFileSync(new URL(`../data/${locale}/ai-hair-color-changer.json`, import.meta.url), 'utf8')),
+  ]),
+)
 const aiBikiniGeneratorPath = new URL('../data/en/ai-bikini-generator.json', import.meta.url)
 const aiBikiniGeneratorContent = existsSync(aiBikiniGeneratorPath)
   ? JSON.parse(readFileSync(aiBikiniGeneratorPath, 'utf8'))
@@ -807,6 +814,57 @@ test('AI Clothes Changer exposes preset-only gender workflows and exclusive Cust
     aiImageToolSource,
     /hasReferenceImages = shouldIncludeSecondaryReference[\s\S]*hasPersonReferenceImages && hasClothingReferenceImages/,
   )
+})
+
+test('AI Hair Color Changer reuses the clothes Custom tabs for reference and text color workflows', () => {
+  for (const locale of aiHairColorLocales) {
+    const topTool = aiHairColorLocaleContent[locale].topTool || {}
+    const acceptance = topTool.functionalAcceptance || {}
+    const textOverrides = topTool.textOverrides || {}
+
+    assert.equal(topTool.mode, 'image-to-image', locale)
+    assert.deepEqual(acceptance.presetTabs?.map((tab) => tab.id), ['preset', 'custom'], locale)
+    assert.equal(acceptance.defaultPromptPresetTabId, 'preset', locale)
+    assert.equal(acceptance.customPromptTabId, 'custom', locale)
+    assert.equal(acceptance.enableCustomReferenceImageUpload, true, locale)
+    assert.equal(acceptance.hidePresetReferenceUploader, true, locale)
+    assert.equal(acceptance.hidePresetPromptInput, true, locale)
+    assert.equal(acceptance.showPresetSelectedState, true, locale)
+    assert.equal(acceptance.combineCustomReferenceAndPrompt, false, locale)
+    assert.equal(acceptance.defaultCustomInputMode, 'reference', locale)
+    assert.match(acceptance.customReferencePrompt || '', /Image 1 is the person photo\. Image 2 is the target hair color reference\./, locale)
+    assert.ok(
+      (acceptance.presets || []).filter((preset) => preset.prompt).every((preset) => !preset.group || preset.group === 'preset'),
+      locale,
+    )
+    assert.ok(textOverrides.personUploadTitle?.trim(), locale)
+    assert.ok(textOverrides.customReferenceModeLabel?.trim(), locale)
+    assert.ok(textOverrides.customTextModeLabel?.trim(), locale)
+    assert.ok(textOverrides.customReferenceUploadTitle?.trim(), locale)
+  }
+
+  const englishText = aiHairColorLocaleContent.en.topTool.textOverrides || {}
+  assert.equal(englishText.customReferenceModeLabel, 'Reference Hair Color')
+  assert.equal(englishText.customTextModeLabel, 'Describe Hair Color')
+  assert.equal(englishText.customReferenceUploadTitle, 'Upload Hair Color Reference')
+  assert.match(aiImageToolSource, /data-workflow-preset-tabs/)
+  assert.match(aiImageToolSource, /data-custom-input-mode-switch/)
+  assert.match(aiImageToolSource, /hidePresetPromptInput && activePromptPresetTab !== customPromptTabId/)
+  assert.match(aiImageToolSource, /showPromptPresetSelectedState && selectedPromptPreset === preset\.label/)
+  assert.match(aiImageToolSource, /testIdPrefix="clothing-reference"/)
+  assert.match(aiImageToolSource, /shouldRestoreCustomReference/)
+  assert.match(l2Source, /defaultCustomInputMode=\{content\.topTool\?\.functionalAcceptance\?\.defaultCustomInputMode/)
+  assert.match(l2Source, /preset\.group \|\| matched\?\.group \|\| \(\(preset\.prompt \|\| matched\?\.prompt\)\?\.trim\(\) \? fallbackWorkflowPresetGroup/)
+})
+
+test('AI Hair Color Changer prompt examples use 16:9 before-and-after media', () => {
+  for (const locale of aiHairColorLocales) {
+    const promptItems = aiHairColorLocaleContent[locale].promptExamples?.items || []
+    assert.ok(promptItems.length > 0, locale)
+    assert.ok(promptItems.every((item) => item.image && item.aspectRatio === '16:9'), locale)
+  }
+
+  assert.match(promptExamplesSource, /item\.aspectRatio === '16:9'[\s\S]*aspect-video/)
 })
 
 test('AI Clothes Changer keeps the selected clothing reference visually active', () => {

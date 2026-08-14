@@ -16,6 +16,19 @@
       "recommendedMode": "preset-first-with-custom-prompt",
       "reason": "VisualGPT uses visible hair color choices to make the task easier than a prompt-only flow.",
       "presetTitle": "Choisir une couleur de cheveux",
+      "presetTabs": [
+        { "id": "preset", "label": "Couleurs prédéfinies" },
+        { "id": "custom", "label": "Personnalisé" }
+      ],
+      "defaultPromptPresetTabId": "preset",
+      "customPromptTabId": "custom",
+      "enableCustomReferenceImageUpload": true,
+      "hidePresetReferenceUploader": true,
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "combineCustomReferenceAndPrompt": false,
+      "defaultCustomInputMode": "reference",
+      "customReferencePrompt": "Image 1 is the person photo. Image 2 is the target hair color reference. Change only the hair color in image 1 to match the color, tones, highlights, roots, and finish visible in image 2. Preserve the face, identity, hairstyle, hair length, skin tone, body, pose, background, lighting, and camera framing from image 1. Keep the result natural and realistic.",
       "presets": [
         {
           "label": "Rose poudré",
@@ -76,6 +89,16 @@
           "label": "Personnalisé"
         }
       ]
+    },
+    "textOverrides": {
+      "personUploadTitle": "Importez votre photo",
+      "personUploadHelper": "Image 1 : importez le portrait dont vous souhaitez changer la couleur de cheveux.",
+      "customReferenceModeLabel": "Couleur de référence",
+      "customTextModeLabel": "Décrire la couleur",
+      "customReferenceUploadTitle": "Importer une référence de couleur",
+      "customReferenceUploadHelper": "Image 2 : importez une photo avec la couleur de cheveux à reproduire.",
+      "promptLabel": "Décrivez votre couleur de cheveux",
+      "promptPlaceholder": "Par exemple : châtain cuivré chaud avec de subtils reflets dorés et des racines naturelles."
     },
     "sampleImages": [
       {
@@ -169,42 +192,48 @@
         "prompt": "Change the hair color to soft rose pink while keeping the face, hairstyle, skin tone, and background natural.",
         "note": "Idéal pour un aperçu couleur ludique mais soigné.",
         "color": "linear-gradient(135deg, #fbcfe8, #db2777)",
-        "image": "/ai-hair-color-changer/rose-pink-before-after.webp"
+        "image": "/ai-hair-color-changer/rose-pink-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "Blond miel",
         "prompt": "Change the hair color to warm honey blonde with natural highlights and realistic lighting.",
         "note": "À utiliser pour une direction plus douce de style salon.",
         "color": "linear-gradient(135deg, #fde68a, #d97706)",
-        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp"
+        "image": "/ai-hair-color-changer/honey-blonde-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "Blond platine",
         "prompt": "Change the hair color to copper brown while preserving the original hairstyle, face, and background.",
         "note": "Une nuance chaude pratique pour des aperçus de portrait réalistes.",
         "color": "linear-gradient(135deg, #fb923c, #92400e)",
-        "image": "/ai-hair-color-changer/copper-brown-before-after.webp"
+        "image": "/ai-hair-color-changer/copper-brown-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "Brun cuivré",
         "prompt": "Change the hair color to deep burgundy red with a natural glossy finish.",
         "note": "Fonctionne mieux quand la photo source montre assez de volume et de lumière.",
         "color": "linear-gradient(135deg, #fda4af, #991b1b)",
-        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp"
+        "image": "/ai-hair-color-changer/burgundy-red-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "Rouge bordeaux",
         "prompt": "Change the hair color to silver gray while keeping the hair texture and facial features unchanged.",
         "note": "À utiliser pour des looks argentés, gris ou froids.",
         "color": "linear-gradient(135deg, #f8fafc, #64748b)",
-        "image": "/ai-hair-color-changer/silver-gray-before-after.webp"
+        "image": "/ai-hair-color-changer/silver-gray-before-after.webp",
+        "aspectRatio": "16:9"
       },
       {
         "title": "Rouge cerise",
         "prompt": "Change the hair color to blue black with subtle cool highlights and realistic shadows.",
         "note": "Une direction créative sombre avec un contraste plus naturel.",
         "color": "linear-gradient(135deg, #0f172a, #1d4ed8)",
-        "image": "/ai-hair-color-changer/blue-black-before-after.webp"
+        "image": "/ai-hair-color-changer/blue-black-before-after.webp",
+        "aspectRatio": "16:9"
       }
     ]
   },
