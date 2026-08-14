@@ -55,6 +55,7 @@ export const TOOL_SUPPORTED_LOCALES: Record<string, readonly string[]> = {
   'bald-filter': ALL_LOCALE_CODES,
   'bangs-filter': ALL_LOCALE_CODES,
   'perm-filter': ALL_LOCALE_CODES,
+  'age-filter': ALL_LOCALE_CODES,
   'prompts': ALL_LOCALE_CODES,
   /** 无各语言 SEO 数据时由页面重定向到 `/ai-tools` */
   'ai-tools': ALL_LOCALE_CODES,

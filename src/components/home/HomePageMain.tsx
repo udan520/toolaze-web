@@ -517,6 +517,15 @@ export async function HomePageMain({ locale = 'en' }: { locale?: string }) {
   ]
   const homeImageToolCards: HomeAiToolsTabCard[] = [
     {
+      title: navCopy.ageFilter || 'AI Age Filter',
+      href: localizeHomeHref('/age-filter'),
+      media: {
+        type: 'image',
+        src: 'https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp',
+        alt: 'AI Age Filter demo image',
+      },
+    },
+    {
       title: navCopy.aiHairstyleChanger || 'AI Hairstyle Changer',
       href: localizeHomeHref('/ai-hairstyle-changer'),
       media: {

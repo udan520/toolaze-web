@@ -1,0 +1,246 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural young-adult version in their 20s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: firm youthful skin with an even natural complexion, full facial volume, a healthy hairline and hair density, bright but realistic eyes, and smooth natural skin on the face, neck, and hands. Remove only age-related cues that do not fit this stage, while keeping pores, texture, and character so the result never looks airbrushed or like a beauty filter.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/f643eb4e572a406eb2c7105e7ad320fc.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "Filtro de idade com IA",
+    "functionalAcceptance": {
+      "presetTitle": "Escolha uma fase da vida",
+      "presetTabs": [
+        {
+          "id": "life-stages",
+          "label": "Fases da vida"
+        },
+        {
+          "id": "custom",
+          "label": "Personalizado"
+        }
+      ],
+      "defaultPromptPresetTabId": "life-stages",
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": false,
+      "presets": [
+        {
+          "label": "Bebê",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a fictional baby-style version around 1–2 years old. Preserve recognizable identity cues such as eye shape, eye color, nose shape, expression, camera angle, lighting, and background. Make every visible detail age-appropriate: rounder cheeks and softer facial contours, smooth even baby skin, sparse fine hair, a small jaw and neck, and child-like hands and body proportions where visible. Adapt visible clothing into simple, fully clothed toddler clothing that keeps the original color palette. Keep the result photorealistic and safe; do not add extra people, text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/ac6e8a07a27a4c858a5a906923976fdb.webp"
+        },
+        {
+          "label": "Criança",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a fictional child version around 8–10 years old. Preserve recognizable identity cues such as eye shape, eye color, nose shape, expression, camera angle, lighting, and background. Make every visible detail age-appropriate: child-sized facial proportions, smooth skin, soft cheeks, a smaller jaw and neck, natural child hair density, and child-like hands and body scale where visible. Adapt visible clothing into simple, fully clothed age-appropriate clothing while keeping the original color palette. Keep the result photorealistic and safe; do not add extra people, text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/ccd9ef5e17704e9abf092fb6a93bd6f9.webp"
+        },
+        {
+          "label": "Jovem adulto",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural young-adult version in their 20s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: firm youthful skin with an even natural complexion, full facial volume, a healthy hairline and hair density, bright but realistic eyes, and smooth natural skin on the face, neck, and hands. Remove only age-related cues that do not fit this stage, while keeping pores, texture, and character so the result never looks airbrushed or like a beauty filter.",
+          "image": "https://assets.toolaze.com/uploads/875881d4a22042f085d597606be93fb8.webp"
+        },
+        {
+          "label": "Meia-idade",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural middle-aged adult version around 45–55 years old. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: subtle volume loss, realistic fine lines around the eyes, forehead, and mouth, slightly less uniform skin texture, early gray strands at the temples, and gentle maturation of visible facial skin, neck, and hands. Keep the person healthy, confident, photorealistic, and recognizable; do not exaggerate wrinkles or add text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/cbd02ac030a64ad2ab1f0abd910a562c.webp"
+        },
+        {
+          "label": "Idoso",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural older-adult version in their late 70s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Age all visible skin consistently: add realistic fine lines and wrinkles around the eyes, forehead, mouth, and cheeks; natural age spots, enlarged pores, subtly reduced facial volume, and gentle skin laxity on the visible facial skin, neck, and hands. Add believable silver-gray hair. Keep the result healthy, respectful, photorealistic, and non-caricatured; do not change the person's identity or add text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/f29748de4c6b486aa876b6fd8d056eac.webp"
+        }
+      ],
+      "customPromptTabId": "custom"
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp",
+        "title": "Filtro de idade com IA: demonstração antes e depois de jovem adulto",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "personUploadTitle": "Envie seu retrato",
+      "personUploadHelper": "Use uma foto nítida em que rosto e cabeça apareçam bem.",
+      "presetChoiceTitle": "Escolha uma fase da vida",
+      "promptLabel": "Descreva a idade que você quer",
+      "promptPlaceholder": "Exemplo: Faça eu parecer ter 70 anos, com cabelos grisalhos naturais e textura de pele realista.",
+      "generateLabel": "Gerar filtro de idade"
+    }
+  },
+  "metadata": {
+    "title": "Filtro de idade com IA grátis online | Toolaze",
+    "description": "Use grátis o filtro de idade com IA online. Envie uma foto e veja versões bebê, criança, jovem adulto, meia-idade ou idoso."
+  },
+  "sectionsOrder": [
+    "promptExamples",
+    "howToUse",
+    "intro",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "<span class=\"text-gradient\">Filtro de idade com IA</span> grátis online",
+    "desc": "Envie uma foto, escolha uma fase da vida e veja-se como bebê, criança, jovem adulto, pessoa de meia-idade ou idoso, sem cadastro."
+  },
+  "promptExamples": {
+    "title": "Explore transformações de idade",
+    "subtitle": "Todos os exemplos começam com o mesmo retrato e alteram apenas a fase escolhida.",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "Bebê",
+        "description": "Transforme um retrato em uma imagem de bebê vestido, mantendo traços familiares.",
+        "prompt": "Transform the portrait into a fictional baby-style version with natural infant proportions and a fully clothed neutral look.",
+        "image": "https://assets.toolaze.com/uploads/cd00d6a4fff54da0aee9cac3c8da300b.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Criança",
+        "description": "Veja uma versão infantil na mesma composição de retrato.",
+        "prompt": "Transform the portrait into a fictional child-style version with natural age-appropriate proportions and the same photo context.",
+        "image": "https://assets.toolaze.com/uploads/b9633bca0cd649758ff102ec2ab372ad.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Meia-idade",
+        "description": "Acrescente um visual maduro e crível com textura sutil e fios grisalhos.",
+        "prompt": "Transform the portrait into a natural middle-aged adult version with subtle mature facial structure and realistic skin texture.",
+        "image": "https://assets.toolaze.com/uploads/9d12373d6b5e4c5b828b754ef5ca8c26.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "Idoso",
+        "description": "Explore uma transformação respeitosa com cabelo prateado e linhas naturais de idade.",
+        "prompt": "Transform the portrait into a natural older-adult version with silver-gray hair, natural age lines, and credible skin texture.",
+        "image": "https://assets.toolaze.com/uploads/b5ad33de22e64b498f051a80436fee30.webp",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "Como usar o filtro de idade com IA",
+    "steps": [
+      {
+        "title": "Envie um retrato nítido",
+      "desc": "Escolha um retrato frontal e bem iluminado, com rosto inteiro, linha do cabelo, pescoço e mãos visíveis sem obstruções. Detalhes nítidos dão mais elementos para a transformação de idade."
+      },
+      {
+        "title": "Escolha uma fase da vida",
+      "desc": "Comece com Bebê, Criança, Jovem adulto, Meia-idade ou Idoso para definir um perfil de idade completo. Use Custom se quiser indicar uma idade específica ou ajustar cabelos grisalhos, textura da pele e a suavidade da mudança."
+      },
+      {
+        "title": "Gere e baixe",
+        "desc": "Crie a transformação, reveja o resultado no painel direito e baixe a versão preferida."
+      }
+    ]
+  },
+  "features": {
+    "title": "Por que experimentar este filtro de idade com IA",
+    "items": [
+      {
+        "icon": "✨",
+        "title": "Detalhes de idade coerentes",
+        "desc": "Cada fase orienta mudanças adequadas à idade nas proporções faciais, textura da pele, cabelo, pescoço, mãos e roupas visíveis; não se limita a acrescentar cabelos grisalhos."
+      },
+      {
+        "icon": "🖼️",
+        "title": "Predefinição ou Custom",
+        "desc": "Escolha uma fase da vida completa com um clique ou use Custom para descrever uma idade-alvo e os detalhes que quer destacar."
+      },
+      {
+        "icon": "🎁",
+        "title": "Grátis e sem cadastro",
+        "desc": "Comece online sua transformação visual de idade sem criar uma conta."
+      }
+    ]
+  },
+  "intro": {
+    "title": "O que é um filtro de idade com IA?",
+    "content": [
+      {
+      "title": "Envelheça o retrato inteiro",
+      "text": "Um filtro de idade com IA transforma mais do que a cor do cabelo. Ele pode orientar mudanças apropriadas à idade no rosto, cabelo, pele, pescoço, mãos e roupas visíveis, mantendo a pessoa e a composição reconhecíveis."
+      },
+      {
+        "title": "Não é detector nem previsão de idade",
+        "text": "O resultado é uma transformação criativa de imagem, não uma estimativa da idade real, avaliação médica ou previsão da aparência futura."
+      }
+    ]
+  },
+  "faqTitle": "Perguntas frequentes sobre o filtro de idade com IA",
+  "faq": [
+    {
+      "q": "Quais fases da vida posso escolher?",
+      "a": "Você pode escolher Bebê, Criança, Jovem adulto, Meia-idade ou Idoso."
+    },
+    {
+      "q": "Preciso de mais de uma foto?",
+      "a": "Não. O filtro de idade foi pensado para um retrato nítido."
+    },
+    {
+      "q": "Posso incluir uma instrução personalizada?",
+      "a": "Sim. Depois de escolher a fase, use o campo de ajuste para pedir cabelos grisalhos naturais ou uma mudança mais leve."
+    },
+    {
+      "q": "O resultado mantém meu rosto e fundo?",
+      "a": "Os prompts pedem a preservação de traços reconhecíveis, pose, roupa, luz e fundo, mas o resultado pode variar conforme a foto."
+    },
+    {
+      "q": "Por que duas fotos geram resultados diferentes?",
+      "a": "Iluminação, pose, cobertura do cabelo, qualidade e visibilidade do rosto podem afetar a transformação."
+    },
+    {
+      "q": "O resultado mostra minha aparência real no futuro?",
+      "a": "Não. É uma transformação visual criativa, não uma previsão ou avaliação de idade."
+    }
+  ],
+  "moreTools": "Ferramentas de IA relacionadas",
+  "moreToolsLinks": [
+    {
+      "title": "Gerador de bebê com IA",
+      "description": "Crie um retrato fictício de bebê a partir de referências dos pais ou de um casal.",
+      "href": "/ai-baby-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/2da661ed444842cfac73c5f90101dbf5.webp",
+        "alt": "Gerador de bebê com IA"
+      }
+    },
+    {
+      "title": "Trocador de penteado com IA",
+      "description": "Experimente outro penteado mantendo a pessoa e o contexto da foto reconhecíveis.",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/58c60196af724d318966a1e468fe208e.webp",
+        "alt": "Trocador de penteado com IA"
+      }
+    },
+    {
+      "title": "Restauração de fotos",
+      "description": "Restaure e colore fotos antigas enquanto melhora detalhes visíveis.",
+      "href": "/photo-restoration",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6c6f878aebf6488783d21dc1f0126e3a.webp",
+        "alt": "Restauração de fotos"
+      }
+    }
+  ]
+}

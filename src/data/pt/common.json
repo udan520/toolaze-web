@@ -82,7 +82,8 @@
     "veo31Video": "Veo 3.1 Vídeo",
     "baldFilter": "Filtro de careca",
     "bangsFilter": "Filtro de franja",
-    "permFilter": "Filtro de permanente"
+    "permFilter": "Filtro de permanente",
+    "ageFilter": "Filtro de idade com IA"
   },
   "home": {
     "metadata": {
@@ -323,7 +324,8 @@
     "veo31Video": "Veo 3.1 Vídeo",
     "baldFilter": "Filtro de careca",
     "bangsFilter": "Filtro de franja",
-    "permFilter": "Filtro de permanente"
+    "permFilter": "Filtro de permanente",
+    "ageFilter": "Filtro de idade com IA"
   },
   "breadcrumb": {
     "home": "Início",
@@ -353,7 +355,8 @@
     "imageToVideoGenerator": "Gerador de imagem para vídeo",
     "aiClothesChanger": "Trocador de roupas com IA",
     "aiBikiniGenerator": "Gerador de biquíni com IA",
-    "photoAbstractPosterGenerator": "Gerador de pôster abstrato com foto"
+    "photoAbstractPosterGenerator": "Gerador de pôster abstrato com foto",
+    "ageFilter": "Filtro de idade com IA"
   },
   "about": {
     "metadata": {

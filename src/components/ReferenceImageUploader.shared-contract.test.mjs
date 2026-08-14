@@ -18,6 +18,11 @@ test('global reference image uploader owns the shared interaction and visual con
   assert.match(uploader, /grid-cols-3/)
 })
 
+test('remote reference images leave loading when they were already cached before hydration', () => {
+  assert.match(uploader, /image\?\.complete && image\.naturalWidth > 0/)
+  assert.match(uploader, /item\.onLoad\?\.\(\)/)
+})
+
 test('AI reference-driven tools render the global uploader instead of private upload tiles', () => {
   for (const path of [
     'src/components/AiImageGenerationTool.tsx',

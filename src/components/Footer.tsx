@@ -59,6 +59,7 @@ const defaultTranslations = {
   talkingAvatarCreator: 'AI Talking Avatar',
   aiDanceGenerator: 'AI Dance Generator',
   aiHairstyleChanger: 'AI Hairstyle Changer',
+  ageFilter: 'AI Age Filter',
   buzzCutFilter: 'Buzz Cut Filter',
   baldFilter: 'Bald Filter',
   bangsFilter: 'Bangs Filter',
@@ -192,6 +193,14 @@ export default function Footer({ initialTranslations }: FooterProps = {}) {
                   className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
                 >
                   {translations.aiHairstyleChanger || 'AI Hairstyle Changer'}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={getLocalizedHref('/age-filter')}
+                  className="text-slate-400 hover:text-indigo-400 transition-colors text-sm block pl-4"
+                >
+                  {translations.ageFilter || 'AI Age Filter'}
                 </Link>
               </li>
               <li>

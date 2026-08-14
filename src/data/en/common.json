@@ -82,7 +82,8 @@
     "veo31Video": "Veo 3.1 Video",
     "baldFilter": "Bald Filter",
     "bangsFilter": "Bangs Filter",
-    "permFilter": "Perm Filter"
+    "permFilter": "Perm Filter",
+    "ageFilter": "AI Age Filter"
   },
   "home": {
     "metadata": {
@@ -311,7 +312,8 @@
     "veo31Video": "Veo 3.1 Video",
     "baldFilter": "Bald Filter",
     "bangsFilter": "Bangs Filter",
-    "permFilter": "Perm Filter"
+    "permFilter": "Perm Filter",
+    "ageFilter": "AI Age Filter"
   },
   "breadcrumb": {
     "home": "Home",
@@ -341,7 +343,8 @@
     "imageToVideoGenerator": "Image to Video Generator",
     "aiClothesChanger": "AI Clothes Changer",
     "aiBikiniGenerator": "AI Bikini Generator",
-    "photoAbstractPosterGenerator": "Photo Abstract Poster Generator"
+    "photoAbstractPosterGenerator": "Photo Abstract Poster Generator",
+    "ageFilter": "AI Age Filter"
   },
   "about": {
     "metadata": {

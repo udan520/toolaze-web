@@ -11,7 +11,11 @@ const hairstyleDemoImage = '/ai-hairstyle-changer/hero-before-after.webp?v=20260
 const imageToolHrefs = [
   '/unrestricted-ai-image-generator',
   '/ai-hairstyle-changer',
+  '/age-filter',
   '/buzz-cut-filter',
+  '/bald-filter',
+  '/bangs-filter',
+  '/perm-filter',
   '/ai-hair-color-changer',
   '/ai-clothes-changer',
   '/ai-bikini-generator',
@@ -95,6 +99,12 @@ test('AI Hairstyle Changer entry covers use the current page demo image', () => 
       `${locale} Buzz Cut related AI Hairstyle Changer card should use the current demo image`,
     )
   }
+})
+
+test('AI Age Filter uses its hero demo image in the AI Tools menu and homepage card', () => {
+  const demoImage = 'https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp'
+  assert.ok(navigationSource.includes(`ageFilter: '${demoImage}'`))
+  assert.ok(homePageSource.includes(`src: '${demoImage}'`))
 })
 
 test('AI Tools category headings are translated in every locale', () => {

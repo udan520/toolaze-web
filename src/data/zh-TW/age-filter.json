@@ -1,0 +1,246 @@
+{
+  "in_menu": true,
+  "pageGroup": "ai-tools",
+  "visiblePageType": "scene",
+  "topComponent": "gpt-image-2",
+  "topTool": {
+    "mode": "image-to-image",
+    "maxUploadImages": 1,
+    "modelId": "gpt-image-2",
+    "defaultAspectRatio": "auto",
+    "defaultPrompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural young-adult version in their 20s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: firm youthful skin with an even natural complexion, full facial volume, a healthy hairline and hair density, bright but realistic eyes, and smooth natural skin on the face, neck, and hands. Remove only age-related cues that do not fit this stage, while keeping pores, texture, and character so the result never looks airbrushed or like a beauty filter.",
+    "defaultImageUrls": [
+      "https://assets.toolaze.com/uploads/f643eb4e572a406eb2c7105e7ad320fc.webp"
+    ],
+    "hideModelBranding": true,
+    "compactResultPanel": true,
+    "displayName": "AI 年齡濾鏡",
+    "functionalAcceptance": {
+      "presetTitle": "選擇人生階段",
+      "presetTabs": [
+        {
+          "id": "life-stages",
+          "label": "人生階段"
+        },
+        {
+          "id": "custom",
+          "label": "自訂"
+        }
+      ],
+      "defaultPromptPresetTabId": "life-stages",
+      "hidePresetPromptInput": true,
+      "showPresetSelectedState": true,
+      "hidePresetReferenceUploader": true,
+      "enableCustomReferenceImageUpload": false,
+      "presets": [
+        {
+          "label": "嬰兒",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a fictional baby-style version around 1–2 years old. Preserve recognizable identity cues such as eye shape, eye color, nose shape, expression, camera angle, lighting, and background. Make every visible detail age-appropriate: rounder cheeks and softer facial contours, smooth even baby skin, sparse fine hair, a small jaw and neck, and child-like hands and body proportions where visible. Adapt visible clothing into simple, fully clothed toddler clothing that keeps the original color palette. Keep the result photorealistic and safe; do not add extra people, text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/ac6e8a07a27a4c858a5a906923976fdb.webp"
+        },
+        {
+          "label": "孩童",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a fictional child version around 8–10 years old. Preserve recognizable identity cues such as eye shape, eye color, nose shape, expression, camera angle, lighting, and background. Make every visible detail age-appropriate: child-sized facial proportions, smooth skin, soft cheeks, a smaller jaw and neck, natural child hair density, and child-like hands and body scale where visible. Adapt visible clothing into simple, fully clothed age-appropriate clothing while keeping the original color palette. Keep the result photorealistic and safe; do not add extra people, text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/ccd9ef5e17704e9abf092fb6a93bd6f9.webp"
+        },
+        {
+          "label": "年輕成人",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural young-adult version in their 20s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: firm youthful skin with an even natural complexion, full facial volume, a healthy hairline and hair density, bright but realistic eyes, and smooth natural skin on the face, neck, and hands. Remove only age-related cues that do not fit this stage, while keeping pores, texture, and character so the result never looks airbrushed or like a beauty filter.",
+          "image": "https://assets.toolaze.com/uploads/875881d4a22042f085d597606be93fb8.webp"
+        },
+        {
+          "label": "中年",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural middle-aged adult version around 45–55 years old. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Make every visible detail age-consistent: subtle volume loss, realistic fine lines around the eyes, forehead, and mouth, slightly less uniform skin texture, early gray strands at the temples, and gentle maturation of visible facial skin, neck, and hands. Keep the person healthy, confident, photorealistic, and recognizable; do not exaggerate wrinkles or add text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/cbd02ac030a64ad2ab1f0abd910a562c.webp"
+        },
+        {
+          "label": "年長成人",
+          "group": "life-stages",
+          "prompt": "Use the uploaded portrait as the identity reference. Transform the person into a natural older-adult version in their late 70s. Preserve the same recognizable face, expression, pose, clothing, body, camera angle, lighting, and background. Age all visible skin consistently: add realistic fine lines and wrinkles around the eyes, forehead, mouth, and cheeks; natural age spots, enlarged pores, subtly reduced facial volume, and gentle skin laxity on the visible facial skin, neck, and hands. Add believable silver-gray hair. Keep the result healthy, respectful, photorealistic, and non-caricatured; do not change the person's identity or add text, logos, or watermarks.",
+          "image": "https://assets.toolaze.com/uploads/f29748de4c6b486aa876b6fd8d056eac.webp"
+        }
+      ],
+      "customPromptTabId": "custom"
+    },
+    "sampleImages": [
+      {
+        "url": "https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp",
+        "title": "AI 年齡濾鏡：年輕成人前後對比示範",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "textOverrides": {
+      "personUploadTitle": "上傳肖像照",
+      "personUploadHelper": "請使用臉部和頭部清楚可見的照片。",
+      "presetChoiceTitle": "選擇人生階段",
+      "promptLabel": "輸入想變成的年齡",
+      "promptPlaceholder": "範例：把我變成 70 歲的樣子，保留自然灰髮與真實肌膚質感。",
+      "generateLabel": "產生年齡濾鏡"
+    }
+  },
+  "metadata": {
+    "title": "免費 AI 年齡濾鏡線上工具 | Toolaze",
+    "description": "免費在線使用 AI 年齡濾鏡。上傳一張照片，即可查看嬰兒、孩童、年輕成人、中年或年長成人版本。"
+  },
+  "sectionsOrder": [
+    "promptExamples",
+    "howToUse",
+    "intro",
+    "features",
+    "faq"
+  ],
+  "hero": {
+    "h1": "免費線上 AI<span class=\"text-gradient\">年齡濾鏡</span>",
+    "desc": "上傳一張照片，選擇人生階段，就能看到自己變成嬰兒、孩童、年輕成人、中年或年長成人的樣子，無需註冊。"
+  },
+  "promptExamples": {
+    "title": "探索年齡變化",
+    "subtitle": "每個範例都使用同一張肖像照，只改變所選的人生階段。",
+    "layout": "grid",
+    "items": [
+      {
+        "title": "嬰兒",
+        "description": "將肖像轉為穿著得體的嬰兒風格影像，同時保留熟悉的臉部特徵。",
+        "prompt": "Transform the portrait into a fictional baby-style version with natural infant proportions and a fully clothed neutral look.",
+        "image": "https://assets.toolaze.com/uploads/cd00d6a4fff54da0aee9cac3c8da300b.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "孩童",
+        "description": "在相同平靜的肖像構圖中，預覽孩童風格版本。",
+        "prompt": "Transform the portrait into a fictional child-style version with natural age-appropriate proportions and the same photo context.",
+        "image": "https://assets.toolaze.com/uploads/b9633bca0cd649758ff102ec2ab372ad.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "中年",
+        "description": "以細緻肌膚紋理和灰髮，呈現可信的成熟樣貌。",
+        "prompt": "Transform the portrait into a natural middle-aged adult version with subtle mature facial structure and realistic skin texture.",
+        "image": "https://assets.toolaze.com/uploads/9d12373d6b5e4c5b828b754ef5ca8c26.webp",
+        "aspectRatio": "16:9"
+      },
+      {
+        "title": "年長成人",
+        "description": "以自然銀灰髮和歲月紋路，探索尊重且自然的年齡變化。",
+        "prompt": "Transform the portrait into a natural older-adult version with silver-gray hair, natural age lines, and credible skin texture.",
+        "image": "https://assets.toolaze.com/uploads/b5ad33de22e64b498f051a80436fee30.webp",
+        "aspectRatio": "16:9"
+      }
+    ]
+  },
+  "howToUse": {
+    "title": "如何使用 AI 年齡濾鏡",
+    "steps": [
+      {
+        "title": "上傳清晰肖像照",
+      "desc": "選擇一張光線充足、正面拍攝的肖像照，完整臉部、髮際線、頸部與可見雙手都不要被遮擋。清楚的細節能讓年齡變化有更多依據。"
+      },
+      {
+        "title": "選擇人生階段",
+      "desc": "先選擇嬰兒、孩童、年輕成人、中年或年長成人，建立完整的年齡樣貌。若要指定特定年齡，或微調灰髮、肌膚紋理與變化程度，請使用 Custom。"
+      },
+      {
+        "title": "產生並下載",
+        "desc": "建立年齡變化，在右側面板檢視結果，再下載你喜歡的版本。"
+      }
+    ]
+  },
+  "features": {
+    "title": "為何要試試這款 AI 年齡濾鏡",
+    "items": [
+      {
+        "icon": "✨",
+        "title": "符合年齡的細節",
+        "desc": "每個人生階段都會引導臉部比例、肌膚紋理、頭髮、頸部、手部與可見服裝的年齡變化，而不只是加入灰髮效果。"
+      },
+      {
+        "icon": "🖼️",
+        "title": "預設或 Custom",
+        "desc": "一鍵選擇完整人生階段，或使用 Custom 描述目標年齡與想要強調的細節。"
+      },
+      {
+        "icon": "🎁",
+        "title": "免費且無需註冊",
+        "desc": "不必建立帳戶，即可在線開始年齡變化的視覺創作。"
+      }
+    ]
+  },
+  "intro": {
+    "title": "什麼是 AI 年齡濾鏡？",
+    "content": [
+      {
+      "title": "讓整張肖像照呈現年齡變化",
+      "text": "AI 年齡濾鏡不只改變髮色。它能針對可見的臉部、頭髮、肌膚、頸部、手部與服裝，帶來符合年齡的變化，同時保留人物與照片構圖的辨識度。"
+      },
+      {
+        "title": "不是年齡偵測或預測",
+        "text": "結果是創意影像轉換，不是實際年齡估計、醫療評估，也不會預測任何人未來的樣貌。"
+      }
+    ]
+  },
+  "faqTitle": "AI 年齡濾鏡常見問題",
+  "faq": [
+    {
+      "q": "我可以選擇哪些人生階段？",
+      "a": "可選擇嬰兒、孩童、年輕成人、中年或年長成人。"
+    },
+    {
+      "q": "我需要上傳多張照片嗎？",
+      "a": "不需要。年齡濾鏡專為一張清晰肖像照而設計。"
+    },
+    {
+      "q": "我可以加入自訂指示嗎？",
+      "a": "可以。選定人生階段後，可在微調欄提出自然灰髮或更溫和的年齡變化等需求。"
+    },
+    {
+      "q": "結果會保留我的臉和背景嗎？",
+      "a": "提示詞會要求保留可辨識的臉部特徵、姿勢、服裝、光線和背景，但結果仍會因原始照片而異。"
+    },
+    {
+      "q": "為什麼兩張照片會有不同結果？",
+      "a": "光線、姿勢、頭髮遮擋、畫質和臉部可見程度都可能影響變化。"
+    },
+    {
+      "q": "結果會顯示我真正未來的樣子嗎？",
+      "a": "不會。這是創意視覺轉換，不是現實預測或年齡評估。"
+    }
+  ],
+  "moreTools": "相關 AI 工具",
+  "moreToolsLinks": [
+    {
+      "title": "AI 寶寶產生器",
+      "description": "根據父母或伴侶參考照建立虛構的寶寶肖像。",
+      "href": "/ai-baby-generator",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/2da661ed444842cfac73c5f90101dbf5.webp",
+        "alt": "AI 寶寶產生器"
+      }
+    },
+    {
+      "title": "AI 髮型變換器",
+      "description": "嘗試不同髮型，同時讓人物和照片情境維持可辨識。",
+      "href": "/ai-hairstyle-changer",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/58c60196af724d318966a1e468fe208e.webp",
+        "alt": "AI 髮型變換器"
+      }
+    },
+    {
+      "title": "照片修復",
+      "description": "修復並上色老照片，同時改善可見細節。",
+      "href": "/photo-restoration",
+      "media": {
+        "type": "image",
+        "src": "https://assets.toolaze.com/uploads/6c6f878aebf6488783d21dc1f0126e3a.webp",
+        "alt": "照片修復"
+      }
+    }
+  ]
+}

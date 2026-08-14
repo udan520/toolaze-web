@@ -13,6 +13,7 @@ const expectedRoutes = [
   '/ai-kissing-video-generator',
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
+  '/age-filter',
   '/buzz-cut-filter',
   '/bald-filter',
   '/bangs-filter',
@@ -44,8 +45,29 @@ test('AI Tools hub includes every global AI tool in every locale', () => {
   for (const locale of AI_TOOLS_LOCALES) {
     const cards = getAiToolsPageCopy(locale).cards
     assert.deepEqual(cards.map((card) => card.href), expectedRoutes, `${locale} has missing or mismatched tools`)
-    assert.equal(cards.filter((card) => card.category === 'image').length, 17)
+    assert.equal(cards.filter((card) => card.category === 'image').length, 18)
     assert.equal(cards.filter((card) => card.category === 'video').length, 6)
+  }
+})
+
+test('AI Age Filter hub cards are localized and reuse the hero demo image', () => {
+  const demoImage = 'https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp'
+  const englishCard = getAiToolsPageCopy('en').cards.find((card) => card.href === '/age-filter')
+
+  assert.ok(englishCard, 'English AI Tools hub should include AI Age Filter')
+  assert.equal(englishCard.image, demoImage)
+  assert.equal(englishCard.category, 'image')
+
+  for (const locale of AI_TOOLS_LOCALES.filter((locale) => locale !== 'en')) {
+    const localizedCard = getAiToolsPageCopy(locale).cards.find((card) => card.href === '/age-filter')
+    assert.ok(localizedCard, `${locale} AI Tools hub should include AI Age Filter`)
+    assert.equal(localizedCard.image, demoImage)
+    assert.notEqual(localizedCard.title, englishCard.title, `${locale} title should not fall back to English`)
+    assert.notEqual(
+      localizedCard.description,
+      englishCard.description,
+      `${locale} description should not fall back to English`,
+    )
   }
 })
 

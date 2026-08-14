@@ -169,6 +169,11 @@ export default function ReferenceImageUploader({
                   className={`h-full w-full object-cover transition-opacity duration-200 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
                   loading="lazy"
                   decoding="async"
+                  ref={(image) => {
+                    if (isLoading && image?.complete && image.naturalWidth > 0) {
+                      item.onLoad?.()
+                    }
+                  }}
                   onLoad={item.onLoad}
                   onError={item.onError}
                 />

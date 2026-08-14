@@ -75,6 +75,7 @@ const cardAssets = {
   talkingAvatar:
     'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp',
   hairstyle: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
+  ageFilter: 'https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp',
   buzzCut: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
   bald: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
   bangs: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
@@ -212,6 +213,13 @@ const en: StoredAiToolsPageCopy = {
       href: '/ai-hairstyle-changer',
       image: cardAssets.hairstyle,
       description: 'Try different hairstyles on a reference photo while keeping the person and overall look consistent.',
+      category: 'image',
+    },
+    {
+      title: 'AI Age Filter',
+      href: '/age-filter',
+      image: cardAssets.ageFilter,
+      description: 'Upload one portrait and preview five life stages, from baby to older adult.',
       category: 'image',
     },
     {
@@ -786,6 +794,7 @@ const aiToolsCardOrder = [
   '/ai-kissing-video-generator',
   '/talking-avatar-creator',
   '/ai-hairstyle-changer',
+  '/age-filter',
   '/buzz-cut-filter',
   '/bald-filter',
   '/bangs-filter',
@@ -803,6 +812,18 @@ const aiToolsCardOrder = [
 
 const enCardsByHref = Object.fromEntries(en.cards.map((card) => [card.href, card])) as Record<string, AiToolsCard>
 
+const ageFilterCards: Record<AiToolsLocale, Pick<AiToolsCard, 'title' | 'description'>> = {
+  en: { title: 'AI Age Filter', description: 'Upload one portrait and preview five life stages, from baby to older adult.' },
+  de: { title: 'KI-Altersfilter', description: 'Laden Sie ein Porträt hoch und sehen Sie fünf Lebensphasen – vom Baby bis zum älteren Erwachsenen.' },
+  ja: { title: 'AI年齢フィルター', description: '写真を1枚アップロードして、赤ちゃんから高齢の大人まで5つの年代を試せます。' },
+  es: { title: 'Filtro de edad con IA', description: 'Sube un retrato y prueba cinco etapas de vida, desde bebé hasta adulto mayor.' },
+  'zh-TW': { title: 'AI 年齡濾鏡', description: '上傳一張人像，預覽從嬰兒到年長成人的五個人生階段。' },
+  pt: { title: 'Filtro de idade com IA', description: 'Envie um retrato e experimente cinco fases da vida, de bebê a idoso.' },
+  fr: { title: 'Filtre d’âge IA', description: 'Importez un portrait et découvrez cinq étapes de vie, du bébé à l’adulte âgé.' },
+  ko: { title: 'AI 나이 필터', description: '인물 사진 한 장으로 아기부터 노년까지 다섯 가지 인생 단계를 확인하세요.' },
+  it: { title: 'Filtro età IA', description: 'Carica un ritratto e prova cinque fasi della vita, da bebè ad anziano.' },
+}
+
 function getStoredCardByHref(
   storedCards: StoredAiToolsCard[],
   href: string,
@@ -816,6 +837,7 @@ function getSupplementalCardByHref(
   locale: AiToolsLocale,
 ): Pick<AiToolsCard, 'title' | 'description'> | undefined {
   const cardsByHref: Record<string, Pick<AiToolsCard, 'title' | 'description'>> = {
+    '/age-filter': ageFilterCards[locale],
     '/text-to-image-generator': supplemental.textToImage,
     '/ai-image-to-image-generator': supplemental.imageToImage,
     '/unrestricted-ai-image-generator': supplemental.unrestricted,

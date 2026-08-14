@@ -59,6 +59,7 @@ const defaultNavTranslations = {
   aiMotionControlGenerator: 'AI Motion Control Generator',
   talkingAvatarCreator: 'AI Talking Avatar',
   aiHairstyleChanger: 'AI Hairstyle Changer',
+  ageFilter: 'AI Age Filter',
   buzzCutFilter: 'Buzz Cut Filter',
   baldFilter: 'Bald Filter',
   bangsFilter: 'Bangs Filter',
@@ -176,6 +177,7 @@ const AI_TOOLS_DEMO_IMAGES = {
     'https://assets.toolaze.com/model-assets/unrestricted-ai-image-generator/pool-bikini-demo.webp',
   aiBabyGenerator: '/ai-baby-generator/hero-baby-portrait.webp',
   aiHairstyleChanger: '/ai-hairstyle-changer/hero-before-after.webp?v=20260711-no-divider-label-padding',
+  ageFilter: 'https://assets.toolaze.com/uploads/02d85340f9614a4c8bb0a10595fae49f.webp',
   buzzCutFilter: 'https://assets.toolaze.com/model-assets/buzz-cut-filter/buzz-cut-before-after-demo.webp',
   baldFilter: 'https://assets.toolaze.com/model-assets/bald-filter/bald-filter-before-after-demo.webp',
   bangsFilter: 'https://assets.toolaze.com/model-assets/bangs-filter/bangs-filter-blunt-bangs-before-after-demo.webp',
@@ -215,6 +217,7 @@ const AI_TOOLS_DEMO_IMAGES = {
 type AiToolNavLabelKey =
   | 'unrestrictedAiImageGenerator'
   | 'aiHairstyleChanger'
+  | 'ageFilter'
   | 'aiHairColorChanger'
   | 'aiClothesChanger'
   | 'aiBikiniGenerator'
@@ -246,6 +249,7 @@ type AiToolMenuItem = {
 const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
   { href: '/unrestricted-ai-image-generator', labelKey: 'unrestrictedAiImageGenerator', imageKey: 'unrestrictedAiImageGenerator', hot: true },
   { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
+  { href: '/age-filter', labelKey: 'ageFilter', imageKey: 'ageFilter' },
   { href: '/buzz-cut-filter', labelKey: 'buzzCutFilter', imageKey: 'buzzCutFilter' },
   { href: '/bald-filter', labelKey: 'baldFilter', imageKey: 'baldFilter' },
   { href: '/bangs-filter', labelKey: 'bangsFilter', imageKey: 'bangsFilter' },
