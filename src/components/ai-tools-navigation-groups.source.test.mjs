@@ -62,6 +62,23 @@ test('AI Tools navigation defines the approved image and video groups once', () 
   assert.equal(videoGroup.match(/href: '/g)?.length, videoToolHrefs.length)
 })
 
+test('AI Tools image menu uses the approved Hot and New labels on every surface', () => {
+  const imageGroup = sourceBetween(
+    'const AI_IMAGE_TOOL_MENU_ITEMS',
+    'const AI_VIDEO_TOOL_MENU_ITEMS',
+  )
+
+  assert.match(navigationSource, /new\?: boolean/)
+  assert.match(navigationSource, /item\.new/)
+  assert.match(imageGroup, /href: '\/unrestricted-ai-image-generator'[^\n]*new: true/)
+  assert.match(imageGroup, /href: '\/ai-hairstyle-changer'[^\n]*new: true/)
+  assert.match(imageGroup, /href: '\/age-filter'[^\n]*new: true/)
+  assert.match(imageGroup, /href: '\/ai-clothes-changer'[^\n]*hot: true/)
+
+  const zinePosterItem = imageGroup.match(/\{ href: '\/ai-zine-poster-generator'[^\n]*\}/)?.[0] || ''
+  assert.doesNotMatch(zinePosterItem, /hot: true|new: true/)
+})
+
 test('AI Tools desktop and mobile menus expose categorized controls', () => {
   assert.match(navigationSource, /data-ai-tools-group="image"/)
   assert.match(navigationSource, /data-ai-tools-group="video"/)

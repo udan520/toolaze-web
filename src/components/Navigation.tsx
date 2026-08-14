@@ -244,23 +244,24 @@ type AiToolMenuItem = {
   labelKey: AiToolNavLabelKey
   imageKey: keyof typeof AI_TOOLS_DEMO_IMAGES
   hot?: boolean
+  new?: boolean
 }
 
 const AI_IMAGE_TOOL_MENU_ITEMS: readonly AiToolMenuItem[] = [
-  { href: '/unrestricted-ai-image-generator', labelKey: 'unrestrictedAiImageGenerator', imageKey: 'unrestrictedAiImageGenerator', hot: true },
-  { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger' },
-  { href: '/age-filter', labelKey: 'ageFilter', imageKey: 'ageFilter' },
+  { href: '/unrestricted-ai-image-generator', labelKey: 'unrestrictedAiImageGenerator', imageKey: 'unrestrictedAiImageGenerator', new: true },
+  { href: '/ai-hairstyle-changer', labelKey: 'aiHairstyleChanger', imageKey: 'aiHairstyleChanger', new: true },
+  { href: '/age-filter', labelKey: 'ageFilter', imageKey: 'ageFilter', new: true },
   { href: '/buzz-cut-filter', labelKey: 'buzzCutFilter', imageKey: 'buzzCutFilter' },
   { href: '/bald-filter', labelKey: 'baldFilter', imageKey: 'baldFilter' },
   { href: '/bangs-filter', labelKey: 'bangsFilter', imageKey: 'bangsFilter' },
   { href: '/perm-filter', labelKey: 'permFilter', imageKey: 'permFilter' },
   { href: '/ai-hair-color-changer', labelKey: 'aiHairColorChanger', imageKey: 'aiHairColorChanger' },
-  { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger' },
+  { href: '/ai-clothes-changer', labelKey: 'aiClothesChanger', imageKey: 'aiClothesChanger', hot: true },
   { href: '/ai-bikini-generator', labelKey: 'aiBikiniGenerator', imageKey: 'aiBikiniGenerator' },
   { href: '/ai-breast-expansion', labelKey: 'aiBreastExpansion', imageKey: 'aiBreastExpansion' },
   { href: '/ai-baby-generator', labelKey: 'aiBabyGenerator', imageKey: 'aiBabyGenerator' },
   { href: '/ai-couple-photo-maker', labelKey: 'aiCouplePhotoMaker', imageKey: 'aiCouplePhotoMaker' },
-  { href: '/ai-zine-poster-generator', labelKey: 'aiZinePosterGenerator', imageKey: 'aiZinePosterGenerator', hot: true },
+  { href: '/ai-zine-poster-generator', labelKey: 'aiZinePosterGenerator', imageKey: 'aiZinePosterGenerator' },
   { href: '/ai-photo-abstract-poster-generator', labelKey: 'photoAbstractPosterGenerator', imageKey: 'photoAbstractPosterGenerator' },
   { href: '/world-cup-ai-image-generator', labelKey: 'worldCupAiImageGenerator', imageKey: 'worldCupAiImageGenerator' },
   { href: '/watermark-remover', labelKey: 'watermarkRemover', imageKey: 'watermarkRemover' },
@@ -953,9 +954,11 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
         />
         <span className="flex min-w-0 items-center gap-2 leading-tight">
           <span>{label}</span>
-          {item.hot && (
-            <span className="shrink-0 rounded-full bg-red-500 px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white">
-              {navTranslations.hot || defaultNavTranslations.hot}
+          {(item.new || item.hot) && (
+            <span className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-extrabold leading-none text-white ${item.new ? 'bg-emerald-500' : 'bg-red-500'}`}>
+              {item.new
+                ? (navTranslations.new || defaultNavTranslations.new)
+                : (navTranslations.hot || defaultNavTranslations.hot)}
             </span>
           )}
         </span>
