@@ -1,6 +1,12 @@
 {
   "tasks": [
     {
+      "taskId": "2026-08-14-age-filter",
+      "slug": "age-filter",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
       "taskId": "2026-08-13-nano-banana-pro-seo-rewrite",
       "slug": "nano-banana-pro",
       "pageType": "model",

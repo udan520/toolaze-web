@@ -1,0 +1,14 @@
+{
+  "taskId": "2026-08-14-age-filter",
+  "slug": "age-filter",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/data/en/age-filter.json",
+  "canonicalPath": "/age-filter",
+  "outputs": {
+    "route": "src/app/age-filter/page.tsx",
+    "localeRoute": "src/app/[locale]/age-filter/page.tsx"
+  }
+}
