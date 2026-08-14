@@ -868,7 +868,10 @@
       "multimodalReferenceVideoHelper": "MP4 或 MOV，最多 {count} 個檔案，總長 {total} 秒。每個檔案 {min}-{max} 秒、最大 {size}MB。",
       "multimodalReferenceAudioHelper": "WAV 或 MP3，最多 {count} 個檔案。每個檔案 2-30 秒、最大 {size}MB。",
       "referenceAudioInvalidType": "參考音訊請使用 WAV 或 MP3。",
-      "referenceAudioInvalidDuration": "參考音訊長度必須為 2-30 秒。"
+      "referenceAudioInvalidDuration": "參考音訊長度必須為 2-30 秒。",
+      "referenceAudioTotalDuration": "參考音訊總長度不得超過 {total} 秒。",
+      "webSearch": "網頁搜尋",
+      "webSearchHint": "在有助於提示詞時使用最新公開資訊。"
     }
   },
   "imageCompressor": {

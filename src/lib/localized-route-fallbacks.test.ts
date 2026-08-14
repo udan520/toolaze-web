@@ -128,6 +128,16 @@ test('localized Seedance model L3 URLs redirect back to the model page', () => {
   )
 })
 
+test('redirect-only model aliases stay out of the sitemap', async () => {
+  const urls = new Set((await sitemap()).map((entry) => entry.url))
+
+  assert.equal(
+    urls.has('https://toolaze.com/model/kling-3/all-tools'),
+    false,
+    'Kling 3 all-tools is a redirect, not an indexable sitemap URL',
+  )
+})
+
 test('Seedance 2 legacy aliases use permanent redirects to consolidate ranking signals', () => {
   const seedanceRootPage = readFileSync('src/app/seedance-2/page.tsx', 'utf8')
   const localizedSeedanceRootPage = readFileSync('src/app/[locale]/seedance-2/page.tsx', 'utf8')

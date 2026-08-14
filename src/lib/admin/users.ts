@@ -1,5 +1,6 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
+import { readAdminSnapshot, type AdminReadCacheOptions } from './read-cache'
 
 export type AdminUser = {
   id: string
@@ -11,12 +12,13 @@ export type AdminUser = {
   signupPath: string | null
   signupUrl: string | null
   signupReferrer: string | null
-  signupIp: string | null
-  signupCountry: string | null
+  signupIp?: string | null
+  signupCountry?: string | null
   creditBalance: number
+  usedCredits: number
   lastLoginAt: string | null
-  lastLoginIp: string | null
-  lastLoginCountry: string | null
+  lastLoginIp?: string | null
+  lastLoginCountry?: string | null
   hasActiveSession: boolean
   imageGenerationCount: number
   videoGenerationCount: number
@@ -40,6 +42,24 @@ export type AdminCreditGrantHistoryItem = {
   createdAt: string
 }
 
+export type AdminCreditUsageItem = {
+  id: string
+  type: string
+  amount: number
+  usedCredits: number
+  balanceAfter: number
+  reason: string
+  description: string
+  taskId: string | null
+  mediaType: string | null
+  model: string | null
+  modelLabel: string | null
+  toolSlug: string | null
+  toolLabel: string | null
+  sourcePath: string | null
+  createdAt: string
+}
+
 export type AdminGenerationHistoryItem = {
   id: string
   mediaType: string
@@ -53,8 +73,11 @@ export type AdminGenerationHistoryItem = {
   toolSlug: string | null
   toolLabel: string | null
   sourcePath: string | null
-  requestIp: string | null
-  requestCountry: string | null
+  requestIp?: string | null
+  requestCountry?: string | null
+  status?: 'pending' | 'succeeded' | 'failed'
+  failureReason?: string | null
+  updatedAt?: string | null
   createdAt: string
 }
 
@@ -76,12 +99,17 @@ export type UserDashboardData = {
   fetchedAt: string
 }
 
+export type AdminUserUsageData = {
+  generationItems: AdminGenerationHistoryItem[]
+  creditUsageItems: AdminCreditUsageItem[]
+}
+
 type CommandRunner = (file: string, args: string[]) => Promise<string>
 
 type WranglerRow = Record<string, unknown>
 
 const execFileAsync = promisify(execFile)
-const DEFAULT_WRANGLER_TIMEOUT_MS = 15_000
+const DEFAULT_WRANGLER_TIMEOUT_MS = 30_000
 
 const USER_DASHBOARD_SQL = `
 SELECT
@@ -97,6 +125,7 @@ SELECT
   u.signup_ip,
   u.signup_country,
   COALESCE(ca.balance, 0) AS credit_balance,
+  credit_usage_stats.used_credits AS used_credits,
   COALESCE(u.last_login_at, session_stats.last_login_at) AS last_login_at,
   u.last_login_ip,
   u.last_login_country,
@@ -104,15 +133,42 @@ SELECT
   COALESCE(generation_stats.image_generation_count, 0) AS image_generation_count,
   COALESCE(generation_stats.video_generation_count, 0) AS video_generation_count,
   generation_stats.last_generation_at,
-  recent_model.model AS recent_model,
-  recent_tool.tool_slug AS recent_tool_slug,
-  recent_tool.tool_label AS recent_tool_label,
+  COALESCE(recent_model.model, recent_credit_usage.model) AS recent_model,
+  COALESCE(recent_tool.tool_slug, recent_credit_usage.tool_slug) AS recent_tool_slug,
+  COALESCE(recent_tool.tool_label, recent_credit_usage.tool_label) AS recent_tool_label,
   top_tool.tool_slug AS top_tool_slug,
   top_tool.tool_label AS top_tool_label,
   top_tool.tool_count AS top_tool_count
 FROM users u
 LEFT JOIN user_signup_attribution signup_attribution ON signup_attribution.user_id = u.id
 LEFT JOIN credit_accounts ca ON ca.user_id = u.id
+LEFT JOIN (
+  SELECT
+    user_id,
+    MAX(0, SUM(
+      CASE
+        WHEN amount < 0 THEN -amount
+        WHEN amount > 0 AND reason LIKE '%_refund' THEN -amount
+        ELSE 0
+      END
+    )) AS used_credits
+  FROM credit_transactions
+  GROUP BY user_id
+) credit_usage_stats ON credit_usage_stats.user_id = u.id
+LEFT JOIN (
+  SELECT user_id, model, tool_slug, tool_label
+  FROM (
+    SELECT
+      user_id,
+      json_extract(metadata, '$.model') AS model,
+      json_extract(metadata, '$.toolSlug') AS tool_slug,
+      COALESCE(NULLIF(json_extract(metadata, '$.toolLabel'), ''), json_extract(metadata, '$.toolSlug')) AS tool_label,
+      ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at DESC) AS row_number
+    FROM credit_transactions
+    WHERE amount < 0
+  )
+  WHERE row_number = 1
+) recent_credit_usage ON recent_credit_usage.user_id = u.id
 LEFT JOIN (
   SELECT
     user_id,
@@ -282,6 +338,25 @@ function buildUserUsageLegacySql(userId: string): string {
     .replace('  request_ip,\n  request_country,\n', '  NULL AS request_ip,\n  NULL AS request_country,\n')
 }
 
+function buildUserCreditUsageSql(userId: string): string {
+  return `
+SELECT
+  id,
+  type,
+  amount,
+  balance_after,
+  reason,
+  description,
+  metadata,
+  created_at
+FROM credit_transactions
+WHERE user_id = ${quoteSqlString(userId)}
+  AND (amount < 0 OR reason LIKE '%_refund')
+ORDER BY created_at DESC
+LIMIT 100;
+`.trim()
+}
+
 export function parseWranglerRows(stdout: string): AdminUser[] {
   return parseWranglerResultRows(stdout).map(mapWranglerRow)
 }
@@ -296,6 +371,10 @@ export function parseGenerationHistoryRows(stdout: string): AdminGenerationHisto
 
 export function parseGenerationRecordRows(stdout: string): AdminGenerationRecordItem[] {
   return parseWranglerResultRows(stdout).map(mapGenerationRecordRow)
+}
+
+export function parseCreditUsageRows(stdout: string): AdminCreditUsageItem[] {
+  return parseWranglerResultRows(stdout).map(mapCreditUsageRow)
 }
 
 function parseWranglerResultRows(stdout: string): unknown[] {
@@ -366,13 +445,40 @@ export async function fetchProductionUserUsage(
     if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
       throw error
     }
-
     if (isMissingRequestMetadataColumnError(error)) {
       const stdout = await runWithTimeout(
         runner('npx', buildD1ReadArgs(buildUserUsageLegacySql(userId))),
         commandTimeoutMs,
       )
+
       return parseGenerationHistoryRows(stdout)
+    }
+
+    throw new Error(formatWranglerError(error))
+  }
+}
+
+export async function fetchProductionUserUsageData(
+  userId: string,
+  runner: CommandRunner = runCommand,
+  commandTimeoutMs = DEFAULT_WRANGLER_TIMEOUT_MS,
+): Promise<AdminUserUsageData> {
+  try {
+    const [generationItems, creditUsageStdout] = await Promise.all([
+      fetchProductionUserUsage(userId, runner, commandTimeoutMs),
+      runWithTimeout(
+        runner('npx', buildD1ReadArgs(buildUserCreditUsageSql(userId))),
+        commandTimeoutMs,
+      ),
+    ])
+
+    return {
+      generationItems,
+      creditUsageItems: parseCreditUsageRows(creditUsageStdout),
+    }
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
+      throw error
     }
 
     throw new Error(formatWranglerError(error))
@@ -382,66 +488,78 @@ export async function fetchProductionUserUsage(
 export async function fetchProductionGenerationRecords(
   runner: CommandRunner = runCommand,
   commandTimeoutMs = DEFAULT_WRANGLER_TIMEOUT_MS,
+  cacheOptions: AdminReadCacheOptions = {},
 ): Promise<AdminGenerationRecordItem[]> {
-  const args = [
-    'wrangler',
-    'd1',
-    'execute',
-    'DB',
-    '--remote',
-    '--json',
-    '--command',
-    GENERATION_RECORDS_SQL,
-  ]
+  const loadRecords = async () => {
+    const args = [
+      'wrangler',
+      'd1',
+      'execute',
+      'DB',
+      '--remote',
+      '--json',
+      '--command',
+      GENERATION_RECORDS_SQL,
+    ]
 
-  try {
-    const stdout = await runWithTimeout(
-      runner('npx', args),
-      commandTimeoutMs,
-    )
-
-    return parseGenerationRecordRows(stdout)
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
-      throw error
-    }
-
-    if (isMissingRequestMetadataColumnError(error)) {
+    try {
       const stdout = await runWithTimeout(
-        runner('npx', buildD1ReadArgs(GENERATION_RECORDS_LEGACY_SQL)),
+        runner('npx', args),
         commandTimeoutMs,
       )
-      return parseGenerationRecordRows(stdout)
-    }
 
-    throw new Error(formatWranglerError(error))
+      return parseGenerationRecordRows(stdout)
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
+        throw error
+      }
+      if (isMissingRequestMetadataColumnError(error)) {
+        const stdout = await runWithTimeout(
+          runner('npx', buildD1ReadArgs(GENERATION_RECORDS_LEGACY_SQL)),
+          commandTimeoutMs,
+        )
+
+        return parseGenerationRecordRows(stdout)
+      }
+
+      throw new Error(formatWranglerError(error))
+    }
   }
+
+  if (runner !== runCommand) return loadRecords()
+  return readAdminSnapshot('generation-records', loadRecords, cacheOptions)
 }
 
 export async function fetchProductionUsers(
   runner: CommandRunner = runCommand,
   commandTimeoutMs = DEFAULT_WRANGLER_TIMEOUT_MS,
+  cacheOptions: AdminReadCacheOptions = {},
 ): Promise<UserDashboardData> {
-  try {
-    const [users, grantHistoryStdout] = await Promise.all([
-      fetchProductionUserRows(runner, commandTimeoutMs),
-      runWithTimeout(
-        runner('npx', buildD1ReadArgs(ADMIN_GRANT_HISTORY_SQL)),
-        commandTimeoutMs,
-      ),
-    ])
+  const loadUsers = async () => {
+    try {
+      const [users, grantHistoryStdout] = await Promise.all([
+        fetchProductionUserRows(runner, commandTimeoutMs),
+        runWithTimeout(
+          runner('npx', buildD1ReadArgs(ADMIN_GRANT_HISTORY_SQL)),
+          commandTimeoutMs,
+        ),
+      ])
 
-    return buildUserDashboard(
-      users,
-      parseGrantHistoryRows(grantHistoryStdout),
-    )
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
-      throw error
+      return buildUserDashboard(
+        users,
+        parseGrantHistoryRows(grantHistoryStdout),
+      )
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
+        throw error
+      }
+
+      throw new Error(formatWranglerError(error))
     }
-
-    throw new Error(formatWranglerError(error))
   }
+
+  if (runner !== runCommand) return loadUsers()
+  return readAdminSnapshot('users-dashboard', loadUsers, cacheOptions)
 }
 
 async function fetchProductionUserRows(
@@ -462,6 +580,7 @@ async function fetchProductionUserRows(
         runner('npx', buildD1ReadArgs(sql)),
         commandTimeoutMs,
       )
+
       return parseWranglerRows(stdout)
     } catch (error) {
       if (!isMissingSignupAttributionTableError(error) && !isMissingLoginMetadataColumnError(error)) {
@@ -512,10 +631,14 @@ function isMissingRequestMetadataColumnError(error: unknown): boolean {
 
 function collectErrorMessage(error: unknown): string {
   const messageParts = [error instanceof Error ? error.message : String(error)]
+
   if (isRecord(error)) {
-    if (typeof error.stderr === 'string') messageParts.push(error.stderr)
-    if (typeof error.stdout === 'string') messageParts.push(error.stdout)
+    const stderr = error.stderr
+    const stdout = error.stdout
+    if (typeof stderr === 'string') messageParts.push(stderr)
+    if (typeof stdout === 'string') messageParts.push(stdout)
   }
+
   return messageParts.join('\n')
 }
 
@@ -564,6 +687,7 @@ function mapWranglerRow(value: unknown): AdminUser {
     signupIp: readNullableString(value.signup_ip),
     signupCountry: readNullableString(value.signup_country),
     creditBalance: readNumber(value.credit_balance),
+    usedCredits: readNumber(value.used_credits),
     lastLoginAt: readNullableString(value.last_login_at),
     lastLoginIp: readNullableString(value.last_login_ip),
     lastLoginCountry: readNullableString(value.last_login_country),
@@ -577,6 +701,33 @@ function mapWranglerRow(value: unknown): AdminUser {
     topToolSlug: readNullableString(value.top_tool_slug),
     topToolLabel: readNullableString(value.top_tool_label),
     topToolCount: readNumber(value.top_tool_count),
+  }
+}
+
+function mapCreditUsageRow(value: unknown): AdminCreditUsageItem {
+  if (!isRecord(value)) {
+    throw new Error('Wrangler 返回了无效的积分使用记录。')
+  }
+
+  const amount = readNumber(value.amount)
+  const metadata = readMetadata(value.metadata)
+
+  return {
+    id: readRequiredString(value.id, 'id'),
+    type: readRequiredString(value.type, 'type'),
+    amount,
+    usedCredits: amount < 0 ? -amount : 0,
+    balanceAfter: readNumber(value.balance_after),
+    reason: readRequiredString(value.reason, 'reason'),
+    description: readRequiredString(value.description, 'description'),
+    taskId: readNullableMetadataString(metadata.taskId),
+    mediaType: readNullableMetadataString(metadata.mediaType),
+    model: readNullableMetadataString(metadata.model),
+    modelLabel: readNullableMetadataString(metadata.modelLabel),
+    toolSlug: readNullableMetadataString(metadata.toolSlug),
+    toolLabel: readNullableMetadataString(metadata.toolLabel),
+    sourcePath: readNullableMetadataString(metadata.sourcePath),
+    createdAt: readRequiredString(value.created_at, 'created_at'),
   }
 }
 
@@ -606,7 +757,7 @@ function mapGenerationHistoryRow(value: unknown): AdminGenerationHistoryItem {
     id: readRequiredString(value.id, 'id'),
     mediaType: readRequiredString(value.media_type, 'media_type'),
     model: readRequiredString(value.model, 'model'),
-    prompt: readRequiredString(value.prompt, 'prompt'),
+    prompt: readString(value.prompt),
     outputUrl: readRequiredString(value.output_url, 'output_url'),
     inputUrls: readStringArray(value.input_urls),
     aspectRatio: readNullableString(value.aspect_ratio),
@@ -643,6 +794,10 @@ function readRequiredString(value: unknown, field: string): string {
     throw new Error(`Wrangler 用户记录缺少 ${field}。`)
   }
   return value
+}
+
+function readString(value: unknown): string {
+  return typeof value === 'string' ? value : ''
 }
 
 function readNullableString(value: unknown): string | null {
@@ -684,6 +839,22 @@ function readAdminNote(value: unknown): string | null {
   } catch {
     return null
   }
+}
+
+function readMetadata(value: unknown): WranglerRow {
+  if (isRecord(value)) return value
+  if (typeof value !== 'string' || value.trim() === '') return {}
+
+  try {
+    const parsed = JSON.parse(value)
+    return isRecord(parsed) ? parsed : {}
+  } catch {
+    return {}
+  }
+}
+
+function readNullableMetadataString(value: unknown): string | null {
+  return typeof value === 'string' && value.trim() !== '' ? value.trim() : null
 }
 
 function quoteSqlString(value: string): string {

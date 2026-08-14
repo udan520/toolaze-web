@@ -3,6 +3,7 @@ import test from 'node:test'
 import { AI_VIDEO_GENERATOR_MODEL_OPTIONS } from './ai-video-generator-config'
 import { AI_IMAGE_GENERATOR_MODEL_OPTIONS } from './ai-image-generator-config'
 import { getModelHubModels, MODEL_HUB_MODELS } from './model-hub'
+import { MODEL_PAGE_LOCALES, getModelPageCopy } from '@/app/model/copy'
 
 test('AI Models hub includes every model available in the shared video generator', () => {
   const hubVideoNames = new Set(
@@ -42,4 +43,12 @@ test('AI Models hub places Seedance 2.5 before every other video model', () => {
   assert.equal(videoModels.filter((model) => model.href === '/model/seedance-2-5').length, 1)
   assert.equal(videoModels.filter((model) => model.name === 'Seedance 2.5').length, 1)
   assert.ok(videoModels.findIndex((model) => model.href === '/model/seedance-2-5') < videoModels.findIndex((model) => model.href === '/model/seedance-2'))
+})
+
+test('AI Models hub cards link directly to canonical model URLs', () => {
+  for (const locale of MODEL_PAGE_LOCALES) {
+    for (const card of getModelPageCopy(locale).cards) {
+      assert.match(card.href, /^\/model\//, `${locale} card ${card.title} must use its canonical model URL`)
+    }
+  }
 })

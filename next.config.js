@@ -22,6 +22,11 @@ const RETAINED_UTILITY_L3 = {
   'emoji-copy-and-paste': new Set(),
 }
 
+const PUBLISHED_LEGACY_MODEL_ROOTS = [
+  'happyhorse-ai-video-generator',
+  'wan-3-0-ai-video-generator',
+]
+
 function listJsonSlugs(directory) {
   return fs.readdirSync(path.join(__dirname, directory))
     .filter((filename) => filename.endsWith('.json'))
@@ -104,6 +109,14 @@ function getEnglishLocaleRedirects() {
   ]
 }
 
+function getPublishedLegacyModelRedirects() {
+  return PUBLISHED_LEGACY_MODEL_ROOTS.map((slug) => ({
+    source: `/${slug}`,
+    destination: `/model/${slug}`,
+    permanent: true,
+  }))
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   distDir,
@@ -136,7 +149,11 @@ const nextConfig = {
   async redirects() {
     return isStaticExport
       ? []
-      : [...getUtilitySeoRedirects(), ...getEnglishLocaleRedirects()]
+      : [
+        ...getUtilitySeoRedirects(),
+        ...getPublishedLegacyModelRedirects(),
+        ...getEnglishLocaleRedirects(),
+      ]
   },
   // 注意：静态导出模式下无法使用 rewrites，所以无法代理 Hugging Face 请求
   // Transformers.js 需要直接从 Hugging Face 加载模型文件

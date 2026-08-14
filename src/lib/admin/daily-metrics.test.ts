@@ -80,6 +80,14 @@ test('executes a fixed read-only daily metrics query', async () => {
   assert.match(sql, /FROM generation_history/i)
   assert.match(sql, /media_type = 'image'/i)
   assert.match(sql, /COUNT\(DISTINCT user_id\)/i)
+  assert.match(sql, /SELECT date\('now', '\+8 hours', '-29 days'\)/i)
+  assert.match(sql, /WHERE metric_date < date\('now', '\+8 hours'\)/i)
+  assert.match(sql, /date\(datetime\(created_at, '\+8 hours'\)\) AS metric_date/i)
+  assert.equal(
+    [...sql.matchAll(/date\(datetime\(created_at, '\+8 hours'\)\)/gi)].length,
+    9,
+  )
+  assert.doesNotMatch(sql, /substr\(created_at, 1, 10\)/i)
   assert.doesNotMatch(sql, /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE)\b/i)
 })
 
@@ -95,4 +103,5 @@ test('admin data dashboard page stays protected and noindex', () => {
   assert.match(source, /x-forwarded-host/)
   assert.match(source, /notFound/)
   assert.match(source, /fetchProductionDailyMetrics/)
+  assert.equal(source.includes('日期按北京时间（UTC+8）统计'), true)
 })

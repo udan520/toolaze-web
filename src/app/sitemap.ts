@@ -349,17 +349,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  const MODEL_ALL_TOOLS_PAGES = ['kling-3']
-  MODEL_ALL_TOOLS_PAGES.forEach((model) => {
-    const path = `/model/${model}/all-tools`
-    entries.push({
-      url: `${baseUrl}${path}`,
-      lastModified: getLastModified(path),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    })
-  })
-
   // 4b. 多语言 model L2（与 /[locale]/model/[model] 一致；英语 canonical 仍为 /model/...）
   const LOCALIZED_MODEL_SLUGS = ['wan-3-0-ai-video-generator', 'nano-banana-pro', 'nano-banana-2', 'gpt-image-2', 'wan-2-7-image', 'veo-3-1-ai-video-generator', 'happyhorse-ai-video-generator', 'wan-2-7-ai-video-generator', 'wan-2-6-ai-video-generator', 'wan-2-5-ai-video-generator', 'pixverse-v6-ai-video-generator', 'seedream-4-5', 'seedream-5-0-lite', 'seedream-5-0-pro', 'seedance-2-5', 'seedance-2', 'kling-3-motion-control', 'kling-3', 'kling-2-6-pro-motion-control', 'grok-imagine-video-1-5']
   LOCALIZED_MODEL_SLUGS.forEach((model) => {

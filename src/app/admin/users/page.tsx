@@ -17,7 +17,11 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const runtime = 'nodejs'
 
-export default async function AdminUsersPage() {
+export default async function AdminUsersPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ refresh?: string }>
+}) {
   const requestHeaders = await headers()
   const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host')
 
@@ -29,7 +33,10 @@ export default async function AdminUsersPage() {
   }
 
   try {
-    const data = await fetchProductionUsers()
+    const { refresh } = searchParams ? await searchParams : {}
+    const data = await fetchProductionUsers(undefined, undefined, {
+      forceRefresh: refresh === '1',
+    })
 
     return (
       <main className="min-h-screen bg-[#f6f7fb] text-slate-900">
@@ -68,15 +75,7 @@ function AdminHeader({ fetchedAt }: { fetchedAt?: string }) {
     <header className="border-b border-slate-200 bg-[#fbfcff]">
       <div className="mx-auto flex max-w-[1480px] flex-col gap-5 px-5 py-7 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-indigo-600">
-            <span>Toolaze Admin</span>
-            <span className="text-slate-300">/</span>
-            <span>线上 D1</span>
-          </div>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">Google 用户管理</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            只读查看线上注册用户、有效登录会话、credits 和内容生成情况。
-          </p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Google 用户管理</h1>
           {fetchedAt ? (
             <p className="mt-2 text-xs text-slate-400">
               数据读取时间：{new Date(fetchedAt).toLocaleString('zh-CN', { hour12: false })}
@@ -85,7 +84,7 @@ function AdminHeader({ fetchedAt }: { fetchedAt?: string }) {
         </div>
 
         <a
-          href="/admin/users"
+          href="/admin/users?refresh=1"
           className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700"
         >
           刷新数据

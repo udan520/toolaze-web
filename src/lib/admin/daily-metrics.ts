@@ -1,5 +1,6 @@
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
+import { readAdminSnapshot, type AdminReadCacheOptions } from './read-cache'
 
 export type AdminDailyMetric = {
   date: string
@@ -25,42 +26,42 @@ type CommandRunner = (file: string, args: string[]) => Promise<string>
 type WranglerRow = Record<string, unknown>
 
 const execFileAsync = promisify(execFile)
-const DEFAULT_WRANGLER_TIMEOUT_MS = 15_000
+const DEFAULT_WRANGLER_TIMEOUT_MS = 30_000
 
 const DAILY_METRICS_SQL = `
 WITH RECURSIVE date_range(metric_date) AS (
-  SELECT date('now', '-29 days')
+  SELECT date('now', '+8 hours', '-29 days')
   UNION ALL
   SELECT date(metric_date, '+1 day')
   FROM date_range
-  WHERE metric_date < date('now')
+  WHERE metric_date < date('now', '+8 hours')
 ),
 registered AS (
   SELECT
-    substr(created_at, 1, 10) AS metric_date,
+    date(datetime(created_at, '+8 hours')) AS metric_date,
     COUNT(DISTINCT id) AS registered_users
   FROM users
-  WHERE substr(created_at, 1, 10) >= date('now', '-29 days')
-  GROUP BY substr(created_at, 1, 10)
+  WHERE date(datetime(created_at, '+8 hours')) >= date('now', '+8 hours', '-29 days')
+  GROUP BY date(datetime(created_at, '+8 hours'))
 ),
 checkins AS (
   SELECT
-    substr(created_at, 1, 10) AS metric_date,
+    date(datetime(created_at, '+8 hours')) AS metric_date,
     COUNT(DISTINCT user_id) AS checkin_users
   FROM credit_transactions
   WHERE reason = 'daily_checkin'
-    AND substr(created_at, 1, 10) >= date('now', '-29 days')
-  GROUP BY substr(created_at, 1, 10)
+    AND date(datetime(created_at, '+8 hours')) >= date('now', '+8 hours', '-29 days')
+  GROUP BY date(datetime(created_at, '+8 hours'))
 ),
 image_generations AS (
   SELECT
-    substr(created_at, 1, 10) AS metric_date,
+    date(datetime(created_at, '+8 hours')) AS metric_date,
     COUNT(DISTINCT user_id) AS image_generation_users,
     COUNT(*) AS image_generation_count
   FROM generation_history
   WHERE media_type = 'image'
-    AND substr(created_at, 1, 10) >= date('now', '-29 days')
-  GROUP BY substr(created_at, 1, 10)
+    AND date(datetime(created_at, '+8 hours')) >= date('now', '+8 hours', '-29 days')
+  GROUP BY date(datetime(created_at, '+8 hours'))
 )
 SELECT
   date_range.metric_date,
@@ -103,21 +104,27 @@ export function buildDailyMetricsDashboard(rows: AdminDailyMetric[]): AdminDaily
 export async function fetchProductionDailyMetrics(
   runner: CommandRunner = runCommand,
   commandTimeoutMs = DEFAULT_WRANGLER_TIMEOUT_MS,
+  cacheOptions: AdminReadCacheOptions = {},
 ): Promise<AdminDailyMetricsDashboard> {
-  try {
-    const stdout = await runWithTimeout(
-      runner('npx', buildD1ReadArgs(DAILY_METRICS_SQL)),
-      commandTimeoutMs,
-    )
+  const loadMetrics = async () => {
+    try {
+      const stdout = await runWithTimeout(
+        runner('npx', buildD1ReadArgs(DAILY_METRICS_SQL)),
+        commandTimeoutMs,
+      )
 
-    return buildDailyMetricsDashboard(parseDailyMetricsRows(stdout))
-  } catch (error) {
-    if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
-      throw error
+      return buildDailyMetricsDashboard(parseDailyMetricsRows(stdout))
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith('无法解析 Wrangler')) {
+        throw error
+      }
+
+      throw new Error(formatWranglerError(error))
     }
-
-    throw new Error(formatWranglerError(error))
   }
+
+  if (runner !== runCommand) return loadMetrics()
+  return readAdminSnapshot('daily-metrics', loadMetrics, cacheOptions)
 }
 
 function buildD1ReadArgs(sql: string): string[] {

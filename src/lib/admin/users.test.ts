@@ -7,7 +7,9 @@ import {
   buildUserDashboard,
   fetchProductionGenerationRecords,
   fetchProductionUserUsage,
+  fetchProductionUserUsageData,
   fetchProductionUsers,
+  parseCreditUsageRows,
   parseGenerationRecordRows,
   parseGenerationHistoryRows,
   parseGrantHistoryRows,
@@ -152,8 +154,78 @@ test('maps generation history rows for a single admin user', () => {
     toolSlug: 'ai-image-generator',
     toolLabel: 'AI Image Generator',
     sourcePath: '/ai-image-generator',
+    requestIp: null,
+    requestCountry: null,
     createdAt: '2026-07-10T12:00:00.000Z',
   }])
+})
+
+test('maps used credits from credit transactions even without generation history', () => {
+  const rows = parseWranglerRows(JSON.stringify([{
+    results: [{
+      id: 'user_1',
+      email: 'owner@example.com',
+      name: 'Owner',
+      avatar_url: null,
+      created_at: '2026-08-09T05:59:22.925Z',
+      updated_at: '2026-08-09T05:59:22.925Z',
+      signup_path: '/fr/photo-restoration',
+      signup_url: 'https://toolaze.com/fr/photo-restoration',
+      signup_referrer: null,
+      credit_balance: 10,
+      used_credits: 10,
+      last_login_at: '2026-08-09T05:59:23.486Z',
+      has_active_session: 1,
+      image_generation_count: 0,
+      video_generation_count: 0,
+      last_generation_at: null,
+      recent_model: 'gpt-image-2',
+      recent_tool_slug: 'photo-restoration',
+      recent_tool_label: 'Photo Restoration',
+      top_tool_slug: null,
+      top_tool_label: null,
+      top_tool_count: null,
+    }],
+  }]))
+
+  assert.equal(rows[0].creditBalance, 10)
+  assert.equal(rows[0].usedCredits, 10)
+  assert.equal(rows[0].imageGenerationCount, 0)
+  assert.equal(rows[0].recentToolLabel, 'Photo Restoration')
+  assert.equal(rows[0].recentModel, 'gpt-image-2')
+})
+
+test('maps net used credits after refunded generations', () => {
+  const rows = parseWranglerRows(JSON.stringify([{
+    results: [{
+      id: 'user_1',
+      email: 'owner@example.com',
+      name: 'Owner',
+      avatar_url: null,
+      created_at: '2026-08-09T00:00:00.000Z',
+      updated_at: '2026-08-09T00:00:00.000Z',
+      signup_path: null,
+      signup_url: null,
+      signup_referrer: null,
+      credit_balance: 25,
+      used_credits: 0,
+      last_login_at: null,
+      has_active_session: 0,
+      image_generation_count: 0,
+      video_generation_count: 0,
+      last_generation_at: null,
+      recent_model: 'gpt-image-2',
+      recent_tool_slug: 'ai-image-to-image-generator',
+      recent_tool_label: 'AI Image to Image Generator',
+      top_tool_slug: null,
+      top_tool_label: null,
+      top_tool_count: null,
+    }],
+  }]))
+
+  assert.equal(rows[0].creditBalance, 25)
+  assert.equal(rows[0].usedCredits, 0)
+  assert.equal(rows[0].recentToolLabel, 'AI Image to Image Generator')
 })
 
 test('maps global generation records with user metadata', () => {
@@ -194,8 +266,36 @@ test('maps global generation records with user metadata', () => {
     toolSlug: 'ai-image-generator',
     toolLabel: 'AI Image Generator',
     sourcePath: '/ai-image-generator',
+    requestIp: null,
+    requestCountry: null,
     createdAt: '2026-07-13T04:11:00.000Z',
   }])
+})
+
+test('maps generation records with an empty prompt', () => {
+  const rows = parseGenerationRecordRows(JSON.stringify([{
+    results: [{
+      id: 'gen_empty_prompt',
+      user_id: 'user_1',
+      user_email: 'owner@example.com',
+      user_name: 'Owner',
+      media_type: 'video',
+      model: 'kling-3-motion-control',
+      prompt: '',
+      output_url: 'https://example.com/output.mp4',
+      input_urls: null,
+      aspect_ratio: '16:9',
+      resolution: '720p',
+      output_format: null,
+      tool_slug: 'model/kling-3-motion-control',
+      tool_label: 'Kling 3 Motion Control',
+      source_path: '/model/kling-3-motion-control',
+      created_at: '2026-08-03T16:16:14.469Z',
+    }],
+  }]))
+
+  assert.equal(rows[0].prompt, '')
+  assert.equal(rows[0].toolLabel, 'Kling 3 Motion Control')
 })
 
 test('builds aggregate dashboard statistics', () => {
@@ -211,6 +311,7 @@ test('builds aggregate dashboard statistics', () => {
       signupUrl: null,
       signupReferrer: null,
       creditBalance: 20,
+      usedCredits: 10,
       lastLoginAt: '2026-07-09T00:00:00.000Z',
       hasActiveSession: true,
       imageGenerationCount: 2,
@@ -234,6 +335,7 @@ test('builds aggregate dashboard statistics', () => {
       signupUrl: null,
       signupReferrer: null,
       creditBalance: 10,
+      usedCredits: 0,
       lastLoginAt: null,
       hasActiveSession: false,
       imageGenerationCount: 0,
@@ -283,6 +385,76 @@ test('maps admin credit grant history and keeps admin notes private', () => {
   }])
 })
 
+test('maps credit usage rows with task metadata for admin user detail', () => {
+  const rows = parseCreditUsageRows(JSON.stringify([{
+    results: [{
+      id: 'credit_txn_use',
+      type: 'use',
+      amount: -10,
+      balance_after: 10,
+      reason: 'image_generation',
+      description: 'Photo Restoration',
+      metadata: JSON.stringify({
+        taskId: 'task_photo_restore',
+        toolSlug: 'photo-restoration',
+        toolLabel: 'Photo Restoration',
+        sourcePath: '/fr/photo-restoration',
+        model: 'gpt-image-2',
+        modelLabel: 'GPT Image 2',
+        mediaType: 'image',
+      }),
+      created_at: '2026-08-09T05:59:41.219Z',
+    }],
+  }]))
+
+  assert.deepEqual(rows, [{
+    id: 'credit_txn_use',
+    amount: -10,
+    usedCredits: 10,
+    balanceAfter: 10,
+    reason: 'image_generation',
+    type: 'use',
+    description: 'Photo Restoration',
+    taskId: 'task_photo_restore',
+    mediaType: 'image',
+    model: 'gpt-image-2',
+    modelLabel: 'GPT Image 2',
+    toolSlug: 'photo-restoration',
+    toolLabel: 'Photo Restoration',
+    sourcePath: '/fr/photo-restoration',
+    createdAt: '2026-08-09T05:59:41.219Z',
+  }])
+})
+
+test('maps credit refund rows for admin user detail', () => {
+  const rows = parseCreditUsageRows(JSON.stringify([{
+    results: [{
+      id: 'credit_txn_refund',
+      type: 'refund',
+      amount: 10,
+      balance_after: 25,
+      reason: 'image_generation_refund',
+      description: 'AI Image to Image Generator refund',
+      metadata: JSON.stringify({
+        taskId: 'task_refunded',
+        toolSlug: 'ai-image-to-image-generator',
+        toolLabel: 'AI Image to Image Generator',
+        sourcePath: '/ai-image-to-image-generator',
+        model: 'gpt-image-2',
+        modelLabel: 'GPT Image 2',
+        mediaType: 'image',
+      }),
+      created_at: '2026-08-08T22:41:44.875Z',
+    }],
+  }]))
+
+  assert.equal(rows[0].type, 'refund')
+  assert.equal(rows[0].amount, 10)
+  assert.equal(rows[0].usedCredits, 0)
+  assert.equal(rows[0].balanceAfter, 25)
+  assert.equal(rows[0].taskId, 'task_refunded')
+})
+
 test('executes a fixed remote read-only Wrangler query', async () => {
   const calls: Array<{ file: string; args: string[] }> = []
 
@@ -305,10 +477,16 @@ test('executes a fixed remote read-only Wrangler query', async () => {
     const sql = call.args[commandIndex + 1]
     assert.match(sql, /^\s*SELECT\b/i)
     if (/FROM users u/i.test(sql)) {
-      assert.match(sql, /recent_model\.model AS recent_model/i)
+      assert.match(sql, /COALESCE\(recent_model\.model, recent_credit_usage\.model\) AS recent_model/i)
       assert.match(sql, /\) recent_model ON recent_model\.user_id = u\.id/i)
+      assert.match(sql, /credit_usage_stats\.used_credits AS used_credits/i)
+      assert.match(sql, /reason LIKE '%_refund'/i)
       assert.match(sql, /signup_attribution\.signup_path AS signup_path/i)
       assert.match(sql, /LEFT JOIN user_signup_attribution signup_attribution ON signup_attribution\.user_id = u\.id/i)
+      assert.match(sql, /u\.signup_ip/i)
+      assert.match(sql, /u\.signup_country/i)
+      assert.match(sql, /u\.last_login_ip/i)
+      assert.match(sql, /u\.last_login_country/i)
     }
     assert.doesNotMatch(sql, /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE)\b/i)
   }
@@ -380,7 +558,40 @@ test('executes a fixed read-only user usage query', async () => {
   const sql = calls[0].args[commandIndex + 1]
   assert.match(sql, /^\s*SELECT\b/i)
   assert.match(sql, /WHERE user_id = 'user_1'/)
+  assert.match(sql, /request_ip/i)
+  assert.match(sql, /request_country/i)
   assert.doesNotMatch(sql, /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE)\b/i)
+})
+
+test('executes fixed read-only user usage data queries', async () => {
+  const calls: Array<{ file: string; args: string[] }> = []
+
+  await fetchProductionUserUsageData('user_1', async (file, args) => {
+    calls.push({ file, args })
+    return JSON.stringify([{ results: [] }])
+  })
+
+  assert.equal(calls.length, 2)
+  const sqlStatements = calls.map((call) => {
+    assert.equal(call.file, 'npx')
+    assert.equal(call.args[0], 'wrangler')
+    assert.ok(call.args.includes('--remote'))
+    assert.ok(call.args.includes('--json'))
+    assert.ok(call.args.includes('DB'))
+
+    const commandIndex = call.args.indexOf('--command')
+    assert.ok(commandIndex >= 0)
+    const sql = call.args[commandIndex + 1]
+    assert.match(sql, /^\s*SELECT\b/i)
+    assert.match(sql, /WHERE user_id = 'user_1'/)
+    assert.doesNotMatch(sql, /\b(?:INSERT|UPDATE|DELETE|DROP|ALTER|CREATE)\b/i)
+    return sql
+  })
+
+  assert.ok(sqlStatements.some((sql) => /FROM generation_history/i.test(sql)))
+  assert.ok(sqlStatements.some((sql) => /FROM credit_transactions/i.test(sql)))
+  assert.ok(sqlStatements.some((sql) => /amount < 0/i.test(sql)))
+  assert.ok(sqlStatements.some((sql) => /reason LIKE '%_refund'/i.test(sql)))
 })
 
 test('executes a fixed read-only global generation records query', async () => {
@@ -403,6 +614,8 @@ test('executes a fixed read-only global generation records query', async () => {
   const sql = calls[0].args[commandIndex + 1]
   assert.match(sql, /^\s*SELECT\b/i)
   assert.match(sql, /FROM generation_history gh/i)
+  assert.match(sql, /gh\.request_ip/i)
+  assert.match(sql, /gh\.request_country/i)
   assert.match(sql, /JOIN users u ON u\.id = gh\.user_id/i)
   assert.match(sql, /ORDER BY gh\.created_at DESC/i)
   assert.match(sql, /LIMIT 200/i)
@@ -483,6 +696,7 @@ test('admin user detail page stays protected and noindex', () => {
   assert.match(source, /x-forwarded-host/)
   assert.match(source, /notFound/)
   assert.match(source, /fetchProductionUserUsage/)
+  assert.match(source, /fetchProductionUserUsageData/)
 })
 
 test('admin user detail page renders inline output previews', () => {
@@ -507,10 +721,21 @@ test('user dashboard links to per-user usage records', () => {
   )
 
   assert.match(source, /<a\s+href=\{`\/admin\/users\/\$\{encodeURIComponent\(user\.id\)\}`\}/)
-  assert.match(source, /href="\/admin\/generations"/)
-  assert.match(source, /任务生成记录/)
+  assert.doesNotMatch(source, /href="\/admin\/generations"/)
   assert.match(source, /使用记录/)
+  assert.match(source, /UserAvatar/)
+  assert.match(source, /onError/)
+  assert.match(source, /loading="lazy"/)
+  assert.match(source, /user\.avatarUrl/)
+  assert.doesNotMatch(source, /avatarLoaded/)
+  assert.doesNotMatch(source, /opacity-0/)
+  assert.match(source, /avatarFailed/)
+  assert.match(source, /注册 IP/)
+  assert.match(source, /最近登录 IP/)
+  assert.match(source, /LocationCell/)
   assert.match(source, /<th className="px-4 py-3 text-right">余额<\/th>/)
+  assert.match(source, /<th className="px-4 py-3 text-right">已使用点数<\/th>/)
+  assert.match(source, /user\.usedCredits/)
   assert.doesNotMatch(source, /<th className="px-4 py-3 text-right">Credits<\/th>/)
   assert.match(source, /最近使用模型/)
   assert.match(source, /user\.recentModel/)

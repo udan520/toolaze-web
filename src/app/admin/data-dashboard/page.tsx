@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { headers } from 'next/headers'
 import { notFound } from 'next/navigation'
 import {
@@ -21,7 +20,11 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const runtime = 'nodejs'
 
-export default async function AdminDataDashboardPage() {
+export default async function AdminDataDashboardPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ refresh?: string }>
+}) {
   const requestHeaders = await headers()
   const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host')
 
@@ -33,7 +36,10 @@ export default async function AdminDataDashboardPage() {
   }
 
   try {
-    const data = await fetchProductionDailyMetrics()
+    const { refresh } = searchParams ? await searchParams : {}
+    const data = await fetchProductionDailyMetrics(undefined, undefined, {
+      forceRefresh: refresh === '1',
+    })
 
     return (
       <main className="min-h-screen bg-[#f6f7fb] text-slate-900">
@@ -72,17 +78,7 @@ function AdminHeader({ fetchedAt }: { fetchedAt?: string }) {
     <header className="border-b border-slate-200 bg-[#fbfcff]">
       <div className="mx-auto flex max-w-[1480px] flex-col gap-5 px-5 py-7 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-indigo-600">
-            <Link href="/admin/users" className="transition hover:text-indigo-800">
-              Google 用户管理
-            </Link>
-            <span className="text-slate-300">/</span>
-            <span>每日数据看板</span>
-          </div>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">每日数据看板</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            最近 30 天每天的签到用户、完成注册用户、真实完成生图用户和生图次数。
-          </p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">每日数据看板</h1>
           {fetchedAt ? (
             <p className="mt-2 text-xs text-slate-400">
               数据读取时间：{new Date(fetchedAt).toLocaleString('zh-CN', { hour12: false })}
@@ -90,17 +86,9 @@ function AdminHeader({ fetchedAt }: { fetchedAt?: string }) {
           ) : null}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <Link href="/admin/users" className="inline-flex h-10 items-center rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-700">
-            用户列表
-          </Link>
-          <Link href="/admin/generations" className="inline-flex h-10 items-center rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-700">
-            任务生成记录
-          </Link>
-          <a href="/admin/data-dashboard" className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700">
-            刷新数据
-          </a>
-        </div>
+        <a href="/admin/data-dashboard?refresh=1" className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700">
+          刷新数据
+        </a>
       </div>
     </header>
   )
@@ -133,7 +121,7 @@ function DailyMetricsDashboard({ data }: { data: AdminDailyMetricsDashboard }) {
           <div>
             <h2 className="text-base font-semibold text-slate-950">最近 30 天每日数据</h2>
             <p className="mt-1 text-xs text-slate-500">
-              日期按 UTC 统计；真实使用生图以 `generation_history.media_type = image` 的成功记录为准。
+              日期按北京时间（UTC+8）统计；真实使用生图以 `generation_history.media_type = image` 的成功记录为准。
             </p>
           </div>
           <p className="text-xs text-slate-400">最新日期：{data.latestDate || '—'}</p>

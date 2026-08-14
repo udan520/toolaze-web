@@ -6,6 +6,8 @@ import {
   getAdminEmailFromHeaders,
   isAdminRequestAllowed,
 } from '@/lib/admin/access'
+import { GenerationPromptCell } from '@/components/admin/GenerationPromptCell'
+import { GenerationReferenceResources } from '@/components/admin/GenerationReferenceResources'
 import { buildAdminMediaPreviewUrl } from '@/lib/admin/media-preview'
 import {
   fetchProductionGenerationRecords,
@@ -30,7 +32,11 @@ const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
   hour12: false,
 })
 
-export default async function AdminGenerationRecordsPage() {
+export default async function AdminGenerationRecordsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ refresh?: string }>
+}) {
   const requestHeaders = await headers()
   const host = requestHeaders.get('x-forwarded-host') || requestHeaders.get('host')
 
@@ -42,7 +48,10 @@ export default async function AdminGenerationRecordsPage() {
   }
 
   try {
-    const records = await fetchProductionGenerationRecords()
+    const { refresh } = searchParams ? await searchParams : {}
+    const records = await fetchProductionGenerationRecords(undefined, undefined, {
+      forceRefresh: refresh === '1',
+    })
 
     return (
       <main className="min-h-screen bg-[#f6f7fb] text-slate-900">
@@ -81,33 +90,15 @@ function AdminHeader() {
     <header className="border-b border-slate-200 bg-[#fbfcff]">
       <div className="mx-auto flex max-w-[1480px] flex-col gap-5 px-5 py-7 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-indigo-600">
-            <Link href="/admin/users" className="transition hover:text-indigo-800">
-              Google 用户管理
-            </Link>
-            <span className="text-slate-300">/</span>
-            <span>任务生成记录</span>
-          </div>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">任务生成记录</h1>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            全站最近 200 条生成任务，按生成时间倒序展示用户、功能、模型、Prompt 和输出内容。
-          </p>
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-950">任务生成记录</h1>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <Link
-            href="/admin/users"
-            className="inline-flex h-10 items-center rounded-lg border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-300 hover:text-indigo-700"
-          >
-            返回用户列表
-          </Link>
-          <a
-            href="/admin/generations"
-            className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700"
-          >
-            刷新数据
-          </a>
-        </div>
+        <a
+          href="/admin/generations?refresh=1"
+          className="inline-flex h-10 items-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700"
+        >
+          刷新数据
+        </a>
       </div>
     </header>
   )
@@ -124,27 +115,26 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-[1740px] w-full border-collapse text-left">
+        <table className="min-w-[1720px] w-full border-collapse text-left">
           <thead>
             <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
-              <th className="px-5 py-3">时间</th>
-              <th className="px-4 py-3">用户</th>
-              <th className="px-4 py-3">IP</th>
-              <th className="px-4 py-3">国家</th>
-              <th className="px-4 py-3">功能</th>
-              <th className="px-4 py-3">类型</th>
-              <th className="px-4 py-3">模型</th>
-              <th className="px-4 py-3">Prompt</th>
-              <th className="px-4 py-3">参数</th>
-              <th className="px-5 py-3">输出</th>
+              <th className="px-3 py-3">时间</th>
+              <th className="px-3 py-3">用户</th>
+              <th className="px-3 py-3">IP</th>
+              <th className="px-3 py-3">功能</th>
+              <th className="px-3 py-3">类型</th>
+              <th className="px-3 py-3">模型</th>
+              <th className="px-3 py-3">Prompt</th>
+              <th className="px-3 py-3">参数</th>
+              <th className="px-3 py-3">输出</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100">
             {records.length > 0 ? (
               records.map((record) => (
                 <tr key={record.id} className="text-sm text-slate-700 transition hover:bg-indigo-50/30">
-                  <td className="whitespace-nowrap px-5 py-4 text-xs">{formatDate(record.createdAt)}</td>
-                  <td className="px-4 py-4">
+                  <td className="whitespace-nowrap px-3 py-4 text-xs">{formatDate(record.createdAt)}</td>
+                  <td className="px-3 py-4">
                     <Link
                       href={`/admin/users/${encodeURIComponent(record.userId)}`}
                       className="block max-w-64 transition hover:text-indigo-700"
@@ -158,13 +148,10 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
                       </p>
                     </Link>
                   </td>
-                  <td className="px-4 py-4">
-                    <IpCell ip={record.requestIp} />
+                  <td className="px-3 py-4">
+                    <LocationCell ip={record.requestIp ?? null} country={record.requestCountry ?? null} />
                   </td>
-                  <td className="px-4 py-4">
-                    <CountryCell country={record.requestCountry} />
-                  </td>
-                  <td className="px-4 py-4">
+                  <td className="px-3 py-4">
                     <p className="max-w-56 truncate font-semibold text-slate-950">
                       {record.toolLabel || record.toolSlug || '—'}
                     </p>
@@ -172,31 +159,34 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
                       {record.sourcePath || record.toolSlug || '—'}
                     </p>
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-3 py-4">
                     <span className="inline-flex rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600 ring-1 ring-slate-200">
                       {record.mediaType}
                     </span>
                   </td>
-                  <td className="px-4 py-4 font-mono text-xs text-slate-600">{record.model}</td>
-                  <td className="px-4 py-4">
-                    <p className="line-clamp-4 max-w-lg text-xs leading-5 text-slate-600">
-                      {record.prompt}
-                    </p>
+                  <td className="px-3 py-4 font-mono text-xs text-slate-600">{record.model}</td>
+                  <td className="px-3 py-4">
+                    <GenerationPromptCell prompt={record.prompt || ''} />
                   </td>
-                  <td className="px-4 py-4 text-xs leading-5 text-slate-500">
-                    <p>比例：{record.aspectRatio || '—'}</p>
-                    <p>分辨率：{record.resolution || '—'}</p>
-                    <p>格式：{record.outputFormat || '—'}</p>
-                    <p>输入：{record.inputUrls.length.toLocaleString('zh-CN')} 个</p>
+                  <td className="px-3 py-4 text-xs leading-5 text-slate-500">
+                    <div>
+                      <p>比例：{record.aspectRatio || '—'}</p>
+                      <p>分辨率：{record.resolution || '—'}</p>
+                      <p>格式：{record.outputFormat || '—'}</p>
+                    </div>
+                    <div className="mt-3">
+                      <p className="mb-2 font-semibold text-slate-700">参考资源</p>
+                      <GenerationReferenceResources urls={record.inputUrls} />
+                    </div>
                   </td>
-                  <td className="px-5 py-4">
+                  <td className="px-3 py-4">
                     <OutputPreview item={record} />
                   </td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={10} className="px-5 py-14 text-center text-sm text-slate-500">
+                <td colSpan={9} className="px-3 py-14 text-center text-sm text-slate-500">
                   暂无任务生成记录。
                 </td>
               </tr>
@@ -208,16 +198,21 @@ function GenerationRecordsTable({ records }: { records: AdminGenerationRecordIte
   )
 }
 
-function IpCell({ ip }: { ip: string | null }) {
-  return ip
-    ? <span className="font-mono text-xs font-semibold text-slate-700">{ip}</span>
-    : <span className="text-xs text-slate-400">—</span>
-}
+function LocationCell({
+  ip,
+  country,
+}: {
+  ip: string | null
+  country: string | null
+}) {
+  if (!ip && !country) return <span className="text-xs text-slate-400">—</span>
 
-function CountryCell({ country }: { country: string | null }) {
-  return country
-    ? <span className="text-xs font-semibold text-slate-700">{country}</span>
-    : <span className="text-xs text-slate-400">—</span>
+  return (
+    <div className="max-w-36">
+      <p className="truncate font-mono text-xs font-semibold text-slate-700">{ip || '—'}</p>
+      <p className="mt-0.5 text-[11px] font-semibold text-slate-400">{country || '—'}</p>
+    </div>
+  )
 }
 
 function OutputPreview({ item }: { item: AdminGenerationRecordItem }) {

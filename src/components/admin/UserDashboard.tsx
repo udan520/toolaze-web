@@ -114,13 +114,6 @@ export default function UserDashboard({ data }: UserDashboardProps) {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href="/admin/generations"
-              className="inline-flex h-10 items-center justify-center rounded-lg bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-indigo-700"
-            >
-              任务生成记录
-            </a>
-
             <label className="relative block">
               <span className="sr-only">搜索用户</span>
               <input
@@ -161,18 +154,17 @@ export default function UserDashboard({ data }: UserDashboardProps) {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="min-w-[1920px] w-full border-collapse text-left">
+          <table className="min-w-[1840px] w-full border-collapse text-left">
             <thead>
               <tr className="border-b border-slate-200 bg-white text-xs font-semibold text-slate-500">
                 <th className="px-5 py-3">用户</th>
                 <th className="px-4 py-3">注册时间</th>
                 <th className="px-4 py-3">注册入口</th>
                 <th className="px-4 py-3">注册 IP</th>
-                <th className="px-4 py-3">注册国家</th>
                 <th className="px-4 py-3">最近登录</th>
                 <th className="px-4 py-3">最近登录 IP</th>
-                <th className="px-4 py-3">最近登录国家</th>
                 <th className="px-4 py-3">会话</th>
+                <th className="px-4 py-3 text-right">已使用点数</th>
                 <th className="px-4 py-3 text-right">余额</th>
                 <th className="px-4 py-3 text-right">图片</th>
                 <th className="px-4 py-3 text-right">视频</th>
@@ -193,7 +185,7 @@ export default function UserDashboard({ data }: UserDashboardProps) {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={16} className="px-5 py-14 text-center text-sm text-slate-500">
+                  <td colSpan={15} className="px-5 py-14 text-center text-sm text-slate-500">
                     没有符合当前筛选条件的用户。
                   </td>
                 </tr>
@@ -380,24 +372,11 @@ function formatAdminSettingsError(error: unknown, fallback: string) {
 }
 
 function UserRow({ user, onGrant }: { user: AdminUser; onGrant: () => void }) {
-  const initials = (user.name || user.email).trim().slice(0, 1).toLocaleUpperCase()
-
   return (
     <tr className="text-sm text-slate-700 transition hover:bg-indigo-50/30">
       <td className="px-5 py-4">
         <div className="flex items-center gap-3">
-          {user.avatarUrl ? (
-            <img
-              src={user.avatarUrl}
-              alt=""
-              referrerPolicy="no-referrer"
-              className="h-10 w-10 rounded-full border border-slate-200 bg-slate-100 object-cover"
-            />
-          ) : (
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-              {initials}
-            </span>
-          )}
+          <UserAvatar name={user.name} email={user.email} avatarUrl={user.avatarUrl} />
           <div className="min-w-0">
             <p className="truncate font-semibold text-slate-950">{user.name || '未设置姓名'}</p>
             <p className="mt-0.5 truncate text-xs text-slate-500">{user.email}</p>
@@ -413,17 +392,11 @@ function UserRow({ user, onGrant }: { user: AdminUser; onGrant: () => void }) {
         />
       </td>
       <td className="px-4 py-4">
-        <IpCell ip={user.signupIp} />
-      </td>
-      <td className="px-4 py-4">
-        <CountryCell country={user.signupCountry} />
+        <LocationCell ip={user.signupIp ?? null} country={user.signupCountry ?? null} />
       </td>
       <td className="whitespace-nowrap px-4 py-4 text-xs">{formatDate(user.lastLoginAt)}</td>
       <td className="px-4 py-4">
-        <IpCell ip={user.lastLoginIp} />
-      </td>
-      <td className="px-4 py-4">
-        <CountryCell country={user.lastLoginCountry} />
+        <LocationCell ip={user.lastLoginIp ?? null} country={user.lastLoginCountry ?? null} />
       </td>
       <td className="px-4 py-4">
         <span
@@ -435,6 +408,9 @@ function UserRow({ user, onGrant }: { user: AdminUser; onGrant: () => void }) {
         >
           {user.hasActiveSession ? '有效' : '无有效会话'}
         </span>
+      </td>
+      <td className="px-4 py-4 text-right font-semibold tabular-nums text-slate-950">
+        {user.usedCredits.toLocaleString('zh-CN')}
       </td>
       <td className="px-4 py-4 text-right font-semibold tabular-nums text-slate-950">
         {user.creditBalance.toLocaleString('zh-CN')}
@@ -473,6 +449,60 @@ function UserRow({ user, onGrant }: { user: AdminUser; onGrant: () => void }) {
   )
 }
 
+function LocationCell({
+  ip,
+  country,
+}: {
+  ip: string | null
+  country: string | null
+}) {
+  if (!ip && !country) return <span className="text-xs text-slate-400">—</span>
+
+  return (
+    <div className="max-w-36">
+      <p className="truncate font-mono text-xs font-semibold text-slate-700">{ip || '—'}</p>
+      <p className="mt-0.5 text-[11px] font-semibold text-slate-400">{country || '—'}</p>
+    </div>
+  )
+}
+
+function UserAvatar({
+  avatarUrl,
+  name,
+  email,
+}: {
+  avatarUrl: string | null
+  name: string | null
+  email: string
+}) {
+  const [avatarFailed, setAvatarFailed] = useState(false)
+  const initials = (name || email).trim().slice(0, 1).toLocaleUpperCase()
+  const showAvatar = Boolean(avatarUrl) && !avatarFailed
+
+  useEffect(() => {
+    setAvatarFailed(false)
+  }, [avatarUrl])
+
+  return (
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-100 text-sm font-semibold text-slate-500">
+      {showAvatar ? (
+        <img
+          src={avatarUrl || ''}
+          alt=""
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={() => setAvatarFailed(true)}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <span className="flex h-full w-full items-center justify-center bg-slate-900 text-white">
+          {initials}
+        </span>
+      )}
+    </span>
+  )
+}
+
 function ModelBadge({ model }: { model: string | null }) {
   if (!model) return <span className="text-xs text-slate-400">—</span>
 
@@ -481,18 +511,6 @@ function ModelBadge({ model }: { model: string | null }) {
       <p className="truncate font-mono text-xs font-semibold text-slate-700">{model}</p>
     </div>
   )
-}
-
-function IpCell({ ip }: { ip: string | null }) {
-  return ip
-    ? <span className="font-mono text-xs font-semibold text-slate-700">{ip}</span>
-    : <span className="text-xs text-slate-400">—</span>
-}
-
-function CountryCell({ country }: { country: string | null }) {
-  return country
-    ? <span className="text-xs font-semibold text-slate-700">{country}</span>
-    : <span className="text-xs text-slate-400">—</span>
 }
 
 function SignupSourceBadge({
