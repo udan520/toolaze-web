@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs, getAllTools, hasLocaleL2JsonFile } from '@/lib/seo-loader'
-import { getPromptItems } from '@/lib/prompts'
 import {
   isUtilityTool,
   shouldIncludeUtilityL3InSitemap,
@@ -313,14 +312,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: locale === 'en' ? 0.85 : 0.82,
     })
   })
-  SUPPORTED_LOCALES.forEach((locale) => {
-    const path = locale === 'en' ? '/prompts' : `/${locale}/prompts`
-    entries.push({
-      url: `${baseUrl}${path}`,
-      lastModified: getLastModified(path),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    })
+  entries.push({
+    url: `${baseUrl}/prompts`,
+    lastModified: getLastModified('/prompts'),
+    changeFrequency: 'weekly',
+    priority: 0.9,
   })
   const PROMPT_SEO_PAGES = [
     '/prompts/models/seedance-2-0',
@@ -332,23 +328,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/prompts/categories/film-trailer',
   ]
   PROMPT_SEO_PAGES.forEach((path) => {
-    SUPPORTED_LOCALES.forEach((locale) => {
-      const localizedPath = locale === 'en' ? path : `/${locale}${path}`
-      entries.push({
-        url: `${baseUrl}${localizedPath}`,
-        lastModified: getLastModified(localizedPath),
-        changeFrequency: 'weekly',
-        priority: 0.82,
-      })
-    })
-  })
-  getPromptItems().forEach((item) => {
-    const path = `/prompts/${item.tweetId}`
     entries.push({
       url: `${baseUrl}${path}`,
       lastModified: getLastModified(path),
-      changeFrequency: 'monthly',
-      priority: 0.65,
+      changeFrequency: 'weekly',
+      priority: 0.82,
     })
   })
   // 4. Model 页面（AI 图像模型，仅英文）

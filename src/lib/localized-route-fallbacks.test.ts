@@ -59,6 +59,35 @@ test('sitemap includes linked AI landing pages and localized AI hubs', async () 
   }
 })
 
+test('Prompt sitemap keeps only curated English hubs', async () => {
+  const urls = new Set((await sitemap()).map((entry) => entry.url))
+  const curatedPromptPaths = [
+    '/prompts',
+    '/prompts/models/seedance-2-0',
+    '/prompts/models/kling',
+    '/prompts/models/gpt-image-2',
+    '/prompts/models/nano-banana',
+    '/prompts/categories/advertising',
+    '/prompts/categories/fashion-beauty',
+    '/prompts/categories/film-trailer',
+  ]
+
+  for (const path of curatedPromptPaths) {
+    assert.ok(urls.has(`https://toolaze.com${path}`), `${path} should remain in the sitemap`)
+  }
+
+  assert.equal(
+    [...urls].some((url) => /^https:\/\/toolaze\.com\/prompts\/\d+$/.test(url)),
+    false,
+    'Prompt detail pages must not be submitted in the sitemap',
+  )
+  assert.equal(
+    [...urls].some((url) => /^https:\/\/toolaze\.com\/(?:de|ja|es|zh-TW|pt|fr|ko|it)\/prompts(?:\/|$)/.test(url)),
+    false,
+    'localized Prompt pages must not be submitted in the sitemap',
+  )
+})
+
 test('sitemap lastmod uses stable page dates instead of build time', async () => {
   const source = readFileSync('src/app/sitemap.ts', 'utf8')
   assert.doesNotMatch(source, /const\s+today\s*=\s*new Date/)
@@ -83,7 +112,8 @@ test('localized Seedance model L3 URLs redirect back to the model page', () => {
 
   const routeSource = readFileSync(routePath, 'utf8')
   assert.match(routeSource, /generateStaticParams/)
-  assert.match(routeSource, /getAllSlugs\('seedance-2', 'en'\)/)
+  assert.match(routeSource, /LEGACY_SEEDANCE_2_L3_SLUGS/)
+  assert.doesNotMatch(routeSource, /getAllSlugs\('seedance-2', 'en'\)/)
   assert.doesNotMatch(routeSource, /permanentRedirect\(`\/model\/seedance-2\/\$\{resolvedParams\.slug\}`\)/)
   assert.match(routeSource, /\/model\/seedance-2/)
   assert.doesNotMatch(

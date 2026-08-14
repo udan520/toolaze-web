@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: PromptDetailPageProps): Promi
   return {
     title: `${item.title} Prompt for ${item.model} | Toolaze`,
     description,
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `${baseUrl}/prompts/${item.tweetId}`,
     },

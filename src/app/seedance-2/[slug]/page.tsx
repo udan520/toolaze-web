@@ -1,5 +1,5 @@
 import { permanentRedirect } from 'next/navigation'
-import { getAllSlugs } from '@/lib/seo-loader'
+import { LEGACY_SEEDANCE_2_L3_SLUGS } from '@/lib/seedance-2-legacy-routes'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -9,8 +9,7 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs('seedance-2', 'en')
-  return [...new Set([...slugs, 'ai-video-generator'])].map((slug) => ({ slug }))
+  return LEGACY_SEEDANCE_2_L3_SLUGS.map((slug) => ({ slug }))
 }
 
 export default async function Seedance2SlugRedirect({ params }: PageProps) {

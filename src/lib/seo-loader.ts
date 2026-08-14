@@ -63,12 +63,6 @@ export const VIDEO_MODEL_L2S = ['wan-3-0-ai-video-generator', 'veo-3-1-ai-video-
 // 图片模型 L2 列表（用于「更多工具」推荐，仅推荐同类型 L2）
 export const IMAGE_MODEL_L2S = ['gpt-image-2', 'nano-banana-pro', 'nano-banana-2', 'seedream-5-0-pro']
 
-// Seedance 2.0 L3 页面 slug 列表（按搜索量/优先级）
-const SEEDANCE_2_SLUGS = [
-  'text-to-video',
-  'image-to-video',
-]
-
 // Watermark Remover L3 页面 slug 列表（从文件系统动态读取，此为兜底）
 const WATERMARK_REMOVER_SLUGS_FALLBACK = [
   'how-to-remove-watermark',
@@ -311,10 +305,6 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
     if (tool === 'emoji-copy-and-paste' && !EMOJI_COPY_PASTE_SLUGS.includes(slug)) {
       return null
     }
-    if (tool === 'seedance-2' && !SEEDANCE_2_SLUGS.includes(slug)) {
-      return null
-    }
-
     if (tool === 'emoji-copy-and-paste') {
       const localeFile = path.join(process.cwd(), 'src', 'data', normalizedLocale, 'emoji-copy-and-paste', `${slug}.json`)
       if (fs.existsSync(localeFile)) {
@@ -375,11 +365,6 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
               case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
               case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
-            }
-          } else if (tool === 'seedance-2') {
-            switch (slug) {
-              case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
-              case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
             }
           } else if (tool === 'watermark-remover') {
             switch (slug) {
@@ -712,11 +697,6 @@ async function loadToolJsonFile(locale: string, tool: string, slug: string) {
               case 'fire-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/fire-copy-and-paste.json'); break
               case 'birthday-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/birthday-copy-and-paste.json'); break
               case 'cat-copy-and-paste': data = await import('@/data/en/emoji-copy-and-paste/cat-copy-and-paste.json'); break
-            }
-          } else if (tool === 'seedance-2') {
-            switch (slug) {
-              case 'text-to-video': data = await import('@/data/en/seedance-2/text-to-video.json'); break
-              case 'image-to-video': data = await import('@/data/en/seedance-2/image-to-video.json'); break
             }
           } else if (tool === 'watermark-remover') {
             try {
@@ -1080,10 +1060,6 @@ export async function getSeoContent(tool: string, slug: string, locale: string =
       const independentData = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
       return independentData && isPublished(independentData) ? independentData : null;
     }
-    if (tool === 'seedance-2') {
-      const independentData = await loadToolJsonFile(locale, 'seedance-2', slug);
-      return independentData && isPublished(independentData) ? independentData : null;
-    }
     if (tool === 'watermark-remover') {
       const independentData = await loadToolJsonFile(locale, 'watermark-remover', slug);
       if (!independentData) {
@@ -1132,15 +1108,6 @@ export async function getAllSlugs(tool: string, locale: string = 'en'): Promise<
       const results: string[] = [];
       for (const slug of candidates) {
         const d = await loadToolJsonFile(locale, 'emoji-copy-and-paste', slug);
-        if (d && isPublished(d)) results.push(slug);
-      }
-      return results;
-    }
-    if (tool === 'seedance-2') {
-      const candidates = Array.isArray(SEEDANCE_2_SLUGS) ? [...SEEDANCE_2_SLUGS] : [];
-      const results: string[] = [];
-      for (const slug of candidates) {
-        const d = await loadToolJsonFile(locale, 'seedance-2', slug);
         if (d && isPublished(d)) results.push(slug);
       }
       return results;
@@ -1195,12 +1162,6 @@ export async function getAllTools(locale: string = 'en'): Promise<Array<{ tool: 
   const emojiSlugs = await getAllSlugs('emoji-copy-and-paste', locale)
   for (const slug of emojiSlugs) {
     tools.push({ tool: 'emoji-copy-and-paste', slug })
-  }
-  
-  // 添加 Seedance 2.0 L3 页面（目前仅英文）
-  const seedanceSlugs = await getAllSlugs('seedance-2', locale)
-  for (const slug of seedanceSlugs) {
-    tools.push({ tool: 'seedance-2', slug })
   }
   
   return tools

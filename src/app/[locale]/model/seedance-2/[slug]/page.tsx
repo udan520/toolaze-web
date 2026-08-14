@@ -1,6 +1,6 @@
-import { getAllSlugs } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 import { notFound, permanentRedirect } from 'next/navigation'
+import { LEGACY_SEEDANCE_2_L3_SLUGS } from '@/lib/seedance-2-legacy-routes'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it'] as const
 
@@ -15,11 +15,8 @@ export const dynamic = 'force-static'
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  const slugs = await getAllSlugs('seedance-2', 'en')
-  const redirectSlugs = [...new Set([...slugs, 'ai-video-generator'])]
-
   return SUPPORTED_LOCALES.filter((locale) => locale !== 'en').flatMap((locale) =>
-    redirectSlugs.map((slug) => ({
+    LEGACY_SEEDANCE_2_L3_SLUGS.map((slug) => ({
       locale,
       slug,
     })),

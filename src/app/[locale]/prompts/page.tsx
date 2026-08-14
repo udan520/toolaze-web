@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: LocalizedPromptsPageProps): P
   return {
     title: copy.promptLibrary.metadataTitle,
     description: copy.promptLibrary.metadataDescription,
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `https://toolaze.com/${locale}/prompts`,
     },
