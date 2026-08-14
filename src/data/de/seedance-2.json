@@ -43,15 +43,27 @@
     "desc": "Planen Sie 15-sekündige 1080p-Videos mit Seedance 2.0. Überprüfen Sie die Eingabeoptionen für Text, Bild, Video und Audio, während die Generator-Oberfläche vorbereitet wird."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",
     "ariaLabel": "16:9-Demovideo für den Seedance 2.0 KI-Videogenerator",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2",
-    "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
-    "duration": "PT5.042S",
-    "uploadDate": "2026-07-21T17:20:41.000Z",
+    "sourceHistory": "Seedance 2.0 · Multimodale Referenzdemo · 16:9 · R2",
+    "duration": "PT5S",
+    "uploadDate": "2026-08-14T09:06:02.472Z",
     "type": "video"
+  },
+  "topTool": {
+    "modelId": "seedance-2",
+    "defaultMode": "image-to-video",
+    "initialImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a901c0d4b5ba41dcb7c6768be20418de.png",
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6c76ef5f2fe34b7e9cbb0d3c45d6e9ab.png"
+    ],
+    "initialMotionVideoUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/796404913d574137b5d0a20690a5dfad.mp4"
+    ],
+    "initialMotionVideoDurationSeconds": 7.933333,
+    "initialPrompt": "Nutze @Image 1 für die Person. Übernimm Ort und Hintergrund aus @Image 2. Folge der Bewegung in @Video 1 für das finale Video."
   },
   "intro": {
     "title": "Warum den Seedance 2.0 KI-Videogenerator wählen?",

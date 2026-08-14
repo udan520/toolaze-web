@@ -43,14 +43,13 @@
     "desc": "Pianifica video a 1080p da 15 secondi con Seedance 2.0. Esamina le opzioni di input di testo, immagine, video e audio mentre l'interfaccia del generatore viene preparata."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",
     "ariaLabel": "Video demo 16:9 per il generatore video IA Seedance 2.0",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2",
-    "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
-    "duration": "PT5.042S",
-    "uploadDate": "2026-07-21T17:20:41.000Z",
+    "sourceHistory": "Seedance 2.0 · Demo multimodale con riferimenti · 16:9 · R2",
+    "duration": "PT5S",
+    "uploadDate": "2026-08-14T09:06:02.472Z",
     "type": "video"
   },
   "intro": {
@@ -227,5 +226,18 @@
       "a": "Non è prevista alcuna installazione di software locale per l'interfaccia Toolaze. L'obiettivo è un workflow basato su browser una volta che l'accesso a Seedance 2.0 sarà disponibile."
     }
   ],
-  "moreTools": "Altri strumenti Seedance 2.0"
+  "moreTools": "Altri strumenti Seedance 2.0",
+  "topTool": {
+    "modelId": "seedance-2",
+    "defaultMode": "image-to-video",
+    "initialImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a901c0d4b5ba41dcb7c6768be20418de.png",
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6c76ef5f2fe34b7e9cbb0d3c45d6e9ab.png"
+    ],
+    "initialMotionVideoUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/796404913d574137b5d0a20690a5dfad.mp4"
+    ],
+    "initialMotionVideoDurationSeconds": 7.933333,
+    "initialPrompt": "Usa @Image 1 per la persona. Sostituisci ambientazione e sfondo con @Image 2. Segui il movimento di @Video 1 per creare il video finale."
+  }
 }

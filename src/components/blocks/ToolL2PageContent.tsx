@@ -1647,6 +1647,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                         ? content.topTool.initialMotionVideoDurationSeconds
                         : undefined
                     }
+                    initialAudioUrls={Array.isArray(content.topTool?.initialAudioUrls) ? content.topTool.initialAudioUrls : undefined}
                     initialPrompt={typeof content.topTool?.initialPrompt === 'string' ? content.topTool.initialPrompt : undefined}
                     initialCharacterOrientation={
                       content.topTool?.initialCharacterOrientation === 'image' || content.topTool?.initialCharacterOrientation === 'video'

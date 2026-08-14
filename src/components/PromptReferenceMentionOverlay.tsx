@@ -177,7 +177,7 @@ export default function PromptReferenceMentionOverlay({
                 if (node) tokenElementsRef.current.set(key, { node, reference: segment.reference })
                 else tokenElementsRef.current.delete(key)
               }}
-              className="text-[#4F46E5]"
+              className="text-[#9333EA]"
             >
               {segment.text}
             </span>

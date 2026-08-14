@@ -30,9 +30,11 @@ export function createPromptReferenceMentionOrdinalRegistry(): PromptReferenceMe
       return ordinal
     },
     syncActive(kind, identities) {
-      const activeIdentities = new Set(identities)
-      for (const identity of ordinals[kind].keys()) {
-        if (!activeIdentities.has(identity)) ordinals[kind].delete(identity)
+      ordinals[kind].clear()
+      nextOrdinal[kind] = 1
+      for (const identity of new Set(identities)) {
+        ordinals[kind].set(identity, nextOrdinal[kind])
+        nextOrdinal[kind] += 1
       }
     },
   }

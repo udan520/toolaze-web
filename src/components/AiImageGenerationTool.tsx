@@ -77,6 +77,7 @@ import PromptReferenceMentionPicker, {
   type PromptReferenceMentionItem,
   type PromptReferenceMentionOrdinalRegistry,
 } from './PromptReferenceMentionPicker'
+import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
 import VideoDurationSlider from './VideoDurationSlider'
 import {
   deletePromptReferenceMention,
@@ -1441,6 +1442,7 @@ export default function AiImageGenerationTool({
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
   const promptMentionRootRef = useRef<HTMLDivElement>(null)
+  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
   const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
   if (!promptReferenceMentionOrdinalRegistryRef.current) {
     promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
@@ -4878,8 +4880,9 @@ export default function AiImageGenerationTool({
                 {!((hidePresetPromptInput && activePromptPresetTab !== customPromptTabId) || shouldUseCustomReferenceUploader) && (
                   <>
                     <label className="block text-xs font-semibold text-slate-500 tracking-wide mb-2">{sceneText?.promptLabel || toolText.prompt}</label>
-                    <div ref={promptMentionRootRef} data-left-prompt-field className="relative overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/50 transition-colors focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/40">
-                      <textarea
+                    <div ref={promptMentionRootRef} className="relative overflow-visible">
+                      <div data-left-prompt-field className="overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/50 transition-colors focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/40">
+                        <textarea
                         ref={promptTextareaRef}
                         data-left-prompt-input
                         value={prompt}
@@ -4898,11 +4901,18 @@ export default function AiImageGenerationTool({
                           ? `${promptMentionPickerId}-option-${promptReferenceMentionItems[promptMentionActiveIndex].id}`
                           : undefined}
                         placeholder={sceneText?.promptPlaceholder || toolText.promptPlaceholder}
-                        className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
+                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 placeholder:text-slate-400 focus:outline-none md:text-sm ${supportsPromptReferenceMentions && prompt ? 'text-transparent caret-slate-800' : 'text-slate-800'}`}
                         rows={4}
                       />
+                      {supportsPromptReferenceMentions && prompt ? (
+                        <PromptReferenceMentionOverlay
+                          value={prompt}
+                          items={promptReferenceMentionItems}
+                          mirrorRef={promptMentionOverlayRef}
+                        />
+                      ) : null}
                       {(supportsPromptReferenceMentions || prompt) ? (
-                        <div className="relative flex h-11 items-center justify-between px-3">
+                        <div className="relative flex h-11 items-center px-3">
                           {supportsPromptReferenceMentions ? (
                             <button
                               type="button"
@@ -4930,7 +4940,7 @@ export default function AiImageGenerationTool({
                                 setPromptMentionTriggerIndex(null)
                                 requestAnimationFrame(() => promptTextareaRef.current?.focus())
                               }}
-                              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                              className="ml-auto inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
                             >
                               <DeleteIcon size={14} />
                               Clear
@@ -4938,6 +4948,7 @@ export default function AiImageGenerationTool({
                           ) : null}
                         </div>
                       ) : null}
+                      </div>
                       {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
                         <PromptReferenceMentionPicker
                           id={promptMentionPickerId}

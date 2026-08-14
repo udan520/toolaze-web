@@ -43,15 +43,27 @@
     "desc": "Create Hollywood-quality 1080p videos with Seedance 2.0 for free. Upload text, images, video, and audio online. Multimodal AI video generation—coming soon."
   },
   "heroDemoVideo": {
-    "src": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251.png",
+    "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",
     "ariaLabel": "16:9 demo video for the Seedance 2.0 AI video generator",
     "width": 16,
     "height": 9,
-    "sourceHistory": "Grok Imagine Video 1.5 · Character Motion Prompt · 16:9 · R2",
-    "poster": "https://assets.toolaze.com/uploads/d0d55df5eef346809067197fddb1b251-poster.webp",
-    "duration": "PT5.042S",
-    "uploadDate": "2026-07-21T17:20:41.000Z",
+    "sourceHistory": "Seedance 2.0 · Multimodal Reference Demo · 16:9 · R2",
+    "duration": "PT5S",
+    "uploadDate": "2026-08-14T09:06:02.472Z",
     "type": "video"
+  },
+  "topTool": {
+    "modelId": "seedance-2",
+    "defaultMode": "image-to-video",
+    "initialImageUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/a901c0d4b5ba41dcb7c6768be20418de.png",
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/6c76ef5f2fe34b7e9cbb0d3c45d6e9ab.png"
+    ],
+    "initialMotionVideoUrls": [
+      "https://pub-efeb0c7b9b53478d960218de80c52e3d.r2.dev/uploads/796404913d574137b5d0a20690a5dfad.mp4"
+    ],
+    "initialMotionVideoDurationSeconds": 7.933333,
+    "initialPrompt": "Use @Image 1 for the person. Replace the setting and background with @Image 2. Follow the motion in @Video 1 to create the final video."
   },
   "intro": {
     "title": "Why Choose Seedance 2.0 AI Video Generator?",

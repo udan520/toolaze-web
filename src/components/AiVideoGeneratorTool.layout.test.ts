@@ -173,7 +173,7 @@ test('prompt reference trigger sits on its own row below the native prompt edito
     /<textarea[\s\S]*?<div className="relative flex h-11 items-center px-3">[\s\S]*data-prompt-reference-mention-trigger/,
     'the at-sign trigger should render in a dedicated row below the textarea',
   )
-  assert.match(source, /px-4 py-3 text-base leading-6 text-slate-800/, 'mention-capable prompts should use native visible text so caret geometry stays accurate')
+  assert.match(source, /px-4 py-3 text-base leading-6 placeholder:text-slate-400/, 'mention-capable prompts should preserve the native textarea geometry')
   assert.doesNotMatch(
     source,
     /supportsPromptReferenceMentions \? 'pb-12 pt-3 text-transparent caret-slate-800'/,
@@ -181,31 +181,26 @@ test('prompt reference trigger sits on its own row below the native prompt edito
   )
 })
 
-test('prompt reference labels stay bound to surviving resources after a non-tail deletion', async () => {
+test('prompt reference labels restart for each media type and stay dense after removal', async () => {
   const pickerModule = await import('./PromptReferenceMentionPicker') as Record<string, unknown>
   const createRegistry = pickerModule.createPromptReferenceMentionOrdinalRegistry
   if (typeof createRegistry !== 'function') {
     assert.fail('picker module should expose the stable ordinal registry')
   }
   const registry = createRegistry()
-  const initialResources = ['remote:first', 'remote:middle', 'remote:last']
-  const initialLabels = initialResources.map((identity) => `@Image ${registry.get('image', identity)}`)
+  assert.equal(registry.get('image', 'remote:image'), 1)
+  assert.equal(registry.get('video', 'remote:video'), 1)
+  assert.equal(registry.get('audio', 'remote:audio'), 1)
 
-  assert.deepEqual(initialLabels, ['@Image 1', '@Image 2', '@Image 3'])
+  registry.syncActive('video', ['remote:survivor', 'remote:replacement'])
+  assert.equal(registry.get('video', 'remote:survivor'), 1)
+  assert.equal(registry.get('video', 'remote:replacement'), 2)
 
-  const survivingResources = ['remote:first', 'remote:last']
-  const survivingLabels = survivingResources.map((identity) => `@Image ${registry.get('image', identity)}`)
-
-  assert.deepEqual(survivingLabels, ['@Image 1', '@Image 3'], 'deleting the middle resource must not renumber the surviving tail resource')
-  assert.equal(survivingLabels.includes('@Image 2'), false, 'the deleted resource token must no longer match a current item')
-
-  registry.syncActive('image', survivingResources)
-  const replacementLabel = `@Image ${registry.get('image', 'remote:replacement')}`
-  assert.equal(replacementLabel, '@Image 4', 'cleaning inactive identities must not reuse a removed ordinal')
-  assert.equal(registry.get('image', 'remote:last'), 3, 'active identity cleanup must preserve surviving labels')
+  registry.syncActive('video', ['remote:replacement'])
+  assert.equal(registry.get('video', 'remote:replacement'), 1, 'the first current video should be Video 1 after a removal')
 })
 
-test('AI video generator derives mention labels from stable resource identities without reordering payload arrays', () => {
+test('AI video generator derives per-type mention labels without reordering payload arrays', () => {
   const pickerSource = readPromptReferenceMentionPickerSource()
 
   assert.match(source, /promptReferenceMentionOrdinalRegistryRef/, 'generator should retain mention ordinals for its mounted lifetime')
@@ -220,13 +215,17 @@ test('AI video generator derives mention labels from stable resource identities 
   assert.match(source, /ordinalRegistry\.syncActive\('image'/, 'generator should retire image identities no longer in current resources')
   assert.match(source, /ordinalRegistry\.syncActive\('video'/, 'generator should retire video identities no longer in current resources')
   assert.match(source, /ordinalRegistry\.syncActive\('audio'/, 'generator should retire audio identities no longer in current resources')
-  assert.match(pickerSource, /ordinals\[kind\]\.delete\(identity\)/, 'registry cleanup should remove inactive identity entries')
-  assert.match(pickerSource, /nextOrdinal\[kind\] \+= 1/, 'registry cleanup must keep ordinal allocation monotonic')
+  assert.match(pickerSource, /ordinals\[kind\]\.clear\(\)/, 'registry should rebuild the current type order when resources change')
+  assert.match(pickerSource, /nextOrdinal\[kind\] = 1/, 'each resource type should restart numbering from one')
 })
 
-test('prompt reference mentions keep native textarea text and caret behavior', () => {
-  assert.doesNotMatch(source, /<PromptReferenceMentionOverlay/, 'the editor should not duplicate text in an overlay layer')
-  assert.doesNotMatch(source, /text-transparent[\s\S]*caret-slate-800/, 'the native textarea should render its own text and caret')
+test('prompt reference mentions render one prompt text layer with themed reference tokens', () => {
+  const overlaySource = readPromptReferenceMentionOverlaySource()
+
+  assert.match(source, /<PromptReferenceMentionOverlay/, 'the editor should render a pointer-transparent token overlay for mention styling and previews')
+  assert.match(source, /text-transparent caret-slate-800/, 'the native textarea should keep only the caret visible while the overlay renders text')
+  assert.match(overlaySource, /text-slate-800/, 'the overlay should render ordinary prompt text exactly once')
+  assert.match(overlaySource, /className="text-\[#9333EA\]"/, 'reference tokens should use the product purple instead of the blue control color')
 })
 
 test('prompt reference tokens show SSR-safe portal previews for each media kind', () => {
@@ -309,8 +308,11 @@ test('prompt reference trigger and picker use the dedicated action row', () => {
   const pickerSource = readPromptReferenceMentionPickerSource()
 
   assert.match(source, /relative flex h-11 items-center px-3[\s\S]*data-prompt-reference-mention-trigger/, 'at-sign trigger should sit in the dedicated action row')
+  assert.match(source, /<div ref=\{promptMentionRootRef\} className="relative overflow-visible">/, 'mention picker should be positioned by an unclipped prompt root instead of the prompt input surface')
   assert.doesNotMatch(source, /data-prompt-reference-mention-trigger[\s\S]{0,300}border-t border-slate-200\/90/, 'the dedicated action row should not use a harsh divider')
   assert.match(pickerSource, /data-prompt-reference-mention-picker[\s\S]*z-30/, 'picker should remain above the prompt action row')
+  assert.match(pickerSource, /absolute bottom-11 left-3 right-3 z-30/, 'picker should anchor to the at-sign action row and expand upward')
+  assert.doesNotMatch(pickerSource, /top-full z-30 mt-2/, 'picker should not expand below the prompt container')
 })
 
 test('prompt action row keeps Clear beside the at-sign trigger', () => {
@@ -465,8 +467,8 @@ test('AI video generator exposes a motion reference video upload for Kling motio
   assert.notEqual(motionUploaderSource.indexOf('data-motion-video-empty-requirements'), -1, 'empty motion reference upload should show format, size, and duration requirements inside the box')
   assert.notEqual(motionUploaderSource.indexOf('data-motion-video-selected-card'), -1, 'selected motion reference video should cover the upload box')
   assert.notEqual(motionUploaderSource.indexOf('data-motion-video-preview-button'), -1, 'selected motion reference video should expose a preview button')
-  assert.notEqual(source.indexOf('data-motion-video-preview-dialog'), -1, 'preview button should open a video preview dialog')
-  assert.notEqual(source.indexOf('setMotionVideoPreview'), -1, 'motion reference preview dialog should be state-driven')
+  assert.notEqual(source.indexOf('data-video-reference-preview-dialog'), -1, 'preview button should open the shared reference preview dialog')
+  assert.notEqual(source.indexOf('setReferencePreview'), -1, 'motion reference preview dialog should be state-driven')
   const motionUploaderBlock = motionUploaderSource
   const selectedMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-selected-card'), motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
   const emptyMotionVideoBlock = motionUploaderSource.slice(motionUploaderSource.indexOf('data-motion-video-empty-requirements'))
@@ -726,6 +728,13 @@ test('AI video history displays motion reference videos alongside reference imag
   assert.match(source, /<video[\s\S]*src=\{url\}[\s\S]*preload="metadata"/, 'reference videos should render as video thumbnails')
   assert.match(pendingRenderer, /renderVideoReferenceMedia\(\{[\s\S]*motionVideoUrls: item\.motionVideoUrls \|\| \[\]/, 'generating rows should show selected motion reference videos')
   assert.match(historyRenderer, /renderVideoReferenceMedia\(\{[\s\S]*motionVideoUrls: item\.motionVideoUrls \|\| \[\]/, 'completed history rows should show saved motion reference videos')
+})
+
+test('AI video history reference thumbnails open the shared media preview dialog', () => {
+  assert.match(source, /data-video-history-reference-image[\s\S]*onClick=\{\(\) => setReferencePreview\(\{ kind: 'image'/, 'history reference images should open a full preview')
+  assert.match(source, /data-video-history-reference-video[\s\S]*onClick=\{\(\) => setReferencePreview\(\{ kind: 'video'/, 'history reference videos should open a full preview')
+  assert.match(source, /referencePreview\.kind === 'image'[\s\S]*<img/, 'the shared dialog should render reference images at inspectable size')
+  assert.match(source, /referencePreview\.kind === 'image'[\s\S]*<img[\s\S]*:\s*\([\s\S]*<video/, 'the shared dialog should render reference videos at inspectable size')
 })
 
 test('AI video generator right side uses the image-style sample and history feed flow', () => {

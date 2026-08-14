@@ -54,6 +54,7 @@ import PromptReferenceMentionPicker, {
   type PromptReferenceMentionItem,
   type PromptReferenceMentionOrdinalRegistry,
 } from './PromptReferenceMentionPicker'
+import PromptReferenceMentionOverlay from './PromptReferenceMentionOverlay'
 import {
   deletePromptReferenceMention,
   insertPromptReferenceMention,
@@ -84,6 +85,12 @@ interface AudioItem {
 type VideoGenerationStatus = 'processing' | 'succeeded' | 'failed'
 type RightPanelMode = 'sample' | 'history'
 type SharedHistoryMode = AiVideoGeneratorModeId | 'text-to-image' | 'image-to-image'
+type ReferencePreview = {
+  kind: 'image' | 'video'
+  src: string
+  label: string
+  poster?: string
+}
 
 type UploadedMediaReferences = {
   generationUrls: string[]
@@ -773,6 +780,7 @@ export default function AiVideoGeneratorTool({
   const videoOutputSettingsRef = useRef<HTMLDivElement>(null)
   const promptMentionRootRef = useRef<HTMLDivElement>(null)
   const promptTextareaRef = useRef<HTMLTextAreaElement>(null)
+  const promptMentionOverlayRef = useRef<HTMLDivElement>(null)
   const promptReferenceMentionOrdinalRegistryRef = useRef<PromptReferenceMentionOrdinalRegistry | null>(null)
   if (!promptReferenceMentionOrdinalRegistryRef.current) {
     promptReferenceMentionOrdinalRegistryRef.current = createPromptReferenceMentionOrdinalRegistry()
@@ -873,7 +881,7 @@ export default function AiVideoGeneratorTool({
   const [history, setHistory] = useState<VideoHistoryItem[]>([])
   const [activeSettingsHistoryItemId, setActiveSettingsHistoryItemId] = useState<string | null>(null)
   const [rightMode, setRightMode] = useState<RightPanelMode>('sample')
-  const [motionVideoPreview, setMotionVideoPreview] = useState<{ src: string; label: string; poster?: string } | null>(null)
+  const [referencePreview, setReferencePreview] = useState<ReferencePreview | null>(null)
   const shouldAllowLeftOverlay = isModelMenuOpen
   const supportsNativeAudio = Boolean(modelConfig.supportsNativeAudio)
   const supportsWebSearch = Boolean(modelConfig.supportsWebSearch)
@@ -2838,7 +2846,14 @@ export default function AiVideoGeneratorTool({
     return (
       <div className="flex flex-wrap gap-2">
         {imageUrls.map((url, index) => (
-          <div key={`image-${url}-${index}`} data-video-history-reference-image className="shrink-0">
+          <button
+            key={`image-${url}-${index}`}
+            type="button"
+            data-video-history-reference-image
+            aria-label={`Preview reference image ${index + 1}`}
+            onClick={() => setReferencePreview({ kind: 'image', src: url, label: `${text.referenceImage} ${index + 1}` })}
+            className="shrink-0 rounded-lg transition hover:ring-2 hover:ring-[#9333EA]/50 focus:outline-none focus:ring-2 focus:ring-[#9333EA]"
+          >
             <img
               src={url}
               alt={text.referenceImage}
@@ -2846,19 +2861,25 @@ export default function AiVideoGeneratorTool({
               loading="lazy"
               decoding="async"
             />
-          </div>
+          </button>
         ))}
         {motionVideoUrls.map((url, index) => (
-          <div key={`video-${url}-${index}`} className="shrink-0">
+          <button
+            key={`video-${url}-${index}`}
+            type="button"
+            data-video-history-reference-video
+            aria-label={`Preview reference video ${index + 1}`}
+            onClick={() => setReferencePreview({ kind: 'video', src: url, label: `Reference video ${index + 1}` })}
+            className="shrink-0 rounded-lg transition hover:ring-2 hover:ring-[#9333EA]/50 focus:outline-none focus:ring-2 focus:ring-[#9333EA]"
+          >
             <video
-              data-video-history-reference-video
               src={url}
               className="h-14 w-20 rounded-lg bg-slate-950 object-contain object-center ring-1 ring-[#E0E7FF]"
               preload="metadata"
               muted
               playsInline
             />
-          </div>
+          </button>
         ))}
         {audioUrls.map((url, index) => (
           <audio
@@ -3585,7 +3606,7 @@ export default function AiVideoGeneratorTool({
                       onReplace={(item, files) => {
                         if (files?.[0]) void replaceMotionVideoWithFile(item.index, files[0], item.source)
                       }}
-                      onPreview={(item) => setMotionVideoPreview({ src: item.src, label: item.label, poster: item.poster })}
+                      onPreview={(item) => setReferencePreview({ kind: 'video', src: item.src, label: item.label, poster: item.poster })}
                       onDelete={removeSelectedMotionVideo}
                     />
                   ) : null}
@@ -3613,7 +3634,7 @@ export default function AiVideoGeneratorTool({
                     />
                   ) : null}
 
-                  <div ref={promptMentionRootRef}>
+                  <div ref={promptMentionRootRef} className="relative overflow-visible">
                     <label className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{promptLabel}</label>
                     <div className="relative overflow-hidden rounded-xl border border-slate-200/90 bg-slate-50/50 transition-colors focus-within:border-[#4F46E5] focus-within:ring-2 focus-within:ring-[#4F46E5]/40">
                       <textarea
@@ -3636,10 +3657,17 @@ export default function AiVideoGeneratorTool({
                           : undefined}
                         placeholder={text.promptPlaceholder}
                         rows={4}
-                        className="relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 text-slate-800 placeholder:text-slate-400 focus:outline-none md:text-sm"
+                        className={`relative h-[7.5rem] w-full scroll-mb-28 resize-none overflow-y-auto bg-transparent px-4 py-3 text-base leading-6 placeholder:text-slate-400 focus:outline-none md:text-sm ${supportsPromptReferenceMentions && prompt ? 'text-transparent caret-slate-800' : 'text-slate-800'}`}
                       />
+                      {supportsPromptReferenceMentions && prompt ? (
+                        <PromptReferenceMentionOverlay
+                          value={prompt}
+                          items={promptReferenceMentionItems}
+                          mirrorRef={promptMentionOverlayRef}
+                        />
+                      ) : null}
                       {(supportsPromptReferenceMentions || prompt) ? (
-                        <div className="relative flex h-11 items-center justify-between px-3">
+                        <div className="relative flex h-11 items-center px-3">
                           {supportsPromptReferenceMentions ? (
                             <button
                               type="button"
@@ -3666,7 +3694,7 @@ export default function AiVideoGeneratorTool({
                                 setPromptMentionTriggerIndex(null)
                                 requestAnimationFrame(() => promptTextareaRef.current?.focus())
                               }}
-                              className="inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
+                              className="ml-auto inline-flex h-7 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-semibold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/30"
                             >
                               <DeleteIcon size={14} />
                               Clear
@@ -3674,15 +3702,15 @@ export default function AiVideoGeneratorTool({
                           ) : null}
                         </div>
                       ) : null}
-                      {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
-                        <PromptReferenceMentionPicker
-                          id={promptMentionPickerId}
-                          items={promptReferenceMentionItems}
-                          activeItemId={promptReferenceMentionItems[promptMentionActiveIndex]?.id}
-                          onSelect={handlePromptReferenceMentionSelect}
-                        />
-                      ) : null}
                     </div>
+                    {supportsPromptReferenceMentions && isPromptMentionPickerOpen ? (
+                      <PromptReferenceMentionPicker
+                        id={promptMentionPickerId}
+                        items={promptReferenceMentionItems}
+                        activeItemId={promptReferenceMentionItems[promptMentionActiveIndex]?.id}
+                        onSelect={handlePromptReferenceMentionSelect}
+                      />
+                    ) : null}
                   </div>
 
                   {activeMode === 'image-to-video' && supportsMotionReferenceVideo ? (
@@ -3967,36 +3995,44 @@ export default function AiVideoGeneratorTool({
                 ) : null}
               </div>
       </div>
-      {motionVideoPreview && (
+      {referencePreview && (
         <div
-          data-motion-video-preview-dialog
+          data-video-reference-preview-dialog
           className="fixed inset-0 z-[10050] flex items-center justify-center bg-slate-950/70 px-4 py-6 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
-          aria-label={motionVideoPreview.label}
-          onClick={() => setMotionVideoPreview(null)}
+          aria-label={referencePreview.label}
+          onClick={() => setReferencePreview(null)}
         >
           <div className="w-full max-w-3xl overflow-hidden rounded-2xl bg-slate-950 shadow-2xl shadow-slate-950/40 ring-1 ring-white/10" onClick={(event) => event.stopPropagation()}>
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 text-white">
-              <p className="min-w-0 truncate text-sm font-bold">{motionVideoPreview.label}</p>
+              <p className="min-w-0 truncate text-sm font-bold">{referencePreview.label}</p>
               <button
                 type="button"
-                onClick={() => setMotionVideoPreview(null)}
+                onClick={() => setReferencePreview(null)}
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
-                aria-label="Close motion reference preview"
+                aria-label="Close reference preview"
               >
                 <CloseIcon size={18} />
               </button>
             </div>
-            <video
-              src={motionVideoPreview.src}
-              poster={motionVideoPreview.poster}
-              className="block max-h-[78vh] w-full bg-black object-contain"
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-            />
+            {referencePreview.kind === 'image' ? (
+              <img
+                src={referencePreview.src}
+                alt={referencePreview.label}
+                className="block max-h-[78vh] w-full bg-black object-contain"
+              />
+            ) : (
+              <video
+                src={referencePreview.src}
+                poster={referencePreview.poster}
+                className="block max-h-[78vh] w-full bg-black object-contain"
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+              />
+            )}
           </div>
         </div>
       )}
