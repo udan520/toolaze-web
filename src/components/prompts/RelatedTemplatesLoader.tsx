@@ -1,8 +1,26 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import type { PromptItem } from '@/lib/prompts'
 import { RelatedPromptGrid } from './PromptGallery'
+
+const RELATED_TEMPLATES_LABELS = {
+  en: 'Related templates',
+  de: 'Ähnliche Vorlagen',
+  ja: '関連テンプレート',
+  es: 'Plantillas relacionadas',
+  'zh-TW': '相關範本',
+  pt: 'Modelos relacionados',
+  fr: 'Modèles associés',
+  ko: '관련 템플릿',
+  it: 'Modelli correlati',
+} as const
+
+function getRelatedTemplatesLabels(pathname: string | null) {
+  const firstPart = pathname?.split('/').filter(Boolean)[0] || 'en'
+  return RELATED_TEMPLATES_LABELS[firstPart as keyof typeof RELATED_TEMPLATES_LABELS] || RELATED_TEMPLATES_LABELS.en
+}
 
 function getRelatedTokens(item: PromptItem) {
   return new Set(
@@ -34,6 +52,7 @@ function collectionSlug(value: string): string {
 }
 
 export default function RelatedTemplatesLoader({ baseItem }: { baseItem: PromptItem }) {
+  const relatedTemplatesLabel = getRelatedTemplatesLabels(usePathname())
   const [relatedItems, setRelatedItems] = useState<PromptItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -68,9 +87,9 @@ export default function RelatedTemplatesLoader({ baseItem }: { baseItem: PromptI
 
   if (isLoading) {
     return (
-      <section className="bg-[#F8FAFF] px-6 py-16" aria-label="Related templates">
+      <section className="bg-[#F8FAFF] px-6 py-16" aria-label={relatedTemplatesLabel}>
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-8 text-3xl font-black tracking-tight text-slate-900">Related templates</h2>
+          <h2 className="mb-8 text-3xl font-black tracking-tight text-slate-900">{relatedTemplatesLabel}</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             {Array.from({ length: 3 }).map((_, index) => (
               <div key={index} className="overflow-hidden rounded-[2rem] border border-indigo-100 bg-white shadow-sm shadow-indigo-50">
@@ -91,9 +110,9 @@ export default function RelatedTemplatesLoader({ baseItem }: { baseItem: PromptI
   if (!relatedItems.length) return null
 
   return (
-    <section className="bg-[#F8FAFF] px-6 py-16" aria-label="Related templates">
+    <section className="bg-[#F8FAFF] px-6 py-16" aria-label={relatedTemplatesLabel}>
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-3xl font-black tracking-tight text-slate-900">Related templates</h2>
+        <h2 className="mb-8 text-3xl font-black tracking-tight text-slate-900">{relatedTemplatesLabel}</h2>
         <RelatedPromptGrid items={relatedItems} />
       </div>
     </section>

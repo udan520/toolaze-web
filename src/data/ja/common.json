@@ -305,6 +305,7 @@
     "aiImageGenerator": "AI画像生成ツール",
     "refundPolicy": "返金ポリシー",
     "acceptableUse": "利用許可ポリシー",
+    "aiVideoGenerator": "AI動画ジェネレーター",
     "textToVideoGenerator": "テキストから動画生成",
     "imageToVideoGenerator": "画像から動画生成",
     "aiDanceGenerator": "AIダンスジェネレーター",
@@ -604,6 +605,7 @@
     },
     "specializedFontGeneratorToolsDesc": "特定のプラットフォームや用途向けの専門的なフォントジェネレーターツールです。",
     "watermarkRemoverTool": {
+      "rightsNotice": "アップロードすることで、この画像の所有者であるか、選択したオーバーレイを編集・削除する権限があることを確認します。",
       "uploadTitle": "画像をクリックまたはドラッグしてください",
       "uploadFormats": "JPG、PNG、WebP（最大30MB）。高速処理には2MB以下または1280px以下を推奨します。",
       "uploadNew": "新しくアップロード",
@@ -1135,6 +1137,21 @@
     "statusGenerating": "生成中",
     "statusFailed": "失敗",
     "failureFallback": "生成に失敗しました。リクエストを再作成してもう一度お試しください。"
+  },
+  "account": {
+    "credits": "クレジット",
+    "buyCredits": "クレジットを購入",
+    "earnCredits": "クレジットを獲得",
+    "support": "ヘルプとサポート"
+  },
+  "checkInNudge": {
+    "waiting": "{credits} クレジットを受け取れます。",
+    "dayReward": "{day}日目 · +{credits} クレジット",
+    "historyReward": "デイリーチェックイン報酬（{day}日目）",
+    "claimed": "受取済み",
+    "claiming": "受け取り中...",
+    "claim": "{credits} クレジットを受け取る",
+    "seeRewards": "報酬を見る"
   },
   "creditsPage": {
     "metadataTitle": "クレジット履歴 - Toolaze",

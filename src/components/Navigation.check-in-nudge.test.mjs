@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { join } from 'node:path'
 import test from 'node:test'
 
 const navigationSource = readFileSync(new URL('./Navigation.tsx', import.meta.url), 'utf8')
@@ -53,13 +54,13 @@ test('daily check-in nudge shows dynamic claim and see rewards actions', () => {
     navigationSource.indexOf('const renderAccountMenu'),
   )
 
-  assert.match(nudgeSource, /You have \{checkInNudge\.rewardCredits\} credits waiting\./)
-  assert.match(nudgeSource, /Claim \{checkInNudge\.rewardCredits\}/)
+  assert.match(nudgeSource, /checkInTranslations\.waiting\.replace\('\{credits\}', String\(checkInNudge\.rewardCredits\)\)/)
+  assert.match(nudgeSource, /checkInTranslations\.claim\.replace\('\{credits\}', String\(checkInNudge\.rewardCredits\)\)/)
   assert.doesNotMatch(nudgeSource, /Claim \+\{checkInNudge\.rewardCredits\}/)
-  assert.match(nudgeSource, /Claim \{checkInNudge\.rewardCredits\}[\s\S]*\/credits-icons\/diamond-3d-indigo\.svg/)
+  assert.match(nudgeSource, /checkInTranslations\.claim\.replace\('[\s\S]*\/credits-icons\/diamond-3d-indigo\.svg/)
   assert.doesNotMatch(nudgeSource, /bg-white\/90 p-0\.5 shadow-sm/)
-  assert.match(nudgeSource, /See Rewards/)
-  assert.match(nudgeSource, /className="[^"]*flex items-center justify-center[^"]*"[\s\S]*>\s*See Rewards/)
+  assert.match(nudgeSource, /checkInTranslations\.seeRewards/)
+  assert.match(nudgeSource, /className="[^"]*flex items-center justify-center[^"]*"[\s\S]*>\s*\{checkInTranslations\.seeRewards\}/)
   assert.match(nudgeSource, /dismissCheckInNudge/)
   assert.doesNotMatch(nudgeSource, /View rewards/)
 })
@@ -190,7 +191,7 @@ test('daily check-in nudge shows claimed state before dismissing after claim', (
 
   assert.match(navigationSource, /const \[checkInNudgeClaimState, setCheckInNudgeClaimState\] = useState<'idle' \| 'claiming' \| 'claimed'>\('idle'\)/)
   assert.doesNotMatch(nudgeSource, /onClickCapture=\{markCheckInNudgeInteracted\}/)
-  assert.match(nudgeSource, /checkInNudgeClaimState === 'claimed'[\s\S]*Claimed/)
+  assert.match(nudgeSource, /checkInNudgeClaimState === 'claimed'[\s\S]*checkInTranslations\.claimed/)
   assert.match(claimSource, /setCheckInNudgeClaimState\('claiming'\)/)
   assert.match(claimSource, /setCheckInNudgeClaimState\('claimed'\)/)
   assert.match(claimSource, /window\.setTimeout\(\(\) => \{[\s\S]*window\.dispatchEvent\(new CustomEvent\('toolaze:check-in-updated'/)
@@ -211,6 +212,70 @@ test('account menu English labels use Title Case', () => {
   assert.match(navigationSource, /buyCredits: 'Buy Credits'/)
   assert.match(navigationSource, /earnCredits: 'Earn Credits'/)
   assert.match(navigationSource, /signOut: 'Sign Out'/)
+})
+
+test('account menu reuses localized credit and history copy instead of English defaults', () => {
+  assert.match(navigationSource, /const creditsPage = initialTranslations\?\.creditsPage \|\| \{\}/)
+  assert.match(navigationSource, /const historyPage = initialTranslations\?\.historyPage \|\| \{\}/)
+  assert.match(
+    navigationSource,
+    /availableCredits: account\.availableCredits \|\| creditsPage\.availableCredits/,
+  )
+  assert.match(
+    navigationSource,
+    /creditHistory: account\.creditHistory \|\| creditsPage\.title/,
+  )
+  assert.match(
+    navigationSource,
+    /history: account\.history \|\| historyPage\.title/,
+  )
+  assert.match(
+    navigationSource,
+    /balanceAfter: account\.balanceAfter \|\| creditsPage\.balanceAfter/,
+  )
+})
+
+test('account menu localizes daily check-in rewards and known tool labels in recent transactions', () => {
+  assert.match(navigationSource, /function getLocalizedCreditTransactionTitle\(/)
+  assert.match(navigationSource, /transaction\.reason === 'daily_checkin'/)
+  assert.match(navigationSource, /checkInTranslations\.historyReward/)
+  assert.match(navigationSource, /transactionTitle === 'Clothes Changer'/)
+  assert.match(navigationSource, /navTranslations\.aiClothesChanger/)
+  assert.match(navigationSource, /getLocalizedCreditTransactionTitle\(transaction, navTranslations, checkInTranslations\)/)
+})
+
+test('daily check-in nudge receives every visible string from translations', () => {
+  const nudgeSource = navigationSource.slice(
+    navigationSource.indexOf('const renderCheckInNudge'),
+    navigationSource.indexOf('const renderAccountMenu'),
+  )
+
+  assert.match(navigationSource, /const \[checkInTranslations\] = useState\(getInitialCheckInTranslations\(initialTranslations\)\)/)
+  assert.match(nudgeSource, /checkInTranslations\.waiting/)
+  assert.match(nudgeSource, /checkInTranslations\.dayReward/)
+  assert.match(nudgeSource, /checkInTranslations\.claimed/)
+  assert.match(nudgeSource, /checkInTranslations\.claiming/)
+  assert.match(nudgeSource, /checkInTranslations\.claim/)
+  assert.match(nudgeSource, /checkInTranslations\.seeRewards/)
+  assert.doesNotMatch(nudgeSource, /You have \{checkInNudge\.rewardCredits\} credits waiting\.|See Rewards|Claiming\.\.\./)
+})
+
+test('every supported locale provides account menu and check-in nudge copy', () => {
+  const localeRoot = new URL('../data/', import.meta.url)
+  const requiredAccountKeys = ['credits', 'buyCredits', 'earnCredits', 'support']
+  const requiredCheckInKeys = ['waiting', 'dayReward', 'historyReward', 'claimed', 'claiming', 'claim', 'seeRewards']
+
+  for (const locale of readdirSync(localeRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && existsSync(join(localeRoot.pathname, entry.name, 'common.json')))
+    .map((entry) => entry.name)) {
+    const localeData = JSON.parse(readFileSync(join(localeRoot.pathname, locale, 'common.json'), 'utf8'))
+    for (const key of requiredAccountKeys) {
+      assert.equal(typeof localeData.account?.[key], 'string', `${locale} is missing account.${key}`)
+    }
+    for (const key of requiredCheckInKeys) {
+      assert.equal(typeof localeData.checkInNudge?.[key], 'string', `${locale} is missing checkInNudge.${key}`)
+    }
+  }
 })
 
 test('navigation pricing label can use localized nav or footer copy', () => {

@@ -305,6 +305,7 @@
     "aiImageGenerator": "KI-Bildgenerator",
     "refundPolicy": "Rückerstattungsrichtlinie",
     "acceptableUse": "Richtlinie zur zulässigen Nutzung",
+    "aiVideoGenerator": "KI-Videogenerator",
     "textToVideoGenerator": "Text-zu-Video-Generator",
     "imageToVideoGenerator": "Bild-zu-Video-Generator",
     "aiDanceGenerator": "KI-Tanzgenerator",
@@ -592,6 +593,7 @@
     },
     "specializedFontGeneratorToolsDesc": "Spezialisierte Schriftgenerator-Tools für bestimmte Plattformen und Anwendungsfälle.",
     "watermarkRemoverTool": {
+      "rightsNotice": "Mit dem Hochladen bestätigst du, dass dir dieses Bild gehört oder du berechtigt bist, die ausgewählte Überlagerung zu bearbeiten und zu entfernen.",
       "uploadTitle": "Bild hier klicken oder hineinziehen",
       "uploadFormats": "JPG, PNG, WebP (max. 30 MB). Unter 2 MB oder 1280 px empfohlen für schnellere Verarbeitung.",
       "uploadNew": "Neu hochladen",
@@ -1123,6 +1125,21 @@
     "statusGenerating": "Wird generiert",
     "statusFailed": "Fehlgeschlagen",
     "failureFallback": "Die Generierung ist fehlgeschlagen. Erstellen Sie die Anfrage erneut."
+  },
+  "account": {
+    "credits": "Credits",
+    "buyCredits": "Credits kaufen",
+    "earnCredits": "Credits verdienen",
+    "support": "Hilfe & Support"
+  },
+  "checkInNudge": {
+    "waiting": "Du hast {credits} Credits zum Abholen.",
+    "dayReward": "Tag {day} · +{credits} Credits",
+    "historyReward": "Tägliche Check-in-Belohnung (Tag {day})",
+    "claimed": "Eingelöst",
+    "claiming": "Wird eingelöst...",
+    "claim": "{credits} Credits einlösen",
+    "seeRewards": "Belohnungen ansehen"
   },
   "creditsPage": {
     "metadataTitle": "Credit-Verlauf - Toolaze",

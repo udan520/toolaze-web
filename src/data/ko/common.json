@@ -305,6 +305,7 @@
     "aiImageGenerator": "AI 이미지 생성기",
     "refundPolicy": "환불 정책",
     "acceptableUse": "허용 사용 정책",
+    "aiVideoGenerator": "AI 동영상 생성기",
     "textToVideoGenerator": "텍스트-동영상 생성기",
     "imageToVideoGenerator": "이미지-동영상 생성기",
     "aiDanceGenerator": "AI 댄스 생성기",
@@ -592,6 +593,7 @@
     },
     "specializedFontGeneratorToolsDesc": "특정 플랫폼과 사용 사례를 위한 전문 폰트 생성기 도구입니다.",
     "watermarkRemoverTool": {
+      "rightsNotice": "이미지를 업로드하면 해당 이미지를 소유하거나 선택한 오버레이를 편집 및 제거할 권한이 있음을 확인합니다.",
       "uploadTitle": "이미지를 클릭하거나 끌어다 놓으세요",
       "uploadFormats": "JPG, PNG, WebP(최대 30MB). 더 빠른 처리를 위해 2MB 이하 또는 1280px 이하를 권장합니다.",
       "uploadNew": "새로 업로드",
@@ -1123,6 +1125,21 @@
     "statusGenerating": "생성 중",
     "statusFailed": "실패",
     "failureFallback": "생성에 실패했습니다. 요청을 다시 생성해 시도하세요."
+  },
+  "account": {
+    "credits": "크레딧",
+    "buyCredits": "크레딧 구매",
+    "earnCredits": "크레딧 받기",
+    "support": "도움말 및 지원"
+  },
+  "checkInNudge": {
+    "waiting": "받을 수 있는 크레딧이 {credits}개 있습니다.",
+    "dayReward": "{day}일차 · +{credits} 크레딧",
+    "historyReward": "일일 체크인 보상 ({day}일차)",
+    "claimed": "받음",
+    "claiming": "받는 중...",
+    "claim": "크레딧 {credits} 받기",
+    "seeRewards": "보상 보기"
   },
   "creditsPage": {
     "metadataTitle": "크레딧 활동 - Toolaze",

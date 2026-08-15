@@ -189,6 +189,19 @@ test('Prompt example controls are locale-aware instead of hardcoded English', ()
   assert.doesNotMatch(promptExamples, />\s*Use Prompt\s*</)
   assert.doesNotMatch(promptExamples, /['"]Copy Prompt['"]/)
   assert.doesNotMatch(promptExamples, /['"]Copied['"]/)
+  assert.doesNotMatch(promptExamples, />Reference Image</)
+  assert.doesNotMatch(promptExamples, />Result Video</)
+  assert.match(promptExamples, /referenceImage:/)
+  assert.match(promptExamples, /resultVideo:/)
+})
+
+test('related prompt templates use locale-aware section copy', () => {
+  const relatedTemplates = readProjectFile('src/components/prompts/RelatedTemplatesLoader.tsx')
+
+  assert.match(relatedTemplates, /RELATED_TEMPLATES_LABELS/)
+  assert.match(relatedTemplates, /getRelatedTemplatesLabels/)
+  assert.doesNotMatch(relatedTemplates, />Related templates</)
+  assert.doesNotMatch(relatedTemplates, /aria-label="Related templates"/)
 })
 
 test('Nano Banana credit exhausted text exists for every supported non-English locale', () => {
@@ -609,7 +622,7 @@ test('workspace sidebar labels are localized instead of hardcoded English', () =
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*建立影片/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*AI 工具/)
   assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*模型/)
-  assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*作品庫/)
+  assert.match(workspaceShell, /['"]zh-TW['"][\s\S]*歷史記錄/)
   assert.match(workspaceShell, /'editImage'[\s\S]*href:\s*'\/ai-image-to-image-generator'[\s\S]*'createVideo'[\s\S]*href:\s*'\/ai-video-generator'/)
 })
 
@@ -775,7 +788,7 @@ test('core model landing JSON localizes visible comparison and FAQ titles', () =
       seedanceEn,
       readJson(`src/data/${locale}/seedance-2-5.json`),
       locale,
-      ['modelComparison.title', 'rating.rating'],
+      ['modelComparison.title', 'modelComparison.subtitle'],
     )
   }
 
@@ -784,7 +797,7 @@ test('core model landing JSON localizes visible comparison and FAQ titles', () =
     seedanceEn,
     readJson('src/data/de/seedance-2-5.json'),
     'de',
-    ['features.items.5.title', 'scenes.2.title', 'faqTitle'],
+    ['featureStories.items.3.title', 'howToUse.steps.2.title', 'faqTitle'],
   )
 
   for (const locale of ['ja', 'ko']) {

@@ -305,6 +305,7 @@
     "aiImageGenerator": "Generatore di immagini IA",
     "refundPolicy": "Politica di rimborso",
     "acceptableUse": "Politica di uso accettabile",
+    "aiVideoGenerator": "Generatore video IA",
     "textToVideoGenerator": "Generatore da testo a video",
     "imageToVideoGenerator": "Generatore da immagine a video",
     "aiDanceGenerator": "Generatore di danza IA",
@@ -592,6 +593,7 @@
     },
     "specializedFontGeneratorToolsDesc": "Strumenti specializzati di generazione font per piattaforme e casi d’uso specifici.",
     "watermarkRemoverTool": {
+      "rightsNotice": "Caricando un'immagine, confermi di possederla o di avere il permesso di modificare e rimuovere la sovrapposizione selezionata.",
       "uploadTitle": "Fai clic o trascina qui un’immagine",
       "uploadFormats": "JPG, PNG, WebP (max 30 MB). Meno di 2 MB o 1280 px consigliati per un’elaborazione più rapida.",
       "uploadNew": "Carica nuova",
@@ -1123,6 +1125,21 @@
     "statusGenerating": "Generazione in corso",
     "statusFailed": "Non riuscito",
     "failureFallback": "La generazione non è riuscita. Ricrea la richiesta per riprovare."
+  },
+  "account": {
+    "credits": "crediti",
+    "buyCredits": "Acquista crediti",
+    "earnCredits": "Guadagna crediti",
+    "support": "Aiuto e supporto"
+  },
+  "checkInNudge": {
+    "waiting": "Hai {credits} crediti da riscattare.",
+    "dayReward": "Giorno {day} · +{credits} crediti",
+    "historyReward": "Ricompensa check-in giornaliero (giorno {day})",
+    "claimed": "Riscattato",
+    "claiming": "Riscatto in corso...",
+    "claim": "Riscatta {credits}",
+    "seeRewards": "Vedi ricompense"
   },
   "creditsPage": {
     "metadataTitle": "Attività crediti - Toolaze",

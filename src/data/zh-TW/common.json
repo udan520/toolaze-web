@@ -305,6 +305,7 @@
     "aiImageGenerator": "AI 圖像產生器",
     "refundPolicy": "退款政策",
     "acceptableUse": "可接受使用政策",
+    "aiVideoGenerator": "AI 影片生成器",
     "textToVideoGenerator": "文字轉影片生成器",
     "imageToVideoGenerator": "圖像轉影片生成器",
     "aiDanceGenerator": "AI 跳舞生成器",
@@ -592,6 +593,7 @@
     },
     "specializedFontGeneratorToolsDesc": "針對特定平台與使用情境的專業字體產生器工具。",
     "watermarkRemoverTool": {
+      "rightsNotice": "上傳即表示你確認擁有此圖片，或已取得編輯和移除所選覆蓋層的授權。",
       "uploadTitle": "點擊或拖曳圖片到這裡",
       "uploadFormats": "JPG、PNG、WebP（最大 30MB）。建議低於 2MB 或 1280px 以加快處理。",
       "uploadNew": "重新上傳",
@@ -1123,6 +1125,21 @@
     "statusGenerating": "生成中",
     "statusFailed": "生成失敗",
     "failureFallback": "生成失敗，請重新建立此任務後再試一次。"
+  },
+  "account": {
+    "credits": "點數",
+    "buyCredits": "購買點數",
+    "earnCredits": "獲得點數",
+    "support": "幫助與支援"
+  },
+  "checkInNudge": {
+    "waiting": "你有 {credits} 點數可領取。",
+    "dayReward": "第 {day} 天 · +{credits} 點數",
+    "historyReward": "每日簽到獎勵（第 {day} 天）",
+    "claimed": "已領取",
+    "claiming": "領取中...",
+    "claim": "領取 {credits}",
+    "seeRewards": "查看獎勵"
   },
   "creditsPage": {
     "metadataTitle": "點數紀錄 - Toolaze",

@@ -305,6 +305,7 @@
     "aiImageGenerator": "Generador de imágenes IA",
     "refundPolicy": "Política de reembolso",
     "acceptableUse": "Política de uso aceptable",
+    "aiVideoGenerator": "Generador de videos con IA",
     "textToVideoGenerator": "Generador de texto a video",
     "imageToVideoGenerator": "Generador de imagen a video",
     "aiDanceGenerator": "Generador de baile IA",
@@ -592,6 +593,7 @@
       "moreTools": "Más herramientas de Seedance 2.0"
     },
     "watermarkRemoverTool": {
+      "rightsNotice": "Al subir una imagen, confirmas que te pertenece o que tienes permiso para editar y eliminar la superposición seleccionada.",
       "uploadTitle": "Haz clic o arrastra una imagen aquí",
       "uploadFormats": "JPG, PNG, WebP (máx. 30 MB). Menos de 2 MB o 1280 px recomendado para procesar más rápido.",
       "uploadNew": "Subir otra",
@@ -1123,6 +1125,21 @@
     "statusGenerating": "Generando",
     "statusFailed": "Fallido",
     "failureFallback": "La generación falló. Vuelve a crear la solicitud para intentarlo de nuevo."
+  },
+  "account": {
+    "credits": "créditos",
+    "buyCredits": "Comprar créditos",
+    "earnCredits": "Ganar créditos",
+    "support": "Ayuda y soporte"
+  },
+  "checkInNudge": {
+    "waiting": "Tienes {credits} créditos pendientes.",
+    "dayReward": "Día {day} · +{credits} créditos",
+    "historyReward": "Recompensa de registro diario (día {day})",
+    "claimed": "Reclamado",
+    "claiming": "Reclamando...",
+    "claim": "Reclamar {credits}",
+    "seeRewards": "Ver recompensas"
   },
   "creditsPage": {
     "metadataTitle": "Actividad de créditos - Toolaze",

@@ -68,7 +68,7 @@ test('footer no longer renders utility directory groups', () => {
 test('footer tool group titles exist in every supported locale', () => {
   for (const locale of locales) {
     const common = JSON.parse(readFileSync(`src/data/${locale}/common.json`, 'utf8'))
-    for (const key of ['aiImage', 'aiVideo', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'aiBikiniGenerator', 'unrestrictedAiImageGenerator', 'wan25Video']) {
+    for (const key of ['aiImage', 'aiVideo', 'aiVideoGenerator', 'aiImageModel', 'aiVideoModel', 'aiClothesChanger', 'aiBikiniGenerator', 'unrestrictedAiImageGenerator', 'wan25Video']) {
       assert.equal(typeof common.footer[key], 'string', `${locale} is missing footer.${key}`)
       assert.ok(common.footer[key].length > 0, `${locale}.footer.${key} is empty`)
     }

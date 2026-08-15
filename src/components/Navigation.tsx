@@ -152,7 +152,7 @@ const defaultAccountTranslations = {
   availableCredits: 'Available Credits',
   creditHistory: 'Credit History',
   noCreditActivity: 'No Credit Activity Yet.',
-  balance: 'Balance',
+  balanceAfter: 'Balance: {balance}',
   credits: 'credits',
   seeAll: 'See All',
   buyCredits: 'Buy Credits',
@@ -162,6 +162,16 @@ const defaultAccountTranslations = {
   support: 'Help & Support',
   supportEmail: 'support@toolaze.com',
   signOut: 'Sign Out',
+}
+
+const defaultCheckInTranslations = {
+  waiting: 'You have {credits} credits waiting.',
+  dayReward: 'Day {day} · +{credits} credits',
+  historyReward: 'Daily Check-In Reward (Day {day})',
+  claimed: 'Claimed',
+  claiming: 'Claiming...',
+  claim: 'Claim {credits}',
+  seeRewards: 'See Rewards',
 }
 
 const defaultCreditTypeTranslations: CreditTransactionTypeLabels = {
@@ -391,9 +401,29 @@ function getInitialAuthTranslations(initialTranslations?: any) {
 }
 
 function getInitialAccountTranslations(initialTranslations?: any) {
+  const account = initialTranslations?.account || {}
+  const creditsPage = initialTranslations?.creditsPage || {}
+  const historyPage = initialTranslations?.historyPage || {}
+  const common = initialTranslations?.common || {}
+
   return {
     ...defaultAccountTranslations,
-    ...(initialTranslations?.account || {}),
+    ...account,
+    availableCredits: account.availableCredits || creditsPage.availableCredits || defaultAccountTranslations.availableCredits,
+    creditHistory: account.creditHistory || creditsPage.title || defaultAccountTranslations.creditHistory,
+    noCreditActivity: account.noCreditActivity || creditsPage.emptyTitle || defaultAccountTranslations.noCreditActivity,
+    balanceAfter: account.balanceAfter || creditsPage.balanceAfter || defaultAccountTranslations.balanceAfter,
+    seeAll: account.seeAll || common.nanoBananaTool?.viewAll || defaultAccountTranslations.seeAll,
+    history: account.history || historyPage.title || defaultAccountTranslations.history,
+    viewAll: account.viewAll || common.nanoBananaTool?.viewAll || defaultAccountTranslations.viewAll,
+    signOut: account.signOut || initialTranslations?.auth?.signOut || defaultAccountTranslations.signOut,
+  }
+}
+
+function getInitialCheckInTranslations(initialTranslations?: any) {
+  return {
+    ...defaultCheckInTranslations,
+    ...(initialTranslations?.checkInNudge || {}),
   }
 }
 
@@ -428,6 +458,25 @@ type CreditTransaction = {
 type CreditSummary = {
   balance: number
   transactions: CreditTransaction[]
+}
+
+function getLocalizedCreditTransactionTitle(
+  transaction: CreditTransaction,
+  navTranslations: typeof defaultNavTranslations,
+  checkInTranslations: typeof defaultCheckInTranslations,
+) {
+  const transactionTitle = formatCreditTransactionTitle(transaction)
+
+  if (transaction.reason === 'daily_checkin') {
+    const day = String(transaction.description || '').match(/\(Day\s+(\d+)\)/i)?.[1] || ''
+    return checkInTranslations.historyReward.replace('{day}', day)
+  }
+
+  if (transactionTitle === 'Clothes Changer') {
+    return navTranslations.aiClothesChanger
+  }
+
+  return transactionTitle
 }
 
 type TopNotice = {
@@ -609,6 +658,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
   const [navTranslations, setNavTranslations] = useState(getInitialNavTranslations(initialTranslations))
   const [authTranslations, setAuthTranslations] = useState(getInitialAuthTranslations(initialTranslations))
   const [accountTranslations, setAccountTranslations] = useState(getInitialAccountTranslations(initialTranslations))
+  const [checkInTranslations] = useState(getInitialCheckInTranslations(initialTranslations))
   const [creditTypeTranslations, setCreditTypeTranslations] = useState(getInitialCreditTypeTranslations(initialTranslations))
   const [thirdLevelMenuData, setThirdLevelMenuData] = useState<Record<string, ClientMenuItem[]>>({
     'image-compressor': [],
@@ -1628,9 +1678,9 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
       <div className="space-y-2">
         {recentTransactions.map((transaction) => {
           const isPositive = transaction.amount > 0
-          const transactionTitle = formatCreditTransactionTitle(transaction)
+          const transactionTitle = getLocalizedCreditTransactionTitle(transaction, navTranslations, checkInTranslations)
           const transactionSupplement = formatCreditTransactionSupplement(transaction)
-          const timestampAndBalance = `${formatCreditTransactionTimestamp(transaction.createdAt)} · ${accountTranslations.balance}: ${transaction.balanceAfter.toLocaleString('en-US')}`
+          const timestampAndBalance = `${formatCreditTransactionTimestamp(transaction.createdAt)} · ${accountTranslations.balanceAfter.replace('{balance}', transaction.balanceAfter.toLocaleString('en-US'))}`
           return (
             <div key={transaction.id} className="rounded-xl border border-slate-100 bg-slate-50/70 px-3 py-2">
               <div className="flex items-start justify-between gap-3">
@@ -1691,10 +1741,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
           </div>
           <div className="min-w-0 pr-4">
             <p className="text-sm font-extrabold text-slate-950">
-              You have {checkInNudge.rewardCredits} credits waiting.
+              {checkInTranslations.waiting.replace('{credits}', String(checkInNudge.rewardCredits))}
             </p>
             <p className="mt-0.5 text-xs leading-5 text-slate-600">
-              Day {checkInNudge.day} · +{checkInNudge.rewardCredits} credits
+              {checkInTranslations.dayReward
+                .replace('{day}', String(checkInNudge.day))
+                .replace('{credits}', String(checkInNudge.rewardCredits))}
             </p>
           </div>
         </div>
@@ -1706,12 +1758,12 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             className="flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-600 px-3 py-2.5 text-center text-xs font-extrabold text-white shadow-lg shadow-indigo-100 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {checkInNudgeClaimState === 'claimed' ? (
-              'Claimed'
+              checkInTranslations.claimed
             ) : checkInNudgeClaiming ? (
-              'Claiming...'
+              checkInTranslations.claiming
             ) : (
               <>
-                <span>Claim {checkInNudge.rewardCredits}</span>
+                <span>{checkInTranslations.claim.replace('{credits}', String(checkInNudge.rewardCredits))}</span>
                 <img
                   src="/credits-icons/diamond-3d-indigo.svg"
                   alt=""
@@ -1726,7 +1778,7 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
             onClick={markCheckInNudgeInteracted}
             className="flex items-center justify-center rounded-xl border border-indigo-100 bg-white px-3 py-2.5 text-center text-xs font-extrabold text-indigo-700 shadow-sm shadow-indigo-50 transition hover:-translate-y-0.5 hover:bg-indigo-50"
           >
-            See Rewards
+            {checkInTranslations.seeRewards}
           </Link>
         </div>
       </div>

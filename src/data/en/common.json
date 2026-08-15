@@ -908,6 +908,21 @@
     "statusFailed": "Failed",
     "failureFallback": "Generation failed. Recreate the request to try again."
   },
+  "account": {
+    "credits": "credits",
+    "buyCredits": "Buy Credits",
+    "earnCredits": "Earn Credits",
+    "support": "Help & Support"
+  },
+  "checkInNudge": {
+    "waiting": "You have {credits} credits waiting.",
+    "dayReward": "Day {day} · +{credits} credits",
+    "historyReward": "Daily Check-In Reward (Day {day})",
+    "claimed": "Claimed",
+    "claiming": "Claiming...",
+    "claim": "Claim {credits}",
+    "seeRewards": "See Rewards"
+  },
   "creditsPage": {
     "metadataTitle": "Credit Activity - Toolaze",
     "metadataDescription": "View your Toolaze credit balance and complete credit activity history.",

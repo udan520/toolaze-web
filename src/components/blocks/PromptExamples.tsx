@@ -43,6 +43,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: `Copy ${PROMPT_COPY_NOUN}`,
     copiedPrompt: `Copied ${PROMPT_COPY_NOUN}`,
     createSimilar: 'Create Similar',
+    referenceImage: 'Reference Image',
+    resultVideo: 'Result Video',
   },
   de: {
     groupAria: 'Frisur-Beispielgruppen',
@@ -53,6 +55,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'Prompt kopieren',
     copiedPrompt: 'Prompt kopiert',
     createSimilar: 'Ähnliches erstellen',
+    referenceImage: 'Referenzbild',
+    resultVideo: 'Ergebnisvideo',
   },
   ja: {
     groupAria: 'ヘアスタイル例グループ',
@@ -63,6 +67,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'プロンプトをコピー',
     copiedPrompt: 'プロンプトをコピー済み',
     createSimilar: '似たスタイルを作成',
+    referenceImage: '参照画像',
+    resultVideo: '生成動画',
   },
   es: {
     groupAria: 'Grupos de ejemplos de peinados',
@@ -73,6 +79,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'Copiar prompt',
     copiedPrompt: 'Prompt copiado',
     createSimilar: 'Crear similar',
+    referenceImage: 'Imagen de referencia',
+    resultVideo: 'Video resultante',
   },
   'zh-TW': {
     groupAria: '髮型範例分組',
@@ -83,6 +91,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: '複製提示詞',
     copiedPrompt: '已複製提示詞',
     createSimilar: '建立相似款',
+    referenceImage: '參考圖片',
+    resultVideo: '生成影片',
   },
   pt: {
     groupAria: 'Grupos de exemplos de penteados',
@@ -93,6 +103,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'Copiar prompt',
     copiedPrompt: 'Prompt copiado',
     createSimilar: 'Criar semelhante',
+    referenceImage: 'Imagem de referência',
+    resultVideo: 'Vídeo resultante',
   },
   fr: {
     groupAria: 'Groupes d’exemples de coiffures',
@@ -103,6 +115,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'Copier le prompt',
     copiedPrompt: 'Prompt copié',
     createSimilar: 'Créer un style similaire',
+    referenceImage: 'Image de référence',
+    resultVideo: 'Vidéo générée',
   },
   ko: {
     groupAria: '헤어스타일 예시 그룹',
@@ -113,6 +127,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: '프롬프트 복사',
     copiedPrompt: '프롬프트 복사됨',
     createSimilar: '비슷하게 만들기',
+    referenceImage: '참조 이미지',
+    resultVideo: '결과 동영상',
   },
   it: {
     groupAria: 'Gruppi di esempi di acconciature',
@@ -123,6 +139,8 @@ const PROMPT_EXAMPLE_LABELS = {
     copyPrompt: 'Copia prompt',
     copiedPrompt: 'Prompt copiato',
     createSimilar: 'Crea simile',
+    referenceImage: 'Immagine di riferimento',
+    resultVideo: 'Video generato',
   },
 } as const
 
@@ -292,7 +310,7 @@ export default function PromptExamples({
                     </div>
                     {referenceImage && (
                       <div className="min-h-0 rounded-2xl border border-slate-100 bg-slate-50 p-3">
-                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Reference Image</p>
+                        <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{labels.referenceImage}</p>
                         <img
                           src={referenceImage}
                           alt={`${item.title} reference image`}
@@ -303,7 +321,7 @@ export default function PromptExamples({
                     )}
                   </div>
                   <div className="rounded-2xl border border-slate-100 bg-slate-100 p-3">
-                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Result Video</p>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{labels.resultVideo}</p>
                     <div className="flex h-[420px] items-center justify-center overflow-hidden rounded-xl bg-slate-950/5 lg:h-full lg:min-h-[520px]">
                       {item.video ? (
                         <DeferredPromptVideo
