@@ -88,16 +88,14 @@ test('Prompt sitemap keeps only curated English hubs', async () => {
   )
 })
 
-test('sitemap lastmod uses stable page dates instead of build time', async () => {
-  const source = readFileSync('src/app/sitemap.ts', 'utf8')
-  assert.doesNotMatch(source, /const\s+today\s*=\s*new Date/)
-  assert.doesNotMatch(source, /lastModified:\s*today/)
-
+test('sitemap backfills missing lastmod values and uses daily change frequency', async () => {
   const entries = await sitemap()
   const byUrl = new Map(entries.map((entry) => [entry.url, entry]))
   const toLastModifiedIso = (value: Date | string | undefined) => value instanceof Date ? value.toISOString() : String(value)
   const lastModifiedValues = entries.map((entry) => toLastModifiedIso(entry.lastModified))
 
+  assert.ok(entries.every((entry) => entry.lastModified instanceof Date), 'every sitemap URL should include lastmod')
+  assert.ok(entries.every((entry) => entry.changeFrequency === 'daily'), 'every sitemap URL should use daily change frequency')
   assert.ok(new Set(lastModifiedValues).size > 1, 'sitemap should not stamp every URL with one build date')
   assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/ai-dance-generator')?.lastModified), '2026-07-20T00:00:00.000Z')
   assert.equal(toLastModifiedIso(byUrl.get('https://toolaze.com/de/ai-dance-generator')?.lastModified), '2026-07-20T00:00:00.000Z')

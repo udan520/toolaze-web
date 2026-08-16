@@ -4,11 +4,12 @@ import test from 'node:test'
 
 const sitemapSource = readFileSync(new URL('./sitemap.ts', import.meta.url), 'utf8')
 
-test('sitemap omits lastmod when a canonical path has no verified date', () => {
+test('sitemap uses a generation-date fallback when a canonical path has no verified date', () => {
   assert.doesNotMatch(sitemapSource, /LEGACY_LAST_MODIFIED_DATE/)
   assert.match(sitemapSource, /const mappedDate = LAST_MODIFIED_BY_CANONICAL_PATH\[canonicalPath\]/)
-  assert.match(sitemapSource, /return mappedDate \? toLastModifiedDate\(mappedDate\) : undefined/)
-  assert.match(sitemapSource, /lastModified\?: Date/)
+  assert.match(sitemapSource, /const SITEMAP_LASTMOD_FALLBACK = new Date\(\)/)
+  assert.match(sitemapSource, /return mappedDate \? toLastModifiedDate\(mappedDate\) : SITEMAP_LASTMOD_FALLBACK/)
+  assert.doesNotMatch(sitemapSource, /lastModified\?: Date/)
 })
 
 test('recently launched or substantially updated landing pages use verified dates', () => {

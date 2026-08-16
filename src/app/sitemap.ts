@@ -31,9 +31,8 @@ const AI_IMAGE_L2_PAGES = [
   { path: '/perm-filter', priority: 0.85 },
 ] as const
 
-// Sitemap lastmod should reflect real page launch or meaningful content updates,
-// not the deployment/build time. Add explicit paths here when a page receives a
-// substantial update. Omit lastmod when no reliable date is available.
+// Explicit dates reflect real page launches or meaningful content updates.
+// Unmapped URLs use one stable date for the sitemap generation.
 const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/ai-dance-generator': '2026-07-20',
   '/ai-video-generator': '2026-07-21',
@@ -66,6 +65,8 @@ const LAST_MODIFIED_BY_CANONICAL_PATH: Record<string, string> = {
   '/perm-filter': '2026-08-07',
 }
 
+const SITEMAP_LASTMOD_FALLBACK = new Date()
+
 function toLastModifiedDate(date: string): Date {
   return new Date(`${date}T00:00:00.000Z`)
 }
@@ -82,15 +83,15 @@ function toCanonicalPath(path: string): string {
   return normalized === '' ? '/' : normalized
 }
 
-function getLastModified(path: string): Date | undefined {
+function getLastModified(path: string): Date {
   const canonicalPath = toCanonicalPath(path)
   const mappedDate = LAST_MODIFIED_BY_CANONICAL_PATH[canonicalPath]
-  return mappedDate ? toLastModifiedDate(mappedDate) : undefined
+  return mappedDate ? toLastModifiedDate(mappedDate) : SITEMAP_LASTMOD_FALLBACK
 }
 
 interface SitemapEntry {
   url: string
-  lastModified?: Date
+  lastModified: Date
   changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
   priority: number
 }
@@ -396,5 +397,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return entries
+  return entries.map((entry) => ({
+    ...entry,
+    changeFrequency: 'daily',
+  }))
 }
