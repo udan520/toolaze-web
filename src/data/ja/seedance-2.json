@@ -1,7 +1,7 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Seedance 2.0 AIビデオジェネレーター プレビュー＆プロンプトワークフロー - Toolaze",
+    "title": "Seedance 2.0 AIビデオジェネレーターとプロンプトワークフロー - Toolaze",
     "description": "Seedance 2.0の入力制限、プロンプト計画、1080pビデオ仕様、およびテキスト、画像、ビデオ、オーディオ参照生成のためのマルチモーダルワークフローについて解説します。"
   },
   "sectionsOrder": [
@@ -40,7 +40,7 @@
   },
   "hero": {
     "h1": "Seedance 2.0 AIビデオジェネレーター",
-    "desc": "Seedance 2.0で15秒の1080pビデオを計画しましょう。ジェネレーターのインターフェース準備中に、テキスト、画像、ビデオ、オーディオの入力オプションを確認してください。"
+    "desc": "Seedance 2.0で15秒の1080pビデオを作成し、テキスト、画像、ビデオ、オーディオを入力として使用できます。"
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",

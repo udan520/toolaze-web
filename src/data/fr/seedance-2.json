@@ -1,7 +1,7 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Aperçu du générateur de vidéo IA Seedance 2.0 et flux de travail des prompts - Toolaze",
+    "title": "Générateur de vidéo IA Seedance 2.0 et flux de travail des prompts - Toolaze",
     "description": "Explorez les limites d'entrée de Seedance 2.0, la planification des prompts, les spécifications vidéo 1080p et les notes sur le flux de travail multimodal pour la génération de références texte, image, vidéo et audio."
   },
   "sectionsOrder": [
@@ -40,7 +40,7 @@
   },
   "hero": {
     "h1": "Générateur de vidéo IA Seedance 2.0",
-    "desc": "Planifiez des vidéos 1080p de 15 secondes avec Seedance 2.0. Examinez les options d'entrée texte, image, vidéo et audio pendant que l'interface du générateur est en cours de préparation."
+    "desc": "Créez des vidéos 1080p de 15 secondes avec Seedance 2.0 à partir de texte, d’images, de vidéo et d’audio."
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",

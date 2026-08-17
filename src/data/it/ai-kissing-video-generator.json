@@ -167,8 +167,8 @@
       {
         "icon": "🎥",
         "iconType": "camera",
-        "title": "Regia video guidata dal prompt",
-        "desc": "Controlla atmosfera, illuminazione, sfondo, movimento di camera, inquadratura e stile del bacio in linguaggio naturale."
+        "title": "Dirigi il movimento del bacio",
+        "desc": "Descrivi come le due persone si avvicinano, la distanza tra loro, le espressioni e il movimento di camera per un bacio delicato e non esplicito."
       },
       {
         "icon": "💗",
@@ -179,8 +179,8 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Flusso rapido nel browser",
-        "desc": "Genera un breve clip online senza configurare software di montaggio video o timeline di animazione manuali."
+        "title": "Bozze brevi di video di baci",
+        "desc": "Crea online una bozza di video di baci di 3, 5, 8 o 10 secondi e modifica il prompt o le foto di partenza quando necessario."
       },
       {
         "icon": "🧑‍🤝‍🧑",

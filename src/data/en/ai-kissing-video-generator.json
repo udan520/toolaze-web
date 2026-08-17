@@ -167,8 +167,8 @@
       {
         "icon": "🎥",
         "iconType": "camera",
-        "title": "Prompt-led video direction",
-        "desc": "Control mood, lighting, background, camera movement, framing, and kiss style in plain language."
+        "title": "Kiss motion direction",
+        "desc": "Describe how the two people move together, their distance, facial expressions, and camera motion for a gentle, non-explicit kiss."
       },
       {
         "icon": "💗",
@@ -179,8 +179,8 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Fast browser workflow",
-        "desc": "Generate a short clip online without setting up video editing software or manual animation timelines."
+        "title": "Short kiss-video drafts",
+        "desc": "Create a 3-, 5-, 8-, or 10-second kiss-video draft online, then refine the prompt or source photos when the first take needs adjustment."
       },
       {
         "icon": "🧑‍🤝‍🧑",

@@ -1,7 +1,7 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Anteprima del Generatore Video AI Seedance 2.0 e Workflow Prompt - Toolaze",
+    "title": "Generatore Video AI Seedance 2.0 e Workflow Prompt - Toolaze",
     "description": "Esplora i limiti di input di Seedance 2.0, la pianificazione dei prompt, le specifiche video 1080p e le note sul workflow multimodale per la generazione di riferimenti testo, immagine, video e audio."
   },
   "sectionsOrder": [
@@ -40,7 +40,7 @@
   },
   "hero": {
     "h1": "Generatore Video AI Seedance 2.0",
-    "desc": "Pianifica video a 1080p da 15 secondi con Seedance 2.0. Esamina le opzioni di input di testo, immagine, video e audio mentre l'interfaccia del generatore viene preparata."
+    "desc": "Crea video a 1080p da 15 secondi con Seedance 2.0 usando testo, immagini, video e audio come input."
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",

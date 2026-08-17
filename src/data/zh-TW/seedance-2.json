@@ -1,7 +1,7 @@
 {
   "in_menu": true,
   "metadata": {
-    "title": "Seedance 2.0 AI 影片生成器預覽與提示詞工作流 - Toolaze",
+    "title": "Seedance 2.0 AI 影片生成器與提示詞工作流 - Toolaze",
     "description": "探索 Seedance 2.0 輸入限制、提示詞規劃、1080p 影片規格，以及文字、圖像、影片和音訊參考生成的多模態工作流說明。"
   },
   "sectionsOrder": [
@@ -40,7 +40,7 @@
   },
   "hero": {
     "h1": "Seedance 2.0 AI 影片生成器",
-    "desc": "使用 Seedance 2.0 規劃 15 秒 1080p 影片。在生成器介面準備就緒前，查看文字、圖像、影片和音訊輸入選項。"
+    "desc": "使用 Seedance 2.0 製作 15 秒 1080p 影片，並可使用文字、圖像、影片和音訊作為輸入。"
   },
   "heroDemoVideo": {
     "src": "https://assets.toolaze.com/generated/77514e7393eb42b68d04628dfc2d3e9b.mp4",

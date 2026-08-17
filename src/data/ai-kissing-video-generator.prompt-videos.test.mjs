@@ -36,6 +36,22 @@ test('AI kissing page exposes one horizontal Demo video and four vertical prompt
   }
 })
 
+test('AI kissing page uses task-specific feature titles in page and SEO data', async () => {
+  const expectedTitles = ['Kiss motion direction', 'Short kiss-video drafts']
+  const genericTitles = ['Prompt-led video direction', 'Fast browser workflow']
+
+  for (const sourcePath of [
+    path.join(root, 'src/data/en/ai-kissing-video-generator.json'),
+    path.join(root, '_codex/seo-pipeline/tasks/2026-07-23-ai-kissing-video-generator/content/en.json'),
+  ]) {
+    const source = await readJson(sourcePath)
+    const titles = source.features?.items?.map((item) => item.title) || []
+
+    for (const title of expectedTitles) assert.ok(titles.includes(title), `${sourcePath} must include ${title}`)
+    for (const title of genericTitles) assert.ok(!titles.includes(title), `${sourcePath} must not retain ${title}`)
+  }
+})
+
 test('AI kissing page localizes every visible copy block and mirrors it to Seo Factory content', async () => {
   const englishResidue = [
     'AI Kissing 16:9 demo video',

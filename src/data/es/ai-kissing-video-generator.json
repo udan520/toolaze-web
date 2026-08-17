@@ -167,8 +167,8 @@
       {
         "icon": "🎥",
         "iconType": "camera",
-        "title": "Dirección de video con prompt",
-        "desc": "Controla el ambiente, la iluminación, el fondo, el movimiento de cámara, el encuadre y el estilo del beso con lenguaje natural."
+        "title": "Dirige el movimiento del beso",
+        "desc": "Describe cómo se acercan las dos personas, su distancia, las expresiones faciales y el movimiento de cámara para un beso suave y no explícito."
       },
       {
         "icon": "💗",
@@ -179,8 +179,8 @@
       {
         "icon": "⚡",
         "iconType": "speed",
-        "title": "Flujo rápido en el navegador",
-        "desc": "Genera un clip corto en línea sin preparar software de edición de video ni líneas de tiempo de animación manual."
+        "title": "Borradores cortos de video de besos",
+        "desc": "Crea en línea un borrador de video de besos de 3, 5, 8 o 10 segundos y ajusta el prompt o las fotos de origen si hace falta."
       },
       {
         "icon": "🧑‍🤝‍🧑",
