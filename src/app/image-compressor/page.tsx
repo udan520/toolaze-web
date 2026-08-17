@@ -11,16 +11,14 @@ import Comparison from '@/components/blocks/Comparison'
 import HowToUse from '@/components/blocks/HowToUse'
 import WhyToolaze from '@/components/blocks/WhyToolaze'
 import Rating from '@/components/blocks/Rating'
-import { getSeoContent, loadCommonTranslations } from '@/lib/seo-loader'
-import { RETAINED_UTILITY_L3 } from '@/lib/utility-seo-routes'
-import Link from 'next/link'
+import { loadCommonTranslations } from '@/lib/seo-loader'
 import type { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Free Image Compressor - Batch Compress Images Online | Toolaze',
     description: 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.',
-    robots: 'index, follow',
+    robots: 'noindex, follow',
     alternates: {
       canonical: 'https://toolaze.com/image-compressor',
     },
@@ -29,46 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ImageCompressorPage() {
   const t = await loadCommonTranslations('en')
-  const moreToolsTitle = t?.imageCompressor?.moreTools || t?.common?.imageCompressor?.moreTools || 'More Image Compression Tools'
-
-  // 只展示继续保留索引的三级页。
-  let featuredTools: Array<{ slug: string; title: string; description: string; href: string }> = []
-  
-  try {
-    const retainedSlugs = RETAINED_UTILITY_L3['image-compressor']
-
-    if (retainedSlugs.length > 0) {
-      const retainedTools = await Promise.all(
-        retainedSlugs.map(async (slug) => {
-          try {
-            const toolData = await getSeoContent('image-compressor', slug, 'en')
-            if (toolData) {
-              const title = toolData?.hero?.h1 ? toolData.hero.h1.replace(/<[^>]*>/g, '').trim() : slug
-              const description = toolData?.hero?.desc || toolData?.metadata?.description || ''
-              const shortDesc = description.length > 100 ? description.substring(0, 100) + '...' : description
-              return {
-                slug,
-                title,
-                description: shortDesc,
-                href: `/image-compressor/${slug}`,
-              }
-            }
-            return null
-          } catch (err) {
-            console.error(`Error loading tool ${slug}:`, err)
-            return null
-          }
-        })
-      )
-      featuredTools = retainedTools.filter((tool): tool is { slug: string; title: string; description: string; href: string } =>
-        tool !== null && tool.title !== undefined && tool.href !== undefined
-      )
-    }
-  } catch (error) {
-    console.error('Failed to load tools:', error)
-    featuredTools = []
-  }
-  
   return (
     <>
       <Navigation initialTranslations={t} />
@@ -258,41 +216,6 @@ export default async function ImageCompressorPage() {
           bgClass="bg-[#F8FAFF]"
         />
 
-        {/* 9. More Tools 板块 - 显示3个最相关的长尾页面 + 所有工具入口 - 始终显示 */}
-        <section className="py-24 px-6 bg-white border-t border-indigo-50/50" id="more-tools-section" data-testid="more-tools-section">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-4">
-              {moreToolsTitle}
-            </h2>
-            <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-              Discover specialized compression tools for specific platforms and use cases.
-            </p>
-            
-            {/* 显示3个最相关的工具 */}
-            {Array.isArray(featuredTools) && featuredTools.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {featuredTools.map((tool) => (
-                  <Link
-                    key={tool.slug}
-                    href={tool.href}
-                    className="bg-[#F8FAFF] p-6 rounded-3xl border border-indigo-50 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
-                  >
-                    <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-600 transition-colors">
-                      {tool.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">
-                      {tool.description}
-                    </p>
-                    <div className="mt-4 text-sm font-bold text-indigo-600 group-hover:text-purple-600 transition-colors">
-                      Try Now →
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-            
-          </div>
-        </section>
       </main>
 
       <Footer />

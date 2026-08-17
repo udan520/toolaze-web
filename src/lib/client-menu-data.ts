@@ -1,3 +1,5 @@
+import { shouldExposeUtilityL3InNavigation, type UtilityTool } from '@/lib/utility-seo-routes'
+
 export type ClientMenuItem = {
   slug: string
   title: string
@@ -292,10 +294,12 @@ function getMenuTitle(item: MenuTitleItem, locale: string) {
 }
 
 export function getClientMenuItems(
-  tool: 'image-compressor' | 'image-converter' | 'font-generator' | 'emoji-copy-and-paste',
+  tool: UtilityTool,
   locale: string,
   translations: EmojiTranslations = {}
 ): ClientMenuItem[] {
+  if (!shouldExposeUtilityL3InNavigation(tool)) return []
+
   if (tool === 'image-compressor') {
     return imageCompressorItems.map((item) => ({
       slug: item.slug,

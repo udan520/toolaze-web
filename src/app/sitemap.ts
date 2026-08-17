@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllSlugs, getAllTools, hasLocaleL2JsonFile } from '@/lib/seo-loader'
 import {
+  UTILITY_TOOLS,
   isUtilityTool,
+  shouldIncludeUtilityL2InSitemap,
   shouldIncludeUtilityL3InSitemap,
 } from '@/lib/utility-seo-routes'
 
@@ -11,7 +13,6 @@ export const dynamic = 'force-static'
 const baseUrl = 'https://toolaze.com'
 const SUPPORTED_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const STATIC_PAGES = ['about', 'privacy', 'terms', 'pricing', 'refund-policy', 'acceptable-use', 'contact']
-const TOOL_PAGES = ['image-compressor', 'image-converter', 'font-generator', 'emoji-copy-and-paste']
 const VIDEO_GENERATOR_PAGES = ['kling-ai-video-generator', 'text-to-video-generator', 'image-to-video-generator'] as const
 const AI_IMAGE_L2_PAGES = [
   { path: '/unrestricted-ai-image-generator', priority: 0.91 },
@@ -122,8 +123,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   })
 
-  // 3. 功能页面（所有语言版本）
-  TOOL_PAGES.forEach((tool) => {
+  // 3. 旧 utility L2 保留给直接访问用户，但不作为 Google 发现入口。
+  UTILITY_TOOLS.forEach((tool) => {
+    if (!shouldIncludeUtilityL2InSitemap(tool)) return
+
     SUPPORTED_LOCALES.forEach((locale) => {
       const path = locale === 'en' ? `/${tool}` : `/${locale}/${tool}`
       entries.push({

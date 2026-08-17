@@ -1880,8 +1880,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     {
       title: navTranslations.imageCompression,
       href: getLocalizedHref('/image-compressor'),
-      hasThirdLevel: true,
       tool: 'image-compressor',
+      hasThirdLevel: false,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
           {/* 四个绿色方块，表示压缩 */}
@@ -1901,8 +1901,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     {
       title: navTranslations.fontGenerator || defaultNavTranslations.fontGenerator,
       href: getLocalizedHref('/font-generator'),
-      hasThirdLevel: true,
       tool: 'font-generator',
+      hasThirdLevel: false,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
           {/* 字体图标 - 使用紫色渐变 */}
@@ -1920,8 +1920,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     {
       title: navTranslations.imageConverter,
       href: getLocalizedHref('/image-converter'),
-      hasThirdLevel: true,
       tool: 'image-converter',
+      hasThirdLevel: false,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
           {/* 浅蓝色背景矩形 */}
@@ -1938,8 +1938,8 @@ export default function Navigation({ initialTranslations }: NavigationProps = {}
     {
       title: navTranslations.emojiCopyAndPaste || defaultNavTranslations.emojiCopyAndPaste,
       href: getLocalizedHref('/emoji-copy-and-paste'),
-      hasThirdLevel: true,
       tool: 'emoji-copy-and-paste',
+      hasThirdLevel: false,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-2 flex-shrink-0">
           <circle cx="12" cy="12" r="10" fill="#FCD34D" opacity="0.9"/>

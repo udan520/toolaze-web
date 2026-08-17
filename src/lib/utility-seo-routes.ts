@@ -8,9 +8,9 @@ export const UTILITY_TOOLS = [
 export type UtilityTool = (typeof UTILITY_TOOLS)[number]
 
 export const RETAINED_UTILITY_L3: Record<UtilityTool, readonly string[]> = {
-  'image-compressor': ['batch-compress'],
+  'image-compressor': [],
   'image-converter': [],
-  'font-generator': ['cool', 'fancy', 'tattoo'],
+  'font-generator': [],
   'emoji-copy-and-paste': [],
 }
 
@@ -44,4 +44,12 @@ export function shouldIncludeUtilityL3InSitemap(
   slug: string
 ): boolean {
   return locale === 'en' && isRetainedUtilityL3(tool, slug)
+}
+
+export function shouldIncludeUtilityL2InSitemap(_tool: UtilityTool): boolean {
+  return false
+}
+
+export function shouldExposeUtilityL3InNavigation(_tool: UtilityTool): boolean {
+  return false
 }

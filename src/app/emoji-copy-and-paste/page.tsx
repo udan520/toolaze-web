@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     hreflang,
     fallbackTitle: 'Emoji Copy & Paste - Copy Emojis Online Free | Toolaze',
     fallbackDescription: 'Copy and paste emojis online for free. Browse by category, search, pick skin tone, and copy instantly. No sign-up required.',
+    robots: 'noindex, follow',
   })
 }
 

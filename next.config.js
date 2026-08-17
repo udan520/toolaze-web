@@ -16,9 +16,9 @@ const distDir = process.env.NEXT_DIST_DIR || '.next'
 
 const UTILITY_SEO_LOCALES = ['en', 'de', 'ja', 'es', 'zh-TW', 'pt', 'fr', 'ko', 'it']
 const RETAINED_UTILITY_L3 = {
-  'image-compressor': new Set(['batch-compress']),
+  'image-compressor': new Set(),
   'image-converter': new Set(),
-  'font-generator': new Set(['cool', 'fancy', 'tattoo']),
+  'font-generator': new Set(),
   'emoji-copy-and-paste': new Set(),
 }
 

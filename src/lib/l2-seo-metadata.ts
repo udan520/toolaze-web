@@ -37,6 +37,7 @@ interface BuildL2SeoMetadataOptions {
   hreflang: HreflangMetadata
   fallbackTitle: string
   fallbackDescription: string
+  robots?: Metadata['robots']
 }
 
 function toAbsoluteToolazeUrl(url?: string): string | undefined {
@@ -111,6 +112,7 @@ export function buildL2SeoMetadata({
   hreflang,
   fallbackTitle,
   fallbackDescription,
+  robots = 'index, follow',
 }: BuildL2SeoMetadataOptions): Metadata {
   const title = content?.metadata?.title || fallbackTitle
   const description = content?.metadata?.description || fallbackDescription
@@ -119,7 +121,7 @@ export function buildL2SeoMetadata({
   return {
     title,
     description,
-    robots: 'index, follow',
+    robots,
     alternates: {
       canonical: hreflang.canonical,
       languages: hreflang.languages,

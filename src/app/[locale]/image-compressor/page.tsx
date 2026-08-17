@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     hreflang,
     fallbackTitle: 'Free Image Compressor - Batch Compress Images Online | Toolaze',
     fallbackDescription: 'Batch compress up to 100 images at once. Set exact target size. Fast, private, 100% free. No sign-up required.',
+    robots: 'noindex, follow',
   })
 }
 

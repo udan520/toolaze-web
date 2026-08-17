@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     hreflang,
     fallbackTitle: 'Free Image Converter - Batch Convert Images Online | Toolaze',
     fallbackDescription: 'Convert images between JPG, PNG, and WebP formats. Batch convert up to 100 images. Fast, private, 100% free. No sign-up required.',
+    robots: 'noindex, follow',
   })
 }
 

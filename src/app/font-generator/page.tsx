@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     hreflang,
     fallbackTitle: 'Free Font Generator - Create Custom Fonts Online | Toolaze',
     fallbackDescription: 'Generate custom fonts online for free. Create cursive, fancy, bold, italic, gothic, and tattoo fonts. Copy and paste instantly. No sign-up required.',
+    robots: 'noindex, follow',
   })
 }
 

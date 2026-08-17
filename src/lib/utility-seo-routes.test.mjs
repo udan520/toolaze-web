@@ -4,9 +4,9 @@ import { createRequire } from 'node:module'
 import { join } from 'node:path'
 import test from 'node:test'
 
-import { generateHreflangAlternates } from './hreflang.ts'
+import * as utilitySeoRoutes from './utility-seo-routes.ts'
 
-import {
+const {
   RETAINED_UTILITY_L3,
   UTILITY_TOOLS,
   getUtilityLocaleAliasTarget,
@@ -14,13 +14,13 @@ import {
   isRetainedUtilityL3,
   isUtilityTool,
   shouldIncludeUtilityL3InSitemap,
-} from './utility-seo-routes.ts'
+} = utilitySeoRoutes
 
 const root = process.cwd()
 const readSource = (...segments) => readFileSync(join(root, ...segments), 'utf8')
 const require = createRequire(import.meta.url)
 
-test('utility SEO policy keeps only the approved L2 and English L3 pages', () => {
+test('utility SEO policy keeps the L2 tools available but removes every utility L3 from indexable surfaces', () => {
   assert.deepEqual(UTILITY_TOOLS, [
     'image-compressor',
     'image-converter',
@@ -29,17 +29,17 @@ test('utility SEO policy keeps only the approved L2 and English L3 pages', () =>
   ])
 
   assert.deepEqual(RETAINED_UTILITY_L3, {
-    'image-compressor': ['batch-compress'],
+    'image-compressor': [],
     'image-converter': [],
-    'font-generator': ['cool', 'fancy', 'tattoo'],
+    'font-generator': [],
     'emoji-copy-and-paste': [],
   })
 
   assert.equal(isUtilityTool('font-generator'), true)
   assert.equal(isUtilityTool('watermark-remover'), false)
-  assert.equal(isRetainedUtilityL3('font-generator', 'fancy'), true)
+  assert.equal(isRetainedUtilityL3('font-generator', 'fancy'), false)
   assert.equal(isRetainedUtilityL3('font-generator', 'gothic'), false)
-  assert.equal(isRetainedUtilityL3('image-compressor', 'batch-compress'), true)
+  assert.equal(isRetainedUtilityL3('image-compressor', 'batch-compress'), false)
   assert.equal(isRetainedUtilityL3('image-converter', 'png-to-webp'), false)
 })
 
@@ -49,10 +49,10 @@ test('utility parent paths preserve real locale L2 pages and omit the English pr
   assert.equal(getUtilityParentPath('zh-TW', 'image-compressor'), '/zh-TW/image-compressor')
 })
 
-test('locale-prefixed L3 aliases consolidate to the correct canonical level', () => {
+test('every utility L3 alias consolidates to its locale L2 parent', () => {
   assert.equal(
     getUtilityLocaleAliasTarget('en', 'font-generator', 'fancy'),
-    '/font-generator/fancy'
+    '/font-generator'
   )
   assert.equal(
     getUtilityLocaleAliasTarget('en', 'font-generator', 'gothic'),
@@ -68,9 +68,19 @@ test('locale-prefixed L3 aliases consolidate to the correct canonical level', ()
   )
 })
 
-test('sitemap policy exposes only four retained English L3 pages', () => {
-  assert.equal(shouldIncludeUtilityL3InSitemap('en', 'font-generator', 'cool'), true)
-  assert.equal(shouldIncludeUtilityL3InSitemap('en', 'image-compressor', 'batch-compress'), true)
+test('sitemap and navigation policies exclude every utility URL below L2', () => {
+  const { shouldExposeUtilityL3InNavigation, shouldIncludeUtilityL2InSitemap } = utilitySeoRoutes
+
+  assert.equal(typeof shouldIncludeUtilityL2InSitemap, 'function')
+  assert.equal(typeof shouldExposeUtilityL3InNavigation, 'function')
+
+  for (const tool of UTILITY_TOOLS) {
+    assert.equal(shouldIncludeUtilityL2InSitemap(tool), false)
+    assert.equal(shouldExposeUtilityL3InNavigation(tool), false)
+  }
+
+  assert.equal(shouldIncludeUtilityL3InSitemap('en', 'font-generator', 'cool'), false)
+  assert.equal(shouldIncludeUtilityL3InSitemap('en', 'image-compressor', 'batch-compress'), false)
   assert.equal(shouldIncludeUtilityL3InSitemap('en', 'font-generator', 'gothic'), false)
   assert.equal(shouldIncludeUtilityL3InSitemap('de', 'font-generator', 'cool'), false)
   assert.equal(shouldIncludeUtilityL3InSitemap('en', 'emoji-copy-and-paste', 'fire-copy-and-paste'), false)
@@ -124,28 +134,11 @@ test('legacy Kling aliases use server-side permanent redirects', () => {
   assert.match(canonicalAllToolsRoute, /permanentRedirect\('\/model\/kling-3'\)/)
 })
 
-test('retained English L3 pages do not advertise removed locale alternates', () => {
-  const alternates = generateHreflangAlternates(
-    'en',
-    '/font-generator/fancy',
-    ['en']
-  )
-
-  assert.deepEqual(alternates.languages, {
-    en: 'https://toolaze.com/font-generator/fancy',
-    'x-default': 'https://toolaze.com/font-generator/fancy',
-  })
-
-  const compressorRoute = readSource('src', 'app', 'image-compressor', '[slug]', 'page.tsx')
-  assert.match(
-    compressorRoute,
-    /generateHreflangAlternates\('en', pathWithoutLocale, \['en'\]\)/
-  )
-})
-
-test('sitemap and internal links stop exposing removed utility URLs', () => {
+test('sitemap and navigation stop exposing all utility SEO URLs', () => {
   const sitemap = readSource('src', 'app', 'sitemap.ts')
+  assert.match(sitemap, /shouldIncludeUtilityL2InSitemap/)
   assert.match(sitemap, /shouldIncludeUtilityL3InSitemap/)
+  assert.doesNotMatch(sitemap, /const TOOL_PAGES = \[/)
   assert.doesNotMatch(
     sitemap,
     /const path = locale === 'en' \? `\/\$\{tool\}\/all-tools` : `\/\$\{locale\}\/\$\{tool\}\/all-tools`/
@@ -161,8 +154,31 @@ test('sitemap and internal links stop exposing removed utility URLs', () => {
   )
   assert.match(toolSlugContent, /isUtilityTool\(tool\)[\s\S]*getUtilityParentPath\(locale, tool\)/)
 
-  const compressorL2 = readSource('src', 'app', 'image-compressor', 'page.tsx')
-  assert.doesNotMatch(compressorL2, /href="\/en\/image-compressor\/all-tools"/)
+  const clientMenuData = readSource('src', 'lib', 'client-menu-data.ts')
+  assert.match(clientMenuData, /shouldExposeUtilityL3InNavigation/)
+  assert.match(clientMenuData, /if \(!shouldExposeUtilityL3InNavigation\(tool\)\) return \[\]/)
+
+  const navigation = readSource('src', 'components', 'Navigation.tsx')
+  for (const tool of UTILITY_TOOLS) {
+    assert.match(navigation, new RegExp(`tool: '${tool}'[\\s\\S]{0,120}hasThirdLevel: false`))
+  }
+})
+
+test('utility L2 routes are noindex,follow while remaining usable', () => {
+  const routes = [
+    ['src', 'app', 'image-compressor', 'page.tsx'],
+    ['src', 'app', 'image-converter', 'page.tsx'],
+    ['src', 'app', 'font-generator', 'page.tsx'],
+    ['src', 'app', 'emoji-copy-and-paste', 'page.tsx'],
+    ['src', 'app', '[locale]', 'image-compressor', 'page.tsx'],
+    ['src', 'app', '[locale]', 'image-converter', 'page.tsx'],
+    ['src', 'app', '[locale]', 'font-generator', 'page.tsx'],
+    ['src', 'app', '[locale]', 'emoji-copy-and-paste', 'page.tsx'],
+  ]
+
+  for (const route of routes) {
+    assert.match(readSource(...route), /robots: 'noindex, follow'/, route.join('/'))
+  }
 })
 
 test('Next config serves historical utility redirects before page rendering', async () => {
@@ -184,7 +200,7 @@ test('Next config serves historical utility redirects before page rendering', as
   })
   assert.deepEqual(findRedirect('/en/font-generator/fancy'), {
     source: '/en/font-generator/fancy',
-    destination: '/font-generator/fancy',
+    destination: '/font-generator',
     permanent: true,
   })
   assert.deepEqual(findRedirect('/fr/emoji-copy-and-paste/all-tools'), {
@@ -197,6 +213,14 @@ test('Next config serves historical utility redirects before page rendering', as
     destination: '/image-compressor',
     permanent: true,
   })
-  assert.equal(findRedirect('/font-generator/fancy'), undefined)
-  assert.equal(findRedirect('/image-compressor/batch-compress'), undefined)
+  assert.deepEqual(findRedirect('/font-generator/fancy'), {
+    source: '/font-generator/fancy',
+    destination: '/font-generator',
+    permanent: true,
+  })
+  assert.deepEqual(findRedirect('/image-compressor/batch-compress'), {
+    source: '/image-compressor/batch-compress',
+    destination: '/image-compressor',
+    permanent: true,
+  })
 })
