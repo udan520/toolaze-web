@@ -1,10 +1,12 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Breadcrumb, { type BreadcrumbItem } from '@/components/Breadcrumb'
 import DeleteIcon from '@/components/icons/DeleteIcon'
+import ReplaceIcon from '@/components/icons/ReplaceIcon'
+import ImageReplaceButton from '@/components/ImageReplaceButton'
 import { getImageUploadUrl } from '@/lib/upload-url'
 import { dispatchToolazeTopNotice } from '@/lib/top-notice'
 import {
@@ -71,6 +73,7 @@ type TalkingAvatarCopy = {
   audioTooLongMessage?: string
   audioReadFailedMessage?: string
   audioTrimFailedMessage?: string
+  replace?: string
 }
 
 interface TalkingAvatarCreatorToolProps {
@@ -79,6 +82,10 @@ interface TalkingAvatarCreatorToolProps {
   heroDescription?: string
   copy?: TalkingAvatarCopy
   demoVideo?: TalkingAvatarDemoVideo
+  defaultImageUrl?: string
+  defaultAudioUrl?: string
+  defaultAudioName?: string
+  defaultAudioDurationSeconds?: number
 }
 
 interface UploadFileState {
@@ -206,6 +213,7 @@ const DEFAULT_COPY: Required<TalkingAvatarCopy> = {
   audioTooLongMessage: 'Audio upload supports up to 15 seconds. Choose a segment or upload a shorter file.',
   audioReadFailedMessage: 'We could not read the audio duration. Please upload an audio file up to 15 seconds.',
   audioTrimFailedMessage: 'We could not trim this audio. Please upload an audio file up to 15 seconds.',
+  replace: 'Replace',
 }
 
 async function parseJsonSafely(response: Response) {
@@ -430,15 +438,19 @@ export default function TalkingAvatarCreatorTool({
   heroDescription,
   copy,
   demoVideo,
+  defaultImageUrl,
+  defaultAudioUrl,
+  defaultAudioName,
+  defaultAudioDurationSeconds,
 }: TalkingAvatarCreatorToolProps) {
   const pathname = usePathname() || '/talking-avatar-creator'
   const text = useMemo(() => ({ ...DEFAULT_COPY, ...(copy || {}) }), [copy])
   const [image, setImage] = useState<UploadFileState | null>(null)
   const [audio, setAudio] = useState<UploadFileState | null>(null)
-  const [remoteImageUrl, setRemoteImageUrl] = useState('')
-  const [remoteAudioUrl, setRemoteAudioUrl] = useState('')
-  const [remoteAudioName, setRemoteAudioName] = useState(DEFAULT_REFERENCE_AUDIO_NAME)
-  const [remoteAudioDurationSeconds, setRemoteAudioDurationSeconds] = useState(MAX_REFERENCE_AUDIO_SECONDS)
+  const [remoteImageUrl, setRemoteImageUrl] = useState(() => defaultImageUrl || '')
+  const [remoteAudioUrl, setRemoteAudioUrl] = useState(() => defaultAudioUrl || '')
+  const [remoteAudioName, setRemoteAudioName] = useState(() => defaultAudioName || DEFAULT_REFERENCE_AUDIO_NAME)
+  const [remoteAudioDurationSeconds, setRemoteAudioDurationSeconds] = useState(() => defaultAudioDurationSeconds || MAX_REFERENCE_AUDIO_SECONDS)
   const [prompt, setPrompt] = useState(() => text.promptPlaceholder)
   const [resolution, setResolution] = useState<Resolution>('480p')
   const [currentRequest, setCurrentRequest] = useState<TalkingAvatarGenerationRequest | null>(null)
@@ -452,9 +464,12 @@ export default function TalkingAvatarCreatorTool({
   const [audioTrimStartSeconds, setAudioTrimStartSeconds] = useState(0)
   const [audioTrimClipSeconds, setAudioTrimClipSeconds] = useState(MAX_REFERENCE_AUDIO_EXPORT_SECONDS)
   const [isTrimmingAudio, setIsTrimmingAudio] = useState(false)
+  const imageInputRef = useRef<HTMLInputElement>(null)
+  const audioInputRef = useRef<HTMLInputElement>(null)
 
   const isGenerating = currentRequest?.status === 'processing'
   const currentImagePreview = image?.preview || remoteImageUrl
+  const currentAudioPreview = audio?.preview || remoteAudioUrl
   const currentAudioName = audio?.file?.name || remoteAudioName
   const hasGenerationImage = Boolean(image?.file || remoteImageUrl)
   const hasGenerationAudio = Boolean(audio?.file || remoteAudioUrl)
@@ -615,6 +630,12 @@ export default function TalkingAvatarCreatorTool({
     setImage({ file, preview: URL.createObjectURL(file) })
   }
 
+  const clearImage = () => {
+    if (image?.preview) URL.revokeObjectURL(image.preview)
+    setImage(null)
+    setRemoteImageUrl('')
+  }
+
   const acceptAudioFile = (nextAudioFile: File, nextDurationSeconds = MAX_REFERENCE_AUDIO_SECONDS) => {
     if (audio?.preview) URL.revokeObjectURL(audio.preview)
     setRemoteAudioUrl('')
@@ -625,6 +646,14 @@ export default function TalkingAvatarCreatorTool({
       preview: URL.createObjectURL(nextAudioFile),
       durationSeconds: normalizeBillingDurationSeconds(nextDurationSeconds),
     })
+  }
+
+  const clearAudio = () => {
+    if (audio?.preview) URL.revokeObjectURL(audio.preview)
+    setAudio(null)
+    setRemoteAudioUrl('')
+    setRemoteAudioName(DEFAULT_REFERENCE_AUDIO_NAME)
+    setRemoteAudioDurationSeconds(MAX_REFERENCE_AUDIO_SECONDS)
   }
 
   const selectAudio = async (files: FileList | null) => {
@@ -1323,47 +1352,95 @@ export default function TalkingAvatarCreatorTool({
               className="order-2 flex w-full flex-shrink-0 flex-col overflow-hidden rounded-2xl border border-[#E0E7FF] bg-white shadow-lg shadow-[#4F46E5]/8 md:order-none md:h-full md:w-[380px] xl:w-[400px] 2xl:w-[420px]"
             >
               <div className="space-y-4 p-2 md:min-h-0 md:flex-1 md:space-y-5 md:overflow-y-auto md:overscroll-contain md:p-6">
-                <label className="block cursor-pointer rounded-2xl border border-dashed border-[#A5B4FC] bg-[#F8FAFF] p-4 transition hover:border-[#4F46E5]">
-                  <input className="sr-only" type="file" accept="image/*" onChange={(event) => selectImage(event.target.files)} />
-                  <span className="block text-sm font-extrabold text-slate-950">{text.imageTitle}</span>
-                  <span className="mt-1 block text-xs leading-5 text-slate-500">{text.imageHelper}</span>
+                <div className="rounded-2xl border border-dashed border-[#A5B4FC] bg-[#F8FAFF] p-4 transition hover:border-[#4F46E5]">
+                  <label className="block cursor-pointer" htmlFor="talking-avatar-image-upload">
+                    <input
+                      ref={imageInputRef}
+                      id="talking-avatar-image-upload"
+                      className="sr-only"
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) => {
+                        selectImage(event.target.files)
+                        event.currentTarget.value = ''
+                      }}
+                    />
+                    <span className="block text-sm font-extrabold text-slate-950">{text.imageTitle}</span>
+                    <span className="mt-1 block text-xs leading-5 text-slate-500">{text.imageHelper}</span>
+                  </label>
                   {currentImagePreview ? (
-                    <img src={currentImagePreview} alt="" className="mt-4 h-28 w-full rounded-xl object-cover" />
+                    <div data-talking-avatar-image-preview className="group relative mt-4 h-28 w-full overflow-hidden rounded-xl bg-white">
+                      <img src={currentImagePreview} alt="" className="h-full w-full object-contain" />
+                      <ImageReplaceButton onReplace={() => imageInputRef.current?.click()} label={text.replace} />
+                      <button
+                        data-talking-avatar-image-remove
+                        type="button"
+                        onClick={clearImage}
+                        className="absolute right-2 top-2 z-20 flex h-7 w-7 items-center justify-center rounded-md bg-white/90 text-slate-900 shadow-sm md:invisible md:opacity-0 md:transition-opacity md:group-hover:visible md:group-hover:opacity-100"
+                        title={text.delete}
+                        aria-label={text.delete}
+                      >
+                        <DeleteIcon size={16} />
+                      </button>
+                    </div>
                   ) : (
-                    <span className="mt-4 flex h-24 items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-400">
+                    <label htmlFor="talking-avatar-image-upload" className="mt-4 flex h-24 cursor-pointer items-center justify-center rounded-xl bg-white text-xs font-bold text-slate-400">
                       Click to choose portrait
-                    </span>
+                    </label>
                   )}
-                </label>
+                </div>
 
-                <label className="block cursor-pointer rounded-2xl border border-dashed border-[#A5B4FC] bg-[#F8FAFF] p-4 transition hover:border-[#4F46E5]">
-                  <input
-                    className="sr-only"
-                    type="file"
-                    accept="audio/*,.mp3,.wav,.m4a,.ogg"
-                    onChange={(event) => {
-                      void selectAudio(event.target.files)
-                      event.currentTarget.value = ''
-                    }}
-                  />
-                  <span className="block text-sm font-extrabold text-slate-950">{text.audioTitle}</span>
-                  <span className="mt-1 block text-xs leading-5 text-slate-500">{text.audioHelper}</span>
-                  <span className="mt-4 flex h-20 flex-col items-center justify-center rounded-xl bg-white px-3 text-center text-xs font-bold text-slate-500">
-                    {audio?.file ? (
-                      <>
+                <div className="rounded-2xl border border-dashed border-[#A5B4FC] bg-[#F8FAFF] p-4 transition hover:border-[#4F46E5]">
+                  <label className="block cursor-pointer" htmlFor="talking-avatar-audio-upload">
+                    <input
+                      ref={audioInputRef}
+                      id="talking-avatar-audio-upload"
+                      className="sr-only"
+                      type="file"
+                      accept="audio/*,.mp3,.wav,.m4a,.ogg"
+                      onChange={(event) => {
+                        void selectAudio(event.target.files)
+                        event.currentTarget.value = ''
+                      }}
+                    />
+                    <span className="block text-sm font-extrabold text-slate-950">{text.audioTitle}</span>
+                    <span className="mt-1 block text-xs leading-5 text-slate-500">{text.audioHelper}</span>
+                    <span className="mt-4 flex h-12 items-center justify-center rounded-xl bg-white px-3 text-center text-xs font-bold text-slate-500">
+                      {audio?.file ? (
                         <span className="max-w-full truncate text-slate-800">{audio.file.name}</span>
-                        <span className="mt-1 text-slate-400">{(audio.file.size / 1024 / 1024).toFixed(1)}MB</span>
-                      </>
-                    ) : remoteAudioUrl ? (
-                      <>
+                      ) : remoteAudioUrl ? (
                         <span className="max-w-full truncate text-slate-800">{remoteAudioName}</span>
-                        <span className="mt-1 text-slate-400">Restored from history</span>
-                      </>
-                    ) : (
-                      'Click to choose audio'
-                    )}
-                  </span>
-                </label>
+                      ) : (
+                        'Click to choose audio'
+                      )}
+                    </span>
+                  </label>
+                  {currentAudioPreview ? (
+                    <div data-talking-avatar-audio-preview className="group relative mt-3 rounded-xl bg-white px-3 py-2">
+                      <audio data-talking-avatar-input-audio-player controls src={currentAudioPreview} className="w-full" />
+                      <button
+                        type="button"
+                        onClick={() => audioInputRef.current?.click()}
+                        className="absolute left-1/2 top-1/2 z-10 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-lg bg-white/95 px-3 py-2 text-xs font-semibold text-indigo-600 opacity-0 shadow-lg transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+                        title={text.replace}
+                        aria-label={text.replace}
+                      >
+                        <ReplaceIcon size={15} />
+                        {text.replace}
+                      </button>
+                      <button
+                        data-talking-avatar-audio-remove
+                        type="button"
+                        onClick={clearAudio}
+                        className="absolute right-2 top-2 z-20 flex h-7 w-7 items-center justify-center rounded-md bg-white/90 text-slate-900 shadow-sm md:invisible md:opacity-0 md:transition-opacity md:group-hover:visible md:group-hover:opacity-100"
+                        title={text.delete}
+                        aria-label={text.delete}
+                      >
+                        <DeleteIcon size={16} />
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
 
                 <label className="block">
                   <span className="mb-2 block text-xs font-semibold tracking-wide text-slate-500">{text.promptLabel}</span>

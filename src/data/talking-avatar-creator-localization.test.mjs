@@ -19,6 +19,16 @@ const demoVideoUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-cr
 const demoPosterUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/demo-poster.webp'
 const aiVideoDemoUrl = 'https://assets.toolaze.com/uploads/ai-video-generator/ai-video-generator-grok-demo.mp4'
 const aiImageDemoUrl = 'https://assets.toolaze.com/home-model-cards/gpt-image-2.jpg'
+const defaultImageUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp'
+const defaultAudioUrl = 'https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav'
+const defaultAudioName = 'creator-intro-audio.wav'
+const defaultAudioDurationSeconds = 14.5
+const howToMediaUrls = [
+  'https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp',
+  'https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp',
+  'https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp',
+  'https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp',
+]
 
 const trimCopyKeys = [
   'audioTrimTitle',
@@ -32,7 +42,7 @@ const trimCopyKeys = [
   'audioReadFailedMessage',
   'audioTrimFailedMessage',
 ]
-const expectedSectionsOrder = ['intro', 'howToUse', 'promptExamples', 'scenes', 'features', 'performanceMetrics', 'faq']
+const expectedSectionsOrder = ['intro', 'howToUse', 'promptExamples', 'scenes', 'competitorComparison', 'features', 'performanceMetrics', 'faq']
 
 function readJson(path) {
   return JSON.parse(readFileSync(path, 'utf8'))
@@ -71,6 +81,8 @@ function isWhitelistedPath(path) {
     'sectionsOrder',
   ].some((prefix) => path === prefix || path.startsWith(`${prefix}[`))
     || /^heroDemoVideo\.(src|poster|duration|uploadDate|sourceHistory)$/.test(path)
+    || /^topTool\.(defaultImageUrl|defaultAudioUrl|defaultAudioName|defaultAudioDurationSeconds)$/.test(path)
+    || /^howToUse\.steps\[\d+\]\.media\.src$/.test(path)
     || /^(promptExamples)\.items\[\d+\]\.prompt$/.test(path)
     || /^moreToolsLinks\[\d+\]\.slug$/.test(path)
     || /^moreToolsLinks\[\d+\]\.href$/.test(path)
@@ -91,7 +103,7 @@ test('Talking Avatar localized pages preserve the complete English structure', (
     assert.deepEqual(shapeOf(page), englishShape, `${locale} should preserve English structure`)
     assert.deepEqual(page.sectionsOrder, expectedSectionsOrder, `${locale} should keep the approved section order`)
     assert.equal(page.promptExamples.items.length, 4, `${locale} should keep four prompt examples`)
-    assert.equal(page.features.items.length, 6, `${locale} should keep six feature cards`)
+    assert.equal(page.features.items.length, 4, `${locale} should keep four result-control cards`)
     assert.equal(page.howToUse.steps.length, 4, `${locale} should keep four How-to steps`)
     assert.equal(page.faq.length, 6, `${locale} should keep six FAQ entries`)
   }
@@ -109,6 +121,33 @@ test('Talking Avatar audio trim UI copy exists in every locale', () => {
       )
       assert.ok(page.topTool.textOverrides[key].trim(), `${locale} ${key} should not be empty`)
     }
+  }
+})
+
+test('Talking Avatar starts every locale with stable creator input assets', () => {
+  for (const locale of locales) {
+    const page = readJson(join(root, 'src', 'data', locale, pageName))
+
+    assert.equal(page.topTool?.defaultImageUrl, defaultImageUrl, `${locale} should use the creator portrait R2 URL`)
+    assert.equal(page.topTool?.defaultAudioUrl, defaultAudioUrl, `${locale} should use the creator audio R2 URL`)
+    assert.equal(page.topTool?.defaultAudioName, defaultAudioName, `${locale} should keep the creator audio file name`)
+    assert.equal(page.topTool?.defaultAudioDurationSeconds, defaultAudioDurationSeconds, `${locale} should use the accepted audio duration`)
+  }
+})
+
+test('Talking Avatar how-to steps use the uploaded workflow screenshots in every locale', () => {
+  for (const locale of locales) {
+    const page = readJson(join(root, 'src', 'data', locale, pageName))
+
+    assert.deepEqual(
+      page.howToUse.steps.map((step) => step.media?.src),
+      howToMediaUrls,
+      `${locale} should use the shared R2 workflow screenshots in order`,
+    )
+    assert.ok(
+      page.howToUse.steps.every((step) => typeof step.media?.alt === 'string' && step.media.alt.trim()),
+      `${locale} workflow screenshots should have localized alt text`,
+    )
   }
 })
 

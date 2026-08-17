@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "AIトーキングアバター",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "アバター画像をアップロード",
+      "replace": "置き換える",
+      "delete": "削除",
       "imageHelper": "正面向きで鮮明なポートレートを使ってください。JPG、PNG、WebP が適しています。",
       "audioTitle": "音声をアップロード",
       "audioHelper": "MP3、WAV、M4A、OGG に対応。リップシンク品質のため、10MB 未満かつ 15 秒以内にしてください。",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "ポートレートをアップロード",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "AIトーキングアバター作成の流れ：鮮明なポートレートをアップロード"
+        },
         "desc": "顔が見え、照明がよく、口元の隠れが少ない鮮明な画像を選びます。"
       },
       {
         "title": "音声をアップロード",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "AIトーキングアバター作成の流れ：短い音声クリップをアップロード"
+        },
         "desc": "背景ノイズが少なく、話者が 1 人の短い音声クリップを使います。"
       },
       {
         "title": "動きを指示",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "AIトーキングアバター作成の流れ：動きを指示して解像度を選択"
+        },
         "desc": "表情、頭の動き、雰囲気、アイコンタクト、照明、背景を安定させるかどうかを説明します。"
       },
       {
         "title": "生成して確認",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "AIトーキングアバター作成の流れ：生成されたトーキングアバター動画を確認"
+        },
         "desc": "素早い下書きは 480p で始め、声・顔・タイミングが整ったら 720p を使います。"
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "トーキングアバターに Toolaze を使う理由",
+    "title": "トーキングアバターの結果を左右する要素",
     "items": [
       {
-        "title": "画像と音声の流れ",
-        "desc": "このツールは、トーキングアバターに必要な実際の入力であるポートレート、音声、演出指示を中心に作られています。"
+        "title": "ポートレートの品質",
+        "desc": "顔が鮮明で口元が見え、正面を向いた写真ほど、表情の動きを安定して生成しやすくなります。"
       },
       {
-        "title": "指示文で動きを制御",
-        "desc": "リップシンク、表情、頭の動き、カメラの雰囲気、背景の安定性を別ツールなしで調整できます。"
+        "title": "音声の明瞭さ",
+        "desc": "話者が1人で背景ノイズが少ない短い録音ほど、話すタイミングを確認して調整しやすくなります。"
       },
       {
-        "title": "短尺出力に集中",
-        "desc": "SNS、商品、教育、営業で短い talking-head クリップが必要なとき、コンパクトな動画を下書きできます。"
+        "title": "動きの指示",
+        "desc": "プロンプトで視線、表情、頭の動き、照明、背景の雰囲気を指定できます。"
       },
       {
-        "title": "履歴に残せる結果",
-        "desc": "生成した動画は、元ページとモデル情報付きでアカウント履歴に保存できます。"
-      },
-      {
-        "title": "明確な入力制限",
-        "desc": "生成前に、ポートレート品質、音声の明瞭さ、解像度、短いクリップの扱いを確認できます。"
-      },
-      {
-        "title": "実用的な作成ガイド",
-        "desc": "クレジットを使う前に、用途、制限、指示例をわかりやすく確認できます。"
+        "title": "解像度の選択",
+        "desc": "まず480pで結果を確認し、素材とタイミングが整ったら720pを選びます。"
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "動画に合うツールを選ぶ",
+    "columnHeaders": {
+      "metric": "ツール",
+      "baseline": "最適な用途",
+      "target": "主な入力"
+    },
+    "rows": [
+      {
+        "label": "トーキングアバター作成",
+        "baseline": "リップシンクとプレゼンター風の動きを備えた、話すポートレート。",
+        "target": "ポートレート1枚 + 音声クリップ1つ"
+      },
+      {
+        "label": "画像から動画生成",
+        "baseline": "静止画に動きやカメラワークを加える。",
+        "target": "画像1枚 + 動きのプロンプト"
+      },
+      {
+        "label": "AI動画生成",
+        "baseline": "テキストや参照画像から、より幅広いシーンを作る。",
+        "target": "テキストプロンプトまたは参照画像"
+      }
+    ]
   }
 }

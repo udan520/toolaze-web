@@ -45,6 +45,31 @@ test('Talking avatar creator keeps localized prompt copy in the default textarea
   assert.doesNotMatch(source, /useState\(DEFAULT_COPY\.promptPlaceholder\)/)
 })
 
+test('Talking avatar creator accepts R2-backed default image and audio inputs from page data', () => {
+  assert.match(source, /defaultImageUrl\?: string/, 'component should accept a page-configured default image URL')
+  assert.match(source, /defaultAudioUrl\?: string/, 'component should accept a page-configured default audio URL')
+  assert.match(source, /defaultAudioName\?: string/, 'component should accept the default audio name')
+  assert.match(source, /defaultAudioDurationSeconds\?: number/, 'component should accept the accepted audio duration')
+  assert.match(toolL2PageSource, /defaultImageUrl=\{typeof content\.topTool\?\.defaultImageUrl === 'string' \? content\.topTool\.defaultImageUrl : undefined\}/, 'page data should pass the default image URL to the generator')
+  assert.match(toolL2PageSource, /defaultAudioUrl=\{typeof content\.topTool\?\.defaultAudioUrl === 'string' \? content\.topTool\.defaultAudioUrl : undefined\}/, 'page data should pass the default audio URL to the generator')
+  assert.match(source, /useState\(\(\) => defaultImageUrl \|\| ''\)/, 'the default image should initialize remote image state')
+  assert.match(source, /useState\(\(\) => defaultAudioUrl \|\| ''\)/, 'the default audio should initialize remote audio state')
+})
+
+test('Talking avatar creator exposes the selected default audio in an inline player', () => {
+  assert.match(source, /const currentAudioPreview = audio\?\.preview \|\| remoteAudioUrl/, 'the input panel should derive one preview URL for local and R2 audio')
+  assert.match(source, /data-talking-avatar-input-audio-player/, 'the input panel should expose an audio player')
+  assert.match(source, /<audio[^>]*controls[^>]*src=\{currentAudioPreview\}/, 'the input panel should render a native audio player for the selected audio')
+})
+
+test('Talking avatar creator lets users replace or remove both default inputs', () => {
+  assert.match(source, /import ImageReplaceButton from '@\/components\/ImageReplaceButton'/, 'selected inputs should reuse the shared Replace control')
+  assert.match(source, /const clearImage = \(\) => \{[\s\S]*setImage\(null\)[\s\S]*setRemoteImageUrl\(''\)/, 'image removal should clear local and remote state')
+  assert.match(source, /const clearAudio = \(\) => \{[\s\S]*setAudio\(null\)[\s\S]*setRemoteAudioUrl\(''\)/, 'audio removal should clear local and remote state')
+  assert.match(source, /data-talking-avatar-image-preview[\s\S]*ImageReplaceButton[\s\S]*data-talking-avatar-image-remove/, 'image preview should expose Replace and remove controls')
+  assert.match(source, /data-talking-avatar-audio-preview[\s\S]*ReplaceIcon[\s\S]*data-talking-avatar-audio-remove/, 'audio preview should expose Replace and remove controls without covering its player')
+})
+
 test('Talking avatar creator accepts shared prompt example clicks', () => {
   assert.match(source, /toolaze:use-prompt/, 'component should listen for shared prompt example events')
   assert.match(source, /setPrompt\(promptText\)/, 'shared prompt examples should fill the prompt textarea')
@@ -85,7 +110,7 @@ test('Talking avatar creator persists generated videos to R2 before history', ()
   assert.match(source, /const persistGeneratedMediaToR2 = async \(/, 'Talking Avatar should centralize generated media persistence')
   assert.match(source, /fetch\('\/api\/save-image-to-r2'[\s\S]*mediaUrl[\s\S]*mediaType/, 'Talking Avatar should call the shared R2 media persistence endpoint')
   assert.match(source, /const persistedVideoUrl = await persistGeneratedMediaToR2\(nextVideoUrl, 'video'\)/, 'Talking Avatar should persist provider video URLs before saving history')
-  assert.match(source, /persistHistory\(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution\)/, 'Talking Avatar history should store the persisted R2 video URL')
+  assert.match(source, /persistHistory\(persistedVideoUrl, imageUrl, audioUrl, requestPrompt, requestResolution(?:, taskId)?\)/, 'Talking Avatar history should store the persisted R2 video URL')
   assert.match(source, /outputPreview: persistedVideoUrl/, 'Talking Avatar inline history should preview the persisted R2 video URL')
 })
 
@@ -196,8 +221,8 @@ test('Talking avatar creator matches shared history download and delete actions'
 
 test('Talking avatar creator restores prompt, reference image, and reference audio for Recreate', () => {
   assert.match(source, /const PENDING_REPROMPT_STORAGE_KEY = 'toolaze:pending-reprompt'/, 'component should read the shared pending Recreate payload')
-  assert.match(source, /const \[remoteImageUrl, setRemoteImageUrl\] = useState\(''\)/, 'remote reference images should be first-class form state')
-  assert.match(source, /const \[remoteAudioUrl, setRemoteAudioUrl\] = useState\(''\)/, 'remote reference audio should be first-class form state')
+  assert.match(source, /const \[remoteImageUrl, setRemoteImageUrl\] = useState\(\(\) => defaultImageUrl \|\| ''\)/, 'remote reference images should be first-class form state')
+  assert.match(source, /const \[remoteAudioUrl, setRemoteAudioUrl\] = useState\(\(\) => defaultAudioUrl \|\| ''\)/, 'remote reference audio should be first-class form state')
   assert.match(source, /window\.sessionStorage\.getItem\(PENDING_REPROMPT_STORAGE_KEY\)/, 'landing page should restore Recreate payloads after navigation')
   assert.match(source, /setRemoteImageUrl\(imageUrl\)/, 'pending Recreate payload should restore the reference image URL')
   assert.match(source, /setRemoteAudioUrl\(audioUrl\)/, 'pending Recreate payload should restore the reference audio URL')

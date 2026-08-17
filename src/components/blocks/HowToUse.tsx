@@ -1,6 +1,10 @@
 interface Step {
   title: string
   desc?: string
+  media?: {
+    src: string
+    alt: string
+  }
 }
 
 interface HowToUseProps {
@@ -45,11 +49,19 @@ export default function HowToUse({ title, steps, bgClass = 'bg-[#F8FAFF]' }: How
               <div className="w-20 h-20 mb-8 mx-auto rounded-full bg-gradient-brand flex items-center justify-center text-white shadow-xl shadow-indigo-100 ring-4 ring-white text-2xl font-bold">
                 {idx + 1}
               </div>
+              {typeof step === 'object' && step.media && (
+                <img
+                  src={step.media.src}
+                  alt={step.media.alt}
+                  className="mb-6 aspect-[16/10] w-full rounded-2xl border border-slate-100 bg-slate-50 object-contain"
+                  loading="lazy"
+                />
+              )}
               <h3 className="text-xl font-bold text-slate-800 mb-2">
                 {typeof step === 'object' ? step.title : step}
               </h3>
               {typeof step === 'object' && step.desc && (
-                <p className="desc-text max-w-[240px] mx-auto">
+                <p className="desc-text max-w-[320px] mx-auto">
                   {step.desc}
                 </p>
               )}

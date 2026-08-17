@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "KI-Sprechavatar",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Avatarbild hochladen",
+      "replace": "Ersetzen",
+      "delete": "Entfernen",
       "imageHelper": "Nutzen Sie ein klares Porträt von vorn. JPG, PNG oder WebP eignet sich am besten.",
       "audioTitle": "Sprachaudio hochladen",
       "audioHelper": "MP3, WAV, M4A oder OGG. Halten Sie Audio unter 10 MB und 15 Sekunden für bessere Lippensynchronität.",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "Porträt hochladen",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "Arbeitsablauf im KI-Sprechavatar-Ersteller: klares Porträt hochladen"
+        },
         "desc": "Wählen Sie ein klares Bild mit sichtbarem Gesicht, gutem Licht und wenig Abdeckung rund um den Mund."
       },
       {
         "title": "Sprachaudio hochladen",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "Arbeitsablauf im KI-Sprechavatar-Ersteller: kurzen Sprachclip hochladen"
+        },
         "desc": "Nutzen Sie einen kurzen Sprachclip mit wenig Hintergrundgeräusch und einer einzelnen Stimme."
       },
       {
         "title": "Bewegung beschreiben",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "Arbeitsablauf im KI-Sprechavatar-Ersteller: Bewegung beschreiben und Auflösung wählen"
+        },
         "desc": "Beschreiben Sie Gesichtsausdruck, Kopfbewegung, Stimmung, Blickkontakt, Beleuchtung und ob der Hintergrund stabil bleiben soll."
       },
       {
         "title": "Generieren und prüfen",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "Arbeitsablauf im KI-Sprechavatar-Ersteller: ein erzeugtes Sprechavatar-Video prüfen"
+        },
         "desc": "Starten Sie mit 480p für einen schnellen Entwurf und wechseln Sie zu 720p, wenn Stimme, Gesicht und Timing passen."
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "Warum Toolaze für Sprechavatare nutzen",
+    "title": "Was dein Talking-Avatar-Ergebnis bestimmt",
     "items": [
       {
-        "title": "Bild-und-Audio-Ablauf",
-        "desc": "Das Tool ist auf die echten Eingaben eines Sprechavatars ausgelegt: ein Porträtbild, eine Sprachdatei und eine Richtungsanweisung."
+        "title": "Porträtqualität",
+        "desc": "Ein klares Gesicht, sichtbarer Mund und eine frontale Perspektive geben der Avatar-Animation eine verlässlichere Grundlage."
       },
       {
-        "title": "Bewegungssteuerung per Anweisung",
-        "desc": "Führen Sie Lippensynchronität, Mimik, Kopfbewegung, Kamerastimmung und Hintergrundstabilität ohne Werkzeugwechsel."
+        "title": "Stimmklarheit",
+        "desc": "Eine kurze Aufnahme mit einer sprechenden Person und wenig Hintergrundgeräuschen lässt sich leichter prüfen und verfeinern."
       },
       {
-        "title": "Fokus auf Kurzform-Ausgabe",
-        "desc": "Entwerfen Sie kompakte Videos für Social, Produkt, Bildung und Vertrieb, wenn ein schneller Talking-Head-Clip reicht."
+        "title": "Bewegungsanweisung",
+        "desc": "Nutze den Prompt für Blickkontakt, Mimik, Kopfbewegung, Licht und die Stimmung des Hintergrunds."
       },
       {
-        "title": "Ergebnisse mit Verlauf",
-        "desc": "Generierte Videos können mit Quellseite und Modellmetadaten im Kontoverlauf gespeichert werden."
-      },
-      {
-        "title": "Klare Eingabelimits",
-        "desc": "Der Ablauf nennt Porträtqualität, Audioklarheit, Auflösung und Verhalten kurzer Clips vor der Generierung."
-      },
-      {
-        "title": "Praktische Creator-Hinweise",
-        "desc": "Die Seite erklärt Anwendungsfälle, Grenzen und Beispiele in klarer Sprache, bevor Sie Credits ausgeben."
+        "title": "Auflösungswahl",
+        "desc": "Prüfe den Take zuerst in 480p und nutze 720p, wenn Quellen und Timing bereit sind."
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "Wähle das passende Tool für dein Video",
+    "columnHeaders": {
+      "metric": "Tool",
+      "baseline": "Am besten für",
+      "target": "Wichtigste Eingabe"
+    },
+    "rows": [
+      {
+        "label": "Sprechavatar-Ersteller",
+        "baseline": "Ein sprechendes Porträt mit Lippensynchronität und präsentationsartiger Bewegung.",
+        "target": "Ein Porträt + ein Sprachclip"
+      },
+      {
+        "label": "Bild-zu-Video-Generator",
+        "baseline": "Bewegung oder Kamerafahrt zu einem Standbild hinzufügen.",
+        "target": "Ein Bild + Bewegungs-Prompt"
+      },
+      {
+        "label": "KI-Video-Generator",
+        "baseline": "Eine umfassendere Szene aus Text- oder Bildvorgaben erstellen.",
+        "target": "Text-Prompt oder Referenzbild"
+      }
+    ]
   }
 }

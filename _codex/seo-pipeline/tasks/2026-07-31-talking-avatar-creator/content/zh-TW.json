@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "AI 說話頭像",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "上傳頭像圖片",
+      "replace": "替換",
+      "delete": "刪除",
       "imageHelper": "使用清楚的正面人像。JPG、PNG 或 WebP 效果最佳。",
       "audioTitle": "上傳語音音訊",
       "audioHelper": "支援 MP3、WAV、M4A 或 OGG。音訊請控制在 10MB 以內、15 秒以內，以獲得更好的唇形同步。",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "上傳人像",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "AI 說話頭像流程：上傳清晰人像"
+        },
         "desc": "選擇一張臉部清楚、光線良好、嘴部周圍沒有明顯遮擋的圖片。"
       },
       {
         "title": "上傳語音音訊",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "AI 說話頭像流程：上傳簡短語音"
+        },
         "desc": "使用背景雜音低、單一說話者的短語音片段。"
       },
       {
         "title": "撰寫動作指示",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "AI 說話頭像流程：撰寫動作指示並選擇解析度"
+        },
         "desc": "描述臉部表情、頭部動作、情緒、眼神接觸、燈光，以及背景是否需要保持穩定。"
       },
       {
         "title": "生成並檢查",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "AI 說話頭像流程：在歷史紀錄中檢查已生成的說話頭像影片"
+        },
         "desc": "先用 480p 做快速草稿；當語音、臉部與節奏都合適後，再用 720p 生成更清晰版本。"
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "為什麼用 Toolaze 建立說話頭像",
+    "title": "影響說話頭像結果的要素",
     "items": [
       {
-        "title": "圖片與音訊流程",
-        "desc": "工具圍繞說話頭像真正需要的輸入建立：一張人像、一個語音檔與一段方向指示。"
+        "title": "肖像品質",
+        "desc": "清楚的臉部、可見的嘴巴與正面角度，能為動畫提供更穩定的臉部基礎。"
       },
       {
-        "title": "用指示控制動作",
-        "desc": "不用切換工具，就能引導唇形同步、表情、頭部動作、鏡頭氛圍與背景穩定性。"
+        "title": "語音清晰度",
+        "desc": "單一說話者、背景雜音低的短錄音，更容易檢查並微調說話節奏。"
       },
       {
-        "title": "聚焦短影片輸出",
-        "desc": "當社群、產品、教育與銷售流程只需要快速 talking-head 片段時，可快速生成緊湊草稿。"
+        "title": "動作指示",
+        "desc": "使用提示詞引導眼神、表情、頭部動作、光線與背景氛圍。"
       },
       {
-        "title": "可保存到歷史記錄",
-        "desc": "生成影片可保存到帳戶歷史記錄，並附帶來源頁面與模型資訊。"
-      },
-      {
-        "title": "清楚的輸入限制",
-        "desc": "生成前會提示人像品質、音訊清晰度、解析度與短片段行為。"
-      },
-      {
-        "title": "實用創作指引",
-        "desc": "在消耗 credits 前，頁面會用清楚文案說明用途、限制與指示範例。"
+        "title": "解析度選擇",
+        "desc": "先以 480p 檢查結果，當素材與節奏準備好後再使用 720p。"
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "為你的影片選擇合適工具",
+    "columnHeaders": {
+      "metric": "工具",
+      "baseline": "最適合用於",
+      "target": "主要輸入"
+    },
+    "rows": [
+      {
+        "label": "說話頭像建立工具",
+        "baseline": "帶有嘴型同步與主持人式動作的說話肖像。",
+        "target": "一張肖像 + 一段語音"
+      },
+      {
+        "label": "圖片轉影片產生器",
+        "baseline": "為靜態圖片加入動態或鏡頭運動。",
+        "target": "一張圖片 + 動態提示詞"
+      },
+      {
+        "label": "AI 影片產生器",
+        "baseline": "從文字或參考圖片建立更完整的場景。",
+        "target": "文字提示詞或參考圖片"
+      }
+    ]
   }
 }

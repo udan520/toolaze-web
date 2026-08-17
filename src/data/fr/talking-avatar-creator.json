@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "Avatar parlant IA",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Importer l’image de l’avatar",
+      "replace": "Remplacer",
+      "delete": "Supprimer",
       "imageHelper": "Utilisez un portrait frontal net. JPG, PNG ou WebP fonctionne le mieux.",
       "audioTitle": "Importer l’audio vocal",
       "audioHelper": "MP3, WAV, M4A ou OGG. Gardez l’audio sous 10 Mo et 15 secondes pour une meilleure synchronisation labiale.",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "Importer un portrait",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "Flux du créateur d’avatar parlant : importez un portrait net"
+        },
         "desc": "Choisissez une image claire avec visage visible, bon éclairage et peu d’obstruction autour de la bouche."
       },
       {
         "title": "Importer l’audio vocal",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "Flux du créateur d’avatar parlant : importez un court extrait audio"
+        },
         "desc": "Utilisez un court extrait avec peu de bruit de fond et une seule voix."
       },
       {
         "title": "Décrire le mouvement",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "Flux du créateur d’avatar parlant : décrivez le mouvement et choisissez la résolution"
+        },
         "desc": "Décrivez expression du visage, mouvement de tête, humeur, regard, éclairage et stabilité du fond."
       },
       {
         "title": "Générer et vérifier",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "Flux du créateur d’avatar parlant : vérifiez une vidéo d’avatar parlant générée"
+        },
         "desc": "Commencez en 480p pour un brouillon rapide, puis utilisez 720p quand voix, visage et timing sont prêts."
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "Pourquoi utiliser Toolaze pour les avatars parlants",
+    "title": "Ce qui contrôle le résultat de votre avatar parlant",
     "items": [
       {
-        "title": "Flux image et audio",
-        "desc": "L’outil suit les vraies entrées d’un avatar parlant: un portrait, une voix et une consigne de direction."
+        "title": "Qualité du portrait",
+        "desc": "Un visage net, une bouche visible et un angle de face donnent une base plus stable à l’animation."
       },
       {
-        "title": "Contrôle du mouvement par consigne",
-        "desc": "Guidez synchronisation labiale, expression, mouvement de tête, ambiance caméra et stabilité du fond sans changer d’outil."
+        "title": "Clarté de la voix",
+        "desc": "Un enregistrement court avec une seule personne et peu de bruit de fond facilite le contrôle du rythme."
       },
       {
-        "title": "Sortie courte ciblée",
-        "desc": "Créez des vidéos compactes pour social, produit, éducation et vente quand un clip de présentateur rapide suffit."
+        "title": "Direction du mouvement",
+        "desc": "Utilisez le prompt pour guider le regard, l’expression, les mouvements de tête, la lumière et le fond."
       },
       {
-        "title": "Résultats avec historique",
-        "desc": "Les vidéos générées peuvent être enregistrées dans l’historique du compte avec page source et métadonnées du modèle."
-      },
-      {
-        "title": "Limites d’entrée claires",
-        "desc": "Le flux précise qualité du portrait, propreté audio, résolution et comportement des clips courts avant génération."
-      },
-      {
-        "title": "Conseils pratiques pour créateurs",
-        "desc": "La page explique usages, limites et exemples en langage clair avant de dépenser des crédits."
+        "title": "Choix de résolution",
+        "desc": "Commencez en 480p pour vérifier la prise, puis passez en 720p lorsque les sources et le rythme sont prêts."
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "Choisissez le bon outil pour votre vidéo",
+    "columnHeaders": {
+      "metric": "Outil",
+      "baseline": "Idéal pour",
+      "target": "Entrée principale"
+    },
+    "rows": [
+      {
+        "label": "Créateur d’avatars parlants",
+        "baseline": "Un portrait parlant avec synchronisation labiale et mouvements de présentateur.",
+        "target": "Un portrait + un extrait vocal"
+      },
+      {
+        "label": "Générateur d’image en vidéo",
+        "baseline": "Ajouter du mouvement ou un déplacement de caméra à une image fixe.",
+        "target": "Une image + prompt de mouvement"
+      },
+      {
+        "label": "Générateur vidéo IA",
+        "baseline": "Créer une scène plus large à partir d’un texte ou d’une image de référence.",
+        "target": "Prompt texte ou image de référence"
+      }
+    ]
   }
 }

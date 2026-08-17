@@ -1633,6 +1633,10 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
               heroDescription={content.hero?.desc}
               copy={content.topTool?.textOverrides}
               demoVideo={content.heroDemoVideo as { src?: string; poster?: string; ariaLabel?: string } | undefined}
+              defaultImageUrl={typeof content.topTool?.defaultImageUrl === 'string' ? content.topTool.defaultImageUrl : undefined}
+              defaultAudioUrl={typeof content.topTool?.defaultAudioUrl === 'string' ? content.topTool.defaultAudioUrl : undefined}
+              defaultAudioName={typeof content.topTool?.defaultAudioName === 'string' ? content.topTool.defaultAudioName : undefined}
+              defaultAudioDurationSeconds={typeof content.topTool?.defaultAudioDurationSeconds === 'number' ? content.topTool.defaultAudioDurationSeconds : undefined}
             />
           ) : videoGeneratorDefaultModel ? (
             <header className="bg-[#F8FAFF] pb-6 md:pb-12 w-full pl-0 pr-2 md:pl-0 md:pr-6">

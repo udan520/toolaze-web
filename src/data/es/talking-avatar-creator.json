@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "Avatar parlante con IA",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Subir imagen del avatar",
+      "replace": "Reemplazar",
+      "delete": "Eliminar",
       "imageHelper": "Usa un retrato frontal y claro. JPG, PNG o WebP funciona mejor.",
       "audioTitle": "Subir audio de voz",
       "audioHelper": "MP3, WAV, M4A u OGG. Mantén el audio por debajo de 10 MB y 15 segundos para una mejor sincronización labial.",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "Sube un retrato",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "Flujo del creador de avatares parlantes: sube un retrato claro"
+        },
         "desc": "Elige una imagen clara con rostro visible, buena luz y mínima obstrucción alrededor de la boca."
       },
       {
         "title": "Sube audio de voz",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "Flujo del creador de avatares parlantes: sube un audio de voz breve"
+        },
         "desc": "Usa un clip corto con poco ruido de fondo y una sola persona hablando."
       },
       {
         "title": "Escribe la guía de movimiento",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "Flujo del creador de avatares parlantes: escribe la guía de movimiento y elige la resolución"
+        },
         "desc": "Describe expresión facial, movimiento de cabeza, ánimo, contacto visual, iluminación y si el fondo debe mantenerse estable."
       },
       {
         "title": "Genera y revisa",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "Flujo del creador de avatares parlantes: revisa un video de avatar parlante generado"
+        },
         "desc": "Empieza con 480p para un borrador rápido y usa 720p cuando voz, rostro y ritmo estén listos."
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "Por qué usar Toolaze para avatares parlantes",
+    "title": "Qué controla el resultado de tu avatar parlante",
     "items": [
       {
-        "title": "Flujo de imagen y audio",
-        "desc": "La herramienta se centra en las entradas reales que necesita un avatar parlante: un retrato, una voz y una instrucción de dirección."
+        "title": "Calidad del retrato",
+        "desc": "Un rostro claro, una boca visible y un ángulo frontal dan a la animación una base facial más estable."
       },
       {
-        "title": "Control de movimiento por instrucción",
-        "desc": "Guía sincronización labial, expresión, movimiento de cabeza, estilo de cámara y estabilidad del fondo sin cambiar de herramienta."
+        "title": "Claridad de la voz",
+        "desc": "Una grabación corta con una sola persona y poco ruido de fondo facilita revisar y ajustar el ritmo."
       },
       {
-        "title": "Enfoque en salida breve",
-        "desc": "Crea borradores compactos para redes, producto, educación y ventas cuando basta un clip de presentador rápido."
+        "title": "Dirección del movimiento",
+        "desc": "Usa el prompt para guiar la mirada, la expresión, el movimiento de la cabeza, la iluminación y el fondo."
       },
       {
-        "title": "Resultados con historial",
-        "desc": "Los videos generados pueden guardarse en el historial de la cuenta con página de origen y metadatos del modelo."
-      },
-      {
-        "title": "Límites claros de entrada",
-        "desc": "El flujo muestra calidad del retrato, limpieza del audio, resolución y comportamiento de clips cortos antes de generar."
-      },
-      {
-        "title": "Guía práctica para creadores",
-        "desc": "La página explica usos, límites y ejemplos con lenguaje claro antes de gastar créditos."
+        "title": "Elección de resolución",
+        "desc": "Empieza con 480p para revisar la toma y usa 720p cuando el material y el ritmo estén listos."
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "Elige la herramienta adecuada para tu vídeo",
+    "columnHeaders": {
+      "metric": "Herramienta",
+      "baseline": "Ideal para",
+      "target": "Entrada principal"
+    },
+    "rows": [
+      {
+        "label": "Creador de avatares parlantes",
+        "baseline": "Un retrato que habla con sincronización labial y movimiento estilo presentador.",
+        "target": "Un retrato + un clip de voz"
+      },
+      {
+        "label": "Generador de imagen a vídeo",
+        "baseline": "Añadir movimiento o un desplazamiento de cámara a una imagen fija.",
+        "target": "Una imagen + prompt de movimiento"
+      },
+      {
+        "label": "Generador de vídeo con IA",
+        "baseline": "Crear una escena más amplia a partir de texto o una imagen de referencia.",
+        "target": "Prompt de texto o imagen de referencia"
+      }
+    ]
   }
 }

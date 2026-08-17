@@ -5,8 +5,14 @@
   "topComponent": "talking-avatar-creator",
   "topTool": {
     "displayName": "AI 말하는 아바타",
+    "defaultImageUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-portrait.webp",
+    "defaultAudioUrl": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/creator-intro-audio.wav",
+    "defaultAudioName": "creator-intro-audio.wav",
+    "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "아바타 이미지 업로드",
+      "replace": "교체",
+      "delete": "삭제",
       "imageHelper": "정면을 향한 선명한 인물 사진을 사용하세요. JPG, PNG, WebP가 가장 적합합니다.",
       "audioTitle": "음성 오디오 업로드",
       "audioHelper": "MP3, WAV, M4A, OGG 지원. 더 나은 립싱크를 위해 10MB 미만, 15초 이내로 유지하세요.",
@@ -43,6 +49,7 @@
     "howToUse",
     "promptExamples",
     "scenes",
+    "competitorComparison",
     "features",
     "performanceMetrics",
     "faq"
@@ -124,18 +131,34 @@
     "steps": [
       {
         "title": "인물 사진 업로드",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-01-upload-portrait.webp",
+          "alt": "AI 말하는 아바타 제작 과정: 선명한 인물 사진을 업로드"
+        },
         "desc": "얼굴이 보이고 조명이 좋으며 입 주변이 거의 가려지지 않은 선명한 이미지를 선택하세요."
       },
       {
         "title": "음성 오디오 업로드",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-02-upload-audio.webp",
+          "alt": "AI 말하는 아바타 제작 과정: 짧은 음성 클립을 업로드"
+        },
         "desc": "배경 소음이 적고 한 명이 말하는 짧은 음성 클립을 사용하세요."
       },
       {
         "title": "움직임 지시 작성",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-03-prompt-and-resolution.webp",
+          "alt": "AI 말하는 아바타 제작 과정: 움직임 지시를 작성하고 해상도를 선택"
+        },
         "desc": "얼굴 표정, 머리 움직임, 분위기, 시선, 조명, 배경 유지 여부를 설명하세요."
       },
       {
         "title": "생성 후 확인",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/talking-avatar-creator/how-to-04-review-result-v2.webp",
+          "alt": "AI 말하는 아바타 제작 과정: 생성된 말하는 아바타 영상을 확인"
+        },
         "desc": "빠른 초안은 480p로 시작하고, 목소리와 얼굴 및 타이밍이 준비되면 720p를 사용하세요."
       }
     ]
@@ -159,31 +182,23 @@
     }
   ],
   "features": {
-    "title": "말하는 아바타에 Toolaze를 쓰는 이유",
+    "title": "토킹 아바타 결과를 좌우하는 요소",
     "items": [
       {
-        "title": "이미지와 오디오 흐름",
-        "desc": "이 도구는 말하는 아바타에 필요한 실제 입력인 인물 사진, 음성 파일, 연출 지시에 맞춰져 있습니다."
+        "title": "인물 사진 품질",
+        "desc": "얼굴이 선명하고 입이 보이며 정면을 향한 사진일수록 더 안정적인 얼굴 움직임을 만들 수 있습니다."
       },
       {
-        "title": "지시 기반 움직임 제어",
-        "desc": "도구를 바꾸지 않고 립싱크, 표정, 머리 움직임, 카메라 분위기, 배경 안정성을 안내할 수 있습니다."
+        "title": "음성 선명도",
+        "desc": "한 명의 화자와 적은 배경 소음으로 된 짧은 녹음은 말하는 타이밍을 확인하고 다듬기 쉽습니다."
       },
       {
-        "title": "짧은 출력 중심",
-        "desc": "빠른 talking-head 클립이면 충분한 소셜, 제품, 교육, 세일즈 작업을 위해 간결한 영상을 초안으로 만들 수 있습니다."
+        "title": "움직임 지시",
+        "desc": "프롬프트로 시선, 표정, 머리 움직임, 조명, 배경 분위기를 안내하세요."
       },
       {
-        "title": "기록 가능한 결과",
-        "desc": "생성된 영상은 출처 페이지와 모델 메타데이터와 함께 계정 기록에 저장될 수 있습니다."
-      },
-      {
-        "title": "명확한 입력 제한",
-        "desc": "생성 전에 인물 사진 품질, 오디오 선명도, 해상도, 짧은 클립 동작을 알려줍니다."
-      },
-      {
-        "title": "실용적인 제작 안내",
-        "desc": "크레딧을 사용하기 전에 사용 사례, 제한, 지시 예시를 쉬운 언어로 확인할 수 있습니다."
+        "title": "해상도 선택",
+        "desc": "먼저 480p로 결과를 확인한 다음, 소스와 타이밍이 준비되면 720p를 사용하세요."
       }
     ]
   },
@@ -265,5 +280,30 @@
     "uploadDate": "2026-07-31T07:08:59.000Z",
     "sourceHistory": "Talking Avatar Creator demo · 14.48s · uploaded to Toolaze R2 on 2026-07-31",
     "type": "video"
+  },
+  "competitorComparison": {
+    "title": "내 영상에 맞는 도구 선택하기",
+    "columnHeaders": {
+      "metric": "도구",
+      "baseline": "가장 적합한 용도",
+      "target": "주요 입력"
+    },
+    "rows": [
+      {
+        "label": "토킹 아바타 생성기",
+        "baseline": "립싱크와 발표자 스타일 움직임이 있는 말하는 인물 사진.",
+        "target": "인물 사진 1장 + 음성 클립 1개"
+      },
+      {
+        "label": "이미지-동영상 생성기",
+        "baseline": "정지 이미지에 움직임이나 카메라 이동을 더하기.",
+        "target": "이미지 1장 + 모션 프롬프트"
+      },
+      {
+        "label": "AI 동영상 생성기",
+        "baseline": "텍스트 또는 참조 이미지로 더 넓은 장면 만들기.",
+        "target": "텍스트 프롬프트 또는 참조 이미지"
+      }
+    ]
   }
 }
