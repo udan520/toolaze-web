@@ -96,7 +96,7 @@
   ],
   "hero": {
     "h1": "무료 온라인 AI <span class=\"text-gradient\">나이 필터</span>",
-    "desc": "사진 한 장을 업로드하고 인생 단계를 고르면, 가입 없이 아기부터 노년까지 달라진 모습을 볼 수 있습니다."
+    "desc": "사진 한 장을 업로드하고 인생 단계를 골라 아기, 어린이, 청년, 중년 또는 노년 버전의 인물 사진을 만드세요."
   },
   "promptExamples": {
     "title": "나이 변화 살펴보기",
@@ -134,6 +134,7 @@
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"생애 단계 옵션과 전후 미리보기가 표시된 Toolaze 나이 필터","caption":"생애 단계를 선택하고 미리보기를 확인한 뒤 내 사진으로 생성하세요.","width":1200,"height":675},
     "title": "AI 나이 필터 사용 방법",
     "steps": [
       {
@@ -165,8 +166,8 @@
       },
       {
         "icon": "🎁",
-        "title": "무료, 가입 불필요",
-        "desc": "계정을 만들지 않고 온라인에서 나이 변화 이미지를 시작하세요."
+        "title": "신규 가입 시 무료 크레딧 20개",
+        "desc": "가입하면 무료 크레딧 20개를 받습니다. GPT Image 2의 1K 결과는 10크레딧이므로 두 번 생성할 수 있으며, 더 높은 해상도나 계속 사용하려면 추가 크레딧이 필요합니다."
       }
     ]
   },

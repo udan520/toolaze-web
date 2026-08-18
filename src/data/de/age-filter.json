@@ -96,7 +96,7 @@
   ],
   "hero": {
     "h1": "Kostenloser KI-<span class=\"text-gradient\">Altersfilter</span> online",
-    "desc": "Lade ein Foto hoch, wähle eine Lebensphase und erhalte ohne Anmeldung deinen Baby-, Kinder-, jungen Erwachsenen-, mittleren oder älteren Look."
+    "desc": "Lade ein Foto hoch, wähle eine Lebensphase und erstelle eine Baby-, Kinder-, junge, mittlere oder ältere Version deines Porträts."
   },
   "promptExamples": {
     "title": "Altersveränderungen entdecken",
@@ -134,6 +134,7 @@
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Toolaze Altersfilter mit Lebensphasen und Vorher-Nachher-Porträt","caption":"Wähle eine Lebensphase, prüfe die Vorschau und erstelle dann deine eigene Variante.","width":1200,"height":675},
     "title": "So verwendest du den KI-Altersfilter",
     "steps": [
       {
@@ -165,8 +166,8 @@
       },
       {
         "icon": "🎁",
-        "title": "Kostenlos, ohne Anmeldung",
-        "desc": "Starte deine visuelle Altersveränderung direkt online, ohne ein Konto anzulegen."
+        "title": "20 Credits für neue Nutzer",
+        "desc": "Nach der Registrierung erhältst du 20 kostenlose Credits. Ein 1K-Ergebnis mit GPT Image 2 kostet 10 Credits; damit sind zwei Altersfilter-Generierungen möglich. Höhere Auflösungen oder weitere Nutzung benötigen mehr Credits."
       }
     ]
   },

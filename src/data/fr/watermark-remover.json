@@ -2,7 +2,7 @@
   "in_menu": true,
   "metadata": {
     "title": "Suppresseur de filigrane gratuit - Supprimer le filigrane des images avec l'IA | Toolaze",
-    "description": "Supprimez gratuitement le filigrane d'une image en ligne. Effacez instantanément les filigranes des photos avec l'IA. Prise en charge JPG, PNG, WebP. Aucune inscription requise."
+    "description": "Supprimez un filigrane, logo, tampon ou texte autorisé d’une image JPG, PNG ou WebP par inpainting IA et comparez la zone reconstruite."
   },
   "sectionsOrder": [
     "howToUse",
@@ -20,7 +20,7 @@
     "description": [
       "Les outils traditionnels comme le tampon de clonage ou le remplissage sensible au contenu vous obligent à sélectionner manuellement la zone du filigrane. Si le filigrane chevauche un visage, un produit ou un détail important, vous risquez de laisser des taches ou des bavures visibles. L'incrustation par IA fonctionne différemment : elle analyse les pixels environnants et reconstruit l'apparence de l'image sans la superposition, de sorte que le résultat se fond naturellement au lieu de paraître collé.",
       "Nous utilisons un modèle d'édition d'images IA entraîné sur des tâches d'incrustation. Il gère les logos semi-transparents, le texte solide, les tampons et les signatures. Les meilleurs résultats proviennent de filigranes clairs et distincts ; les filigranes fortement mélangés ou très grands peuvent nécessiter une deuxième passe. La sortie préserve vos dimensions d'origine — pas de recadrage ni de redimensionnement.",
-      "Le traitement s'exécute sur nos serveurs. Les images ne sont pas stockées de manière permanente. Prend en charge JPG, PNG, WebP jusqu'à 30 Mo. Flux de travail à image unique avec un curseur de comparaison pour que vous puissiez vérifier le résultat avant de télécharger."
+      "Le traitement passe par Toolaze et le fournisseur de génération. Une image JPG, PNG ou WebP jusqu’à 30 Mo est prise en charge, avec comparaison des zones reconstruites avant téléchargement."
     ],
     "featureCards": [
       {
@@ -33,13 +33,13 @@
       },
       {
         "title": "Supprimer le filigrane d'une image en ligne gratuitement",
-        "content": "Photos uniques avec logos, texte, tampons ou signatures. JPG, PNG, WebP jusqu'à 30 Mo. L'incrustation par IA gère le reste — pas de sélection manuelle. Téléchargez, comparez, téléchargez. Suppresseur de filigrane gratuit, aucune inscription requise."
+        "content": "Traitez une image JPG, PNG ou WebP jusqu’à 30 Mo. L’IA reconstruit la zone couverte sans pinceau manuel ; comparez visages, texte, cheveux et motifs avant le téléchargement."
       }
     ]
   },
   "hero": {
     "h1": "Suppresseur de <span class=\"text-gradient\">filigrane IA</span> gratuit en ligne",
-    "desc": "Supprimez gratuitement le filigrane d'une image en ligne. Effacez instantanément les filigranes des photos avec l'IA. Pas d'inscription, pas d'options — il suffit de télécharger et de cliquer."
+    "desc": "Importez une image que vous possédez ou pouvez modifier, retirez un filigrane ou un texte avec l’IA et comparez la zone reconstruite avant téléchargement."
   },
   "intro": {
     "title": "Quand la suppression de filigrane a du sens",
@@ -84,18 +84,19 @@
       {
         "icon": "📱",
         "iconType": "device",
-        "title": "Uniquement via navigateur",
+        "title": "Flux en ligne",
         "desc": "Pas d'installation d'application. Fonctionne sur n'importe quel appareil avec un navigateur moderne. Le traitement s'exécute sur nos serveurs, vous avez donc besoin d'une connexion — mais pas de GPU ou de logiciel local."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Pas de compte, pas de limite",
-        "desc": "Nous n'exigeons ni inscription ni paiement. Pas de limite quotidienne. Utilisez-le aussi souvent que nécessaire. Les images sont traitées via API et ne sont pas stockées de manière permanente."
+        "title": "Vérifier les détails reconstruits",
+        "desc": "La qualité dépend de la taille, de l’opacité et du contenu masqué. Examinez visages, texte, cheveux et motifs répétés avant d’utiliser le résultat."
       }
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Suppresseur de filigrane Toolaze avec import et comparaison avant-après","caption":"Importez une image que vous pouvez modifier et comparez les zones reconstruites avant téléchargement.","width":1200,"height":675},
     "title": "Comment supprimer un filigrane d'une photo",
     "steps": [
       {
@@ -131,9 +132,9 @@
     }
   ],
   "rating": {
-    "title": "Approuvé par des milliers de créateurs",
-    "rating": "4.9/5 PAR PLUS DE 10K CRÉATEURS",
-    "text": "Rejoignez des milliers d'utilisateurs qui font confiance à Toolaze pour une suppression de filigrane rapide et gratuite. Supprimez gratuitement le filigrane d'une image en ligne — alimenté par l'IA, aucune inscription requise."
+    "title": "Vérifiez chaque zone reconstruite",
+    "rating": "COMPAREZ AVANT DE TÉLÉCHARGER",
+    "text": "Les nouveaux utilisateurs reçoivent 20 crédits gratuits après inscription. Une édition 1K avec GPT Image 2 coûte 10 crédits : le bonus couvre deux générations. Une résolution supérieure ou un usage continu nécessite plus de crédits."
   },
   "faqTitle": "Foire aux questions",
   "faq": [
@@ -146,8 +147,8 @@
       "a": "L'incrustation par IA fonctionne en prédisant ce qui se trouve sous le filigrane. Elle excelle sur les superpositions claires sur des zones uniformes ou texturées. Les filigranes sur les visages, les cheveux ou les détails fins peuvent laisser de légers artefacts car le modèle a moins de contexte. Utilisez la vue de comparaison pour vérifier — si ce n'est pas assez bon, essayez de recadrer la zone du filigrane ou d'utiliser une source de résolution plus élevée."
     },
     {
-      "q": "Stockez-vous ou conservez-vous mes images ?",
-      "a": "Les images sont envoyées à notre API pour traitement. Nous ne les stockons pas de manière permanente. Nous vous recommandons de ne pas télécharger de contenu très sensible ; pour une confidentialité maximale, envisagez des outils qui fonctionnent entièrement sur l'appareil (bien que ceux-ci n'offrent généralement pas de suppression par IA)."
+      "q": "Comment les images importées sont-elles traitées ?",
+      "a": "Les images sont envoyées à Toolaze et au fournisseur de génération pour traitement ; les résultats peuvent apparaître dans l’historique du compte. N’importez pas de contenu très sensible et consultez la politique de confidentialité pour la conservation et les données du compte."
     },
     {
       "q": "Puis-je traiter plusieurs images à la fois ?",
@@ -160,16 +161,12 @@
     {
       "q": "Fonctionne-t-il sur les vidéos ou les PDF ?",
       "a": "Non. Nous ne prenons en charge que les images fixes uniques aux formats JPG, PNG ou WebP. Pour la suppression de filigranes de vidéos ou de PDF, vous auriez besoin d'un outil différent."
-    },
-    {
-      "q": "Puis-je l'utiliser sur mon téléphone ?",
-      "a": "Oui. Il fonctionne dans le navigateur. Aucune application requise. Téléchargez depuis votre galerie, traitez et téléchargez. Les réseaux mobiles peuvent être plus lents pour les fichiers volumineux."
     }
   ],
   "moreTools": "Outils gratuits associés",
   "trustBar": {
     "private": "Gratuit",
     "instantPreview": "Traitement rapide",
-    "noServerLogs": "Aucune inscription requise"
+    "noServerLogs": "20 crédits après inscription"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "taskId": "2026-08-19-seedream-5-0-pro-rewrite",
+  "slug": "seedream-5-0-pro",
+  "pageType": "model",
+  "pageGroup": "ai-image-models",
+  "status": "ready_for_publish",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/lib/seedream-5-0-pro-landing-copy.ts",
+  "canonicalPath": "/model/seedream-5-0-pro",
+  "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
+  "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "outputs": {"route":"src/app/model/seedream-5-0-pro/page.tsx","localeRoute":"src/app/[locale]/model/seedream-5-0-pro/page.tsx"}
+}

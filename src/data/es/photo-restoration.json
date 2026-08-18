@@ -2,7 +2,7 @@
   "in_menu": true,
   "metadata": {
     "title": "Restauración de fotos gratis en línea - Restaura fotos antiguas con IA | Toolaze",
-    "description": "Restaura fotos antiguas en línea gratis con IA. Elimina arañazos, polvo y ruido, mejora la claridad y colorea fotos antiguas con un solo clic. No requiere registro."
+    "description": "Restaura y colorea una foto antigua online con IA. Reduce arañazos, polvo, ruido y bajo contraste, y revisa el resultado antes de descargar."
   },
   "topComponent": "photo-restoration",
   "sectionsOrder": [
@@ -19,6 +19,7 @@
     "desc": "Restaura fotos antiguas en un clic con IA. Elimina arañazos, polvo y ruido, mejora los detalles y aplica una restauración de color natural automáticamente."
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Restauración de fotos de Toolaze con carga y comparación antes y después","caption":"Sube un escaneo, ejecuta la restauración con colorización y revisa rostros y detalles antes de descargar.","width":1200,"height":675},
     "title": "Cómo restaurar fotos antiguas en línea",
     "steps": [
       {
@@ -66,13 +67,13 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Experiencia rápida en el navegador",
-        "desc": "Sube, restaura y descarga en un flujo limpio basado en el navegador sin necesidad de registro."
+        "desc": "Sube una imagen, ejecuta el flujo fijo de restauración y revisa el resultado en el navegador antes de descargar."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Procesamiento seguro",
-        "desc": "Las imágenes se procesan de forma segura y no se guardan como archivos de cuenta permanentes."
+        "title": "Revisa antes de descargar",
+        "desc": "Compara rostros, manos, texto, bordes de ropa y zonas dañadas al 100 % antes de guardar la imagen restaurada."
       }
     ]
   },
@@ -142,14 +143,14 @@
   ],
   "rating": {
     "title": "Confiado por creadores y familias",
-    "rating": "4.9/5 DE 10K CREADORES",
-    "text": "Toolaze ayuda a los usuarios a restaurar fotos antiguas rápidamente con controles simples y resultados limpios. No requiere registro."
+    "rating": "REVISA EL RESULTADO AL 100 %",
+    "text": "Compara la restauración con el original al 100 % y revisa rostros, manos, patrones de ropa y texto de fondo."
   },
   "faqTitle": "Preguntas frecuentes",
   "faq": [
     {
       "q": "¿Esta herramienta de restauración de fotos es gratuita?",
-      "a": "Sí. Puedes restaurar fotos en línea gratis en Toolaze sin necesidad de registrarte."
+      "a": "Los nuevos usuarios reciben 20 créditos gratis al registrarse. Una restauración 1K con GPT Image 2 cuesta 10 créditos, así que el bono cubre dos resultados; más resolución o uso continuado requiere más créditos."
     },
     {
       "q": "¿Qué formatos de archivo son compatibles?",
@@ -169,7 +170,7 @@
     },
     {
       "q": "¿Necesito instalar algún software?",
-      "a": "No. Todo se ejecuta en tu navegador, por lo que puedes subir, restaurar y descargar en línea."
+      "a": "No. Toolaze funciona en línea: subes la foto desde la interfaz web, el servicio procesa la restauración y después descargas el resultado."
     }
   ],
   "moreTools": "Herramientas gratuitas relacionadas"

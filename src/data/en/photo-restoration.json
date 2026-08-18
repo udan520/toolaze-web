@@ -2,7 +2,7 @@
   "in_menu": true,
   "metadata": {
     "title": "Free Photo Restoration Online - Restore Old Photos with AI | Toolaze",
-    "description": "Restore old photos online free with AI. Remove scratches, dust, and noise, improve clarity, and colorize old photos in one click. No sign-up required."
+    "description": "Restore and colorize one old photo online with AI. Reduce scratches, dust, noise, and low contrast, then inspect the result before downloading."
   },
   "topComponent": "photo-restoration",
   "sectionsOrder": [
@@ -19,6 +19,7 @@
     "desc": "Restore old photos in one click with AI. Remove scratches, dust, and noise, improve details, and apply natural color restoration automatically."
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Toolaze Photo Restoration upload panel and restored before-and-after preview","caption":"Upload one scan, run the fixed restoration and colorization workflow, then inspect faces and fine detail before downloading.","width":1200,"height":675},
     "title": "How to Restore Old Photos Online",
     "steps": [
       {
@@ -66,13 +67,13 @@
         "icon": "⚡",
         "iconType": "speed",
         "title": "Fast Browser Experience",
-        "desc": "Upload, restore, and download in a clean browser-based flow with no sign-up required."
+        "desc": "Upload one image, run the fixed restoration workflow, and inspect the result in the browser before downloading."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Secure Processing",
-        "desc": "Images are processed securely and not kept as permanent account files."
+        "title": "Review Before Download",
+        "desc": "Compare faces, hands, lettering, clothing edges, and damaged areas at full size before saving the restored image."
       }
     ]
   },
@@ -142,14 +143,14 @@
   ],
   "rating": {
     "title": "Trusted by Creators and Families",
-    "rating": "4.9/5 FROM 10K+ CREATORS",
-    "text": "Toolaze helps users restore old photos quickly with simple controls and clean results. No registration required."
+    "rating": "REVIEW THE RESULT AT 100% ZOOM",
+    "text": "Compare the restored image with the original at 100% zoom. Check faces, hands, clothing patterns, and background lettering before using the result."
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": [
     {
       "q": "Is this photo restoration tool free to use?",
-      "a": "Yes. You can restore photos online for free on Toolaze with no sign-up required."
+      "a": "New users receive 20 free credits after sign-up. A 1K GPT Image 2 restoration costs 10 credits, so the welcome grant can cover two results; higher resolutions or continued use require more credits."
     },
     {
       "q": "What file formats are supported?",

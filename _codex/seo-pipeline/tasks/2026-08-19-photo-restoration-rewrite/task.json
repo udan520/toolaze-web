@@ -1,0 +1,13 @@
+{
+  "taskId": "2026-08-19-photo-restoration-rewrite",
+  "slug": "photo-restoration",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/data/en/photo-restoration.json",
+  "canonicalPath": "/photo-restoration",
+  "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
+  "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "outputs": {"route":"src/app/photo-restoration/page.tsx","localeRoute":"src/app/[locale]/photo-restoration/page.tsx"}
+}

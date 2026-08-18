@@ -103,13 +103,14 @@ test('Age Filter content has the approved proof-first SEO structure in every loc
   }
 })
 
-test('Age Filter limits its approved Free and No Sign-Up promise to the image tool', () => {
+test('Age Filter qualifies its Free claim with the current sign-up credit grant', () => {
   const english = readJson(`src/data/en/${slug}.json`)
   const visibleCopy = JSON.stringify(english)
 
   assert.match(visibleCopy, /Free AI Age Filter Online/)
-  assert.match(visibleCopy, /No Sign-Up/)
-  assert.doesNotMatch(visibleCopy, /Unlimited Free|Free Forever|No Login/)
+  assert.match(visibleCopy, /20 Credits for New Users/)
+  assert.match(visibleCopy, /Sign up to receive 20 free credits/)
+  assert.doesNotMatch(visibleCopy, /Unlimited Free|Free Forever|No Sign-Up|No Login/)
 })
 
 test('Age Filter exposes canonical routes and only published R2 media', () => {

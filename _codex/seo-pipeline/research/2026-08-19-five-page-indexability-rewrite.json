@@ -1,0 +1,85 @@
+{
+  "researchId": "2026-08-19-five-page-indexability-rewrite",
+  "date": "2026-08-19",
+  "purpose": "Rewrite five crawled-not-indexed page families around verified product facts, clearer intent boundaries, richer decision support, and real workflow screenshots.",
+  "fixedCompetitorSet": ["EaseMate AI", "Pollo AI", "OpenArt", "ImagineArt", "Topview", "Artlist", "Krea"],
+  "pages": {
+    "age-filter": {
+      "canonicalPath": "/age-filter",
+      "intentBoundary": "Creative life-stage portrait transformation, not medical age estimation or a prediction of future appearance.",
+      "records": [
+        {"competitor":"EaseMate AI","url":"https://www.easemate.ai/age-filter","direct":true,"usefulPatterns":["preset age stages","three-step workflow","realistic input guidance"],"nonPortableClaims":["future prediction","guaranteed realism"]},
+        {"competitor":"Pollo AI","url":"https://pollo.ai/photo-effects/ai-aging-filter","direct":true,"usefulPatterns":["before-after examples","use cases","input visibility controls"],"nonPortableClaims":["accuracy language","unverified trust figures"]},
+        {"competitor":"OpenArt","url":"https://openart.ai/features/aging-filter/","direct":true,"usefulPatterns":["concise generator-first page","commercial-use questions","input tips"],"nonPortableClaims":[]},
+        {"competitor":"ImagineArt","url":"https://www.imagine.art/apps","direct":false,"usefulPatterns":["adjacent portrait editing workflow"],"nonPortableClaims":["platform-specific credits"]},
+        {"competitor":"Topview","url":"https://www.topview.ai/make/ai-aging-video","direct":false,"usefulPatterns":["workflow screenshots","use-case grouping"],"nonPortableClaims":["video and lip-sync capabilities"]},
+        {"competitor":"Artlist","url":"https://artlist.io/blog/the-history-of-aging-and-de-aging-on-screen/","direct":false,"usefulPatterns":["production context"],"nonPortableClaims":["video compositing workflow"]},
+        {"competitor":"Krea","url":"https://www.krea.ai/features/ai-image-editor","direct":false,"usefulPatterns":["before-after proof","prompt-based portrait editing"],"nonPortableClaims":["Krea editor controls"]}
+      ],
+      "rewriteThesis": "Lead with five selectable life stages, explain what changes across face, hair, skin, and styling, add source-photo diagnostics and variability limits, then show the real Toolaze workflow."
+    },
+    "photo-restoration": {
+      "canonicalPath": "/photo-restoration",
+      "intentBoundary": "One-image restoration with built-in colorization; not forensic recovery and not guaranteed reconstruction of missing history.",
+      "records": [
+        {"competitor":"EaseMate AI","url":"https://www.easemate.ai/photo-restoration","direct":true,"usefulPatterns":["restore plus colorize","three-step workflow"],"nonPortableClaims":["recover missing details exactly"]},
+        {"competitor":"Pollo AI","url":"https://pollo.ai/photo-restoration","direct":true,"usefulPatterns":["damage categories","clear limitation for severe damage"],"nonPortableClaims":["lossless claims"]},
+        {"competitor":"OpenArt","url":"https://openart.ai/features/ai-image-restoration/","direct":true,"usefulPatterns":["damage taxonomy","before-after proof","use cases","full-size review advice"],"nonPortableClaims":["batch processing"]},
+        {"competitor":"ImagineArt","url":"https://www.imagine.art/apps/photo-restoration/","direct":true,"usefulPatterns":["preserve-authenticity question","scan-quality guidance"],"nonPortableClaims":["perfect authenticity","storage guarantees"]},
+        {"competitor":"Topview","url":"https://www.topview.ai/guides/ai-image","direct":false,"usefulPatterns":["adjacent image enhancement workflow"],"nonPortableClaims":["unrelated product-photo tools"]},
+        {"competitor":"Artlist","url":"https://artlist.io/ai/apps/ai-photo-restoration","direct":true,"usefulPatterns":["what damage can be repaired","who uses it","scan-quality limitation"],"nonPortableClaims":["Artlist licensing"]},
+        {"competitor":"Krea","url":"https://www.krea.ai/features/ai-enhancer","direct":false,"usefulPatterns":["before-after evidence","detail review"],"nonPortableClaims":["upscale limits"]}
+      ],
+      "rewriteThesis": "Explain the fixed restoration-plus-colorization workflow, separate cleanup from invented reconstruction, teach scanning and full-zoom checks, and remove fake ratings and unsupported retention claims."
+    },
+    "watermark-remover": {
+      "canonicalPath": "/watermark-remover",
+      "intentBoundary": "Cleanup for images the user owns or has permission to edit; not a method for bypassing copyright or licensing.",
+      "records": [
+        {"competitor":"EaseMate AI","url":"https://www.easemate.ai/watermark-remover","direct":true,"usefulPatterns":["watermark type coverage","three-step workflow"],"nonPortableClaims":["any watermark","no quality loss","no sign-up"]},
+        {"competitor":"Pollo AI","url":"https://pollo.ai/watermark-remover","direct":true,"usefulPatterns":["full-frame and repeated overlays","legal FAQ","before-download preview"],"nonPortableClaims":["percentage gains","10M users"]},
+        {"competitor":"OpenArt","url":"https://openart.ai/features/remove-object-from-photo/","direct":false,"usefulPatterns":["background reconstruction explanation","complex-background limitation","rights boundary"],"nonPortableClaims":["manual masking and follow-up editor controls"]},
+        {"competitor":"ImagineArt","url":"https://www.imagine.art/apps/watermark-remover","direct":true,"usefulPatterns":["watermark taxonomy","legal-use examples","automatic workflow"],"nonPortableClaims":["no storage","unlimited free generations"]},
+        {"competitor":"Topview","url":"https://www.topview.ai/guides/ai-image","direct":false,"usefulPatterns":["adjacent inpainting workflow"],"nonPortableClaims":["video cleanup"]},
+        {"competitor":"Artlist","url":"https://artlist.io/ai/apps/remove-video-object","direct":false,"usefulPatterns":["explain reconstruction and hard backgrounds"],"nonPortableClaims":["video tracking","subscription license"]},
+        {"competitor":"Krea","url":"https://www.krea.ai/features/ai-image-editor","direct":false,"usefulPatterns":["select-remove-refine workflow","before-after validation"],"nonPortableClaims":["brush and mask controls"]}
+      ],
+      "rewriteThesis": "Replace absolute promises with a practical quality model: overlay size, opacity, and background complexity determine results; explain what to check and when to retry, while keeping a visible rights boundary."
+    },
+    "text-to-image-generator": {
+      "canonicalPath": "/text-to-image-generator",
+      "intentBoundary": "Text-only ideation and generation; /ai-image-generator remains the broader text-plus-reference hub and /ai-image-to-image-generator owns reference-preserving edits.",
+      "records": [
+        {"competitor":"EaseMate AI","url":"https://www.easemate.ai/text-to-image-generator","direct":true,"usefulPatterns":["model choice","prompt enhancement","examples and use cases"],"nonPortableClaims":["no sign-up","free output claims"]},
+        {"competitor":"Pollo AI","url":"https://pollo.ai/ai-image-generator","direct":true,"usefulPatterns":["model comparison","prompt specificity FAQ"],"nonPortableClaims":["conversion gains","2000 LoRAs"]},
+        {"competitor":"OpenArt","url":"https://openart.ai/ai-image-generator/","direct":true,"usefulPatterns":["generate-refine-export loop","model selection","workflow use cases"],"nonPortableClaims":["OpenArt editing suite"]},
+        {"competitor":"ImagineArt","url":"https://www.imagine.art/ai-image-generator","direct":true,"usefulPatterns":["30+ model positioning","prompt helper","style and workflow breadth"],"nonPortableClaims":["daily credit figures"]},
+        {"competitor":"Topview","url":"https://www.topview.ai/guides/text-to-image","direct":true,"usefulPatterns":["simple prompt-model-generate sequence"],"nonPortableClaims":["Topview model catalog"]},
+        {"competitor":"Artlist","url":"https://artlist.io/ai/image-generator/text-to-image","direct":true,"usefulPatterns":["prompt anatomy","model-purpose guidance","aspect ratio guidance"],"nonPortableClaims":["Artlist license and privacy"]},
+        {"competitor":"Krea","url":"https://www.krea.ai/features/ai-image-generator","direct":true,"usefulPatterns":["same-prompt model comparison","references and variations","workflow categories"],"nonPortableClaims":["Krea pricing and inference speed"]}
+      ],
+      "rewriteThesis": "Own the text-only brief: prompt anatomy, model fit, aspect ratio, typography limits, one-variable-at-a-time refinement, and a clear switch point to image-to-image."
+    },
+    "seedream-5-0-pro": {
+      "canonicalPath": "/model/seedream-5-0-pro",
+      "intentBoundary": "Model-name plus generator intent, limited to controls actually exposed by Toolaze: text-to-image and image-to-image, up to 10 references, 1K or 2K, and current credit costs.",
+      "records": [
+        {"competitor":"EaseMate AI","url":"https://www.easemate.ai/seedream-5-ai-image-generator","direct":true,"usefulPatterns":["Pro-vs-Lite workflow","prompt guidance"],"nonPortableClaims":["native 4K Pro output","free access"]},
+        {"competitor":"Pollo AI","url":"https://pollo.ai/im/seedream-5-0-pro","direct":true,"usefulPatterns":["feature-led model page","multilingual text and layer separation questions"],"nonPortableClaims":["Pollo editing UI"]},
+        {"competitor":"OpenArt","url":"https://openart.ai/blog/seedream-5-0-pro-overview/","direct":true,"usefulPatterns":["five-capability model definition","Pro-vs-Lite selection"],"nonPortableClaims":["OpenArt multi-model workflow"]},
+        {"competitor":"ImagineArt","url":"https://www.imagine.art/blogs/seedream-5-0-pro-guide","direct":true,"usefulPatterns":["industry comparison","editing-mode explanation","prompt guide"],"nonPortableClaims":["third-party price comparisons","ImagineArt editing modes"]},
+        {"competitor":"Topview","url":"https://www.topview.ai/guides/ai-image","direct":false,"usefulPatterns":["general model-selection explanation"],"nonPortableClaims":["Topview-specific tools"]},
+        {"competitor":"Artlist","url":"https://help.artlist.io/hc/en-us/articles/37481273737757-Seedream-5-0-Pro","direct":true,"usefulPatterns":["concise technical table","Pro-vs-Lite decision"],"nonPortableClaims":["Artlist licensing"]},
+        {"competitor":"Krea","url":"https://www.krea.ai/blog/seedream-5-0-pro-live-on-krea","direct":true,"usefulPatterns":["multi-reference examples","batch and brand-system use cases","real prompt examples"],"nonPortableClaims":["Krea interactive controls and batch UI"]}
+      ],
+      "officialFeatureEvidence": [
+        {"url":"https://seed.bytedance.com/en/seedream5_0_pro","supports":["advanced reasoning","high-density infographics","interactive editing","layer separation","photographic visual quality","native multilingual generation"]},
+        {"url":"https://ai.byteplus.com/en/product/Seedream","supports":["prompt following","infographics","more languages","layer separation","precise positioning","freeform markup"]},
+        {"url":"https://ai.byteplus.com/zh-CN/model","supports":["released July 8 2026","deep visual reasoning positioning"]}
+      ],
+      "modelDefinitionExtraction": {"developer":"ByteDance Seed / BytePlus","releaseDate":"2026-07-08","officialPositioning":"Multimodal image generation for advanced reasoning, efficient content creation, and professional production."},
+      "competitorFeatureExtraction": ["high-density infographics","precise region and sketch editing","layer separation","photoreal materials and skin","multilingual in-image text","multi-reference composition"],
+      "releaseThesis": "The upgrade is not simply higher resolution: Pro is the design-control tier for dense layouts, localized text, precise revisions, and reference-heavy commercial work; Lite remains the 4K/high-volume option. Toolaze must not advertise controls its current generator does not expose."
+    }
+  }
+}

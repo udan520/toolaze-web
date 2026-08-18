@@ -96,7 +96,7 @@
   ],
   "hero": {
     "h1": "免費線上 AI<span class=\"text-gradient\">年齡濾鏡</span>",
-    "desc": "上傳一張照片，選擇人生階段，就能看到自己變成嬰兒、孩童、年輕成人、中年或年長成人的樣子，無需註冊。"
+    "desc": "上傳一張照片並選擇人生階段，建立嬰兒、孩童、年輕成人、中年或年長成人版本。"
   },
   "promptExamples": {
     "title": "探索年齡變化",
@@ -134,6 +134,7 @@
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Toolaze 年齡濾鏡的人生階段選項與前後對照預覽","caption":"選擇人生階段、查看預覽，再用自己的照片生成變化。","width":1200,"height":675},
     "title": "如何使用 AI 年齡濾鏡",
     "steps": [
       {
@@ -165,8 +166,8 @@
       },
       {
         "icon": "🎁",
-        "title": "免費且無需註冊",
-        "desc": "不必建立帳戶，即可在線開始年齡變化的視覺創作。"
+        "title": "新用戶註冊獲得 20 點免費 credits",
+        "desc": "完成註冊可獲得 20 點免費 credits。GPT Image 2 的 1K 圖像每張需要 10 credits，因此迎新額度可生成兩次；更高解析度或持續使用需要更多 credits。"
       }
     ]
   },

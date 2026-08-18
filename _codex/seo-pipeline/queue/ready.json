@@ -179,6 +179,30 @@
       "slug": "perm-filter",
       "pageType": "l2",
       "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-19-photo-restoration-rewrite",
+      "slug": "photo-restoration",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-19-watermark-remover-rewrite",
+      "slug": "watermark-remover",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-19-text-to-image-generator-rewrite",
+      "slug": "text-to-image-generator",
+      "pageType": "l2",
+      "status": "ready_for_publish"
+    },
+    {
+      "taskId": "2026-08-19-seedream-5-0-pro-rewrite",
+      "slug": "seedream-5-0-pro",
+      "pageType": "model",
+      "status": "ready_for_publish"
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "manifestId": "five-page-how-to-screenshots",
+  "updatedAt": "2026-08-19",
+  "requirements": {"format":"webp","placement":"between the How To heading/intro and numbered steps","displayMode":"object-contain","maxBytes":102400},
+  "assets": [
+    {"slug":"age-filter","localSource":"outputs/five-page-how-to/age-filter-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","bytes":33806,"width":1200,"height":675,"status":"uploaded-and-verified"},
+    {"slug":"photo-restoration","localSource":"outputs/five-page-how-to/photo-restoration-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","bytes":32512,"width":1200,"height":675,"status":"uploaded-and-verified"},
+    {"slug":"watermark-remover","localSource":"outputs/five-page-how-to/watermark-remover-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","bytes":33138,"width":1200,"height":675,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","localSource":"outputs/five-page-how-to/text-to-image-generator-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp","bytes":33782,"width":1200,"height":675,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","localSource":"outputs/five-page-how-to/seedream-5-0-pro-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp","bytes":36698,"width":1200,"height":675,"status":"uploaded-and-verified"}
+  ]
+}

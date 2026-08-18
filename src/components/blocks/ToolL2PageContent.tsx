@@ -1847,6 +1847,7 @@ export default async function ToolL2PageContent({ locale, tool }: ToolL2PageCont
                   key="howToUse"
                   title={content.howToUse?.title}
                   steps={howToUseSteps}
+                  screenshot={content.howToUse?.screenshot}
                   bgClass={bgClass}
                 />
               ),

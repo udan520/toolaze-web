@@ -1,3 +1,5 @@
+import HowToScreenshot, { type HowToScreenshotData } from '@/components/blocks/HowToScreenshot'
+
 interface Step {
   title: string
   desc?: string
@@ -10,10 +12,11 @@ interface Step {
 interface HowToUseProps {
   title?: string
   steps?: Step[] | string[]
+  screenshot?: HowToScreenshotData
   bgClass?: string
 }
 
-export default function HowToUse({ title, steps, bgClass = 'bg-[#F8FAFF]' }: HowToUseProps) {
+export default function HowToUse({ title, steps, screenshot, bgClass = 'bg-[#F8FAFF]' }: HowToUseProps) {
   if (!steps || steps.length === 0) return null
   const gridClass = steps.length === 4
     ? 'grid grid-cols-1 md:grid-cols-4 gap-8 text-center'
@@ -40,9 +43,10 @@ export default function HowToUse({ title, steps, bgClass = 'bg-[#F8FAFF]' }: How
   return (
     <section className={`${bgClass} py-24 px-6`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-slate-900 mb-20">
+        <h2 className="text-4xl font-extrabold text-center text-slate-900">
           {renderTitle()}
         </h2>
+        <HowToScreenshot screenshot={screenshot} />
         <div className={gridClass}>
           {steps.map((step: Step | string, idx: number) => (
             <div key={idx} className="group">

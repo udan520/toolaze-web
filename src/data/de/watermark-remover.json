@@ -2,7 +2,7 @@
   "in_menu": true,
   "metadata": {
     "title": "Kostenloser Wasserzeichen-Entferner - Wasserzeichen von Bildern mit KI entfernen | Toolaze",
-    "description": "Wasserzeichen online kostenlos von Bildern entfernen. Wasserzeichen sofort mit KI von Fotos löschen. JPG, PNG, WebP Unterstützung. Keine Registrierung erforderlich."
+    "description": "Ein berechtigtes Wasserzeichen, Logo, einen Stempel oder Text aus einem JPG-, PNG- oder WebP-Bild per KI-Inpainting entfernen und den rekonstruierten Bereich vergleichen."
   },
   "sectionsOrder": [
     "howToUse",
@@ -20,7 +20,7 @@
     "description": [
       "Herkömmliche Werkzeuge wie der Klonstempel oder die inhaltsbasierte Füllung erfordern eine manuelle Auswahl des Wasserzeichenbereichs. Wenn das Wasserzeichen ein Gesicht, ein Produkt oder ein wichtiges Detail überlappt, riskieren Sie sichtbare Flecken oder Schlieren. KI-Inpainting funktioniert anders: Es analysiert die umgebenden Pixel und rekonstruiert, wie das Bild ohne die Überlagerung aussehen würde, sodass das Ergebnis natürlich verschmilzt, anstatt eingefügt auszusehen.",
       "Wir verwenden ein KI-Bildbearbeitungsmodell, das für Inpainting-Aufgaben trainiert wurde. Es verarbeitet halbtransparente Logos, festen Text, Stempel und Signaturen. Die besten Ergebnisse erzielt man bei klaren, deutlichen Wasserzeichen; stark vermischte oder sehr große Wasserzeichen benötigen möglicherweise einen zweiten Durchlauf. Die Ausgabe behält Ihre Originalabmessungen bei – kein Zuschneiden oder Skalieren.",
-      "Die Verarbeitung erfolgt auf unseren Servern. Bilder werden nicht dauerhaft gespeichert. Unterstützt JPG, PNG, WebP bis zu 30 MB. Einzelbild-Workflow mit einem Vergleichsregler, damit Sie das Ergebnis vor dem Herunterladen überprüfen können."
+      "Die Verarbeitung erfolgt über Toolaze und den Generierungsanbieter. Unterstützt wird ein JPG-, PNG- oder WebP-Bild bis 30 MB; mit dem Vergleichsregler prüfen Sie rekonstruierte Bereiche vor dem Download."
     ],
     "featureCards": [
       {
@@ -33,13 +33,13 @@
       },
       {
         "title": "Wasserzeichen online kostenlos von Bildern entfernen",
-        "content": "Einzelne Fotos mit Logos, Text, Stempeln oder Signaturen. JPG, PNG, WebP bis zu 30 MB. KI-Inpainting erledigt den Rest – keine manuelle Auswahl. Hochladen, vergleichen, herunterladen. Kostenloser Wasserzeichen-Entferner, keine Registrierung erforderlich."
+        "content": "Ein JPG-, PNG- oder WebP-Bild bis 30 MB verarbeiten. KI-Inpainting rekonstruiert den überdeckten Bereich ohne manuelles Pinseln; Gesichter, Text, Haare und Muster vor dem Download vergleichen."
       }
     ]
   },
   "hero": {
     "h1": "Kostenloser <span class=\"text-gradient\">KI-Wasserzeichen-Entferner</span> Online",
-    "desc": "Wasserzeichen online kostenlos von Bildern entfernen. Wasserzeichen sofort mit KI von Fotos löschen. Keine Registrierung, keine Optionen – einfach hochladen und klicken."
+    "desc": "Laden Sie ein Bild hoch, das Sie besitzen oder bearbeiten dürfen, entfernen Sie ein Wasserzeichen oder Text-Overlay per KI und prüfen Sie den rekonstruierten Bereich."
   },
   "intro": {
     "title": "Wann die Wasserzeichenentfernung sinnvoll ist",
@@ -84,18 +84,19 @@
       {
         "icon": "📱",
         "iconType": "device",
-        "title": "Nur im Browser",
+        "title": "Online-Workflow",
         "desc": "Keine App-Installation. Funktioniert auf jedem Gerät mit einem modernen Browser. Die Verarbeitung läuft auf unseren Servern, daher benötigen Sie eine Verbindung – aber keine lokale GPU oder Software."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Kein Konto, keine Begrenzung",
-        "desc": "Wir verlangen keine Registrierung oder Zahlung. Keine Tagesbegrenzung. Nutzen Sie es so oft Sie möchten. Bilder werden über API verarbeitet und nicht dauerhaft gespeichert."
+        "title": "Rekonstruierte Details prüfen",
+        "desc": "Die Qualität hängt von Größe, Deckkraft und verdecktem Motiv ab. Prüfen Sie Gesichter, Text, Haare und wiederholte Muster vor der Verwendung genau."
       }
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Toolaze Wasserzeichen-Entferner mit Upload und Vorher-Nachher-Vergleich","caption":"Lade ein Bild hoch, das du bearbeiten darfst, und prüfe rekonstruierte Bereiche vor dem Download.","width":1200,"height":675},
     "title": "So entfernen Sie Wasserzeichen von Fotos",
     "steps": [
       {
@@ -131,9 +132,9 @@
     }
   ],
   "rating": {
-    "title": "Von Tausenden von Kreativen geschätzt",
-    "rating": "4.9/5 VON 10K+ KREATOREN",
-    "text": "Schließen Sie sich Tausenden von Benutzern an, die Toolaze für die schnelle, kostenlose Wasserzeichenentfernung vertrauen. Wasserzeichen online kostenlos von Bildern entfernen – KI-gestützt, keine Registrierung erforderlich."
+    "title": "Jeden rekonstruierten Bereich prüfen",
+    "rating": "VOR DEM DOWNLOAD VERGLEICHEN",
+    "text": "Neue Nutzer erhalten nach der Registrierung 20 kostenlose Credits. Eine 1K-Bearbeitung mit GPT Image 2 kostet 10 Credits; der Bonus deckt zwei Generierungen. Höhere Auflösungen oder weitere Nutzung benötigen mehr Credits."
   },
   "faqTitle": "Häufig gestellte Fragen",
   "faq": [
@@ -146,8 +147,8 @@
       "a": "KI-Inpainting funktioniert, indem es vorhersagt, was sich unter dem Wasserzeichen befindet. Es brilliert bei klaren Überlagerungen über einheitlichen oder texturierten Bereichen. Wasserzeichen über Gesichtern, Haaren oder feinen Details können leichte Artefakte hinterlassen, da das Modell weniger Kontext hat. Verwenden Sie die Vergleichsansicht zur Überprüfung – wenn es nicht gut genug ist, versuchen Sie, auf den Wasserzeichenbereich zuzuschneiden oder eine höherauflösende Quelle zu verwenden."
     },
     {
-      "q": "Speichern oder behalten Sie meine Bilder?",
-      "a": "Bilder werden zur Verarbeitung an unsere API gesendet. Wir speichern sie nicht dauerhaft. Wir empfehlen, keine hochsensiblen Inhalte hochzuladen; für maximale Privatsphäre sollten Sie Tools in Betracht ziehen, die vollständig auf dem Gerät ausgeführt werden (obwohl diese typischerweise keine KI-Entfernung anbieten)."
+      "q": "Wie werden hochgeladene Bilder verarbeitet?",
+      "a": "Bilder werden zur Verarbeitung an Toolaze und den Generierungsanbieter gesendet; erzeugte Ergebnisse können im Kontoverlauf erscheinen. Laden Sie keine hochsensiblen Inhalte hoch und prüfen Sie die Datenschutzerklärung zu Aufbewahrung und Kontodaten."
     },
     {
       "q": "Kann ich mehrere Bilder gleichzeitig verarbeiten?",
@@ -160,16 +161,12 @@
     {
       "q": "Funktioniert es bei Videos oder PDFs?",
       "a": "Nein. Wir unterstützen nur einzelne Standbilder in JPG, PNG oder WebP. Für die Entfernung von Wasserzeichen aus Videos oder PDFs benötigen Sie ein anderes Werkzeug."
-    },
-    {
-      "q": "Kann ich es auf meinem Handy verwenden?",
-      "a": "Ja. Es läuft im Browser. Keine App erforderlich. Laden Sie es aus Ihrer Galerie hoch, verarbeiten Sie es und laden Sie es herunter. Mobile Netzwerke können bei großen Dateien langsamer sein."
     }
   ],
   "moreTools": "Verwandte kostenlose Tools",
   "trustBar": {
     "private": "Kostenlos",
     "instantPreview": "Schnelle Verarbeitung",
-    "noServerLogs": "Keine Registrierung erforderlich"
+    "noServerLogs": "20 Credits nach Registrierung"
   }
 }

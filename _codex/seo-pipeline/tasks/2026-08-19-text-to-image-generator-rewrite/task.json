@@ -1,0 +1,13 @@
+{
+  "taskId": "2026-08-19-text-to-image-generator-rewrite",
+  "slug": "text-to-image-generator",
+  "pageType": "l2",
+  "pageGroup": "ai-image",
+  "status": "ready_for_publish",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/app/text-to-image-generator/copy.ts",
+  "canonicalPath": "/text-to-image-generator",
+  "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
+  "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "outputs": {"route":"src/app/text-to-image-generator/page.tsx","localeRoute":"src/app/[locale]/text-to-image-generator/page.tsx"}
+}

@@ -1,0 +1,13 @@
+{
+  "taskId": "2026-08-19-watermark-remover-rewrite",
+  "slug": "watermark-remover",
+  "pageType": "l2",
+  "pageGroup": "ai-tools",
+  "status": "ready_for_publish",
+  "localeCoverage": ["en", "de", "ja", "es", "zh-TW", "pt", "fr", "ko", "it"],
+  "sourceData": "src/data/en/watermark-remover.json",
+  "canonicalPath": "/watermark-remover",
+  "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
+  "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "outputs": {"route":"src/app/watermark-remover/page.tsx","localeRoute":"src/app/[locale]/watermark-remover/page.tsx"}
+}

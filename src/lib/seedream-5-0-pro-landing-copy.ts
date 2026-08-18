@@ -93,6 +93,13 @@ export type Seedream50ProLandingCopy = {
   }
   howTo: {
     title: string
+    screenshot?: {
+      src: string
+      alt: string
+      caption?: string
+      width?: number
+      height?: number
+    }
     steps: string[]
   }
   prompts: {
@@ -136,7 +143,7 @@ type DeepPartial<T> = T extends Array<infer U>
 
 const en: Seedream50ProLandingCopy = {
   metadata: {
-    title: 'Seedream 5.0 Pro AI Image Generator Coming Soon | Toolaze',
+    title: 'Seedream 5.0 Pro AI Image Generator | Toolaze',
     description:
       'Explore Seedream 5.0 Pro capabilities, cinematic image workflows, precision editing, layered composition, and commercial visual examples.',
     openGraphDescription:
@@ -152,27 +159,27 @@ const en: Seedream50ProLandingCopy = {
   schema: {
     pageName: 'Seedream 5.0 Pro AI Image Generator',
     appName: 'Seedream 5.0 Pro on Toolaze',
-    howToName: 'How to prepare Seedream 5.0 Pro style images on Toolaze',
+    howToName: 'How to create Seedream 5.0 Pro images on Toolaze',
   },
   hero: {
     modelName: 'Seedream 5.0 Pro',
-    suffix: 'AI Image Generator Coming Soon',
+    suffix: 'AI Image Generator',
     description:
-      'Seedream 5.0 Pro is ByteDance Seedream’s upcoming cinematic image generation and editing model for polished campaign visuals, structured scene edits, brand images, ecommerce assets, and video frame creation.',
-    statusLabel: 'Model preview',
-    liveModelLabel: 'Preview workflow',
-    liveModelValue: 'Seedream 5.0 Lite',
+      'Create new images from text or guide the result with up to 10 reference images. Toolaze exposes Seedream 5.0 Pro at 1K and 2K for campaign visuals, product scenes, branded layouts, and cinematic concepts.',
+    statusLabel: 'Live on Toolaze',
+    liveModelLabel: 'Active model',
+    liveModelValue: 'Seedream 5.0 Pro',
   },
   notice: {
     title: 'What Seedream 5.0 Pro is designed for',
     text:
-      'Seedream 5.0 Pro focuses on cinematic generation, precision editing, multi-layer scene control, built-in research, and reasoning-based composition for commercial and creative image production.',
+      'Seedream 5.0 Pro combines prompt-led generation with reference-guided creation. On Toolaze you can use text-to-image or image-to-image, attach up to 10 reference images, and choose 1K or 2K output.',
   },
   whatIs: {
     title: 'What is Seedream 5.0 Pro?',
     paragraphs: [
-      'Seedream 5.0 Pro is a cinematic AI image generator and editing model for commercial visuals, structured scene edits, brand images, ecommerce assets, and video frame creation.',
-      'The Pro positioning is different from a simple prompt-to-image page: it emphasizes precise edits, layered visual control, research-aware outputs, and stronger reasoning for complex image composition.',
+      'Seedream 5.0 Pro is an AI image model for text-to-image and reference-guided image creation. Toolaze supports up to 10 reference images, making it useful when a product, character, palette, material, or composition needs to carry across a new result.',
+      'Choose 1K for faster drafts at 21 credits or 2K for larger final candidates at 42 credits. The current Toolaze interface provides prompt and reference-image controls; ByteDance features such as native interactive editing or layer separation are not presented here as separate controls.',
     ],
   },
   features: {
@@ -232,8 +239,8 @@ const en: Seedream50ProLandingCopy = {
       },
       {
         capability: 'Model focus',
-        pro: 'Cinematic generation, precision editing, multi-layer control, online research, and reasoning-based composition.',
-        lite: 'Fast everyday image creation and lightweight creative experiments.',
+        pro: 'Text-to-image and image-to-image with up to 10 reference images; 1K or 2K output on Toolaze.',
+        lite: 'Faster everyday image creation with a simpler reference workflow and up to 4K output.',
       },
       {
         capability: 'Commercial fit',
@@ -585,7 +592,7 @@ const simpleOverrides: Record<Exclude<Seedream50ProLocale, 'en'>, DeepPartial<Se
     whatIs: { title: 'Seedream 5.0 Pro 是什麼？' },
     features: { title: '值得關注的核心能力', text: '這些能力說明 Pro 為什麼值得用於電影感、商業化與結構化圖片工作。' },
     comparison: { title: 'Seedream 5.0 Pro 與 Seedream 5.0 Lite', text: '在 Pro 準備期間選擇合適流程。', headers: { capability: '能力', pro: 'Seedream 5.0 Pro', lite: 'Seedream 5.0 Lite' } },
-    howTo: { title: 'Pro 上線前如何使用此頁' },
+    howTo: { title: '如何使用 Seedream 5.0 Pro' },
     prompts: { title: 'Pro 風格規劃提示詞', text: '現在可用 Lite 測試，Pro 上線後再細化。', copyButton: '複製提示詞', copiedButton: '已複製' },
     useCases: { title: '適合用途' },
     related: { title: '推薦圖像模型', text: '需要快速草稿、既有 Seedream 工作流或相近的高品質圖像生成時，可試用其他 Toolaze 模型。', tryNow: '開啟模型' },
@@ -625,7 +632,7 @@ const simpleOverrides: Record<Exclude<Seedream50ProLocale, 'en'>, DeepPartial<Se
     whatIs: { title: 'Qu’est-ce que Seedream 5.0 Pro ?' },
     features: { title: 'Capacités clés à suivre', text: 'Ces capacités expliquent pourquoi Pro est utile pour les images cinématographiques, commerciales et structurées.' },
     comparison: { title: 'Seedream 5.0 Pro vs Seedream 5.0 Lite', text: 'Choisissez le bon flux pendant la préparation de Pro.', headers: { capability: 'Capacité', pro: 'Seedream 5.0 Pro', lite: 'Seedream 5.0 Lite' } },
-    howTo: { title: 'Utiliser cette page avant Pro' },
+    howTo: { title: 'Utiliser Seedream 5.0 Pro' },
     prompts: { title: 'Exemples de prompts pour le style Pro', text: 'Utilisez-les avec Lite maintenant puis affinez-les pour Pro.', copyButton: 'Copier le prompt', copiedButton: 'Copié' },
     useCases: { title: 'Meilleurs usages' },
     related: { title: 'Modèles d’image recommandés', text: 'Essayez d’autres modèles Toolaze pour des brouillons rapides, des workflows Seedream existants ou une génération d’image proche.', tryNow: 'Ouvrir le modèle' },
@@ -645,7 +652,7 @@ const simpleOverrides: Record<Exclude<Seedream50ProLocale, 'en'>, DeepPartial<Se
     whatIs: { title: 'Seedream 5.0 Pro란?' },
     features: { title: '주목할 핵심 기능', text: '이 기능들은 Pro가 시네마틱, 상업용, 구조화된 이미지 작업에 왜 중요한지 보여줍니다.' },
     comparison: { title: 'Seedream 5.0 Pro vs Seedream 5.0 Lite', text: 'Pro 준비 중에 적절한 워크플로를 선택하세요.', headers: { capability: '기능', pro: 'Seedream 5.0 Pro', lite: 'Seedream 5.0 Lite' } },
-    howTo: { title: 'Pro 출시 전 사용 방법' },
+    howTo: { title: 'Seedream 5.0 Pro 사용 방법' },
     prompts: { title: 'Pro 스타일 계획용 프롬프트', text: '현재 Lite에서 사용하고 Pro 출시 후 다듬을 수 있습니다.', copyButton: '프롬프트 복사', copiedButton: '복사됨' },
     useCases: { title: '추천 사용 사례' },
     related: { title: '추천 이미지 모델', text: '빠른 초안, 기존 Seedream 워크플로, 유사한 고품질 이미지 생성을 위해 다른 Toolaze 모델도 사용해 보세요.', tryNow: '모델 열기' },
@@ -665,7 +672,7 @@ const simpleOverrides: Record<Exclude<Seedream50ProLocale, 'en'>, DeepPartial<Se
     whatIs: { title: 'Che cos’è Seedream 5.0 Pro?' },
     features: { title: 'Funzioni ufficiali da seguire', text: 'Sintesi pubblica senza presentare Pro come già attivo su Toolaze.' },
     comparison: { title: 'Seedream 5.0 Pro vs Seedream 5.0 Lite', text: 'Scegli il workflow corretto mentre Pro viene preparato.', headers: { capability: 'Funzione', pro: 'Seedream 5.0 Pro', lite: 'Seedream 5.0 Lite' } },
-    howTo: { title: 'Come usare questa pagina prima di Pro' },
+    howTo: { title: 'Come usare Seedream 5.0 Pro' },
     prompts: { title: 'Prompt per pianificare lo stile Pro', text: 'Usali oggi con Lite e rifiniscili quando Pro sarà disponibile.', copyButton: 'Copia prompt', copiedButton: 'Copiato' },
     useCases: { title: 'Migliori utilizzi' },
     related: { title: 'Modelli immagine consigliati', text: 'Prova altri modelli Toolaze per bozze rapide, workflow Seedream precedenti o generazione immagine affine.', tryNow: 'Apri modello' },
@@ -1020,10 +1027,27 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
     notice: {
       title: 'Create with Seedream 5.0 Pro on Toolaze',
       text:
-        'Seedream 5.0 Pro supports cinematic generation, precision editing, multi-layer scene control, research-aware visual planning, and reasoning-based composition for commercial and creative image production.',
+        'Use text-to-image for a new concept or attach up to 10 reference images to guide subject, product, palette, material, or composition. Toolaze offers 1K output for 21 credits and 2K for 42 credits.',
+    },
+    comparison: {
+      text: 'Choose Pro when reference consistency and complex composition matter; choose Lite when speed or 4K output matters more.',
+      rows: [
+        { capability: 'Inputs on Toolaze', pro: 'Text-to-image or image-to-image with up to 10 reference images.', lite: 'Text-to-image or image-to-image with fewer reference inputs.' },
+        { capability: 'Output resolution', pro: '1K or 2K.', lite: '1K, 2K, 3K, or 4K.' },
+        { capability: 'Credits per image', pro: '21 credits at 1K; 42 credits at 2K.', lite: 'Lower-cost option for fast exploration; the current selector shows the exact charge.' },
+        { capability: 'Best fit', pro: 'Reference-heavy campaigns, complex layouts, product scenes, and consistent visual systems.', lite: 'Fast ideation, broad variation, and larger 3K or 4K output.' },
+      ],
+      note: 'Toolaze currently exposes prompt, reference-image, aspect-ratio, and resolution controls. Native ByteDance interactive editing and layer-separation experiences are not separate controls in this generator.',
     },
     howTo: {
       title: 'How to create Seedream 5.0 Pro images',
+      screenshot: {
+        src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp',
+        alt: 'Toolaze Seedream 5.0 Pro generator with text-to-image mode, model selector, prompt field, aspect ratio, and resolution controls',
+        caption: 'Select Seedream 5.0 Pro, choose text or reference-guided creation, set 1K or 2K, then review the first result before refining the prompt.',
+        width: 1200,
+        height: 675,
+      },
       steps: [
         'Start with the Seedream 5.0 Pro generator above.',
         'Write a prompt that describes the final commercial image, not internal model details.',
@@ -1101,6 +1125,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
     gallery: { text: 'Kommerzielle und filmische Ergebnisrichtungen für Seedream 5.0 Pro.' },
     howTo: {
       title: 'So erstellst du Seedream 5.0 Pro Bilder',
+      screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Toolaze Seedream 5.0 Pro Generator mit Modellauswahl, Prompt, Seitenverhältnis und Auflösung', caption: 'Seedream 5.0 Pro wählen, Text- oder Referenzmodus festlegen, 1K oder 2K auswählen und den ersten Entwurf prüfen.', width: 1200, height: 675 },
       steps: [
         'Starte im Generator oben mit Seedream 5.0 Pro.',
         'Beschreibe im Prompt das endgültige kommerzielle Bild statt interner Modelldetails.',
@@ -1151,6 +1176,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
     gallery: { text: 'Seedream 5.0 Proで作成できる商用・シネマティックな出力例です。' },
     howTo: {
       title: 'Seedream 5.0 Pro画像の作り方',
+      screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'モデル、プロンプト、比率、解像度を設定できるToolaze Seedream 5.0 Pro生成画面', caption: 'Seedream 5.0 Proを選び、テキストまたは参照画像を使い、1Kか2Kを設定して最初の結果を確認します。', width: 1200, height: 675 },
       steps: ['上の生成機能でSeedream 5.0 Proを選びます。', '内部モデル名ではなく、完成した商用画像を説明するプロンプトを書きます。', '公開先に合わせてアスペクト比と解像度を選びます。', '被写体、シーン、照明、素材、構図を具体的に指定します。', '生成結果を確認し、用途に合わせてプロンプトを調整します。'],
     },
     prompts: { title: 'Seedream 5.0 Proプロンプト例', text: 'Seedream 5.0 Pro画像生成の出発点として使えます。' },
@@ -1181,7 +1207,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: 'Enfoque del modelo', pro: 'Generación cinematográfica, edición precisa, control por capas, investigación y composición razonada.', lite: 'Creación rápida de imágenes y experimentos creativos ligeros.' },
       { capability: 'Uso comercial', pro: 'Campañas, escenas ecommerce, sistemas de marca, piezas sociales y fotogramas de video.', lite: 'Conceptos rápidos, pruebas de prompt y producción ligera.' },
     ], note: 'Esta comparación se centra en casos de uso y decisiones de flujo.' },
-    howTo: { title: 'Cómo crear imágenes con Seedream 5.0 Pro', steps: ['Empieza con el generador Seedream 5.0 Pro superior.', 'Describe la imagen comercial final, no detalles internos del modelo.', 'Elige proporción y resolución según el canal de publicación.', 'Añade sujeto, escena, iluminación, materiales y composición concretos.', 'Genera, revisa y ajusta el prompt para tu caso de uso.'] },
+    howTo: { title: 'Cómo crear imágenes con Seedream 5.0 Pro', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Generador Seedream 5.0 Pro de Toolaze con modelo, prompt, proporción y resolución', caption: 'Selecciona Seedream 5.0 Pro, decide si usar referencias, elige 1K o 2K y revisa el primer resultado.', width: 1200, height: 675 }, steps: ['Empieza con el generador Seedream 5.0 Pro superior.', 'Describe la imagen comercial final, no detalles internos del modelo.', 'Elige proporción y resolución según el canal de publicación.', 'Añade sujeto, escena, iluminación, materiales y composición concretos.', 'Genera, revisa y ajusta el prompt para tu caso de uso.'] },
     prompts: { title: 'Prompts para Seedream 5.0 Pro', text: 'Usa estos ejemplos como punto de partida para generar imágenes con Seedream 5.0 Pro.' },
     related: { text: 'Prueba otros modelos de Toolaze para borradores rápidos, flujos Seedream anteriores o generación de imagen similar.' },
     faq: { items: [
@@ -1208,7 +1234,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: '模型重點', pro: '電影感生成、精準編輯、多層控制、研究輔助與基於推理的構圖。', lite: '快速日常圖像創作與輕量創意實驗。' },
       { capability: '商業適用場景', pro: '活動視覺、電商場景、品牌系統、社群素材與影片影格規劃。', lite: '快速概念、提示詞測試與輕量圖片製作。' },
     ], note: '此比較聚焦於用途與工作流選擇。' },
-    howTo: { title: '如何建立 Seedream 5.0 Pro 圖像', steps: ['先使用上方 Seedream 5.0 Pro 生成器。', '提示詞描述最終商業圖片，而不是內部模型細節。', '依照發布渠道選擇長寬比與解析度。', '明確指定主體、場景、光線、材質與構圖。', '生成後檢查結果，並依照用途調整提示詞。'] },
+    howTo: { title: '如何建立 Seedream 5.0 Pro 圖像', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Toolaze Seedream 5.0 Pro 生成器，顯示模型、提示詞、畫幅與解析度設定', caption: '選擇 Seedream 5.0 Pro，決定是否加入參考圖，設定 1K 或 2K，再檢查第一版結果。', width: 1200, height: 675 }, steps: ['先使用上方 Seedream 5.0 Pro 生成器。', '提示詞描述最終商業圖片，而不是內部模型細節。', '依照發布渠道選擇長寬比與解析度。', '明確指定主體、場景、光線、材質與構圖。', '生成後檢查結果，並依照用途調整提示詞。'] },
     prompts: { title: 'Seedream 5.0 Pro 提示詞範例', text: '用這些範例作為 Seedream 5.0 Pro 圖像生成起點。' },
     related: { text: '需要快速草稿、既有 Seedream 工作流或相近的高品質圖像生成時，可試用其他 Toolaze 模型。' },
     faq: { items: [
@@ -1235,7 +1261,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: 'Foco do modelo', pro: 'Geração cinematográfica, edição precisa, controle em camadas, pesquisa e composição baseada em raciocínio.', lite: 'Criação rápida de imagens e experimentos criativos leves.' },
       { capability: 'Uso comercial', pro: 'Campanhas, cenas ecommerce, sistemas de marca, peças sociais e frames de vídeo.', lite: 'Conceitos rápidos, testes de prompt e produção leve.' },
     ], note: 'Esta comparação foca usos e decisões de fluxo.' },
-    howTo: { title: 'Como criar imagens com Seedream 5.0 Pro', steps: ['Comece com o gerador Seedream 5.0 Pro acima.', 'Descreva a imagem comercial final, não detalhes internos do modelo.', 'Escolha proporção e resolução conforme o canal de publicação.', 'Adicione assunto, cena, iluminação, materiais e composição concretos.', 'Gere, revise e ajuste o prompt para seu caso de uso.'] },
+    howTo: { title: 'Como criar imagens com Seedream 5.0 Pro', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Gerador Seedream 5.0 Pro do Toolaze com modelo, prompt, proporção e resolução', caption: 'Selecione Seedream 5.0 Pro, decida se usará referências, escolha 1K ou 2K e revise o primeiro resultado.', width: 1200, height: 675 }, steps: ['Comece com o gerador Seedream 5.0 Pro acima.', 'Descreva a imagem comercial final, não detalhes internos do modelo.', 'Escolha proporção e resolução conforme o canal de publicação.', 'Adicione assunto, cena, iluminação, materiais e composição concretos.', 'Gere, revise e ajuste o prompt para seu caso de uso.'] },
     prompts: { title: 'Prompts para Seedream 5.0 Pro', text: 'Use estes exemplos como ponto de partida para gerar imagens com Seedream 5.0 Pro.' },
     related: { text: 'Teste outros modelos do Toolaze para rascunhos rápidos, fluxos Seedream anteriores ou geração de imagem semelhante.' },
     faq: { items: [
@@ -1262,7 +1288,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: 'Orientation du modèle', pro: 'Génération cinématographique, édition précise, contrôle multicouche, recherche et composition raisonnée.', lite: 'Création rapide d’images et expérimentations créatives légères.' },
       { capability: 'Usage commercial', pro: 'Campagnes, scènes ecommerce, systèmes de marque, créations sociales et photogrammes vidéo.', lite: 'Concepts rapides, tests de prompts et production légère.' },
     ], note: 'Cette comparaison se concentre sur les usages et le choix du flux.' },
-    howTo: { title: 'Comment créer des images avec Seedream 5.0 Pro', steps: ['Commencez avec le générateur Seedream 5.0 Pro ci-dessus.', 'Décrivez l’image commerciale finale, pas les détails internes du modèle.', 'Choisissez le ratio et la résolution selon le canal de publication.', 'Ajoutez le sujet, la scène, la lumière, les matériaux et la composition.', 'Générez, vérifiez, puis ajustez le prompt selon votre usage.'] },
+    howTo: { title: 'Comment créer des images avec Seedream 5.0 Pro', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Générateur Seedream 5.0 Pro Toolaze avec modèle, prompt, ratio et résolution', caption: 'Choisissez Seedream 5.0 Pro, décidez d’ajouter des références, sélectionnez 1K ou 2K puis examinez le premier résultat.', width: 1200, height: 675 }, steps: ['Commencez avec le générateur Seedream 5.0 Pro ci-dessus.', 'Décrivez l’image commerciale finale, pas les détails internes du modèle.', 'Choisissez le ratio et la résolution selon le canal de publication.', 'Ajoutez le sujet, la scène, la lumière, les matériaux et la composition.', 'Générez, vérifiez, puis ajustez le prompt selon votre usage.'] },
     prompts: { title: 'Prompts Seedream 5.0 Pro', text: 'Utilisez ces exemples comme point de départ pour générer des images Seedream 5.0 Pro.' },
     related: { text: 'Essayez d’autres modèles Toolaze pour des brouillons rapides, des workflows Seedream existants ou une génération d’image proche.' },
     faq: { items: [
@@ -1289,7 +1315,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: '모델 초점', pro: '시네마틱 생성, 정밀 편집, 다층 제어, 조사, 추론 기반 구성.', lite: '빠른 일상 이미지 제작과 가벼운 창작 실험.' },
       { capability: '상업적 활용', pro: '캠페인 비주얼, 전자상거래 장면, 브랜드 시스템, 소셜 크리에이티브, 영상 프레임 계획.', lite: '빠른 콘셉트, 프롬프트 테스트, 가벼운 이미지 제작.' },
     ], note: '이 비교는 사용 사례와 워크플로 선택에 집중합니다.' },
-    howTo: { title: 'Seedream 5.0 Pro 이미지 생성 방법', steps: ['위 Seedream 5.0 Pro 생성기에서 시작합니다.', '내부 모델 정보가 아니라 최종 상업 이미지를 설명합니다.', '게시 채널에 맞게 비율과 해상도를 선택합니다.', '피사체, 장면, 조명, 소재, 구성을 구체적으로 입력합니다.', '결과를 생성하고 검토한 뒤 목적에 맞게 프롬프트를 조정합니다.'] },
+    howTo: { title: 'Seedream 5.0 Pro 이미지 생성 방법', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: '모델, 프롬프트, 화면비, 해상도 설정이 보이는 Toolaze Seedream 5.0 Pro 생성기', caption: 'Seedream 5.0 Pro를 선택하고 참조 이미지 사용 여부를 정한 뒤 1K 또는 2K로 첫 결과를 확인하세요.', width: 1200, height: 675 }, steps: ['위 Seedream 5.0 Pro 생성기에서 시작합니다.', '내부 모델 정보가 아니라 최종 상업 이미지를 설명합니다.', '게시 채널에 맞게 비율과 해상도를 선택합니다.', '피사체, 장면, 조명, 소재, 구성을 구체적으로 입력합니다.', '결과를 생성하고 검토한 뒤 목적에 맞게 프롬프트를 조정합니다.'] },
     prompts: { title: 'Seedream 5.0 Pro 프롬프트 예시', text: '이 예시를 Seedream 5.0 Pro 이미지 생성의 출발점으로 사용하세요.' },
     related: { text: '빠른 초안, 기존 Seedream 워크플로, 유사한 고품질 이미지 생성을 위해 다른 Toolaze 모델도 사용해 보세요.' },
     faq: { items: [
@@ -1316,7 +1342,7 @@ const liveAvailabilityOverrides: Record<Seedream50ProLocale, DeepPartial<Seedrea
       { capability: 'Focus del modello', pro: 'Generazione cinematografica, editing preciso, controllo multilivello, ricerca e composizione ragionata.', lite: 'Creazione rapida di immagini ed esperimenti creativi leggeri.' },
       { capability: 'Uso commerciale', pro: 'Campagne, scene ecommerce, sistemi di marca, creatività social e frame video.', lite: 'Concetti rapidi, test di prompt e produzione leggera.' },
     ], note: 'Questo confronto si concentra su casi d’uso e scelte di workflow.' },
-    howTo: { title: 'Come creare immagini con Seedream 5.0 Pro', steps: ['Inizia dal generatore Seedream 5.0 Pro sopra.', 'Descrivi l’immagine commerciale finale, non dettagli interni del modello.', 'Scegli rapporto e risoluzione in base al canale di pubblicazione.', 'Aggiungi soggetto, scena, illuminazione, materiali e composizione concreti.', 'Genera, rivedi e regola il prompt per il tuo caso d’uso.'] },
+    howTo: { title: 'Come creare immagini con Seedream 5.0 Pro', screenshot: { src: 'https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp', alt: 'Generatore Seedream 5.0 Pro Toolaze con modello, prompt, rapporto e risoluzione', caption: 'Seleziona Seedream 5.0 Pro, decidi se usare riferimenti, scegli 1K o 2K e controlla il primo risultato.', width: 1200, height: 675 }, steps: ['Inizia dal generatore Seedream 5.0 Pro sopra.', 'Descrivi l’immagine commerciale finale, non dettagli interni del modello.', 'Scegli rapporto e risoluzione in base al canale di pubblicazione.', 'Aggiungi soggetto, scena, illuminazione, materiali e composizione concreti.', 'Genera, rivedi e regola il prompt per il tuo caso d’uso.'] },
     prompts: { title: 'Prompt per Seedream 5.0 Pro', text: 'Usa questi esempi come punto di partenza per generare immagini con Seedream 5.0 Pro.' },
     related: { text: 'Prova altri modelli Toolaze per bozze rapide, workflow Seedream precedenti o generazione immagine affine.' },
     faq: { items: [

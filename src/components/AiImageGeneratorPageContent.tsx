@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
+import HowToScreenshot from '@/components/blocks/HowToScreenshot'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import {
@@ -411,6 +412,7 @@ export async function AiImageGeneratorPageContent({
             <section className="bg-white px-6 py-16 md:py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
+                <HowToScreenshot screenshot={copy.howTo.screenshot} />
                 <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
                   {copy.howTo.steps.map((step, index) => (
                     <article
@@ -596,6 +598,7 @@ export async function AiImageGeneratorPageContent({
             <section className="px-6 py-16 md:py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
+                <HowToScreenshot screenshot={copy.howTo.screenshot} />
                 <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
                   {copy.howTo.steps.map((step, index) => (
                     <article

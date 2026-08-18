@@ -2,7 +2,7 @@
   "in_menu": true,
   "metadata": {
     "title": "Removedor de Marca d'Água Grátis - Remova Marcas d'Água de Imagens com IA | Toolaze",
-    "description": "Remova marca d'água de imagem online grátis. Apague marcas d'água de fotos instantaneamente com IA. Suporte para JPG, PNG, WebP. Sem necessidade de cadastro."
+    "description": "Remova uma marca d’água, logotipo, carimbo ou texto autorizado de uma imagem JPG, PNG ou WebP com inpainting de IA e compare a área reconstruída."
   },
   "sectionsOrder": [
     "howToUse",
@@ -20,7 +20,7 @@
     "description": [
       "Ferramentas tradicionais como o carimbo ou o preenchimento sensível ao conteúdo exigem que você selecione manualmente a área da marca d'água. Se a marca d'água sobrepuser um rosto, produto ou detalhe importante, você corre o risco de deixar manchas ou borrões visíveis. O inpainting por IA funciona de forma diferente: ele analisa os pixels ao redor e reconstrói como seria a imagem sem a sobreposição, para que o resultado se misture naturalmente em vez de parecer colado.",
       "Utilizamos um modelo de edição de imagem por IA treinado em tarefas de inpainting. Ele lida com logotipos semitransparentes, textos sólidos, carimbos e assinaturas. Os melhores resultados vêm de marcas d'água claras e distintas; marcas d'água muito misturadas ou muito grandes podem precisar de uma segunda passagem. A saída preserva suas dimensões originais — sem cortes ou redimensionamento.",
-      "O processamento ocorre em nossos servidores. As imagens não são armazenadas permanentemente. Suporta JPG, PNG, WebP de até 30MB. Fluxo de trabalho de imagem única com um controle deslizante de comparação para que você possa verificar o resultado antes de baixar."
+      "O processamento passa pelo Toolaze e pelo provedor de geração. Aceita uma imagem JPG, PNG ou WebP de até 30MB e oferece comparação para revisar áreas reconstruídas antes de baixar."
     ],
     "featureCards": [
       {
@@ -33,13 +33,13 @@
       },
       {
         "title": "Remover Marca d'Água de Imagem Online Grátis",
-        "content": "Fotos individuais com logotipos, textos, carimbos ou assinaturas. JPG, PNG, WebP de até 30MB. O inpainting por IA cuida do resto — sem seleção manual. Carregue, compare, baixe. Removedor de marca d'água gratuito, sem cadastro."
+        "content": "Processe uma imagem JPG, PNG ou WebP de até 30MB. A IA reconstrói a área coberta sem pincel manual; compare rostos, textos, cabelo e padrões antes de baixar."
       }
     ]
   },
   "hero": {
     "h1": "<span class=\"text-gradient\">Removedor de Marca d'Água com IA</span> Grátis Online",
-    "desc": "Remova marca d'água de imagem online grátis. Apague marcas d'água de fotos instantaneamente com IA. Sem cadastro, sem opções — basta carregar e clicar."
+    "desc": "Envie uma imagem que você possui ou pode editar, remova uma marca d’água ou texto com IA e compare a área reconstruída antes de baixar."
   },
   "intro": {
     "title": "Quando a Remoção de Marca d'Água faz Sentido",
@@ -84,18 +84,19 @@
       {
         "icon": "📱",
         "iconType": "device",
-        "title": "Apenas no Navegador",
+        "title": "Fluxo Online",
         "desc": "Sem instalação de app. Funciona em qualquer dispositivo com um navegador moderno. O processamento roda em nossos servidores, então você precisa de conexão — mas sem necessidade de GPU local ou software."
       },
       {
         "icon": "🔒",
         "iconType": "privacy",
-        "title": "Sem Conta, Sem Limite",
-        "desc": "Não exigimos cadastro ou pagamento. Sem limite diário. Use quantas vezes precisar. As imagens são processadas via API e não são armazenadas permanentemente."
+        "title": "Revise o detalhe reconstruído",
+        "desc": "A qualidade depende do tamanho, opacidade e conteúdo oculto. Verifique rostos, textos, cabelo e padrões repetidos antes de usar o resultado."
       }
     ]
   },
   "howToUse": {
+    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Removedor de marca d’água do Toolaze com upload e comparação antes e depois","caption":"Envie uma imagem que você pode editar e compare as áreas reconstruídas antes de baixar.","width":1200,"height":675},
     "title": "Como Remover Marca d'Água de Foto",
     "steps": [
       {
@@ -131,9 +132,9 @@
     }
   ],
   "rating": {
-    "title": "Confiado por Milhares de Criadores",
-    "rating": "4.9/5 DE MAIS DE 10 MIL CRIADORES",
-    "text": "Junte-se a milhares de usuários que confiam no Toolaze para remoção rápida e gratuita de marcas d'água. Remova marca d'água de imagem online grátis — com IA, sem necessidade de registro."
+    "title": "Revise cada área reconstruída",
+    "rating": "COMPARE ANTES DE BAIXAR",
+    "text": "Novos usuários recebem 20 créditos grátis após o cadastro. Uma edição 1K com GPT Image 2 custa 10 créditos, então o bônus cobre duas gerações; maior resolução ou uso contínuo exige mais créditos."
   },
   "faqTitle": "Perguntas Frequentes",
   "faq": [
@@ -146,8 +147,8 @@
       "a": "O inpainting por IA funciona prevendo o que está sob a marca d'água. Ele se destaca em sobreposições claras em áreas uniformes ou texturizadas. Marcas sobre rostos, cabelos ou detalhes finos podem deixar pequenos artefatos porque o modelo tem menos contexto. Use a visualização de comparação para verificar — se não estiver bom o suficiente, tente cortar a área da marca ou usar uma fonte de maior resolução."
     },
     {
-      "q": "Vocês armazenam ou guardam minhas imagens?",
-      "a": "As imagens são enviadas para nossa API para processamento. Não as armazenamos permanentemente. Recomendamos não carregar conteúdo altamente sensível; para máxima privacidade, considere ferramentas que rodam inteiramente no dispositivo (embora essas geralmente não ofereçam remoção por IA)."
+      "q": "Como as imagens enviadas são tratadas?",
+      "a": "As imagens são enviadas ao Toolaze e ao provedor de geração para processamento; os resultados podem aparecer no histórico da conta. Não envie material muito sensível e consulte a Política de Privacidade sobre retenção e dados da conta."
     },
     {
       "q": "Posso processar várias imagens de uma vez?",
@@ -160,16 +161,12 @@
     {
       "q": "Funciona em vídeos ou PDFs?",
       "a": "Não. Suportamos apenas imagens estáticas em JPG, PNG ou WebP. Para remoção de marca d'água em vídeos ou PDFs, você precisaria de uma ferramenta diferente."
-    },
-    {
-      "q": "Posso usar no meu celular?",
-      "a": "Sim. Ele roda no navegador. Nenhum aplicativo é necessário. Carregue da sua galeria, processe e baixe. Redes móveis podem ser mais lentas para arquivos grandes."
     }
   ],
   "moreTools": "Ferramentas Gratuitas Relacionadas",
   "trustBar": {
     "private": "Grátis",
     "instantPreview": "Processamento Rápido",
-    "noServerLogs": "Sem Cadastro Necessário"
+    "noServerLogs": "20 créditos ao cadastrar"
   }
 }

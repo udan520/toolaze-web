@@ -141,6 +141,13 @@ export type AiImageGeneratorPageCopy = {
     title: string
     description: string
     stepLabel: string
+    screenshot?: {
+      src: string
+      alt: string
+      caption?: string
+      width?: number
+      height?: number
+    }
     steps: TextCard[]
   }
   useCases: {
