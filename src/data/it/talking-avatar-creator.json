@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Carica immagine avatar",
+      "imagePreviewAlt": "Immagine di riferimento dell’avatar",
       "replace": "Sostituisci",
       "delete": "Rimuovi",
       "imageHelper": "Usa un ritratto frontale nitido. JPG, PNG o WebP funzionano meglio.",

@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Importer l’image de l’avatar",
+      "imagePreviewAlt": "Image de référence de l’avatar",
       "replace": "Remplacer",
       "delete": "Supprimer",
       "imageHelper": "Utilisez un portrait frontal net. JPG, PNG ou WebP fonctionne le mieux.",

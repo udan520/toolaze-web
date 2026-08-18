@@ -4912,7 +4912,7 @@ export default function AiImageGenerationTool({
                                 }`}>
                                   <img
                                     src={preset.image}
-                                    alt=""
+                                    alt={preset.label}
                                     className="h-full w-full object-contain"
                                   />
                                 </span>

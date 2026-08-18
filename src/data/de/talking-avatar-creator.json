@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Avatarbild hochladen",
+      "imagePreviewAlt": "Referenzbild für den Avatar",
       "replace": "Ersetzen",
       "delete": "Entfernen",
       "imageHelper": "Nutzen Sie ein klares Porträt von vorn. JPG, PNG oder WebP eignet sich am besten.",

@@ -35,6 +35,7 @@ type TalkingAvatarDemoVideo = {
 
 type TalkingAvatarCopy = {
   imageTitle?: string
+  imagePreviewAlt?: string
   imageHelper?: string
   audioTitle?: string
   audioHelper?: string
@@ -174,6 +175,7 @@ interface PendingTalkingAvatarRepromptDetail {
 
 const DEFAULT_COPY: Required<TalkingAvatarCopy> = {
   imageTitle: 'Upload avatar image',
+  imagePreviewAlt: 'Avatar reference image',
   imageHelper: 'Use a clear front-facing portrait. JPG, PNG, or WebP works best.',
   audioTitle: 'Upload voice audio',
   audioHelper: 'MP3, WAV, M4A, or OGG. Keep audio under 10MB and 15 seconds for better lip sync.',
@@ -1093,7 +1095,7 @@ export default function TalkingAvatarCreatorTool({
               title="Preview reference image"
               aria-label="Preview reference image"
             >
-              <img src={item.inputPreview} alt="" className="h-full w-full object-cover" />
+              <img src={item.inputPreview} alt={text.imagePreviewAlt} className="h-full w-full object-cover" />
             </button>
           ) : null}
           {renderAudioReferenceCard(item.audioPreviewUrl || item.inputUrls[1], item.audioName)}
@@ -1173,7 +1175,7 @@ export default function TalkingAvatarCreatorTool({
               title="Preview reference image"
               aria-label="Preview reference image"
             >
-              <img src={item.inputPreview} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+              <img src={item.inputPreview} alt={text.imagePreviewAlt} className="h-full w-full object-cover" loading="lazy" decoding="async" />
             </button>
           ) : null}
           {renderAudioReferenceCard(item.audioPreviewUrl || item.inputUrls[1], item.audioName || DEFAULT_REFERENCE_AUDIO_NAME)}
@@ -1320,7 +1322,7 @@ export default function TalkingAvatarCreatorTool({
             <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center text-white">
               <div className="flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-4 border-white/20 bg-white/10 shadow-2xl">
                 {currentImagePreview ? (
-                  <img src={currentImagePreview} alt="" className="h-full w-full object-cover" />
+                  <img src={currentImagePreview} alt={text.imagePreviewAlt} className="h-full w-full object-cover" />
                 ) : (
                   <span className="text-4xl font-black text-white/80">AI</span>
                 )}
@@ -1370,7 +1372,7 @@ export default function TalkingAvatarCreatorTool({
                   </label>
                   {currentImagePreview ? (
                     <div data-talking-avatar-image-preview className="group relative mt-4 h-28 w-full overflow-hidden rounded-xl bg-white">
-                      <img src={currentImagePreview} alt="" className="h-full w-full object-contain" />
+                      <img src={currentImagePreview} alt={text.imagePreviewAlt} className="h-full w-full object-contain" />
                       <ImageReplaceButton onReplace={() => imageInputRef.current?.click()} label={text.replace} />
                       <button
                         data-talking-avatar-image-remove

@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "アバター画像をアップロード",
+      "imagePreviewAlt": "アバターの参照画像",
       "replace": "置き換える",
       "delete": "削除",
       "imageHelper": "正面向きで鮮明なポートレートを使ってください。JPG、PNG、WebP が適しています。",

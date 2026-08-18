@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "아바타 이미지 업로드",
+      "imagePreviewAlt": "아바타 참조 이미지",
       "replace": "교체",
       "delete": "삭제",
       "imageHelper": "정면을 향한 선명한 인물 사진을 사용하세요. JPG, PNG, WebP가 가장 적합합니다.",

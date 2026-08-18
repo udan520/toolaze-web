@@ -11,6 +11,7 @@
     "defaultAudioDurationSeconds": 14.5,
     "textOverrides": {
       "imageTitle": "Enviar imagem do avatar",
+      "imagePreviewAlt": "Imagem de referência do avatar",
       "replace": "Substituir",
       "delete": "Remover",
       "imageHelper": "Use um retrato frontal e nítido. JPG, PNG ou WebP funciona melhor.",
