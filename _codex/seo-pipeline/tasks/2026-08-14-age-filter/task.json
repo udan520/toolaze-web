@@ -10,6 +10,8 @@
   "rewriteDate": "2026-08-19",
   "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
   "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "howToStepScreenshots": 3,
+  "howToLayout": "screenshot-first-step-cards",
   "outputs": {
     "route": "src/app/age-filter/page.tsx",
     "localeRoute": "src/app/[locale]/age-filter/page.tsx"

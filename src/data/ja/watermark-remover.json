@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"アップロード欄と前後比較を表示したToolaze透かし削除画面","caption":"編集権限のある画像をアップロードし、生成後に補完部分を比較してから保存します。","width":1200,"height":675},
     "title": "写真から透かしを削除する方法",
     "steps": [
       {
         "title": "画像をアップロード",
-        "desc": "透かしのある画像をドラッグアンドドロップまたはクリックしてアップロードします。JPG、PNG、WebP、最大30MBに対応しています。"
+        "desc": "透かしのある画像をドラッグアンドドロップまたはクリックしてアップロードします。JPG、PNG、WebP、最大30MBに対応しています。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Toolazeの透かし削除画面：画像をアップロード",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "AIが検出＆除去",
-        "desc": "ボタンをクリックします。当社のAIがロゴ、テキスト、スタンプなどの透かしを数秒で自動的に検出して除去します。"
+        "desc": "ボタンをクリックします。当社のAIがロゴ、テキスト、スタンプなどの透かしを数秒で自動的に検出して除去します。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "Toolazeの透かし削除画面：AIが検出＆除去",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "ダウンロード",
-        "desc": "クリーンな画像をダウンロードします。長押しして比較すると、ビフォーアフターを確認できます。透かしなし、手間なし。"
+        "desc": "クリーンな画像をダウンロードします。長押しして比較すると、ビフォーアフターを確認できます。透かしなし、手間なし。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Toolazeの透かし削除画面：ダウンロード",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

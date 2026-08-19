@@ -19,20 +19,37 @@
     "desc": "Alte Fotos mit einem Klick per KI wiederherstellen. Entfernen Sie Kratzer, Staub und Rauschen, verbessern Sie Details und wenden Sie automatisch eine natürliche Farbrestaurierung an."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Toolaze Fotorestaurierung mit Upload und Vorher-Nachher-Vorschau","caption":"Lade einen Scan hoch, starte Restaurierung und Kolorierung und prüfe Gesichter und Details vor dem Download.","width":1200,"height":675},
     "title": "So restaurieren Sie alte Fotos online",
     "steps": [
       {
         "title": "Foto hochladen",
-        "desc": "Laden Sie ein altes Foto im Format JPG, JPEG oder PNG hoch (bis zu 30 MB)."
+        "desc": "Laden Sie ein altes Foto im Format JPG, JPEG oder PNG hoch (bis zu 30 MB).",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Foto hochladen in der Toolaze-Oberfläche für Fotorestaurierung",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Ergebnis generieren",
-        "desc": "Klicken Sie auf Generieren, um die Restaurierung mit integrierter Kolorierung für ein sauberes und lebendiges Ergebnis zu starten."
+        "desc": "Klicken Sie auf Generieren, um die Restaurierung mit integrierter Kolorierung für ein sauberes und lebendiges Ergebnis zu starten.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Ergebnis generieren in der Toolaze-Oberfläche für Fotorestaurierung",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Generieren und Herunterladen",
-        "desc": "Klicken Sie auf Generieren, um Ihr Foto zu restaurieren, das Ergebnis in der Vorschau anzuzeigen und sofort herunterzuladen."
+        "desc": "Klicken Sie auf Generieren, um Ihr Foto zu restaurieren, das Ergebnis in der Vorschau anzuzeigen und sofort herunterzuladen.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Generieren und Herunterladen in der Toolaze-Oberfläche für Fotorestaurierung",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
-import HowToScreenshot from '@/components/blocks/HowToScreenshot'
+import HowToStepCards from '@/components/blocks/HowToStepCards'
 import { getHomeModelCardImage } from '@/lib/home-model-card-images'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import {
@@ -410,24 +410,17 @@ export async function AiImageGeneratorPageContent({
             </section>
 
             <section className="bg-white px-6 py-16 md:py-20">
-              <div className="mx-auto max-w-7xl">
+              <div className="mx-auto max-w-[1600px]">
                 <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
-                <HowToScreenshot screenshot={copy.howTo.screenshot} />
-                <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-                  {copy.howTo.steps.map((step, index) => (
-                    <article
-                      key={step.title}
-                      className="flex min-h-[260px] flex-col rounded-3xl border border-indigo-100 bg-[#F8FAFF] p-6"
-                    >
-                      <p className="text-sm font-bold text-indigo-600">
-                        {copy.howTo.stepLabel} {index + 1}
-                      </p>
-                      <h3 className="mt-4 text-xl font-extrabold text-slate-950">{step.title}</h3>
-                      <p className="mt-4 line-clamp-5 min-h-[8.75rem] text-sm leading-7 text-slate-600">
-                        {step.text}
-                      </p>
-                    </article>
-                  ))}
+                <div className="mt-12">
+                  <HowToStepCards
+                    stepLabel={copy.howTo.stepLabel}
+                    steps={copy.howTo.steps.map((step) => ({
+                      title: step.title,
+                      description: step.text,
+                      media: step.media!,
+                    }))}
+                  />
                 </div>
               </div>
             </section>
@@ -598,7 +591,6 @@ export async function AiImageGeneratorPageContent({
             <section className="px-6 py-16 md:py-20">
               <div className="mx-auto max-w-7xl">
                 <SectionHeading title={copy.howTo.title} description={copy.howTo.description} />
-                <HowToScreenshot screenshot={copy.howTo.screenshot} />
                 <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
                   {copy.howTo.steps.map((step, index) => (
                     <article

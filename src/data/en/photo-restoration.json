@@ -19,20 +19,37 @@
     "desc": "Restore old photos in one click with AI. Remove scratches, dust, and noise, improve details, and apply natural color restoration automatically."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Toolaze Photo Restoration upload panel and restored before-and-after preview","caption":"Upload one scan, run the fixed restoration and colorization workflow, then inspect faces and fine detail before downloading.","width":1200,"height":675},
     "title": "How to Restore Old Photos Online",
     "steps": [
       {
         "title": "Upload Your Photo",
-        "desc": "Upload one old photo in JPG, JPEG, or PNG format (up to 30MB)."
+        "desc": "Upload one old photo in JPG, JPEG, or PNG format (up to 30MB).",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Upload Your Photo in the Toolaze Photo Restoration interface",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Generate Restored Result",
-        "desc": "Click Generate to run restoration with built-in colorization for a clean and vivid old-photo result."
+        "desc": "Click Generate to run restoration with built-in colorization for a clean and vivid old-photo result.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Generate Restored Result in the Toolaze Photo Restoration interface",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Generate and Download",
-        "desc": "Click Generate to restore your photo, preview the result, and download instantly."
+        "desc": "Click Generate to restore your photo, preview the result, and download instantly.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Generate and Download in the Toolaze Photo Restoration interface",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

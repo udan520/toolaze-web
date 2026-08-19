@@ -1,12 +1,33 @@
 {
-  "manifestId": "five-page-how-to-screenshots",
+  "manifestId": "five-page-how-to-step-screenshots",
   "updatedAt": "2026-08-19",
-  "requirements": {"format":"webp","placement":"between the How To heading/intro and numbered steps","displayMode":"object-contain","maxBytes":102400},
+  "requirements": {
+    "format": "webp",
+    "placement": "one real Toolaze interface screenshot at the top of every visible How To step card",
+    "displayMode": "object-contain",
+    "maxBytes": 102400,
+    "width": 1200,
+    "height": 750
+  },
   "assets": [
-    {"slug":"age-filter","localSource":"outputs/five-page-how-to/age-filter-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","bytes":33806,"width":1200,"height":675,"status":"uploaded-and-verified"},
-    {"slug":"photo-restoration","localSource":"outputs/five-page-how-to/photo-restoration-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","bytes":32512,"width":1200,"height":675,"status":"uploaded-and-verified"},
-    {"slug":"watermark-remover","localSource":"outputs/five-page-how-to/watermark-remover-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","bytes":33138,"width":1200,"height":675,"status":"uploaded-and-verified"},
-    {"slug":"text-to-image-generator","localSource":"outputs/five-page-how-to/text-to-image-generator-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp","bytes":33782,"width":1200,"height":675,"status":"uploaded-and-verified"},
-    {"slug":"seedream-5-0-pro","localSource":"outputs/five-page-how-to/seedream-5-0-pro-workflow.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/workflow.webp","bytes":36698,"width":1200,"height":675,"status":"uploaded-and-verified"}
+    {"slug":"age-filter","step":1,"localSource":"outputs/five-page-how-to-steps/age-filter-step-1.webp","r2Url":"https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp","bytes":10062,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"age-filter","step":2,"localSource":"outputs/five-page-how-to-steps/age-filter-step-2.webp","r2Url":"https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp","bytes":12392,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"age-filter","step":3,"localSource":"outputs/five-page-how-to-steps/age-filter-step-3.webp","r2Url":"https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp","bytes":26864,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"photo-restoration","step":1,"localSource":"outputs/five-page-how-to-steps/photo-restoration-step-1.webp","r2Url":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp","bytes":5492,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"photo-restoration","step":2,"localSource":"outputs/five-page-how-to-steps/photo-restoration-step-2.webp","r2Url":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp","bytes":7818,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"photo-restoration","step":3,"localSource":"outputs/five-page-how-to-steps/photo-restoration-step-3.webp","r2Url":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp","bytes":29372,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"watermark-remover","step":1,"localSource":"outputs/five-page-how-to-steps/watermark-remover-step-1.webp","r2Url":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp","bytes":5258,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"watermark-remover","step":2,"localSource":"outputs/five-page-how-to-steps/watermark-remover-step-2.webp","r2Url":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp","bytes":9912,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"watermark-remover","step":3,"localSource":"outputs/five-page-how-to-steps/watermark-remover-step-3.webp","r2Url":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp","bytes":30452,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","step":1,"localSource":"outputs/five-page-how-to-steps/text-to-image-generator-step-1.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-1.webp","bytes":7152,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","step":2,"localSource":"outputs/five-page-how-to-steps/text-to-image-generator-step-2.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-2.webp","bytes":31054,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","step":3,"localSource":"outputs/five-page-how-to-steps/text-to-image-generator-step-3.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-3.webp","bytes":5326,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","step":4,"localSource":"outputs/five-page-how-to-steps/text-to-image-generator-step-4.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-4.webp","bytes":6762,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"text-to-image-generator","step":5,"localSource":"outputs/five-page-how-to-steps/text-to-image-generator-step-5.webp","r2Url":"https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-5.webp","bytes":7816,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","step":1,"localSource":"outputs/five-page-how-to-steps/seedream-5-0-pro-step-1.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/step-1.webp","bytes":8260,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","step":2,"localSource":"outputs/five-page-how-to-steps/seedream-5-0-pro-step-2.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/step-2.webp","bytes":18342,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","step":3,"localSource":"outputs/five-page-how-to-steps/seedream-5-0-pro-step-3.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/step-3.webp","bytes":6494,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","step":4,"localSource":"outputs/five-page-how-to-steps/seedream-5-0-pro-step-4.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/step-4.webp","bytes":16310,"width":1200,"height":750,"status":"uploaded-and-verified"},
+    {"slug":"seedream-5-0-pro","step":5,"localSource":"outputs/five-page-how-to-steps/seedream-5-0-pro-step-5.webp","r2Url":"https://assets.toolaze.com/landing-pages/seedream-5-0-pro/how-to/step-5.webp","bytes":26568,"width":1200,"height":750,"status":"uploaded-and-verified"}
   ]
 }

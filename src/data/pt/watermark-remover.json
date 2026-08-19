@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Removedor de marca d’água do Toolaze com upload e comparação antes e depois","caption":"Envie uma imagem que você pode editar e compare as áreas reconstruídas antes de baixar.","width":1200,"height":675},
     "title": "Como Remover Marca d'Água de Foto",
     "steps": [
       {
         "title": "Carregar Imagem",
-        "desc": "Arraste e solte ou clique para carregar uma imagem com marcas d'água. Suporta JPG, PNG, WebP de até 30MB."
+        "desc": "Arraste e solte ou clique para carregar uma imagem com marcas d'água. Suporta JPG, PNG, WebP de até 30MB.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Carregar Imagem na interface do Removedor de marca d’água do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "IA Detecta e Remove",
-        "desc": "Clique no botão. Nossa IA detecta e remove automaticamente marcas d'água — logotipos, textos, carimbos — em segundos."
+        "desc": "Clique no botão. Nossa IA detecta e remove automaticamente marcas d'água — logotipos, textos, carimbos — em segundos.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "IA Detecta e Remove na interface do Removedor de marca d’água do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Baixar",
-        "desc": "Baixe sua imagem limpa. Pressione e segure o botão de comparar para ver o antes e o depois. Sem marcas d'água, sem complicações."
+        "desc": "Baixe sua imagem limpa. Pressione e segure o botão de comparar para ver o antes e o depois. Sem marcas d'água, sem complicações.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Baixar na interface do Removedor de marca d’água do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

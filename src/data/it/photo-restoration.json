@@ -19,20 +19,37 @@
     "desc": "Ripristina le vecchie foto in un clic con l'IA. Rimuovi graffi, polvere e rumore, migliora i dettagli e applica automaticamente il restauro naturale del colore."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Restauro foto Toolaze con caricamento e confronto prima-dopo","caption":"Carica una scansione, esegui restauro e colorazione, poi controlla volti e dettagli prima del download.","width":1200,"height":675},
     "title": "Come Ripristinare Vecchie Foto Online",
     "steps": [
       {
         "title": "Carica la tua Foto",
-        "desc": "Carica una vecchia foto in formato JPG, JPEG o PNG (fino a 30MB)."
+        "desc": "Carica una vecchia foto in formato JPG, JPEG o PNG (fino a 30MB).",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Carica la tua Foto nell’interfaccia Toolaze per Restauro foto",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Genera Risultato Ripristinato",
-        "desc": "Fai clic su Genera per avviare il restauro con colorazione integrata per un risultato pulito e vivido."
+        "desc": "Fai clic su Genera per avviare il restauro con colorazione integrata per un risultato pulito e vivido.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Genera Risultato Ripristinato nell’interfaccia Toolaze per Restauro foto",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Genera e Scarica",
-        "desc": "Fai clic su Genera per ripristinare la tua foto, visualizzare l'anteprima del risultato e scaricare istantaneamente."
+        "desc": "Fai clic su Genera per ripristinare la tua foto, visualizzare l'anteprima del risultato e scaricare istantaneamente.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Genera e Scarica nell’interfaccia Toolaze per Restauro foto",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

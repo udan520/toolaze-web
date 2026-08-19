@@ -134,20 +134,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Filtro de idade do Toolaze com fases da vida e comparação antes e depois","caption":"Escolha uma fase, confira a prévia e gere sua própria variação.","width":1200,"height":675},
     "title": "Como usar o filtro de idade com IA",
     "steps": [
       {
         "title": "Envie um retrato nítido",
-      "desc": "Escolha um retrato frontal e bem iluminado, com rosto inteiro, linha do cabelo, pescoço e mãos visíveis sem obstruções. Detalhes nítidos dão mais elementos para a transformação de idade."
+        "desc": "Escolha um retrato frontal e bem iluminado, com rosto inteiro, linha do cabelo, pescoço e mãos visíveis sem obstruções. Detalhes nítidos dão mais elementos para a transformação de idade.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp",
+          "alt": "Envie um retrato nítido na interface do Filtro de idade do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Escolha uma fase da vida",
-      "desc": "Comece com Bebê, Criança, Jovem adulto, Meia-idade ou Idoso para definir um perfil de idade completo. Use Custom se quiser indicar uma idade específica ou ajustar cabelos grisalhos, textura da pele e a suavidade da mudança."
+        "desc": "Comece com Bebê, Criança, Jovem adulto, Meia-idade ou Idoso para definir um perfil de idade completo. Use Custom se quiser indicar uma idade específica ou ajustar cabelos grisalhos, textura da pele e a suavidade da mudança.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp",
+          "alt": "Escolha uma fase da vida na interface do Filtro de idade do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Gere e baixe",
-        "desc": "Crie a transformação, reveja o resultado no painel direito e baixe a versão preferida."
+        "desc": "Crie a transformação, reveja o resultado no painel direito e baixe a versão preferida.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp",
+          "alt": "Gere e baixe na interface do Filtro de idade do Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

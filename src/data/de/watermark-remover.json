@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Toolaze Wasserzeichen-Entferner mit Upload und Vorher-Nachher-Vergleich","caption":"Lade ein Bild hoch, das du bearbeiten darfst, und prüfe rekonstruierte Bereiche vor dem Download.","width":1200,"height":675},
     "title": "So entfernen Sie Wasserzeichen von Fotos",
     "steps": [
       {
         "title": "Bild hochladen",
-        "desc": "Ziehen Sie ein Bild mit Wasserzeichen per Drag & Drop oder klicken Sie, um es hochzuladen. Unterstützt JPG, PNG, WebP bis zu 30 MB."
+        "desc": "Ziehen Sie ein Bild mit Wasserzeichen per Drag & Drop oder klicken Sie, um es hochzuladen. Unterstützt JPG, PNG, WebP bis zu 30 MB.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Bild hochladen in der Toolaze-Oberfläche für Wasserzeichen-Entferner",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "KI erkennt & entfernt",
-        "desc": "Klicken Sie auf den Button. Unsere KI erkennt und entfernt Wasserzeichen – Logos, Text, Stempel – automatisch in Sekundenschnelle."
+        "desc": "Klicken Sie auf den Button. Unsere KI erkennt und entfernt Wasserzeichen – Logos, Text, Stempel – automatisch in Sekundenschnelle.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "KI erkennt & entfernt in der Toolaze-Oberfläche für Wasserzeichen-Entferner",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Herunterladen",
-        "desc": "Laden Sie Ihr bereinigtes Bild herunter. Halten Sie den Vergleich gedrückt, um Vorher und Nachher anzuzeigen. Keine Wasserzeichen, kein Aufwand."
+        "desc": "Laden Sie Ihr bereinigtes Bild herunter. Halten Sie den Vergleich gedrückt, um Vorher und Nachher anzuzeigen. Keine Wasserzeichen, kein Aufwand.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Herunterladen in der Toolaze-Oberfläche für Wasserzeichen-Entferner",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

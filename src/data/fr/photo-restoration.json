@@ -19,20 +19,37 @@
     "desc": "Restaurez de vieilles photos en un clic grâce à l'IA. Supprimez les rayures, la poussière et le bruit, améliorez les détails et appliquez une restauration naturelle des couleurs automatiquement."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Restauration photo Toolaze avec import et comparaison avant-après","caption":"Importez un scan, lancez restauration et colorisation, puis vérifiez les visages et détails avant téléchargement.","width":1200,"height":675},
     "title": "Comment Restaurer de Vieilles Photos en Ligne",
     "steps": [
       {
         "title": "Téléchargez Votre Photo",
-        "desc": "Téléchargez une ancienne photo au format JPG, JPEG ou PNG (jusqu'à 30 Mo)."
+        "desc": "Téléchargez une ancienne photo au format JPG, JPEG ou PNG (jusqu'à 30 Mo).",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Téléchargez Votre Photo dans l’interface Toolaze de Restauration photo",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Générez le Résultat Restauré",
-        "desc": "Cliquez sur Générer pour lancer la restauration avec colorisation intégrée pour un résultat de photo ancienne propre et vif."
+        "desc": "Cliquez sur Générer pour lancer la restauration avec colorisation intégrée pour un résultat de photo ancienne propre et vif.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Générez le Résultat Restauré dans l’interface Toolaze de Restauration photo",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Générez et Téléchargez",
-        "desc": "Cliquez sur Générer pour restaurer votre photo, prévisualisez le résultat et téléchargez-la instantanément."
+        "desc": "Cliquez sur Générer pour restaurer votre photo, prévisualisez le résultat et téléchargez-la instantanément.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Générez et Téléchargez dans l’interface Toolaze de Restauration photo",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

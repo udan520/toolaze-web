@@ -3,7 +3,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import AiImageGenerationTool from '@/components/AiImageGenerationTool'
 import PromptCopyButton from '@/components/PromptCopyButton'
-import HowToScreenshot from '@/components/blocks/HowToScreenshot'
+import HowToStepCards from '@/components/blocks/HowToStepCards'
 import { loadCommonTranslations } from '@/lib/seo-loader'
 import { getSeedream50ProLandingCopy } from '@/lib/seedream-5-0-pro-landing-copy'
 import { SEEDREAM_5_0_PRO_PAGE_DEMO_IMAGE } from '@/lib/special-model-demo-images'
@@ -118,7 +118,12 @@ export async function Seedream50ProLandingPage({ locale = 'en' }: { locale?: str
       {
         '@type': 'HowTo',
         name: copy.schema.howToName,
-        step: copy.howTo.steps.map((text) => ({ '@type': 'HowToStep', text })),
+        step: copy.howTo.steps.map((step) => ({
+          '@type': 'HowToStep',
+          name: step.title,
+          text: step.text,
+          image: step.media.src,
+        })),
       },
       {
         '@type': 'BreadcrumbList',
@@ -268,19 +273,16 @@ export async function Seedream50ProLandingPage({ locale = 'en' }: { locale?: str
         </section>
 
         <section id="how-to" className="bg-[#F8FAFF] px-4 py-14 md:px-6 md:py-20">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-[1600px]">
             <SectionHeader title={copy.howTo.title} />
-            <HowToScreenshot screenshot={copy.howTo.screenshot} />
-            <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-              {copy.howTo.steps.map((step, index) => (
-                <li key={step} className="relative min-h-[180px] rounded-[1.5rem] border border-indigo-100 bg-white p-6 pt-14 shadow-sm shadow-indigo-100">
-                  <span className="absolute right-5 top-4 text-5xl font-extrabold leading-none tracking-tight text-indigo-100">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <p className="relative text-sm font-semibold leading-7 text-slate-700">{step}</p>
-                </li>
-              ))}
-            </ol>
+            <HowToStepCards
+              stepLabel={copy.howTo.stepLabel}
+              steps={copy.howTo.steps.map((step) => ({
+                title: step.title,
+                description: step.text,
+                media: step.media,
+              }))}
+            />
           </div>
         </section>
 

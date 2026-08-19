@@ -134,20 +134,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Toolaze 年齡濾鏡的人生階段選項與前後對照預覽","caption":"選擇人生階段、查看預覽，再用自己的照片生成變化。","width":1200,"height":675},
     "title": "如何使用 AI 年齡濾鏡",
     "steps": [
       {
         "title": "上傳清晰肖像照",
-      "desc": "選擇一張光線充足、正面拍攝的肖像照，完整臉部、髮際線、頸部與可見雙手都不要被遮擋。清楚的細節能讓年齡變化有更多依據。"
+        "desc": "選擇一張光線充足、正面拍攝的肖像照，完整臉部、髮際線、頸部與可見雙手都不要被遮擋。清楚的細節能讓年齡變化有更多依據。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp",
+          "alt": "Toolaze 年齡濾鏡介面：上傳清晰肖像照",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "選擇人生階段",
-      "desc": "先選擇嬰兒、孩童、年輕成人、中年或年長成人，建立完整的年齡樣貌。若要指定特定年齡，或微調灰髮、肌膚紋理與變化程度，請使用 Custom。"
+        "desc": "先選擇嬰兒、孩童、年輕成人、中年或年長成人，建立完整的年齡樣貌。若要指定特定年齡，或微調灰髮、肌膚紋理與變化程度，請使用 Custom。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp",
+          "alt": "Toolaze 年齡濾鏡介面：選擇人生階段",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "產生並下載",
-        "desc": "建立年齡變化，在右側面板檢視結果，再下載你喜歡的版本。"
+        "desc": "建立年齡變化，在右側面板檢視結果，再下載你喜歡的版本。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp",
+          "alt": "Toolaze 年齡濾鏡介面：產生並下載",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

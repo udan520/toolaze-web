@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Toolaze Watermark Remover upload panel and before-and-after comparison","caption":"Upload an image you may edit, generate the cleanup, and compare reconstructed areas before downloading.","width":1200,"height":675},
     "title": "How to Remove Watermark from Photo",
     "steps": [
       {
         "title": "Upload Image",
-        "desc": "Drag and drop or click to upload an image with watermarks. Supports JPG, PNG, WebP up to 30MB."
+        "desc": "Drag and drop or click to upload an image with watermarks. Supports JPG, PNG, WebP up to 30MB.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Upload Image in the Toolaze Watermark Remover interface",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "AI Detects & Removes",
-        "desc": "Click the button. Our AI automatically detects and removes watermarks—logos, text, stamps—in seconds."
+        "desc": "Click the button. Our AI automatically detects and removes watermarks—logos, text, stamps—in seconds.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "AI Detects & Removes in the Toolaze Watermark Remover interface",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Download",
-        "desc": "Download your clean image. Long-press compare to view before and after. No watermarks, no hassle."
+        "desc": "Download your clean image. Long-press compare to view before and after. No watermarks, no hassle.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Download in the Toolaze Watermark Remover interface",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

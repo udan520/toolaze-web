@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Suppresseur de filigrane Toolaze avec import et comparaison avant-après","caption":"Importez une image que vous pouvez modifier et comparez les zones reconstruites avant téléchargement.","width":1200,"height":675},
     "title": "Comment supprimer un filigrane d'une photo",
     "steps": [
       {
         "title": "Télécharger l'image",
-        "desc": "Glissez-déposez ou cliquez pour télécharger une image avec des filigranes. Prend en charge JPG, PNG, WebP jusqu'à 30 Mo."
+        "desc": "Glissez-déposez ou cliquez pour télécharger une image avec des filigranes. Prend en charge JPG, PNG, WebP jusqu'à 30 Mo.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Télécharger l'image dans l’interface Toolaze de Suppresseur de filigrane",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "L'IA détecte et supprime",
-        "desc": "Cliquez sur le bouton. Notre IA détecte et supprime automatiquement les filigranes — logos, texte, tampons — en quelques secondes."
+        "desc": "Cliquez sur le bouton. Notre IA détecte et supprime automatiquement les filigranes — logos, texte, tampons — en quelques secondes.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "L'IA détecte et supprime dans l’interface Toolaze de Suppresseur de filigrane",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Télécharger",
-        "desc": "Téléchargez votre image propre. Appuyez longuement sur comparer pour voir avant et après. Pas de filigranes, pas de tracas."
+        "desc": "Téléchargez votre image propre. Appuyez longuement sur comparer pour voir avant et après. Pas de filigranes, pas de tracas.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Télécharger dans l’interface Toolaze de Suppresseur de filigrane",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

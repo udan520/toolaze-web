@@ -19,20 +19,37 @@
     "desc": "Restaura fotos antiguas en un clic con IA. Elimina arañazos, polvo y ruido, mejora los detalles y aplica una restauración de color natural automáticamente."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Restauración de fotos de Toolaze con carga y comparación antes y después","caption":"Sube un escaneo, ejecuta la restauración con colorización y revisa rostros y detalles antes de descargar.","width":1200,"height":675},
     "title": "Cómo restaurar fotos antiguas en línea",
     "steps": [
       {
         "title": "Sube tu foto",
-        "desc": "Sube una foto antigua en formato JPG, JPEG o PNG (hasta 30 MB)."
+        "desc": "Sube una foto antigua en formato JPG, JPEG o PNG (hasta 30 MB).",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Sube tu foto en la interfaz de Restauración de fotos de Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Genera el resultado restaurado",
-        "desc": "Haz clic en Generar para ejecutar la restauración con colorización integrada para obtener un resultado de foto antigua limpio y vívido."
+        "desc": "Haz clic en Generar para ejecutar la restauración con colorización integrada para obtener un resultado de foto antigua limpio y vívido.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Genera el resultado restaurado en la interfaz de Restauración de fotos de Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Generar y descargar",
-        "desc": "Haz clic en Generar para restaurar tu foto, previsualizar el resultado y descargarla al instante."
+        "desc": "Haz clic en Generar para restaurar tu foto, previsualizar el resultado y descargarla al instante.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Generar y descargar en la interfaz de Restauración de fotos de Toolaze",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

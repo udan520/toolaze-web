@@ -19,20 +19,37 @@
     "desc": "利用 AI 一鍵修復舊照片。自動去除刮痕、灰塵和噪點，提升細節並應用自然色彩修復。"
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"Toolaze 照片修復的上傳面板與修復前後對照","caption":"上傳一張掃描圖，執行固定的修復與上色流程，下載前檢查臉部和細節。","width":1200,"height":675},
     "title": "如何線上修復舊照片",
     "steps": [
       {
         "title": "上傳您的照片",
-        "desc": "上傳一張 JPG、JPEG 或 PNG 舊照片（最大 30MB）。先把照片平放掃描，避開玻璃反光與強烈陰影，並裁掉掃描器邊框；更乾淨的來源能讓模型更清楚區分刮痕、灰塵與真實紋理。"
+        "desc": "上傳一張 JPG、JPEG 或 PNG 舊照片（最大 30MB）。先把照片平放掃描，避開玻璃反光與強烈陰影，並裁掉掃描器邊框；更乾淨的來源能讓模型更清楚區分刮痕、灰塵與真實紋理。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Toolaze 照片修復介面：上傳您的照片",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "生成修復結果",
-        "desc": "點擊「生成」後，系統會執行刮痕與灰塵減弱、清晰度調整及內建著色。此頁沒有分開的黑白保留開關；即使來源是黑白照片，也會套用色彩推測，不能視為歷史色彩的精確還原。"
+        "desc": "點擊「生成」後，系統會執行刮痕與灰塵減弱、清晰度調整及內建著色。此頁沒有分開的黑白保留開關；即使來源是黑白照片，也會套用色彩推測，不能視為歷史色彩的精確還原。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Toolaze 照片修復介面：生成修復結果",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "原尺寸比較後下載",
-        "desc": "以 100% 縮放比較眼睛、牙齒、手指、服裝圖案與背景文字。若人物特徵改變、邊緣出現不自然線條，請改用更清楚的掃描重新生成；確認可接受後再下載。"
+        "desc": "以 100% 縮放比較眼睛、牙齒、手指、服裝圖案與背景文字。若人物特徵改變、邊緣出現不自然線條，請改用更清楚的掃描重新生成；確認可接受後再下載。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Toolaze 照片修復介面：原尺寸比較後下載",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

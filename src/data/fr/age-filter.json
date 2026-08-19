@@ -134,20 +134,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Filtre d’âge Toolaze avec étapes de vie et aperçu avant-après","caption":"Choisissez une étape, vérifiez l’aperçu, puis générez votre propre variation.","width":1200,"height":675},
     "title": "Comment utiliser le filtre d’âge IA",
     "steps": [
       {
         "title": "Importez un portrait net",
-      "desc": "Choisissez un portrait de face bien éclairé où le visage entier, la ligne des cheveux, le cou et les mains visibles ne sont pas cachés. Des détails nets donnent davantage de repères à la transformation d’âge."
+        "desc": "Choisissez un portrait de face bien éclairé où le visage entier, la ligne des cheveux, le cou et les mains visibles ne sont pas cachés. Des détails nets donnent davantage de repères à la transformation d’âge.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp",
+          "alt": "Importez un portrait net dans l’interface Toolaze de Filtre d’âge",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Choisissez une étape de vie",
-      "desc": "Commencez par Bébé, Enfant, Jeune adulte, Âge mûr ou Adulte âgé pour définir un profil d’âge complet. Utilisez Custom pour indiquer un âge précis ou ajuster les cheveux gris, la texture de peau et la douceur du changement."
+        "desc": "Commencez par Bébé, Enfant, Jeune adulte, Âge mûr ou Adulte âgé pour définir un profil d’âge complet. Utilisez Custom pour indiquer un âge précis ou ajuster les cheveux gris, la texture de peau et la douceur du changement.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp",
+          "alt": "Choisissez une étape de vie dans l’interface Toolaze de Filtre d’âge",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Générez et téléchargez",
-        "desc": "Créez la transformation, vérifiez le résultat dans le panneau de droite et téléchargez la version voulue."
+        "desc": "Créez la transformation, vérifiez le résultat dans le panneau de droite et téléchargez la version voulue.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp",
+          "alt": "Générez et téléchargez dans l’interface Toolaze de Filtre d’âge",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

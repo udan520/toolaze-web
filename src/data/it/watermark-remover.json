@@ -96,20 +96,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/watermark-remover/how-to/workflow.webp","alt":"Rimozione filigrana Toolaze con caricamento e confronto prima-dopo","caption":"Carica un’immagine che puoi modificare e confronta le aree ricostruite prima del download.","width":1200,"height":675},
     "title": "Come Rimuovere la Filigrana da una Foto",
     "steps": [
       {
         "title": "Carica Immagine",
-        "desc": "Trascina e rilascia o clicca per caricare un'immagine con filigrane. Supporta JPG, PNG, WebP fino a 30MB."
+        "desc": "Trascina e rilascia o clicca per caricare un'immagine con filigrane. Supporta JPG, PNG, WebP fino a 30MB.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-1.webp",
+          "alt": "Carica Immagine nell’interfaccia Toolaze per Rimozione filigrana",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "L'IA Rileva e Rimuove",
-        "desc": "Clicca il pulsante. La nostra IA rileva e rimuove automaticamente le filigrane (loghi, testo, timbri) in pochi secondi."
+        "desc": "Clicca il pulsante. La nostra IA rileva e rimuove automaticamente le filigrane (loghi, testo, timbri) in pochi secondi.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-2.webp",
+          "alt": "L'IA Rileva e Rimuove nell’interfaccia Toolaze per Rimozione filigrana",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Scarica",
-        "desc": "Scarica la tua immagine pulita. Tieni premuto 'confronta' per visualizzare il prima e il dopo. Niente filigrane, nessuna complicazione."
+        "desc": "Scarica la tua immagine pulita. Tieni premuto 'confronta' per visualizzare il prima e il dopo. Niente filigrane, nessuna complicazione.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/watermark-remover/how-to/step-3.webp",
+          "alt": "Scarica nell’interfaccia Toolaze per Rimozione filigrana",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

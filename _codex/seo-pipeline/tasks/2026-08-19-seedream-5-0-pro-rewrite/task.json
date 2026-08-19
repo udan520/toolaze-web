@@ -9,5 +9,7 @@
   "canonicalPath": "/model/seedream-5-0-pro",
   "researchRecord": "_codex/seo-pipeline/research/2026-08-19-five-page-indexability-rewrite.json",
   "mediaManifest": "_codex/landing-page-assets/five-page-how-to-screenshots.json",
+  "howToStepScreenshots": 5,
+  "howToLayout": "screenshot-first-step-cards",
   "outputs": {"route":"src/app/model/seedream-5-0-pro/page.tsx","localeRoute":"src/app/[locale]/model/seedream-5-0-pro/page.tsx"}
 }

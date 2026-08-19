@@ -134,20 +134,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"Toolaze Altersfilter mit Lebensphasen und Vorher-Nachher-Porträt","caption":"Wähle eine Lebensphase, prüfe die Vorschau und erstelle dann deine eigene Variante.","width":1200,"height":675},
     "title": "So verwendest du den KI-Altersfilter",
     "steps": [
       {
         "title": "Klares Porträt hochladen",
-      "desc": "Wähle ein gut ausgeleuchtetes, frontal aufgenommenes Porträt, auf dem Gesicht, Haaransatz, Hals und sichtbare Hände nicht verdeckt sind. Klare Details geben der Altersveränderung mehr Anhaltspunkte."
+        "desc": "Wähle ein gut ausgeleuchtetes, frontal aufgenommenes Porträt, auf dem Gesicht, Haaransatz, Hals und sichtbare Hände nicht verdeckt sind. Klare Details geben der Altersveränderung mehr Anhaltspunkte.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp",
+          "alt": "Klares Porträt hochladen in der Toolaze-Oberfläche für Altersfilter",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Lebensphase auswählen",
-      "desc": "Beginne mit Baby, Kind, junger Erwachsener, mittleres Alter oder älterer Erwachsener für ein vollständiges Altersprofil. Mit Custom kannst du ein bestimmtes Alter nennen oder graue Haare, Hautstruktur und die Stärke der Veränderung verfeinern."
+        "desc": "Beginne mit Baby, Kind, junger Erwachsener, mittleres Alter oder älterer Erwachsener für ein vollständiges Altersprofil. Mit Custom kannst du ein bestimmtes Alter nennen oder graue Haare, Hautstruktur und die Stärke der Veränderung verfeinern.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp",
+          "alt": "Lebensphase auswählen in der Toolaze-Oberfläche für Altersfilter",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "Erstellen und herunterladen",
-        "desc": "Erzeuge die Veränderung, prüfe das Ergebnis im rechten Bereich und lade deine bevorzugte Version herunter."
+        "desc": "Erzeuge die Veränderung, prüfe das Ergebnis im rechten Bereich und lade deine bevorzugte Version herunter.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp",
+          "alt": "Erstellen und herunterladen in der Toolaze-Oberfläche für Altersfilter",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

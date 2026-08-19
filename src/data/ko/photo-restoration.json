@@ -19,20 +19,37 @@
     "desc": "AI를 사용하여 클릭 한 번으로 오래된 사진을 복원하세요. 흠집, 먼지, 노이즈를 제거하고 디테일을 개선하며 자연스러운 색상 복원을 자동으로 적용합니다."
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/photo-restoration/how-to/workflow.webp","alt":"업로드와 복원 전후 비교가 표시된 Toolaze 사진 복원 화면","caption":"스캔 사진 한 장을 올리고 복원과 컬러화를 실행한 뒤 얼굴과 세부를 확인하세요.","width":1200,"height":675},
     "title": "온라인에서 오래된 사진을 복원하는 방법",
     "steps": [
       {
         "title": "사진 업로드",
-        "desc": "JPG, JPEG 또는 PNG 형식의 오래된 사진 한 장을 업로드하세요(최대 30MB). 사진을 평평하게 스캔하고 유리 반사, 강한 그림자, 스캐너 테두리를 줄이면 모델이 실제 질감과 먼지·흠집을 더 잘 구분할 수 있습니다."
+        "desc": "JPG, JPEG 또는 PNG 형식의 오래된 사진 한 장을 업로드하세요(최대 30MB). 사진을 평평하게 스캔하고 유리 반사, 강한 그림자, 스캐너 테두리를 줄이면 모델이 실제 질감과 먼지·흠집을 더 잘 구분할 수 있습니다.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-1.webp",
+          "alt": "Toolaze 사진 복원 화면: 사진 업로드",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "복원 결과 생성",
-        "desc": "생성을 누르면 흠집과 먼지 완화, 선명도 조정, 내장 컬러화가 한 번에 실행됩니다. 흑백을 유지하는 별도 스위치는 없으며 색상은 역사적 사실이 아니라 모델의 시각적 추정으로 확인해야 합니다."
+        "desc": "생성을 누르면 흠집과 먼지 완화, 선명도 조정, 내장 컬러화가 한 번에 실행됩니다. 흑백을 유지하는 별도 스위치는 없으며 색상은 역사적 사실이 아니라 모델의 시각적 추정으로 확인해야 합니다.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-2.webp",
+          "alt": "Toolaze 사진 복원 화면: 복원 결과 생성",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "원본과 비교한 뒤 다운로드",
-        "desc": "결과를 100%로 확대해 눈, 치아, 손가락, 옷 무늬, 배경 글자를 원본과 비교하세요. 인물 특징이 바뀌거나 선이 부자연스러우면 더 선명한 스캔으로 다시 시도하고, 문제가 없을 때 다운로드합니다."
+        "desc": "결과를 100%로 확대해 눈, 치아, 손가락, 옷 무늬, 배경 글자를 원본과 비교하세요. 인물 특징이 바뀌거나 선이 부자연스러우면 더 선명한 스캔으로 다시 시도하고, 문제가 없을 때 다운로드합니다.",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/photo-restoration/how-to/step-3.webp",
+          "alt": "Toolaze 사진 복원 화면: 원본과 비교한 뒤 다운로드",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

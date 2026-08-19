@@ -9,6 +9,12 @@ const aiImageAsset = (fileName: string) => `${AI_IMAGE_GENERATOR_ASSET_BASE_URL}
 type TextCard = {
   title: string
   text: string
+  media?: {
+    src: string
+    alt: string
+    width?: number
+    height?: number
+  }
 }
 
 type LinkCard = TextCard & {
@@ -141,13 +147,6 @@ export type AiImageGeneratorPageCopy = {
     title: string
     description: string
     stepLabel: string
-    screenshot?: {
-      src: string
-      alt: string
-      caption?: string
-      width?: number
-      height?: number
-    }
     steps: TextCard[]
   }
   useCases: {

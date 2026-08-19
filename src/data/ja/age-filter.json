@@ -134,20 +134,37 @@
     ]
   },
   "howToUse": {
-    "screenshot": {"src":"https://assets.toolaze.com/landing-pages/age-filter/how-to/workflow.webp","alt":"人生段階プリセットと比較プレビューを表示したToolaze年齢フィルター","caption":"人生段階を選び、プレビューを確認してから自分の写真で生成します。","width":1200,"height":675},
     "title": "AI年齢フィルターの使い方",
     "steps": [
       {
         "title": "鮮明なポートレートをアップロード",
-      "desc": "顔、髪の生え際、首、写っている手が隠れていない、明るく正面から撮影したポートレートを1枚選びます。細部が明確なほど、年齢変化を自然に仕上げやすくなります。"
+        "desc": "顔、髪の生え際、首、写っている手が隠れていない、明るく正面から撮影したポートレートを1枚選びます。細部が明確なほど、年齢変化を自然に仕上げやすくなります。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-1.webp",
+          "alt": "Toolazeの年齢フィルター画面：鮮明なポートレートをアップロード",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "ライフステージを選択",
-      "desc": "まず赤ちゃん、子ども、若い大人、中年、高齢の大人から選び、全体の年齢イメージを決めます。特定の年齢、白髪、肌の質感、変化の強さを指定したい場合は Custom を使います。"
+        "desc": "まず赤ちゃん、子ども、若い大人、中年、高齢の大人から選び、全体の年齢イメージを決めます。特定の年齢、白髪、肌の質感、変化の強さを指定したい場合は Custom を使います。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-2.webp",
+          "alt": "Toolazeの年齢フィルター画面：ライフステージを選択",
+          "width": 1200,
+          "height": 750
+        }
       },
       {
         "title": "生成してダウンロード",
-        "desc": "変化を生成し、右側のパネルで結果を確認して、気に入ったバージョンをダウンロードします。"
+        "desc": "変化を生成し、右側のパネルで結果を確認して、気に入ったバージョンをダウンロードします。",
+        "media": {
+          "src": "https://assets.toolaze.com/landing-pages/age-filter/how-to/step-3.webp",
+          "alt": "Toolazeの年齢フィルター画面：生成してダウンロード",
+          "width": 1200,
+          "height": 750
+        }
       }
     ]
   },

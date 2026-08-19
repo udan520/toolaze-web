@@ -19,6 +19,26 @@ const aiImageAsset = (fileName: string) =>
 const textToImageAsset = (fileName: string) =>
   `/ai-image-generator/text-to-image-generator/${fileName}`
 
+const TEXT_TO_IMAGE_STEP_ASSETS = [
+  'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-1.webp',
+  'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-2.webp',
+  'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-3.webp',
+  'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-4.webp',
+  'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/step-5.webp',
+] as const
+
+const textToImageStepAlt: Record<TextToImageGeneratorLocale, (title: string) => string> = {
+  en: (title) => `${title} in the Toolaze Text to Image Generator interface`,
+  de: (title) => `${title} in der Toolaze-Text-zu-Bild-Oberfläche`,
+  ja: (title) => `Toolazeテキスト画像生成画面：${title}`,
+  es: (title) => `${title} en la interfaz de texto a imagen de Toolaze`,
+  'zh-TW': (title) => `Toolaze 文字轉圖像介面：${title}`,
+  pt: (title) => `${title} na interface de texto para imagem do Toolaze`,
+  fr: (title) => `${title} dans l’interface texte vers image de Toolaze`,
+  ko: (title) => `Toolaze 텍스트 이미지 생성 화면: ${title}`,
+  it: (title) => `${title} nell’interfaccia da testo a immagine di Toolaze`,
+}
+
 function mergeCopy<T>(baseCopy: T, override?: DeepPartial<T>): T {
   if (!override) return baseCopy
   const result: any = Array.isArray(baseCopy) ? [...baseCopy] : { ...(baseCopy as any) }
@@ -361,13 +381,6 @@ export const textToImageGeneratorPageCopy: AiImageGeneratorPageCopy = {
     title: 'How to Get Better Results From Text',
     description:
       'Do not rewrite everything after the first result. Review the failure, then adjust the smallest instruction that explains the problem.',
-    screenshot: {
-      src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp',
-      alt: 'Toolaze Text to Image generator showing the model selector, prompt field, output settings, and preview area',
-      caption: 'Choose a model, write the visual brief, set the frame and resolution, then review the first result before refining it.',
-      width: 1200,
-      height: 675,
-    },
     stepLabel: 'Step',
     steps: [
       {
@@ -514,7 +527,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'Weniger Rätselraten im Prompt' },
     features: { title: 'Was in den Prompt gehört' },
     gallery: { title: 'Schlechter Prompt vs. besserer Prompt' },
-    howTo: { title: 'So erzielen Sie bessere Ergebnisse aus Text', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Toolaze Text-zu-Bild-Generator mit Modellauswahl, Prompt-Feld, Ausgabeeinstellungen und Vorschaubereich', caption: 'Modell wählen, Bildbriefing schreiben, Format und Auflösung festlegen und den ersten Entwurf gezielt prüfen.', width: 1200, height: 675 } },
+    howTo: { title: 'So erzielen Sie bessere Ergebnisse aus Text' },
     faq: { title: 'Text-zu-Bild-Generator FAQ', description: 'Antworten zu Prompts, Credits, Textdarstellung, Referenzbildern und kommerziellen Entwürfen.', items: [
       { q: 'Was ist ein Text-zu-Bild-Generator?', a: 'Er erstellt ein neues Bild aus einer Beschreibung von Motiv, Szene, Stil, Licht, Komposition, Format und kurzem sichtbarem Text.' },
       { q: 'Kann ich kostenlos starten?', a: 'Neue Nutzer erhalten nach der Registrierung 20 kostenlose Credits. Wie viele Bilder damit möglich sind, hängt von Modell und Auflösung ab; die genaue Belastung steht vor der Generierung.' },
@@ -533,7 +546,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'プロンプトの曖昧さを減らす' },
     features: { title: 'プロンプトに入れるべき内容' },
     gallery: { title: '弱いプロンプトと改善例' },
-    howTo: { title: 'テキストからより良い結果を得る方法', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'モデル選択、プロンプト欄、出力設定、プレビューを表示したToolazeテキスト画像生成画面', caption: 'モデルを選び、画像の要件を書き、比率と解像度を設定してから、最初の結果を確認します。', width: 1200, height: 675 } },
+    howTo: { title: 'テキストからより良い結果を得る方法' },
     faq: { title: 'テキストから画像生成 FAQ', description: 'プロンプト、クレジット、文字表現、参照画像、商用下書きについて回答します。', items: [
       { q: 'テキストから画像生成とは？', a: '主題、場面、スタイル、照明、構図、比率、短い表示文字を文章で指定して新しい画像を作る機能です。' },
       { q: '無料で始められますか？', a: '新規登録で20無料クレジットを受け取れます。作成できる枚数はモデルと解像度で変わり、実行前に必要クレジットが表示されます。' },
@@ -552,7 +565,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'Reduce las conjeturas en el prompt' },
     features: { title: 'Qué incluir en tu prompt' },
     gallery: { title: 'Prompt débil vs. prompt mejorado' },
-    howTo: { title: 'Cómo obtener mejores resultados desde texto', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Generador de texto a imagen de Toolaze con selector de modelo, campo de prompt, ajustes y vista previa', caption: 'Elige un modelo, escribe el brief visual, define formato y resolución y revisa el primer resultado antes de corregirlo.', width: 1200, height: 675 } },
+    howTo: { title: 'Cómo obtener mejores resultados desde texto' },
     faq: { title: 'FAQ del generador de texto a imagen', description: 'Respuestas sobre prompts, créditos, texto visible, referencias y borradores comerciales.', items: [
       { q: '¿Qué es un generador de texto a imagen?', a: 'Crea una imagen nueva a partir de una descripción del sujeto, escena, estilo, luz, composición, formato y texto visible breve.' },
       { q: '¿Puedo empezar gratis?', a: 'Los nuevos usuarios reciben 20 créditos gratis al registrarse. La cantidad de imágenes depende del modelo y la resolución; el coste exacto aparece antes de generar.' },
@@ -571,7 +584,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: '減少提示詞中的猜測空間' },
     features: { title: '提示詞應包含哪些內容' },
     gallery: { title: '不佳提示詞 vs 更佳提示詞範例' },
-    howTo: { title: '如何從文字獲得更好的結果', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Toolaze 文字轉圖像生成器，顯示模型選擇、提示詞欄、輸出設定與預覽區', caption: '選擇模型、寫下視覺需求、設定畫幅與解析度，再檢查第一版結果並逐項調整。', width: 1200, height: 675 } },
+    howTo: { title: '如何從文字獲得更好的結果' },
     faq: { title: '文字轉圖像生成器常見問題', description: '說明提示詞、credits、圖片文字、參考圖與商業草稿等常見疑問。', items: [
       { q: '什麼是文字轉圖像生成器？', a: '它會根據主體、場景、風格、光線、構圖、畫幅與簡短顯示文字的描述建立新圖像。' },
       { q: '可以免費開始嗎？', a: '新用戶完成註冊可獲得20點免費credits。可生成數量取決於模型與解析度，執行前會顯示確切扣點。' },
@@ -590,7 +603,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'Reduza a adivinhação no prompt' },
     features: { title: 'O que incluir no prompt' },
     gallery: { title: 'Prompt fraco vs. prompt melhor' },
-    howTo: { title: 'Como obter melhores resultados a partir de texto', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Gerador de texto para imagem Toolaze com modelo, campo de prompt, configurações e prévia', caption: 'Escolha o modelo, escreva o briefing visual, defina formato e resolução e avalie o primeiro resultado antes de refiná-lo.', width: 1200, height: 675 } },
+    howTo: { title: 'Como obter melhores resultados a partir de texto' },
     faq: { title: 'FAQ do gerador de texto para imagem', description: 'Respostas sobre prompts, créditos, texto visível, referências e rascunhos comerciais.', items: [
       { q: 'O que é um gerador de texto para imagem?', a: 'Cria uma imagem nova a partir da descrição de assunto, cena, estilo, luz, composição, formato e texto visível curto.' },
       { q: 'Posso começar grátis?', a: 'Novos usuários recebem 20 créditos grátis após o cadastro. A quantidade de imagens depende do modelo e resolução; o custo exato aparece antes de gerar.' },
@@ -609,7 +622,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'Réduire les suppositions dans le prompt' },
     features: { title: 'Que mettre dans votre prompt' },
     gallery: { title: 'Prompt faible vs. meilleur prompt' },
-    howTo: { title: 'Comment obtenir de meilleurs résultats depuis le texte', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Générateur texte vers image Toolaze avec choix du modèle, champ de prompt, réglages et aperçu', caption: 'Choisissez un modèle, rédigez le brief visuel, définissez le format et la résolution, puis analysez le premier résultat.', width: 1200, height: 675 } },
+    howTo: { title: 'Comment obtenir de meilleurs résultats depuis le texte' },
     faq: { title: 'FAQ du générateur texte vers image', description: 'Réponses sur les prompts, crédits, texte visible, références et brouillons commerciaux.', items: [
       { q: 'Qu’est-ce qu’un générateur texte vers image ?', a: 'Il crée une nouvelle image à partir d’une description du sujet, de la scène, du style, de la lumière, de la composition, du format et d’un texte bref.' },
       { q: 'Puis-je commencer gratuitement ?', a: 'Les nouveaux utilisateurs reçoivent 20 crédits gratuits après inscription. Le nombre d’images dépend du modèle et de la résolution ; le coût exact est affiché avant génération.' },
@@ -628,7 +641,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: '프롬프트의 추측 줄이기' },
     features: { title: '프롬프트에 포함할 내용' },
     gallery: { title: '약한 프롬프트 vs 개선된 프롬프트' },
-    howTo: { title: '텍스트에서 더 좋은 결과를 얻는 방법', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: '모델 선택, 프롬프트 입력란, 출력 설정, 미리보기가 보이는 Toolaze 텍스트 이미지 생성기', caption: '모델을 고르고 시각 브리프를 작성한 뒤 화면비와 해상도를 정하고 첫 결과를 검토하세요.', width: 1200, height: 675 } },
+    howTo: { title: '텍스트에서 더 좋은 결과를 얻는 방법' },
     faq: { title: '텍스트 이미지 생성기 FAQ', description: '프롬프트, 크레딧, 이미지 속 글자, 참조 이미지, 상업용 초안에 대한 답변입니다.', items: [
       { q: '텍스트 이미지 생성기란 무엇인가요?', a: '주제, 장면, 스타일, 조명, 구도, 형식, 짧은 표시 문구를 설명해 새 이미지를 만드는 도구입니다.' },
       { q: '무료로 시작할 수 있나요?', a: '신규 사용자는 가입 후 무료 크레딧 20개를 받습니다. 생성 가능 수는 모델과 해상도에 따라 달라지며 실행 전에 정확한 비용이 표시됩니다.' },
@@ -647,7 +660,7 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
     promise: { title: 'Riduci le supposizioni nel prompt' },
     features: { title: 'Cosa includere nel prompt' },
     gallery: { title: 'Prompt debole vs. prompt migliore' },
-    howTo: { title: 'Come ottenere risultati migliori dal testo', screenshot: { src: 'https://assets.toolaze.com/landing-pages/text-to-image-generator/how-to/workflow.webp', alt: 'Generatore da testo a immagine Toolaze con modello, campo prompt, impostazioni e anteprima', caption: 'Scegli il modello, scrivi il brief visivo, imposta formato e risoluzione e valuta il primo risultato prima di perfezionarlo.', width: 1200, height: 675 } },
+    howTo: { title: 'Come ottenere risultati migliori dal testo' },
     faq: { title: 'FAQ generatore da testo a immagine', description: 'Risposte su prompt, crediti, testo visibile, riferimenti e bozze commerciali.', items: [
       { q: 'Che cos’è un generatore da testo a immagine?', a: 'Crea una nuova immagine dalla descrizione di soggetto, scena, stile, luce, composizione, formato e breve testo visibile.' },
       { q: 'Posso iniziare gratis?', a: 'I nuovi utenti ricevono 20 crediti gratuiti dopo la registrazione. Il numero di immagini dipende da modello e risoluzione; il costo esatto appare prima di generare.' },
@@ -661,9 +674,24 @@ const localizedTextToImageOverrides: Record<Exclude<TextToImageGeneratorLocale, 
 }
 
 export const textToImageGeneratorPageCopies: Record<TextToImageGeneratorLocale, AiImageGeneratorPageCopy> = TEXT_TO_IMAGE_GENERATOR_LOCALES.reduce((acc, locale) => {
-  acc[locale] = locale === 'en'
+  const localizedCopy = locale === 'en'
     ? textToImageGeneratorPageCopy
     : mergeCopy(getAiImageGeneratorPageCopy(locale), localizedTextToImageOverrides[locale])
+  acc[locale] = {
+    ...localizedCopy,
+    howTo: {
+      ...localizedCopy.howTo,
+      steps: localizedCopy.howTo.steps.map((step, index) => ({
+        ...step,
+        media: {
+          src: TEXT_TO_IMAGE_STEP_ASSETS[index],
+          alt: textToImageStepAlt[locale](step.title),
+          width: 1200,
+          height: 750,
+        },
+      })),
+    },
+  }
   return acc
 }, {} as Record<TextToImageGeneratorLocale, AiImageGeneratorPageCopy>)
 
